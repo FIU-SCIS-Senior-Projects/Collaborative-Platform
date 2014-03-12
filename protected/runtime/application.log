@@ -23,3 +23,25 @@ REQUEST_URI=/coplat/
 in /var/www/coplat/protected/views/layouts/main.php (51)
 in /var/www/coplat/protected/views/layouts/column1.php (6)
 in /var/www/coplat/protected/controllers/SiteController.php (32)
+2014/03/12 22:04:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "forgotPassword".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('forgotPassword')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('forgotPassword')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/forgotPass...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/forgotPassword
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/12 22:06:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "forgotPassword".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('forgotPassword')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('forgotPassword')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/forgotPass...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/forgotPassword
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---

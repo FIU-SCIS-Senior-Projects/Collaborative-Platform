@@ -2,13 +2,13 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
-
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Collaborative Platform',
-
+        'theme'=>'bootstrap',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -27,7 +27,11 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		
+		'mailbox'=>array(
+				'userClass'=>'User',
+				'userIdColumn'=>'id',
+				'usernameColumn'=>'username',
+				),		
 	),
 
 	// application components
@@ -37,7 +41,7 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
-		/*
+		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
@@ -46,13 +50,17 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		*/
+		'email'=>array(
+				'class'=>'application.extensions.email.Email',
+				'delivery'=>'php', //Will use the php mailing function.
+			),
 		/*		
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
-		// uncomment the following to use a MySQL database
 		*/
+		// uncomment the following to use a MySQL database
+		
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=coplat',
 			'emulatePrepare' => true,
@@ -80,6 +88,11 @@ return array(
 				*/
 			),
 		),
+                'bootstrap'=>array(
+                                'class'=>'bootstrap.components.Bootstrap'
+                ),
+		'multicomplete'=>array(
+				'class'=>'multicomplete.MultiComplete.php')		
 	),
 
 	// application-level parameters that can be accessed
