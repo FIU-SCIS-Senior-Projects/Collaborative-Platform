@@ -1,23 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "domain".
+ * This is the model class for table "domain_mentor".
  *
- * The followings are the available columns in table 'domain':
- * @property string $id
- * @property string $name
- * @property string $description
+ * The followings are the available columns in table 'domain_mentor':
+ * @property string $user_role_user_id
+ * @property string $user_role_role_id
+ * @property integer $max_tickets
  *
  * The followings are the available model relations:
- * @property Topic[] $topics
- * @property User[] $users
+ * @property UserRole $userRoleUser
+ * @property UserRole $userRoleRole
  */
-class Domain extends CActiveRecord
+class DomainMentor extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Domain the static model class
+	 * @return DomainMentor the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +29,7 @@ class Domain extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'domain';
+		return 'domain_mentor';
 	}
 
 	/**
@@ -40,13 +40,12 @@ class Domain extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id', 'required'),
-			array('id', 'length', 'max'=>10),
-			array('name', 'length', 'max'=>45),
-			array('description', 'length', 'max'=>500),
+			array('user_role_user_id, user_role_role_id', 'required'),
+			array('max_tickets', 'numerical', 'integerOnly'=>true),
+			array('user_role_user_id, user_role_role_id', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, description', 'safe', 'on'=>'search'),
+			array('user_role_user_id, user_role_role_id, max_tickets', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,8 +57,8 @@ class Domain extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'topics' => array(self::HAS_MANY, 'Topic', 'domain_id'),
-			'users' => array(self::MANY_MANY, 'User', 'user_domain(domain_id, user_id)'),
+			'userRoleUser' => array(self::BELONGS_TO, 'UserRole', 'user_role_user_id'),
+			'userRoleRole' => array(self::BELONGS_TO, 'UserRole', 'user_role_role_id'),
 		);
 	}
 
@@ -69,9 +68,9 @@ class Domain extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'description' => 'Description',
+			'user_role_user_id' => 'User Role User',
+			'user_role_role_id' => 'User Role Role',
+			'max_tickets' => 'Max Tickets',
 		);
 	}
 
@@ -86,9 +85,9 @@ class Domain extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
+		$criteria->compare('user_role_user_id',$this->user_role_user_id,true);
+		$criteria->compare('user_role_role_id',$this->user_role_role_id,true);
+		$criteria->compare('max_tickets',$this->max_tickets);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
