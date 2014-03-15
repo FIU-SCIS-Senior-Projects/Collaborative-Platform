@@ -27,12 +27,12 @@ class UserController extends Controller
 	public function accessRules()
 	{
 		return array(
-			/*array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+			array('allow',  // allow all users to perform 'create' actions
+				'actions'=>array('index','create'),
 				'users'=>array('*'),
-			),*/
+			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -77,6 +77,7 @@ class UserController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 		));
+		
 	}
 
 	/**

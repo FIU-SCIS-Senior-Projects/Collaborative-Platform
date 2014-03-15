@@ -54,7 +54,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, email, lname, pic_url, activated', 'required'),
+			array('fname, lname, username, password, email', 'required'),
 			array('activated, disable', 'numerical', 'integerOnly'=>true),
 			array('username, fname, mname, activation_chain, linkedin_id, fiucs_id, google_id', 'length', 'max'=>45),
 			array('password, email, pic_url', 'length', 'max'=>255),
@@ -62,7 +62,7 @@ class User extends CActiveRecord
 			array('biography', 'length', 'max'=>500),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id', 'safe', 'on'=>'search'),
+			array('id, username, password, email, fname, lname', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -88,12 +88,12 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'Username',
+			'username' => 'User Name',
 			'password' => 'Password',
-			'email' => 'Email',
-			'fname' => 'Fname',
-			'mname' => 'Mname',
-			'lname' => 'Lname',
+			'email' => 'e-mail',
+			'fname' => 'First Name',
+			'mname' => 'Middle Name',
+			'lname' => 'Last Name',
 			'pic_url' => 'Pic Url',
 			'activated' => 'Activated',
 			'activation_chain' => 'Activation Chain',
@@ -118,19 +118,19 @@ class User extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
+		//$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('fname',$this->fname,true);
 		$criteria->compare('mname',$this->mname,true);
 		$criteria->compare('lname',$this->lname,true);
-		$criteria->compare('pic_url',$this->pic_url,true);
-		$criteria->compare('activated',$this->activated);
-		$criteria->compare('activation_chain',$this->activation_chain,true);
-		$criteria->compare('disable',$this->disable);
-		$criteria->compare('biography',$this->biography,true);
-		$criteria->compare('linkedin_id',$this->linkedin_id,true);
-		$criteria->compare('fiucs_id',$this->fiucs_id,true);
-		$criteria->compare('google_id',$this->google_id,true);
+		//$criteria->compare('pic_url',$this->pic_url,true);
+		//$criteria->compare('activated',$this->activated);
+		//$criteria->compare('activation_chain',$this->activation_chain,true);
+		//$criteria->compare('disable',$this->disable);
+		//$criteria->compare('biography',$this->biography,true);
+		//$criteria->compare('linkedin_id',$this->linkedin_id,true);
+		//$criteria->compare('fiucs_id',$this->fiucs_id,true);
+		//$criteria->compare('google_id',$this->google_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
