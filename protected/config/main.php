@@ -8,7 +8,14 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Collaborative Platform',
-        'theme'=>'bootstrap',
+    'theme'=>'bootstrap',
+	'modules'=>array(
+        'gii'=>array(
+            'generatorPaths'=>array(
+                'bootstrap.gii',
+            ),
+		),
+	),
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -88,9 +95,9 @@ return array(
 				*/
 			),
 		),
-                'bootstrap'=>array(
-                                'class'=>'bootstrap.components.Bootstrap'
-                ),
+		'bootstrap'=>array(
+			'class'=>'bootstrap.components.Bootstrap'
+		),
 		'multicomplete'=>array(
 				'class'=>'multicomplete.MultiComplete.php')		
 	),
