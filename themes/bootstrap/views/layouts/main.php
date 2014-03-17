@@ -29,7 +29,7 @@
 
 	<div id="mainmenu">
 		<?php 
-			$this->widget('bootstrap.widgets.TbNavBar',array(
+			$this->widget('bootstrap.widgets.TbNavbar',array(
 				'items'=>array(
 					array(
 						'class'=>'bootstrap.widgets.TbMenu',
