@@ -17,13 +17,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'project_mentor_user_role_user_id'); ?>
-		<?php echo $form->textField($model,'project_mentor_user_role_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->label($model,'project_mentor_user_id'); ?>
+		<?php echo $form->textField($model,'project_mentor_user_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'mentee_user_role_user_id'); ?>
-		<?php echo $form->textField($model,'mentee_user_role_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->label($model,'mentee_user_id'); ?>
+		<?php echo $form->textField($model,'mentee_user_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row">

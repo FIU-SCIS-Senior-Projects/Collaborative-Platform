@@ -17,7 +17,8 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
+		//Yii framework default login
+		/*$users=array(
 			// username => password
 			'demo'=>'demo',
 			'admin'=>'admin',
@@ -28,6 +29,37 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;
+		return !$this->errorCode;*/
+		
+		$user= User::model()->findByAttributes(array(
+				'username'=>$this->username));
+		
+		if($user === null)
+			$this->errorCode=self::ERROR_USERNAME_INVALID;
+		elseif(!$user->validatePassword($this->password))
+			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		elseif($user->activated == null)
+			$this->errorCode = 7;				
+		else
+		{
+			
+			$this->username = $user->username;
+			//$this->setState('lastLogin', date('m/d/y''));
+			
+			$this->errorCode=self::ERROR_NONE;
+		}	
 		return !$this->errorCode;
+	}
+	
+	public function authenticateOutside()
+	{
+		$user= User::model()->findByAttributes(array(
+				'username'=>$this->username));
+	
+		$this->username = $user->username;
+		//$this->setState('lastLogin', date('m/d/y''));
+
+		
+		return true;
 	}
 }

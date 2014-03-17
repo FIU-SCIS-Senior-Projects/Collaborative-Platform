@@ -45,8 +45,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'user_role_user_id',
-		'user_role_role_id',
+		'user_id',
 		'max_hours',
 		'max_projects',
 		array(

@@ -9,6 +9,10 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('creator_user_id')); ?>:</b>
+	<?php echo CHtml::encode($data->creator_user_id); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('topic_id')); ?>:</b>
 	<?php echo CHtml::encode($data->topic_id); ?>
 	<br />
@@ -29,25 +33,17 @@
 	<?php echo CHtml::encode($data->subject); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
 	<?php echo CHtml::encode($data->description); ?>
-	<br />
-
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('assign_id')); ?>:</b>
-	<?php echo CHtml::encode($data->assign_id); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('answer')); ?>:</b>
 	<?php echo CHtml::encode($data->answer); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_role_user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_role_user_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_role_role_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_role_role_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('assign_user_id')); ?>:</b>
+	<?php echo CHtml::encode($data->assign_user_id); ?>
 	<br />
 
 	*/ ?>

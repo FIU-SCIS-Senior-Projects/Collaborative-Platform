@@ -5,13 +5,13 @@
  *
  * The followings are the available columns in table 'project_meeting':
  * @property string $id
- * @property string $project_mentor_user_role_user_id
- * @property string $mentee_user_role_user_id
+ * @property string $project_mentor_user_id
+ * @property string $mentee_user_id
  * @property string $date
  *
  * The followings are the available model relations:
- * @property ProjectMentor $projectMentorUserRoleUser
- * @property Mentee $menteeUserRoleUser
+ * @property ProjectMentor $projectMentorUser
+ * @property Mentee $menteeUser
  */
 class ProjectMeeting extends CActiveRecord
 {
@@ -41,12 +41,12 @@ class ProjectMeeting extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('project_mentor_user_role_user_id, mentee_user_role_user_id', 'required'),
-			array('project_mentor_user_role_user_id, mentee_user_role_user_id', 'length', 'max'=>11),
+			array('project_mentor_user_id, mentee_user_id', 'required'),
+			array('project_mentor_user_id, mentee_user_id', 'length', 'max'=>11),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, project_mentor_user_role_user_id, mentee_user_role_user_id, date', 'safe', 'on'=>'search'),
+			array('id, project_mentor_user_id, mentee_user_id, date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,8 +58,8 @@ class ProjectMeeting extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'projectMentorUserRoleUser' => array(self::BELONGS_TO, 'ProjectMentor', 'project_mentor_user_role_user_id'),
-			'menteeUserRoleUser' => array(self::BELONGS_TO, 'Mentee', 'mentee_user_role_user_id'),
+			'projectMentorUser' => array(self::BELONGS_TO, 'ProjectMentor', 'project_mentor_user_id'),
+			'menteeUser' => array(self::BELONGS_TO, 'Mentee', 'mentee_user_id'),
 		);
 	}
 
@@ -70,8 +70,8 @@ class ProjectMeeting extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'project_mentor_user_role_user_id' => 'Project Mentor User Role User',
-			'mentee_user_role_user_id' => 'Mentee User Role User',
+			'project_mentor_user_id' => 'Project Mentor User',
+			'mentee_user_id' => 'Mentee User',
 			'date' => 'Date',
 		);
 	}
@@ -88,8 +88,8 @@ class ProjectMeeting extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('project_mentor_user_role_user_id',$this->project_mentor_user_role_user_id,true);
-		$criteria->compare('mentee_user_role_user_id',$this->mentee_user_role_user_id,true);
+		$criteria->compare('project_mentor_user_id',$this->project_mentor_user_id,true);
+		$criteria->compare('mentee_user_id',$this->mentee_user_id,true);
 		$criteria->compare('date',$this->date,true);
 
 		return new CActiveDataProvider($this, array(

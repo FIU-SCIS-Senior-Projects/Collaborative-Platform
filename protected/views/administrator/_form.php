@@ -1,13 +1,13 @@
 <?php
-/* @var $this ProjectMentorController */
-/* @var $model ProjectMentor */
+/* @var $this AdministratorController */
+/* @var $model Administrator */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'project-mentor-form',
+	'id'=>'administrator-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -19,18 +19,6 @@
 		<?php echo $form->labelEx($model,'user_id'); ?>
 		<?php echo $form->textField($model,'user_id',array('size'=>11,'maxlength'=>11)); ?>
 		<?php echo $form->error($model,'user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'max_hours'); ?>
-		<?php echo $form->textField($model,'max_hours'); ?>
-		<?php echo $form->error($model,'max_hours'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'max_projects'); ?>
-		<?php echo $form->textField($model,'max_projects'); ?>
-		<?php echo $form->error($model,'max_projects'); ?>
 	</div>
 
 	<div class="row buttons">

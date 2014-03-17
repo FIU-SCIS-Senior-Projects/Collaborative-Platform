@@ -17,8 +17,8 @@
 	<?php echo CHtml::encode($data->status); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('administrator_user_role_user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->administrator_user_role_user_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('administrator_user_id')); ?>:</b>
+	<?php echo CHtml::encode($data->administrator_user_id); ?>
 	<br />
 
 

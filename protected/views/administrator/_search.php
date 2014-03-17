@@ -1,6 +1,6 @@
 <?php
-/* @var $this ProjectMentorController */
-/* @var $model ProjectMentor */
+/* @var $this AdministratorController */
+/* @var $model Administrator */
 /* @var $form CActiveForm */
 ?>
 
@@ -14,16 +14,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'user_id'); ?>
 		<?php echo $form->textField($model,'user_id',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'max_hours'); ?>
-		<?php echo $form->textField($model,'max_hours'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'max_projects'); ?>
-		<?php echo $form->textField($model,'max_projects'); ?>
 	</div>
 
 	<div class="row buttons">

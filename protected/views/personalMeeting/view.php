@@ -22,8 +22,8 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'mentee_user_role_user_id',
-		'personal_mentor_user_role_user_id',
+		'mentee_user_id',
+		'personal_mentor_user_id',
 		'date',
 	),
 )); ?>

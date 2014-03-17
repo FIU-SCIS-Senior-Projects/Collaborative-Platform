@@ -17,6 +17,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'creator_user_id'); ?>
+		<?php echo $form->textField($model,'creator_user_id',array('size'=>11,'maxlength'=>11)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'topic_id'); ?>
 		<?php echo $form->textField($model,'topic_id'); ?>
 	</div>
@@ -47,23 +52,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'assign_id'); ?>
-		<?php echo $form->textField($model,'assign_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'answer'); ?>
 		<?php echo $form->textField($model,'answer',array('size'=>60,'maxlength'=>500)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'user_role_user_id'); ?>
-		<?php echo $form->textField($model,'user_role_user_id',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'user_role_role_id'); ?>
-		<?php echo $form->textField($model,'user_role_role_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->label($model,'assign_user_id'); ?>
+		<?php echo $form->textField($model,'assign_user_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row buttons">

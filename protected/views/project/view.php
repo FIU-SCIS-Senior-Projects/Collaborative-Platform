@@ -27,6 +27,5 @@ $this->menu=array(
 		'start_date',
 		'due_date',
 		'mentor_id',
-		'user_id',
 	),
 )); ?>

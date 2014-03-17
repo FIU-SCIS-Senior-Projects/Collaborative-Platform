@@ -50,7 +50,14 @@ class LoginForm extends CFormModel
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
+				if($this->_identity->errorCode == 7)
+					$this->addError('password',"You are not activated.
+							<a href='/coplat/index.php/User/SendVerificationEmail?username=$this->username'>
+							Click Here to Resend Activation Email
+							</a>
+							");
+				else
+					$this->addError('password','Incorrect username or password.');
 		}
 	}
 

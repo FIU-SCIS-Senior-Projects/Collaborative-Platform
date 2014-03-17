@@ -16,6 +16,12 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'creator_user_id'); ?>
+		<?php echo $form->textField($model,'creator_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->error($model,'creator_user_id'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'topic_id'); ?>
 		<?php echo $form->textField($model,'topic_id'); ?>
 		<?php echo $form->error($model,'topic_id'); ?>
@@ -52,27 +58,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'assign_id'); ?>
-		<?php echo $form->textField($model,'assign_id'); ?>
-		<?php echo $form->error($model,'assign_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'answer'); ?>
 		<?php echo $form->textField($model,'answer',array('size'=>60,'maxlength'=>500)); ?>
 		<?php echo $form->error($model,'answer'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'user_role_user_id'); ?>
-		<?php echo $form->textField($model,'user_role_user_id',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'user_role_user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_role_role_id'); ?>
-		<?php echo $form->textField($model,'user_role_role_id',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'user_role_role_id'); ?>
+		<?php echo $form->labelEx($model,'assign_user_id'); ?>
+		<?php echo $form->textField($model,'assign_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->error($model,'assign_user_id'); ?>
 	</div>
 
 	<div class="row buttons">

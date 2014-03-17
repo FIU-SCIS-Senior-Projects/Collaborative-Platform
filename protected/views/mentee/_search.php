@@ -12,28 +12,18 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'user_role_user_id'); ?>
-		<?php echo $form->textField($model,'user_role_user_id',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'user_role_role_id'); ?>
-		<?php echo $form->textField($model,'user_role_role_id',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'personal_mentor_user_role_user_id'); ?>
-		<?php echo $form->textField($model,'personal_mentor_user_role_user_id',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'projectmentor_project_project_mentor_user_role_user_id'); ?>
-		<?php echo $form->textField($model,'projectmentor_project_project_mentor_user_role_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->label($model,'user_id'); ?>
+		<?php echo $form->textField($model,'user_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'projectmentor_project_project_id'); ?>
 		<?php echo $form->textField($model,'projectmentor_project_project_id',array('size'=>10,'maxlength'=>10)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'projectmentor_project_project_mentor_user_id'); ?>
+		<?php echo $form->textField($model,'projectmentor_project_project_mentor_user_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row buttons">

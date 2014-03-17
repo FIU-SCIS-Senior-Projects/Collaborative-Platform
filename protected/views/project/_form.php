@@ -17,7 +17,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
+		<?php echo $form->textField($model,'id',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'id'); ?>
 	</div>
 
@@ -49,12 +49,6 @@
 		<?php echo $form->labelEx($model,'mentor_id'); ?>
 		<?php echo $form->textField($model,'mentor_id'); ?>
 		<?php echo $form->error($model,'mentor_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-		<?php echo $form->error($model,'user_id'); ?>
 	</div>
 
 	<div class="row buttons">

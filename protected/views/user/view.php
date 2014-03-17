@@ -36,5 +36,13 @@ $this->menu=array(
 		'linkedin_id',
 		'fiucs_id',
 		'google_id',
+		'isAdmin',
+		'isProMentor',
+		'isPerMentor',
+		'isDomMentor',
+		'isStudent',
+		'isMentee',
+		'isJudge',
+		'isEmployer',
 	),
 )); ?>

@@ -7,10 +7,10 @@
  * @property string $id
  * @property string $date
  * @property integer $status
- * @property string $administrator_user_role_user_id
+ * @property string $administrator_user_id
  *
  * The followings are the available model relations:
- * @property Administrator $administratorUserRoleUser
+ * @property Administrator $administratorUser
  */
 class Invitation extends CActiveRecord
 {
@@ -40,13 +40,13 @@ class Invitation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('administrator_user_role_user_id', 'required'),
+			array('administrator_user_id', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('administrator_user_role_user_id', 'length', 'max'=>11),
+			array('administrator_user_id', 'length', 'max'=>11),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, date, status, administrator_user_role_user_id', 'safe', 'on'=>'search'),
+			array('id, date, status, administrator_user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +58,7 @@ class Invitation extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'administratorUserRoleUser' => array(self::BELONGS_TO, 'Administrator', 'administrator_user_role_user_id'),
+			'administratorUser' => array(self::BELONGS_TO, 'Administrator', 'administrator_user_id'),
 		);
 	}
 
@@ -71,7 +71,7 @@ class Invitation extends CActiveRecord
 			'id' => 'ID',
 			'date' => 'Date',
 			'status' => 'Status',
-			'administrator_user_role_user_id' => 'Administrator User Role User',
+			'administrator_user_id' => 'Administrator User',
 		);
 	}
 
@@ -89,7 +89,7 @@ class Invitation extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('administrator_user_role_user_id',$this->administrator_user_role_user_id,true);
+		$criteria->compare('administrator_user_id',$this->administrator_user_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

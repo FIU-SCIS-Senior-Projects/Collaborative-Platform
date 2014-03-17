@@ -4,15 +4,15 @@
 
 $this->breadcrumbs=array(
 	'Users'=>array('index'),
-	'Create',
+	'Register New User',
 );
 
 $this->menu=array(
-//	array('label'=>'List User', 'url'=>array('index')),
-//	array('label'=>'Manage User', 'url'=>array('admin')),
+	//array('label'=>'List User', 'url'=>array('index')),
+	//array('label'=>'Manage User', 'url'=>array('admin')),
 );
 ?>
 
-<h2>Register New User</h2>
+
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

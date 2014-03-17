@@ -36,8 +36,10 @@ $this->breadcrumbs=array(
 			<?php echo $form->error($model,'rememberMe'); ?>
 		</div>
 		<a href= "/coplat/index.php/site/forgotPassword"> Forgot your Password? </a></br>		
-		<a href= "/coplat/index.php/user/create" > Register. </a><br>		
-
+		<div class="reg">
+			<a href="<?php echo Yii::app()->baseUrl ?>/index.php/user/create" >Register</a>
+		</div>
+        
 		<div style="float:left">
 			<?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'submit',

@@ -24,6 +24,6 @@ $this->menu=array(
 		'id',
 		'date',
 		'status',
-		'administrator_user_role_user_id',
+		'administrator_user_id',
 	),
 )); ?>

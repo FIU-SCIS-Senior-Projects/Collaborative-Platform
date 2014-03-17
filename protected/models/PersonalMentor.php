@@ -4,16 +4,13 @@
  * This is the model class for table "personal_mentor".
  *
  * The followings are the available columns in table 'personal_mentor':
- * @property string $user_role_user_id
- * @property string $user_role_role_id
+ * @property string $user_id
  * @property string $max_hours
  * @property string $max_mentees
  *
  * The followings are the available model relations:
- * @property Mentee[] $mentees
  * @property PersonalMeeting[] $personalMeetings
- * @property UserRole $userRoleUser
- * @property UserRole $userRoleRole
+ * @property User $user
  */
 class PersonalMentor extends CActiveRecord
 {
@@ -43,12 +40,12 @@ class PersonalMentor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_role_user_id, user_role_role_id', 'required'),
-			array('user_role_user_id, user_role_role_id', 'length', 'max'=>11),
+			array('user_id', 'required'),
+			array('user_id', 'length', 'max'=>11),
 			array('max_hours, max_mentees', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('user_role_user_id, user_role_role_id, max_hours, max_mentees', 'safe', 'on'=>'search'),
+			array('user_id, max_hours, max_mentees', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,10 +57,8 @@ class PersonalMentor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'mentees' => array(self::HAS_MANY, 'Mentee', 'personal_mentor_user_role_user_id'),
-			'personalMeetings' => array(self::HAS_MANY, 'PersonalMeeting', 'personal_mentor_user_role_user_id'),
-			'userRoleUser' => array(self::BELONGS_TO, 'UserRole', 'user_role_user_id'),
-			'userRoleRole' => array(self::BELONGS_TO, 'UserRole', 'user_role_role_id'),
+			'personalMeetings' => array(self::HAS_MANY, 'PersonalMeeting', 'personal_mentor_user_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -73,8 +68,7 @@ class PersonalMentor extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'user_role_user_id' => 'User Role User',
-			'user_role_role_id' => 'User Role Role',
+			'user_id' => 'User',
 			'max_hours' => 'Max Hours',
 			'max_mentees' => 'Max Mentees',
 		);
@@ -91,8 +85,7 @@ class PersonalMentor extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('user_role_user_id',$this->user_role_user_id,true);
-		$criteria->compare('user_role_role_id',$this->user_role_role_id,true);
+		$criteria->compare('user_id',$this->user_id,true);
 		$criteria->compare('max_hours',$this->max_hours,true);
 		$criteria->compare('max_mentees',$this->max_mentees,true);
 

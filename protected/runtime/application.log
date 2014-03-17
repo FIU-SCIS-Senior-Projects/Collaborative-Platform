@@ -1027,3 +1027,157 @@ REQUEST_URI=/coplat/index.php
 in C:\wamp\www\coplat\themes\bootstrap\views\site\index.php (32)
 in C:\wamp\www\coplat\protected\controllers\SiteController.php (32)
 in C:\wamp\www\coplat\index.php (13)
+2014/03/17 18:17:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/create".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 18:26:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'coplat.pesonal_meeting' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `pesonal_meeting`.
+in C:\wamp\www\coplat\index.php (13)
+2014/03/17 18:28:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "forgotPassword".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('forgotPassword')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('forgotPassword')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/forgotPass...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/forgotPassword
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 18:33:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "create.php".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('create.php')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create.php')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create.php')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/create.php
+---
+2014/03/17 18:39:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "create.php".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('create.php')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create.php')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create.php')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/create.php
+---
+2014/03/17 18:39:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "create.php".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('create.php')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create.php')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create.php')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/create.php
+---
+2014/03/17 18:58:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 18:58:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 19:00:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 19:02:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 19:05:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 19:05:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 19:10:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 19:10:38 [error] [exception.CException] exception 'CException' with message 'UserController cannot find the requested view "register.php".' in C:\wamp\www\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\wamp\www\coplat\protected\views\user\create.php(18): CController->renderPartial('register.php', Array)
+#1 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require('C:\wamp\www\cop...')
+#2 C:\wamp\www\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\cop...', Array, true)
+#3 C:\wamp\www\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\cop...', Array, true)
+#4 C:\wamp\www\coplat\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#5 C:\wamp\www\coplat\protected\controllers\UserController.php(79): CController->render('create', Array)
+#6 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#7 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#16 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#17 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#18 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---

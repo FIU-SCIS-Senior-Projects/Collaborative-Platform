@@ -4,13 +4,11 @@
  * This is the model class for table "domain_mentor".
  *
  * The followings are the available columns in table 'domain_mentor':
- * @property string $user_role_user_id
- * @property string $user_role_role_id
+ * @property string $user_id
  * @property integer $max_tickets
  *
  * The followings are the available model relations:
- * @property UserRole $userRoleUser
- * @property UserRole $userRoleRole
+ * @property User $user
  */
 class DomainMentor extends CActiveRecord
 {
@@ -40,12 +38,12 @@ class DomainMentor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_role_user_id, user_role_role_id', 'required'),
+			array('user_id', 'required'),
 			array('max_tickets', 'numerical', 'integerOnly'=>true),
-			array('user_role_user_id, user_role_role_id', 'length', 'max'=>11),
+			array('user_id', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('user_role_user_id, user_role_role_id, max_tickets', 'safe', 'on'=>'search'),
+			array('user_id, max_tickets', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,8 +55,7 @@ class DomainMentor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'userRoleUser' => array(self::BELONGS_TO, 'UserRole', 'user_role_user_id'),
-			'userRoleRole' => array(self::BELONGS_TO, 'UserRole', 'user_role_role_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -68,8 +65,7 @@ class DomainMentor extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'user_role_user_id' => 'User Role User',
-			'user_role_role_id' => 'User Role Role',
+			'user_id' => 'User',
 			'max_tickets' => 'Max Tickets',
 		);
 	}
@@ -85,8 +81,7 @@ class DomainMentor extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('user_role_user_id',$this->user_role_user_id,true);
-		$criteria->compare('user_role_role_id',$this->user_role_role_id,true);
+		$criteria->compare('user_id',$this->user_id,true);
 		$criteria->compare('max_tickets',$this->max_tickets);
 
 		return new CActiveDataProvider($this, array(

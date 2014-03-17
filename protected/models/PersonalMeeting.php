@@ -5,13 +5,13 @@
  *
  * The followings are the available columns in table 'personal_meeting':
  * @property integer $id
- * @property string $mentee_user_role_user_id
- * @property string $personal_mentor_user_role_user_id
+ * @property string $mentee_user_id
+ * @property string $personal_mentor_user_id
  * @property string $date
  *
  * The followings are the available model relations:
- * @property Mentee $menteeUserRoleUser
- * @property PersonalMentor $personalMentorUserRoleUser
+ * @property Mentee $menteeUser
+ * @property PersonalMentor $personalMentorUser
  */
 class PersonalMeeting extends CActiveRecord
 {
@@ -41,12 +41,12 @@ class PersonalMeeting extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('mentee_user_role_user_id, personal_mentor_user_role_user_id', 'required'),
-			array('mentee_user_role_user_id, personal_mentor_user_role_user_id', 'length', 'max'=>11),
+			array('mentee_user_id, personal_mentor_user_id', 'required'),
+			array('mentee_user_id, personal_mentor_user_id', 'length', 'max'=>11),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, mentee_user_role_user_id, personal_mentor_user_role_user_id, date', 'safe', 'on'=>'search'),
+			array('id, mentee_user_id, personal_mentor_user_id, date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,8 +58,8 @@ class PersonalMeeting extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'menteeUserRoleUser' => array(self::BELONGS_TO, 'Mentee', 'mentee_user_role_user_id'),
-			'personalMentorUserRoleUser' => array(self::BELONGS_TO, 'PersonalMentor', 'personal_mentor_user_role_user_id'),
+			'menteeUser' => array(self::BELONGS_TO, 'Mentee', 'mentee_user_id'),
+			'personalMentorUser' => array(self::BELONGS_TO, 'PersonalMentor', 'personal_mentor_user_id'),
 		);
 	}
 
@@ -70,8 +70,8 @@ class PersonalMeeting extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'mentee_user_role_user_id' => 'Mentee User Role User',
-			'personal_mentor_user_role_user_id' => 'Personal Mentor User Role User',
+			'mentee_user_id' => 'Mentee User',
+			'personal_mentor_user_id' => 'Personal Mentor User',
 			'date' => 'Date',
 		);
 	}
@@ -88,8 +88,8 @@ class PersonalMeeting extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('mentee_user_role_user_id',$this->mentee_user_role_user_id,true);
-		$criteria->compare('personal_mentor_user_role_user_id',$this->personal_mentor_user_role_user_id,true);
+		$criteria->compare('mentee_user_id',$this->mentee_user_id,true);
+		$criteria->compare('personal_mentor_user_id',$this->personal_mentor_user_id,true);
 		$criteria->compare('date',$this->date,true);
 
 		return new CActiveDataProvider($this, array(

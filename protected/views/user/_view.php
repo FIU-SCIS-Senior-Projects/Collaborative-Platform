@@ -66,6 +66,38 @@
 	<?php echo CHtml::encode($data->google_id); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isAdmin')); ?>:</b>
+	<?php echo CHtml::encode($data->isAdmin); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isProMentor')); ?>:</b>
+	<?php echo CHtml::encode($data->isProMentor); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isPerMentor')); ?>:</b>
+	<?php echo CHtml::encode($data->isPerMentor); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isDomMentor')); ?>:</b>
+	<?php echo CHtml::encode($data->isDomMentor); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isStudent')); ?>:</b>
+	<?php echo CHtml::encode($data->isStudent); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isMentee')); ?>:</b>
+	<?php echo CHtml::encode($data->isMentee); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isJudge')); ?>:</b>
+	<?php echo CHtml::encode($data->isJudge); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isEmployer')); ?>:</b>
+	<?php echo CHtml::encode($data->isEmployer); ?>
+	<br />
+
 	*/ ?>
 
 </div>

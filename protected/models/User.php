@@ -19,15 +19,30 @@
  * @property string $linkedin_id
  * @property string $fiucs_id
  * @property string $google_id
+ * @property integer $isAdmin
+ * @property integer $isProMentor
+ * @property integer $isPerMentor
+ * @property integer $isDomMentor
+ * @property integer $isStudent
+ * @property integer $isMentee
+ * @property integer $isJudge
+ * @property integer $isEmployer
  *
  * The followings are the available model relations:
+ * @property Administrator $administrator
+ * @property DomainMentor $domainMentor
+ * @property Mentee $mentee
  * @property Message[] $messages
  * @property Message[] $messages1
+ * @property PersonalMentor $personalMentor
+ * @property ProjectMentor $projectMentor
+ * @property Ticket[] $tickets
+ * @property Ticket[] $tickets1
  * @property Domain[] $domains
- * @property Role[] $roles
  */
 class User extends CActiveRecord
 {
+	public $password2;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -54,15 +69,15 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fname, lname, username, password, email', 'required'),
-			array('activated, disable', 'numerical', 'integerOnly'=>true),
+			array('username, password, password2, email, fname, lname', 'required'),
+			array('activated, disable, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'numerical', 'integerOnly'=>true),
 			array('username, fname, mname, activation_chain, linkedin_id, fiucs_id, google_id', 'length', 'max'=>45),
 			array('password, email, pic_url', 'length', 'max'=>255),
 			array('lname', 'length', 'max'=>100),
 			array('biography', 'length', 'max'=>500),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, password, email, fname, lname', 'safe', 'on'=>'search'),
+			array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,10 +89,16 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'administrator' => array(self::HAS_ONE, 'Administrator', 'user_id'),
+			'domainMentor' => array(self::HAS_ONE, 'DomainMentor', 'user_id'),
+			'mentee' => array(self::HAS_ONE, 'Mentee', 'user_id'),
 			'messages' => array(self::HAS_MANY, 'Message', 'receiver'),
 			'messages1' => array(self::HAS_MANY, 'Message', 'sender'),
+			'personalMentor' => array(self::HAS_ONE, 'PersonalMentor', 'user_id'),
+			'projectMentor' => array(self::HAS_ONE, 'ProjectMentor', 'user_id'),
+			'tickets' => array(self::HAS_MANY, 'Ticket', 'assign_user_id'),
+			'tickets1' => array(self::HAS_MANY, 'Ticket', 'creator_user_id'),
 			'domains' => array(self::MANY_MANY, 'Domain', 'user_domain(user_id, domain_id)'),
-			'roles' => array(self::MANY_MANY, 'Role', 'user_role(user_id, role_id)'),
 		);
 	}
 
@@ -90,6 +111,7 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'username' => 'User Name',
 			'password' => 'Password',
+			'password2' => 'Re-type Password',
 			'email' => 'e-mail',
 			'fname' => 'First Name',
 			'mname' => 'Middle Name',
@@ -102,6 +124,14 @@ class User extends CActiveRecord
 			'linkedin_id' => 'Linkedin',
 			'fiucs_id' => 'Fiucs',
 			'google_id' => 'Google',
+			'isAdmin' => 'Is Admin',
+			'isProMentor' => 'Project Mentor',
+			'isPerMentor' => 'Personal Mentor',
+			'isDomMentor' => 'Domain Mentor',
+			'isStudent' => 'Student',
+			'isMentee' => 'Mentee',
+			'isJudge' => 'Judge',
+			'isEmployer' => 'Employer',
 		);
 	}
 
@@ -118,19 +148,27 @@ class User extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('username',$this->username,true);
-		//$criteria->compare('password',$this->password,true);
+		$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('fname',$this->fname,true);
 		$criteria->compare('mname',$this->mname,true);
 		$criteria->compare('lname',$this->lname,true);
-		//$criteria->compare('pic_url',$this->pic_url,true);
-		//$criteria->compare('activated',$this->activated);
-		//$criteria->compare('activation_chain',$this->activation_chain,true);
-		//$criteria->compare('disable',$this->disable);
-		//$criteria->compare('biography',$this->biography,true);
-		//$criteria->compare('linkedin_id',$this->linkedin_id,true);
-		//$criteria->compare('fiucs_id',$this->fiucs_id,true);
-		//$criteria->compare('google_id',$this->google_id,true);
+		$criteria->compare('pic_url',$this->pic_url,true);
+		$criteria->compare('activated',$this->activated);
+		$criteria->compare('activation_chain',$this->activation_chain,true);
+		$criteria->compare('disable',$this->disable);
+		$criteria->compare('biography',$this->biography,true);
+		$criteria->compare('linkedin_id',$this->linkedin_id,true);
+		$criteria->compare('fiucs_id',$this->fiucs_id,true);
+		$criteria->compare('google_id',$this->google_id,true);
+		$criteria->compare('isAdmin',$this->isAdmin);
+		$criteria->compare('isProMentor',$this->isProMentor);
+		$criteria->compare('isPerMentor',$this->isPerMentor);
+		$criteria->compare('isDomMentor',$this->isDomMentor);
+		$criteria->compare('isStudent',$this->isStudent);
+		$criteria->compare('isMentee',$this->isMentee);
+		$criteria->compare('isJudge',$this->isJudge);
+		$criteria->compare('isEmployer',$this->isEmployer);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

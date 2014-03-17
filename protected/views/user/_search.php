@@ -81,6 +81,46 @@
 		<?php echo $form->textField($model,'google_id',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'isAdmin'); ?>
+		<?php echo $form->textField($model,'isAdmin'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'isProMentor'); ?>
+		<?php echo $form->textField($model,'isProMentor'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'isPerMentor'); ?>
+		<?php echo $form->textField($model,'isPerMentor'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'isDomMentor'); ?>
+		<?php echo $form->textField($model,'isDomMentor'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'isStudent'); ?>
+		<?php echo $form->textField($model,'isStudent'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'isMentee'); ?>
+		<?php echo $form->textField($model,'isMentee'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'isJudge'); ?>
+		<?php echo $form->textField($model,'isJudge'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'isEmployer'); ?>
+		<?php echo $form->textField($model,'isEmployer'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

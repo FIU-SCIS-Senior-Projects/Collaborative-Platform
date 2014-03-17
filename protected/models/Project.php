@@ -4,16 +4,15 @@
  * This is the model class for table "project".
  *
  * The followings are the available columns in table 'project':
- * @property integer $id
+ * @property string $id
  * @property string $title
  * @property string $description
  * @property string $start_date
  * @property string $due_date
  * @property integer $mentor_id
- * @property integer $user_id
  *
  * The followings are the available model relations:
- * @property ProjectmentorProject[] $projectmentorProjects
+ * @property ProjectMentor[] $projectMentors
  */
 class Project extends CActiveRecord
 {
@@ -44,12 +43,13 @@ class Project extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id', 'required'),
-			array('id, mentor_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('mentor_id', 'numerical', 'integerOnly'=>true),
+			array('id', 'length', 'max'=>10),
 			array('title, description, due_date', 'length', 'max'=>45),
 			array('start_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, description, start_date, due_date, mentor_id, user_id', 'safe', 'on'=>'search'),
+			array('id, title, description, start_date, due_date, mentor_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +61,7 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'projectmentorProjects' => array(self::HAS_MANY, 'ProjectmentorProject', 'project_id'),
+			'projectMentors' => array(self::MANY_MANY, 'ProjectMentor', 'projectmentor_project(project_id, project_mentor_user_id)'),
 		);
 	}
 
@@ -77,7 +77,6 @@ class Project extends CActiveRecord
 			'start_date' => 'Start Date',
 			'due_date' => 'Due Date',
 			'mentor_id' => 'Mentor',
-			'user_id' => 'User',
 		);
 	}
 
@@ -92,13 +91,12 @@ class Project extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('start_date',$this->start_date,true);
 		$criteria->compare('due_date',$this->due_date,true);
 		$criteria->compare('mentor_id',$this->mentor_id);
-		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

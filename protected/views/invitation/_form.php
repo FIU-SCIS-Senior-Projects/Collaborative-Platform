@@ -28,9 +28,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'administrator_user_role_user_id'); ?>
-		<?php echo $form->textField($model,'administrator_user_role_user_id',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'administrator_user_role_user_id'); ?>
+		<?php echo $form->labelEx($model,'administrator_user_id'); ?>
+		<?php echo $form->textField($model,'administrator_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->error($model,'administrator_user_id'); ?>
 	</div>
 
 	<div class="row buttons">

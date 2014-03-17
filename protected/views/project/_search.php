@@ -13,7 +13,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
+		<?php echo $form->textField($model,'id',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
 	<div class="row">
@@ -39,11 +39,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'mentor_id'); ?>
 		<?php echo $form->textField($model,'mentor_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
 	</div>
 
 	<div class="row buttons">

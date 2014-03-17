@@ -1,22 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "role".
+ * This is the model class for table "administrator".
  *
- * The followings are the available columns in table 'role':
- * @property string $id
- * @property string $name
- * @property string $description
+ * The followings are the available columns in table 'administrator':
+ * @property string $user_id
  *
  * The followings are the available model relations:
- * @property User[] $users
+ * @property User $user
+ * @property Invitation[] $invitations
  */
-class Role extends CActiveRecord
+class Administrator extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Role the static model class
+	 * @return Administrator the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -28,7 +27,7 @@ class Role extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'role';
+		return 'administrator';
 	}
 
 	/**
@@ -39,13 +38,11 @@ class Role extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, name, description', 'required'),
-			array('id', 'length', 'max'=>11),
-			array('name', 'length', 'max'=>50),
-			array('description', 'length', 'max'=>250),
+			array('user_id', 'required'),
+			array('user_id', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, description', 'safe', 'on'=>'search'),
+			array('user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +54,8 @@ class Role extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'users' => array(self::MANY_MANY, 'User', 'user_role(role_id, user_id)'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'invitations' => array(self::HAS_MANY, 'Invitation', 'administrator_user_id'),
 		);
 	}
 
@@ -67,9 +65,7 @@ class Role extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'description' => 'Description',
+			'user_id' => 'User',
 		);
 	}
 
@@ -84,9 +80,7 @@ class Role extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
+		$criteria->compare('user_id',$this->user_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

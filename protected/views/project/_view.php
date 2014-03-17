@@ -29,9 +29,5 @@
 	<?php echo CHtml::encode($data->mentor_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
-	<br />
-
 
 </div>
