@@ -7,12 +7,10 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
+/*$this->menu=array(
 	array('label'=>'List Message', 'url'=>array('index')),
 	array('label'=>'Manage Message', 'url'=>array('admin')),
-);
+);*/
 ?>
 
-<h1>Create Message</h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('view', array('model'=>$model)); ?>

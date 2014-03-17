@@ -37,6 +37,20 @@ class Message extends CActiveRecord
 		return 'message';
 	}
 
+	public static function getTrashEmails($user)
+	{
+		$deleted = array();
+		foreach ($user->messages as $message)
+			if ($message->been_deleted)
+			   $deleted[] = $message;
+		return $deleted;
+	}
+	/**
+	 * Returns the JavaScript needed for performing client-side validation.
+	 * @param CModel $object the data object being validated
+	 * @param string $attribute the name of the attribute to be validated.
+	 * @return string the client-side validation script.
+	 */
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -45,7 +59,7 @@ class Message extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('receiver, sender, created_date, been_read', 'required'),
+			array('receiver', 'required'),
 			array('been_read, been_deleted', 'numerical', 'integerOnly'=>true),
 			array('receiver, sender', 'length', 'max'=>45),
 			array('message', 'length', 'max'=>500),
@@ -76,9 +90,9 @@ class Message extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'receiver' => 'Receiver',
+			'receiver' => 'To',
 			'sender' => 'Sender',
-			'message' => 'Message',
+			'message' => 'Body',
 			'subject' => 'Subject',
 			'created_date' => 'Created Date',
 			'been_read' => 'Been Read',

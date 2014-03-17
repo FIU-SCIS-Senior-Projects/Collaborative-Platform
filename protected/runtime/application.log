@@ -1181,3 +1181,255 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/user/create
 HTTP_REFERER=http://localhost/coplat/index.php/site/login
 ---
+2014/03/17 22:28:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "userview".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userview')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/userview
+---
+2014/03/17 22:28:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('view')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/view
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/17 22:28:54 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:1118
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('delete')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/delete')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/delete
+---
+2014/03/17 22:29:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "manage".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('manage')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('manage')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/manage')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/manage
+---
+2014/03/17 22:29:05 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/
+---
+2014/03/17 23:22:52 [error] [php] Undefined variable: model (C:\wamp\www\coplat\protected\views\message\index.php:18)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): MessageController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): MessageController->renderPartial()
+#2 C:\wamp\www\coplat\protected\controllers\MessageController.php(128): MessageController->render()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): MessageController->actionIndex()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): MessageController->runAction()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): MessageController->filterAccessControl()
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): MessageController->runActionWithFilters()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): MessageController->run()
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/message
+in C:\wamp\www\coplat\protected\views\message\index.php (18)
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (128)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/17 23:26:17 [error] [php] Undefined variable: data (C:\wamp\www\coplat\protected\views\message\_view.php:8)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): MessageController->renderFile()
+#1 C:\wamp\www\coplat\protected\views\message\create.php(18): MessageController->renderPartial()
+#2 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\www\coplat\framework\web\CBaseController.php(95): MessageController->renderInternal()
+#4 C:\wamp\www\coplat\framework\web\CController.php(869): MessageController->renderFile()
+#5 C:\wamp\www\coplat\framework\web\CController.php(782): MessageController->renderPartial()
+#6 C:\wamp\www\coplat\protected\controllers\MessageController.php(79): MessageController->render()
+#7 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): MessageController->actionCreate()
+#8 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): MessageController->runAction()
+#10 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): MessageController->filterAccessControl()
+#13 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp\www\coplat\framework\web\CController.php(265): MessageController->runActionWithFilters()
+#16 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): MessageController->run()
+#17 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#19 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/message/create
+in C:\wamp\www\coplat\protected\views\message\_view.php (8)
+in C:\wamp\www\coplat\protected\views\message\create.php (18)
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (79)
+2014/03/17 23:26:43 [error] [php] Undefined variable: target (C:\wamp\www\coplat\protected\views\message\view.php:343)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): MessageController->renderFile()
+#1 C:\wamp\www\coplat\protected\views\message\create.php(18): MessageController->renderPartial()
+#2 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\www\coplat\framework\web\CBaseController.php(95): MessageController->renderInternal()
+#4 C:\wamp\www\coplat\framework\web\CController.php(869): MessageController->renderFile()
+#5 C:\wamp\www\coplat\framework\web\CController.php(782): MessageController->renderPartial()
+#6 C:\wamp\www\coplat\protected\controllers\MessageController.php(79): MessageController->render()
+#7 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): MessageController->actionCreate()
+#8 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): MessageController->runAction()
+#10 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): MessageController->filterAccessControl()
+#13 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp\www\coplat\framework\web\CController.php(265): MessageController->runActionWithFilters()
+#16 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): MessageController->run()
+#17 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#19 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/message/create
+in C:\wamp\www\coplat\protected\views\message\view.php (343)
+in C:\wamp\www\coplat\protected\views\message\create.php (18)
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (79)
+2014/03/17 23:32:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "send".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('send')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('send')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/send')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/send
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:32:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getInbox".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('getInbox')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('getInbox')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/getInbo...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/getInbox
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:32:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getTrash".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('getTrash')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('getTrash')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/getTras...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/getTrash
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:32:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getTrash".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('getTrash')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('getTrash')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/getTras...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/getTrash
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:32:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getTrash".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('getTrash')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('getTrash')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/getTras...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/getTrash
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:32:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getInbox".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('getInbox')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('getInbox')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/getInbo...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/getInbox
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:32:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "send".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('send')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('send')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/send')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/send
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:34:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getTrash".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('getTrash')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('getTrash')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/getTras...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/getTrash
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:34:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getInbox".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('getInbox')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('getInbox')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/getInbo...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/getInbox
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
+2014/03/17 23:34:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "send".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('send')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('send')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/send')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/message/send
+HTTP_REFERER=http://localhost/coplat/index.php/message/create
+---
