@@ -40,9 +40,9 @@ class Invitation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('administrator_user_id', 'required'),
+			array('id, administrator_user_id', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('administrator_user_id', 'length', 'max'=>11),
+			array('id, administrator_user_id', 'length', 'max'=>11),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

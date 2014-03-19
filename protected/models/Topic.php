@@ -10,6 +10,7 @@
  * @property string $domain_id
  *
  * The followings are the available model relations:
+ * @property Ticket[] $tickets
  * @property Domain $domain
  */
 class Topic extends CActiveRecord
@@ -40,7 +41,8 @@ class Topic extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('domain_id', 'required'),
+			array('id, domain_id', 'required'),
+			array('id', 'length', 'max'=>11),
 			array('name, description', 'length', 'max'=>45),
 			array('domain_id', 'length', 'max'=>10),
 			// The following rule is used by search().
@@ -57,6 +59,7 @@ class Topic extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'tickets' => array(self::HAS_MANY, 'Ticket', 'topic_id'),
 			'domain' => array(self::BELONGS_TO, 'Domain', 'domain_id'),
 		);
 	}

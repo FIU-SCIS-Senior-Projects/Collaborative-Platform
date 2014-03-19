@@ -40,6 +40,8 @@ class Domain extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('id', 'required'),
+			array('id', 'length', 'max'=>11),
 			array('name', 'length', 'max'=>45),
 			array('description', 'length', 'max'=>500),
 			// The following rule is used by search().

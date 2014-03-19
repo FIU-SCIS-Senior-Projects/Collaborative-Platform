@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'ticket':
  * @property string $id
  * @property string $creator_user_id
- * @property integer $topic_id
+ * @property string $topic_id
  * @property string $status
  * @property string $created_date
  * @property string $last_updated
@@ -20,13 +20,14 @@
  * @property Comment[] $comments
  * @property User $assignUser
  * @property User $creatorUser
+ * @property Topic $topic
  */
-class Ticket extends CActiveRecord
+class Ticke extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Ticket the static model class
+	 * @return Ticke the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -49,9 +50,8 @@ class Ticket extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('creator_user_id, topic_id, status, created_date, subject, description', 'required'),
-			array('topic_id', 'numerical', 'integerOnly'=>true),
-			array('creator_user_id, assign_user_id', 'length', 'max'=>11),
+			array('id, creator_user_id, topic_id, status, created_date, subject, description', 'required'),
+			array('id, creator_user_id, topic_id, assign_user_id', 'length', 'max'=>11),
 			array('status, subject', 'length', 'max'=>45),
 			array('description, answer', 'length', 'max'=>500),
 			array('last_updated', 'safe'),
@@ -73,6 +73,7 @@ class Ticket extends CActiveRecord
 			'comments' => array(self::HAS_MANY, 'Comment', 'ticket_id'),
 			'assignUser' => array(self::BELONGS_TO, 'User', 'assign_user_id'),
 			'creatorUser' => array(self::BELONGS_TO, 'User', 'creator_user_id'),
+			'topic' => array(self::BELONGS_TO, 'Topic', 'topic_id'),
 		);
 	}
 
@@ -108,7 +109,7 @@ class Ticket extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('creator_user_id',$this->creator_user_id,true);
-		$criteria->compare('topic_id',$this->topic_id);
+		$criteria->compare('topic_id',$this->topic_id,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('created_date',$this->created_date,true);
 		$criteria->compare('last_updated',$this->last_updated,true);

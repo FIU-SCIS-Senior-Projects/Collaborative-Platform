@@ -44,7 +44,7 @@ class Project extends CActiveRecord
 		return array(
 			array('id', 'required'),
 			array('mentor_id', 'numerical', 'integerOnly'=>true),
-			array('id', 'length', 'max'=>10),
+			array('id', 'length', 'max'=>11),
 			array('title, description, due_date', 'length', 'max'=>45),
 			array('start_date', 'safe'),
 			// The following rule is used by search().

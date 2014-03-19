@@ -13,7 +13,7 @@
 $this->breadcrumbs=array(
 	'Messages'=>array('/message'),
 	//$model->id,
-	'View',
+	//'View',
 );
 
 /*$this->menu=array(
@@ -121,7 +121,7 @@ $(function(){
 		$("#delete_messages").show()
 		$('.tooltipster').tooltipster({position:'bottom'});
 		
-		$.getJSON("/JobFair/index.php/message/getSent", 
+		$.getJSON("/coplat/index.php/message/getSent", 
 				function (data) {	
 
 			$(".img-spinner").hide();				
@@ -155,7 +155,7 @@ $(function(){
 				var theDate = new Date(Date.parse(theMessage.date))	
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate() + ", " + theDate.getFullYear();		
 				$("#message-content").append("<div class='message_Top'><span class='theSubject'>" +
-						theMessage.subject + "</span></div><a id='sender_link' href='/JobFair/index.php/profile/employer/user/" + theMessage.sender
+						theMessage.subject + "</span></div><a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "&selfReply=1' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image tooltipster' title='Send to Trash'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 

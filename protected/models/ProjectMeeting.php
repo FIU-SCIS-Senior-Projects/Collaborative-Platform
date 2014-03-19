@@ -10,8 +10,8 @@
  * @property string $date
  *
  * The followings are the available model relations:
- * @property ProjectMentor $projectMentorUser
  * @property Mentee $menteeUser
+ * @property ProjectMentor $projectMentorUser
  */
 class ProjectMeeting extends CActiveRecord
 {
@@ -41,8 +41,8 @@ class ProjectMeeting extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('project_mentor_user_id, mentee_user_id', 'required'),
-			array('project_mentor_user_id, mentee_user_id', 'length', 'max'=>11),
+			array('id, project_mentor_user_id, mentee_user_id', 'required'),
+			array('id, project_mentor_user_id, mentee_user_id', 'length', 'max'=>11),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -58,8 +58,8 @@ class ProjectMeeting extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'projectMentorUser' => array(self::BELONGS_TO, 'ProjectMentor', 'project_mentor_user_id'),
 			'menteeUser' => array(self::BELONGS_TO, 'Mentee', 'mentee_user_id'),
+			'projectMentorUser' => array(self::BELONGS_TO, 'ProjectMentor', 'project_mentor_user_id'),
 		);
 	}
 

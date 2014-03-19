@@ -40,7 +40,8 @@ class Attachment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('file_type, file_url, ticket_id', 'required'),
+			array('id, file_type, file_url, ticket_id', 'required'),
+			array('id', 'length', 'max'=>11),
 			array('file_type', 'length', 'max'=>45),
 			array('file_url', 'length', 'max'=>255),
 			array('ticket_id', 'length', 'max'=>10),

@@ -9,9 +9,9 @@
  * @property string $projectmentor_project_project_mentor_user_id
  *
  * The followings are the available model relations:
- * @property User $user
  * @property ProjectmentorProject $projectmentorProjectProject
  * @property ProjectmentorProject $projectmentorProjectProjectMentorUser
+ * @property User $user
  * @property PersonalMeeting[] $personalMeetings
  * @property ProjectMeeting[] $projectMeetings
  */
@@ -60,9 +60,9 @@ class Mentee extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'projectmentorProjectProject' => array(self::BELONGS_TO, 'ProjectmentorProject', 'projectmentor_project_project_id'),
 			'projectmentorProjectProjectMentorUser' => array(self::BELONGS_TO, 'ProjectmentorProject', 'projectmentor_project_project_mentor_user_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'personalMeetings' => array(self::HAS_MANY, 'PersonalMeeting', 'mentee_user_id'),
 			'projectMeetings' => array(self::HAS_MANY, 'ProjectMeeting', 'mentee_user_id'),
 		);
