@@ -1,11 +1,13 @@
-<?php
-/* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name;
+<?php 
+	//$this->redirect("/coplat/index.php/site/login");
+	
+	
+	//$this->pageTitle=Yii::app()->name;
+	$this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
+    'heading'=>CHtml::encode(Yii::app()->name 
+    	),));
+	 
 ?>
 
-<h2>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h2>
 
-
-
-
+<?php $this->endWidget(); ?>

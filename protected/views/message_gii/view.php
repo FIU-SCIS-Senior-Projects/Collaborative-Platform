@@ -1,20 +1,29 @@
-<?php 
-
+<?php
+/* @var $this MessageController */
+/* @var $model Message */
    $js = Yii::app()->clientScript;  
    $js->registerCoreScript('jquery.ui');
    $js->registerScriptFile(Yii::app()->theme->baseUrl .'/js/jquery.slimscroll.js');
    $js->registerScriptFile(Yii::app()->theme->baseUrl .'/jquery.slimscroll.min.js');
    $js->registerScriptFile(Yii::app()->theme->baseUrl .'/js/tooltipster/js/jquery.tooltipster.min.js');
    $js->registerCssFile(Yii::app()->theme->baseUrl .'/js/tooltipster/css/tooltipster.css');   
-     
 ?>
 
 <?php
 $this->breadcrumbs=array(
-	'Message'=>array('/message'),
+	'Messages'=>array('/message'),
+	//$model->id,
+	//'View',
 );
-?>
 
+/*$this->menu=array(
+	array('label'=>'List Message', 'url'=>array('index')),
+	array('label'=>'Create Message', 'url'=>array('create')),
+	array('label'=>'Update Message', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Delete Message', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage Message', 'url'=>array('admin')),
+);*/
+?>
 <script>
 var monthNames = [ "January", "February", "March", "April", "May", "June",
                    "July", "August", "September", "October", "November", "December" ];
@@ -26,7 +35,7 @@ $(function(){
 		$("#delete_messages_forever").hide();
 		$("#message-content").css("background-color", "#FAFAFA");	
 		$("#message-content").empty();
-		//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");		
+		$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");		
 		$("#delete_messages").show()	
 		$('.tooltipster').tooltipster({position:'bottom'});
 		
@@ -55,7 +64,7 @@ $(function(){
 			$(".aMessage").click(function(){
 				
 				$("#message-content").css("background-color", "#FFFFFF");
-				//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
+				$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
 				$(".aMessage").remove();	
 				$("#delete_messages").hide();
 				$(".message_checkbox").remove();
@@ -66,7 +75,7 @@ $(function(){
 			    var theDate = new Date(Date.parse(theMessage.date))	
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate() + ", " + theDate.getFullYear();			
 				$("#message-content").append("<div class='message_Top'><span class='theSubject'>" +
-						theMessage.subject + "<a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
+						theMessage.subject + "</span></div><a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image tooltipster' title='Send to Trash'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 
@@ -79,7 +88,7 @@ $(function(){
 
 					$("#message-content").css("background-color", "#FAFAFA");
 					$("#message-content").empty();	
-					//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
+					$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
 					
 			    	var id = [$(this).attr('id').substring(6)];
 			    	$.ajax({        
@@ -108,7 +117,7 @@ $(function(){
 		$("#delete_messages_forever").hide();
 		$("#message-content").css("background-color", "#FAFAFA");
 		$("#message-content").empty();	
-		//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");		
+		$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");		
 		$("#delete_messages").show()
 		$('.tooltipster').tooltipster({position:'bottom'});
 		
@@ -135,7 +144,7 @@ $(function(){
 			$(".aMessage").click(function(){	
 
 			$("#message-content").css("background-color", "#FFFFFF");
-			//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
+			$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
 			$(".aMessage").remove();	
 			$("#delete_messages").hide();
 			$(".message_checkbox").remove();		
@@ -146,7 +155,7 @@ $(function(){
 				var theDate = new Date(Date.parse(theMessage.date))	
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate() + ", " + theDate.getFullYear();		
 				$("#message-content").append("<div class='message_Top'><span class='theSubject'>" +
-						theMessage.subject + "<a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
+						theMessage.subject + "</span></div><a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "&selfReply=1' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image tooltipster' title='Send to Trash'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 
@@ -200,7 +209,7 @@ $(function(){
 
             $("#message-content").css("background-color", "#FAFAFA");
     		$("#message-content").empty();	
-    		//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
+    		$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
 
             $.ajax({        
                 type: "POST",
@@ -245,7 +254,7 @@ $(function(){
 
     	$("#message-content").css("background-color", "#FAFAFA");
     	$("#message-content").empty();
-    	//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");    	    	
+    	$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");    	    	
     	$("#delete_messages").hide();
     	$("#delete_messages_forever").show();
     	$('.tooltipster').tooltipster({position:'bottom'});
@@ -269,7 +278,7 @@ $(function(){
 			$(".aMessage").click(function(){	
 
 			$("#message-content").css("background-color", "#FFFFFF");
-			//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
+			$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
 			$(".aMessage").remove();	
 			$("#delete_messages_forever").hide();
 			$(".message_checkbox").remove();		
@@ -280,7 +289,7 @@ $(function(){
 				var theDate = new Date(Date.parse(theMessage.date))	
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate() + ", " + theDate.getFullYear();			
 				$("#message-content").append("<div class='message_Top'><span class='theSubject'>" +
-						theMessage.subject + "<a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
+						theMessage.subject + "</span></div><a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image3 tooltipster' title='Delete Forever'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 
@@ -293,7 +302,7 @@ $(function(){
 
 					$("#message-content").css("background-color", "#FAFAFA");
 					$("#message-content").empty();	
-					//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
+					$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
 					
 			    	var id = [$(this).attr('id').substring(6)];
 			    	$.ajax({        
@@ -316,7 +325,23 @@ $(function(){
 });
 </script>
 
-<?php if ($target == 'sent') {?>
+
+<?php
+/* $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'id',
+		'receiver',
+		'sender',
+		'message',
+		'subject',
+		'created_date',
+		'been_read',
+		'been_deleted',
+	),
+)); */
+?>
+<?php /*if ($target == 'sent') {?>
 	<script>
 		$(function(){
 			$("#sent-option").trigger("click");			
@@ -336,48 +361,19 @@ $(function(){
 			$("#inbox-option").trigger("click");			
 		});
      </script>
-<?php }?>
-
-<table class="table"> 
-	<tr>
-		<div id="top-nav">
-			<td>
-				<span id="messages">Messages</span>
-			</td>
-			<td>
-				<div id='delete_messages' class='trash_image2 tooltipster' title='Send to Trash' style='margin-left: 97px'></div>
-				<div id='delete_messages_forever' class='trash_image2 tooltipster' title='Delete Forever' style='margin-left: 97px;'></div>
-			</td>					
-		</div>
-	</tr>
-	<tr>
-		<div id="wrapper">
-			<td width="50px">
-				<div id="options">			
-					<a id="compose-box" href="/coplat/index.php/message/send">Compose</a></br>	
-				  
-					<span id="inbox-option" class="option-selection">Inbox</span></br>
-				   
-					<span id ="sent-option" class="option-selection">Sent</span></br>
-				   
-					<span id="trash-option" class="option-selection">Trash</span></br>			   
-				</div>
-			</td>	
-			<td>
-				<div id="message-content">		                   
-				</div>
-			</td>
-		</div>	
-	</tr>	
-</table> 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+<?php }*/?>
+<div id="top-nav">
+	<span id="messages">Messages</span>
+	<div id='delete_messages' class='trash_image2 tooltipster' title='Send to Trash' style='margin-left: 97px'></div>
+	<div id='delete_messages_forever' class='trash_image2 tooltipster' title='Delete Forever' style='margin-left: 97px;'></div>	
+</div>
+<div id="wrapper">	
+	<div id="options">
+		<a id="compose-box" href="/coplat/index.php/message/send">Compose</a><br/>		
+	   	<span id="inbox-option" class="option-selection">Inbox</span><br/>	
+	    <span id ="sent-option" class="option-selection">Sent</span><br/>	   	
+	   	<span id="trash-option" class="option-selection">Trash</span><br/>
+	</div>
+	<div id="message-content">		                   
+	</div>
+</div>

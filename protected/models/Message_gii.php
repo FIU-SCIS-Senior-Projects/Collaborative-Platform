@@ -1,16 +1,15 @@
 <?php
 
 /**
- * This is the model class for table "email".
+ * This is the model class for table "message".
  *
- * The followings are the available columns in table 'email':
- * @property integer $id
+ * The followings are the available columns in table 'message':
+ * @property string $id
  * @property string $receiver
  * @property string $sender
- * @property string $subject
  * @property string $message
+ * @property string $subject
  * @property string $created_date
- * @property string $userImage
  * @property integer $been_read
  * @property integer $been_deleted
  *
@@ -23,7 +22,7 @@ class Message extends CActiveRecord
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Email the static model class
+	 * @return Message the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -37,24 +36,21 @@ class Message extends CActiveRecord
 	{
 		return 'message';
 	}
-	
+
 	public static function getTrashEmails($user)
 	{
 		$deleted = array();
 		foreach ($user->messages as $message)
 			if ($message->been_deleted)
 			   $deleted[] = $message;
-		
 		return $deleted;
 	}
-	
 	/**
 	 * Returns the JavaScript needed for performing client-side validation.
 	 * @param CModel $object the data object being validated
 	 * @param string $attribute the name of the attribute to be validated.
 	 * @return string the client-side validation script.
 	 */
-	
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -64,11 +60,13 @@ class Message extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('receiver', 'required'),
+			array('been_read, been_deleted', 'numerical', 'integerOnly'=>true),
 			array('receiver, sender', 'length', 'max'=>45),
-			array('message, created_date', 'safe'),
+			array('message', 'length', 'max'=>500),
+			array('subject', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, receiver, sender, subject, message, created_date, been_read, been_deleted', 'safe', 'on'=>'search'),
+			array('id, receiver, sender, message, subject, created_date, been_read, been_deleted', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -94,9 +92,9 @@ class Message extends CActiveRecord
 			'id' => 'ID',
 			'receiver' => 'To',
 			'sender' => 'Sender',
-			'subject' => 'Subject',
 			'message' => 'Body',
-			'created_date' => 'Date',
+			'subject' => 'Subject',
+			'created_date' => 'Created Date',
 			'been_read' => 'Been Read',
 			'been_deleted' => 'Been Deleted',
 		);
@@ -113,11 +111,11 @@ class Message extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 		$criteria->compare('receiver',$this->receiver,true);
 		$criteria->compare('sender',$this->sender,true);
 		$criteria->compare('message',$this->message,true);
-		$criteria->compare('subject', $this->subject, true);
+		$criteria->compare('subject',$this->subject,true);
 		$criteria->compare('created_date',$this->created_date,true);
 		$criteria->compare('been_read',$this->been_read);
 		$criteria->compare('been_deleted',$this->been_deleted);

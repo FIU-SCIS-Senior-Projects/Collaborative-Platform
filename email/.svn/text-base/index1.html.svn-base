@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Virtual Job Fair</title>
+</head>
+<body>
+
+</body>
+<div style ="background-color:#ededeb; text-align:center; width:900px;">
+<h1>Virtual Job Fair</h1>
+</div>
+<div style= "margin-top:10px;   
+ 	float: left;
+    width:895px;
+	min-height:300px;
+	padding:5px;
+	border-width: 2px;
+	border-color:white;
+	border-style:solid;
+ 	border-radius: 5px 5px 5px 5px;
+
+ 	font-size:12px;
+ 	background-color: transparent;
+	border-color:#ededeb;">
+<hr>
+<h1>Hello %USER%</h1>
+<br>
+<br>
+<h2>%MESSAGE%</h2>
+</div>
+</html>

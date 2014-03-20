@@ -1,0 +1,181 @@
+/* 
+    Document   : style
+    Created on : Mar 2, 2013, 6:39:21 PM
+    Author     : Enmanuel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+#receiveMessageArea{
+    border: 1px solid;
+    height: 100px;
+    padding: 5px;
+    overflow-y: auto;
+    border-radius: 5px;
+    border-color: rgb(178, 197, 252);
+}
+
+#sendMessageText{
+    border: 1px solid;
+    height: 20px;
+    padding: 5px;
+    overflow-y: auto;
+    border-radius: 5px;
+    border-color: rgb(178, 197, 252);
+    width:335px;
+    float: left;
+}
+
+
+
+#content{
+    width:1300px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 400px;
+}
+#left{
+    float:left;
+    width: 420px;
+    height: auto;
+
+}
+#video{
+    float:left;
+    width: 410px;
+    height: auto;
+    padding: 10px;
+}
+
+#videolocal{
+    float:left;
+    width: 200px;
+    height: 235px;
+    border-style:dashed;
+    border-radius: 20px;
+    text-align: center;
+    margin-top:10px;
+    border-width: 2px;
+
+}
+#videoremote{
+    float:left;
+    width: 400px;
+    height: 300px;
+    border-style:dashed;
+    border-radius: 20px;
+    text-align: center;
+    border-width: 2px;
+}
+#info{
+    margin-left: 20px;
+    float:left;
+    width: 850px;
+    height: 100%;
+}
+
+ #demoContainer {
+            position:relative;
+        }
+        #connectControls {
+            margin-left: 10px;
+            margin-top: 10px;
+            float:left;
+            width:185px;
+            text-align:center;
+           
+            border-radius: 20px;
+            padding-top: 10px;
+        }
+        #otherClients {
+            margin:1px 10px;
+            height:40px;
+            overflow-y:auto;
+            text-align: left;
+             
+
+        }
+        button2{
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin-top: 0px;
+            background-image: url('http://localhost/JobFair/images/ico/interviewicon.png');
+          }
+        
+       
+        
+        
+        button1{
+            text-transform: uppercase;
+            color: rgb(160, 186, 255);
+        }
+        button1:hover{
+            cursor: pointer;
+            color: rgb(72, 93, 150);
+        }
+        button3:hover{
+            cursor: pointer;
+            color: rgb(72, 93, 150);
+            background-color: rgb(160, 186, 255);
+            border-color: transparent;
+        }
+        button3{
+            text-transform: uppercase;
+            color: rgb(160, 186, 255);
+            border: 1px solid;
+            padding: 8px;
+            border-radius: 5px;
+            float: left;
+            margin-left: 10px;
+            margin-top: -1px;
+        }
+        #selfVideo {
+            float:left;
+            width: 180px;
+            height: 135px;
+            text-align: center;
+            margin-top:10px;
+            border-width: 1px;
+            border-style:solid;
+            border-radius: 5px 5px 5px 5px;
+            font-size:12px;
+            background-color: transparent;
+            border-color: rgb(178, 197, 252);
+            background-image: url(http://srprog-fall13-01.cs.fiu.edu/JobFair/images/imgs/avatarsmall.gif);
+            
+        }
+        #callerVideo {
+            float:left;
+            width: 400px;
+            height: 300px;
+            text-align: center;
+            margin-top: 20px;
+            border-width: 1px;
+            border-style:solid;
+            border-radius: 5px 5px 5px 5px;
+            font-size:12px;
+            background-color: transparent;
+            border-color: rgb(178, 197, 252);
+            background-image: url(http://srprog-fall13-01.cs.fiu.edu/JobFair/images/imgs/avatarbig.gif);
+        }
+        #acceptCallBox {
+            display:none;
+            z-index:2;
+            position:absolute;
+            top:100px;
+            left:400px;
+            border-width: 1px;
+            border-style:solid;
+            border-radius: 5px 5px 5px 5px;
+            background-color:rgb(212, 228, 236);
+            padding:15px;
+            border-color: rgb(171, 188, 255);
+        }
+        
+        
