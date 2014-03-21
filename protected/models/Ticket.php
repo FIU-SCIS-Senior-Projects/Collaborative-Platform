@@ -18,9 +18,9 @@
  * The followings are the available model relations:
  * @property Attachment[] $attachments
  * @property Comment[] $comments
- * @property User $assignUser
  * @property User $creatorUser
  * @property Topic $topic
+ * @property User $assignUser
  */
 class Ticket extends CActiveRecord
 {
@@ -50,8 +50,8 @@ class Ticket extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, creator_user_id, topic_id, status, created_date, subject, description', 'required'),
-			array('id, creator_user_id, topic_id, assign_user_id', 'length', 'max'=>11),
+			array('creator_user_id, topic_id, status, created_date, subject, description', 'required'),
+			array('creator_user_id, topic_id, assign_user_id', 'length', 'max'=>11),
 			array('status, subject', 'length', 'max'=>45),
 			array('description, answer', 'length', 'max'=>500),
 			array('last_updated', 'safe'),
@@ -71,9 +71,9 @@ class Ticket extends CActiveRecord
 		return array(
 			'attachments' => array(self::HAS_MANY, 'Attachment', 'ticket_id'),
 			'comments' => array(self::HAS_MANY, 'Comment', 'ticket_id'),
-			'assignUser' => array(self::BELONGS_TO, 'User', 'assign_user_id'),
 			'creatorUser' => array(self::BELONGS_TO, 'User', 'creator_user_id'),
 			'topic' => array(self::BELONGS_TO, 'Topic', 'topic_id'),
+			'assignUser' => array(self::BELONGS_TO, 'User', 'assign_user_id'),
 		);
 	}
 

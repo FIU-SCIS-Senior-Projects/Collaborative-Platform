@@ -41,8 +41,8 @@ class ProjectMeeting extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, project_mentor_user_id, mentee_user_id', 'required'),
-			array('id, project_mentor_user_id, mentee_user_id', 'length', 'max'=>11),
+			array('project_mentor_user_id, mentee_user_id', 'required'),
+			array('project_mentor_user_id, mentee_user_id', 'length', 'max'=>11),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

@@ -40,8 +40,7 @@ class Comment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, comment, added_date, ticket_id', 'required'),
-			array('id', 'length', 'max'=>11),
+			array('comment, added_date, ticket_id', 'required'),
 			array('comment', 'length', 'max'=>500),
 			array('ticket_id', 'length', 'max'=>10),
 			// The following rule is used by search().
