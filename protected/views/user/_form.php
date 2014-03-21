@@ -46,9 +46,7 @@
     	<?php echo $form->labelEx($model,'password2'); ?>
         <?php echo $form->passwordField($model,'password2',array('size'=>60,'maxlength'=>255)); ?>
         <?php echo $form->error($model,'password2'); ?>
-        
-     	
-        <?php $this->endWidget(); ?> 
+       
 	</div>
     
     <div id="regbox1" style="margin-left:300px; width:220px!important">
@@ -74,8 +72,9 @@
     <div id="regbox1" style="margin-left:300px; width:220px!important">
 		<?php 
             echo $form->labelEx($model,'vjf_role');
-            echo $form->radioButtonList($model, 'vjf_role', array('Employer', 'Student'), 
+            echo $form->radioButtonList($model, 'vjf_role', array('Employer'=>'Employer', 'Student'=>'Student'), 
 															array('onchange' => 'menuTypeChange(this.value);'));
+			echo $form->error($model,'vjf_role'); 
         ?>			
     </div>
     <div id="regbox1" style="margin-left:300px; width:220px!important">
@@ -91,8 +90,10 @@
 			
     </div>
     <div style="margin-left:300px">
-   			<?php echo CHtml::submitButton('Register', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
-   	</div> 
+   		<?php echo CHtml::submitButton('Register', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
+   	</div>
+     	
+    <?php $this->endWidget(); ?>  
     <div style="clear:both"></div>
 	<br>
     <!--	
