@@ -26,7 +26,7 @@ $(function(){
 		$("#delete_messages_forever").hide();
 		$("#message-content").css("background-color", "#FAFAFA");	
 		$("#message-content").empty();
-		//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");		
+		$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");		
 		$("#delete_messages").show()	
 		$('.tooltipster').tooltipster({position:'bottom'});
 		
@@ -55,7 +55,7 @@ $(function(){
 			$(".aMessage").click(function(){
 				
 				$("#message-content").css("background-color", "#FFFFFF");
-				//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
+				$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
 				$(".aMessage").remove();	
 				$("#delete_messages").hide();
 				$(".message_checkbox").remove();
@@ -79,7 +79,7 @@ $(function(){
 
 					$("#message-content").css("background-color", "#FAFAFA");
 					$("#message-content").empty();	
-					//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
+					$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
 					
 			    	var id = [$(this).attr('id').substring(6)];
 			    	$.ajax({        
@@ -108,7 +108,7 @@ $(function(){
 		$("#delete_messages_forever").hide();
 		$("#message-content").css("background-color", "#FAFAFA");
 		$("#message-content").empty();	
-		//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");		
+		$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");		
 		$("#delete_messages").show()
 		$('.tooltipster').tooltipster({position:'bottom'});
 		
@@ -135,7 +135,7 @@ $(function(){
 			$(".aMessage").click(function(){	
 
 			$("#message-content").css("background-color", "#FFFFFF");
-			//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
+			$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
 			$(".aMessage").remove();	
 			$("#delete_messages").hide();
 			$(".message_checkbox").remove();		
@@ -200,7 +200,7 @@ $(function(){
 
             $("#message-content").css("background-color", "#FAFAFA");
     		$("#message-content").empty();	
-    		//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
+    		$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
 
             $.ajax({        
                 type: "POST",
@@ -245,7 +245,7 @@ $(function(){
 
     	$("#message-content").css("background-color", "#FAFAFA");
     	$("#message-content").empty();
-    	//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");    	    	
+    	$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");    	    	
     	$("#delete_messages").hide();
     	$("#delete_messages_forever").show();
     	$('.tooltipster').tooltipster({position:'bottom'});
@@ -269,7 +269,7 @@ $(function(){
 			$(".aMessage").click(function(){	
 
 			$("#message-content").css("background-color", "#FFFFFF");
-			//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
+			$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader2.gif' alt='Loading'/>");
 			$(".aMessage").remove();	
 			$("#delete_messages_forever").hide();
 			$(".message_checkbox").remove();		
@@ -293,7 +293,7 @@ $(function(){
 
 					$("#message-content").css("background-color", "#FAFAFA");
 					$("#message-content").empty();	
-					//$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
+					$("#message-content").append("<img class='img-spinner' src='/coplat/images/ico/ajax-loader.gif' alt='Loading'/>");
 					
 			    	var id = [$(this).attr('id').substring(6)];
 			    	$.ajax({        
@@ -338,46 +338,30 @@ $(function(){
      </script>
 <?php }?>
 
-<table class="table"> 
-	<tr>
-		<div id="top-nav">
-			<td>
-				<span id="messages">Messages</span>
-			</td>
-			<td>
-				<div id='delete_messages' class='trash_image2 tooltipster' title='Send to Trash' style='margin-left: 97px'></div>
-				<div id='delete_messages_forever' class='trash_image2 tooltipster' title='Delete Forever' style='margin-left: 97px;'></div>
-			</td>					
-		</div>
-	</tr>
-	<tr>
-		<div id="wrapper">
-			<td width="50px">
-				<div id="options">			
-					<a id="compose-box" href="/coplat/index.php/message/send">Compose</a></br>	
-				  
-					<span id="inbox-option" class="option-selection">Inbox</span></br>
-				   
-					<span id ="sent-option" class="option-selection">Sent</span></br>
-				   
-					<span id="trash-option" class="option-selection">Trash</span></br>			   
-				</div>
-			</td>	
-			<td>
-				<div id="message-content">		                   
-				</div>
-			</td>
-		</div>	
-	</tr>	
-</table> 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+<div id="top-nav">
+	<span id="messages">Messages</span>
+	<div id='delete_messages' class='trash_image2 tooltipster' title='Send to Trash' style='margin-left: 97px'></div>
+	<div id='delete_messages_forever' class='trash_image2 tooltipster' title='Delete Forever' style='margin-left: 97px;'></div>
+</div>
+<div id="wrapper">
+    <div id="options">			
+        <div style="margin-top:5px">
+            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'link',
+                'id'=>'compose-box',
+				'url'=>'/coplat/index.php/message/send',
+				'type'=>'primary',
+                'label'=>'Compose',
+            )); ?>	
+        </div>
+        <!--<a id="compose-box" class="option-selection" href="/coplat/index.php/message/send" style="text-decoration:none">Compose</a>	-->
+      
+        <span id="inbox-option" class="option-selection">Inbox</span>
+       
+        <span id ="sent-option" class="option-selection">Sent</span>
+       
+        <span id="trash-option" class="option-selection">Trash</span>			   
+    </div>
+    <div id="message-content">		                   
+	</div>
+</div>

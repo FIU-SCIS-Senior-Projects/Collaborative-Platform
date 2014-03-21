@@ -43,6 +43,9 @@
 class User extends CActiveRecord
 {
 	public $password2;
+	public $vjf_role;
+	public $men_role;
+	public $rmj_role;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -71,6 +74,8 @@ class User extends CActiveRecord
 		return array(
 			array('username, password, password2, email, fname, lname', 'required'),
 			array('activated, disable, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'numerical', 'integerOnly'=>true),
+			array('isEmployer', 'radioValidate','vjf_role','Employer'),
+			array('isStudent', 'radioValidate','vjf_role','Student'),
 			array('username, fname, mname, activation_chain, linkedin_id, fiucs_id, google_id', 'length', 'max'=>45),
 			array('password, email, pic_url', 'length', 'max'=>255),
 			array('lname', 'length', 'max'=>100),
@@ -79,6 +84,16 @@ class User extends CActiveRecord
 			// Please remove those attributes that should not be searched.
 			array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'safe', 'on'=>'search'),
 		);
+	}
+	public function radioValidate($attribute,$params)
+	{
+		$field = $params[0];
+		$value = $params[1];
+	 
+		if($this->$field == $value && $this->$attribute == '')
+		{
+			$this->addError($attribute,$this->getAttributeLabel($attribute).' cannot be blank.');
+		}
 	}
 
 	/**
@@ -132,6 +147,9 @@ class User extends CActiveRecord
 			'isMentee' => 'Mentee',
 			'isJudge' => 'Judge',
 			'isEmployer' => 'Employer',
+			'vjf_role' => 'Virtual Job Fair Roles:',
+			'men_role' => 'Mentoring Platform Roles:',
+			'rmj_role' => 'Remote Mobil Judge Roles:'
 		);
 	}
 
