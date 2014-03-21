@@ -52,7 +52,7 @@
             'items'=>array('-',
                 array('label'=>'('.Yii::app()->user->name.')', 'url'=>'#', 'items'=>array(
 					array('label'=>'My Profile', 'url'=>array($profile), 'visible'=>!Yii::app()->user->isGuest),
-                    array('label'=>'Change Password','visible'=>!Yii::app()->user->isGuest, 'url'=>'/JobFair/index.php/user/ChangePassword'),
+                    array('label'=>'Change Password','visible'=>!Yii::app()->user->isGuest, 'url'=>'/coplat/index.php/user/ChangePassword'),
 				
 	
 					'----',

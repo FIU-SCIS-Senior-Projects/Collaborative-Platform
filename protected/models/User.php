@@ -192,4 +192,37 @@ class User extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function isAdmin()
+	{
+		return $this->isAdmin;	
+	}
+	public function isProMentor()
+	{
+		return $this->isProMentor;	
+	}
+	public function isPerMentor()
+	{
+		return $this->isPerMentor;	
+	}
+	public function isDomMentor()
+	{
+		return $this->isDomMentor;	
+	}
+	public function isMentee()
+	{
+		return $this->isMentee;	
+	}
+	public function isJudge()
+	{
+		return $this->isJudge;	
+	}
+	public function isEmployer()
+	{
+		return $this->isEmployer;	
+	}
+	public function isStudent()
+	{
+		return $this->isStudent;	
+	}
 }

@@ -1876,3 +1876,29 @@ in C:\wamp\www\coplat\index.php (13)
 2014/03/21 15:06:41 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
 in C:\wamp\www\coplat\protected\controllers\UserController.php (72)
 in C:\wamp\www\coplat\index.php (13)
+2014/03/21 16:46:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ChangePassword".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('ChangePassword')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('ChangePassword')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/ChangePass...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/ChangePassword
+HTTP_REFERER=http://localhost/coplat/index.php/message
+---
+2014/03/21 16:46:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profile/view".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/view')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profile/view
+HTTP_REFERER=http://localhost/coplat/index.php/user/ChangePassword
+---
+2014/03/21 16:46:57 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (72)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/21 16:58:21 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (32)
+in C:\wamp\www\coplat\index.php (13)

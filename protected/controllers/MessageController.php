@@ -33,7 +33,7 @@ class MessageController extends Controller
 			
 			
 				$model->sender = Yii::app()->user->name;
-				$model->date = date('Y-m-d H:i:s');
+				$model->created_date = date('Y-m-d H:i:s');
 				//$model->userImage = $model->sender0->image_url;
 
 				$model->subject = $_POST['Message']['subject'];
@@ -50,7 +50,7 @@ class MessageController extends Controller
 					$model = new Message;
 					$model->attributes = $_POST['Message'];						
 					$model->sender = Yii::app()->user->name;
-					$model->date = date('Y-m-d H:i:s');
+					$model->created_date = date('Y-m-d H:i:s');
 					//$model->userImage = $model->sender0->image_url;					
 					$model->subject = $_POST['Message']['subject'];
 				}				
@@ -78,7 +78,7 @@ class MessageController extends Controller
 			   $username = $message->sender;
 			
 			$model->subject = $message->subject;
-			$model->message = "\n\n\nOn " . $message->date . ", " . $message->sender . " wrote:\n" . $message->message;
+			$model->message = "\n\n\nOn " . $message->created_date . ", " . $message->sender . " wrote:\n" . $message->message;
 		}	
 		
 		$this->render('send', array('user'=>$user, 'users'=>$users, 'model'=>$model, 'username'=>$username));		
