@@ -50,18 +50,31 @@
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-left'),
             'items'=>array('-',
-                array('label'=>'('.Yii::app()->user->name.')', 'url'=>'#', 'items'=>array(
-					array('label'=>'My Profile', 'url'=>array($profile), 'visible'=>!Yii::app()->user->isGuest),
-                    array('label'=>'Change Password','visible'=>!Yii::app()->user->isGuest, 'url'=>'/coplat/index.php/user/ChangePassword'),
-				
-	
-					'----',
-					array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
- 					array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-					array('label'=>'Register', 'url'=>array('/user/create'), 'visible'=>Yii::app()->user->isGuest),
-                )),
-            ),
-        ),
+						array('label'=>'Manage', 'url'=>'#', 'items'=>array(
+							array('label'=>'Users', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest /*& User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+							array('label'=>'Domains', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest /*& User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+							array('label'=>'Topics', 'url'=>array('topic/admin'), 'visible'=>!Yii::app()->user->isGuest /*& User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+							
+						)),
+					),
+			),
+			array(
+            'class'=>'bootstrap.widgets.TbMenu',
+            'htmlOptions'=>array('class'=>'pull-left'),
+            'items'=>array('-',
+						array('label'=>'('.Yii::app()->user->name.')', 'url'=>'#', 'items'=>array(
+							array('label'=>'My Profile', 'url'=>array($profile), 'visible'=>!Yii::app()->user->isGuest),
+							array('label'=>'Change Password','visible'=>!Yii::app()->user->isGuest, 'url'=>'/coplat/index.php/user/ChangePassword'),
+						
+			
+							'----',
+							array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+							array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+							array('label'=>'Register', 'url'=>array('/user/create'), 'visible'=>Yii::app()->user->isGuest),
+						)),
+					),
+			),
+			
 		)
 	)); 
 	?>

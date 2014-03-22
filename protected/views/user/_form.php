@@ -71,9 +71,21 @@
     </div>
     <div id="regbox1" style="margin-left:300px; width:220px!important">
 		<?php 
-            echo $form->labelEx($model,'vjf_role');
-            echo $form->radioButtonList($model, 'vjf_role', array('Employer'=>'Employer', 'Student'=>'Student'), 
-															array('onchange' => 'menuTypeChange(this.value);'));
+            echo $form->labelEx($model,'vjf_role');?>
+            <table>
+            	<tr>
+                	<td>
+	                    <?php 
+							echo $form->radioButtonList($model, 'vjf_role', array('', ''),array('onchange' => 'menuTypeChange(this.value);')); 
+						?> 
+					</td>
+                    <td>
+                    	<label>&nbsp;Employer</label></br>
+                        <label>&nbsp;Student</label>
+                    <td>
+                </tr>
+            </table>
+        <?php												
 			echo $form->error($model,'vjf_role'); 
         ?>			
     </div>
@@ -95,62 +107,7 @@
      	
     <?php $this->endWidget(); ?>  
     <div style="clear:both"></div>
-	<br>
-    <!--	
-  <table class="table">
-    	<tr>
-        	<td>
-            	<p class="note" >Mentoring Platform Roles:</p>
-            	<div class="row rememberMe">
-					<?php echo $form->checkBox($model,'isProMentor'); ?>
-                    <?php echo $form->label($model,'isProMentor'); ?>
-                    <?php echo $form->error($model,'isProMentor'); ?>
-                </div>
-                <div class="row rememberMe">
-                    <?php echo $form->checkBox($model,'isPerMentor'); ?>
-                    <?php echo $form->label($model,'isPerMentor'); ?>
-                    <?php echo $form->error($model,'isPerMentor'); ?>
-                </div>
-                <div class="row rememberMe">
-                    <?php echo $form->checkBox($model,'isDomMentor'); ?>
-                    <?php echo $form->label($model,'isDomMentor'); ?>
-                    <?php echo $form->error($model,'isDomMentor'); ?>
-                </div>
-                <div class="row rememberMe">
-                    <?php echo $form->checkBox($model,'isMentee'); ?>
-                    <?php echo $form->label($model,'isMentee'); ?>
-                    <?php echo $form->error($model,'isMentee'); ?>
-                </div>
-            </td>
-            <td>
-                <p class="note" >Virtual Job Fair Roles:</p>
-            	<div class="row rememberMe">
-					<?php echo $form->checkBox($model,'isEmployer'); ?>
-                    <?php echo $form->label($model,'isEmployer'); ?>
-                    <?php echo $form->error($model,'isEmployer'); ?>
-                </div>
-                <div class="row rememberMe">
-                    <?php echo $form->checkBox($model,'isStudent'); ?>
-                    <?php echo $form->label($model,'isStudent'); ?>
-                    <?php echo $form->error($model,'isStudent'); ?>
-                </div>
-            </td>
-        	<td>
-            	<p class="note" >Remote Mobil Judge Roles:</p>
-            	<div class="row rememberMe">
-					<?php echo $form->checkBox($model,'isJudge'); ?>
-                    <?php echo $form->label($model,'isJudge'); ?>
-                    <?php echo $form->error($model,'isJudge'); ?>
-                </div>
-                <div class="row rememberMe">
-                    <?php echo $form->checkBox($model,'isStudent'); ?>
-                    <?php echo $form->label($model,'isStudent'); ?>
-                    <?php echo $form->error($model,'isStudent'); ?>
-                </div>
-            </td>        
-        </tr>
-    </table>
-    -->
-	
+	</br>
+
    
 </div><!-- form -->
