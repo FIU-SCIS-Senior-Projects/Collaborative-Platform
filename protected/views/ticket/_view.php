@@ -33,7 +33,6 @@
 	<?php echo CHtml::encode($data->subject); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
 	<?php echo CHtml::encode($data->description); ?>
 	<br />
@@ -45,7 +44,5 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('assign_user_id')); ?>:</b>
 	<?php echo CHtml::encode($data->assign_user_id); ?>
 	<br />
-
-	*/ ?>
 
 </div>

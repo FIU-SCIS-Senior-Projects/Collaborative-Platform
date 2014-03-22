@@ -8,11 +8,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Ticket', 'url'=>array('index')),
-	array('label'=>'Manage Ticket', 'url'=>array('admin')),
+	//array('label'=>'List Ticket', 'url'=>array('index')),
+	//array('label'=>'Manage Ticket', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Ticket</h1>
+<div id = "wrapper" >
+	<span><strong>New Ticket</strong></span>
+		<div id = "new_ticket"; style = "width: 800px; border: 1px solid #C9E0ED">
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+			<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+		</div> 
+</div>
