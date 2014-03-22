@@ -25,9 +25,9 @@ $this->menu=array(
 		'htmlOptions'=>array(
 		'style'=>'overflow-y:scroll; height:150px; width: 1050px; border: 1px solid #C9E0ED'),)); */?>
 		
-		<?php $this->widget('zii.widgets.grid.CGridView', array(
+		<?php $this->widget('zii.widgets.grid.CGridView', array('id'=> 'ticket_id',
     'dataProvider'=>$dataProvider, 'summaryText' => '',
-    'columns'=>array(
+    'columns'=>array( 
         'id',          // display the 'title' attribute
         //'creator_user_id',  // display the 'name' attribute of the 'category' relation
 		'topic_id', 'status', 'created_date','last_updated',
@@ -46,7 +46,8 @@ $this->menu=array(
         ),*/
 				'htmlOptions'=>array(
 						'style'=>'overflow-y:scroll; height:300px; width: 1050px; border: 1px solid #C9E0ED'),
-   
+   'selectionChanged'=>"function(id){window.location='" . Yii::app()->urlManager->createUrl('ticket/view', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);}",
+
 )); ?>
 	</div>
 	<!-- Ticket options -->
