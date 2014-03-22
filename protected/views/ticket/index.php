@@ -32,18 +32,6 @@ $this->menu=array(
         //'creator_user_id',  // display the 'name' attribute of the 'category' relation
 		'topic_id', 'status', 'created_date','last_updated',
 		'subject', /*'description', 'answer', 'assign_user_id',*/),
-      /*  'subject:html',   // display the 'content' attribute as purified HTML
-        array(            // display 'create_time' using an expression
-            'name'=>'create_date',
-            'value'=>'date("M j, Y", $data->create_date)',
-        ),*/
-        /*array(            // display 'author.username' using an expression
-            'name'=>'authorName',
-            'value'=>'$data->author->username',
-        ), */
-    	/*array(            // display a column with "view", "update" and "delete" buttons
-            'class'=>'CButtonColumn',
-        ),*/
 				'htmlOptions'=>array(
 						'style'=>'overflow-y:scroll; height:300px; width: 1050px; border: 1px solid #C9E0ED'),
    'selectionChanged'=>"function(id){window.location='" . Yii::app()->urlManager->createUrl('ticket/view', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);}",

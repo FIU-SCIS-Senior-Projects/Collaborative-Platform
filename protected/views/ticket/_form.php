@@ -18,7 +18,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<!-- Not needed 
+	<!-- Not needed -->
 	<div class="center">
 		<?php echo $form->labelEx($model,'creator_user_id'); ?>
 		<?php echo $form->textField($model,'creator_user_id',array('size'=>50, 'style'=>'width:50px','maxlength'=>11)); ?>
@@ -50,7 +50,7 @@
 		<?php echo $form->error($model,'assign_user_id'); ?>
 	</div>
 	
-	End --> 
+	<!--  End --> 
 
 	<div id = "container"; style="margin-top:10px; margin-left: 100px">
 	
