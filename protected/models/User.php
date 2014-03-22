@@ -225,4 +225,61 @@ class User extends CActiveRecord
 	{
 		return $this->isStudent;	
 	}
+	
+	public function isCurrentUserAdmin(){
+		$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	if ($user == null)
+    		return false;
+    	return $user->isAdmin;		
+	}
+	public function isCurrentUserMentee(){
+		$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	if ($user == null)
+    		return false;
+    	return $user->isMentee;		
+	}
+	public function isCurrentUserProMentor(){
+		$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	if ($user == null)
+    		return false;
+    	return $user->isProMentor;		
+	}
+	public function isCurrentUserDomMentor(){
+		$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	if ($user == null)
+    		return false;
+    	return $user->isDomMentor;		
+	}
+	public function isCurrentUserPerMentor(){
+		$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	if ($user == null)
+    		return false;
+    	return $user->isPerMentor;		
+	}
+	public function isCurrentUserJudge(){
+		$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	if ($user == null)
+    		return false;
+    	return $user->isJudge;		
+	}
+	public function isCurrentUserEmployer(){
+		$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	if ($user == null)
+    		return false;
+    	return $user->isEmployer;		
+	}
+	public function isCurrentUserStudent(){
+		$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	if ($user == null)
+    		return false;
+    	return $user->isStudent;		
+	}
 }
