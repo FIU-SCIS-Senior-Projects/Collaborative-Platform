@@ -95,6 +95,12 @@ class User extends CActiveRecord
 			$this->addError($attribute,$this->getAttributeLabel($attribute).' cannot be blank.');
 		}
 	}
+	
+	public function validatePassword($password)
+	{
+		$hasher = new PasswordHash(8, false);
+		return $hasher->CheckPassword($password, $this->password);
+	}
 
 	/**
 	 * @return array relational rules.
@@ -166,19 +172,19 @@ class User extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
+		//$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('fname',$this->fname,true);
 		$criteria->compare('mname',$this->mname,true);
 		$criteria->compare('lname',$this->lname,true);
-		$criteria->compare('pic_url',$this->pic_url,true);
+		//$criteria->compare('pic_url',$this->pic_url,true);
 		$criteria->compare('activated',$this->activated);
-		$criteria->compare('activation_chain',$this->activation_chain,true);
+		//$criteria->compare('activation_chain',$this->activation_chain,true);
 		$criteria->compare('disable',$this->disable);
-		$criteria->compare('biography',$this->biography,true);
-		$criteria->compare('linkedin_id',$this->linkedin_id,true);
-		$criteria->compare('fiucs_id',$this->fiucs_id,true);
-		$criteria->compare('google_id',$this->google_id,true);
+		//$criteria->compare('biography',$this->biography,true);
+		//$criteria->compare('linkedin_id',$this->linkedin_id,true);
+		//$criteria->compare('fiucs_id',$this->fiucs_id,true);
+		//$criteria->compare('google_id',$this->google_id,true);
 		$criteria->compare('isAdmin',$this->isAdmin);
 		$criteria->compare('isProMentor',$this->isProMentor);
 		$criteria->compare('isPerMentor',$this->isPerMentor);
@@ -192,6 +198,46 @@ class User extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function sendVerificationEmail() {
+    	$email = Yii::app()->email;
+    	$address = $this->email;
+    	$link = CHtml::link('click here', 'http://'.Yii::app()->request->getServerName() . '/coplat/index.php/user/VerifyEmail?username=' . $this->username
+    		. '&activation_string=' . $this->activation_chain);
+    	$email->to = $address;
+    	$email->subject = 'Verify your account on the Collaborative Platform';
+    	$email->message = "You need to verify your account before logging in.  Use this $link to verify your account.";
+    	$email->send();
+    }
+	
+	public static function sendEmailWithNewPassword($address, $password, $username) {
+    	$email = Yii::app()->email;
+    
+    	$link = CHtml::link('click here to login', Yii::app()->baseUrl  . '/site/login' );
+    	$email->to = $address;
+    	$email->subject = 'your new password';
+    	$email->message = "Username: $username<br/> Password: $password<br/>$link";
+    	$email->send();
+    }
+	
+	public static function sendEmailNotificationAlart($address, $to, $from, $message) {
+    	
+    	$email = Yii::app()->email;
+		$email->to = $address;
+		$email->from = 'JobFair';
+		$email->message = $message;
+		$email->subject ='Collaborative Platform';
+		$email->send();
+    }
+	public static function sendEmailMessageNotificationAlart($address, $to, $from, $message) {
+    	 
+    	$email = Yii::app()->email;
+    	$email->to = $address;
+    	$email->from = 'Collaborative Platform';
+    	$email->subject ='New Message'; 
+    	$email->message = $message;
+    	$email->send();
+    }
 	
 	public function isAdmin()
 	{

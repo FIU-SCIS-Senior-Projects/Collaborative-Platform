@@ -51,9 +51,12 @@
             'htmlOptions'=>array('class'=>'pull-left'),
             'items'=>array('-',
 						array('label'=>'Manage', 'url'=>'#', 'items'=>array(
-							array('label'=>'Users', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest /*& User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-							array('label'=>'Domains', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest /*& User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-							array('label'=>'Topics', 'url'=>array('topic/admin'), 'visible'=>!Yii::app()->user->isGuest /*& User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+							array('label'=>'Users', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+							array('label'=>'Domains', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+							array('label'=>'Topics', 'url'=>array('topic/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+							
+							'----',
+							array('label'=>'Add Administrator', 'url'=>array('user/create_admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
 							
 						)),
 					),
