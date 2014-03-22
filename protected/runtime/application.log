@@ -1903,6 +1903,7 @@ in C:\wamp\www\coplat\index.php (13)
 in C:\wamp\www\coplat\protected\controllers\MessageController.php (32)
 in C:\wamp\www\coplat\index.php (13)
 <<<<<<< HEAD
+<<<<<<< HEAD
 2014/03/22 16:40:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ChangePassword".' in C:\wamp\www\coplat\framework\web\CController.php:483
 Stack trace:
 #0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('ChangePassword')
@@ -1930,6 +1931,8 @@ in C:\wamp\www\coplat\index.php (13)
 in C:\wamp\www\coplat\protected\controllers\UserController.php (139)
 in C:\wamp\www\coplat\index.php (13)
 =======
+=======
+>>>>>>> 6c6547931e076314d4cbe45dce5a4e8e24e7019d
 2014/03/22 17:40:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
 Stack trace:
 #0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
@@ -2222,6 +2225,7 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/controller/action/3
 HTTP_REFERER=http://localhost:8888/coplat/index.php/ticket/index
 ---
+<<<<<<< HEAD
 >>>>>>> 6c6547931e076314d4cbe45dce5a4e8e24e7019d
 2014/03/22 18:06:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in C:\wamp\www\coplat\framework\db\CDbConnection.php:381
 Stack trace:
@@ -2513,3 +2517,5 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/user/admin
 HTTP_REFERER=http://localhost/coplat/index.php/topic/admin
 ---
+=======
+>>>>>>> 6c6547931e076314d4cbe45dce5a4e8e24e7019d
