@@ -1,6 +1,6 @@
 <?php
-/* @var $this AttachmentController */
-/* @var $model Attachment */
+/* @var $this ProjectmentorProjectController */
+/* @var $model ProjectmentorProject */
 /* @var $form CActiveForm */
 ?>
 
@@ -17,13 +17,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'file_url'); ?>
-		<?php echo $form->textField($model,'file_url',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->label($model,'project_id'); ?>
+		<?php echo $form->textField($model,'project_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'ticket_id'); ?>
-		<?php echo $form->textField($model,'ticket_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->label($model,'project_mentor_user_id'); ?>
+		<?php echo $form->textField($model,'project_mentor_user_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row buttons">

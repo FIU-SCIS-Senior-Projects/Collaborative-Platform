@@ -1,22 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "attachment".
+ * This is the model class for table "user_domain".
  *
- * The followings are the available columns in table 'attachment':
+ * The followings are the available columns in table 'user_domain':
  * @property string $id
- * @property string $file_url
- * @property string $ticket_id
+ * @property string $domain_id
+ * @property string $user_id
+ * @property integer $rate
+ * @property integer $active
+ * @property integer $tier_team
  *
  * The followings are the available model relations:
- * @property Ticket $ticket
+ * @property Domain $domain
+ * @property User $user
  */
-class Attachment extends CActiveRecord
+class UserDomain extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Attachment the static model class
+	 * @return UserDomain the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -28,7 +32,7 @@ class Attachment extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'attachment';
+		return 'user_domain';
 	}
 
 	/**
@@ -39,12 +43,12 @@ class Attachment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('file_url, ticket_id', 'required'),
-			array('file_url', 'length', 'max'=>255),
-			array('ticket_id', 'length', 'max'=>10),
+			array('domain_id, user_id', 'required'),
+			array('rate, active, tier_team', 'numerical', 'integerOnly'=>true),
+			array('domain_id, user_id', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, file_url, ticket_id', 'safe', 'on'=>'search'),
+			array('id, domain_id, user_id, rate, active, tier_team', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,7 +60,8 @@ class Attachment extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ticket' => array(self::BELONGS_TO, 'Ticket', 'ticket_id'),
+			'domain' => array(self::BELONGS_TO, 'Domain', 'domain_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -67,8 +72,11 @@ class Attachment extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'file_url' => 'File Url',
-			'ticket_id' => 'Ticket',
+			'domain_id' => 'Domain',
+			'user_id' => 'User',
+			'rate' => 'Rate',
+			'active' => 'Active',
+			'tier_team' => 'Tier Team',
 		);
 	}
 
@@ -84,8 +92,11 @@ class Attachment extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('file_url',$this->file_url,true);
-		$criteria->compare('ticket_id',$this->ticket_id,true);
+		$criteria->compare('domain_id',$this->domain_id,true);
+		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('rate',$this->rate);
+		$criteria->compare('active',$this->active);
+		$criteria->compare('tier_team',$this->tier_team);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

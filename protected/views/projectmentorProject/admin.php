@@ -1,15 +1,15 @@
 <?php
-/* @var $this MenteeController */
-/* @var $model Mentee */
+/* @var $this ProjectmentorProjectController */
+/* @var $model ProjectmentorProject */
 
 $this->breadcrumbs=array(
-	'Mentees'=>array('index'),
+	'Projectmentor Projects'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Mentee', 'url'=>array('index')),
-	array('label'=>'Create Mentee', 'url'=>array('create')),
+	array('label'=>'List ProjectmentorProject', 'url'=>array('index')),
+	array('label'=>'Create ProjectmentorProject', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#mentee-grid').yiiGridView('update', {
+	$('#projectmentor-project-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Mentees</h1>
+<h1>Manage Projectmentor Projects</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -41,12 +41,13 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'mentee-grid',
+	'id'=>'projectmentor-project-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'user_id',
-		'projectmentor_project_id',
+		'id',
+		'project_id',
+		'project_mentor_user_id',
 		array(
 			'class'=>'CButtonColumn',
 		),

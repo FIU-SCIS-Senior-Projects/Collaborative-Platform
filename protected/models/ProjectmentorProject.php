@@ -1,22 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "attachment".
+ * This is the model class for table "projectmentor_project".
  *
- * The followings are the available columns in table 'attachment':
+ * The followings are the available columns in table 'projectmentor_project':
  * @property string $id
- * @property string $file_url
- * @property string $ticket_id
+ * @property string $project_id
+ * @property string $project_mentor_user_id
  *
  * The followings are the available model relations:
- * @property Ticket $ticket
+ * @property Mentee[] $mentees
+ * @property ProjectMentor $projectMentorUser
+ * @property Project $project
  */
-class Attachment extends CActiveRecord
+class ProjectmentorProject extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Attachment the static model class
+	 * @return ProjectmentorProject the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -28,7 +30,7 @@ class Attachment extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'attachment';
+		return 'projectmentor_project';
 	}
 
 	/**
@@ -39,12 +41,11 @@ class Attachment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('file_url, ticket_id', 'required'),
-			array('file_url', 'length', 'max'=>255),
-			array('ticket_id', 'length', 'max'=>10),
+			array('project_id, project_mentor_user_id', 'required'),
+			array('project_id, project_mentor_user_id', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, file_url, ticket_id', 'safe', 'on'=>'search'),
+			array('id, project_id, project_mentor_user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,7 +57,9 @@ class Attachment extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ticket' => array(self::BELONGS_TO, 'Ticket', 'ticket_id'),
+			'mentees' => array(self::HAS_MANY, 'Mentee', 'projectmentor_project_id'),
+			'projectMentorUser' => array(self::BELONGS_TO, 'ProjectMentor', 'project_mentor_user_id'),
+			'project' => array(self::BELONGS_TO, 'Project', 'project_id'),
 		);
 	}
 
@@ -67,8 +70,8 @@ class Attachment extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'file_url' => 'File Url',
-			'ticket_id' => 'Ticket',
+			'project_id' => 'Project',
+			'project_mentor_user_id' => 'Project Mentor User',
 		);
 	}
 
@@ -84,8 +87,8 @@ class Attachment extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('file_url',$this->file_url,true);
-		$criteria->compare('ticket_id',$this->ticket_id,true);
+		$criteria->compare('project_id',$this->project_id,true);
+		$criteria->compare('project_mentor_user_id',$this->project_mentor_user_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

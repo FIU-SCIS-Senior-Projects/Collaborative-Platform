@@ -22,7 +22,6 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'file_type',
 		'file_url',
 		'ticket_id',
 	),
