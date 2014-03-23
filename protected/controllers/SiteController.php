@@ -106,4 +106,30 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	
+	public function actionForgotPassword()
+	{
+		if(isset($_POST['User']))
+		{
+			$email = $_POST['User']['email'];
+			$model = User::model()->find("email=:email",array(':email'=>$email));
+			if ($model == null){
+				$error = 'Email does not exist in our records';
+				$this->render('forgotPassword', array('error'=>$error));
+				return;
+			}
+			$password = $this->genRandomString(10);
+			$hasher = new PasswordHash(8, false);
+			$model->password = $hasher->HashPassword($password);
+			$model->save(false);
+			User::sendEmailWithNewPassword($email, $password, $model->username);
+			$error = 'Email has been sent';
+			$this->render('forgotPassword', array('error'=>$error));
+			return;
+		}
+	
+	$error = '';
+	$this->render('forgotPassword', array('error'=>$error));
+	
+	}
 }

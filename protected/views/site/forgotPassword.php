@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 $model = new User;
 ?>
 
-<h1>Forgot your Password?</h1>
+<h2>Forgot your Password?</h2>
 
 <?php if ($error != '') {?>
 	<p style="color:red;"> <?php echo $error?></p>
 	<?php }?>
 
-<p>Please enter your email:</p>
 
 <div class="form">
+<p>Please enter your email:</p>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -27,16 +27,13 @@ $model = new User;
 	),
 )); ?>
 
-
-	<div class="row">
+	<div id="regbox">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email'); ?>
 		<?php echo $form->error($model,'email'); ?>
-	</div>
-
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Send Password', array("class"=>"btn btn-primary")); ?>
+     	<div>
+			<?php echo CHtml::submitButton('Send Password', array("class"=>"btn btn-primary")); ?>
+		</div>
 	</div>
 
 <?php $this->endWidget(); ?>
