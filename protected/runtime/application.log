@@ -3200,3 +3200,30 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/profile/userProfile
 HTTP_REFERER=http://localhost/coplat/index.php/user/create_admin
 ---
+2014/03/23 18:42:52 [error] [exception.CException] exception 'CException' with message 'DomainController cannot find the requested view "_form".' in C:\wamp\www\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\wamp\www\coplat\protected\views\domain\update.php(21): CController->renderPartial('_form', Array)
+#1 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require('C:\wamp\www\cop...')
+#2 C:\wamp\www\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\cop...', Array, true)
+#3 C:\wamp\www\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\cop...', Array, true)
+#4 C:\wamp\www\coplat\framework\web\CController.php(782): CController->renderPartial('update', Array, true)
+#5 C:\wamp\www\coplat\protected\controllers\DomainController.php(103): CController->render('update', Array)
+#6 [internal function]: DomainController->actionUpdate('1')
+#7 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(DomainController), Array)
+#8 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(DomainController), Object(ReflectionMethod), Array)
+#9 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#18 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/update')
+#19 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/domain/update/1
+HTTP_REFERER=http://localhost/coplat/index.php/domain/1
+---

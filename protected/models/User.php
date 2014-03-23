@@ -74,8 +74,6 @@ class User extends CActiveRecord
 		return array(
 			array('username, password, password2, email, fname, lname', 'required'),
 			array('activated, disable, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'numerical', 'integerOnly'=>true),
-			array('isEmployer', 'radioValidate','vjf_role','Employer'),
-			array('isStudent', 'radioValidate','vjf_role','Student'),
 			array('username, fname, mname, activation_chain, linkedin_id, fiucs_id, google_id', 'length', 'max'=>45),
 			array('password, email, pic_url', 'length', 'max'=>255),
 			array('lname', 'length', 'max'=>100),
@@ -85,16 +83,7 @@ class User extends CActiveRecord
 			array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'safe', 'on'=>'search'),
 		);
 	}
-	public function radioValidate($attribute,$params)
-	{
-		$field = $params[0];
-		$value = $params[1];
-	 
-		if($this->$field == $value && $this->$attribute == '')
-		{
-			$this->addError($attribute,$this->getAttributeLabel($attribute).' cannot be blank.');
-		}
-	}
+	
 	
 	public function validatePassword($password)
 	{
@@ -129,7 +118,7 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'User ID',
 			'username' => 'User Name',
 			'password' => 'Password',
 			'password2' => 'Re-type Password',

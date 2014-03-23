@@ -49,7 +49,7 @@
        
 	</div>
     
-    <div id="regbox1" style="margin-left:300px; width:220px!important">
+    <div id="regbox1" style="margin-top:50px;margin-left:300px; width:220px!important">
     		<?php 
 				echo $form->labelEx($model,'men_role');
 				echo $form->checkBox($model,'isProMentor',array('style'=>'float:left'));
@@ -72,23 +72,15 @@
     <div id="regbox1" style="margin-left:300px; width:220px!important">
 		<?php 
             echo $form->labelEx($model,'vjf_role');?>
-            <table>
-            	<tr>
-                	<td>
-	                    <?php 
-							echo $form->radioButtonList($model, 'vjf_role', array('', ''),array('onchange' => 'menuTypeChange(this.value);')); 
-						?> 
-					</td>
-                    <td>
-                    	<label>&nbsp;Employer</label></br>
-                        <label>&nbsp;Student</label>
-                    <td>
-                </tr>
-            </table>
-        <?php												
-			echo $form->error($model,'vjf_role'); 
-        ?>			
-    </div>
+        <?php 
+			echo $form->checkBox($model,'isEmployer',array('style'=>'float:left'));
+		?>
+		<p style="float:left; margin-left:5px">Employer</p></br></br>
+		<?php 
+			echo $form->checkBox($model,'isStudent',array('style'=>'float:left'));
+		?>
+		<p style="float:left; margin-left:5px">Student</p></br></br>
+	</div>
     <div id="regbox1" style="margin-left:300px; width:220px!important">
     		<?php 
 				echo $form->labelEx($model,'rmj_role');

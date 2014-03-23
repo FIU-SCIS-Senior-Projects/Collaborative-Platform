@@ -28,14 +28,10 @@ $('.search-form form').submit(function(){
 
 <h2>Manage Users</h2>
 
-<!--<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>-->
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="margin-left:300px;display:none">
-<?php $this->renderPartial('_search',array(
+<?php $this->renderPartial('search',array(
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->

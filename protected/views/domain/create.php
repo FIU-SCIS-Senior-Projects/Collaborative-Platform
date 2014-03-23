@@ -7,12 +7,12 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
+/*$this->menu=array(
 	array('label'=>'List Domain', 'url'=>array('index')),
 	array('label'=>'Manage Domain', 'url'=>array('admin')),
-);
+);*/
 ?>
 
-<h1>Create Domain</h1>
+<h2>Add New Domain</h2>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('add', array('model'=>$model)); ?>

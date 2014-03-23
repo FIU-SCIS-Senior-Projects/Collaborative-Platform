@@ -67,7 +67,7 @@ class Domain extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Domain ID',
 			'name' => 'Name',
 			'description' => 'Description',
 		);
@@ -86,7 +86,7 @@ class Domain extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
+		//$criteria->compare('description',$this->description,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
