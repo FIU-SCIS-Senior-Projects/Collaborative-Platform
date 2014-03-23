@@ -3016,3 +3016,187 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/user/create_admin
 HTTP_REFERER=http://localhost/coplat/index.php/user/create_admin
 ---
+2014/03/23 16:03:06 [error] [exception.CException] exception 'CException' with message 'Property "TbMenu.visible" is not defined.' in C:\wamp\www\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWidgetFactory.php(161): CComponent->__set('visible', false)
+#1 C:\wamp\www\coplat\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 C:\wamp\www\coplat\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 C:\wamp\www\coplat\protected\extensions\bootstrap\widgets\TbNavbar.php(155): CBaseController->widget('bootstrap.widge...', Array)
+#4 C:\wamp\www\coplat\framework\web\CBaseController.php(173): TbNavbar->run()
+#5 C:\wamp\www\coplat\themes\bootstrap\views\layouts\main.php(83): CBaseController->widget('bootstrap.widge...', Array)
+#6 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require('C:\wamp\www\cop...')
+#7 C:\wamp\www\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\cop...', Array, true)
+#8 C:\wamp\www\coplat\framework\web\widgets\CContentDecorator.php(76): CBaseController->renderFile('C:\wamp\www\cop...', Array, true)
+#9 C:\wamp\www\coplat\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#10 C:\wamp\www\coplat\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#11 C:\wamp\www\coplat\framework\web\CBaseController.php(206): COutputProcessor->run()
+#12 C:\wamp\www\coplat\framework\web\CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#13 C:\wamp\www\coplat\themes\bootstrap\views\layouts\column1.php(6): CBaseController->endContent()
+#14 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require('C:\wamp\www\cop...')
+#15 C:\wamp\www\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\cop...', Array, true)
+#16 C:\wamp\www\coplat\framework\web\CController.php(784): CBaseController->renderFile('C:\wamp\www\cop...', Array, true)
+#17 C:\wamp\www\coplat\protected\controllers\SiteController.php(32): CController->render('index')
+#18 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#19 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 C:\wamp\www\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#23 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#24 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#25 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/coplat/
+---
+2014/03/23 16:10:28 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:39 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:40 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:41 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:41 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:41 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:42 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:43 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:43 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:44 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:44 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:44 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:44 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:45 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:45 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:10:46 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:11:25 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (72)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:12:13 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('view')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/1
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/03/23 16:12:42 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:12:47 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:12:51 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (156)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/23 16:12:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('view')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/1
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2014/03/23 16:42:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profile/userProfile".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/userPro...')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profile/userProfile
+HTTP_REFERER=http://localhost/coplat/index.php/personalmentor/admin
+---
+2014/03/23 16:42:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ChangePassword".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('ChangePassword')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('ChangePassword')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/ChangePass...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/ChangePassword
+HTTP_REFERER=http://localhost/coplat/index.php/profile/userProfile
+---
+2014/03/23 16:51:00 [error] [exception.CException] exception 'CException' with message 'UserController cannot find the requested view "ChangePassword".' in C:\wamp\www\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(782): CController->renderPartial('ChangePassword', Array, true)
+#1 C:\wamp\www\coplat\protected\controllers\UserController.php(193): CController->render('ChangePassword', Array)
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionChangePassword()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('ChangePassword')
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/ChangePass...')
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/user/ChangePassword
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2014/03/23 17:02:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profile/userProfile".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/userPro...')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profile/userProfile
+HTTP_REFERER=http://localhost/coplat/index.php/user/create_admin
+---
+2014/03/23 17:02:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profile/userProfile".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/userPro...')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profile/userProfile
+HTTP_REFERER=http://localhost/coplat/index.php/user/create_admin
+---

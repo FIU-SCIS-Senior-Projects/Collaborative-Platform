@@ -32,7 +32,7 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('admin','update','delete','create_admin'),
+				'actions'=>array('admin','update','delete','create_admin','view','ChangePassword'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -71,7 +71,7 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('/site/login','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -89,7 +89,7 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('/user/admin','id'=>$model->id));
 		}
 
 		$this->render('create_admin',array(
@@ -160,6 +160,39 @@ class UserController extends Controller
 		));
 	}
 
+	public function actionChangePassword() {
+		$model = User::getCurrentUser();
+		$error = '';
+		if(isset($_POST['User'])) {
+			$pass = $_POST['User']['password'];
+			$p1 = $_POST['User']['password1'];
+			$p2 = $_POST['User']['password2'];
+			//verify old password
+			$username = Yii::app()->user->name;
+			$hasher = new PasswordHash(8, false);
+			$login = new LoginForm;
+			$login->username = $username;
+			$login->password = $pass;
+
+			//$user = User::model()->find("username=:username AND password=:password", array(":username"=> $username, ":password"=>$password));
+			if (!$login->validate()){
+				$error = "Old Password was incorrect.";
+				$this->render('ChangePassword',array('model'=>$model, 'error' => $error));
+			} elseif ($p1 == $p2) {
+				//Hash the password before storing it into the database
+				$hasher = new PasswordHash(8, false);
+				$user = User::getCurrentUser();
+				$user->password = $hasher->HashPassword($p1);
+				$user->save(false);
+				$this->redirect("/coplat/index.php/profile/userProfile");
+			} else {
+				$error = "Passwords do not match.";
+				$this->render('ChangePassword',array('model'=>$model, 'error' => $error));
+			}
+		} else {
+			$this->render('ChangePassword',array('model'=>$model, 'error' => $error));
+		}
+	}
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -173,6 +206,16 @@ class UserController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
+	}
+	
+	public static function genRandomString($length = 10) {
+		$characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+		$string = "";
+		for ($p = 0; $p < $length; $p++) {
+			$string .= $characters[mt_rand(0, strlen($characters) - 1)];
+		}
+	
+		return $string;
 	}
 
 	/**
