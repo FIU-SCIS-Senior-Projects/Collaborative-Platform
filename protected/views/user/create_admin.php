@@ -15,4 +15,4 @@ $this->breadcrumbs=array(
 
 
 
-<?php echo $this->redirect('_form_admin', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('formAddAdmin', array('model'=>$model)); ?>
