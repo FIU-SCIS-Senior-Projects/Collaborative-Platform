@@ -33,17 +33,17 @@ $this->menu=array(
 		'topic_id', 'status', 'created_date','last_updated',
 		'subject', /*'description', 'answer', 'assign_user_id',*/),
 				'htmlOptions'=>array(
-						'style'=>'overflow-y:scroll; height:300px; width: 1050px; border: 1px solid #C9E0ED'),
+						'style'=>'overflow-y:scroll; height:300px; width: 1050px; border: 1px solid #C9E0ED; border-radius: 5px'),
    'selectionChanged'=>"function(id){window.location='" . Yii::app()->urlManager->createUrl('ticket/view', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);}",
 
 )); ?>
 	</div>
 	<!-- Ticket options -->
 	<div id="options">			
-		<div style="margin-top:10px; margin-left: 15px">
+		<div style="margin-top:15px; margin-left: 0px">
 			<?php $this->widget('bootstrap.widgets.TbButton', array(
             	 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/create', 'type'=>'primary',
-            	 'label'=>'New',)); ?>	
+            	 'label'=>'  New ',)); ?>	
             <?php $this->widget('bootstrap.widgets.TbButton', array(
            		 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php', 'type'=>'primary',
             	 'label'=>'Cancel', )); ?>	

@@ -15,7 +15,7 @@ $this->menu=array(
 
 <div id = "wrapper" >
 	<span><strong>New Ticket</strong></span>
-		<div id = "new_ticket"; style = "width: 800px; border: 1px solid #C9E0ED">
+		<div 
 
 			<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 		</div> 
