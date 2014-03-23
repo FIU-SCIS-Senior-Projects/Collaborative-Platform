@@ -6,8 +6,8 @@
 <link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 
-<h2>Collaborative Platform Registration</h2>
-<div class="form">
+<h2 style="margin-left:300px">New Administrator</h2>
+<div class="form" style="margin-left:300px">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'user-Register-form',
@@ -46,64 +46,12 @@
     	<?php echo $form->labelEx($model,'password2'); ?>
         <?php echo $form->passwordField($model,'password2',array('size'=>60,'maxlength'=>255)); ?>
         <?php echo $form->error($model,'password2'); ?>
-       
+ 		
+        <div>   
+    		<?php echo CHtml::submitButton('Create', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
+   	   	</div>
 	</div>
     
-    <div id="regbox1" style="margin-left:300px; width:220px!important">
-    		<?php 
-				echo $form->labelEx($model,'men_role');
-				echo $form->checkBox($model,'isProMentor',array('style'=>'float:left'));
-			?>
-			<p style="float:left; margin-left:5px">Project Mentor</p></br></br>
-			<?php 
-				echo $form->checkBox($model,'isPerMentor',array('style'=>'float:left'));
-			?>
-			<p style="float:left; margin-left:5px">Personal Mentor</p></br></br>
-			<?php 
-				echo $form->checkBox($model,'isDomMentor',array('style'=>'float:left'));
-			?>
-			<p style="float:left; margin-left:5px">Domain Mentor</p></br></br>
-			<?php 
-				echo $form->checkBox($model,'isMentee',array('style'=>'float:left'));
-			?>
-			<p style="float:left; margin-left:5px">Mentee</p></br></br>
-			
-    </div>
-    <div id="regbox1" style="margin-left:300px; width:220px!important">
-		<?php 
-            echo $form->labelEx($model,'vjf_role');?>
-            <table>
-            	<tr>
-                	<td>
-	                    <?php 
-							echo $form->radioButtonList($model, 'vjf_role', array('', ''),array('onchange' => 'menuTypeChange(this.value);')); 
-						?> 
-					</td>
-                    <td>
-                    	<label>&nbsp;Employer</label></br>
-                        <label>&nbsp;Student</label>
-                    <td>
-                </tr>
-            </table>
-        <?php												
-			echo $form->error($model,'vjf_role'); 
-        ?>			
-    </div>
-    <div id="regbox1" style="margin-left:300px; width:220px!important">
-    		<?php 
-				echo $form->labelEx($model,'rmj_role');
-				echo $form->checkBox($model,'isJudge',array('style'=>'float:left'));
-			?>
-			<p style="float:left; margin-left:5px">Judge</p></br></br>
-			<?php 
-				echo $form->checkBox($model,'isStudent',array('style'=>'float:left'));
-			?>
-			<p style="float:left; margin-left:5px">Student</p></br></br>
-			
-    </div>
-    <div style="margin-left:300px">
-   		<?php echo CHtml::submitButton('Register', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
-   	</div>
      	
     <?php $this->endWidget(); ?>  
     <div style="clear:both"></div>
