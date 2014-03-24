@@ -92,7 +92,8 @@ class MessageController extends Controller
 	//Ajax calls
 	public function actionGetInbox()
 	{
-		$username = Yii::app()->user->name;
+		//$username = Yii::app()->user->name;
+		$username = 'lsanc104';
 		$user = User::model()->find("username=:username",array(':username'=>$username));
 		$messages = array();
 		foreach ($user->messages(array('order'=>'id DESC')) as $aMessage)
