@@ -41,8 +41,9 @@ class Topic extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('domain_id', 'required'),
-			array('name, description', 'length', 'max'=>45),
+			array('domain_id, name', 'required'),
+			array('name', 'length', 'max'=>45),
+			array('description', 'length', 'max'=>500),			
 			array('domain_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

@@ -19,12 +19,12 @@
 		<?php echo $form->error($model,'name'); ?>
 	
 		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textField($model,'description',array('size'=>500,'maxlength'=>500)); ?>
+        <?php echo $form->textArea($model,'description',array('id'=>'theDescription', 'style'=>'width:631px', 'cols'=>100, 'rows'=>5,
+                    'width'=>'691px','size'=>500,'maxlength'=>500)); ?>
+		<?php //echo $form->textField($model,'description',array('size'=>500,'maxlength'=>500)); ?>
 		<?php echo $form->error($model,'description'); ?>
-	
-        <div>
-            <?php echo CHtml::submitButton('Create', array("class"=>"btn btn-primary")); ?>
-        </div>
+		</br>
+        <?php echo CHtml::submitButton('Create', array("class"=>"btn btn-primary")); ?>
     </div>
 
 <?php $this->endWidget(); ?>
