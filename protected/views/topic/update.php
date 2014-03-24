@@ -16,6 +16,6 @@ $this->breadcrumbs=array(
 );*/
 ?>
 
-<h1>Update Topic <?php echo $model->id; ?></h1>
+<h2>Update Topic: <?php echo $model->name; ?></h2>
 
 <?php echo $this->renderPartial('add', array('model'=>$model)); ?>

@@ -13,6 +13,6 @@ $this->breadcrumbs=array(
 );*/
 ?>
 
-<h2>Add New Domain</h2>
+<h2>Create Domain</h2>
 
 <?php echo $this->renderPartial('add', array('model'=>$model)); ?>
