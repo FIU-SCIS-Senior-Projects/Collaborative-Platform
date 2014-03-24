@@ -1,5 +1,5 @@
 <?php 
-	$this->redirect("/coplat/index.php/site/login");
+	//$this->redirect("/coplat/index.php/site/login");
 	
 	
 	//$this->pageTitle=Yii::app()->name;

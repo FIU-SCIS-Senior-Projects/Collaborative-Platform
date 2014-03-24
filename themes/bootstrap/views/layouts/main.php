@@ -53,7 +53,7 @@
 					),
 					//array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 					//array('label'=>'Contact', 'url'=>array('/site/contact')),
-					array('label'=>'Message', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
+					array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
 					array('label'=>'Ticket', 'url'=>array('/ticket/index'), 'visible'=>!Yii::app()->user->isGuest ),
 					
 					array('label'=>'Manage','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/,
