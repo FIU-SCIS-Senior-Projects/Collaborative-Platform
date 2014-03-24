@@ -21,7 +21,7 @@
 		<?php echo $form->error($model,'name'); ?>
         
 		<?php echo $form->labelEx($model,'domain_id'); ?>
-		<?php echo $form->dropDownList($model,'description', CHtml::listData(Domain::model()->findAll(), 'id', 'name'));
+		<?php echo $form->dropDownList($model,'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name'));
 		//echo $form->textField($model,'domain_id',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'domain_id'); ?>
         

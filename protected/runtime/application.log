@@ -3328,3 +3328,18 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/topic/create
 HTTP_REFERER=http://localhost/coplat/index.php/topic/admin
 ---
+2014/03/24 12:42:55 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 12:43:00 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 12:49:04 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 12:49:04 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 12:49:07 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
