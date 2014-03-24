@@ -6,13 +6,14 @@ $this->breadcrumbs=array(
 	'Topics'=>array('index'),
 	'Create',
 );
-
+/*
 $this->menu=array(
 	array('label'=>'List Topic', 'url'=>array('index')),
 	array('label'=>'Manage Topic', 'url'=>array('admin')),
 );
+*/
 ?>
 
-<h1>Create Topic</h1>
+<h2>Create Topic</h2>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('add', array('model'=>$model)); ?>

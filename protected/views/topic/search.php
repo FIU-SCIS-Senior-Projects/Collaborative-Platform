@@ -11,30 +11,19 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
+	<div class="regbox">
 		<?php echo $form->label($model,'id'); ?>
 		<?php echo $form->textField($model,'id',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'name'); ?>
+	
+    	<?php echo $form->label($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'description'); ?>
-		<?php echo $form->textField($model,'description',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'domain_id'); ?>
+	
+    	<?php echo $form->label($model,'domain_id'); ?>
 		<?php echo $form->textField($model,'domain_id',array('size'=>10,'maxlength'=>10)); ?>
+		</br>
+    	<?php echo CHtml::submitButton('Search', array('class'=>'btn btn-primary')); ?>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
-
+	
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->

@@ -6,11 +6,10 @@
 <link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <div class="wide form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'action'=>Yii::app()->createUrl($this->route),
-	'method'=>'get',
-)); ?>
+	<?php $form=$this->beginWidget('CActiveForm', array(
+        'action'=>Yii::app()->createUrl($this->route),
+        'method'=>'get',
+    )); ?>
 	<div id="regbox">
 		<?php echo $form->label($model,'id'); ?>
 		<?php echo $form->textField($model,'id',array('size'=>11,'maxlength'=>11)); ?>
@@ -35,8 +34,9 @@
 			echo $form->checkBox($model,'activated',array('style'=>'float:left'));
 			echo $form->label($model,'activated'); 
 		?>
+        </br>
     </div> <!-- regbox -->
-    <div id="searchbox1" style="margin-left:300px; width:220px!important">
+    <div id="regbox" style="margin-left:10px;width:220px!important">
 		<?php 
             echo $form->labelEx($model,'men_role');
             echo $form->checkBox($model,'isProMentor',array('style'=>'float:left'));
@@ -79,7 +79,7 @@
 		<?php 
             echo $form->checkBox($model,'isStudent',array('style'=>'float:left'));
         ?>
-        <p style="float:left; margin-left:5px">Student</p></br></br>			
+        <p style="float:left; margin-left:5px">Student</p><label>&nbsp;&nbsp;&nbsp;</label>
     
     	<?php echo CHtml::submitButton('Search', array("class"=>"btn btn-primary")); ?>
    	</div>

@@ -49,7 +49,7 @@
        
 	</div>
     
-    <div id="regbox1" style="margin-top:50px;margin-left:300px; width:220px!important">
+    <div id="regbox1" style="width:220px!important">
     		<?php 
 				echo $form->labelEx($model,'men_role');
 				echo $form->checkBox($model,'isProMentor',array('style'=>'float:left'));

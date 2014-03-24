@@ -89,7 +89,7 @@ class Topic extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
+		//$criteria->compare('description',$this->description,true);
 		$criteria->compare('domain_id',$this->domain_id,true);
 
 		return new CActiveDataProvider($this, array(

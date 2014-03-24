@@ -71,7 +71,7 @@ class TopicController extends Controller
 		{
 			$model->attributes=$_POST['Topic'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('create',array(
