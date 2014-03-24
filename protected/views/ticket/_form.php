@@ -70,10 +70,9 @@
 
 			<div class ="row"; style = "margin-left: 40px">
 			<?php echo $form->labelEx($model,'topic_id'); ?>
-			<?php echo $form->textField($model,'topic_id',array('size'=>11,'style'=>'width:100px','maxlength'=>11)); ?>
+			<?php echo $form->dropDownList($model,'topic_id', CHtml::listData(Topic::model()->findAll(), 'id', 'name')); ?>
 			<?php echo $form->error($model,'topic_id'); ?>
 			</div>
-			
 	</div>
 
 	<br>
