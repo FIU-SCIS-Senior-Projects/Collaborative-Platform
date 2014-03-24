@@ -135,10 +135,10 @@ $(function(){
         <div style="margin-top:5px">
             <span style="margin-left:30px">To:</span>
             <?php 
-                /*if ($username != null)
+				/*if ($username != null)
                     echo $form->textField($model,'receiver', array('value'=>$username)); 
                 else
-                    echo $form->textField($model,'receiver', array('id'=>'receiver')); */
+                    echo $form->textField($model,'receiver', array('id'=>'receiver'));*/ 
     
                 if ($username != null)
                    $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
@@ -150,7 +150,7 @@ $(function(){
                      //'select'=>'js: function(event,ui){$("#data").val(ui.item.name);return false;}',
                      
                   ));
-              else 
+               else 
                 $this->widget('MultiComplete', array(
                     'name'=>'receiver',
                     'source'=>$users,	

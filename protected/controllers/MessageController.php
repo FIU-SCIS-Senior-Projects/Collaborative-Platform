@@ -12,17 +12,18 @@ class MessageController extends Controller
 		
 	public function actionSend($username = null, $reply=null, $selfReply = null)
 	{
+		echo Yii::app()->user->name;
 		$user = new User;
 		$model = new Message;
 		$message = null;		
 		
 		$users = array();
-		$models = User::model()->findAll(array('condition'=>'isMentee = 1'));
+		$models = User::model()->findAll(/*array('condition'=>'isMentee')*/);
 		
 		foreach($models as $aUser)
 		{
 			$users[] = array(
-					'label'=>CHtml::image($aUser->image_url, '', array('width'=>'20px')) . '  ' . $aUser->fname . ' ' . $aUser->lname,
+					'label'=>$aUser->fname . ' ' . $aUser->lname,
 					'value'=>"\"" .$aUser->fname . " ".$aUser->lname."\" <" .$aUser->username . ">"
 			);
 		}
@@ -32,7 +33,9 @@ class MessageController extends Controller
 			$model->attributes = $_POST['Message'];
 			
 			
-				$model->sender = Yii::app()->user->name;
+				//$model->sender = Yii::app()->user->name;
+				
+				$model->sender = 'hmuni06';
 				$model->created_date = date('Y-m-d H:i:s');
 				//$model->userImage = $model->sender0->image_url;
 
@@ -49,19 +52,21 @@ class MessageController extends Controller
 
 					$model = new Message;
 					$model->attributes = $_POST['Message'];						
-					$model->sender = Yii::app()->user->name;
+					//$model->sender = Yii::app()->user->name;
+					$model->sender = 'hmuni06';
 					$model->created_date = date('Y-m-d H:i:s');
 					//$model->userImage = $model->sender0->image_url;					
 					$model->subject = $_POST['Message']['subject'];
-				}				
+				}	
+				User::sendUserNotificationMessageAlert(3, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);			
 
-				User::sendUserNotificationMessageAlart(Yii::app()->user->id, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);
+				//User::sendUserNotificationMessageAlert(Yii::app()->user->id, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);
 				$link= CHtml::link('click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
 				$recive = User::model()->find("username=:username",array(':username'=>$model->receiver));
 				if ($recive != NULL){
 				$message = "You just got a message from $model->sender<br/> '$model->message'<br/>$link";
 				$html = User::replaceMessage($recive->username, $message); 
-				User::sendEmailMessageNotificationAlart($recive->email, $recive->username, $model->sender, $html);
+				User::sendEmailMessageNotificationAlert($recive->email, $recive->username, $model->sender, $html);
 				}
 				$this->redirect("/coplat/index.php/message");
 				return;
@@ -90,9 +95,9 @@ class MessageController extends Controller
 		$username = Yii::app()->user->name;
 		$user = User::model()->find("username=:username",array(':username'=>$username));
 		$messages = array();
-		foreach ($user->messagesReceived(array('order'=>'id DESC')) as $aMessage)
+		foreach ($user->messages(array('order'=>'id DESC')) as $aMessage)
 		{
-			if ($aMessage->been_deleted != 1)
+			if (!$aMessage->been_deleted)
 			   $messages[] = $aMessage;
 		}
 		
@@ -110,9 +115,9 @@ class MessageController extends Controller
 		$username = Yii::app()->user->name;
 		$user = User::model()->find("username=:username",array(':username'=>$username));
 		$messages = array();
-		foreach ($user->messagesSent(array('order'=>'id DESC')) as $aMessage)
+		foreach ($user->messages1(array('order'=>'id DESC')) as $aMessage)
 		{
-			if ($aMessage->been_deleted != 1)
+			if (!$aMessage->been_deleted)
 				$messages[] = $aMessage;
 		}
 		
@@ -124,15 +129,15 @@ class MessageController extends Controller
 		$username = Yii::app()->user->name;
 		$user = User::model()->find("username=:username",array(':username'=>$username));
 		$messages = array();
-		foreach ($user->messagesSent(array('order'=>'id DESC')) as $aMessage)
+		foreach ($user->messages1(array('order'=>'id DESC')) as $aMessage)
 		{
-			if ($aMessage->been_deleted == 1)
+			if ($aMessage->been_deleted)
 				$messages[] = $aMessage;
 		}
 		
-		foreach ($user->messagesReceived(array('order'=>'id DESC')) as $aMessage)
+		foreach ($user->messages1(array('order'=>'id DESC')) as $aMessage)
 		{
-			if ($aMessage->been_deleted == 1)
+			if ($aMessage->been_deleted)
 				$messages[] = $aMessage;
 		}
 		
@@ -142,7 +147,7 @@ class MessageController extends Controller
 	public function actionSetAsRead($id)
 	{
 		$message = Message::model()->findByPk($id);
-		$message->been_read = 1;
+		$message->been_read = true;
 		$message->save();
 	}
 	
@@ -153,7 +158,7 @@ class MessageController extends Controller
 		{
 			$theId = intval($id);
 			$message = Message::model()->findByPK($theId);
-			$message->been_deleted = 1;
+			$message->been_deleted = true;
 			$message->save(false);
 		}
 	}

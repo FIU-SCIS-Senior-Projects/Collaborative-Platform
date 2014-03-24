@@ -215,7 +215,7 @@ class User extends CActiveRecord
     	$email->send();
     }
 	
-	public static function sendEmailNotificationAlart($address, $to, $from, $message) {
+	public static function sendEmailNotificationAlert($address, $to, $from, $message) {
     	
     	$email = Yii::app()->email;
 		$email->to = $address;
@@ -224,7 +224,7 @@ class User extends CActiveRecord
 		$email->subject ='Collaborative Platform';
 		$email->send();
     }
-	public static function sendEmailMessageNotificationAlart($address, $to, $from, $message) {
+	public static function sendEmailMessageNotificationAlert($address, $to, $from, $message) {
     	 
     	$email = Yii::app()->email;
     	$email->to = $address;
@@ -233,6 +233,38 @@ class User extends CActiveRecord
     	$email->message = $message;
     	$email->send();
     }
+	
+	 public static function sendUserNotificationMessageAlert($sender, $reciver, $link, $level){
+    
+    	$model = new Notification;
+    	$model->sender_id = $sender;
+    	
+    	$recive = User::model()->find("username=:username",array(':username'=>$reciver));
+    	if ($recive != NULL)
+    	{
+    	$model->receiver_id = $recive->id;
+    	$model->datetime = date('Y-m-d H:i:s');
+    	$model->been_read = 0;
+    	$model->link = $link;
+    	//print "<pre>"; print_r($model->link);print "</pre>";return;
+    	$model->message = 'you got a new message from '.$sender ;
+    	$model->importancy = 3;
+    	$model->save(false);
+    	}
+    
+    }
+	public static function replaceMessage($to, $message){
+		//$file = fopen("/var/www/html/coplat/email/index1.html", "r");
+		$file = fopen("C:/wamp/www/coplat/email/index1.html", "r");
+		$html = "";
+		while(!feof($file))
+		{
+			$html .= fgets($file);
+		}		
+		$html = str_replace("%USER%", $to, $html);
+		$html = str_replace("%MESSAGE%", $message, $html);
+		return $html;
+	}
 	
 	public function isAdmin()
 	{

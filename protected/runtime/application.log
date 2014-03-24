@@ -3360,3 +3360,134 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/user/index
 HTTP_REFERER=http://localhost/coplat/index.php/user/3
 ---
+2014/03/24 21:03:42 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (32)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:06:07 [error] [exception.CException] exception 'CException' with message 'Property "User.image_url" is not defined.' in C:\wamp\www\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(143): CComponent->__get('image_url')
+#1 C:\wamp\www\coplat\protected\controllers\MessageController.php(25): CActiveRecord->__get('image_url')
+#2 [internal function]: MessageController->actionSend(NULL, NULL, NULL)
+#3 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(MessageController), Array)
+#4 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MessageController), Object(ReflectionMethod), Array)
+#5 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('send')
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/send')
+#15 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/message/send
+HTTP_REFERER=http://localhost/coplat/index.php/message
+---
+2014/03/24 22:11:19 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (32)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:11:19 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`message`, CONSTRAINT `fk_message_user2` FOREIGN KEY (`sender`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `message` (`message`, `sender`, `created_date`, `subject`, `receiver`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (48)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:11:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`message`, CONSTRAINT `fk_message_user2` FOREIGN KEY (`sender`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `message` (`message`, `sender`, `created_date`, `subject`, `receiver`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\MessageController.php(48): CActiveRecord->save()
+#3 [internal function]: MessageController->actionSend(NULL, NULL, NULL)
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(MessageController), Array)
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MessageController), Object(ReflectionMethod), Array)
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('send')
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/send')
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/message/send
+HTTP_REFERER=http://localhost/coplat/index.php/message/send
+---
+2014/03/24 22:15:45 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (32)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:15:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`message`, CONSTRAINT `fk_message_user2` FOREIGN KEY (`sender`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `message` (`message`, `sender`, `created_date`, `subject`, `receiver`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (49)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:15:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`message`, CONSTRAINT `fk_message_user2` FOREIGN KEY (`sender`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `message` (`message`, `sender`, `created_date`, `subject`, `receiver`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\MessageController.php(49): CActiveRecord->save()
+#3 [internal function]: MessageController->actionSend(NULL, NULL, NULL)
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(MessageController), Array)
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MessageController), Object(ReflectionMethod), Array)
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('send')
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/send')
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/message/send
+HTTP_REFERER=http://localhost/coplat/index.php/message/send
+---
+2014/03/24 22:18:07 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (33)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:18:07 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`message`, CONSTRAINT `fk_message_user2` FOREIGN KEY (`sender`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `message` (`message`, `sender`, `created_date`, `subject`, `receiver`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (51)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:18:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`message`, CONSTRAINT `fk_message_user2` FOREIGN KEY (`sender`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `message` (`message`, `sender`, `created_date`, `subject`, `receiver`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\MessageController.php(51): CActiveRecord->save()
+#3 [internal function]: MessageController->actionSend(NULL, NULL, NULL)
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(MessageController), Array)
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MessageController), Object(ReflectionMethod), Array)
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('send')
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('message/send')
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/message/send
+HTTP_REFERER=http://localhost/coplat/index.php/message/send
+---
+2014/03/24 22:33:38 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (33)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:33:38 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (54)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:34:12 [warning] [application] Failed to set unsafe attribute "vjf_role" of "User".
+in C:\wamp\www\coplat\protected\controllers\UserController.php (113)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:34:44 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (33)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 22:34:44 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (54)
+in C:\wamp\www\coplat\index.php (13)
