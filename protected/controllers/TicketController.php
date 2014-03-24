@@ -54,6 +54,8 @@ class TicketController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+		
+
 	}
 
 	/**
@@ -62,7 +64,7 @@ class TicketController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Ticket;
+		$model= new Ticket;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -70,13 +72,20 @@ class TicketController extends Controller
 		if(isset($_POST['Ticket']))
 		{
 			$model->attributes=$_POST['Ticket'];
+			
+			//Populate ticket attributes
+			$model->creator_user_id = 4;				
+			$model->created_date = new CDbExpression('NOW()');
+			$model->assign_user_id = 2;
+			$model->last_updated = '';
+			$model->status = 'Pending';
+			$model->answer = 'None';
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		
+		$this->render('create',array('model'=>$model,));
 	}
 
 	/**
@@ -94,8 +103,9 @@ class TicketController extends Controller
 		if(isset($_POST['Ticket']))
 		{
 			$model->attributes=$_POST['Ticket'];
+			$model->last_updated = new CDbExpression('NOW()');
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index','id'=>$model->id));
 		}
 
 		$this->render('update',array(
@@ -114,8 +124,9 @@ class TicketController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+			//$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+			}
 
 	/**
 	 * Lists all models.

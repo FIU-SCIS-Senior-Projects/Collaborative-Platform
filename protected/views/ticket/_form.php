@@ -2,7 +2,7 @@
 /* @var $this TicketController */
 /* @var $model Ticket */
 /* @var $form CActiveForm */
-/* @var $model Topic */
+
 ?>
 
 <link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -25,9 +25,9 @@
 		<?php echo $form->error($model,'creator_user_id'); ?>
 	</div>
 	 <div class="center">
-		<?php echo $form->labelEx($model,'created_date'); ?>
-		<?php echo $form->textField($model,'created_date',array('style'=>'width:20px')); ?>
-		<?php echo $form->error($model,'created_date'); ?>
+		<?php /*echo $form->labelEx($model,'created_date');*/ ?>
+		<?php /*echo $form->textField($model,'created_date',array('style'=>'width:20px'));*/ ?>
+		<?php /*echo $form->error($model,'created_date'); */?>
 	</div>
 	<div class="center">
 		<?php echo $form->labelEx($model,'last_updated'); ?>
@@ -79,21 +79,21 @@
 	<br>
 	<div id = "operations"; style= "margin-left : 30px">
 		<div class="row buttons">
-    	 <?php echo CHtml::submitButton('Create', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
+    	 <?php echo CHtml::submitButton('Save', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
  		
 	     <?php $this->widget('bootstrap.widgets.TbButton', array(
-           		 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/index', 'type'=>'primary',
-            	 'label'=>'Cancel', )); ?>		
- 		 	
-
+	     		'buttonType'=>'link', 'id'=>'new-box', 'url'=>(array('/ticket/view','id'=>$model->id))	, 'type'=>'primary',
+	     		'label'=>'Cancel', )); ?>		
+ 	
 	     </div>
 	</div>
-	
-	
+
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-	     
+
+
+
 	     
 	     
 	     

@@ -5,6 +5,7 @@
 
 $this->breadcrumbs=array(
 	'Tickets',
+	/*$model->id=>array('view','id'=>$model->id),*/
 );
 
 $this->menu=array(
@@ -17,7 +18,7 @@ $this->menu=array(
 <!-- 
 <div class = "container" id = "page">  -->
 <div id = "wrapper">
-	<head><strong>My Tickets</strong></head>
+	<head><strong>Tickets</strong></head>
 	<!--  <div style="max-height: 150px; height: 150px; width: 1050px; border: 1px solid #C9E0ED; overflow-y: scroll; border-radius: 5px;">
 	-->
 	<div
@@ -41,9 +42,11 @@ $this->menu=array(
 	<!-- Ticket options -->
 	<div id="options">			
 		<div style="margin-top:15px; margin-left: 0px">
+			<!-- New Button -->
 			<?php $this->widget('bootstrap.widgets.TbButton', array(
             	 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/create', 'type'=>'primary',
             	 'label'=>'  New ',)); ?>	
+           	<!-- Cancel Button -->
             <?php $this->widget('bootstrap.widgets.TbButton', array(
            		 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php', 'type'=>'primary',
             	 'label'=>'Cancel', )); ?>	

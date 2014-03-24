@@ -8,11 +8,14 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Comment', 'url'=>array('index')),
-	array('label'=>'Manage Comment', 'url'=>array('admin')),
+	//array('label'=>'List Comment', 'url'=>array('index')),
+	//array('label'=>'Manage Comment', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Comment</h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<div id = "wrapper" >
+	<span><strong>Comment</strong></span>
+		<div 
+			<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+		</div> 
+</div>

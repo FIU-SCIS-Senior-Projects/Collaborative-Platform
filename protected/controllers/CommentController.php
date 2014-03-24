@@ -63,6 +63,9 @@ class CommentController extends Controller
 	public function actionCreate()
 	{
 		$model=new Comment;
+		
+		/*Retrieve the ticket id from the instance ticket */
+		$idticket=$_GET['id'];
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -70,8 +73,13 @@ class CommentController extends Controller
 		if(isset($_POST['Comment']))
 		{
 			$model->attributes=$_POST['Comment'];
+			
+			$model -> ticket_id = $idticket;
+			/*Set the date */
+			$model -> added_date = new CDbExpression('NOW()');
+			
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('/ticket/view','id'=>$idticket));
 		}
 
 		$this->render('create',array(

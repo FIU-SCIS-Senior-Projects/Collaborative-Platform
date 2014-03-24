@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Tickets'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	//$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
 
