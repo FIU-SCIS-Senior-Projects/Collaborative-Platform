@@ -69,7 +69,7 @@ class Topic extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Topic ID',
 			'name' => 'Name',
 			'description' => 'Description',
 			'domain_id' => 'Domain',

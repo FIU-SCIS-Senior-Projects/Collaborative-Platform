@@ -3227,3 +3227,38 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/domain/update/1
 HTTP_REFERER=http://localhost/coplat/index.php/domain/1
 ---
+2014/03/24 00:40:35 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 00:40:36 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 00:40:39 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 00:40:41 [warning] [application] Failed to set unsafe attribute "domain" of "Topic".
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (139)
+in C:\wamp\www\coplat\index.php (13)
+2014/03/24 00:43:29 [error] [php] Illegal string offset 'for' (C:\wamp\www\coplat\framework\web\helpers\CHtml.php:551)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CBaseController.php(95): TopicController->renderInternal()
+#1 C:\wamp\www\coplat\framework\web\CController.php(869): TopicController->renderFile()
+#2 C:\wamp\www\coplat\framework\web\CController.php(782): TopicController->renderPartial()
+#3 C:\wamp\www\coplat\protected\controllers\TopicController.php(143): TopicController->render()
+#4 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): TopicController->actionAdmin()
+#5 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): TopicController->runAction()
+#7 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): TopicController->filterAccessControl()
+#10 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\wamp\www\coplat\framework\web\CController.php(265): TopicController->runActionWithFilters()
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): TopicController->run()
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/topic/admin
+in C:\wamp\www\coplat\protected\views\topic\admin.php (46)
+in C:\wamp\www\coplat\protected\controllers\TopicController.php (143)
+in C:\wamp\www\coplat\index.php (13)

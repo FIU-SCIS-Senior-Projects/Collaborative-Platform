@@ -19,7 +19,7 @@
 		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
 	
     	<?php echo $form->label($model,'domain_id'); ?>
-		<?php echo $form->textField($model,'domain_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->dropDownList($model,'domain', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?> 
 		</br>
     	<?php echo CHtml::submitButton('Search', array('class'=>'btn btn-primary')); ?>
 	</div>

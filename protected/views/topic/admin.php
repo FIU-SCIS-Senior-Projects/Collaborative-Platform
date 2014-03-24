@@ -43,6 +43,7 @@ $('.search-form form').submit(function(){
 		'id',
 		'name',
 		//'description',
+		//CHtml::activeLabel(Domain::model()->findByPk('domain_id'), 'id', 'name'),
 		'domain_id',
 		array(
 			'class'=>'CButtonColumn',

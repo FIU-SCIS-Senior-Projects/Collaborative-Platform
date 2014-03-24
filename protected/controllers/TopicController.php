@@ -102,7 +102,7 @@ class TopicController extends Controller
 			'model'=>$model,
 		));
 	}
-
+	
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -157,7 +157,8 @@ class TopicController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
+	
+	
 	/**
 	 * Performs the AJAX validation.
 	 * @param Topic $model the model to be validated
