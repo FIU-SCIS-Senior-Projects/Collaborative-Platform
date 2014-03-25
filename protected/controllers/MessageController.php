@@ -35,7 +35,7 @@ class MessageController extends Controller
 			
 				//$model->sender = Yii::app()->user->name;
 				
-				$model->sender = 'hmuni06';
+				$model->sender = 'lsanc104';
 				$model->created_date = date('Y-m-d H:i:s');
 				//$model->userImage = $model->sender0->image_url;
 
@@ -53,7 +53,7 @@ class MessageController extends Controller
 					$model = new Message;
 					$model->attributes = $_POST['Message'];						
 					//$model->sender = Yii::app()->user->name;
-					$model->sender = 'hmuni06';
+					$model->sender = 'lsanc104';
 					$model->created_date = date('Y-m-d H:i:s');
 					//$model->userImage = $model->sender0->image_url;					
 					$model->subject = $_POST['Message']['subject'];
@@ -93,7 +93,7 @@ class MessageController extends Controller
 	public function actionGetInbox()
 	{
 		//$username = Yii::app()->user->name;
-		$username = 'lsanc104';
+		$username = 'hmuni006';
 		$user = User::model()->find("username=:username",array(':username'=>$username));
 		$messages = array();
 		foreach ($user->messages(array('order'=>'id DESC')) as $aMessage)
@@ -113,7 +113,8 @@ class MessageController extends Controller
 	
 	public function actionGetSent()
 	{
-		$username = Yii::app()->user->name;
+		//$username = Yii::app()->user->name;
+		$username = 'lsanc104';
 		$user = User::model()->find("username=:username",array(':username'=>$username));
 		$messages = array();
 		foreach ($user->messages1(array('order'=>'id DESC')) as $aMessage)
