@@ -1,5 +1,7 @@
 <?php
 
+require ('PasswordHash.php');
+
 class UserController extends Controller
 {
 	/**
@@ -70,6 +72,11 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
+			
+			//Hash the password before storing it into the database
+			$hasher = new PasswordHash(8, false);
+			$model->password = $hasher->HashPassword($model->password);
+			
 			if($model->save())
 				$this->redirect(array('/site/login','id'=>$model->id));
 		}
