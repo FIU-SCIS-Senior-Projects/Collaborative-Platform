@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'comment':
  * @property string $id
- * @property string $comment
+ * @property string $description
  * @property string $added_date
  * @property string $ticket_id
  *
@@ -41,13 +41,13 @@ class Comment extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			//array('comment, added_date, ticket_id', 'required'),
-			array('comment', 'required'),
+			array('description', 'required'),
 				
-			array('comment', 'length', 'max'=>500),
+			array('decription', 'length', 'max'=>500),
 			array('ticket_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, comment, added_date, ticket_id', 'safe', 'on'=>'search'),
+			array('id, description, added_date, ticket_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,7 +70,7 @@ class Comment extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'comment' => 'Comment',
+			'description' => 'Description',
 			'added_date' => 'Added Date',
 			'ticket_id' => 'Ticket',
 		);
@@ -88,7 +88,7 @@ class Comment extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('comment',$this->comment,true);
+		$criteria->compare('description',$this->description,true);
 		$criteria->compare('added_date',$this->added_date,true);
 		$criteria->compare('ticket_id',$this->ticket_id,true);
 

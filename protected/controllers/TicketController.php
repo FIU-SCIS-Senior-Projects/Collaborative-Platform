@@ -51,8 +51,15 @@ class TicketController extends Controller
 	 */
 	public function actionView($id)
 	{
+		
+		/*get the comments related to this ticket */
+		//$comment = Comment::model()->findAllByPk($id);
+		//$sql = "SELECT * FROM Comment WHERE ticket_id='$id'";
+		$comments = Comment::model()->findAllBySql("SELECT * FROM comment WHERE ticket_id=:id", array(":id"=>$id));
+		//$jobs = Job::model()->findAllBySql("SELECT * FROM job WHERE active='1' AND type=:type ORDER BY deadline DESC", array(":type"=>$type));
+		
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id), 'comment'=>$comments,
 		));
 		
 
@@ -65,18 +72,23 @@ class TicketController extends Controller
 	public function actionCreate()
 	{
 		$model= new Ticket;
-
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Ticket']))
 		{
+
+			
 			$model->attributes=$_POST['Ticket'];
 			
 			//Populate ticket attributes
-			$model->creator_user_id = 4;				
+			//Get the ID of the user
+			$model->creator_user_id = User::getCurrentUserId();
 			$model->created_date = new CDbExpression('NOW()');
+
 			$model->assign_user_id = 2;
+
 			$model->last_updated = '';
 			$model->status = 'Pending';
 			$model->answer = 'None';
@@ -86,6 +98,7 @@ class TicketController extends Controller
 		}
 		
 		$this->render('create',array('model'=>$model,));
+		//$this->render('index',array('model'=>$model,));
 	}
 
 	/**
@@ -133,6 +146,7 @@ class TicketController extends Controller
 	 */
 	public function actionIndex()
 	{
+		
 		$dataProvider=new CActiveDataProvider('Ticket');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,

@@ -188,11 +188,31 @@ class User extends CActiveRecord
 		));
 	}
 	
-	public static function getCurrentUser(){
+    public static function getCurrentUser(){
     	$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	return $user;
     }
+    
+    
+    public static function getCurrentUserId() 
+    {
+     	$username = Yii::app()->user->name;
+    	$user = User::model()->find("username=:username",array(':username'=>$username));
+    	return $user->id;
+  	}
+    	
+    
+    public static function getUser($userid){
+    	$user = User::model()->findByPk($userid);
+    	return $user;
+    }
+	
+    public static function getUserName($userid){
+    	$user = User::model()->findByPk($userid);
+    	return $user->username;
+    }
+    
 	
 	public function sendVerificationEmail() {
     	$email = Yii::app()->email;

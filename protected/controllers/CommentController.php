@@ -60,12 +60,13 @@ class CommentController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
-		$model=new Comment;
+		$model = new Comment;
+
 		
 		/*Retrieve the ticket id from the instance ticket */
-		$idticket=$_GET['id'];
+		//$idticket=$_GET['id'];
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -74,17 +75,19 @@ class CommentController extends Controller
 		{
 			$model->attributes=$_POST['Comment'];
 			
-			$model -> ticket_id = $idticket;
+			$model -> ticket_id = $id;
 			/*Set the date */
 			$model -> added_date = new CDbExpression('NOW()');
 			
-			if($model->save())
-				$this->redirect(array('/ticket/view','id'=>$idticket));
+			$model->save(false);
+			//if($model->save())
+				//$this->redirect(array('/ticket/view','id'=>$id));
 		}
 
-		$this->render('create',array(
+		/*$this->render('create',array(
 			'model'=>$model,
-		));
+		));*/
+
 	}
 
 	/**
