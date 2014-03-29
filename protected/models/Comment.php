@@ -87,10 +87,11 @@ class Comment extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('added_date',$this->added_date,true);
+		//$criteria->compare('id',$this->id,true);
+		//$criteria->compare('description',$this->description,true);
+		//$criteria->compare('added_date',$this->added_date,true);
 		$criteria->compare('ticket_id',$this->ticket_id,true);
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

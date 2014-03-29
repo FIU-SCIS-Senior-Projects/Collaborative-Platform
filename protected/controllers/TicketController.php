@@ -51,18 +51,22 @@ class TicketController extends Controller
 	 */
 	public function actionView($id)
 	{
-		
+		//$comment = new Comment();
 		/*get the comments related to this ticket */
 		//$comment = Comment::model()->findAllByPk($id);
 		//$sql = "SELECT * FROM Comment WHERE ticket_id='$id'";
-		$comments = Comment::model()->findAllBySql("SELECT * FROM comment WHERE ticket_id=:id", array(":id"=>$id));
+		$comment = Comment::model()->findBySql("SELECT * FROM comment WHERE ticket_id =:id", array(":id"=>$id));
 		//$jobs = Job::model()->findAllBySql("SELECT * FROM job WHERE active='1' AND type=:type ORDER BY deadline DESC", array(":type"=>$type));
 		
 		$this->render('view',array(
-			'model'=>$this->loadModel($id), 'comment'=>$comments,
-		));
-		
 
+			'model'=>$this->loadModel($id), 'comment'=>$comment,
+            //'comments'=>$this->loadModelComment($id),
+
+            //'comment'=>$comment->loadModel($id),//'commnent'=>$comment->load)//'comment'=>$comment,
+		));
+
+       // Comment::model()->findBySql("SELECT * FROM comment WHERE ticket_id=:id", array(":id"=>$model->id)),
 	}
 
 	/**
@@ -181,8 +185,17 @@ class TicketController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
+
 	}
 
+    /*public function loadModelComment($id)
+    {
+        $comments = Comment::model()->findBySql("SELECT * FROM comment WHERE ticket_id=:id", array(":id"=>$id));
+        if ($comments === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $comments;
+    }
+    */
 	/**
 	 * Performs the AJAX validation.
 	 * @param Ticket $model the model to be validated

@@ -4,7 +4,7 @@
 /* @var $data Ticket */
 
 $this->breadcrumbs=array(
-	'Tickets',
+	//'Tickets',
 	/*$model->id=>array('view','id'=>$model->id),*/
 );
 
@@ -15,42 +15,42 @@ $this->menu=array(
 		//array('label'=>'Manage Ticket', 'url'=>array('admin')),
 );
 ?>
-<!-- 
-<div class = "container" id = "page">  -->
-<div id = "wrapper">
-	<head><strong>Tickets</strong></head>
+
+<div id="fullcontent">
+
+    <div style = "color: #0044cc"><h3>Ticket List</h3></div>
 	<!--  <div style="max-height: 150px; height: 150px; width: 1050px; border: 1px solid #C9E0ED; overflow-y: scroll; border-radius: 5px;">
 	-->
-	<div
+	<div>
 		<?php /*$this->widget('zii.widgets.CListView', array('dataProvider'=>$dataProvider, 'itemView'=>'_view', 'summaryText' => '',
 		'htmlOptions'=>array(
 		'style'=>'overflow-y:scroll; height:150px; width: 1050px; border: 1px solid #C9E0ED'),)); */?>
 		
 		<?php $this->widget('zii.widgets.grid.CGridView', array('id'=> 'ticket_id',
-    'dataProvider'=>$dataProvider, 'summaryText' => '',
-    'columns'=>array( 
+    'dataProvider'=>$dataProvider, //->setPagination(true),
+     'summaryText' => '',
+    //'pager'=> array( 'class'=> 'CLinkPager', 'pageSize' => 50,),
+    'columns'=>array(
         'id',          // display the 'title' attribute
         //'creator_user_id',  // display the 'name' attribute of the 'category' relation
 		'topic_id', 'status', 'created_date','last_updated',
 		'subject', /*'description', 'answer', 'assign_user_id',*/),
-				'htmlOptions'=>array(
-						'style'=>'overflow-y:scroll; height:300px; width: 1050px; border: 1px solid #C9E0ED; border-radius: 5px'),
+				//'htmlOptions'=>array(
+						//'style'=>'overflow-y:scroll; height:300px; width: 1050px; border: 1px solid #C9E0ED; border-radius: 5px'),
    'selectionChanged'=>"function(id){window.location='" . Yii::app()->urlManager->createUrl('ticket/view', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);}",
 
 )); ?>
-	</div>
 	<!-- Ticket options -->
-	<div id="options">			
-		<div style="margin-top:15px; margin-left: 0px">
-			<!-- New Button -->
-			<?php $this->widget('bootstrap.widgets.TbButton', array(
-            	 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/create', 'type'=>'primary',
-            	 'label'=>'  New ',)); ?>	
-           	<!-- Cancel Button -->
-            <?php $this->widget('bootstrap.widgets.TbButton', array(
-           		 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php', 'type'=>'primary',
-            	 'label'=>'Cancel', )); ?>	
-		</div>
+
+	<!-- New Button -->
+	<?php $this->widget('bootstrap.widgets.TbButton', array(
+      	 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/create', 'type'=>'primary',
+       	 'label'=>'  New ',)); ?>
+    <!-- Cancel Button -->
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+    	 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php', 'type'=>'primary',
+       	 'label'=>'Cancel', )); ?>
+	</div>
     
- 	</div>
-</div> <!-- End Wrapper -->
+
+</div> <!-- End FullContent -->

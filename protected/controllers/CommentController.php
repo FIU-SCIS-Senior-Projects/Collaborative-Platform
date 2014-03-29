@@ -49,6 +49,8 @@ class CommentController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
+
+
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -161,13 +163,22 @@ class CommentController extends Controller
 	 * @return Comment the loaded model
 	 * @throws CHttpException
 	 */
+
+
 	public function loadModel($id)
 	{
+
+        //$model = new Comment();
+        //$model -> ticket_id = $id;
+       // $comment = Comment::model()->findBySql("SELECT * FROM comment WHERE ticket_id=:id", array(":id"=>$id));
 		$model=Comment::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
+
+
 	}
+
 
 	/**
 	 * Performs the AJAX validation.

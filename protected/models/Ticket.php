@@ -122,7 +122,7 @@ class Ticket extends CActiveRecord
 		$criteria->compare('assign_user_id',$this->assign_user_id,true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria'=>$criteria, //'pagination' => array('pageSize' => 12,),
 		));
 	}
 }
