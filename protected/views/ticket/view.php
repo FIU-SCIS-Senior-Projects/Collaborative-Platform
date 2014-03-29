@@ -108,39 +108,40 @@ $this->menu=array(
 
 	<br>
     <div style = "color: #0044cc"><h3>Comments</h3></div>
-	<div > <!-- List of Comments to a Ticket -->
-    <!--
-  	<div style="margin-top = 15px; max-height: 100px; height: 300px; width: 1050px; border: 1px solid #C9E0ED; overflow-y: scroll; border-radius: 5px;">
-    -->
-        <div style="height: 300px; width: 1000px; border: 1px solid #C9E0ED; overflow-y: scroll; border-radius: 5px;">
+        <div > <!-- List of Comments to a Ticket -->
+            <div style="height: 100px; width: 1000px; overflow-y: scroll; border-radius: 5px;">
+                <div class="datagrid">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> Number</th><th>Description</th><th>Date Added</th><th>Added by</th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($model->comments as $comment)
+                        {?>
+                        <tbody>
+                            <tr><td><?php echo $comment->id; ?></td>
+                                <td><?php echo $comment->description ?></td>
+                                <td><?php echo $comment->added_date?></td>
+                                <td>data</td>
+                            </tr>
 
+                        </tbody>
+                        <?php
+                        }
+                        ?>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- End List of Comments -->
 
-
-            <div class="datagrid"><table>
-                    <thead>
-                        <tr>
-                            <th> Number</th><th>Description</th><th>Date Added</th><th>Added by</th>
-                        </tr>
-                    </thead>
-                    <?php foreach ($model->comments as $comment)
-                    {?>
-                    <tbody>
-                        <tr><td><?php echo $comment->id; ?></td>
-                            <td><?php echo $comment->description ?></td>
-                            <td><?php echo $comment->added_date?></td>
-                            <td>data</td>
-                        </tr>
-
-                    </tbody>
-                    <?php
-                    }
-                    ?>
-                </table></div>
-        </div>
+    <br>
+    <div style = "color: #0044cc"><h3>Attachment</h3></div>
+        <div > <!-- Attachment-->
+            <div style="height: 50px; width: 300px; border: 1px solid #C9E0ED; border-radius: 5px;">
 
             </div>
-    </div> <!-- End List of Comments -->
-	
+        </div> <!-- End List of Comments -->
 
 <!-- Modals -->
 

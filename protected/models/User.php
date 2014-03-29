@@ -187,7 +187,16 @@ class User extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
+    /* retrieve all user ids in the system */
+    public static function getAllUserId()
+    {
+        $userid = User::model()->findBySql("SELECT id from user, user_domain WHERE  ");
+        return $userid;
+    }
+
+
+
     public static function getCurrentUser(){
     	$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));

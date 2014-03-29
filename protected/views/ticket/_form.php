@@ -59,31 +59,31 @@
 			<?php echo $form->labelEx($model,'subject'); ?>
 			<?php echo $form->textField($model,'subject',array('size'=>45,'style'=>'width:500px', 'maxlength'=>45)); ?>
 			<?php echo $form->error($model,'subject'); ?>
-			</div>
+		</div>
 
-			<div class ="row"; style = "margin-left: 40px">
+		<div class ="row"; style = "margin-left: 40px">
 			<?php echo $form->labelEx($model,'description'); ?>
 			<?php echo $form->textArea($model,'description',array('id'=>'description', 'style'=>'width:500px', 'cols'=>110, 'rows'=>5,
                     'width'=>'300px')); ?>
 			<?php echo $form->error($model,'description'); ?>
-			</div>
+		</div>
 
-			<div class ="row"; style = "margin-left: 40px">
+		<div class ="row"; style = "margin-left: 40px">
 			<?php echo $form->labelEx($model,'topic_id'); ?>
 			<?php echo $form->dropDownList($model,'topic_id', CHtml::listData(Topic::model()->findAll(), 'id', 'name')); ?>
 			<?php echo $form->error($model,'topic_id'); ?>
-			</div>
-	</div>
+		</div>
 
+    </div>
 	<br>
 	<div id = "operations"; style= "margin-left : 30px">
 		<div class="row buttons">
-    	 <?php echo CHtml::submitButton('Save', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
- 		
-	     <?php $this->widget('bootstrap.widgets.TbButton', array(
+    	    <?php echo CHtml::submitButton('Save', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
+
+	        <?php $this->widget('bootstrap.widgets.TbButton', array(
 	     		'buttonType'=>'link', 'id'=>'new-box', 'url'=>(array('/ticket/view','id'=>$model->id))	, 'type'=>'primary',
-	     		'label'=>'Cancel', )); ?>		
- 	
+	     		'label'=>'Cancel', )); ?>
+
 	     </div>
 	</div>
 
