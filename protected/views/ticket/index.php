@@ -40,17 +40,15 @@ $this->menu=array(
    'selectionChanged'=>"function(id){window.location='" . Yii::app()->urlManager->createUrl('ticket/view', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);}",
 
 )); ?>
-	<!-- Ticket options -->
-
-	<!-- New Button -->
-	<?php $this->widget('bootstrap.widgets.TbButton', array(
-      	 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/create', 'type'=>'primary',
-       	 'label'=>'  New ',)); ?>
     <!-- Cancel Button -->
     <?php $this->widget('bootstrap.widgets.TbButton', array(
-    	 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php', 'type'=>'primary',
-       	 'label'=>'Cancel', )); ?>
-	</div>
-    
+            'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php', 'type'=>'primary',
+            'label'=>'Home', )); ?>
+        &nbsp;&nbsp;
+	<!-- New Ticket Button -->
+	<?php $this->widget('bootstrap.widgets.TbButton', array(
+      	 'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/create', 'type'=>'primary',
+       	 'label'=>'  New Ticket ',)); ?>
+    </div>
 
 </div> <!-- End FullContent -->

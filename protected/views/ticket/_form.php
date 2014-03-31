@@ -79,11 +79,10 @@
 	<div id = "operations"; style= "margin-left : 30px">
 		<div class="row buttons">
     	    <?php echo CHtml::submitButton('Save', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
-
+            &nbsp;&nbsp;
 	        <?php $this->widget('bootstrap.widgets.TbButton', array(
 	     		'buttonType'=>'link', 'id'=>'new-box', 'url'=>(array('/ticket/view','id'=>$model->id))	, 'type'=>'primary',
 	     		'label'=>'Cancel', )); ?>
-
 	     </div>
 	</div>
 

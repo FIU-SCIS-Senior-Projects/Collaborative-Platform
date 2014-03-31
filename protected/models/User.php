@@ -388,6 +388,7 @@ class User extends CActiveRecord
     /*Assign Domain Mentor to a Ticket */
     public static function assignTicket($topic_id)
     {
+        //$user = new User;
         /*Query to the Topic model */
         $topic = Topic::model()->findBySql("SELECT * FROM topic WHERE id =:id", array(":id"=>$topic_id));
         if($topic != null){
@@ -395,20 +396,22 @@ class User extends CActiveRecord
             /*Query to the User_Domain model */
             $userDomain = UserDomain::model()->findBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id"=>$domainId));
 
-
-
-
-
-            $userId = $userDomain->user_id;
+            //foreach($userDomain as $auserDomain)
+            //{
+              //  if($auserDomain != null)
+               // {
+                   //s if($userDomain->rate == 10){
+                        $userId = $userDomain->user_id;
+                        /*Query to the User model */
+                        $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userId));
+                  //  }
+               // }
+           // }
+           //$userId = $userDomain->user_id;
             /*Query to the User model */
-            $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userId));
+           // $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userId));
         }
+       return $user->id;
 
-
-
-
-
-
-        return $user->id;
     }
 }

@@ -6,6 +6,7 @@
 
 $comment = $model->comments;
 
+
 $this->breadcrumbs=array(
 	//'Tickets'=>array('index'),
 	//$model->id,
@@ -35,77 +36,6 @@ $this->menu=array(
     	</div>
 	</div> <!-- End Container -->
 
-	<div style = "margin-top: 15px"> <!-- Buttons Options -->
-	    <div>
-	    <!-- New Button
-	    <?php
-	        $this->widget('bootstrap.widgets.TbButton', array(
-				'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/create', 
-				'type'=>'primary', 'label'=>'New', ));
-	     ?>
-	    <!-- Cancel Button and render to index -->
-	    <?php
-	        $this->widget('bootstrap.widgets.TbButton', array(
-		        'buttonType'=>'link', 'id'=>'new-box', 'url'=> '/coplat/index.php/ticket/index',
-		        'type'=>'primary', 'label'=>'Cancel'));
-	    ?>
-	    <!-- Update Button  -->
-        <?php
-            $this->widget('bootstrap.widgets.TbButton', array(
-    		     'buttonType'=>'link', 'id'=>'new-box', 'url'=>array('update', 'id'=>$model->id),
-			    /*'confirm' => 'Do you want to proceed and make change on this ticket?',*/
-			    'type'=>'primary', 'label'=>'Edit'));
-	    ?>
- 
-	     <!-- Comment Button -->
-	    <?php	/*echo CHtml::button('Comment', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
-	 		)); */
-	    ?>
-	    <?php $this->widget('bootstrap.widgets.TbButton', array(
-		        'label'=>'Comment',
-		        'type'=>'primary',
-		        'htmlOptions'=>array(
-		        'data-toggle'=>'modal',
-		        'data-target'=>'#myModalComment',
-				'style'=>'width: 100px', 
-		    	),
-			));
-        ?>
-	    <!-- Re-Assign Button -->
-	    <?php	/*echo CHtml::button('Re-Route', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
-	 		));*/ 
-	    ?>
-	 	 <!-- Button trigger modal -->
-            <?php $this->widget('bootstrap.widgets.TbButton', array(
-                'label'=>'Re-Assign',
-                'type'=>'primary',
-                'htmlOptions'=>array(
-                'data-toggle'=>'modal',
-                'data-target'=>'#myModalReAssign',
-                'style'=>'width: 100px',
-                ),
-            ));
-            ?>
-	     <!-- Answer Button -->
-	     <?php	/*echo CHtml::button('Answer', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),));*/
-	     ?>
-	 	 <!-- Button trigger modal -->
-            <?php $this->widget('bootstrap.widgets.TbButton', array(
-                'label'=>'Answer',
-                'type'=>'primary',
-                'htmlOptions'=>array(
-                    'data-toggle'=>'modal',
-                    'data-target'=>'#myModalAnswer',
-                    'style'=>'width: 100px',
-                ),
-            ));
-            ?>
-	     <!-- Delete Button -->
-	    <?php echo CHtml::button('Delete', array("class"=>"btn btn-primary", 'submit' => array('Delete', 'id'=>$model->id),
-			'confirm' => 'Do you want to Drop this ticket from the Mentoring Module?')); ?>
-	    </div>
-	</div> <!-- End Buttons Options -->
-
 	<br>
     <div style = "color: #0044cc"><h3>Comments</h3></div>
         <div > <!-- List of Comments to a Ticket -->
@@ -125,7 +55,6 @@ $this->menu=array(
                                 <td><?php echo $comment->added_date?></td>
                                 <td>data</td>
                             </tr>
-
                         </tbody>
                         <?php
                         }
@@ -134,6 +63,79 @@ $this->menu=array(
                 </div>
             </div>
         </div> <!-- End List of Comments -->
+    <br>
+    <div style = "margin-top: 15px"> <!-- Buttons Options -->
+        <div>
+
+            <!-- Cancel Button and render to index -->
+            <?php
+              $this->widget('bootstrap.widgets.TbButton', array(
+                     'buttonType'=>'link', 'id'=>'new-box', 'url'=> '/coplat/index.php/ticket/index',
+                      'type'=>'primary', 'label'=>'Back'));
+            ?>&nbsp;&nbsp;
+            <!-- New Button
+	        <?php
+                /*$this->widget('bootstrap.widgets.TbButton', array(
+                  'buttonType'=>'link', 'id'=>'new-box', 'url'=>'/coplat/index.php/ticket/create',
+                  'type'=>'primary', 'label'=>'New', ));*/
+            ?>
+
+	    <!-- Update Button  -->
+            <?php
+            /*$this->widget('bootstrap.widgets.TbButton', array(
+    		     'buttonType'=>'link', 'id'=>'new-box', 'url'=>array('update', 'id'=>$model->id),*/
+            //'confirm' => 'Do you want to proceed and make change on this ticket?',
+            /*'type'=>'primary', 'label'=>'Edit'));*/
+            ?>
+
+            <!-- Comment Button -->
+            <?php	/*echo CHtml::button('Comment', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
+	 		)); */
+            ?>
+            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                'label'=>'Comment',
+                'type'=>'primary',
+                'htmlOptions'=>array(
+                    'data-toggle'=>'modal',
+                    'data-target'=>'#myModalComment',
+                    'style'=>'width: 100px',
+                ),
+            ));
+            ?>&nbsp;&nbsp;
+            <!-- Re-Assign Button -->
+            <?php	/*echo CHtml::button('Re-Route', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
+	 		));*/
+            ?>
+            <!-- Button trigger modal -->
+            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                'label'=>'Re-Assign',
+                'type'=>'primary',
+                'htmlOptions'=>array(
+                    'data-toggle'=>'modal',
+                    'data-target'=>'#myModalReAssign',
+                    'style'=>'width: 100px',
+                ),
+            ));
+            ?>
+            <!-- Answer Button -->
+            <?php	/*echo CHtml::button('Answer', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),));*/
+            ?>
+            <!-- Button trigger modal -->
+            <?php /*$this->widget('bootstrap.widgets.TbButton', array(
+                'label'=>'Answer',
+                'type'=>'primary',
+                'htmlOptions'=>array(
+                    'data-toggle'=>'modal',
+                    'data-target'=>'#myModalAnswer',
+                    'style'=>'width: 100px',
+                ),
+            ));*/
+            ?>
+            <!-- Delete Button -->
+            <?php /*echo CHtml::button('Delete', array("class"=>"btn btn-primary", 'submit' => array('Delete', 'id'=>$model->id),
+			'confirm' => 'Do you want to Drop this ticket from the Mentoring Module?')); */?>
+        </div>
+    </div> <!-- End Buttons Options -->
 
     <br>
     <div style = "color: #0044cc"><h3>Attachment</h3></div>

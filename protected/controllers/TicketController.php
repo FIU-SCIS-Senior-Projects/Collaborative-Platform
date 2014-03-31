@@ -181,8 +181,6 @@ class TicketController extends Controller
 	}
 
 
-
-
  	/**
 	 * Performs the AJAX validation.
 	 * @param Ticket $model the model to be validated
