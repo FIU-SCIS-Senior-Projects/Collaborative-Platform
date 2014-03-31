@@ -93,4 +93,6 @@ class Domain extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+
 }

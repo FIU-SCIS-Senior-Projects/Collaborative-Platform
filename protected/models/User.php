@@ -384,4 +384,31 @@ class User extends CActiveRecord
     		return false;
     	return $user->isStudent;		
 	}
+
+    /*Assign Domain Mentor to a Ticket */
+    public static function assignTicket($topic_id)
+    {
+        /*Query to the Topic model */
+        $topic = Topic::model()->findBySql("SELECT * FROM topic WHERE id =:id", array(":id"=>$topic_id));
+        if($topic != null){
+            $domainId = $topic->domain_id;
+            /*Query to the User_Domain model */
+            $userDomain = UserDomain::model()->findBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id"=>$domainId));
+
+
+
+
+
+            $userId = $userDomain->user_id;
+            /*Query to the User model */
+            $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userId));
+        }
+
+
+
+
+
+
+        return $user->id;
+    }
 }

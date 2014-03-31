@@ -51,22 +51,14 @@ class TicketController extends Controller
 	 */
 	public function actionView($id)
 	{
-		//$comment = new Comment();
-		/*get the comments related to this ticket */
-		//$comment = Comment::model()->findAllByPk($id);
-		//$sql = "SELECT * FROM Comment WHERE ticket_id='$id'";
+
+        /* Retrieve the all the comments associated to the ticket */
 		$comment = Comment::model()->findBySql("SELECT * FROM comment WHERE ticket_id =:id", array(":id"=>$id));
-		//$jobs = Job::model()->findAllBySql("SELECT * FROM job WHERE active='1' AND type=:type ORDER BY deadline DESC", array(":type"=>$type));
-		
+
 		$this->render('view',array(
 
 			'model'=>$this->loadModel($id), 'comment'=>$comment,
-            //'comments'=>$this->loadModelComment($id),
-
-            //'comment'=>$comment->loadModel($id),//'commnent'=>$comment->load)//'comment'=>$comment,
 		));
-
-       // Comment::model()->findBySql("SELECT * FROM comment WHERE ticket_id=:id", array(":id"=>$model->id)),
 	}
 
 	/**
@@ -76,22 +68,22 @@ class TicketController extends Controller
 	public function actionCreate()
 	{
 		$model= new Ticket;
-		
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Ticket']))
 		{
-
-			
 			$model->attributes=$_POST['Ticket'];
-			
+            $topic_id = $model->topic_id;
 			//Populate ticket attributes
 			//Get the ID of the user
 			$model->creator_user_id = User::getCurrentUserId();
 			$model->created_date = new CDbExpression('NOW()');
 
-			$model->assign_user_id = 2;
+            /*Assign the ticket to the most appropiate Domain mentor */
+			//$model->assign_user_id = 4;
+            $model->assign_user_id = User::assignTicket($topic_id);
 
 			$model->last_updated = '';
 			$model->status = 'Pending';
@@ -188,15 +180,10 @@ class TicketController extends Controller
 
 	}
 
-    /*public function loadModelComment($id)
-    {
-        $comments = Comment::model()->findBySql("SELECT * FROM comment WHERE ticket_id=:id", array(":id"=>$id));
-        if ($comments === null)
-            throw new CHttpException(404, 'The requested page does not exist.');
-        return $comments;
-    }
-    */
-	/**
+
+
+
+ 	/**
 	 * Performs the AJAX validation.
 	 * @param Ticket $model the model to be validated
 	 */
