@@ -67,16 +67,27 @@ class TicketController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Ticket']))
-		{
-			$model->attributes=$_POST['Ticket'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+        if(isset($_POST['Ticket']))
+        {
+            $model->attributes=$_POST['Ticket'];
+            $domain_id = $model->domain_id;
+            //Populate ticket attributes
+            //Get the ID of the user
+            $model->creator_user_id = User::getCurrentUserId();
+            $model->created_date = new CDbExpression('NOW()');
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+            /*Assign the ticket to the most appropiate Domain mentor */
+            //$model->assign_user_id = 4;
+            $model->assign_user_id = User::assignTicket($domain_id);
+
+            $model->status = 'Pending';
+
+            if($model->save())
+                $this->redirect(array('view','id'=>$model->id));
+        }
+
+        $this->render('create',array('model'=>$model,));
+        //$this->render('index',array('model'=>$model,));
 	}
 
 	/**
@@ -126,6 +137,9 @@ class TicketController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+
+        /* Retrieve info from User Creator and Assign User Name */
+        /* Domain Name also */
 	}
 
 	/**

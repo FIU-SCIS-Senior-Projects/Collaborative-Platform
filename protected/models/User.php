@@ -390,42 +390,49 @@ class User extends CActiveRecord
     	return $user->isStudent;		
 	}
 
-    /*Assign Domain Mentor to a Ticket */
-    public static function assignTicket($topic_id)
-    {
-       // $userId = new User();
-        $user = new User;
 
-        $userDomain = new UserDomain();
+    /*Assign Domain Mentor to a Ticket */
+    public static function assignTicket($domain_id)
+    {
+        // $userId = new User();
+       // $user = new User;
+
+        //$userDomain = new UserDomain();
         /*Query to the Topic model */
-       // $topic = new Topic;
-        $topic = Topic::model()->findBySql("SELECT * FROM topic WHERE id =:id", array(":id"=>$topic_id));
-        if($topic != null){
-            $domainId = $topic->domain_id;
+        // $topic = new Topic;
+        //$topic = Topic::model()->findBySql("SELECT * FROM topic WHERE id =:id", array(":id"=>$topic_id));
+        $userDomain = UserDomain::model()->findBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id"=>$domain_id));
+
+        if($userDomain != null){
+            //$domainId = $userDomain->domain_id;
 
             /*Query to the User_Domain model */
-            $userDomain = UserDomain::model()->findBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id"=>$domainId));
-
-            foreach($userDomain as $auserDomain)
-            {
-               if($auserDomain != null)
-                 {
-                    if($userDomain->rate == 10)
-                    //{
-                        $userId = $userDomain->user_id;
+            /*
+                foreach($userDomain as $auserDomain)
+                {
+                    if($auserDomain != null)
+                    {
+                        if($userDomain->rate == 10)
+                            //{
+                            $userId = $userDomain->user_id;
 
                         /*Query to the User model */
-                        $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userId));
-                        $tmp = $user->id;
-                    //}
-                 }
-            }
+            //$user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userDomain->domain_id));
+            //$tmp = $user->id;
+            //}
+            // }
+            // }
 
-           //$userId = $userDomain->user_id;
+            //$userId = $userDomain->user_id;
             /*Query to the User model */
-           // $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userId));
+            $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userDomain->id));
         }
-       return $tmp;
+        return $user->id;
 
     }
+
+
+
+
+
 }

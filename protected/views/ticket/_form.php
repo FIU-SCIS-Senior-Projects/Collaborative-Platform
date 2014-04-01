@@ -4,6 +4,8 @@
 /* @var $form CActiveForm */
 ?>
 
+<link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -15,6 +17,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+    <!-- Not inputed from User
 	<div class="row">
 		<?php echo $form->labelEx($model,'creator_user_id'); ?>
 		<?php echo $form->textField($model,'creator_user_id',array('size'=>11,'maxlength'=>11)); ?>
@@ -33,40 +36,53 @@
 		<?php echo $form->error($model,'created_date'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'subject'); ?>
-		<?php echo $form->textField($model,'subject',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'subject'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>500)); ?>
-		<?php echo $form->error($model,'description'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'assign_user_id'); ?>
 		<?php echo $form->textField($model,'assign_user_id',array('size'=>11,'maxlength'=>11)); ?>
 		<?php echo $form->error($model,'assign_user_id'); ?>
 	</div>
+    End -->
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'domain_id'); ?>
-		<?php echo $form->textField($model,'domain_id',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'domain_id'); ?>
-	</div>
+    <div id = "container"; style="margin-top:10px; width: 1000px; border: 1px solid #C9E0ED; border-radius: 5px;">
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'file'); ?>
-		<?php echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'file'); ?>
-	</div>
+        <div class ="row"; style = "margin-left: 40px">
+            <?php echo $form->labelEx($model,'subject'); ?>
+            <?php echo $form->textField($model,'subject',array('size'=>45,'style'=>'width:500px', 'maxlength'=>45)); ?>
+            <?php echo $form->error($model,'subject'); ?>
+        </div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+        <div class ="row"; style = "margin-left: 40px">
+            <?php echo $form->labelEx($model,'description'); ?>
+            <?php echo $form->textArea($model,'description',array('id'=>'description', 'style'=>'width:500px', 'cols'=>110, 'rows'=>5,'width'=>'300px')); ?>
+            <?php echo $form->error($model,'description'); ?>
+        </div>
 
-<?php $this->endWidget(); ?>
+        <div class ="row"; style = "margin-left: 40px">
+            <?php echo $form->labelEx($model,'domain_id'); ?>
+            <?php echo $form->dropDownList($model,'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?>
+            <?php echo $form->error($model,'domain_id'); ?>
+        </div>
 
+        <div class ="row"; style = "margin-left: 40px">
+            <?php echo $form->labelEx($model,'Attach File'); ?>
+            <?php echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); ?>
+            <?php echo $form->error($model,'file'); ?>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div id = "operations"; style= "margin-left : 30px">
+        <div class="row buttons">
+            <?php echo CHtml::submitButton('Save', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
+             &nbsp;&nbsp;
+            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'link', 'id'=>'new-box', 'url'=>(array('/ticket/view','id'=>$model->id))	, 'type'=>'primary',
+                 'label'=>'Cancel', )); ?>
+        </div>
+    </div>
+
+    <?php $this->endWidget(); ?>
 </div><!-- form -->
