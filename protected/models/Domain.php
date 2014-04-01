@@ -9,8 +9,9 @@
  * @property string $description
  *
  * The followings are the available model relations:
+ * @property Ticket[] $tickets
  * @property Topic[] $topics
- * @property User[] $users
+ * @property UserDomain[] $userDomains
  */
 class Domain extends CActiveRecord
 {
@@ -57,8 +58,9 @@ class Domain extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'tickets' => array(self::HAS_MANY, 'Ticket', 'domain_id'),
 			'topics' => array(self::HAS_MANY, 'Topic', 'domain_id'),
-			'users' => array(self::MANY_MANY, 'User', 'user_domain(domain_id, user_id)'),
+			'userDomains' => array(self::HAS_MANY, 'UserDomain', 'domain_id'),
 		);
 	}
 
@@ -68,7 +70,7 @@ class Domain extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'Domain ID',
+			'id' => 'ID',
 			'name' => 'Name',
 			'description' => 'Description',
 		);
@@ -87,12 +89,10 @@ class Domain extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('name',$this->name,true);
-		//$criteria->compare('description',$this->description,true);
+		$criteria->compare('description',$this->description,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-
-
 }

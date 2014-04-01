@@ -13,20 +13,12 @@
 	<?php echo CHtml::encode($data->creator_user_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('topic_id')); ?>:</b>
-	<?php echo CHtml::encode($data->topic_id); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
 	<?php echo CHtml::encode($data->status); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('created_date')); ?>:</b>
 	<?php echo CHtml::encode($data->created_date); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('last_updated')); ?>:</b>
-	<?php echo CHtml::encode($data->last_updated); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('subject')); ?>:</b>
@@ -37,12 +29,19 @@
 	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('answer')); ?>:</b>
-	<?php echo CHtml::encode($data->answer); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('assign_user_id')); ?>:</b>
 	<?php echo CHtml::encode($data->assign_user_id); ?>
 	<br />
+
+	<?php /*
+	<b><?php echo CHtml::encode($data->getAttributeLabel('domain_id')); ?>:</b>
+	<?php echo CHtml::encode($data->domain_id); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('file')); ?>:</b>
+	<?php echo CHtml::encode($data->file); ?>
+	<br />
+
+	*/ ?>
 
 </div>

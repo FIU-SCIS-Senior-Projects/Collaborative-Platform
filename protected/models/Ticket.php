@@ -6,21 +6,19 @@
  * The followings are the available columns in table 'ticket':
  * @property string $id
  * @property string $creator_user_id
- * @property string $topic_id
  * @property string $status
  * @property string $created_date
- * @property string $last_updated
  * @property string $subject
  * @property string $description
- * @property string $answer
  * @property string $assign_user_id
+ * @property string $domain_id
+ * @property string $file
  *
  * The followings are the available model relations:
- * @property Attachment[] $attachments
  * @property Comment[] $comments
  * @property User $creatorUser
- * @property Topic $topic
  * @property User $assignUser
+ * @property Domain $domain
  */
 class Ticket extends CActiveRecord
 {
@@ -50,17 +48,14 @@ class Ticket extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-				array('topic_id, subject, description', 'required'),
-				array('status, subject', 'length', 'max'=>45),
-			
-			//array('creator_user_id, topic_id, status, created_date, subject, description', 'required'),
-			//array('creator_user_id, topic_id, assign_user_id', 'length', 'max'=>11),
-		//	array('status, subject', 'length', 'max'=>45),
-			//array('description, answer', 'length', 'max'=>500),
-			//array('last_updated', 'safe'),
+			array('creator_user_id, status, created_date, subject, description, domain_id', 'required'),
+			array('creator_user_id, assign_user_id, domain_id', 'length', 'max'=>11),
+			array('status, subject', 'length', 'max'=>45),
+			array('description', 'length', 'max'=>500),
+			array('file', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, creator_user_id, topic_id, status, created_date, last_updated, subject, description, answer, assign_user_id', 'safe', 'on'=>'search'),
+			array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, file', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,11 +67,10 @@ class Ticket extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'attachments' => array(self::HAS_MANY, 'Attachment', 'ticket_id'),
 			'comments' => array(self::HAS_MANY, 'Comment', 'ticket_id'),
 			'creatorUser' => array(self::BELONGS_TO, 'User', 'creator_user_id'),
-			'topic' => array(self::BELONGS_TO, 'Topic', 'topic_id'),
 			'assignUser' => array(self::BELONGS_TO, 'User', 'assign_user_id'),
+			'domain' => array(self::BELONGS_TO, 'Domain', 'domain_id'),
 		);
 	}
 
@@ -88,14 +82,13 @@ class Ticket extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'creator_user_id' => 'Creator User',
-			'topic_id' => 'Topic',
 			'status' => 'Status',
 			'created_date' => 'Created Date',
-			'last_updated' => 'Last Updated',
 			'subject' => 'Subject',
 			'description' => 'Description',
-			'answer' => 'Answer',
 			'assign_user_id' => 'Assign User',
+			'domain_id' => 'Domain',
+			'file' => 'File',
 		);
 	}
 
@@ -112,17 +105,16 @@ class Ticket extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('creator_user_id',$this->creator_user_id,true);
-		$criteria->compare('topic_id',$this->topic_id,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('created_date',$this->created_date,true);
-		$criteria->compare('last_updated',$this->last_updated,true);
 		$criteria->compare('subject',$this->subject,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('answer',$this->answer,true);
 		$criteria->compare('assign_user_id',$this->assign_user_id,true);
+		$criteria->compare('domain_id',$this->domain_id,true);
+		$criteria->compare('file',$this->file,true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria, //'pagination' => array('pageSize' => 12,),
+			'criteria'=>$criteria,
 		));
 	}
 }

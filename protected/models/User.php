@@ -46,6 +46,11 @@ class User extends CActiveRecord
 	public $vjf_role;
 	public $men_role;
 	public $rmj_role;
+    /*assign variables */
+    public $topic;
+    public $userDomain;
+    public $userId;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -388,30 +393,39 @@ class User extends CActiveRecord
     /*Assign Domain Mentor to a Ticket */
     public static function assignTicket($topic_id)
     {
-        //$user = new User;
+       // $userId = new User();
+        $user = new User;
+
+        $userDomain = new UserDomain();
         /*Query to the Topic model */
+       // $topic = new Topic;
         $topic = Topic::model()->findBySql("SELECT * FROM topic WHERE id =:id", array(":id"=>$topic_id));
         if($topic != null){
             $domainId = $topic->domain_id;
+
             /*Query to the User_Domain model */
             $userDomain = UserDomain::model()->findBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id"=>$domainId));
 
-            //foreach($userDomain as $auserDomain)
-            //{
-              //  if($auserDomain != null)
-               // {
-                   //s if($userDomain->rate == 10){
+            foreach($userDomain as $auserDomain)
+            {
+               if($auserDomain != null)
+                 {
+                    if($userDomain->rate == 10)
+                    //{
                         $userId = $userDomain->user_id;
+
                         /*Query to the User model */
                         $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userId));
-                  //  }
-               // }
-           // }
+                        $tmp = $user->id;
+                    //}
+                 }
+            }
+
            //$userId = $userDomain->user_id;
             /*Query to the User model */
            // $user = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$userId));
         }
-       return $user->id;
+       return $tmp;
 
     }
 }

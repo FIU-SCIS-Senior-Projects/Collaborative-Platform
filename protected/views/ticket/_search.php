@@ -22,11 +22,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'topic_id'); ?>
-		<?php echo $form->textField($model,'topic_id',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'status'); ?>
 		<?php echo $form->textField($model,'status',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
@@ -34,11 +29,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'created_date'); ?>
 		<?php echo $form->textField($model,'created_date'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'last_updated'); ?>
-		<?php echo $form->textField($model,'last_updated'); ?>
 	</div>
 
 	<div class="row">
@@ -52,13 +42,18 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'answer'); ?>
-		<?php echo $form->textField($model,'answer',array('size'=>60,'maxlength'=>500)); ?>
+		<?php echo $form->label($model,'assign_user_id'); ?>
+		<?php echo $form->textField($model,'assign_user_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'assign_user_id'); ?>
-		<?php echo $form->textField($model,'assign_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->label($model,'domain_id'); ?>
+		<?php echo $form->textField($model,'domain_id',array('size'=>11,'maxlength'=>11)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'file'); ?>
+		<?php echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
 
 	<div class="row buttons">

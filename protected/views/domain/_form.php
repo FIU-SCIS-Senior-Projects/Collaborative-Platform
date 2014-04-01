@@ -1,13 +1,13 @@
 <?php
-/* @var $this AttachmentController */
-/* @var $model Attachment */
+/* @var $this DomainController */
+/* @var $model Domain */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'attachment-form',
+	'id'=>'domain-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -16,15 +16,15 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'file_url'); ?>
-		<?php echo $form->textField($model,'file_url',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'file_url'); ?>
+		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'ticket_id'); ?>
-		<?php echo $form->textField($model,'ticket_id',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'ticket_id'); ?>
+		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>500)); ?>
+		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row buttons">

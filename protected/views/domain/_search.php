@@ -1,6 +1,6 @@
 <?php
-/* @var $this TopicController */
-/* @var $model Topic */
+/* @var $this DomainController */
+/* @var $model Domain */
 /* @var $form CActiveForm */
 ?>
 
@@ -11,19 +11,25 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="regbox">
+	<div class="row">
 		<?php echo $form->label($model,'id'); ?>
 		<?php echo $form->textField($model,'id',array('size'=>11,'maxlength'=>11)); ?>
-	
-    	<?php echo $form->label($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
-	
-    	<?php echo $form->label($model,'domain_id'); ?>
-		<?php echo $form->dropDownList($model,'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?> 
-		</br>
-    	<?php echo CHtml::submitButton('Search', array('class'=>'btn btn-primary')); ?>
 	</div>
-	
+
+	<div class="row">
+		<?php echo $form->label($model,'name'); ?>
+		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'description'); ?>
+		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>500)); ?>
+	</div>
+
+	<div class="row buttons">
+		<?php echo CHtml::submitButton('Search'); ?>
+	</div>
+
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->
