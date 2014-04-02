@@ -75,7 +75,7 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
             if ($this->actionVerifyRegistration() != "") {
-                $this->render('user/create');
+                $this->render('/user/create');
             }
 
 			$model->attributes=$_POST['User'];
