@@ -68,9 +68,9 @@ class UserController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-        $this->render('create',array(
+        /*$this->render('create',array(
             'model'=>$model,
-        ));
+        ));*/
 
 		if(isset($_POST['User']))
 		{
