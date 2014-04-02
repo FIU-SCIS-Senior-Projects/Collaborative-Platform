@@ -37,14 +37,14 @@ $(function(){
 			for (var i = 0; i < data.length; i++)
 			{		
 				var message = data[i];		
-				var theDate = new Date(Date.parse(message.date));	
+				var theDate = new Date(Date.parse(message.created_date));
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate();
 				$("#message-content").append("<input type='checkbox' class='message_checkbox' id='c_" + message.id
 						+ "'><div class='aMessage' id='" + message.id + "'><span class='message_heading'>"
 					+ message.sender + "</span>" + "<span class='message_subject' style='margin-left:100px'>"
 					+ message.subject + "</span><span class='messageDate'>"+messageDate+"</span></div>");	
 
-				if (message.been_read == 0)
+				if (!message.been_read)
 				{
 					$("#" + message.id).css("font-weight", "bold");					
 				}
@@ -63,10 +63,10 @@ $(function(){
 					function (theMessage) {
 
 			    $(".img-spinner").hide();
-			    var theDate = new Date(Date.parse(theMessage.date))	
+			    var theDate = new Date(Date.parse(theMessage.created_date))
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate() + ", " + theDate.getFullYear();			
 				$("#message-content").append("<div class='message_Top'><span class='theSubject'>" +
-						theMessage.subject + "<a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
+						theMessage.subject + "</span></div><a id='sender_link' href='/coplat/index.php/profile/user/" + theMessage.sender
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image tooltipster' title='Send to Trash'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 
@@ -119,14 +119,14 @@ $(function(){
 			for (var i = 0; i < data.length; i++)
 			{		
 				var message = data[i];		
-				var theDate = new Date(Date.parse(message.date));	
+				var theDate = new Date(Date.parse(message.created_date));
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate();
 				$("#message-content").append("<input type='checkbox' class='message_checkbox' id='s_" + message.id
 						+ "'><div class='aMessage' id='" + message.id + "'><span class='message_heading'>"
 					+ message.receiver + "</span>" + "<span style='margin-left:70px'>"
 					+ message.subject + "</span><span class='messageDate'>"+messageDate+"</span></div>");	
 
-				if (message.been_read == 0)
+				if (!message.been_read)
 				{
 					$("#" + message.id).css("font-weight", "bold");					
 				}			
@@ -143,10 +143,10 @@ $(function(){
 					function (theMessage) {
 
 				$(".img-spinner").hide();	
-				var theDate = new Date(Date.parse(theMessage.date))	
+				var theDate = new Date(Date.parse(theMessage.created_date))
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate() + ", " + theDate.getFullYear();		
 				$("#message-content").append("<div class='message_Top'><span class='theSubject'>" +
-						theMessage.subject + "<a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
+						theMessage.subject + "</span></div><a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "&selfReply=1' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image tooltipster' title='Send to Trash'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 
@@ -257,7 +257,7 @@ $(function(){
 			for (var i = 0; i < data.length; i++)
 			{		
 				var message = data[i];		
-				var theDate = new Date(Date.parse(message.date));	
+				var theDate = new Date(Date.parse(message.created_date));
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate();
 				$("#message-content").append("<input type='checkbox' class='message_checkbox' id='s_" + message.id
 						+ "'><div class='aMessage' id='" + message.id + "'><span class='message_heading'>"
@@ -277,10 +277,10 @@ $(function(){
 					function (theMessage) {
 
 				$(".img-spinner").hide();	
-				var theDate = new Date(Date.parse(theMessage.date))	
+				var theDate = new Date(Date.parse(theMessage.created_date))
 			    var messageDate = monthNames[theDate.getMonth()] + " " + theDate.getDate() + ", " + theDate.getFullYear();			
 				$("#message-content").append("<div class='message_Top'><span class='theSubject'>" +
-						theMessage.subject + "<a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
+						theMessage.subject + "</span></div><a id='sender_link' href='/coplat/index.php/profile/employer/user/" + theMessage.sender
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image3 tooltipster' title='Delete Forever'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 

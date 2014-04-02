@@ -72,13 +72,19 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			
-			//Hash the password before storing it into the database
+            $model->pic_url = '/coplat/images/profileimages/avatarsmall.gif';
+
+            $model->activation_chain = $this->genRandomString(10);
+
+            //Hash the password before storing it into the database
 			$hasher = new PasswordHash(8, false);
 			$model->password = $hasher->HashPassword($model->password);
-			
-			if($model->save())
-				$this->redirect(array('/site/login','id'=>$model->id));
+
+			if($model->save()){
+				$model->sendVerificationEmail();
+			    $this->actionSendVerificationEmail($model->email);
+				//$this->redirect(array('/site/login','id'=>$model->id));
+            }
 		}
 
 		$this->render('create',array(
@@ -191,7 +197,7 @@ class UserController extends Controller
 				$user = User::getCurrentUser();
 				$user->password = $hasher->HashPassword($p1);
 				$user->save(false);
-				$this->redirect("/coplat/index.php/profile/userProfile");
+				$this->redirect("/coplat/index.php");
 			} else {
 				$error = "Passwords do not match.";
 				$this->render('ChangePassword',array('model'=>$model, 'error' => $error));
@@ -200,6 +206,32 @@ class UserController extends Controller
 			$this->render('ChangePassword',array('model'=>$model, 'error' => $error));
 		}
 	}
+
+    public function actionSendVerificationEmail($email = null){
+
+        if (!isset($email)) {
+            $username = $_GET['username'];
+            $user = User::model()->find("username=:username",array(':username'=>$username));
+        } else {
+            $user = User::model()->find("email=:email",array(':email'=>$email));
+        }
+
+        $user->sendVerificationEmail();
+        $this->redirect('/coplat/index.php/site/page?view=verification');
+    }
+
+    public function actionVerifyEmail($username, $activation_string)
+    {
+        $usermodel = User::model()->find("username=:username AND activation_string=:activation_string",array(':username'=>$username, ':activation_string'=>$activation_string));
+        if ($usermodel != null)
+        {
+            $usermodel->activated = 1;
+            $usermodel->save(false);
+            $this->redirect("/coplat/index.php/site/login");
+        }
+        else
+            redirect();
+    }
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
