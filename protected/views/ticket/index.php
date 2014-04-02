@@ -6,6 +6,7 @@ $this->breadcrumbs=array(
 	//'Tickets',
 );
 
+
 $this->menu=array(
 	//array('label'=>'Create Ticket', 'url'=>array('create')),
 	//array('label'=>'Manage Ticket', 'url'=>array('admin')),
@@ -24,16 +25,20 @@ $this->menu=array(
 		'htmlOptions'=>array(
 		'style'=>'overflow-y:scroll; height:150px; width: 1050px; border: 1px solid #C9E0ED'),)); */?>
 
-        <?php $this->widget('zii.widgets.grid.CGridView', array('id'=> 'ticket_id',
+        <?php $this->widget('zii.widgets.grid.CGridView', array(
             'dataProvider'=>$dataProvider, //->setPagination(true),
+            //'filter'=>$model,
             'summaryText' => '',
             //'pager'=> array( 'class'=> 'CLinkPager', 'pageSize' => 50,),
             'columns'=>array(
                 'id',          // display the 'title' attribute
                 //'creator_user_id',  // display the 'name' attribute of the 'category' relation
-                'domain_id', 'status', 'created_date',
+                //array('name'=>'domain_id', 'type'=>'raw',
+                    /**Var Domain $data */
+                    //'value'=> CHtml::encode($data->,  //CHtml::encode($data->domain->name)),
+                    'domain_id', 'status', 'created_date',
                 'subject', /*'description', 'answer', 'assign_user_id',*/),
-            //'htmlOptions'=>array(
+            //'headerHtmlOptions'=>array('width'=>'80px'),
             //'style'=>'overflow-y:scroll; height:300px; width: 1050px; border: 1px solid #C9E0ED; border-radius: 5px'),
             'selectionChanged'=>"function(id){window.location='" . Yii::app()->urlManager->createUrl('ticket/view', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);}",
 

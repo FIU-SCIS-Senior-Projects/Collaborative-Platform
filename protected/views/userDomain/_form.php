@@ -24,28 +24,42 @@
         </div>
 
          <div class ="row"; style = "margin-left: 40px">
+            <?php $models = User::model()->findAll();  //Needs a getDomainMentor Function
+            $data = array();
 
-            <?php echo $form->labelEx($model,'Domain Mentor'); ?>
-            <?php echo $form->dropDownList($model,'user_id', CHtml::listData(User::model()->findAll(array('order' => 'fname ASC')), 'id', 'fname','lname')); ?>
+            foreach ($models as $mod) {
+                $data[$mod->id] = $mod->fname .' '. $mod->lname;
+            }
+            ?>
+            <?php echo $form->labelEx($mod, 'Domain Mentor'); ?>
+            <?php echo $form->dropDownList($model, 'user_id', $data ,array('prompt' => 'Select')); ?>
             <?php echo $form->error($model,'user_id'); ?>
-
         </div>
 
         <div class ="row"; style = "margin-left: 40px">
+            <?php
+            $data = array(0,1,2,3,4,5,6,7,8,9,10);
+            ?>
             <?php echo $form->labelEx($model,'rate'); ?>
-            <?php echo $form->textField($model,'rate'); ?>
+            <?php echo $form->dropDownList($model, 'rate', $data ,array('prompt' => 'Select')); ?>
             <?php echo $form->error($model,'rate'); ?>
         </div>
 
          <div class ="row"; style = "margin-left: 40px">
+            <?php
+                $data = array('No','Yes');
+            ?>
             <?php echo $form->labelEx($model,'active'); ?>
-            <?php echo $form->textField($model,'active'); ?>
+            <?php echo $form->dropDownList($model, 'active', $data ,array('prompt' => 'Select')); ?>
             <?php echo $form->error($model,'active'); ?>
         </div>
 
         <div class ="row"; style = "margin-left: 40px">
-            <?php echo $form->labelEx($model,'tier_team'); ?>
-            <?php echo $form->textField($model,'tier_team'); ?>
+            <?php
+            $data = array('Select',1,2);
+            ?>
+            <?php echo $form->labelEx($model,'Tier'); ?>
+            <?php echo $form->dropDownList($model, 'tier_team', $data); ?>
             <?php echo $form->error($model,'tier_team'); ?>
         </div>
     </div>

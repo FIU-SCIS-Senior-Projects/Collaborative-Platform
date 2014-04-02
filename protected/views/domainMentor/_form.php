@@ -16,9 +16,16 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'user_id'); ?>
+       <?php $models = User::model()->findAll();
+             $data = array();
+
+            foreach ($models as $mod) {
+                $data[$mod->id] = $mod->fname . ' '. $mod->lname;
+            }
+       ?>
+       <?php echo $form->labelEx($mod, 'Domain Mentor'); ?>
+       <?php echo $form->dropDownList($model, 'user_id', $data ,array('prompt' => 'Select')); ?>
+       <?php echo $form->error($model,'user_id'); ?>
 	</div>
 
 	<div class="row">

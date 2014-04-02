@@ -22,7 +22,7 @@ $this->menu=array(
 ?>
 
 <div id = "fullcontent">
-<div style = "color: #0044cc"><h1>Ticket #  <?php echo $model->id; ?></h1></div>
+<div style = "color: #0044cc"><h3>Ticket #  <?php echo $model->id; ?></h3></div>
 
 <div id = "container">
     <div style="border: 1px solid #C9E0ED; border-radius: 5px;">
@@ -39,12 +39,12 @@ $this->menu=array(
 <br>
 <div style = "color: #0044cc"><h3>Comments</h3></div>
 <div > <!-- List of Comments to a Ticket -->
-    <div style="height: 100px; width: 1000px; overflow-y: scroll; border-radius: 5px;">
+    <div style="height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;">
         <div class="datagrid">
             <table>
                 <thead>
                 <tr>
-                    <th> Number</th><th>Description</th><th>Date Added</th><th>Added by</th>
+                    <th width="1%"> No</th><th width="74%">Description</th><th width="10%">Date Added</th><th width="25%">Added by</th>
                 </tr>
                 </thead>
                 <?php foreach ($model->comments as $comment)
@@ -52,7 +52,7 @@ $this->menu=array(
                     <tbody>
                     <tr><td><?php echo $comment->id; ?></td>
                         <td><?php echo $comment->description ?></td>
-                        <td><?php echo $comment->added_date?></td>
+                        <td><?php echo date("M d, Y h:i A", strtotime($comment->added_date))?></td>
                         <td>data</td>
                     </tr>
                     </tbody>
@@ -63,6 +63,8 @@ $this->menu=array(
         </div>
     </div>
 </div> <!-- End List of Comments -->
+
+
 <br>
 <div style = "margin-top: 15px"> <!-- Buttons Options -->
     <div>

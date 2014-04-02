@@ -32,7 +32,7 @@ class ProjectMentorController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','pMentorHome'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -143,6 +143,14 @@ class ProjectMentorController extends Controller
 		));
 	}
 
+
+    public function actionpMentorHome()
+    {
+        $user = User::model()->getCurrentUserId();
+        $model = ProjectMeeting::model()->findAllBySql("SELECT * FROM project_meeting WHERE project_mentor_user_id =:id", array(":id" => $user->id));
+
+        $this->render('pMentorHome', array('model'=>$model));
+    }
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
