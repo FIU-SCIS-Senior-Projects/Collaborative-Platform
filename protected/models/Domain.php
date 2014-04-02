@@ -71,7 +71,7 @@ class Domain extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => 'Domain',
 			'description' => 'Description',
 		);
 	}

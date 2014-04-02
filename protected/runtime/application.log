@@ -8626,3 +8626,256 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/ticket/1
 HTTP_REFERER=http://localhost:8888/coplat/index.php/ticket/create
 ---
+2014/04/01 23:27:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "topic/admin".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('topic/admin')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/topic/admin
+HTTP_REFERER=http://localhost/coplat/index.php
+---
+2014/04/01 23:38:09 [error] [php] Non-static method User::isCurrentUserAdmin() should not be called statically, assuming $this from incompatible context (C:\wamp\www\coplat\themes\bootstrap\views\layouts\main.php:44)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\widgets\CContentDecorator.php(76): DomainController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#2 C:\wamp\www\coplat\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#3 C:\wamp\www\coplat\framework\web\CBaseController.php(206): CContentDecorator->run()
+#4 C:\wamp\www\coplat\framework\web\CBaseController.php(300): DomainController->endWidget()
+#5 C:\wamp\www\coplat\themes\bootstrap\views\layouts\column2.php(22): DomainController->endContent()
+#6 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require()
+#7 C:\wamp\www\coplat\framework\web\CBaseController.php(95): DomainController->renderInternal()
+#8 C:\wamp\www\coplat\framework\web\CController.php(784): DomainController->renderFile()
+#9 C:\wamp\www\coplat\protected\controllers\DomainController.php(79): DomainController->render()
+#10 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): DomainController->actionCreate()
+#11 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): DomainController->runAction()
+#13 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#15 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): DomainController->filterAccessControl()
+#16 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#17 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\wamp\www\coplat\framework\web\CController.php(265): DomainController->runActionWithFilters()
+#19 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): DomainController->run()
+#20 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#22 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/domain/create
+in C:\wamp\www\coplat\themes\bootstrap\views\layouts\main.php (44)
+in C:\wamp\www\coplat\themes\bootstrap\views\layouts\column2.php (22)
+in C:\wamp\www\coplat\protected\controllers\DomainController.php (79)
+2014/04/01 23:52:40 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainmentor/ad...')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domainmentor/admin
+HTTP_REFERER=http://localhost/coplat/index.php
+---
+2014/04/02 00:01:29 [error] [exception.CException] exception 'CException' with message 'CWebUser and its behaviors do not have a method or closure named "isGuest".' in C:\wamp\www\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\wamp\www\coplat\themes\bootstrap\views\layouts\main.php(33): CComponent->__call('isGuest', Array)
+#1 C:\wamp\www\coplat\themes\bootstrap\views\layouts\main.php(33): CWebUser->isGuest()
+#2 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require('C:\wamp\www\cop...')
+#3 C:\wamp\www\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\cop...', Array, true)
+#4 C:\wamp\www\coplat\framework\web\widgets\CContentDecorator.php(76): CBaseController->renderFile('C:\wamp\www\cop...', Array, true)
+#5 C:\wamp\www\coplat\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#6 C:\wamp\www\coplat\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#7 C:\wamp\www\coplat\framework\web\CBaseController.php(206): COutputProcessor->run()
+#8 C:\wamp\www\coplat\framework\web\CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#9 C:\wamp\www\coplat\themes\bootstrap\views\layouts\column1.php(6): CBaseController->endContent()
+#10 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require('C:\wamp\www\cop...')
+#11 C:\wamp\www\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\cop...', Array, true)
+#12 C:\wamp\www\coplat\framework\web\CController.php(784): CBaseController->renderFile('C:\wamp\www\cop...', Array, true)
+#13 C:\wamp\www\coplat\protected\controllers\SiteController.php(32): CController->render('index')
+#14 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#15 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#16 C:\wamp\www\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#17 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#19 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#20 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#21 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/04/02 00:16:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php
+---
+2014/04/02 00:16:13 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/domain/create
+---
+2014/04/02 00:16:19 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---
+2014/04/02 00:18:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---
+2014/04/02 00:18:24 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---
+2014/04/02 00:18:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2014/04/02 00:18:36 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/domain/create
+---
+2014/04/02 00:20:00 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---
+2014/04/02 00:20:02 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---
+2014/04/02 00:20:05 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domain/admin
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---

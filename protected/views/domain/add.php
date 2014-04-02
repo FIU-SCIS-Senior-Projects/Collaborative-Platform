@@ -13,23 +13,19 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
+	<div id="regbox">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'name'); ?>
-	</div>
-
-	<div class="row">
+	
 		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>500)); ?>
+        <?php echo $form->textArea($model,'description',array('id'=>'theDescription', 'style'=>'width:631px', 'cols'=>100, 'rows'=>5,
+                    'width'=>'691px','size'=>500,'maxlength'=>500)); ?>
+		<?php //echo $form->textField($model,'description',array('size'=>500,'maxlength'=>500)); ?>
 		<?php echo $form->error($model,'description'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+		</br>
+        <?php echo CHtml::submitButton('Create', array("class"=>"btn btn-primary")); ?>
+    </div>
 
 <?php $this->endWidget(); ?>
 

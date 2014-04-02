@@ -30,6 +30,8 @@
 <body>
 <?php 
 	$profile = '/profile/view';
+	//var_dump(!Yii::app()->user->isGuest && !User::isCurrentUserAdmin(Yii::app()->user->name));
+	//exit;
 ?>
 <?php 
 	$this->widget('bootstrap.widgets.TbNavbar',array(
@@ -41,13 +43,13 @@
 					'class'=>'bootstrap.widgets.TbMenu',
 					'htmlOptions'=>array('class'=>'pull-left'),
 					'items'=>array('-',
-									array('label'=>'Administrator', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-									array('label'=>'Project Mentor', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserProMentor(Yii::app()->user->name)*/),
-									array('label'=>'Personal Mentor', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserPerMentor(Yii::app()->user->name)*/),
-									array('label'=>'Domain Mentor', 'url'=>array('domainmentor/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserDomMentor(Yii::app()->user->name)*/),
-									array('label'=>'Mentee', 'url'=>array('mentee/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserMentee(Yii::app()->user->name)*/),
-									array('label'=>'Employer', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserEmployer(Yii::app()->user->name)*/),
-									array('label'=>'Judge', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserJudge(Yii::app()->user->name)*/),
+									array('label'=>'Administrator', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserAdmin(Yii::app()->user->name)),
+									array('label'=>'Project Mentor', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserProMentor(Yii::app()->user->name)),
+									array('label'=>'Personal Mentor', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserPerMentor(Yii::app()->user->name)),
+									array('label'=>'Domain Mentor', 'url'=>array('domainmentor/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserDomMentor(Yii::app()->user->name)),
+									array('label'=>'Mentee', 'url'=>array('mentee/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserMentee(Yii::app()->user->name)),
+									array('label'=>'Employer', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserEmployer(Yii::app()->user->name)),
+									array('label'=>'Judge', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserJudge(Yii::app()->user->name)),
 									
 							),
 					),
@@ -56,34 +58,34 @@
 					array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
 					array('label'=>'Ticket', 'url'=>array('/ticket/index'), 'visible'=>!Yii::app()->user->isGuest ),
 					
-					array('label'=>'Meeting','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/,
+					array('label'=>'Meeting','visible'=>!Yii::app()->user->isGuest && (User::isCurrentUserDomMentor(Yii::app()->user->name)|| User::isCurrentUserPerMentor(Yii::app()->user->name)),
 					'class'=>'bootstrap.widgets.TbMenu',
 					'htmlOptions'=>array('class'=>'pull-left'),
 					'items'=>array('-',
-									array('label'=>'Project Mentor','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserProMentor(Yii::app()->user->name)*/,
+									array('label'=>'Project Mentor','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserProMentor(Yii::app()->user->name),
 									'class'=>'bootstrap.widgets.TbMenu',
 									'htmlOptions'=>array('class'=>'pull-left'),
-									'items'=>array(array('label'=>'Manage Meetings', 'url'=>array('projectMeeting/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-													array('label'=>'Create Meeting', 'url'=>array('projectMeeting/create'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+									'items'=>array(array('label'=>'Manage Meetings', 'url'=>array('projectMeeting/admin'), 'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'Create Meeting', 'url'=>array('projectMeeting/create'), 'visible'=>!Yii::app()->user->isGuest),
 													
 											),
 									),
-									array('label'=>'Personal Mentor','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserPerMentor(Yii::app()->user->name)*/,
+									array('label'=>'Personal Mentor','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserPerMentor(Yii::app()->user->name),
 									'class'=>'bootstrap.widgets.TbMenu',
 									'htmlOptions'=>array('class'=>'pull-left'),
-									'items'=>array(array('label'=>'Manage Meetings', 'url'=>array('personalMeeting/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-													array('label'=>'Create Meetings', 'url'=>array('persoalMeeting/create'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+									'items'=>array(array('label'=>'Manage Meetings', 'url'=>array('personalMeeting/admin'), 'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'Create Meetings', 'url'=>array('persoalMeeting/create'), 'visible'=>!Yii::app()->user->isGuest),
 													
 											),
 									),
-									array('label'=>'Mentee','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserMentee(Yii::app()->user->name)*/,
+									array('label'=>'Mentee','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserMentee(Yii::app()->user->name),
 									'class'=>'bootstrap.widgets.TbMenu',
 									'htmlOptions'=>array('class'=>'pull-left'),
-									'items'=>array(array('label'=>'Manage Meetings','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserPerMentor(Yii::app()->user->name)*/,
+									'items'=>array(array('label'=>'Manage Meetings','visible'=>!Yii::app()->user->isGuest,
 														'class'=>'bootstrap.widgets.TbMenu',
 														'htmlOptions'=>array('class'=>'pull-left'),
-														'items'=>array(array('label'=>'Personal Meetings', 'url'=>array('personalMeeting/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-																		array('label'=>'Project Meetings', 'url'=>array('projectMeeting/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+														'items'=>array(array('label'=>'Personal Meetings', 'url'=>array('personalMeeting/admin'), 'visible'=>!Yii::app()->user->isGuest),
+																		array('label'=>'Project Meetings', 'url'=>array('projectMeeting/admin'), 'visible'=>!Yii::app()->user->isGuest),
 																		
 																),
 														),
@@ -101,7 +103,7 @@
 							),
 					),
 					
-					array('label'=>'Manage','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/,
+					array('label'=>'Manage','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserAdmin(Yii::app()->user->name),
 					'class'=>'bootstrap.widgets.TbMenu',
 					'htmlOptions'=>array('class'=>'pull-left'),
 					'items'=>array('-',
@@ -121,14 +123,7 @@
 													
 											),
 									),
-									array('label'=>'Topic','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/,
-									'class'=>'bootstrap.widgets.TbMenu',
-									'htmlOptions'=>array('class'=>'pull-left'),
-									'items'=>array(array('label'=>'Manage', 'url'=>array('topic/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-													array('label'=>'Create', 'url'=>array('topic/create'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-													
-											),
-									),
+									
 							),
 					),
 				)

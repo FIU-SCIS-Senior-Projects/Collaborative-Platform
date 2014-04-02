@@ -333,56 +333,56 @@ class User extends CActiveRecord
 		return $this->isStudent;	
 	}
 	
-	public function isCurrentUserAdmin(){
+	public static function isCurrentUserAdmin(){
 		$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	if ($user == null)
     		return false;
     	return $user->isAdmin;		
 	}
-	public function isCurrentUserMentee(){
+	public static function isCurrentUserMentee(){
 		$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	if ($user == null)
     		return false;
     	return $user->isMentee;		
 	}
-	public function isCurrentUserProMentor(){
+	public static function isCurrentUserProMentor(){
 		$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	if ($user == null)
     		return false;
     	return $user->isProMentor;		
 	}
-	public function isCurrentUserDomMentor(){
+	public static function isCurrentUserDomMentor(){
 		$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	if ($user == null)
     		return false;
     	return $user->isDomMentor;		
 	}
-	public function isCurrentUserPerMentor(){
+	public static function isCurrentUserPerMentor(){
 		$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	if ($user == null)
     		return false;
     	return $user->isPerMentor;		
 	}
-	public function isCurrentUserJudge(){
+	public static function isCurrentUserJudge(){
 		$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	if ($user == null)
     		return false;
     	return $user->isJudge;		
 	}
-	public function isCurrentUserEmployer(){
+	public static function isCurrentUserEmployer(){
 		$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	if ($user == null)
     		return false;
     	return $user->isEmployer;		
 	}
-	public function isCurrentUserStudent(){
+	public static function isCurrentUserStudent(){
 		$username = Yii::app()->user->name;
     	$user = User::model()->find("username=:username",array(':username'=>$username));
     	if ($user == null)
