@@ -74,8 +74,10 @@ class UserController extends Controller
 
 		if(isset($_POST['User']))
 		{
+            $error = '';
+
             if ($this->actionVerifyRegistration() != "") {
-                $this->render('add');
+                $this->render('add',array('model'=>$model, 'error' => $error));
             }
 
 			$model->attributes=$_POST['User'];
@@ -93,7 +95,6 @@ class UserController extends Controller
 				//$this->redirect(array('/site/login','id'=>$model->id));
             }
 		}
-        $error = '';
         $this->render('/user/create',array('model'=>$model, 'error' => $error));
 
 
