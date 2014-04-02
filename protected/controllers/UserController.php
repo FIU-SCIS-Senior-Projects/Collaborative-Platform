@@ -68,7 +68,10 @@ class UserController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+        $this->render('create',array(
+            'model'=>$model,
+        ));
+        
 		if(isset($_POST['User']))
 		{
             if ($this->actionVerifyRegistration() != "") {
@@ -93,9 +96,7 @@ class UserController extends Controller
         $error = '';
         $this->render('user/create',array('model'=>$model, 'error' => $error));
 
-		/*$this->render('create',array(
-			'model'=>$model,
-		));*/
+
 	}
 	public function actionCreate_Admin()
 	{
