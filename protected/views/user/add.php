@@ -18,7 +18,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-    <p style="color:red" id="errors"></p>
+    <!--<p style="color:red" id="errors"></p>-->
 
 	<div id="regbox">
 		<?php echo $form->labelEx($model,'fname'); ?>
@@ -98,6 +98,7 @@
     <div style="clear:both"></div>
 	</br>
 
+    <!--
     <script>
         $.MyNamespace={
             submit : "true"
@@ -125,5 +126,5 @@
             return;
         });
     </script>
-
+    -->
 </div><!-- form -->

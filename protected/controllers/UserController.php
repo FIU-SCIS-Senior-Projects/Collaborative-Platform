@@ -232,6 +232,8 @@ class UserController extends Controller
         $usermodel = User::model()->find("username=:username AND activation_chain=:activation_chain",array(':username'=>$username, ':activation_chain'=>$activation_chain));
         if ($usermodel != null)
         {
+            var_dump($usermodel);
+            
             $usermodel->activated = true;
             $usermodel->save(false);
             $this->redirect("/coplat/index.php/site/login");
