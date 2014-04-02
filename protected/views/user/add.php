@@ -9,15 +9,17 @@
 <h2>Collaborative Platform Registration</h2>
 <div class="wide form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'user-Register-form',
-	'enableAjaxValidation'=>false,
-)); ?>
+    <?php $form=$this->beginWidget('CActiveForm', array(
+        'id'=>'user-Register-form',
+        'enableAjaxValidation'=>false,
+    )); ?>
+
+
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php /*echo $form->errorSummary($model);*/ ?>
-    
+    <p style="color:red" id="errors"></p>
+
 	<div id="regbox">
 		<?php echo $form->labelEx($model,'fname'); ?>
         <?php echo $form->textField($model,'fname',array('size'=>45,'maxlength'=>45)); ?>
@@ -96,5 +98,32 @@
     <div style="clear:both"></div>
 	</br>
 
-   
+    <script>
+        $.MyNamespace={
+            submit : "true"
+        };
+        $(document).ready(function() {
+            $("#user-Register-form").submit(function(e) {
+                form = e;
+                $.ajaxSetup({async:false});
+
+                var response = $.post("/coplat/index.php/User/verifyRegistration", $("#user-Register-form").serialize());
+
+                response.done(function(data) {
+                    if (data != ""){
+                        $("html, body").animate({ scrollTop: 0 }, "fast");
+                        $("#errors").html(data);
+                        $.MyNamespace.submit = 'false';
+                    } else {
+                        $.MyNamespace.submit = 'true';
+                    }
+                });
+                if ($.MyNamespace.submit == 'false'){
+                    e.preventDefault();
+                }
+            });
+            return;
+        });
+    </script>
+
 </div><!-- form -->

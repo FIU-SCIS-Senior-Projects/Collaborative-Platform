@@ -68,16 +68,13 @@ class UserController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-        /*$this->render('create',array(
-            'model'=>$model,
-        ));*/
-        $error = '';
+
 
         if(isset($_POST['User']))
 		{
-            if ($this->actionVerifyRegistration() != "") {
-                $this->render('add',array('model'=>$model, 'error' => $error));
-            }
+            /*if ($this->actionVerifyRegistration() != "") {
+                $this->render('create', array('model'=>$model));
+            }*/
 
 			$model->attributes=$_POST['User'];
             $model->pic_url = '/coplat/images/profileimages/avatarsmall.gif';
@@ -94,8 +91,11 @@ class UserController extends Controller
 				//$this->redirect(array('/site/login','id'=>$model->id));
             }
 		}
-        $this->render('/user/create',array('model'=>$model, 'error' => $error));
-
+        $error = '';
+        $this->render('create',array(
+            'model'=>$model,'error' => $error
+        ));
+        //$this->render('add',array('model'=>$model, 'error' => $error));
 
 	}
 	public function actionCreate_Admin()
