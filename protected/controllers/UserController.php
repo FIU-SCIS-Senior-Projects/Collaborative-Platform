@@ -75,7 +75,7 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
             if ($this->actionVerifyRegistration() != "") {
-                $this->render('/user/create');
+                $this->render('add');
             }
 
 			$model->attributes=$_POST['User'];
@@ -227,9 +227,9 @@ class UserController extends Controller
         $this->redirect('/coplat/index.php/site/page?view=verification');
     }
 
-    public function actionVerifyEmail($username, $activation_string)
+    public function actionVerifyEmail($username, $activation_chain)
     {
-        $usermodel = User::model()->find("username=:username AND activation_string=:activation_string",array(':username'=>$username, ':activation_string'=>$activation_string));
+        $usermodel = User::model()->find("username=:username AND activation_chain=:activation_chain",array(':username'=>$username, ':activation_chain'=>$activation_chain));
         if ($usermodel != null)
         {
             $usermodel->activated = true;
