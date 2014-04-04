@@ -38,6 +38,7 @@ $this->menu = array(
         margin: 100px 50px;
     }
 </style>
+<!-- End Js for popover -->
 
 <div id="fullcontent">
     <div style="color: #0044cc"><h2>Project Mentor Home</h2></div>
@@ -62,8 +63,10 @@ $this->menu = array(
                         <p><strong>Title :</strong> <?php echo $project->title; ?>
                             <a href="#" class="enable-tooltip" data-toggle="tooltip"
                                data-original-title="<?php echo $project->description; ?>">More..</a><br>
-                            <strong>Start date :</strong> <?php echo $project->start_date; ?><br>
-                            <strong>End date :</strong> <?php echo $project->due_date; ?></p>
+                            <strong>Start date
+                                :</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
+                            <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
+                        </p>
                     <?php
                     }
                 } ?>
@@ -120,22 +123,49 @@ $this->menu = array(
     </div>
     <div class="modal-body">
         <?php $form = $this->beginWidget('CActiveForm', array(
-            'id' => 'comment-form',
+            'id' => 'projectMeeting-form',
             //'enableAjaxValidation'=>false,
         )); ?>
         <div style="margin-left:20px">
-            <?php $meeting = new ProjectMeeting(); ?>
-            <!--  	<input style ="display:none" type = "text" id = "ticket_id" value=<?php /*echo $model->id;*/ ?>></input>-->
-            <?php echo $form->textField($meeting, 'date', array(
-                'id' => 'description', 'style' => 'width:100px', 'cols' => 20, 'rows' => 5,
-                'width' => '400px')); ?>
+            <?php $ProjectMeeting = new ProjectMeeting();
+
+            $data = array();
+
+            foreach ($menteeName as $mod) {
+            $data[$mod->id] = $mod->fname .' '. $mod->lname;
+            }
+            ?>
+            <?php echo $form->labelEx($ProjectMeeting, 'mentee_user_id'); ?>
+            <?php echo $form->dropDownList($ProjectMeeting, 'mentee_user_id', $data ,array('prompt' => 'Select')); ?>
+
+            <?php /*echo $form->textField($ProjectMeeting, 'mentee_user_id', array('size' => 11, 'maxlength' => 11)); */?>
+
+            <!-- LABEL AND INPUT FOR DATE -->
+            <?php echo $form->labelEx($ProjectMeeting, 'date'); ?>
+            <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'name' => 'ProjectMeeting[date]',
+                'options' => array(
+                    'showAnim' => 'fold',
+                    'dateFormat' => 'yy-mm-dd',
+                ),
+            ));?>
+            (yyyy-mm-dd)
+
+
+            <!-- LABEL AND INPUT FOR TIME-->
+            <?php echo $form->labelEx($ProjectMeeting, 'time'); ?>
+            <?php //echo $form->textField($videoInterview,'time'); ?>
+            <input name="ProjectMeeting[time]" id="Project_Meeting_time" type="time">
+            (eg. 03:28pm or 3:28am)
+
+
         </div>
 
     </div>
     <div class="modal-footer">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Create', 'url' => '#',
-            'htmlOptions' => array('id' => 'create'),
+            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Submit', 'url' => '#',
+            'htmlOptions' => array('id' => 'submit'),
         ));
         ?>
 
@@ -151,29 +181,15 @@ $this->menu = array(
 
 <!-- Script for Comment modal -->
 <script>
-    $('a#append').on('click', function () {
-        $.post('/coplat/index.php/ProjectMeeting/create/<?php echo $meeting->id?>', $('#ProjectMeeting-form').serialize(), function (message) {
+    $('a#submit').on('click', function () {
+        $.post('/coplat/index.php/projectMeeting/create/<?php echo $user->id?>', $('#projectMeeting-form').serialize(), function (message) {
             window.location = location;
         });
         return false;
     })
 </script>
 
-
-<div class="bs-example">
-    <ul class="tooltip-examples list-inline">
-        <li><a href="#" data-toggle="tooltip" data-original-title="<?php echo $project->description; ?>">Tooltip</a>
-        </li>
-        <li><a href="#" data-toggle="tooltip" data-original-title="Another tooltip">Another tooltip</a></li>
-        <li><a href="#" data-toggle="tooltip"
-               data-original-title="A much longer tooltip to demonstrate the max-width of the Bootstrp tooltip.">Large
-                tooltip</a></li>
-        <li><a href="#" data-toggle="tooltip" data-original-title="The last tip!">Last tooltip</a></li>
-    </ul>
-</div>
-
-<!-- End Comment Modal
-
+<!-- End Comment Modal-->
 
 
 </div> <!-- End Full Content -->

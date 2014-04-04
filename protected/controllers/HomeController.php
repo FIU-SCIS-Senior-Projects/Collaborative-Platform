@@ -65,7 +65,29 @@ class HomeController extends Controller
         /*Return all the projects for the current Project Mentor */
         $projects = Project::model()->findAll("mentor_id=:mentor_id", array(':mentor_id'=> $user->id));
 
-        $this->render('pMentorHome', array('user' => $user, 'meetings' => $meetings, 'mentees' => $mentees, 'projects' => $projects));
+        /* Return all the mentees for the project mentor */
+        /** @var Projectmentor_project $projectmentor_project */
+        $projectmentor_project = ProjectmentorProject::model()->findAll("project_mentor_user_id=:id", array(':id'=>$user->id));
+        /** @var User $usermentee */
+
+
+        var_dump($projectmentor_project);
+        exit;
+        $menteeId = array();
+        foreach ($projectmentor_project as $Id => $ment) {
+            $menteeId[$Id] = Mentee::model()->findByAllSql("SELECT * FROM mentee WHERE projectmentor_project_id=:id", array("id"=>$ment->id));
+
+        }
+
+        $menteeName = array();
+        foreach($menteeId as $d => $md)
+        {
+            $menteeName[$d] = User::model()->findAllBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$md->user_id));
+        }
+        /* End Return all the mentees for the project mentor */
+
+        $this->render('pMentorHome', array('menteeName' => $menteeName, 'user' => $user, 'meetings' => $meetings, 'mentees' => $mentees, 'projects' => $projects
+            ));
     }
 
 

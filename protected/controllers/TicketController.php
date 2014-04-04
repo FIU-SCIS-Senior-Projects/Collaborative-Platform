@@ -77,7 +77,6 @@ class TicketController extends Controller
             $model->created_date = new CDbExpression('NOW()');
 
             /*Assign the ticket to the most appropiate Domain mentor */
-            //$model->assign_user_id = 4;
             $model->assign_user_id = User::assignTicket($domain_id);
 
             $model->status = 'Pending';

@@ -4,7 +4,7 @@
 /*this refers a ticket */
 
 
-$comment = $model->comments;
+//$comment = $model->comments;
 
 
 $this->breadcrumbs=array(

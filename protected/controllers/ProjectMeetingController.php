@@ -60,7 +60,7 @@ class ProjectMeetingController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
 		$model=new ProjectMeeting;
 
@@ -70,14 +70,20 @@ class ProjectMeetingController extends Controller
 		if(isset($_POST['ProjectMeeting']))
 		{
 			$model->attributes=$_POST['ProjectMeeting'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+            $model->project_mentor_user_id = $id;
+
+            $model->save(false);
+
+			//if($model->save())
+			//	$this->redirect(array('view','id'=>$model->id));
 		}
 
-		$this->render('create',array(
+		/*$this->render('create',array(
 			'model'=>$model,
-		));
+		));*/
 	}
+
+
 
 	/**
 	 * Updates a particular model.

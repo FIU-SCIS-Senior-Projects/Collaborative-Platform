@@ -25,6 +25,7 @@
 
          <div class ="row"; style = "margin-left: 40px">
             <?php $models = User::model()->findAll();  //Needs a getDomainMentor Function
+
             $data = array();
 
             foreach ($models as $mod) {
