@@ -49,6 +49,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'project_mentor_user_id',
 		'mentee_user_id',
 		'date',
+		'time',
 		array(
 			'class'=>'CButtonColumn',
 		),

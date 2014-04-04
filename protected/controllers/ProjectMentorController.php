@@ -144,13 +144,6 @@ class ProjectMentorController extends Controller
 	}
 
 
-    public function actionpMentorHome()
-    {
-        $user = User::model()->getCurrentUserId();
-        $model = ProjectMeeting::model()->findAllBySql("SELECT * FROM project_meeting WHERE project_mentor_user_id =:id", array(":id" => $user->id));
-
-        $this->render('pMentorHome', array('model'=>$model));
-    }
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -178,4 +171,19 @@ class ProjectMentorController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+
+    public function actionpMentorHome()
+    {   /** @var  User $user */
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username'=>$username));
+
+        /*Return all the meetings for the current user */
+        $meetings = ProjectMeeting::model()->findAllBySql("SELECT * FROM project_meeting WHERE project_mentor_user_id =:id", array(":id" => $user->id));
+
+        $this->render('pMentorHome', array('user'=>$user,'meetings'=>$meetings));
+    }
+
+
 }

@@ -454,5 +454,10 @@ class User extends CActiveRecord
         return self::$admin; /* Assign the ticket to the admin for reassign */
     }
 
+    function __toString()
+    {
+        return sprintf("%s %s", $this->fname, $this->lname);
+    }
+
 
 }

@@ -8,6 +8,7 @@
  * @property string $project_mentor_user_id
  * @property string $mentee_user_id
  * @property string $date
+ * @property string $time
  *
  * The followings are the available model relations:
  * @property Mentee $menteeUser
@@ -41,12 +42,11 @@ class ProjectMeeting extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('project_mentor_user_id, mentee_user_id', 'required'),
+			array('project_mentor_user_id, mentee_user_id, date, time', 'required'),
 			array('project_mentor_user_id, mentee_user_id', 'length', 'max'=>11),
-			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, project_mentor_user_id, mentee_user_id, date', 'safe', 'on'=>'search'),
+			array('id, project_mentor_user_id, mentee_user_id, date, time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,6 +73,7 @@ class ProjectMeeting extends CActiveRecord
 			'project_mentor_user_id' => 'Project Mentor User',
 			'mentee_user_id' => 'Mentee User',
 			'date' => 'Date',
+			'time' => 'Time',
 		);
 	}
 
@@ -91,6 +92,7 @@ class ProjectMeeting extends CActiveRecord
 		$criteria->compare('project_mentor_user_id',$this->project_mentor_user_id,true);
 		$criteria->compare('mentee_user_id',$this->mentee_user_id,true);
 		$criteria->compare('date',$this->date,true);
+		$criteria->compare('time',$this->time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

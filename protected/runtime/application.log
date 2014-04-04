@@ -10407,3 +10407,77 @@ REQUEST_URI=/coplat/index.php/profile/userProfile
 HTTP_REFERER=http://localhost/coplat/index.php/ticket/index
 ---
 >>>>>>> FETCH_HEAD
+2014/04/04 00:45:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projectmeeting/create".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectmeeting/...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/projectmeeting/create
+---
+2014/04/04 00:45:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projectmeeting".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectmeeting')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/projectmeeting
+---
+2014/04/04 00:45:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projectmeeting".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectmeeting')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/projectmeeting
+---
+2014/04/04 00:46:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projectmeeting".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectmeeting')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/projectmeeting
+---
+2014/04/04 00:52:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/admin
+HTTP_REFERER=http://localhost/coplat/index.php/projectMeeting/1
+---
+2014/04/04 00:53:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/admin
+HTTP_REFERER=http://localhost/coplat/index.php/projectMeeting/1
+---
+2014/04/04 01:01:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "personalMeeting".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('personalMeeting')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/personalMeeting
+---

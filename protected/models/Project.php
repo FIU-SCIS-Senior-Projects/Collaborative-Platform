@@ -12,7 +12,7 @@
  * @property integer $mentor_id
  *
  * The followings are the available model relations:
- * @property ProjectMentor[] $projectMentors
+ * @property ProjectmentorProject[] $projectmentorProjects
  */
 class Project extends CActiveRecord
 {
@@ -45,8 +45,8 @@ class Project extends CActiveRecord
 			array('id', 'required'),
 			array('mentor_id', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>11),
-			array('title, description, due_date', 'length', 'max'=>45),
-			array('start_date', 'safe'),
+			array('title, description', 'length', 'max'=>45),
+			array('start_date, due_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, description, start_date, due_date, mentor_id', 'safe', 'on'=>'search'),
@@ -61,7 +61,7 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'projectMentors' => array(self::MANY_MANY, 'ProjectMentor', 'projectmentor_project(project_id, project_mentor_user_id)'),
+			'projectmentorProjects' => array(self::HAS_MANY, 'ProjectmentorProject', 'project_id'),
 		);
 	}
 

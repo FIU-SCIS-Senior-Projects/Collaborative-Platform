@@ -29,7 +29,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textField($model,'description',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'description',array('size'=>1024,'maxlength'=>1024)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
@@ -41,7 +41,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'due_date'); ?>
-		<?php echo $form->textField($model,'due_date',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'due_date'); ?>
 		<?php echo $form->error($model,'due_date'); ?>
 	</div>
 

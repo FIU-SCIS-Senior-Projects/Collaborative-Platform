@@ -33,7 +33,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'due_date'); ?>
-		<?php echo $form->textField($model,'due_date',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'due_date'); ?>
 	</div>
 
 	<div class="row">

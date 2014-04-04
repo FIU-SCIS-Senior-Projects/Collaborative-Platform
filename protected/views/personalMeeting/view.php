@@ -25,5 +25,6 @@ $this->menu=array(
 		'mentee_user_id',
 		'personal_mentor_user_id',
 		'date',
+		'time',
 	),
 )); ?>

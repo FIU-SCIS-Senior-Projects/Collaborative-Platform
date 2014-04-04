@@ -88,6 +88,8 @@ class TicketController extends Controller
 
         $this->render('create',array('model'=>$model,));
         //$this->render('index',array('model'=>$model,));
+
+        //User::model()->sendEmailMessageNotificationAlert()
 	}
 
 	/**
