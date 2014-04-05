@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/UserController.php" afterPath="$PROJECT_DIR$/protected/controllers/UserController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +29,7 @@
       <file leaf-file-name="UserController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="231" column="80" selection-start="6471" selection-end="6471" vertical-scroll-proportion="0.61142856" vertical-offset="3392" max-vertical-offset="5950">
+            <state line="89" column="66" selection-start="2441" selection-end="2441" vertical-scroll-proportion="0.2464146" vertical-offset="1324" max-vertical-offset="5916">
               <folding />
             </state>
           </provider>
@@ -38,7 +38,7 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="246" column="5" selection-start="9239" selection-end="9239" vertical-scroll-proportion="-19.423077" vertical-offset="3677" max-vertical-offset="7973">
+            <state line="258" column="0" selection-start="9649" selection-end="9649" vertical-scroll-proportion="10.0" vertical-offset="4646" max-vertical-offset="7973">
               <folding>
                 <marker date="1396722318332" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
                 <marker date="1396722318332" expanded="true" signature="14552:14598" placeholder="SELECT * FRO..user_domain..." />
@@ -235,13 +235,21 @@
       <recent name="C:\wamp\www\coplat\protected\components" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.pMentorHome.php">
+  <component name="RunManager" selected="PHP Script.UserController.php">
     <configuration default="false" name="TicketController.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/protected/controllers/TicketController.php">
       <RunnerSettings RunnerId="PhpRunner" />
       <ConfigurationWrapper RunnerId="PhpRunner" />
       <method />
     </configuration>
     <configuration default="false" name="pMentorHome.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/protected/views/home/pMentorHome.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="UserController.php" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="http://localhost:63342/coplat/protected/controllers/UserController.php">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserController.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/protected/controllers/UserController.php">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -263,14 +271,18 @@
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="PHP Script.TicketController.php" />
       <item index="1" class="java.lang.String" itemvalue="PHP Script.pMentorHome.php" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.UserController.php" />
+      <item index="3" class="java.lang.String" itemvalue="PHP Script.UserController.php" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="PHP Script.pMentorHome.php" />
-        <item index="1" class="java.lang.String" itemvalue="PHP Script.TicketController.php" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="PHP Script.UserController.php" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.UserController.php" />
+        <item index="2" class="java.lang.String" itemvalue="PHP Script.pMentorHome.php" />
+        <item index="3" class="java.lang.String" itemvalue="PHP Script.TicketController.php" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +301,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -299,7 +311,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24958949" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.196875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11625404" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -352,7 +364,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -624,7 +636,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="5" selection-start="9239" selection-end="9239" vertical-scroll-proportion="-19.423077" vertical-offset="3677" max-vertical-offset="7973">
+        <state line="258" column="0" selection-start="9649" selection-end="9649" vertical-scroll-proportion="10.0" vertical-offset="4646" max-vertical-offset="7973">
           <folding>
             <marker date="1396722318332" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
             <marker date="1396722318332" expanded="true" signature="14552:14598" placeholder="SELECT * FRO..user_domain..." />
@@ -636,7 +648,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="231" column="80" selection-start="6471" selection-end="6471" vertical-scroll-proportion="0.61142856" vertical-offset="3392" max-vertical-offset="5950">
+        <state line="89" column="66" selection-start="2441" selection-end="2441" vertical-scroll-proportion="0.2464146" vertical-offset="1324" max-vertical-offset="5916">
           <folding />
         </state>
       </provider>

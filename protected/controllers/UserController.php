@@ -86,7 +86,7 @@ class UserController extends Controller
 			$model->password = $hasher->HashPassword($model->password);
 
 			if($model->save()){
-				$model->sendVerificationEmail();
+				//$model->sendVerificationEmail();
 			    $this->actionSendVerificationEmail($model->email);
 				//$this->redirect(array('/site/login','id'=>$model->id));
             }
@@ -229,13 +229,11 @@ class UserController extends Controller
 
     public function actionVerifyEmail($username, $activation_chain)
     {
-        $usermodel = User::model()->find("username=:$username AND activation_chain=:$activation_chain",array(':username'=>$username, ':activation_chain'=>$activation_chain));
+        $usermodel = User::model()->find("username=:username AND activation_chain=:activation_chain",array(':username'=>$username, ':activation_chain'=>$activation_chain));
         if ($usermodel != null)
         {
-            //var_dump($usermodel);
-            
             $usermodel->activated = 1;
-            $usermodel->save(true);
+            $usermodel->save(false);
             $this->redirect("/coplat/index.php/site/login");
         }
         else
