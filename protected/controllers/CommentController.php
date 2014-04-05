@@ -87,6 +87,8 @@ class CommentController extends Controller
             $model ->user_added = $user->fname.' '.$user->lname;
 			
 			$model->save(false);
+
+            User::sendTicketCommentedEmailNotification($model->id, $user->id);
 			//if($model->save())
 				//$this->redirect(array('/ticket/view','id'=>$id));
 		}
