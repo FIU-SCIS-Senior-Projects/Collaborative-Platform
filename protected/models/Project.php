@@ -45,7 +45,8 @@ class Project extends CActiveRecord
 			array('id', 'required'),
 			array('mentor_id', 'numerical', 'integerOnly'=>true),
 			array('id', 'length', 'max'=>11),
-			array('title, description', 'length', 'max'=>45),
+			array('title', 'length', 'max'=>45),
+            array('description','length','max'=>1024),
 			array('start_date, due_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

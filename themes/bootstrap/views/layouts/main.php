@@ -45,9 +45,9 @@
 					'items'=>array('-',
 									array('label'=>'Administrator', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserAdmin(Yii::app()->user->name)),
 									array('label'=>'Project Mentor', 'url'=>array('home/pMentorHome'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserProMentor(Yii::app()->user->name)),
-									array('label'=>'Personal Mentor', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserPerMentor(Yii::app()->user->name)),
-									array('label'=>'Domain Mentor', 'url'=>array('domainmentor/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserDomMentor(Yii::app()->user->name)),
-									array('label'=>'Mentee', 'url'=>array('mentee/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserMentee(Yii::app()->user->name)),
+									array('label'=>'Personal Mentor', 'url'=>array('home/ppMentorHome'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserPerMentor(Yii::app()->user->name)),
+									array('label'=>'Domain Mentor', 'url'=>array('home/dMentorHome'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserDomMentor(Yii::app()->user->name)),
+									array('label'=>'Mentee', 'url'=>array('home/menteeHome'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserMentee(Yii::app()->user->name)),
 									array('label'=>'Employer', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserEmployer(Yii::app()->user->name)),
 									array('label'=>'Judge', 'url'=>array('personalmentor/admin'), 'visible'=>!Yii::app()->user->isGuest && User::isCurrentUserJudge(Yii::app()->user->name)),
 									

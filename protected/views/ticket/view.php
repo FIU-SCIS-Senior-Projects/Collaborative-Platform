@@ -7,12 +7,12 @@
 //$comment = $model->comments;
 
 
-$this->breadcrumbs=array(
+$this->breadcrumbs = array(
     //'Tickets'=>array('index'),
     //$model->id,
 );
 
-$this->menu=array(
+$this->menu = array(
     //array('label'=>'List Ticket', 'url'=>array('index')),
     //array('label'=>'Create Ticket', 'url'=>array('create')),
     //array('label'=>'Update Ticket', 'url'=>array('update', 'id'=>$model->id)),
@@ -21,38 +21,44 @@ $this->menu=array(
 );
 ?>
 
-<div id = "fullcontent">
-<div style = "color: #0044cc"><h3>Ticket #  <?php echo $model->id; ?></h3></div>
+<div id="fullcontent">
+<div style="color: #0044cc"><h3>Ticket #  <?php echo $model->id; ?></h3></div>
 
-<div id = "container">
+<div id="container">
     <div style="border: 1px solid #C9E0ED; border-radius: 5px;">
         <?php
         $this->widget('zii.widgets.CDetailView', array(
-            'data'=>$model, 'attributes'=>array(
-                'id', 'creator_user_id', 'domain_id','status', 'created_date', 'subject',
+            'data' => $model, 'attributes' => array(
+                'id', 'creator_user_id', 'domain_id', 'status', 'created_date', 'subject',
                 'description', 'assign_user_id',
             ),
         )); ?>
     </div>
-</div> <!-- End Container -->
+</div>
+<!-- End Container -->
 
 <br>
-<div style = "color: #0044cc"><h3>Comments</h3></div>
-<div > <!-- List of Comments to a Ticket -->
+
+<div style="color: #0044cc"><h3>Comments</h3></div>
+<div> <!-- List of Comments to a Ticket -->
     <div style="height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;">
         <div class="datagrid">
             <table>
                 <thead>
                 <tr>
-                    <th width="1%"> No</th><th width="74%">Description</th><th width="10%">Date Added</th><th width="25%">Added by</th>
+                    <th width="1%"> No</th>
+                    <th width="74%">Description</th>
+                    <th width="10%">Date Added</th>
+                    <th width="25%">Added by</th>
                 </tr>
                 </thead>
-                <?php foreach ($model->comments as $comment)
-                {?>
+                <?php foreach ($model->comments as $comment) {
+                    ?>
                     <tbody>
-                    <tr><td><?php echo $comment->id; ?></td>
+                    <tr>
+                        <td><?php echo $comment->id; ?></td>
                         <td><?php echo $comment->description ?></td>
-                        <td><?php echo date("M d, Y h:i A", strtotime($comment->added_date))?></td>
+                        <td><?php echo date("M d, Y h:i A", strtotime($comment->added_date)) ?></td>
                         <td>data</td>
                     </tr>
                     </tbody>
@@ -62,18 +68,20 @@ $this->menu=array(
             </table>
         </div>
     </div>
-</div> <!-- End List of Comments -->
+</div>
+<!-- End List of Comments -->
 
 
 <br>
-<div style = "margin-top: 15px"> <!-- Buttons Options -->
+
+<div style="margin-top: 15px"> <!-- Buttons Options -->
     <div>
 
         <!-- Cancel Button and render to index -->
         <?php
         $this->widget('bootstrap.widgets.TbButton', array(
-            'buttonType'=>'link', 'id'=>'new-box', 'url'=> '/coplat/index.php/ticket/index',
-            'type'=>'primary', 'label'=>'Back'));
+            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/index',
+            'type' => 'primary', 'label' => 'Back'));
         ?>&nbsp;&nbsp;
         <!-- New Button
 	        <?php
@@ -91,36 +99,36 @@ $this->menu=array(
         ?>
 
         <!-- Comment Button -->
-        <?php	/*echo CHtml::button('Comment', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
+        <?php /*echo CHtml::button('Comment', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
 	 		)); */
         ?>
         <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'label'=>'Comment',
-            'type'=>'primary',
-            'htmlOptions'=>array(
-                'data-toggle'=>'modal',
-                'data-target'=>'#myModalComment',
-                'style'=>'width: 100px',
+            'label' => 'Comment',
+            'type' => 'primary',
+            'htmlOptions' => array(
+                'data-toggle' => 'modal',
+                'data-target' => '#myModalComment',
+                'style' => 'width: 100px',
             ),
         ));
         ?>&nbsp;&nbsp;
         <!-- Re-Assign Button -->
-        <?php	/*echo CHtml::button('Re-Route', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
+        <?php /*echo CHtml::button('Re-Route', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
 	 		));*/
         ?>
         <!-- Button trigger modal -->
         <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'label'=>'Re-Assign',
-            'type'=>'primary',
-            'htmlOptions'=>array(
-                'data-toggle'=>'modal',
-                'data-target'=>'#myModalReAssign',
-                'style'=>'width: 100px',
+            'label' => 'Re-Assign',
+            'type' => 'primary',
+            'htmlOptions' => array(
+                'data-toggle' => 'modal',
+                'data-target' => '#myModalReAssign',
+                'style' => 'width: 100px',
             ),
         ));
         ?>
         <!-- Answer Button -->
-        <?php	/*echo CHtml::button('Answer', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),));*/
+        <?php /*echo CHtml::button('Answer', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),));*/
         ?>
         <!-- Button trigger modal -->
         <?php /*$this->widget('bootstrap.widgets.TbButton', array(
@@ -135,62 +143,68 @@ $this->menu=array(
         ?>
         <!-- Delete Button -->
         <?php /*echo CHtml::button('Delete', array("class"=>"btn btn-primary", 'submit' => array('Delete', 'id'=>$model->id),
-			'confirm' => 'Do you want to Drop this ticket from the Mentoring Module?')); */?>
+			'confirm' => 'Do you want to Drop this ticket from the Mentoring Module?')); */
+        ?>
     </div>
-</div> <!-- End Buttons Options -->
+</div>
+<!-- End Buttons Options -->
 
 <br>
-<div style = "color: #0044cc"><h3>Attachment</h3></div>
-<div > <!-- Attachment-->
+
+<div style="color: #0044cc"><h3>Attachment</h3></div>
+<div> <!-- Attachment-->
     <div style="height: 50px; width: 300px; border: 1px solid #C9E0ED; border-radius: 5px;">
 
     </div>
-</div> <!-- End List of Comments -->
+</div>
+<!-- End List of Comments -->
 
 <!-- Modals -->
 
-<div class="modal fade" id="myModalComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModalComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Append Comment to a Ticket #<?php echo $model->id?></h4>
+        <h4 class="modal-title" id="myModalLabel">Append Comment to a Ticket #<?php echo $model->id ?></h4>
     </div>
     <div class="modal-body">
-        <?php $form=$this->beginWidget('CActiveForm', array(
-            'id'=>'comment-form',
+        <?php $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'comment-form',
             //'enableAjaxValidation'=>false,
         )); ?>
         <div style="margin-left:20px">
-            <?php $comment = new Comment();?>
-            <!--  	<input style ="display:none" type = "text" id = "ticket_id" value=<?php /*echo $model->id;*/?>></input>-->
-            <?php echo $form->textArea($comment,'description',array(
-                'id'=>'description', 'style'=>'width:480px', 'cols'=>20, 'rows'=>5,
-                'width'=>'400px')); ?>
+            <?php $comment = new Comment(); ?>
+            <!--  	<input style ="display:none" type = "text" id = "ticket_id" value=<?php /*echo $model->id;*/ ?>></input>-->
+            <?php echo $form->textArea($comment, 'description', array(
+                'id' => 'description', 'style' => 'width:480px', 'cols' => 20, 'rows' => 5,
+                'width' => '400px')); ?>
         </div>
 
     </div>
     <div class="modal-footer">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'buttonType'=>'Submit', 'type'=>'primary', 'label'=>'Append','url'=>'#',
-            'htmlOptions'=>array('id'=>'append'),
+            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Append', 'url' => '#',
+            'htmlOptions' => array('id' => 'append'),
         ));
         ?>
 
         <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'label'=>'Close', 'url'=>'#',
-            'htmlOptions'=>array('data-dismiss'=>'modal'),
+            'label' => 'Close', 'url' => '#',
+            'htmlOptions' => array('data-dismiss' => 'modal'),
         ));
         ?>
 
-        <?php $this->endWidget()?>
+        <?php $this->endWidget() ?>
     </div>
 </div>
 
 <!-- Script for Comment modal -->
 <script>
     $('a#append').on('click', function () {
-        $.post('/coplat/index.php/comment/create/<?php echo $model->id?>',$('#comment-form').serialize(),function(message){
-            window.location = location;	});
+        $.post('/coplat/index.php/comment/create/<?php echo $model->id?>', $('#comment-form').serialize(), function (message) {
+            window.location = location;
+        });
         return false;
     })
 </script>
@@ -199,7 +213,8 @@ $this->menu=array(
 
 
 <!-- Modal RE-ASSIGN-->
-<div class="modal fade" id="myModalReAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModalReAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -219,7 +234,8 @@ $this->menu=array(
 
 
 <!-- Modal ANSWER TICKET-->
-<div class="modal fade" id="myModalAnswer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModalAnswer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

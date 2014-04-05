@@ -35,7 +35,7 @@ class HomeController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'pMentorHome'),
+                'actions' => array('create', 'update', 'pMentorHome','dMentorHome'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -44,6 +44,18 @@ class HomeController extends Controller
         );
     }
 
+
+    public function actiondMentorHome()
+    {
+        /** @var User $username */
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+
+        $this->render('dMentorHome',array('user'=> $user));
+
+
+
+    }
 
     public function actionpMentorHome()
     {
@@ -71,9 +83,9 @@ class HomeController extends Controller
         /** @var User $usermentee */
 
 
-        var_dump($projectmentor_project);
-        exit;
-        $menteeId = array();
+        //var_dump($projectmentor_project);
+        //exit;
+        /*$menteeId = array();
         foreach ($projectmentor_project as $Id => $ment) {
             $menteeId[$Id] = Mentee::model()->findByAllSql("SELECT * FROM mentee WHERE projectmentor_project_id=:id", array("id"=>$ment->id));
 
@@ -83,10 +95,10 @@ class HomeController extends Controller
         foreach($menteeId as $d => $md)
         {
             $menteeName[$d] = User::model()->findAllBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$md->user_id));
-        }
+        }*/
         /* End Return all the mentees for the project mentor */
 
-        $this->render('pMentorHome', array('menteeName' => $menteeName, 'user' => $user, 'meetings' => $meetings, 'mentees' => $mentees, 'projects' => $projects
+        $this->render('pMentorHome', array(/*'menteeName' => $menteeName,*/ 'user' => $user, 'meetings' => $meetings, 'mentees' => $mentees, 'projects' => $projects
             ));
     }
 
