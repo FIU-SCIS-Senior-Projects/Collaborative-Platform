@@ -2361,3 +2361,21 @@ in C:\wamp\www\coplat\index.php (13)
 in C:\wamp\www\coplat\protected\controllers\MessageController.php (52)
 in C:\wamp\www\coplat\index.php (13)
 >>>>>>> FETCH_HEAD
+2014/04/05 17:18:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profile/userProfile".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/userPro...')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profile/userProfile
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2014/04/05 17:19:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profile/userProfile".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/userPro...')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profile/userProfile
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---

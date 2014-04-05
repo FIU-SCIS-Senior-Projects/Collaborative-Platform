@@ -25,7 +25,7 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif(!$user->validatePassword($this->password))
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
-		elseif($user->activated == null)
+		elseif($user->activated == 0)
 			$this->errorCode = 7;				
 		else
 		{

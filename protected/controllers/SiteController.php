@@ -91,8 +91,33 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+			if($model->validate()){
+                $username = $model->username;
+                $user = User::model()->find("username=:username",array(':username'=>$username));
+                if ($user->disable != 1)
+                {
+                    $model->login();
+                    if (Yii::app()->user->returnUrl == "/coplat/index.php") {
+                        if ($user->isAdmin()) {
+                            $this->redirect("/coplat/index.php/home/pMentorHome");
+                        }elseif ($user->isProMentor()) {
+                            $this->redirect("/coplat/index.php/home/pMentorHome");
+                        } elseif ($user->isDomMentor()) {
+                            $this->redirect("/coplat/index.php/home/dMentorHome");
+                        } elseif ($user->isPerMentor()) {
+                            $this->redirect("/coplat/index.php/home/pMentorHome");
+                        } else {
+                            $this->redirect("/coplat/index.php/home/pMentorHome");
+                        }
+                    } else {
+                        $this->redirect(Yii::app()->user->returnUrl);
+                    }
+                } else {
+                    $this->redirect("/coplat/index.php/site/page?view=disableUser");
+                }
+
+            }
+
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
