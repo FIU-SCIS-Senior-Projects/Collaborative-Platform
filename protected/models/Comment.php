@@ -45,6 +45,7 @@ class Comment extends CActiveRecord
 				
 			array('decription', 'length', 'max'=>500),
 			array('ticket_id', 'length', 'max'=>10),
+            array('user_added', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, description, added_date, ticket_id', 'safe', 'on'=>'search'),
@@ -73,6 +74,7 @@ class Comment extends CActiveRecord
 			'description' => 'Description',
 			'added_date' => 'Added Date',
 			'ticket_id' => 'Ticket',
+            'user_added'=> 'User Added',
 		);
 	}
 

@@ -10,19 +10,10 @@
 
 /* @var $this HomeController */
 /* @var $dataProvider CActiveDataProvider */
-
-$this->breadcrumbs = array(
-    'Project Mentors',
-);
-
-$this->menu = array(
-    //array('label'=>'Create ProjectMentor', 'url'=>array('create')),
-    // array('label'=>'Manage ProjectMentor', 'url'=>array('admin')),
-);
-
-
 ?>
-<link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+<link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
 <!-- Js for popover -->
 <meta charset="UTF-8">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -40,6 +31,7 @@ $this->menu = array(
     }
 </style>
 <!-- End Js for popover -->
+
 
 <div id="fullcontent">
     <div style="color: #0044cc"><h2>Project Mentor Home</h2></div>
@@ -67,7 +59,6 @@ $this->menu = array(
                             <strong>Start
                                 date:</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
                             <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
-
                         </p>
                     <?php
                     }
@@ -86,8 +77,8 @@ $this->menu = array(
                     foreach ($meetings as $id => $meeting) {
                         /** @var $mentee User */
                         $mentee = $mentees[$id];
-                        printf("%s @ %s @ %s <hr/>", $mentee, date("M d, Y "), date("h:i A",strtotime($meeting->time)));
-                       // printf("%s @ %s @ %s <hr/>", $mentee, date("M d, Y h:i A", strtotime($meeting->time)));
+                        //printf("%s @ %s @ %s <hr/>", $mentee, date("M d, Y "), date("h:i A",strtotime($meeting->time)));
+                        printf("%s @ %s @ %s<hr/>", $mentee, date("M d, Y", strtotime($meeting->date)), date("h:i A", strtotime($meeting->time)));
                     }
                 }?>
             </div>
@@ -125,73 +116,74 @@ $this->menu = array(
 
 <!-- Modals -->
 
-<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'myModalNewMeeting')); ?>
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'myModalNewMeeting')); ?>
 
 <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalNewMeeting">New Meeting</h4>
-    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalNewMeeting">New Meeting</h4>
+</div>
 
-    <div class="modal-body">
-        <?php $form = $this->beginWidget('CActiveForm', array(
-            'id' => 'projectMeeting-form',
-            //'enableAjaxValidation'=>false,
-        )); ?>
-        <div style="margin-left:20px">
-            <?php $ProjectMeeting = new ProjectMeeting(); ?>
+<div class="modal-body">
+    <?php $form = $this->beginWidget('CActiveForm', array(
+        'id' => 'projectMeeting-form',
+        //'enableAjaxValidation'=>false,
+    )); ?>
+    <div style="margin-left:20px">
+        <?php $ProjectMeeting = new ProjectMeeting(); ?>
 
-            <?php /*$data = array();
+        <?php /*$data = array();
 
             foreach ($menteeName as $mod) {
             $data[$mod->id] = $mod->fname .' '. $mod->lname;
             }*/
-            ?>
-            <?php echo $form->labelEx($ProjectMeeting, 'mentee_user_id'); ?>
-            <?php echo $form->TextField($ProjectMeeting, 'mentee_user_id'); ?>
-            <?php /*echo $form->dropDownList($ProjectMeeting, 'mentee_user_id', CHtml::listData(User::model()->findAll(), 'id', 'fname')); */ ?>
-
-            <?php /*echo $form->textField($ProjectMeeting, 'mentee_user_id', array('size' => 11, 'maxlength' => 11)); */ ?>
-
-            <!-- LABEL AND INPUT FOR DATE -->
-            <?php echo $form->labelEx($ProjectMeeting, 'date'); ?>
-            <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                'name' => 'ProjectMeeting[date]',
-                'options' => array(
-                    'showAnim' => 'fold',
-                    'dateFormat' => 'yy-mm-dd',
-                ),
-            ));?>
-            (yyyy-mm-dd)
-
-
-            <!-- LABEL AND INPUT FOR TIME-->
-            <?php echo $form->labelEx($ProjectMeeting, 'time'); ?>
-            <?php //echo $form->textField($videoInterview,'time'); ?>
-            <input name="ProjectMeeting[time]" id="Project_Meeting_time" type="time">
-            (eg. 03:28pm or 3:28am)
-
-
-        </div>
-
-    </div>
-    <div class="modal-footer">
-        <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Submit', 'url' => '#',
-            'htmlOptions' => array('id' => 'submit'),
-        ));
         ?>
+        <?php echo $form->labelEx($ProjectMeeting, 'mentee_user_id'); ?>
+        <?php echo $form->TextField($ProjectMeeting, 'mentee_user_id'); ?>
+        <?php /*echo $form->dropDownList($ProjectMeeting, 'mentee_user_id', CHtml::listData(User::model()->findAll(), 'id', 'fname')); */ ?>
 
-        <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => 'Close', 'url' => '#',
-            'htmlOptions' => array('data-dismiss' => 'modal'),
-        ));
-        ?>
+        <?php /*echo $form->textField($ProjectMeeting, 'mentee_user_id', array('size' => 11, 'maxlength' => 11)); */ ?>
 
-        <?php $this->endWidget() ?>
-        <?php $this->endWidget() ?>
+        <!-- LABEL AND INPUT FOR DATE -->
+        <?php echo $form->labelEx($ProjectMeeting, 'date'); ?>
+        <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+            'name' => 'ProjectMeeting[date]',
+            'options' => array(
+                'showAnim' => 'fold',
+                'dateFormat' => 'yy-mm-dd',
+            ),
+        ));?>
+        (yyyy-mm-dd)
+
+        <!-- LABEL AND INPUT FOR TIME-->
+        <?php echo $form->labelEx($ProjectMeeting, 'time'); ?>
+        <?php //echo $form->textField($videoInterview,'time'); ?>
+        <input name="ProjectMeeting[time]" id="Project_Meeting_time" type="time">
+        (eg. 03:28pm or 3:28am)
+
+
     </div>
 
 </div>
+
+<div class="modal-footer">
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Submit', 'url' => '#',
+        'htmlOptions' => array('id' => 'submit'),
+    ));
+    ?>
+
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label' => 'Close', 'url' => '#',
+        'htmlOptions' => array('data-dismiss' => 'modal'),
+    ));
+    ?>
+
+    <?php $this->endWidget() ?>
+    <?php $this->endWidget() ?>
+</div>
+
+</div>
+
 <!-- Script for Comment modal -->
 <script>
     $('a#submit').on('click', function () {

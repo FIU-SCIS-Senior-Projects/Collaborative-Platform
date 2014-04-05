@@ -80,16 +80,19 @@ class CommentController extends Controller
 			$model -> ticket_id = $id;
 			/*Set the date */
 			$model -> added_date = new CDbExpression('NOW()');
+
+            /* Get the name and lastname of the current user */
+            $user = User::model()->getCurrentUser();
+            /** @var User user_added */
+            $model ->user_added = $user->fname.' '.$user->lname;
 			
 			$model->save(false);
 			//if($model->save())
 				//$this->redirect(array('/ticket/view','id'=>$id));
 		}
-
 		/*$this->render('create',array(
 			'model'=>$model,
 		));*/
-
 	}
 
 	/**

@@ -59,7 +59,7 @@ $this->menu = array(
                         <td><?php echo $comment->id; ?></td>
                         <td><?php echo $comment->description ?></td>
                         <td><?php echo date("M d, Y h:i A", strtotime($comment->added_date)) ?></td>
-                        <td>data</td>
+                        <td><?php echo $comment->user_added?></td>
                     </tr>
                     </tbody>
                 <?php

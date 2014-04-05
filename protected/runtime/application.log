@@ -816,6 +816,7 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/user/delete/8?ajax=user-grid
 HTTP_REFERER=http://localhost/coplat/index.php/user/admin
 ---
+<<<<<<< HEAD
 2014/04/05 01:44:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/auth/CAccessControlFilter.php:179
 Stack trace:
 #0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
@@ -2329,3 +2330,34 @@ REQUEST_URI=/coplat/index.php/home/dMentorHome
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/views/home/dMentorHome.php (25)
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/HomeController.php (54)
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+=======
+2014/04/05 00:10:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainmentor/ad...')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/domainmentor/admin
+HTTP_REFERER=http://localhost/coplat/index.php
+---
+2014/04/05 00:11:50 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (33)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/05 00:11:50 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (52)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/05 00:16:53 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (33)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/05 00:16:53 [warning] [application] Failed to set unsafe attribute "subject" of "Message".
+in C:\wamp\www\coplat\protected\controllers\MessageController.php (52)
+in C:\wamp\www\coplat\index.php (13)
+>>>>>>> FETCH_HEAD
