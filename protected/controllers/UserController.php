@@ -234,7 +234,7 @@ class UserController extends Controller
         {
             var_dump($usermodel);
             
-            $usermodel->activated = true;
+            $usermodel->activated = 1;
             $usermodel->save(false);
             $this->redirect("/coplat/index.php/site/login");
         }

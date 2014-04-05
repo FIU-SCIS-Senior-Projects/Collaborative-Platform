@@ -238,7 +238,7 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $address = $this->email;
         $link = CHtml::link('click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/user/VerifyEmail?username=' . $this->username
-            . '&activation_string=' . $this->activation_chain);
+            . '&activation_chain=' . $this->activation_chain);
         $email->to = $address;
         $email->subject = 'Verify your account on the Collaborative Platform';
         $email->message = "You need to verify your account before logging in.  Use this $link to verify your account.";
@@ -261,7 +261,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $address;
-        $email->from = 'JobFair';
+        $email->from = 'Collaborative Platform';
         $email->message = $message;
         $email->subject = 'Collaborative Platform';
         $email->send();
