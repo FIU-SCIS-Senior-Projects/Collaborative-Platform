@@ -270,12 +270,11 @@ class User extends CActiveRecord
 
     public static function sendEmailMessageNotificationAlert($address, $message)
     {
-
         $email = Yii::app()->email;
         $email->to = $address;
         $email->from = 'Collaborative Platform';
         $email->subject = 'New Message';
-        $email->message = $message;
+        $email->message = "You got a message at the collaborative platform";
         $email->send();
     }
 

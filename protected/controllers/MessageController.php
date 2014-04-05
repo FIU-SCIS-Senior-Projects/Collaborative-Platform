@@ -62,8 +62,7 @@ class MessageController extends Controller
 				if ($recive != NULL){
                     $message = "You just got a message from ".$model->sender."<br/>".$model->message."<br/>".$link;
                     $html = User::replaceMessage($recive->username, $message);
-                    var_dump($html);
-                    User::sendEmailMessageNotificationAlert($recive->email, $html);
+                    User::sendEmailMessageNotificationAlert($recive->email, $message);
 				}
 				$this->redirect("/coplat/index.php/message");
 				return;

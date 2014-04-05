@@ -4,6 +4,7 @@
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/MessageController.php" afterPath="$PROJECT_DIR$/protected/controllers/MessageController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +48,7 @@
       <file leaf-file-name="MessageController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="36" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.756193" vertical-offset="508" max-vertical-offset="4335">
+            <state line="64" column="86" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.4876141" vertical-offset="714" max-vertical-offset="4318">
               <folding />
             </state>
           </provider>
@@ -94,12 +95,14 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="296" column="32" selection-start="10974" selection-end="10974" vertical-scroll-proportion="-18.76923" vertical-offset="4544" max-vertical-offset="7973">
+            <state line="276" column="76" selection-start="10298" selection-end="10298" vertical-scroll-proportion="-21.26923" vertical-offset="3833" max-vertical-offset="7650">
               <folding>
-                <marker date="1396727057802" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
-                <marker date="1396727057802" expanded="true" signature="14545:14591" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1396727057802" expanded="true" signature="15088:15134" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1396727057802" expanded="true" signature="15495:15557" placeholder="SELECT COUNT..." />
+                <element signature="n#sendEmailWithNewPassword#0;n#User#0;n#!!top" expanded="false" />
+                <element signature="n#sendEmailNotificationAlert#0;n#User#0;n#!!top" expanded="false" />
+                <marker date="1396728488104" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
+                <marker date="1396728488104" expanded="true" signature="14585:14631" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1396728488104" expanded="true" signature="15128:15174" placeholder="SELECT * FRO..domain_mentor..." />
+                <marker date="1396728488104" expanded="true" signature="15535:15597" placeholder="SELECT COUNT..." />
               </folding>
             </state>
           </provider>
@@ -169,8 +172,8 @@
         <option value="$PROJECT_DIR$/themes/bootstrap/views/site/index.php" />
         <option value="$PROJECT_DIR$/protected/controllers/SiteController.php" />
         <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
-        <option value="$PROJECT_DIR$/protected/models/User.php" />
         <option value="$PROJECT_DIR$/protected/controllers/MessageController.php" />
+        <option value="$PROJECT_DIR$/protected/models/User.php" />
       </list>
     </option>
   </component>
@@ -322,12 +325,7 @@
       <recent name="C:\wamp\www\coplat\protected\components" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.UserController.php">
-    <configuration default="false" name="TicketController.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/protected/controllers/TicketController.php">
-      <RunnerSettings RunnerId="PhpRunner" />
-      <ConfigurationWrapper RunnerId="PhpRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="PHP Script.MessageController.php">
     <configuration default="false" name="pMentorHome.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/protected/views/home/pMentorHome.php">
       <method />
     </configuration>
@@ -337,6 +335,14 @@
       <method />
     </configuration>
     <configuration default="false" name="UserController.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/protected/controllers/UserController.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="MessageController.php" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="http://localhost:63342/coplat/protected/controllers/MessageController.php">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="MessageController.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/protected/controllers/MessageController.php">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -358,22 +364,41 @@
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="PHP Script.TicketController.php" />
-      <item index="1" class="java.lang.String" itemvalue="PHP Script.pMentorHome.php" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.UserController.php" />
-      <item index="3" class="java.lang.String" itemvalue="PHP Script.UserController.php" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="PHP Script.pMentorHome.php" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.UserController.php" />
+      <item index="2" class="java.lang.String" itemvalue="PHP Script.UserController.php" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.MessageController.php" />
+      <item index="4" class="java.lang.String" itemvalue="PHP Script.MessageController.php" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="PHP Script.UserController.php" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.UserController.php" />
-        <item index="2" class="java.lang.String" itemvalue="PHP Script.pMentorHome.php" />
-        <item index="3" class="java.lang.String" itemvalue="PHP Script.TicketController.php" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="PHP Script.MessageController.php" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.MessageController.php" />
+        <item index="2" class="java.lang.String" itemvalue="PHP Script.UserController.php" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.UserController.php" />
+        <item index="4" class="java.lang.String" itemvalue="PHP Script.pMentorHome.php" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="" />
@@ -451,7 +476,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/protected/controllers/MessageController.php</url>
+          <line>12</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -724,18 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="296" column="32" selection-start="10974" selection-end="10974" vertical-scroll-proportion="-18.76923" vertical-offset="4544" max-vertical-offset="7973">
-          <folding>
-            <marker date="1396727057802" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
-            <marker date="1396727057802" expanded="true" signature="14545:14591" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1396727057802" expanded="true" signature="15088:15134" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1396727057802" expanded="true" signature="15495:15557" placeholder="SELECT COUNT..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/NotificationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="5" selection-start="89" selection-end="89" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="901">
@@ -759,9 +779,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="276" column="76" selection-start="10298" selection-end="10298" vertical-scroll-proportion="-21.26923" vertical-offset="3833" max-vertical-offset="7650">
+          <folding>
+            <element signature="n#sendEmailWithNewPassword#0;n#User#0;n#!!top" expanded="false" />
+            <element signature="n#sendEmailNotificationAlert#0;n#User#0;n#!!top" expanded="false" />
+            <marker date="1396728488104" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
+            <marker date="1396728488104" expanded="true" signature="14585:14631" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1396728488104" expanded="true" signature="15128:15174" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1396728488104" expanded="true" signature="15535:15597" placeholder="SELECT COUNT..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="36" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.756193" vertical-offset="508" max-vertical-offset="4335">
+        <state line="64" column="86" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.4876141" vertical-offset="714" max-vertical-offset="4318">
           <folding />
         </state>
       </provider>
