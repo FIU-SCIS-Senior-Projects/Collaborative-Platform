@@ -295,7 +295,7 @@ class User extends CActiveRecord
 
     }
 
-    public static function sendTicketCommentedEmailNotification($comment_id, $comment_creator_id)
+    public static function sendTicketCommentedEmailNotification($comment_id)
     {
         $comment = Comment::model()->find("id=:id",array(':id' => $comment_id));
         $ticket = Ticket::model()->find("id=:id",array(':id' => $comment->ticket_id));
@@ -304,32 +304,33 @@ class User extends CActiveRecord
 
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $email_mentor = Yii::app()->email;
-        $email_mentor->to = $ticket_mentor->email;
-        $email_mentor->from = 'Collaborative Platform';
-        $email_mentor->subject = 'Comment added to Ticket #'.$ticket->id;
 
-        $email_creator = Yii::app()->email;
-        $email_creator->to = $ticket_creator->email;
-        $email_creator->from = 'Collaborative Platform';
-        $email_creator->subject = 'Comment added to Ticket #'.$ticket->id;
-
-        if($ticket_creator->id == $comment_creator_id)
+        if($ticket_creator->id == User::model()->getCurrentUser()->id)
         {
-            $email_mentor->message = "The user ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
-            $email_mentor->send();
+            $email = Yii::app()->email;
+            $email->to = $ticket_mentor->email;
+            $email->from = 'Collaborative Platform';
+            $email->subject = 'Comment added to Ticket #'.$ticket->id;
+            $email->message = "The user ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
+            $email->send();
         }
-        elseif($ticket_mentor->id == $comment_creator_id)
+        elseif($ticket_mentor->id == User::model()->getCurrentUser()->id)
         {
-            $email_creator->message = "The Domain Mentor ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
-            $email_creator->send();
+            $email = Yii::app()->email;
+            $email->to = $ticket_creator->email;
+            $email->from = 'Collaborative Platform';
+            $email->subject = 'Comment added to Ticket #'.$ticket->id;
+            $email->message = "The Domain Mentor ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
+            $email->send();
         }
         else{
-            $comment_creator = User::model()->find("id=:id",array(':id' => $comment_creator_id));
-            $email_creator->message = "The System Administrator ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
-            $email_creator->send();
-            $email_mentor->message = "The System Administrator ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
-            $email_mentor->send();
+            $comment_creator = User::model()->getCurrentUser();
+            $email = Yii::app()->email;
+            $email->to = $ticket_mentor->email.",".$ticket_creator->email;
+            $email->from = 'Collaborative Platform';
+            $email->subject = 'Comment added to Ticket #'.$ticket->id;
+            $email->message = "The System Administrator ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
+            $email->send();
         }
     }
     public static function sendUserNotificationMessageAlert($sender, $reciver, $link, $level)
