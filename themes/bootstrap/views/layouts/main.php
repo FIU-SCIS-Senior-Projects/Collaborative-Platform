@@ -56,8 +56,7 @@
 					//array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 					//array('label'=>'Contact', 'url'=>array('/site/contact')),
 					array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
-					array('label'=>'Ticket', 'url'=>array('/ticket/index'), 'visible'=>!Yii::app()->user->isGuest ),
-					
+
 					/*array('label'=>'Meeting','visible'=>!Yii::app()->user->isGuest && (User::isCurrentUserDomMentor(Yii::app()->user->name)|| User::isCurrentUserPerMentor(Yii::app()->user->name)),
 					'class'=>'bootstrap.widgets.TbMenu',
 					'htmlOptions'=>array('class'=>'pull-left'),
@@ -126,7 +125,10 @@
 									
 							),
 					),
-				)
+
+                    array('label'=>'New Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
+
+                )
 			),
 			
 			array(
