@@ -229,13 +229,13 @@ class UserController extends Controller
 
     public function actionVerifyEmail($username, $activation_chain)
     {
-        $usermodel = User::model()->find("username=:username AND activation_chain=:activation_chain",array(':username'=>$username, ':activation_chain'=>$activation_chain));
+        $usermodel = User::model()->find("username=:$username AND activation_chain=:$activation_chain",array(':username'=>$username, ':activation_chain'=>$activation_chain));
         if ($usermodel != null)
         {
-            var_dump($usermodel);
+            //var_dump($usermodel);
             
             $usermodel->activated = 1;
-            $usermodel->save(false);
+            $usermodel->save(true);
             $this->redirect("/coplat/index.php/site/login");
         }
         else

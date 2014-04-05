@@ -237,11 +237,12 @@ class User extends CActiveRecord
     {
         $email = Yii::app()->email;
         $address = $this->email;
-        $link = CHtml::link('click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/user/VerifyEmail?username=' . $this->username
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/user/VerifyEmail?username=' . $this->username
             . '&activation_chain=' . $this->activation_chain);
         $email->to = $address;
+        $email->from = 'Collaborative Platform';
         $email->subject = 'Verify your account on the Collaborative Platform';
-        $email->message = "You need to verify your account before logging in.  Use this $link to verify your account.";
+        $email->message = "You need to verify your account before logging in.  $link to verify your account.";
         $email->send();
     }
 
