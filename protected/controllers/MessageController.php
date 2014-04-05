@@ -54,16 +54,15 @@ class MessageController extends Controller
 					$model->created_date = date('Y-m-d H:i:s');
 					//$model->userImage = $model->sender0->image_url;					
 					$model->subject = $_POST['Message']['subject'];
-				}	
-				User::sendUserNotificationMessageAlert(3, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);			
+				}
 
-				//User::sendUserNotificationMessageAlert(Yii::app()->user->id, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);
+				User::sendUserNotificationMessageAlert(Yii::app()->user->id, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);
 				$link= CHtml::link('click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
 				$recive = User::model()->find("username=:username",array(':username'=>$model->receiver));
 				if ($recive != NULL){
-				$message = "You just got a message from $model->sender<br/> '$model->message'<br/>$link";
-				$html = User::replaceMessage($recive->username, $message); 
-				User::sendEmailMessageNotificationAlert($recive->email, $recive->username, $model->sender, $html);
+                    $message = "You just got a message from '$model->sender'<br/> '$model->message'<br/>$link";
+                    $html = User::replaceMessage($recive->username, $message);
+                    User::sendEmailMessageNotificationAlert($recive->email, $html);
 				}
 				$this->redirect("/coplat/index.php/message");
 				return;

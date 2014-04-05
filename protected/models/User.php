@@ -268,7 +268,7 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    public static function sendEmailMessageNotificationAlert($address, $to, $from, $message)
+    public static function sendEmailMessageNotificationAlert($address, $message)
     {
 
         $email = Yii::app()->email;
@@ -292,7 +292,7 @@ class User extends CActiveRecord
             $model->been_read = 0;
             $model->link = $link;
             //print "<pre>"; print_r($model->link);print "</pre>";return;
-            $model->message = 'you got a new message from ' . $sender;
+            $model->message = 'You got a new message from ' . $sender;
             $model->importancy = 3;
             $model->save(false);
         }
