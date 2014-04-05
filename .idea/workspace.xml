@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/CommentController.php" afterPath="$PROJECT_DIR$/protected/controllers/CommentController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
     </list>
     <ignored path="coplat.iws" />
@@ -81,26 +82,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="329" column="52" selection-start="12966" selection-end="12966" vertical-scroll-proportion="1.0232558" vertical-offset="4539" max-vertical-offset="8585">
+            <state line="299" column="77" selection-start="11284" selection-end="11284" vertical-scroll-proportion="-5.230769" vertical-offset="4641" max-vertical-offset="8568">
               <folding>
                 <element signature="n#sendEmailWithNewPassword#0;n#User#0;n#!!top" expanded="false" />
                 <element signature="n#sendEmailNotificationAlert#0;n#User#0;n#!!top" expanded="false" />
-                <marker date="1396737789031" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
-                <marker date="1396737789031" expanded="true" signature="17535:17581" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1396737789031" expanded="true" signature="18078:18124" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1396737789031" expanded="true" signature="18485:18547" placeholder="SELECT COUNT..." />
+                <marker date="1396737970890" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
+                <marker date="1396737970890" expanded="true" signature="17444:17490" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1396737970890" expanded="true" signature="17987:18033" placeholder="SELECT * FRO..domain_mentor..." />
+                <marker date="1396737970890" expanded="true" signature="18394:18456" placeholder="SELECT COUNT..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CommentController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/CommentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="76" selection-start="2322" selection-end="2322" vertical-scroll-proportion="-16.23077" vertical-offset="1108" max-vertical-offset="3502">
+            <state line="92" column="67" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.61290324" vertical-offset="1108" max-vertical-offset="3502">
               <folding />
             </state>
           </provider>
@@ -761,24 +762,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/CommentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="76" selection-start="2322" selection-end="2322" vertical-scroll-proportion="-16.23077" vertical-offset="1108" max-vertical-offset="3502">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="329" column="52" selection-start="12966" selection-end="12966" vertical-scroll-proportion="1.0232558" vertical-offset="4539" max-vertical-offset="8585">
+        <state line="299" column="77" selection-start="11284" selection-end="11284" vertical-scroll-proportion="-5.230769" vertical-offset="4641" max-vertical-offset="8568">
           <folding>
             <element signature="n#sendEmailWithNewPassword#0;n#User#0;n#!!top" expanded="false" />
             <element signature="n#sendEmailNotificationAlert#0;n#User#0;n#!!top" expanded="false" />
-            <marker date="1396737789031" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
-            <marker date="1396737789031" expanded="true" signature="17535:17581" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1396737789031" expanded="true" signature="18078:18124" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1396737789031" expanded="true" signature="18485:18547" placeholder="SELECT COUNT..." />
+            <marker date="1396737970890" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
+            <marker date="1396737970890" expanded="true" signature="17444:17490" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1396737970890" expanded="true" signature="17987:18033" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1396737970890" expanded="true" signature="18394:18456" placeholder="SELECT COUNT..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/CommentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="67" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.61290324" vertical-offset="1108" max-vertical-offset="3502">
+          <folding />
         </state>
       </provider>
     </entry>

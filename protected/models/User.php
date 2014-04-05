@@ -295,10 +295,9 @@ class User extends CActiveRecord
 
     }
 
-    public static function sendTicketCommentedEmailNotification($comment_id)
+    public static function sendTicketCommentedEmailNotification($ticket_id)
     {
-        $comment = Comment::model()->find("id=:id",array(':id' => $comment_id));
-        $ticket = Ticket::model()->find("id=:id",array(':id' => $comment->ticket_id));
+        $ticket = Ticket::model()->find("id=:id",array(':id' => $ticket_id));
         $ticket_creator = User::model()->find("id=:id",array(':id' => $ticket->creator_user_id));
         $ticket_mentor = User::model()->find("id=:id",array(':id' => $ticket->assign_user_id));
 
