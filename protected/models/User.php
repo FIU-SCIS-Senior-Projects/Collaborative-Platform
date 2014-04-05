@@ -278,16 +278,19 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_subject)
+    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain)
     {
         $creator = User::model()->find("id=:id",array(':id' => $creator_id));
         $domMentor = User::model()->find("id=:id",array(':id' => $assign_id));
+        $domain = Domain::model()->find("id=:id",array(':id' => $ticket_domain));
+
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
         $email = Yii::app()->email;
         $email->to = $domMentor->email;
         $email->from = 'Collaborative Platform';
-        $email->subject = 'New Ticket related to'.$ticket_subject;
-        $email->message = "The user, ".$creator->fname." ".$creator->lname.", has created a ticket that has being assigned to you.";
+        $email->subject = 'New Ticket related to '.$domain->name;
+        $email->message = "The user, ".$creator->fname." ".$creator->lname.", has created a ticket that has being assigned to you. $link to view";
         $email->send();
 
     }

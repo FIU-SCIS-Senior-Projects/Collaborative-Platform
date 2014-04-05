@@ -94,14 +94,14 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="288" column="66" selection-start="10749" selection-end="10749" vertical-scroll-proportion="-23.76923" vertical-offset="3972" max-vertical-offset="7871">
+            <state line="292" column="146" selection-start="11092" selection-end="11092" vertical-scroll-proportion="-23.115385" vertical-offset="4057" max-vertical-offset="7922">
               <folding>
                 <element signature="n#sendEmailWithNewPassword#0;n#User#0;n#!!top" expanded="false" />
                 <element signature="n#sendEmailNotificationAlert#0;n#User#0;n#!!top" expanded="false" />
-                <marker date="1396731533340" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
-                <marker date="1396731533340" expanded="true" signature="15169:15215" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1396731533340" expanded="true" signature="15712:15758" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1396731533340" expanded="true" signature="16119:16181" placeholder="SELECT COUNT..." />
+                <marker date="1396732208150" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
+                <marker date="1396732208150" expanded="true" signature="15379:15425" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1396732208150" expanded="true" signature="15922:15968" placeholder="SELECT * FRO..domain_mentor..." />
+                <marker date="1396732208150" expanded="true" signature="16329:16391" placeholder="SELECT COUNT..." />
               </folding>
             </state>
           </provider>
@@ -110,7 +110,7 @@
       <file leaf-file-name="TicketController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="13" selection-start="2475" selection-end="2475" vertical-scroll-proportion="0.6572581" vertical-offset="973" max-vertical-offset="3349">
+            <state line="84" column="124" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.61155915" vertical-offset="973" max-vertical-offset="3349">
               <folding />
             </state>
           </provider>
@@ -180,8 +180,8 @@
         <option value="$PROJECT_DIR$/protected/controllers/SiteController.php" />
         <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/protected/controllers/MessageController.php" />
-        <option value="$PROJECT_DIR$/protected/models/User.php" />
         <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
+        <option value="$PROJECT_DIR$/protected/models/User.php" />
       </list>
     </option>
   </component>
@@ -399,7 +399,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -762,21 +762,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="288" column="66" selection-start="10749" selection-end="10749" vertical-scroll-proportion="-23.76923" vertical-offset="3972" max-vertical-offset="7871">
+        <state line="292" column="146" selection-start="11092" selection-end="11092" vertical-scroll-proportion="-23.115385" vertical-offset="4057" max-vertical-offset="7922">
           <folding>
             <element signature="n#sendEmailWithNewPassword#0;n#User#0;n#!!top" expanded="false" />
             <element signature="n#sendEmailNotificationAlert#0;n#User#0;n#!!top" expanded="false" />
-            <marker date="1396731533340" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
-            <marker date="1396731533340" expanded="true" signature="15169:15215" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1396731533340" expanded="true" signature="15712:15758" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1396731533340" expanded="true" signature="16119:16181" placeholder="SELECT COUNT..." />
+            <marker date="1396732208150" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
+            <marker date="1396732208150" expanded="true" signature="15379:15425" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1396732208150" expanded="true" signature="15922:15968" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1396732208150" expanded="true" signature="16329:16391" placeholder="SELECT COUNT..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="13" selection-start="2475" selection-end="2475" vertical-scroll-proportion="0.6572581" vertical-offset="973" max-vertical-offset="3349">
+        <state line="84" column="124" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.61155915" vertical-offset="973" max-vertical-offset="3349">
           <folding />
         </state>
       </provider>
