@@ -46,24 +46,24 @@ class MessageController extends Controller
 				{
 					$model->receiver = $receivers[$i];
 					if (User::model()->find("username=:username",array(':username'=>$model->receiver)) != null)
-						$model->save();	
+						$model->save();
 
+                    User::sendUserNotificationMessageAlert(Yii::app()->user->id, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);
+                    $link= CHtml::link('Click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
+                    $recive = User::model()->find("username=:username",array(':username'=>$model->receiver));
+                    if ($recive != NULL){
+                        $message = "You just got a message from $model->sender $model->message $link";
+                        //$html = User::replaceMessage($recive->username, $message);
+                        User::sendEmailMessageNotificationAlert($recive->email, $message);
+                    }
 					$model = new Message;
 					$model->attributes = $_POST['Message'];						
 					$model->sender = Yii::app()->user->name;
 					$model->created_date = date('Y-m-d H:i:s');
-					//$model->userImage = $model->sender0->image_url;					
 					$model->subject = $_POST['Message']['subject'];
 				}
 
-				User::sendUserNotificationMessageAlert(Yii::app()->user->id, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);
-				$link= CHtml::link('Click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
-				$recive = User::model()->find("username=:username",array(':username'=>$model->receiver));
-				if ($recive != NULL){
-                    $message = "You just got a message from ".$model->sender."<br/>".$model->message."<br/>".$link;
-                    $html = User::replaceMessage($recive->username, $message);
-                    User::sendEmailMessageNotificationAlert($recive->email, $message);
-				}
+
 				$this->redirect("/coplat/index.php/message");
 				return;
 				

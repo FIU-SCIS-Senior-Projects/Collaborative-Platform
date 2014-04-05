@@ -274,7 +274,7 @@ class User extends CActiveRecord
         $email->to = $address;
         $email->from = 'Collaborative Platform';
         $email->subject = 'New Message';
-        $email->message = "You got a message at the collaborative platform";
+        $email->message = "You got a message at the collaborative platform $message";
         $email->send();
     }
 
