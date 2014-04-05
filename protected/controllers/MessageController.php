@@ -57,11 +57,12 @@ class MessageController extends Controller
 				}
 
 				User::sendUserNotificationMessageAlert(Yii::app()->user->id, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);
-				$link= CHtml::link('click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
+				$link= CHtml::link('Click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
 				$recive = User::model()->find("username=:username",array(':username'=>$model->receiver));
 				if ($recive != NULL){
-                    $message = "You just got a message from '$model->sender'<br/> '$model->message'<br/>$link";
+                    $message = "You just got a message from ".$model->sender."<br/>".$model->message."<br/>".$link;
                     $html = User::replaceMessage($recive->username, $message);
+                    var_dump($html);
                     User::sendEmailMessageNotificationAlert($recive->email, $html);
 				}
 				$this->redirect("/coplat/index.php/message");

@@ -293,7 +293,7 @@ class User extends CActiveRecord
             $model->link = $link;
             //print "<pre>"; print_r($model->link);print "</pre>";return;
             $model->message = 'You got a new message from ' . $sender;
-            $model->importancy = 3;
+            $model->importancy = $level;
             $model->save(false);
         }
 
