@@ -308,24 +308,27 @@ class User extends CActiveRecord
         $email_mentor->to = $ticket_mentor->email;
         $email_mentor->from = 'Collaborative Platform';
         $email_mentor->subject = 'Comment added to Ticket #'.$ticket->id;
-        $email_mentor->message = "The user ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
 
         $email_creator = Yii::app()->email;
         $email_creator->to = $ticket_creator->email;
         $email_creator->from = 'Collaborative Platform';
         $email_creator->subject = 'Comment added to Ticket #'.$ticket->id;
-        $email_creator->message = "The Domain Mentor ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
 
         if($ticket_creator->id == $comment_creator_id)
         {
+            $email_mentor->message = "The user ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
             $email_mentor->send();
         }
         elseif($ticket_mentor->id == $comment_creator_id)
         {
+            $email_creator->message = "The Domain Mentor ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
             $email_creator->send();
         }
         else{
-            //$email_creator->send();
+            $comment_creator = User::model()->find("id=:id",array(':id' => $comment_creator_id));
+            $email_creator->message = "The System Administrator ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
+            $email_creator->send();
+            $email_mentor->message = "The System Administrator ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
             $email_mentor->send();
         }
     }
