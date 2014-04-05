@@ -278,6 +278,19 @@ class User extends CActiveRecord
         $email->send();
     }
 
+    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_subject)
+    {
+        $creator = User::model()->find("id=:id",array(':id' => $creator_id));
+        $domMentor = User::model()->find("id=:id",array(':id' => $assign_id));
+
+        $email = Yii::app()->email;
+        $email->to = $domMentor->email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'New Ticket related to'.$ticket_subject;
+        $email->message = "The user, ".$creator->fname." ".$creator->lname.", has created a ticket that has being assigned to you.";
+        $email->send();
+
+    }
     public static function sendUserNotificationMessageAlert($sender, $reciver, $link, $level)
     {
 

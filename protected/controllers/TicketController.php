@@ -81,14 +81,17 @@ class TicketController extends Controller
 
             $model->status = 'Pending';
 
-            if($model->save())
+            if($model->save()){
+                User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id,$model->subject);
                 $this->redirect(array('view','id'=>$model->id));
+            }
+
         }
 
         $this->render('create',array('model'=>$model,));
         //$this->render('index',array('model'=>$model,));
 
-        //User::model()->sendEmailMessageNotificationAlert()
+
 	}
 
 	/**
