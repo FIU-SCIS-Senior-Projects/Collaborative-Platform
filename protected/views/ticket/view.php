@@ -24,56 +24,33 @@ $this->menu = array(
 <div id="fullcontent">
 <div style="color: #0044cc"><h3>Ticket #  <?php echo $model->id; ?></h3></div>
 
-<div id="container">
-    <div style="border: 1px solid #C9E0ED; border-radius: 5px;">
-        <?php
-        $this->widget('zii.widgets.CDetailView', array(
-            'data' => $model, 'attributes' => array(
-                'id', 'creator_user_id', 'domain_id', 'status', 'created_date', 'subject',
-                'description', 'assign_user_id',
-            ),
-        )); ?>
-    </div>
-</div>
-<!-- End Container -->
-
-<br>
-
-<div style="color: #0044cc"><h3>Comments</h3></div>
-<div> <!-- List of Comments to a Ticket -->
-    <div style="height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;">
-        <div class="datagrid">
-            <table>
-                <thead>
-                <tr>
-                    <th width="1%"> No</th>
-                    <th width="74%">Description</th>
-                    <th width="10%">Date Added</th>
-                    <th width="25%">Added by</th>
-                </tr>
-                </thead>
-                <?php foreach ($model->comments as $comment) {
-                    ?>
-                    <tbody>
-                    <tr>
-                        <td><?php echo $comment->id; ?></td>
-                        <td><?php echo $comment->description ?></td>
-                        <td><?php echo date("M d, Y h:i A", strtotime($comment->added_date)) ?></td>
-                        <td><?php echo $comment->user_added?></td>
-                    </tr>
-                    </tbody>
-                <?php
-                }
-                ?>
-            </table>
+    <div id="container">
+        <div style="border: 1px solid #C9E0ED; border-radius: 5px;">
+            <?php
+            $this->widget('zii.widgets.CDetailView', array(
+                'data' => $model, 'attributes' => array(
+                    'id', 'creator_user_id', 'domain_id', 'status', 'created_date', 'subject',
+                    'description', 'assign_user_id',
+                ),
+            )); ?>
         </div>
     </div>
-</div>
-<!-- End List of Comments -->
-
-
 <br>
+<div style="color: #0044cc"><h3>Attachment</h3></div>
+    <div> <!-- Attachment-->
+        <div style="height: 50px; width: 300px; border: 1px solid #C9E0ED; border-radius: 5px;">
+            <?php if($model->file != null){
+                //echo CHtml::link(CHtml::encode('Download File'), $model->file, array('target'=>'_blank', 'style'=>'float:left'));
+                echo '<a href="download?download_file='.$model->file.'">Download here</a>';
 
+            }else {
+                echo 'No File Uploaded';
+            }
+            ?>
+        </div>
+    </div>
+<!-- End Container -->
+<br>
 <div style="margin-top: 15px"> <!-- Buttons Options -->
     <div>
 
@@ -148,15 +125,44 @@ $this->menu = array(
     </div>
 </div>
 <!-- End Buttons Options -->
-
 <br>
 
-<div style="color: #0044cc"><h3>Attachment</h3></div>
-<div> <!-- Attachment-->
-    <div style="height: 50px; width: 300px; border: 1px solid #C9E0ED; border-radius: 5px;">
-
+<div style="color: #0044cc"><h3>Comments</h3></div>
+<div> <!-- List of Comments to a Ticket -->
+    <div style="height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;">
+        <div class="datagrid">
+            <table>
+                <thead>
+                <tr>
+                    <th width="1%"> No</th>
+                    <th width="74%">Description</th>
+                    <th width="10%">Date Added</th>
+                    <th width="25%">Added by</th>
+                </tr>
+                </thead>
+                <?php foreach ($model->comments as $comment) {
+                    ?>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $comment->id; ?></td>
+                        <td><?php echo $comment->description ?></td>
+                        <td><?php echo date("M d, Y h:i A", strtotime($comment->added_date)) ?></td>
+                        <td><?php echo $comment->user_added?></td>
+                    </tr>
+                    </tbody>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
     </div>
 </div>
+<!-- End List of Comments -->
+
+
+
+
+
 <!-- End List of Comments -->
 
 <!-- Modals -->

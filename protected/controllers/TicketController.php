@@ -32,7 +32,7 @@ class TicketController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('create', 'update','Download'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -82,12 +82,17 @@ class TicketController extends Controller
             /*Attach file */
             $uploadedFile = CUploadedFile::getInstance($model, 'file');
             $fileName = "{$uploadedFile}";
+            if($fileName != null) {
+                $model->file = 'coplat/uploads/' . $fileName;
+                $uploadedFile->saveAs(Yii::getPathOfAlias('webroot') . '/uploads/' . $fileName);
+            }else {
+                $model->file = '';
+            }
 
-            $model->file = 'coplat/uploads/' . $fileName;
 
             if ($model->save()) {
                 /*Save file uploaded in the Uploads folder */
-                $uploadedFile->saveAs(Yii::getPathOfAlias('webroot') . '/uploads/' . $fileName);
+
                 /*Send Notification the the Domain Mentor who was assigned the ticket */
                 User::sendTicketAssignedEmailNotification($model->creator_user_id, $model->assign_user_id, $model->domain_id);
                 $this->redirect(array('view', 'id' => $model->id));
@@ -188,5 +193,37 @@ class TicketController extends Controller
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+
+    public function actionDownload(){
+
+
+        // place this code inside a php file and call it f.e. "download.php"
+        $path = $_SERVER['DOCUMENT_ROOT']."/"; // change the path to fit your websites document structure
+        $fullPath = $path.$_GET['download_file'];
+
+        if ($fd = fopen ($fullPath, "r")) {
+            $fsize = filesize($fullPath);
+            $path_parts = pathinfo($fullPath);
+            $ext = strtolower($path_parts["extension"]);
+            switch ($ext) {
+                case "pdf":
+                    header("Content-type: application/pdf"); // add here more headers for diff. extensions
+                    header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\""); // use 'attachment' to force a download
+                    break;
+                default;
+                    header("Content-type: application/octet-stream");
+                    header("Content-Disposition: filename=\"".$path_parts["basename"]."\"");
+            }
+            header("Content-length: $fsize");
+            header("Cache-control: private"); //use this to open files directly
+            while(!feof($fd)) {
+                $buffer = fread($fd, 2048);
+                echo $buffer;
+            }
+        }
+        fclose ($fd);
+        exit;
     }
 }
