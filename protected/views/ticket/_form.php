@@ -47,7 +47,7 @@
 
     <div id="container"
     ; style="margin-top:10px; width: 1000px; border: 1px solid #C9E0ED; border-radius: 5px;">
-
+    <br>
     <div class="row"; style = "margin-left: 40px">
     <?php echo $form->labelEx($model, 'domain_id'); ?>
     <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?>
@@ -69,7 +69,6 @@
 
 
 <!-->
-<br>
 <div class="row"; style = "margin-left: 40px">
 <?php echo $form->labelEx($model, 'Attach File'); ?>
 <?php /*echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); */ ?>
@@ -78,7 +77,7 @@
 <!-- Attachment: <INPUT TYPE="file" NAME="attachedfile" MAXLENGTH=255 ALLOW="text/*" > -->
 
 </div>
-
+<br>
 </div>
 
 <br>

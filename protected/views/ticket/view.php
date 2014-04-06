@@ -36,10 +36,9 @@ $this->menu = array(
         </div>
     </div>
 <br>
-<div style="color: #0044cc"><h3>Attachment</h3></div>
-    <div> <!-- Attachment-->
-        <div style="height: 50px; width: 300px; border: 1px solid #C9E0ED; border-radius: 5px;">
-            <?php if($model->file != null){
+<div style="height: 50px; width: 300px; border: 0px solid #C9E0ED; border-radius: 5px;">
+<div style="color: #0044cc"><h3>Attachment</h3>
+    <?php if($model->file != null){
                 //echo CHtml::link(CHtml::encode('Download File'), $model->file, array('target'=>'_blank', 'style'=>'float:left'));
                 echo '<a href="download?download_file='.$model->file.'">Download here</a>';
 
@@ -48,9 +47,11 @@ $this->menu = array(
             }
             ?>
         </div>
+
     </div>
+
 <!-- End Container -->
-<br>
+
 <div style="margin-top: 15px"> <!-- Buttons Options -->
     <div>
 
