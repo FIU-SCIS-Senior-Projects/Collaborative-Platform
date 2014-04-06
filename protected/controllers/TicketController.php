@@ -86,16 +86,15 @@ class TicketController extends Controller
             $model->file = 'coplat/uploads/' . $fileName;
 
             if ($model->save()) {
+                /*Save file uploaded in the Uploads folder */
                 $uploadedFile->saveAs(Yii::getPathOfAlias('webroot') . '/uploads/' . $fileName);
+                /*Send Notification the the Domain Mentor who was assigned the ticket */
+                User::sendTicketAssignedEmailNotification($model->creator_user_id, $model->assign_user_id, $model->domain_id);
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }
-
-
         $this->render('create', array('model' => $model,));
         //$this->render('index',array('model'=>$model,));
-
-        //User::model()->sendEmailMessageNotificationAlert()
     }
 
     /**
