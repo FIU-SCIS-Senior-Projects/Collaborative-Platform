@@ -51,8 +51,15 @@ class TicketController extends Controller
      */
     public function actionView($id)
     {
+       $ticket = Ticket::model()->findByPk($id);
+
+       /*Retrieve the names for each ticket */
+       $userCreator = User::model()->findBySql("SELECT * from USER  WHERE id=:id", array(":id"=>$ticket->creator_user_id));
+       $userAssign = User::model()->findBySql("SELECT * from USER  WHERE id=:id", array(":id"=>$ticket->assign_user_id));
+       $domainName = Domain::model()->findBySql("SELECT * from domain  WHERE id=:id", array(":id"=>$ticket->domain_id));
+
         $this->render('view', array(
-            'model' => $this->loadModel($id),
+            'model' => $this->loadModel($id), 'userCreator'=>$userCreator, 'userAssign'=>$userAssign, 'domainName'=>$domainName
         ));
     }
 

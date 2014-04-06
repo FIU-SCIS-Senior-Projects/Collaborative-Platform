@@ -3,36 +3,30 @@
 /* @var $model Ticket */
 /*this refers a ticket */
 
-
-//$comment = $model->comments;
-
-
-$this->breadcrumbs = array(
-    //'Tickets'=>array('index'),
-    //$model->id,
-);
-
-$this->menu = array(
-    //array('label'=>'List Ticket', 'url'=>array('index')),
-    //array('label'=>'Create Ticket', 'url'=>array('create')),
-    //array('label'=>'Update Ticket', 'url'=>array('update', 'id'=>$model->id)),
-    //array('label'=>'Delete Ticket', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-    //array('label'=>'Manage Ticket', 'url'=>array('admin')),
-);
 ?>
-
 <div id="fullcontent">
 <div style="color: #0044cc"><h3>Ticket #  <?php echo $model->id; ?></h3></div>
 
     <div id="container">
         <div style="border: 1px solid #C9E0ED; border-radius: 5px;">
             <?php
-            $this->widget('zii.widgets.CDetailView', array(
+            /*$this->widget('zii.widgets.CDetailView', array(
                 'data' => $model, 'attributes' => array(
-                    'id', 'creator_user_id', 'domain_id', 'status', 'created_date', 'subject',
-                    'description', 'assign_user_id',
+                    'id', 'creator_user_id, 'domain_id', 'status', 'created_date', 'subject',
+                    'description', 'assign_user_id'
                 ),
-            )); ?>
+            ));*/
+            ?>
+            <table style="width: 1000px">
+             <tr style="background-color: #C9E0ED"> <td style="width: 300px"><h5>Creator </h5></td><td><?php echo $userCreator->fname.' '.$userCreator->lname;?> </td> </tr>
+             <tr style="background-color: #EEE">    <td style="width: 300px"><h5>Domain</h5> </td><td><?php echo $domainName->name;?> </td> </tr>
+             <tr style="background-color: #C9E0ED"> <td style="width: 300px"><h5>Status</h5>  </td><td><?php echo $model->status; ?></td></tr>
+             <tr style="background-color: #EEE">    <td style="width: 300px"><h5>Date Created</h5>  </td><td><?php echo date("M d, Y",strtotime($model->created_date));?></td></tr>
+             <tr style="background-color: #C9E0ED"> <td style="width: 300px"><h5>Description </h5> </td><td><?php echo $model->description; ?></td></tr>
+             <tr style="background-color: #EEE">    <td style="width: 300px"><h5>Assigned To Domain Mentor</h5>  </td><td><?php echo $userAssign->fname.' '.$userAssign->lname;?></td></tr>
+
+            </table>
+
         </div>
     </div>
 <br>
@@ -136,8 +130,8 @@ $this->menu = array(
                 <thead>
                 <tr>
                     <th width="1%"> No</th>
-                    <th width="74%">Description</th>
-                    <th width="10%">Date Added</th>
+                    <th width="70%">Description</th>
+                    <th width="14%">Date Added</th>
                     <th width="25%">Added by</th>
                 </tr>
                 </thead>
@@ -147,7 +141,7 @@ $this->menu = array(
                     <tr>
                         <td><?php echo $comment->id; ?></td>
                         <td><?php echo $comment->description ?></td>
-                        <td><?php echo date("M d, Y h:i A", strtotime($comment->added_date)) ?></td>
+                        <td><?php echo date("M d, Y", strtotime($comment->added_date)) ?></td>
                         <td><?php echo $comment->user_added?></td>
                     </tr>
                     </tbody>
