@@ -1910,3 +1910,17 @@ padding-left: 40px;
 .my-box-container {
     margin-top:10px; width: 300px; overflow-y: scroll; border: 1px solid #C9E0ED; border-radius: 5px; padding: 10px;
 }
+
+
+.tooltip{
+    margin: 100px 50px;
+}
+
+.popover{
+    width:4000px;
+    height:300px;
+}
+
+table td {
+    cursor: pointer;
+}

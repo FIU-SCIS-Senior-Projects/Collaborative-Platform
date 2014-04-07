@@ -51,6 +51,7 @@ class TicketController extends Controller
      */
     public function actionView($id)
     {
+       /*Retrieve ticket Details */
        $ticket = Ticket::model()->findByPk($id);
 
        /*Retrieve the names for each ticket */
@@ -59,7 +60,8 @@ class TicketController extends Controller
        $domainName = Domain::model()->findBySql("SELECT * from domain  WHERE id=:id", array(":id"=>$ticket->domain_id));
 
         $this->render('view', array(
-            'model' => $this->loadModel($id), 'userCreator'=>$userCreator, 'userAssign'=>$userAssign, 'domainName'=>$domainName
+            'model' => $this->loadModel($id), /*Return all the ticket details */
+            'userCreator'=>$userCreator, 'userAssign'=>$userAssign, 'domainName'=>$domainName
         ));
     }
 

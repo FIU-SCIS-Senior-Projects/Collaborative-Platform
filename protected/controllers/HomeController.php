@@ -51,9 +51,12 @@ class HomeController extends Controller
         $username = Yii::app()->user->name;
         $user = User::model()->find("username=:username", array(':username' => $username));
 
-        $this->render('dMentorHome',array('user'=> $user));
+        $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$user->id));
 
 
+        $this->render('dMentorHome',array('Tickets' => $Tickets,
+            //'results' => $results,
+            'user'=> $user));
 
     }
 
@@ -73,32 +76,44 @@ class HomeController extends Controller
         foreach ($meetings as $id => $meetin) {
             $mentees[$id] = User::model()->findBySql("SELECT * FROM user WHERE id =:id", array(":id" => $meetin->mentee_user_id));
         }
-
         /*Return all the projects for the current Project Mentor */
         $projects = Project::model()->findAll("mentor_id=:mentor_id", array(':mentor_id'=> $user->id));
 
         /* Return all the mentees for the project mentor */
         /** @var Projectmentor_project $projectmentor_project */
-        $projectmentor_project = ProjectmentorProject::model()->findAll("project_mentor_user_id=:id", array(':id'=>$user->id));
+
+       //$projectmentor_project = ProjectmentorProject::model()->findAllBySql("SELECT * FROM projectmentor_project WHERE project_mentor_user_id=:id", array(":id"=>$user->id));
+
+       $projectmentor_project = ProjectmentorProject::model()->findAll("project_mentor_user_id=:id", array(":id"=>$user->id));
+
+        $pmentees = array();
+
+        foreach($projectmentor_project as $pk=>$pm)
+        {
+            //$pmentees = Mentee::model()->findAll("projectmentor_project_id=:id", array(":id"=>$pm->id));
+
+            $pmentees[$pk]= Mentee::model()->findBySql("SELECT * FROM mentee WHERE projectmentor_project_id=:id", array(":id"=>$pm->id));
+        }
+        /*foreach($pmentees as $p)
+        {
+            echo $p->user_id;
+            echo $p->projectmentor_project_id;
+        }
+        //var_dump($pmentees);
+       exit;*/
+        $pmentee = array();
+        foreach($pmentees as $pk1=>$pm)
+        {
+        $pmentee[$pk1] = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$pm->user_id));
+        }
         /** @var User $usermentee */
 
 
-        //var_dump($projectmentor_project);
-        //exit;
-        /*$menteeId = array();
-        foreach ($projectmentor_project as $Id => $ment) {
-            $menteeId[$Id] = Mentee::model()->findByAllSql("SELECT * FROM mentee WHERE projectmentor_project_id=:id", array("id"=>$ment->id));
 
-        }
-
-        $menteeName = array();
-        foreach($menteeId as $d => $md)
-        {
-            $menteeName[$d] = User::model()->findAllBySql("SELECT * FROM user WHERE id=:id", array(":id"=>$md->user_id));
-        }*/
         /* End Return all the mentees for the project mentor */
 
-        $this->render('pMentorHome', array(/*'menteeName' => $menteeName,*/ 'user' => $user, 'meetings' => $meetings, 'mentees' => $mentees, 'projects' => $projects
+        $this->render('pMentorHome', array(/*'menteeName' => $menteeName,*/ 'user' => $user, 'meetings' => $meetings,'projects' => $projects,
+            'pmentee'=>$pmentee,'mentees'=>$mentees,
             ));
     }
 

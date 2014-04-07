@@ -12,24 +12,6 @@
 /* @var $dataProvider CActiveDataProvider */
 ?>
 
-<link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-
-<!-- Js for popover -->
-<meta charset="UTF-8">
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("a.enable-tooltip").tooltip({
-            placement: 'right'
-        });
-    });
-</script>
-<style type="text/css">
-    .bs-example {
-        margin: 100px 50px;
-    }
-</style>
-<!-- End Js for popover -->
-
 
 <div id="fullcontent">
     <div style="color: #0044cc"><h2>Project Mentor Home</h2></div>
@@ -52,8 +34,14 @@
                         /** @var $project Project */
                         ?>
                         <p><strong>Title :</strong> <?php echo $project->title; ?>
-                            <a href="#" class="enable-tooltip" data-toggle="tooltip"
-                               data-original-title="<?php echo $project->description; ?>">More..</a><br>
+                            <!--<a href="#" class="enable-tooltip" data-toggle="tooltip"
+                               data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
+
+                            <a href="#" id="popover" class="btn btn-primary" rel="popover"
+                               data-content="<?php echo $project->description;?>"
+                               data-original-title="<?php echo $project->title;?>">more
+                            </a><br>
+
                             <strong>Start
                                 date:</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
                             <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
@@ -129,14 +117,15 @@
     <div style="margin-left:20px">
         <?php $ProjectMeeting = new ProjectMeeting(); ?>
 
-        <?php /*$data = array();
+        <?php $data = array();
 
-            foreach ($menteeName as $mod) {
-            $data[$mod->id] = $mod->fname .' '. $mod->lname;
-            }*/
+            foreach ($pmentee as $pm) {
+            $data[$pm->id] = $pm->fname .' '. $pm->lname;
+            }
         ?>
         <?php echo $form->labelEx($ProjectMeeting, 'mentee_user_id'); ?>
-        <?php echo $form->TextField($ProjectMeeting, 'mentee_user_id'); ?>
+        <?php /*echo $form->TextField($ProjectMeeting, 'mentee_user_id'); */?>
+        <?php echo $form->dropDownList($ProjectMeeting, 'mentee_user_id', $data ,array('prompt' => 'Select')); ?>
         <?php /*echo $form->dropDownList($ProjectMeeting, 'mentee_user_id', CHtml::listData(User::model()->findAll(), 'id', 'fname')); */ ?>
 
         <?php /*echo $form->textField($ProjectMeeting, 'mentee_user_id', array('size' => 11, 'maxlength' => 11)); */ ?>
@@ -193,6 +182,3 @@
 </script>
 
 <!-- End Comment Modal-->
-
-
-

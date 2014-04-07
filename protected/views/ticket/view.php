@@ -125,9 +125,10 @@
 <div style="color: #0044cc"><h3>Comments</h3></div>
 <div> <!-- List of Comments to a Ticket -->
     <div style="height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;">
-        <div class="datagrid">
-            <table>
-                <thead>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example" width="100%">
+
+            <thead>
                 <tr>
                     <th width="1%"> No</th>
                     <th width="70%">Description</th>

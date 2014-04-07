@@ -68,8 +68,8 @@ class Ticket extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'comments' => array(self::HAS_MANY, 'Comment', 'ticket_id'),
-			'creatorUser' => array(self::BELONGS_TO, 'User', 'creator_user_id'),
-			'assignUser' => array(self::BELONGS_TO, 'User', 'assign_user_id'),
+			'creatorUser' => array(self::BELONGS_TO, 'User', 'creator_user_id  '),
+			'assignUser' => array(self::HAS_MANY, 'User', 'assign_user_id'),
 			'domain' => array(self::BELONGS_TO, 'Domain', 'domain_id'),
 		);
 	}
@@ -115,6 +115,7 @@ class Ticket extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+
 		));
 	}
 }
