@@ -42,7 +42,7 @@
                         </thead>
                         <?php foreach($Tickets as $Ticket)
                         {
-                            $domain = Domain::model()->findBySql("SELECT * FROM Domain WHERE id=:id", array(":id"=>$Ticket->domain_id));
+                            $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id"=>$Ticket->domain_id));
                             $creator = User::model()->find("id=:id", array(":id"=>$Ticket->creator_user_id)); ?>
 
                             <tbody>

@@ -32,7 +32,7 @@ class TicketController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Download'),
+                'actions' => array('create', 'update', 'Download'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,17 +51,17 @@ class TicketController extends Controller
      */
     public function actionView($id)
     {
-       /*Retrieve ticket Details */
-       $ticket = Ticket::model()->findByPk($id);
+        /*Retrieve ticket Details */
+        $ticket = Ticket::model()->findByPk($id);
 
-       /*Retrieve the names for each ticket */
-       $userCreator = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id"=>$ticket->creator_user_id));
-       $userAssign = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id"=>$ticket->assign_user_id));
-       $domainName = Domain::model()->findBySql("SELECT * from domain  WHERE id=:id", array(":id"=>$ticket->domain_id));
+        /*Retrieve the names for each ticket */
+        $userCreator = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $ticket->creator_user_id));
+        $userAssign = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $ticket->assign_user_id));
+        $domainName = Domain::model()->findBySql("SELECT * from domain  WHERE id=:id", array(":id" => $ticket->domain_id));
 
         $this->render('view', array(
             'model' => $this->loadModel($id), /*Return all the ticket details */
-            'userCreator'=>$userCreator, 'userAssign'=>$userAssign, 'domainName'=>$domainName
+            'userCreator' => $userCreator, 'userAssign' => $userAssign, 'domainName' => $domainName
         ));
     }
 
@@ -72,38 +72,34 @@ class TicketController extends Controller
     public function actionCreate()
     {
         $model = new Ticket;
-
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-
         if (isset($_POST['Ticket'])) {
             $model->attributes = $_POST['Ticket'];
             $domain_id = $model->domain_id;
-            //Populate ticket attributes
-            //Get the ID of the user
+            /* Populate ticket attributes */
+            /*Get the ID of the user */
             $model->creator_user_id = User::getCurrentUserId();
+            /* Get the current date and time */
             $model->created_date = new CDbExpression('NOW()');
-
             /*Assign the ticket to the most appropiate Domain mentor */
             $model->assign_user_id = User::assignTicket($domain_id);
-
+            /*Set the initial status of the ticket */
             $model->status = 'Pending';
             /*Attach file */
             $uploadedFile = CUploadedFile::getInstance($model, 'file');
             $fileName = "{$uploadedFile}";
-            if($fileName != null) {
+            if ($fileName != null) {
+                /*Save file uploaded in the Uploads folder */
                 $model->file = 'coplat/uploads/' . $fileName;
                 $uploadedFile->saveAs(Yii::getPathOfAlias('webroot') . '/uploads/' . $fileName);
-            }else {
+            } else {
                 $model->file = '';
             }
-
-
             if ($model->save()) {
-                /*Save file uploaded in the Uploads folder */
-
-                /*Send Notification the the Domain Mentor who was assigned the ticket */
-                User::sendTicketAssignedEmailNotification($model->creator_user_id, $model->assign_user_id, $model->domain_id);
+                /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+                User::sendTicketAssignedEmailNotification($model->creator_user_id,
+                                                          $model->assign_user_id, $model->domain_id);
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }
@@ -205,34 +201,35 @@ class TicketController extends Controller
     }
 
 
-    public function actionDownload(){
+    public function actionDownload()
+    {
 
 
         // place this code inside a php file and call it f.e. "download.php"
-        $path = $_SERVER['DOCUMENT_ROOT']."/"; // change the path to fit your websites document structure
-        $fullPath = $path.$_GET['download_file'];
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/"; // change the path to fit your websites document structure
+        $fullPath = $path . $_GET['download_file'];
 
-        if ($fd = fopen ($fullPath, "r")) {
+        if ($fd = fopen($fullPath, "r")) {
             $fsize = filesize($fullPath);
             $path_parts = pathinfo($fullPath);
             $ext = strtolower($path_parts["extension"]);
             switch ($ext) {
                 case "pdf":
                     header("Content-type: application/pdf"); // add here more headers for diff. extensions
-                    header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\""); // use 'attachment' to force a download
+                    header("Content-Disposition: attachment; filename=\"" . $path_parts["basename"] . "\""); // use 'attachment' to force a download
                     break;
                 default;
                     header("Content-type: application/octet-stream");
-                    header("Content-Disposition: filename=\"".$path_parts["basename"]."\"");
+                    header("Content-Disposition: filename=\"" . $path_parts["basename"] . "\"");
             }
             header("Content-length: $fsize");
             header("Cache-control: private"); //use this to open files directly
-            while(!feof($fd)) {
+            while (!feof($fd)) {
                 $buffer = fread($fd, 2048);
                 echo $buffer;
             }
         }
-        fclose ($fd);
+        fclose($fd);
         exit;
     }
 }
