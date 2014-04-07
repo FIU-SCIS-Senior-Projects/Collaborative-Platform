@@ -55,8 +55,8 @@ class TicketController extends Controller
        $ticket = Ticket::model()->findByPk($id);
 
        /*Retrieve the names for each ticket */
-       $userCreator = User::model()->findBySql("SELECT * from USER  WHERE id=:id", array(":id"=>$ticket->creator_user_id));
-       $userAssign = User::model()->findBySql("SELECT * from USER  WHERE id=:id", array(":id"=>$ticket->assign_user_id));
+       $userCreator = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id"=>$ticket->creator_user_id));
+       $userAssign = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id"=>$ticket->assign_user_id));
        $domainName = Domain::model()->findBySql("SELECT * from domain  WHERE id=:id", array(":id"=>$ticket->domain_id));
 
         $this->render('view', array(

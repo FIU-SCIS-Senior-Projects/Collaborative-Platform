@@ -6131,3 +6131,28 @@ REQUEST_URI=/coplat/index.php/home/pMentorHome
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/views/home/pMentorHome.php (123)
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/HomeController.php (117)
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/07 19:42:37 [error] [exception.CException] exception 'CException' with message 'HomeController has an extra endWidget() call in its view.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CBaseController.php:210
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/views/home/pMentorHome.php(169): CBaseController->endWidget()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CBaseController.php(126): require('/Applications/X...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/X...', Array, true)
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Applications/X...', Array, true)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(782): CController->renderPartial('pMentorHome', Array, true)
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/HomeController.php(117): CController->render('pMentorHome', Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): HomeController->actionpMentorHome()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMentorHome')
+#16 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('home/pMentorHom...')
+#17 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#18 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/coplat/index.php/home/pMentorHome
+HTTP_REFERER=http://localhost/coplat/index.php/home/dMentorHome
+---

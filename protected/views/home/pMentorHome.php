@@ -24,7 +24,7 @@
         <div class="span4">
             <h3 class="my-box-container-title">My projects</h3>
 
-            <div id="container" class="my-box-container">
+            <div id="container" class="my-box-container" style="height: 150px; overflow-y: scroll ">
                 <?php
                 /** @var Project $projects */
                 if ($projects == null) {
@@ -54,7 +54,7 @@
         <div class="span4">
             <h3 class="my-box-container-title">Upcoming meetings</h3>
 
-            <div id="container" class="my-box-container">
+            <div id="container" class="my-box-container" style="height: 150px; overflow-y: scroll ">
                 <?php
                 /** @var ProjectMeenting $meeting */
                 if ($meetings == null) {
@@ -152,24 +152,23 @@
 
 </div>
 
-<div class="modal-footer">
-    <?php $this->widget('bootstrap.widgets.TbButton', array(
-        'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Submit', 'url' => '#',
-        'htmlOptions' => array('id' => 'submit'),
-    ));
-    ?>
+    <div class="modal-footer">
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Submit', 'url' => '#',
+            'htmlOptions' => array('id' => 'submit'),
+        ));
+        ?>
 
-    <?php $this->widget('bootstrap.widgets.TbButton', array(
-        'label' => 'Close', 'url' => '#',
-        'htmlOptions' => array('data-dismiss' => 'modal'),
-    ));
-    ?>
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'label' => 'Close', 'url' => '#',
+            'htmlOptions' => array('data-dismiss' => 'modal'),
+        ));
+        ?>
 
-    <?php $this->endWidget() ?>
-    <?php $this->endWidget() ?>
-</div>
+        <?php $this->endWidget() ?>
+        <?php $this->endWidget() ?>
+    </div>
 
-</div>
 
 <!-- Script for Comment modal -->
 <script>
