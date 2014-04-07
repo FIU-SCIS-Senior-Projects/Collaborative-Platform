@@ -253,6 +253,7 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $email->to = $user->email;
         $email->from = 'Collaborative Platform';
+        $email->headers= "From: Collaborative Platform";
         $email->subject = 'Password Change';
         $email->message = "$user->fname $user->lname, your password on the Collaborative Platform Portal has change. If you are not aware of this change contact the system administrator as soon as possible.";
         $email->send();
