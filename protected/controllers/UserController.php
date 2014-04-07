@@ -204,6 +204,7 @@ class UserController extends Controller
 				$user = User::getCurrentUser();
 				$user->password = $hasher->HashPassword($p1);
 				$user->save(false);
+                User::sendEmailPasswordChanged($user->id);
 				$this->redirect("/coplat/index.php");
 			} else {
 				$error = "Passwords do not match.";

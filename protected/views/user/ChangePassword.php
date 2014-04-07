@@ -3,8 +3,10 @@
 /* @var $model User */
 /* @var $form CActiveForm */
 ?>
+<h2>Change Password</h2>
+
 <?php $user = User::getCurrentUser(); ?>
-<br/><br/><br/><br/>
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

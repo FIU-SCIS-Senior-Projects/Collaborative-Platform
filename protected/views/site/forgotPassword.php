@@ -15,8 +15,6 @@ $model = new User;
 <?php if ($error != '') {?>
 	<p style="color:red;"> <?php echo $error?></p>
 	<?php }?>
-
-
 <div class="form">
 <p>Please enter your email:</p>
 <?php $form=$this->beginWidget('CActiveForm', array(
