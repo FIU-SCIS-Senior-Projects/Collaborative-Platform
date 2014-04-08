@@ -86,11 +86,26 @@
 <div class="row buttons">
     <?php echo CHtml::submitButton('Save', array("class" => "btn btn-primary") /*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
     &nbsp;&nbsp;
-    <?php $this->widget('bootstrap.widgets.TbButton', array(
+    <?php /*$this->widget('bootstrap.widgets.TbButton', array(
         'buttonType' => 'link', 'id' => 'new-box', 'url' => (array('/ticket/view', 'id' => $model->id)), 'type' => 'primary',
-        'label' => 'Cancel',)); ?>
+        'label' => 'Cancel',));*/
+    $this->widget('bootstrap.widgets.TbButton', array(
+        'buttonType' => 'link', 'url' => '#',
+        'htmlOptions' => array(
+            'id' => 'my-back',
+        ),
+        'type' => 'primary', 'label' => 'Back'));
+    ?>
 </div>
 </div>
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+
+<script>
+    $('#my-back').on('click', function(){
+        window.history.back();
+
+        return false;
+    });
+</script>

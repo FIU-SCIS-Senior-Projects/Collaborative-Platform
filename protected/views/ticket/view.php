@@ -7,42 +7,61 @@
 <div id="fullcontent">
 <div style="color: #0044cc"><h3>Ticket #  <?php echo $model->id; ?></h3></div>
 
-    <div id="container">
-        <div style="border: 1px solid #C9E0ED; border-radius: 5px;">
-            <?php
-            /*$this->widget('zii.widgets.CDetailView', array(
-                'data' => $model, 'attributes' => array(
-                    'id', 'creator_user_id, 'domain_id', 'status', 'created_date', 'subject',
-                    'description', 'assign_user_id'
-                ),
-            ));*/
-            ?>
-            <table style="width: 1000px">
-             <tr style="background-color: #C9E0ED"> <td style="width: 300px"><h5>Creator </h5></td><td><?php echo $userCreator->fname.' '.$userCreator->lname;?> </td> </tr>
-             <tr style="background-color: #EEE">    <td style="width: 300px"><h5>Domain</h5> </td><td><?php echo $domainName->name;?> </td> </tr>
-             <tr style="background-color: #C9E0ED"> <td style="width: 300px"><h5>Status</h5>  </td><td><?php echo $model->status; ?></td></tr>
-             <tr style="background-color: #EEE">    <td style="width: 300px"><h5>Date Created</h5>  </td><td><?php echo date("M d, Y",strtotime($model->created_date));?></td></tr>
-             <tr style="background-color: #C9E0ED"> <td style="width: 300px"><h5>Description </h5> </td><td><?php echo $model->description; ?></td></tr>
-             <tr style="background-color: #EEE">    <td style="width: 300px"><h5>Assigned To Domain Mentor</h5>  </td><td><?php echo $userAssign->fname.' '.$userAssign->lname;?></td></tr>
+<div id="container">
+    <div style="border: 1px solid #C9E0ED; border-radius: 5px;">
+        <?php
+        /*$this->widget('zii.widgets.CDetailView', array(
+            'data' => $model, 'attributes' => array(
+                'id', 'creator_user_id, 'domain_id', 'status', 'created_date', 'subject',
+                'description', 'assign_user_id'
+            ),
+        ));*/
+        ?>
+        <table style="width: 1000px">
+            <tr style="background-color: #C9E0ED">
+                <td style="width: 300px"><h5>Creator </h5></td>
+                <td><?php echo $userCreator->fname . ' ' . $userCreator->lname; ?> </td>
+            </tr>
+            <tr style="background-color: #EEE">
+                <td style="width: 300px"><h5>Domain</h5></td>
+                <td><?php echo $domainName->name; ?> </td>
+            </tr>
+            <tr style="background-color: #C9E0ED">
+                <td style="width: 300px"><h5>Status</h5></td>
+                <td><?php echo $model->status; ?></td>
+            </tr>
+            <tr style="background-color: #EEE">
+                <td style="width: 300px"><h5>Date Created</h5></td>
+                <td><?php echo date("M d, Y", strtotime($model->created_date)); ?></td>
+            </tr>
+            <tr style="background-color: #C9E0ED">
+                <td style="width: 300px"><h5>Description </h5></td>
+                <td><?php echo $model->description; ?></td>
+            </tr>
+            <tr style="background-color: #EEE">
+                <td style="width: 300px"><h5>Assigned To Domain Mentor</h5></td>
+                <td><?php echo $userAssign->fname . ' ' . $userAssign->lname; ?></td>
+            </tr>
 
-            </table>
+        </table>
 
-        </div>
     </div>
+</div>
 <br>
+
 <div style="height: 50px; width: 300px; border: 0px solid #C9E0ED; border-radius: 5px;">
-<div style="color: #0044cc"><h3>Attachment</h3>
-    <?php if($model->file != null){
-                //echo CHtml::link(CHtml::encode('Download File'), $model->file, array('target'=>'_blank', 'style'=>'float:left'));
-                echo '<a href="download?download_file='.$model->file.'">Download here</a>';
+    <div style="color: #0044cc"><h3>Attachment</h3>
+        <?php if ($model->file != null) {
+            //echo CHtml::link(CHtml::encode('Download File'), $model->file, array('target'=>'_blank', 'style'=>'float:left'));
+            echo '<a href="download?download_file=' . $model->file . '">Download here</a>';
 
-            }else {
-                echo 'No File Uploaded';
-            }
-            ?>
-        </div>
-
+        } else {
+            echo 'No File Uploaded';
+        }
+        ?>
     </div>
+
+</div>
 
 <!-- End Container -->
 
@@ -52,7 +71,10 @@
         <!-- Cancel Button and render to index -->
         <?php
         $this->widget('bootstrap.widgets.TbButton', array(
-            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/index',
+            'buttonType' => 'link', 'url' => '#',
+            'htmlOptions' => array(
+                'id' => 'my-back',
+            ),
             'type' => 'primary', 'label' => 'Back'));
         ?>&nbsp;&nbsp;
         <!-- New Button
@@ -126,9 +148,10 @@
 <div> <!-- List of Comments to a Ticket -->
     <div style="height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;">
         <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example" width="100%">
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example"
+                   width="100%">
 
-            <thead>
+                <thead>
                 <tr>
                     <th width="1%"> No</th>
                     <th width="70%">Description</th>
@@ -143,7 +166,7 @@
                         <td><?php echo $comment->id; ?></td>
                         <td><?php echo $comment->description ?></td>
                         <td><?php echo date("M d, Y", strtotime($comment->added_date)) ?></td>
-                        <td><?php echo $comment->user_added?></td>
+                        <td><?php echo $comment->user_added ?></td>
                     </tr>
                     </tbody>
                 <?php
@@ -158,18 +181,21 @@
 
 
 
+</div> <!-- END FULL CONTENT -->
+
 
 <!-- End List of Comments -->
-
+<?php /*$this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'myModalComment')); */?>
 <!-- Modals -->
 
 <div class="modal fade" id="myModalComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+     aria-hidden="true" style="display: none;">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Append Comment to a Ticket #<?php echo $model->id ?></h4>
     </div>
+
     <div class="modal-body">
         <?php $form = $this->beginWidget('CActiveForm', array(
             'id' => 'comment-form',
@@ -196,7 +222,7 @@
             'htmlOptions' => array('data-dismiss' => 'modal'),
         ));
         ?>
-
+        <?php /*$this->endWidget()*/ ?>
         <?php $this->endWidget() ?>
     </div>
 </div>
@@ -216,7 +242,7 @@
 
 <!-- Modal RE-ASSIGN-->
 <div class="modal fade" id="myModalReAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+     aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -234,25 +260,10 @@
     </div>
 </div>
 
+<script>
+    $('#my-back').on('click', function () {
+        window.history.back();
 
-<!-- Modal ANSWER TICKET-->
-<div class="modal fade" id="myModalAnswer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Answer</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-</div> <!-- END FULL CONTENT -->
+        return false;
+    });
+</script>

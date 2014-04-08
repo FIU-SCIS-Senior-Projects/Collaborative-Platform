@@ -51,7 +51,7 @@ class User extends CActiveRecord
     public $userDomain;
     public $userId;
     /*Change the value when the system is deploy */
-    public static $admin = 6;
+    public static $admin = 5;
     /* The most expert in the Domain */
     public static $condition = 8;
     /**

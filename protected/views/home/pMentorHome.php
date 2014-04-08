@@ -37,14 +37,16 @@
                             <!--<a href="#" class="enable-tooltip" data-toggle="tooltip"
                                data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
 
-                            <a href="#" id="popover" class="btn btn-primary" rel="popover"
-                               data-content="<?php echo $project->description;?>"
-                               data-original-title="<?php echo $project->title;?>">more
+                            <a href="#test" id="myPopOver-<?= $project->id ?>"
+                               class="btn btn-primary btn-mini pull-right mypopover"
+                               title="<?php echo $project->title; ?>">more
                             </a><br>
 
-                            <strong>Start
-                                date:</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
-                            <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
+                        <div id="content-myPopOver-<?= $project->id ?>" style="display: none;"><p><?= $project->description ?></p></div>
+
+                        <strong>Start
+                            date:</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
+                        <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
                         </p>
                     <?php
                     }
@@ -119,13 +121,13 @@
 
         <?php $data = array();
 
-            foreach ($pmentee as $pm) {
-            $data[$pm->id] = $pm->fname .' '. $pm->lname;
-            }
+        foreach ($pmentee as $pm) {
+            $data[$pm->id] = $pm->fname . ' ' . $pm->lname;
+        }
         ?>
         <?php echo $form->labelEx($ProjectMeeting, 'mentee_user_id'); ?>
-        <?php /*echo $form->TextField($ProjectMeeting, 'mentee_user_id'); */?>
-        <?php echo $form->dropDownList($ProjectMeeting, 'mentee_user_id', $data ,array('prompt' => 'Select')); ?>
+        <?php /*echo $form->TextField($ProjectMeeting, 'mentee_user_id'); */ ?>
+        <?php echo $form->dropDownList($ProjectMeeting, 'mentee_user_id', $data, array('prompt' => 'Select')); ?>
         <?php /*echo $form->dropDownList($ProjectMeeting, 'mentee_user_id', CHtml::listData(User::model()->findAll(), 'id', 'fname')); */ ?>
 
         <?php /*echo $form->textField($ProjectMeeting, 'mentee_user_id', array('size' => 11, 'maxlength' => 11)); */ ?>
@@ -152,32 +154,44 @@
 
 </div>
 
-    <div class="modal-footer">
-        <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Submit', 'url' => '#',
-            'htmlOptions' => array('id' => 'submit'),
-        ));
-        ?>
+<div class="modal-footer">
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Submit', 'url' => '#',
+        'htmlOptions' => array('id' => 'submit'),
+    ));
+    ?>
 
-        <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => 'Close', 'url' => '#',
-            'htmlOptions' => array('data-dismiss' => 'modal'),
-        ));
-        ?>
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label' => 'Close', 'url' => '#',
+        'htmlOptions' => array('data-dismiss' => 'modal'),
+    ));
+    ?>
 
-        <?php $this->endWidget() ?>
-        <?php $this->endWidget() ?>
-    </div>
+    <?php $this->endWidget() ?>
+    <?php $this->endWidget() ?>
+</div>
 
 
 <!-- Script for Comment modal -->
 <script>
     $('a#submit').on('click', function () {
-        $.post('/coplat/index.php/projectMeeting/create/<?php echo $user->id?>', $('#projectMeeting-form').serialize(), function (message) {
-            window.location = location;
-        });
+        var confirmed = confirm("Do you really want to setup a meeting?");
+        if(confirmed) {
+            $.post('/coplat/index.php/projectMeeting/create/<?php echo $user->id?>', $('#projectMeeting-form').serialize(), function (message) {
+                window.location = location.pathname;
+            });
+        }
         return false;
     })
+
+    $('.mypopover').popover({
+        placement: 'right',
+        trigger: 'click',
+        html: true,
+        content: function () {
+            return $("#content-"+$(this).attr('id')).html();
+        }
+    });
 </script>
 
 <!-- End Comment Modal-->

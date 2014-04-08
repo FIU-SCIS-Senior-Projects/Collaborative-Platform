@@ -149,15 +149,21 @@ class TicketController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('Ticket');
+       /* $dataProvider = new CActiveDataProvider('Ticket');
         $this->render('index', array(
             'dataProvider' => $dataProvider,
+        ));*/
+        /** @var User $username */
+        $Tickets= Ticket::model()->findAll();
+        $this->render('index', array('Tickets' => $Tickets,
+            //'results' => $results,
+           // 'user' => $user
         ));
+
+    }
 
         /* Retrieve info from User Creator and Assign User Name */
         /* Domain Name also */
-    }
-
     /**
      * Manages all models.
      */
