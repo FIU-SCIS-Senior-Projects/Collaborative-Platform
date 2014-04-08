@@ -131,8 +131,18 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-	
-	public function actionForgotPassword()
+
+    function genRandomString($length = 10) {
+        $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+        $string = "";
+        for ($p = 0; $p < $length; $p++) {
+            $string .= $characters[mt_rand(0, strlen($characters) - 1)];
+        }
+
+        return $string;
+    }
+
+    public function actionForgotPassword()
 	{
 		if(isset($_POST['User']))
 		{
