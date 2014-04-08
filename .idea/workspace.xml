@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/MessageController.php" afterPath="$PROJECT_DIR$/protected/controllers/MessageController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/SiteController.php" afterPath="$PROJECT_DIR$/protected/controllers/SiteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +28,7 @@
       <file leaf-file-name="SiteController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="33" selection-start="4266" selection-end="4266" vertical-scroll-proportion="0.46596858" vertical-offset="2126" max-vertical-offset="3026">
+            <state line="159" column="127" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.6662304" vertical-offset="2194" max-vertical-offset="3026">
               <folding />
             </state>
           </provider>
@@ -40,7 +37,7 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="266" column="44" selection-start="10048" selection-end="10048" vertical-scroll-proportion="-20.384615" vertical-offset="3992" max-vertical-offset="9078">
+            <state line="298" column="112" selection-start="11147" selection-end="11217" vertical-scroll-proportion="-21.038462" vertical-offset="4519" max-vertical-offset="9078">
               <folding>
                 <marker date="1396999977663" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
                 <marker date="1396999977663" expanded="true" signature="17897:17943" placeholder="SELECT * FRO..user_domain..." />
@@ -652,9 +649,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="82" selection-start="2072" selection-end="2072" vertical-scroll-proportion="-15.692307" vertical-offset="527" max-vertical-offset="4318">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="266" column="44" selection-start="10048" selection-end="10048" vertical-scroll-proportion="-20.384615" vertical-offset="3992" max-vertical-offset="9078">
+        <state line="298" column="112" selection-start="11147" selection-end="11217" vertical-scroll-proportion="-21.038462" vertical-offset="4519" max-vertical-offset="9078">
           <folding>
             <marker date="1396999977663" expanded="true" signature="7813:7851" placeholder="SELECT id fr..user..." />
             <marker date="1396999977663" expanded="true" signature="17897:17943" placeholder="SELECT * FRO..user_domain..." />
@@ -664,16 +668,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="82" selection-start="2072" selection-end="2072" vertical-scroll-proportion="-15.692307" vertical-offset="527" max-vertical-offset="4318">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="33" selection-start="4266" selection-end="4266" vertical-scroll-proportion="0.46596858" vertical-offset="2126" max-vertical-offset="3026">
+        <state line="159" column="127" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.6662304" vertical-offset="2194" max-vertical-offset="3026">
           <folding />
         </state>
       </provider>

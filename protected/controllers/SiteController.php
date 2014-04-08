@@ -157,7 +157,7 @@ class SiteController extends Controller
 			$hasher = new PasswordHash(8, false);
 			$model->password = $hasher->HashPassword($password);
 			$model->save(false);
-            $link = CHtml::link('Click here to login', Yii::app()->baseUrl . '/site/login');
+            $link = CHtml::link('Click here to login', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
             $message = "Your new password in the Collaborative Platform is <br/> Password: $password<br/>$link";
             $html = User::replaceMessage($model->username, $message);
 			User::sendEmailWithNewPassword($email, $password, $model->username, $html);
