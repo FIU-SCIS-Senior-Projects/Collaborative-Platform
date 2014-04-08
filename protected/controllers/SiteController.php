@@ -149,7 +149,7 @@ class SiteController extends Controller
 			$email = $_POST['User']['email'];
 			$model = User::model()->find("email=:email",array(':email'=>$email));
 			if ($model == null){
-				$error = 'Email does not exist in our records';
+				$error = 'Email does not exist in our records.';
 				$this->render('forgotPassword', array('error'=>$error));
 				return;
 			}
@@ -157,8 +157,11 @@ class SiteController extends Controller
 			$hasher = new PasswordHash(8, false);
 			$model->password = $hasher->HashPassword($password);
 			$model->save(false);
-			User::sendEmailWithNewPassword($email, $password, $model->username);
-			$error = 'Email has been sent';
+            $link = CHtml::link('Click here to login', Yii::app()->baseUrl . '/site/login');
+            $message = "Your new password in the Collaborative Platform is <br/> Password: $password<br/>$link";
+            $html = User::replaceMessage($model->username, $message);
+			User::sendEmailWithNewPassword($email, $password, $model->username, $html);
+			$error = 'New password has been sent to the specified email.';
 			$this->render('forgotPassword', array('error'=>$error));
 			return;
 		}

@@ -253,19 +253,19 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $email->to = $user->email;
         $email->from = 'Collaborative Platform';
-        //$email->headers= "From: Collaborative Platform";
         $email->subject = 'Password Change';
         $email->message = "$user->fname $user->lname, your password on the Collaborative Platform Portal has change. If you are not aware of this change contact the system administrator as soon as possible.";
         $email->send();
     }
-    public static function sendEmailWithNewPassword($address, $password, $username)
+
+    public static function sendEmailWithNewPassword($address, $password, $username, $message)
     {
         $email = Yii::app()->email;
 
-        $link = CHtml::link('click here to login', Yii::app()->baseUrl . '/site/login');
         $email->to = $address;
-        $email->subject = 'your new password';
-        $email->message = "Username: $username<br/> Password: $password<br/>$link";
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Your New Password';
+        $email->message = $message;
         $email->send();
     }
 
@@ -280,7 +280,7 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    public static function sendEmailMessageNotificationAlert($address, $message)
+    public static function sendNewMessageEmailNotification($address, $message)
     {
         $email = Yii::app()->email;
         $email->to = $address;
@@ -322,7 +322,7 @@ class User extends CActiveRecord
             $email->to = $ticket_mentor->email;
             $email->from = 'Collaborative Platform';
             $email->subject = 'Comment added to Ticket #'.$ticket->id;
-            $email->message = "The user ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
+            $email->message = "The user, ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the his/her ticket #".$ticket->id.". $link to view the comment.";
             $email->send();
         }
         elseif($ticket_mentor->id == User::model()->getCurrentUser()->id)
@@ -331,7 +331,7 @@ class User extends CActiveRecord
             $email->to = $ticket_creator->email;
             $email->from = 'Collaborative Platform';
             $email->subject = 'Comment added to Ticket #'.$ticket->id;
-            $email->message = "The Domain Mentor ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
+            $email->message = "The Domain Mentor, ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
             $email->send();
         }
         else{
@@ -340,11 +340,11 @@ class User extends CActiveRecord
             $email->to = $ticket_mentor->email.",".$ticket_creator->email;
             $email->from = 'Collaborative Platform';
             $email->subject = 'Comment added to Ticket #'.$ticket->id;
-            $email->message = "The System Administrator ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the Ticket #".$ticket->id.". $link to view the comment.";
+            $email->message = "The user ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
             $email->send();
         }
     }
-    public static function sendUserNotificationMessageAlert($sender, $reciver, $link, $level)
+    public static function addNewMessageNotification($sender, $reciver, $link, $level)
     {
 
         $model = new Notification;
