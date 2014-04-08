@@ -306,7 +306,7 @@ $(function(){
 		             }); 			        
 			    });   
 				
-			});			
+			});
 			});					
 		});		
 	}); //end of trash-option
