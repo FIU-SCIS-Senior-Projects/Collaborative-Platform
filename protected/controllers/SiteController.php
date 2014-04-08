@@ -106,7 +106,7 @@ class SiteController extends Controller
                             $this->redirect("/coplat/index.php/home/dMentorHome");
                         } elseif ($user->isPerMentor()) {
                             $this->redirect("/coplat/index.php/home/pMentorHome");
-                        } else {
+                        } elseif ($user->isMentee()) {
                             $this->redirect("/coplat/index.php/home/pMentorHome");
                         }
                     } else {
