@@ -18,10 +18,10 @@
     <br>
 
     <div class="row row-fluid">
-        <div class="span4">
+        <div class="span6">
             <h3 class="my-box-container-title">Senior Projects</h3>
 
-            <div id="container" class="my-box-container" style="height: 150px; overflow-y: scroll ">
+            <div class="my-box-container" style="height: 400px; overflow-y: scroll ">
                 <?php
                 /** @var Project $projects */
                 if ($projects == null) {
@@ -34,26 +34,28 @@
                             <!--<a href="#" class="enable-tooltip" data-toggle="tooltip"
                                data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
 
-                            <a href="#test" id="myPopOver-<?= $project->id ?>"
-                               class="btn btn-primary btn-mini pull-right mypopover"
-                               title="<?php echo $project->title; ?>">more
-                            </a><br>
+
 
                         <div id="content-myPopOver-<?= $project->id ?>" style="display: none;"><p><?= $project->description ?></p></div>
 
                         <strong>Start
                             date:</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
                         <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
+                        <a href="#test" id="myPopOver-<?= $project->id ?>"
+                           class="btn btn-primary btn-mini pull-right mypopover"
+                           title="<?php echo $project->title; ?>">more
+                        </a><br>
+                        <hr/>
                         </p>
                     <?php
                     }
                 } ?>
             </div>
         </div>
-        <div class="span4">
+        <div class="span6">
             <h3 class="my-box-container-title">Upcoming meetings</h3>
 
-            <div id="container" class="my-box-container" style="height: 150px; overflow-y: scroll ">
+            <div class="my-box-container" style="height: 400px;overflow-y: scroll ">
                 <?php
                 /** @var ProjectMeenting $meeting */
                 if ($meetings == null) {
@@ -74,7 +76,7 @@
         <div class="span4">
             <div id="container">
                 <!-- Button trigger modal -->
-                <?php $this->widget('bootstrap.widgets.TbButton', array(
+                <?php /*$this->widget('bootstrap.widgets.TbButton', array(
                     'label' => 'Set-Up Meeting',
                     'type' => 'primary',
                     'htmlOptions' => array(
@@ -82,7 +84,7 @@
                         'data-target' => '#myModalNewMeeting',
                         'style' => 'width: 100px',
                     ),
-                ));
+                )); */
                 ?>
             </div>
         </div>

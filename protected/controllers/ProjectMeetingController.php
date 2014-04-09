@@ -224,6 +224,7 @@ class ProjectMeetingController extends Controller
             }
         }
 
+        /*return the mentees for each project */
         foreach ($projects as $project) {
             /** @var Project $project */
 
