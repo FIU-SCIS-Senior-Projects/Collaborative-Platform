@@ -4,9 +4,8 @@
 /* @var $form CActiveForm */
 ?>
 
-<link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 
-<div class="form">
+<div class="form" style="width: 750px" >
 
     <?php $form = $this->beginWidget('CActiveForm', array(
         'id' => 'ticket-form',
@@ -46,44 +45,45 @@
     End -->
 
     <div id="container"
-    ; style="margin-top:10px; width: 1000px; border: 1px solid #C9E0ED; border-radius: 5px;">
-    <br>
-    <div class="row"; style = "margin-left: 40px">
-    <?php echo $form->labelEx($model, 'domain_id'); ?>
-    <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?>
-    <?php echo $form->error($model, 'domain_id'); ?>
-</div>
+    ; style="margin-top:10px; width: 600px; border: 1px solid #C9E0ED; border-radius: 5px;">
+        <br>
+        <div class="row"; style = "margin-left: 40px">
+            <?php echo $form->labelEx($model, 'domain_id'); ?>
+            <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?>
+            <?php echo $form->error($model, 'domain_id'); ?>
+        </div>
 
-    <div class="row"
-    ; style = "margin-left: 40px">
-    <?php echo $form->labelEx($model, 'subject'); ?>
-    <?php echo $form->textField($model, 'subject', array('size' => 45, 'style' => 'width:500px', 'maxlength' => 45)); ?>
-    <?php echo $form->error($model, 'subject'); ?>
-</div>
+        <div class="row"
+        ; style = "margin-left: 40px">
+            <?php echo $form->labelEx($model, 'subject'); ?>
+            <?php echo $form->textField($model, 'subject', array('size' => 45, 'style' => 'width:500px', 'maxlength' => 45)); ?>
+            <?php echo $form->error($model, 'subject'); ?>
+        </div>
 
-<div class="row"; style = "margin-left: 40px">
-<?php echo $form->labelEx($model, 'description'); ?>
-<?php echo $form->textArea($model, 'description', array('id' => 'description', 'style' => 'width:500px', 'cols' => 110, 'rows' => 5, 'width' => '300px')); ?>
-<?php echo $form->error($model, 'description'); ?>
-</div>
+        <div class="row"; style = "margin-left: 40px">
+            <?php echo $form->labelEx($model, 'description'); ?>
+            <?php echo $form->textArea($model, 'description', array('id' => 'description', 'style' => 'width:500px', 'cols' => 110, 'rows' => 5, 'width' => '300px')); ?>
+            <?php echo $form->error($model, 'description'); ?>
+        </div>
 
 
-<!-->
-<div class="row"; style = "margin-left: 40px">
-<?php echo $form->labelEx($model, 'Attach File'); ?>
-<?php /*echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); */ ?>
-<?php echo CHtml::activeFileField($model, 'file'); ?>
-<?php /*echo $form->error($model,'file');*/ ?>
-<!-- Attachment: <INPUT TYPE="file" NAME="attachedfile" MAXLENGTH=255 ALLOW="text/*" > -->
+        <!-->
+        <div class="row"; style = "margin-left: 40px">
+            <?php echo $form->labelEx($model, 'Attach File'); ?>
+            <?php /*echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); */ ?>
+            <?php echo CHtml::activeFileField($model, 'file'); ?>
+            <?php /*echo $form->error($model,'file');*/ ?>
+            <!-- Attachment: <INPUT TYPE="file" NAME="attachedfile" MAXLENGTH=255 ALLOW="text/*" > -->
 
-</div>
+        </div>
+        <br>
+
+
+    </div>
+
 <br>
-</div>
 
-<br>
-
-<div id="operations"; style= "margin-left : 30px">
-<div class="row buttons">
+<div class = "span2">
     <?php echo CHtml::submitButton('Save', array("class" => "btn btn-primary") /*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
     &nbsp;&nbsp;
     <?php /*$this->widget('bootstrap.widgets.TbButton', array(
@@ -96,7 +96,6 @@
         ),
         'type' => 'primary', 'label' => 'Back'));
     ?>
-</div>
 </div>
 
 <?php $this->endWidget(); ?>

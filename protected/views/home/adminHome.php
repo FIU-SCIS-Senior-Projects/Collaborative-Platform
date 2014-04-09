@@ -9,20 +9,20 @@
 
 
 
-    <div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?></h3></div>
-    <br>
+<div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h3></div>
+<br>
 
-    <div><h4>Tickets</h4></div>
+<div><h4>Tickets</h4></div>
 
 
-
-            <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
+<!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
 <div id="fullcontent">
 
-    <div >
-        <div class="span4" style="width: 750px; margin-left: 0px">
-            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-fixed-header"
-                   id="#mytable" width="100%" style= "table-layout:fixed">
+    <div>
+        <div class="span4" style="width: 800px; margin-left: 0px">
+            <table cellpadding="0" cellspacing="0" border="0"
+                   class="table table-striped table-bordered table-fixed-header"
+                   id="#mytable" width="100%" style="table-layout:fixed">
 
                 <thead class="header">
                 <tr>
@@ -53,22 +53,64 @@
         </div>
         <!-- </div> -->
 
-        <div class = "span2" style="margin-left: 30px"
+        <div class="span2" style="margin-left: 30px"
         <!-- Cancel Button -->
-        <?php /*$this->widget('bootstrap.widgets.TbButton', array(
-                'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php', 'type' => 'primary',
-                'label' => 'Home',)); */
-        ?>
+        <table>
+            <tr>
+                <td>
+                    <!-- Admin Button -->
+                    <?php $this->widget('bootstrap.widgets.TbButton', array(
+                        'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/create', 'type' => 'primary',
+                        'label' => '  New Ticket ','size'=> 'medium'));
+                    ?>
+            </tr>
+            </td>
+            <td>
+                <!-- Manage Domain Button -->
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/domain/admin', 'type' => 'primary',
+                    'label' => 'Project Mentor','size'=> 'medium'));
+                ?>
 
-        <!-- New Ticket Button -->
-        <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/create', 'type' => 'primary',
-            'label' => '  New Ticket ',));
-        ?>
-        </div>
+            </td>
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <td>
+                <h4>Manage</h4>
+            </tr>
+            </td>
+            <td>
+                <!-- Profile Button -->
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/profiles', 'type' => 'primary',
+                    'label' => 'Profiles', 'size'=> 'medium'));
+                ?>
+                </tr></td>
+            <td>
+                <!-- Manage User Button -->
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/user/admin', 'type' => 'primary',
+                    'label' => 'User','size'=> 'medium'));
+                ?>
+                </tr></td>
+            <td>
+                <!-- Manage Domain Button -->
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/domain/admin', 'type' => 'primary',
+                    'label' => 'Domain','size'=> 'medium'));
+                ?>
+            </td>
+            </tr>
+
+
+        </table>
     </div>
 </div>
-    <!-- End FullContent -->
+</div>
+<!-- End FullContent -->
 
 <script>
     $('.triggerTicketClick').on('click', function () {

@@ -14,7 +14,7 @@ $this->menu=array(
 ?>
 
 <div style = "color: #0044cc"><h1>New Ticket</h1></div>
-<div id = "wrapper" >
+<div id = "fullcontent" >
     <div
     <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
     </div>
