@@ -35,7 +35,7 @@ class HomeController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'pMentorHome', 'dMentorHome'),
+                'actions' => array('create', 'update', 'pMentorHome', 'dMentorHome', 'adminHome'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -60,10 +60,22 @@ class HomeController extends Controller
     }
 
 
+    public function actionadminHome()
+    {
+
+        /** @var User $username */
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+
+        /* Get all tickets on the mentoring subsystem */
+        $Tickets = Ticket::model()->findAll();
+
+        $this->render('adminHome', array('Tickets' => $Tickets,
+            //'results' => $results,
+            'user' => $user));
 
 
-
-
+    }
 
 
     public function actionpMentorHome()

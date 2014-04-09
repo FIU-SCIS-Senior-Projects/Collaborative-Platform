@@ -97,7 +97,7 @@ class SiteController extends Controller
                 if ($user->disable != 1)
                 {
                     $model->login();
-                    if (Yii::app()->user->returnUrl == "/coplat/index.php") {
+                    /*if (Yii::app()->user->returnUrl == "/coplat/index.php") {
                         if ($user->isAdmin()) {
                             $this->redirect("/coplat/index.php/home/pMentorHome");
                         }elseif ($user->isProMentor()) {
@@ -109,7 +109,24 @@ class SiteController extends Controller
                         } elseif ($user->isMentee()) {
                             $this->redirect("/coplat/index.php/home/pMentorHome");
                         }
-                    } else {
+                    }*/
+
+                    /*Added by Lorenzo */
+                    if (Yii::app()->user->returnUrl == "/coplat/index.php") {
+                        if ($user->isAdmin()) {
+                            $this->redirect("/coplat/index.php/home/adminHome");
+                        }elseif ($user->isProMentor()) {
+                            $this->redirect("/coplat/index.php/home/pMentorHome");
+                        } elseif ($user->isDomMentor()) {
+                            $this->redirect("/coplat/index.php/home/dMentorHome");
+                        } elseif ($user->isPerMentor()) {
+                            $this->redirect("/coplat/index.php/home/pMentorHome");
+                        } elseif ($user->isMentee()) {
+                            $this->redirect("/coplat/index.php/home/pMentorHome");
+                        }
+                    }
+
+                 else {
                         $this->redirect(Yii::app()->user->returnUrl);
                     }
                 } else {
@@ -131,25 +148,15 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-
-    function genRandomString($length = 10) {
-        $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
-        $string = "";
-        for ($p = 0; $p < $length; $p++) {
-            $string .= $characters[mt_rand(0, strlen($characters) - 1)];
-        }
-
-        return $string;
-    }
-
-    public function actionForgotPassword()
+	
+	public function actionForgotPassword()
 	{
 		if(isset($_POST['User']))
 		{
 			$email = $_POST['User']['email'];
 			$model = User::model()->find("email=:email",array(':email'=>$email));
 			if ($model == null){
-				$error = 'Email does not exist in our records.';
+				$error = 'Email does not exist in our records';
 				$this->render('forgotPassword', array('error'=>$error));
 				return;
 			}
@@ -157,11 +164,8 @@ class SiteController extends Controller
 			$hasher = new PasswordHash(8, false);
 			$model->password = $hasher->HashPassword($password);
 			$model->save(false);
-            $link = CHtml::link('Click here to login', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-            $message = "Your new password in the Collaborative Platform is <br/> Password: $password<br/>$link";
-            $html = User::replaceMessage($model->username, $message);
-			User::sendEmailWithNewPassword($email, $password, $model->username, $html);
-			$error = 'New password has been sent to the specified email.';
+			User::sendEmailWithNewPassword($email, $password, $model->username);
+			$error = 'Email has been sent';
 			$this->render('forgotPassword', array('error'=>$error));
 			return;
 		}
