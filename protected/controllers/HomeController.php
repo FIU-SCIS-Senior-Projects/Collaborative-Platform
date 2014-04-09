@@ -35,7 +35,7 @@ class HomeController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'pMentorHome', 'dMentorHome', 'adminHome'),
+                'actions' => array('create', 'update', 'pMentorHome', 'dMentorHome', 'adminHome','adminViewProjects'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -57,6 +57,12 @@ class HomeController extends Controller
             //'results' => $results,
             'user' => $user));
 
+    }
+
+    public function actionadminViewProjects()
+    {
+
+        $this->render('coplat/projectMeeting/adminViewProjects');
     }
 
 

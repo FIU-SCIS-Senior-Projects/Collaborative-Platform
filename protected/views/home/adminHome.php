@@ -68,7 +68,7 @@
             <td>
                 <!-- Manage Domain Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
-                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/domain/admin', 'type' => 'primary',
+                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/adminViewProjects', 'type' => 'primary',
                     'label' => 'Project Mentor','size'=> 'medium'));
                 ?>
 
