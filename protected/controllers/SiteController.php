@@ -115,17 +115,11 @@ class SiteController extends Controller
                     if (Yii::app()->user->returnUrl == "/coplat/index.php") {
                         if ($user->isAdmin()) {
                             $this->redirect("/coplat/index.php/home/adminHome");
-                        }elseif ($user->isProMentor()) {
-                            $this->redirect("/coplat/index.php/home/pMentorHome");
-                        } elseif ($user->isDomMentor()) {
-                            $this->redirect("/coplat/index.php/home/dMentorHome");
-                        } elseif ($user->isPerMentor()) {
-                            $this->redirect("/coplat/index.php/home/pMentorHome");
-                        } elseif ($user->isMentee()) {
-                            $this->redirect("/coplat/index.php/home/pMentorHome");
+                        }else {
+                            $this->redirect("/coplat/index.php/home/userHome");
                         }
                     }
-
+                    /*    */
                  else {
                         $this->redirect(Yii::app()->user->returnUrl);
                     }

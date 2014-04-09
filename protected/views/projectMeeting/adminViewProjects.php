@@ -34,8 +34,6 @@
                             <!--<a href="#" class="enable-tooltip" data-toggle="tooltip"
                                data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
 
-
-
                         <div id="content-myPopOver-<?= $project->id ?>" style="display: none;"><p><?= $project->description ?></p></div>
 
                         <strong>Start

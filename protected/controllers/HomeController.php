@@ -35,7 +35,7 @@ class HomeController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'pMentorHome', 'dMentorHome', 'adminHome','adminViewProjects'),
+                'actions' => array('create', 'update', 'pMentorHome', 'userHome', 'adminHome','adminViewProjects'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -45,15 +45,15 @@ class HomeController extends Controller
     }
 
 
-    public function actiondMentorHome()
+    public function actionuserHome()
     {
         /** @var User $username */
         $username = Yii::app()->user->name;
         $user = User::model()->find("username=:username", array(':username' => $username));
 
-        $Tickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id" => $user->id));
+        $Tickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id or creator_user_id=:id", array(":id" => $user->id));
 
-        $this->render('dMentorHome', array('Tickets' => $Tickets,
+        $this->render('userHome', array('Tickets' => $Tickets,
             //'results' => $results,
             'user' => $user));
 

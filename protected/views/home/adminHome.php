@@ -7,13 +7,10 @@
  */
 ?>
 
-
-
 <div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h3></div>
 <br>
 
 <div><h4>Tickets</h4></div>
-
 
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
 <div id="fullcontent">
@@ -33,6 +30,11 @@
                     <th width="20%">Created Date</th>
                 </tr>
                 </thead>
+                <?php if ($Tickets == null)
+                {
+                    echo "No tickets";
+                }
+                else {?>
                 <?php foreach ($Tickets as $Ticket) {
                     $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
                     $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
@@ -46,7 +48,7 @@
                     </tr>
                     </tbody>
                 <?php
-                }
+                }}
                 ?>
             </table>
 
@@ -61,7 +63,7 @@
                     <!-- Admin Button -->
                     <?php $this->widget('bootstrap.widgets.TbButton', array(
                         'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/create', 'type' => 'primary',
-                        'label' => '  New Ticket ','size'=> 'medium'));
+                        'label' => '  New Ticket ', 'size' => 'medium'));
                     ?>
             </tr>
             </td>
@@ -69,7 +71,7 @@
                 <!-- Manage Domain Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/adminViewProjects', 'type' => 'primary',
-                    'label' => 'Project Mentor','size'=> 'medium'));
+                    'label' => 'Project Mentor', 'size' => 'medium'));
                 ?>
 
             </td>
@@ -79,28 +81,28 @@
         <table>
             <tr>
                 <td>
-                <h4>Manage</h4>
+                    <h4>Manage</h4>
             </tr>
             </td>
             <td>
                 <!-- Profile Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/profiles', 'type' => 'primary',
-                    'label' => 'Profiles', 'size'=> 'medium'));
+                    'label' => 'Profiles', 'size' => 'medium'));
                 ?>
                 </tr></td>
             <td>
                 <!-- Manage User Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/user/admin', 'type' => 'primary',
-                    'label' => 'User','size'=> 'medium'));
+                    'label' => 'User', 'size' => 'medium'));
                 ?>
                 </tr></td>
             <td>
                 <!-- Manage Domain Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/domain/admin', 'type' => 'primary',
-                    'label' => 'Domain','size'=> 'medium'));
+                    'label' => 'Domain', 'size' => 'medium'));
                 ?>
             </td>
             </tr>

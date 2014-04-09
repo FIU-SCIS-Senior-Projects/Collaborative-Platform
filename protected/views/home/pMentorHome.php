@@ -14,17 +14,15 @@
 
 
 <div id="fullcontent">
-    <div style="color: #0044cc"><h2>Project Mentor Home</h2></div>
-    <br>
 
     <div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?></h3></div>
     <br>
 
     <div class="row row-fluid">
-        <div class="span4">
+        <div class="span5">
             <h3 class="my-box-container-title">My projects</h3>
 
-            <div id="container" class="my-box-container" style="height: 150px; overflow-y: scroll ">
+            <div class="my-box-container" style="height: 300px; overflow-y: scroll ">
                 <?php
                 /** @var Project $projects */
                 if ($projects == null) {
@@ -37,26 +35,29 @@
                             <!--<a href="#" class="enable-tooltip" data-toggle="tooltip"
                                data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
 
-                            <a href="#test" id="myPopOver-<?= $project->id ?>"
-                               class="btn btn-primary btn-mini pull-right mypopover"
-                               title="<?php echo $project->title; ?>">more
-                            </a><br>
 
-                        <div id="content-myPopOver-<?= $project->id ?>" style="display: none;"><p><?= $project->description ?></p></div>
+                        <div id="content-myPopOver-<?= $project->id ?>" style="display: none;">
+                            <p><?= $project->description ?></p></div>
 
                         <strong>Start
                             date:</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
                         <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
+                        <a href="#test" id="myPopOver-<?= $project->id ?>"
+                           class="btn btn-primary btn-mini pull-right mypopover"
+                           title="<?php echo $project->title; ?>">more
+                        </a><br>
+                        <hr/>
                         </p>
+
                     <?php
                     }
                 } ?>
             </div>
         </div>
-        <div class="span4">
+        <div class="span5">
             <h3 class="my-box-container-title">Upcoming meetings</h3>
 
-            <div id="container" class="my-box-container" style="height: 150px; overflow-y: scroll ">
+            <div class="my-box-container" style="height: 300px; overflow-y: scroll ">
                 <?php
                 /** @var ProjectMeenting $meeting */
                 if ($meetings == null) {
@@ -74,7 +75,7 @@
         <br>
         <br>
 
-        <div class="span4">
+        <div class="span2">
             <div id="container">
                 <!-- Button trigger modal -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -176,7 +177,7 @@
 <script>
     $('a#submit').on('click', function () {
         var confirmed = confirm("Do you really want to setup a meeting?");
-        if(confirmed) {
+        if (confirmed) {
             $.post('/coplat/index.php/projectMeeting/create/<?php echo $user->id?>', $('#projectMeeting-form').serialize(), function (message) {
                 window.location = location.pathname;
             });
@@ -189,7 +190,7 @@
         trigger: 'click',
         html: true,
         content: function () {
-            return $("#content-"+$(this).attr('id')).html();
+            return $("#content-" + $(this).attr('id')).html();
         }
     });
 </script>
