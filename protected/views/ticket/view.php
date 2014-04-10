@@ -41,55 +41,53 @@
     </div>
 
     <div class="span2"> <!-- Buttons Options -->
-            <!-- Cancel Button and render to index -->
+        <table>
+            <tr><td>
+                    <?php
+                    $this->widget('bootstrap.widgets.TbButton', array(
+                        'buttonType' => 'link', 'url' => '#',
+                        'htmlOptions' => array('style' => 'width: 120px',
+                            'id' => 'my-back',
+                        ),
+                        'type' => 'primary', 'label' => 'Back'));
+                    ?>
+            </tr></td><td><br>
+                <!-- Comment Button -->
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+                    'label' => 'Add Comment',
+                    'type' => 'primary',
+                    'htmlOptions' => array(
+                        'data-toggle' => 'modal',
+                        'data-target' => '#myModalComment',
+                        'style' => 'width: 120px',
+                    ),
+                )); ?>
+            </tr></td><td><br>
+                <!-- Button trigger modal -->
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+                    'label' => 'Re-Assign',
+                    'type' => 'primary',
+                    'htmlOptions' => array(
+                        'data-toggle' => 'modal',
+                        'data-target' => '#myModalReAssign',
+                        'style' => 'width: 120px',
+                    ),
+                ));  ?>
+            </td></tr>
+        </table>
 
-            <?php
-            $this->widget('bootstrap.widgets.TbButton', array(
-                'buttonType' => 'link', 'url' => '#',
-                'htmlOptions' => array(
-                    'id' => 'my-back',
-                ),
-                'type' => 'primary', 'label' => 'Back'));
-            ?>
-
-            <!-- Comment Button -->
-            <?php $this->widget('bootstrap.widgets.TbButton', array(
-                'label' => 'Comment',
-                'type' => 'primary',
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#myModalComment',
-                    'style' => 'width: 100px',
-                ),
-            ));
-            ?>&nbsp;&nbsp;
-            <!-- Re-Assign Button -->
-            <?php /*echo CHtml::button('Re-Route', array("class"=> "btn btn-primary", 'submit' => array('comment/create', 'id' =>$model->id),
-	 		));*/
-            ?>
-            <!-- Button trigger modal -->
-            <?php $this->widget('bootstrap.widgets.TbButton', array(
-                'label' => 'Re-Assign',
-                'type' => 'primary',
-                'htmlOptions' => array(
-                    'data-toggle' => 'modal',
-                    'data-target' => '#myModalReAssign',
-                    'style' => 'width: 100px',
-                ),
-            ));
-            ?>
-             <!-- Update Button  -->
-            <?php
-            /*$this->widget('bootstrap.widgets.TbButton', array(
-                 'buttonType'=>'link', 'id'=>'new-box', 'url'=>array('update', 'id'=>$model->id),*/
-            //'confirm' => 'Do you want to proceed and make change on this ticket?',
-            /*'type'=>'primary', 'label'=>'Edit'));*/
-            ?>
+        <!-- Update Button  -->
+        <?php
+        /*$this->widget('bootstrap.widgets.TbButton', array(
+             'buttonType'=>'link', 'id'=>'new-box', 'url'=>array('update', 'id'=>$model->id),*/
+        //'confirm' => 'Do you want to proceed and make change on this ticket?',
+        /*'type'=>'primary', 'label'=>'Edit'));*/
+        ?>
 
         <!-- Delete Button -->
-            <?php /*echo CHtml::button('Delete', array("class"=>"btn btn-primary", 'submit' => array('Delete', 'id'=>$model->id),
+        <?php /*echo CHtml::button('Delete', array("class"=>"btn btn-primary", 'submit' => array('Delete', 'id'=>$model->id),
 			'confirm' => 'Do you want to Drop this ticket from the Mentoring Module?')); */
-            ?>
+        ?>
     </div>
     <!-- End Buttons Options -->
 
@@ -107,10 +105,11 @@
         </div>
         <br>
     </div>
-        <br>
+    <br>
 
     <!-- End Container -->
     <br>
+
     <div class="container" style="width: 800px; margin-left: 0px; overflow-y: scroll">
         <div style="color: #0044cc"><h3>Comments</h3></div>
         <br>

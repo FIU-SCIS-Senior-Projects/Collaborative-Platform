@@ -66,22 +66,31 @@
                     <!-- Admin Button -->
                     <?php $this->widget('bootstrap.widgets.TbButton', array(
                         'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/create', 'type' => 'primary',
-                        'label' => '  New Ticket ', 'size' => 'medium'));
+                        'label' => '  New Ticket ', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
                     ?>
             </tr>
             </td>
             <td>
+                <br>
                 <!-- Manage Domain Button -->
-                <?php
+                <?php if($user->isProMentor())
+                {
                     $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMentorViewProjects', 'type' => 'primary',
-                    'label' => 'Project Mentor', 'size' => 'medium'));
-                ?>
+                    'label' => 'Project Mentor', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
+                }
+                elseif($user->isMentee())
+                    {
+                        $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMenteeViewProjects', 'type' => 'primary',
+                            'label' => 'Project', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
+                    }
+                    ?>
 
             </td>
             </tr>
         </table>
-        <br>
+
 
     </div>
 </div>

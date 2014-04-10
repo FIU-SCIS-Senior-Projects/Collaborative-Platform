@@ -84,7 +84,7 @@
                     'htmlOptions' => array(
                         'data-toggle' => 'modal',
                         'data-target' => '#myModalNewMeeting',
-                        'style' => 'width: 100px',
+                        'style' => 'width: 120px',
                     ),
                 ));
                 ?>

@@ -63,15 +63,15 @@
                     <!-- Admin Button -->
                     <?php $this->widget('bootstrap.widgets.TbButton', array(
                         'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/create', 'type' => 'primary',
-                        'label' => '  New Ticket ', 'size' => 'medium'));
+                        'label' => '  New Ticket ', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
                     ?>
             </tr>
             </td>
-            <td>
+            <td><br>
                 <!-- Manage Domain Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/adminViewProjects', 'type' => 'primary',
-                    'label' => 'Project Mentor', 'size' => 'medium'));
+                    'label' => 'Project Mentor', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
                 ?>
 
             </td>
@@ -88,26 +88,24 @@
                 <!-- Profile Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/profiles', 'type' => 'primary',
-                    'label' => 'Profiles', 'size' => 'medium'));
+                    'label' => 'Profiles', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
                 ?>
                 </tr></td>
-            <td>
+            <td><br>
                 <!-- Manage User Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/user/admin', 'type' => 'primary',
-                    'label' => 'User', 'size' => 'medium'));
+                    'label' => 'User', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
                 ?>
                 </tr></td>
-            <td>
+            <td><br>
                 <!-- Manage Domain Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/domain/admin', 'type' => 'primary',
-                    'label' => 'Domain', 'size' => 'medium'));
+                    'label' => 'Domain', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
                 ?>
             </td>
             </tr>
-
-
         </table>
     </div>
 </div>
