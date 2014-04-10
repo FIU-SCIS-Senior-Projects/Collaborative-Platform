@@ -14,14 +14,15 @@
 
 
 <div id="fullcontent">
+
     <div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?></h3></div>
     <br>
 
     <div class="row row-fluid">
-        <div class="span6">
-            <h3 class="my-box-container-title">Senior Projects</h3>
+        <div class="span5">
+            <h3 class="my-box-container-title">My projects</h3>
 
-            <div class="my-box-container" style="height: 400px; overflow-y: scroll ">
+            <div class="my-box-container" style="height: 300px; overflow-y: scroll ">
                 <?php
                 /** @var Project $projects */
                 if ($projects == null) {
@@ -33,6 +34,7 @@
                         <p><strong>Title :</strong> <?php echo $project->title; ?>
                             <!--<a href="#" class="enable-tooltip" data-toggle="tooltip"
                                data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
+
 
                         <div id="content-myPopOver-<?= $project->id ?>" style="display: none;">
                             <p><?= $project->description ?></p></div>
@@ -46,15 +48,16 @@
                         </a><br>
                         <hr/>
                         </p>
+
                     <?php
                     }
                 } ?>
             </div>
         </div>
-        <div class="span6">
+        <div class="span5">
             <h3 class="my-box-container-title">Upcoming meetings</h3>
 
-            <div class="my-box-container" style="height: 400px;overflow-y: scroll ">
+            <div class="my-box-container" style="height: 300px; overflow-y: scroll ">
                 <?php
                 /** @var ProjectMeenting $meeting */
                 if ($meetings == null) {
@@ -72,10 +75,10 @@
         <br>
         <br>
 
-        <div class="span4">
+        <div class="span2">
             <div id="container">
                 <!-- Button trigger modal -->
-                <?php /*$this->widget('bootstrap.widgets.TbButton', array(
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'label' => 'Set-Up Meeting',
                     'type' => 'primary',
                     'htmlOptions' => array(
@@ -83,7 +86,7 @@
                         'data-target' => '#myModalNewMeeting',
                         'style' => 'width: 100px',
                     ),
-                )); */
+                ));
                 ?>
             </div>
         </div>

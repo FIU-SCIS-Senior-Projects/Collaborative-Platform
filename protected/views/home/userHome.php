@@ -21,7 +21,8 @@
             {
                 echo "No tickets";
             }
-            else {?>
+            else {
+            ?>
             <table cellpadding="0" cellspacing="0" border="0"
                    class="table table-striped table-bordered table-fixed-header"
                    id="#mytable" width="100%" style="table-layout:fixed">
@@ -36,20 +37,21 @@
                 </tr>
                 </thead>
 
-                    <?php foreach ($Tickets as $Ticket) {
-                        $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
-                        $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
-                        <tbody>
-                        <tr id="<?= $Ticket->id ?>" class="triggerTicketClick">
-                            <td width="5%"><?php echo $Ticket->id; ?></td>
-                            <td width="25%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
-                            <td width="13%"><?php echo $domain->name; ?></td>
-                            <td width="37%"><?php echo $Ticket->subject; ?></td>
-                            <td width="20%"><?php echo date("M d, Y", strtotime($Ticket->created_date)); ?></td>
-                        </tr>
-                        </tbody>
-                    <?php
-                    }}
+                <?php foreach ($Tickets as $Ticket) {
+                    $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
+                    $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
+                    <tbody>
+                    <tr id="<?= $Ticket->id ?>" class="triggerTicketClick">
+                        <td width="5%"><?php echo $Ticket->id; ?></td>
+                        <td width="25%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
+                        <td width="13%"><?php echo $domain->name; ?></td>
+                        <td width="37%"><?php echo $Ticket->subject; ?></td>
+                        <td width="20%"><?php echo date("M d, Y", strtotime($Ticket->created_date)); ?></td>
+                    </tr>
+                    </tbody>
+                <?php
+                }
+                }
                 ?>
             </table>
 
@@ -70,8 +72,9 @@
             </td>
             <td>
                 <!-- Manage Domain Button -->
-                <?php $this->widget('bootstrap.widgets.TbButton', array(
-                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/adminViewProjects', 'type' => 'primary',
+                <?php
+                    $this->widget('bootstrap.widgets.TbButton', array(
+                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMentorViewProjects', 'type' => 'primary',
                     'label' => 'Project Mentor', 'size' => 'medium'));
                 ?>
 
