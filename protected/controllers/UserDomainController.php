@@ -70,7 +70,9 @@ class UserDomainController extends Controller
 		if(isset($_POST['UserDomain']))
 		{
 			$model->attributes=$_POST['UserDomain'];
-			if($model->save())
+            if($model->subdomain_id == '')
+                $model->subdomain_id = null;
+            if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 

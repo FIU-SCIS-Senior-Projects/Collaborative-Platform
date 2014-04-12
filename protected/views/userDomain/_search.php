@@ -17,13 +17,18 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'user_id'); ?>
+		<?php echo $form->textField($model,'user_id',array('size'=>11,'maxlength'=>11)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'domain_id'); ?>
 		<?php echo $form->textField($model,'domain_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->label($model,'subdomain_id'); ?>
+		<?php echo $form->textField($model,'subdomain_id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row">

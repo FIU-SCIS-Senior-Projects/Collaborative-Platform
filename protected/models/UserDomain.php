@@ -5,8 +5,9 @@
  *
  * The followings are the available columns in table 'user_domain':
  * @property string $id
- * @property string $domain_id
  * @property string $user_id
+ * @property string $domain_id
+ * @property string $subdomain_id
  * @property integer $rate
  * @property integer $active
  * @property integer $tier_team
@@ -14,6 +15,7 @@
  * The followings are the available model relations:
  * @property Domain $domain
  * @property User $user
+ * @property Subdomain $subdomain
  */
 class UserDomain extends CActiveRecord
 {
@@ -43,12 +45,12 @@ class UserDomain extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('domain_id, user_id', 'required'),
+			array('user_id, domain_id', 'required'),
 			array('rate, active, tier_team', 'numerical', 'integerOnly'=>true),
-			array('domain_id, user_id', 'length', 'max'=>11),
+			array('user_id, domain_id, subdomain_id', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, domain_id, user_id, rate, active, tier_team', 'safe', 'on'=>'search'),
+			array('id, user_id, domain_id, subdomain_id, rate, active, tier_team', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +64,7 @@ class UserDomain extends CActiveRecord
 		return array(
 			'domain' => array(self::BELONGS_TO, 'Domain', 'domain_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'subdomain' => array(self::BELONGS_TO, 'Subdomain', 'subdomain_id'),
 		);
 	}
 
@@ -72,8 +75,9 @@ class UserDomain extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'domain_id' => 'Domain',
 			'user_id' => 'User',
+			'domain_id' => 'Domain',
+			'subdomain_id' => 'Subdomain',
 			'rate' => 'Rate',
 			'active' => 'Active',
 			'tier_team' => 'Tier Team',
@@ -92,8 +96,9 @@ class UserDomain extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('domain_id',$this->domain_id,true);
 		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('domain_id',$this->domain_id,true);
+		$criteria->compare('subdomain_id',$this->subdomain_id,true);
 		$criteria->compare('rate',$this->rate);
 		$criteria->compare('active',$this->active);
 		$criteria->compare('tier_team',$this->tier_team);

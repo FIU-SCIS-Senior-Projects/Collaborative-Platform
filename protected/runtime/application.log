@@ -8257,3 +8257,826 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/site/carousel.css
 HTTP_REFERER=http://localhost/coplat/index.php/site/login
 ---
+2014/04/12 16:38:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/carousel.c...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/04/12 17:13:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/carousel.c...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/04/12 17:16:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/carousel.c...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/04/12 17:35:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/carousel.c...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/04/12 17:35:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/carousel.c...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/04/12 17:35:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/carousel.c...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---
+2014/04/12 17:36:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('home/carousel.c...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/home/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2014/04/12 17:36:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/create
+---
+2014/04/12 17:42:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/admin
+---
+2014/04/12 17:42:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/create
+---
+2014/04/12 17:42:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/create
+---
+2014/04/12 17:42:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---
+2014/04/12 17:43:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "carousel.css".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('carousel.css')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/message
+---
+2014/04/12 18:00:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 18:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 18:00:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/admin
+---
+2014/04/12 18:00:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---
+2014/04/12 18:01:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "carousel.css".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('carousel.css')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain
+---
+2014/04/12 18:01:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:25:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "carousel.css".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('carousel.css')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain
+---
+2014/04/12 18:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:26:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:27:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:27:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/create
+---
+2014/04/12 18:28:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/create
+---
+2014/04/12 18:28:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/create
+---
+2014/04/12 18:29:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:29:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`user_domain`, CONSTRAINT `fk_user_domain_subdomain1` FOREIGN KEY (`subdomain_id`) REFERENCES `subdomain` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `user_domain` (`domain_id`, `subdomain_id`, `user_id`, `rate`, `active`, `tier_team`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5).
+in C:\wamp\www\coplat\protected\controllers\UserDomainController.php (73)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/12 18:29:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`user_domain`, CONSTRAINT `fk_user_domain_subdomain1` FOREIGN KEY (`subdomain_id`) REFERENCES `subdomain` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `user_domain` (`domain_id`, `subdomain_id`, `user_id`, `rate`, `active`, `tier_team`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\UserDomainController.php(73): CActiveRecord->save()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserDomainController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/crea...')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/userdomain/create
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:31:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/2
+---
+2014/04/12 18:32:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:33:20 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`user_domain`, CONSTRAINT `fk_user_domain_subdomain1` FOREIGN KEY (`subdomain_id`) REFERENCES `subdomain` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `user_domain` (`domain_id`, `subdomain_id`, `user_id`, `rate`, `active`, `tier_team`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5).
+in C:\wamp\www\coplat\protected\controllers\UserDomainController.php (73)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/12 18:33:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`user_domain`, CONSTRAINT `fk_user_domain_subdomain1` FOREIGN KEY (`subdomain_id`) REFERENCES `subdomain` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `user_domain` (`domain_id`, `subdomain_id`, `user_id`, `rate`, `active`, `tier_team`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\UserDomainController.php(73): CActiveRecord->save()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserDomainController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/crea...')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/userdomain/create
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:37:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/4
+---
+2014/04/12 18:39:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/create
+---
+2014/04/12 18:40:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('userdomain/caro...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/userdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/userdomain/5
+---
+2014/04/12 18:40:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 18:41:10 [error] [php] mb_send_mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() (C:\wamp\www\coplat\protected\extensions\email\Email.php:141)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\models\User.php(314): Email->send()
+#1 C:\wamp\www\coplat\protected\controllers\TicketController.php(114): sendTicketAssignedEmailNotification()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): TicketController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): TicketController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): TicketController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): TicketController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): TicketController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (141)
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (132)
+in C:\wamp\www\coplat\protected\models\User.php (314)
+2014/04/12 18:52:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "carousel.css".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('carousel.css')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor
+---
+2014/04/12 18:52:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainMentor/ca...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domainMentor/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor/create
+---
+2014/04/12 18:52:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainMentor/ca...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domainMentor/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor/7
+---
+2014/04/12 18:52:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainMentor/ca...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domainMentor/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor/create
+---
+2014/04/12 18:52:41 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '6' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `domain_mentor` (`user_id`, `max_tickets`) VALUES (:yp0, :yp1).
+in C:\wamp\www\coplat\protected\controllers\DomainMentorController.php (73)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/12 18:52:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '6' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `domain_mentor` (`user_id`, `max_tickets`) VALUES (:yp0, :yp1)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\DomainMentorController.php(73): CActiveRecord->save()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): DomainMentorController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainMentor/cr...')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/domainMentor/create
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor/create
+---
+2014/04/12 18:52:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainMentor/ca...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domainMentor/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor/9
+---
+2014/04/12 18:53:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainMentor/ca...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domainMentor/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor/index
+---
+2014/04/12 18:53:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainMentor/ca...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domainMentor/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor/create
+---
+2014/04/12 18:53:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domainMentor/ca...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domainMentor/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domainMentor/8
+---
+2014/04/12 18:53:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 18:53:51 [error] [php] Trying to get property of non-object (C:\wamp\www\coplat\protected\models\User.php:514)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): TicketController->runAction()
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): TicketController->filterAccessControl()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): TicketController->runActionWithFilters()
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): TicketController->run()
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in C:\wamp\www\coplat\protected\models\User.php (514)
+in C:\wamp\www\coplat\protected\controllers\TicketController.php (101)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/12 18:57:34 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM `subdomain` `t` WHERE id=:id LIMIT 1.
+in C:\wamp\www\coplat\protected\models\User.php (508)
+in C:\wamp\www\coplat\protected\controllers\TicketController.php (101)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/12 18:57:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM `subdomain` `t` WHERE id=:id LIMIT 1' in C:\wamp\www\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\CDbCommand.php(414): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1297): CDbCommand->queryRow()
+#2 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1402): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\coplat\protected\models\User.php(508): CActiveRecord->find('id=:id', Array)
+#4 C:\wamp\www\coplat\protected\controllers\TicketController.php(101): User::assignTicket('1', true)
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): TicketController->actionCreate()
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/create')
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/ticket/create
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:04:28 [error] [php] mb_send_mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() (C:\wamp\www\coplat\protected\extensions\email\Email.php:141)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\models\User.php(314): Email->send()
+#1 C:\wamp\www\coplat\protected\controllers\TicketController.php(117): sendTicketAssignedEmailNotification()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): TicketController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): TicketController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): TicketController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): TicketController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): TicketController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (141)
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (132)
+in C:\wamp\www\coplat\protected\models\User.php (314)
+2014/04/12 19:06:13 [error] [php] mb_send_mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() (C:\wamp\www\coplat\protected\extensions\email\Email.php:141)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\models\User.php(314): Email->send()
+#1 C:\wamp\www\coplat\protected\controllers\TicketController.php(117): sendTicketAssignedEmailNotification()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): TicketController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): TicketController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): TicketController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): TicketController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): TicketController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (141)
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (132)
+in C:\wamp\www\coplat\protected\models\User.php (314)
+2014/04/12 19:07:14 [error] [php] mb_send_mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() (C:\wamp\www\coplat\protected\extensions\email\Email.php:141)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\models\User.php(314): Email->send()
+#1 C:\wamp\www\coplat\protected\controllers\TicketController.php(117): sendTicketAssignedEmailNotification()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): TicketController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): TicketController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): TicketController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): TicketController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): TicketController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (141)
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (132)
+in C:\wamp\www\coplat\protected\models\User.php (314)
+2014/04/12 19:08:23 [error] [php] mb_send_mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() (C:\wamp\www\coplat\protected\extensions\email\Email.php:141)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\models\User.php(314): Email->send()
+#1 C:\wamp\www\coplat\protected\controllers\TicketController.php(117): sendTicketAssignedEmailNotification()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): TicketController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): TicketController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): TicketController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): TicketController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): TicketController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (141)
+in C:\wamp\www\coplat\protected\extensions\email\Email.php (132)
+in C:\wamp\www\coplat\protected\models\User.php (314)
+2014/04/12 19:09:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('domain/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/domain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/domain/admin
+---
+2014/04/12 19:09:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/admin
+---
+2014/04/12 19:09:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/create
+---
+2014/04/12 19:09:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('subdomain/carou...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/subdomain/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/subdomain/create
+---
+2014/04/12 19:10:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:11:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:16:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:16:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:16:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:17:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:17:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:17:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---
+2014/04/12 19:18:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/carousel...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/ticket/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/create
+---

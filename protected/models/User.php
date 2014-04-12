@@ -499,15 +499,28 @@ class User extends CActiveRecord
 
 
     /*Assign Domain Mentor to a Ticket */
-    public static function assignTicket($domain_id)
+    public static function assignTicket($domain_id, $sub)
     {
         /*Query to the User_Domain model */
-        $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
+
+        if($sub){
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id", array(":id" => $domain_id));
+            $subdomain = Subdomain::model()->findByPk($domain_id);
+            $validator = $subdomain->validator;
+        }
+        else{
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
+            $domain = Domain::model()->findByPk($domain_id);
+            $validator = $domain->validator;
+        }
+
         if ($userDomain != null && is_array($userDomain)) {
             foreach ($userDomain as $auserDomain) {
                 /** @var UserDomain $auserDomain */
                 if ($auserDomain->tier_team == 1) {
-                    if ($auserDomain->rate >= self::$condition) {
+
+
+                    if ($auserDomain->rate >= $validator) {
                         /*Query to the domain mentor to see how many tickets is allowed to be assigned */
                         $domainMentor = DomainMentor::model()->findAllBySql("SELECT * FROM domain_mentor WHERE user_id =:id", array(":id" => $auserDomain->user_id));
                         /** @var Ticket $count */

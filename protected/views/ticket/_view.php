@@ -38,6 +38,10 @@
 	<?php echo CHtml::encode($data->domain_id); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('subdomain_id')); ?>:</b>
+	<?php echo CHtml::encode($data->subdomain_id); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('file')); ?>:</b>
 	<?php echo CHtml::encode($data->file); ?>
 	<br />

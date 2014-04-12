@@ -22,8 +22,9 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'domain_id',
 		'user_id',
+		'domain_id',
+		'subdomain_id',
 		'rate',
 		'active',
 		'tier_team',

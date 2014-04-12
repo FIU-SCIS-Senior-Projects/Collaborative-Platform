@@ -9,12 +9,16 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
+	<?php echo CHtml::encode($data->user_id); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('domain_id')); ?>:</b>
 	<?php echo CHtml::encode($data->domain_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('subdomain_id')); ?>:</b>
+	<?php echo CHtml::encode($data->subdomain_id); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('rate')); ?>:</b>

@@ -52,6 +52,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'subdomain_id'); ?>
+		<?php echo $form->textField($model,'subdomain_id',array('size'=>11,'maxlength'=>11)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'file'); ?>
 		<?php echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
