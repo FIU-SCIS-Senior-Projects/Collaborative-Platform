@@ -8246,3 +8246,14 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/domain/carousel.css
 HTTP_REFERER=http://localhost/coplat/index.php/domain/index
 ---
+2014/04/12 16:17:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "carousel.css".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('carousel.css')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('carousel.css')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/carousel.c...')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/carousel.css
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---

@@ -30,7 +30,7 @@
         <?php echo $form->error($model,'description'); ?>
 
         <?php echo $form->labelEx($model,'validator'); ?>
-        <input id="validator" name="validator" type="number" value="5" maxlength="2" max="10" min="1">
+        <?php echo $form->numberField($model, 'validator', array('max'=> 10, 'min' => 1)); ?>
         <?php echo $form->error($model,'validator'); ?>
         <br/>
 
