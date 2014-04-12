@@ -22,7 +22,14 @@
                 </tr>
 		<tr style="background-color: #EEE">
                     <td width="15%"><h5>Sub-Domain</h5></td>
-                    <td width="85%"><?php echo $subdomainName->name; ?> </td>
+                    <td width="85%">
+                        <?php
+                            if($subdomainName != null)
+                                echo $subdomainName->name;
+                            else
+                                echo "--";
+                        ?>
+                    </td>
                 </tr>
                 <tr style="background-color: #C9E0ED">
                     <td width="15%"><h5>Status</h5></td>

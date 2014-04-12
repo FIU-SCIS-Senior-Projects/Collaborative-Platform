@@ -57,7 +57,9 @@ class TicketController extends Controller
         $userCreator = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $ticket->creator_user_id));
         $userAssign = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $ticket->assign_user_id));
         $domainName = Domain::model()->findBySql("SELECT * from domain  WHERE id=:id", array(":id" => $ticket->domain_id));
-        $subdomainName = Subdomain::model()->findBySql("SELECT * from subdomain  WHERE id=:id", array(":id" => $ticket->subdomain_id));
+        $subdomainName = null;
+        if($ticket->subdomain_id != null)
+            $subdomainName = Subdomain::model()->findBySql("SELECT * from subdomain  WHERE id=:id", array(":id" => $ticket->subdomain_id));
 
 		$this->render('view',array(
             'model' => $this->loadModel($id), /*Return all the ticket details */
@@ -93,7 +95,6 @@ class TicketController extends Controller
                     $model->subdomain_id = null;
                 }
 
-			    
 			    /*Assign the ticket to the most appropiate Domain mentor */
                     if(!$sub)
 		                $model->assign_user_id = User::assignTicket($domain_id, $sub);

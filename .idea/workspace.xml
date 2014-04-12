@@ -5,31 +5,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/Ticket.php" afterPath="$PROJECT_DIR$/protected/models/Ticket.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/TicketController.php" afterPath="$PROJECT_DIR$/protected/controllers/TicketController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/UserDomain.php" afterPath="$PROJECT_DIR$/protected/models/UserDomain.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/UserDomainController.php" afterPath="$PROJECT_DIR$/protected/controllers/UserDomainController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/_form.php" afterPath="$PROJECT_DIR$/protected/views/ticket/_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/_form.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/_search.php" afterPath="$PROJECT_DIR$/protected/views/ticket/_search.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/_search.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/_search.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/_view.php" afterPath="$PROJECT_DIR$/protected/views/ticket/_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/_view.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/admin.php" afterPath="$PROJECT_DIR$/protected/views/ticket/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/admin.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/admin.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/create.php" afterPath="$PROJECT_DIR$/protected/views/domain/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/create.php" afterPath="$PROJECT_DIR$/protected/views/ticket/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/create.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/create.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/index.php" afterPath="$PROJECT_DIR$/protected/views/domain/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/index.php" afterPath="$PROJECT_DIR$/protected/views/ticket/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/index.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/update.php" afterPath="$PROJECT_DIR$/protected/views/ticket/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/update.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/view.php" afterPath="$PROJECT_DIR$/protected/views/ticket/view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/view.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,16 +35,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TicketController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TicketController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="16" selection-start="3551" selection-end="3551" vertical-scroll-proportion="0.7120419" vertical-offset="1173" max-vertical-offset="4386">
+            <state line="65" column="134" selection-start="2384" selection-end="2384" vertical-scroll-proportion="-13.076923" vertical-offset="765" max-vertical-offset="4403">
               <folding>
-                <marker date="1397328364630" expanded="true" signature="1598:1630" placeholder="SELECT * fro..user..." />
-                <marker date="1397328364630" expanded="true" signature="1724:1756" placeholder="SELECT * fro..user..." />
-                <marker date="1397328364630" expanded="true" signature="1851:1885" placeholder="SELECT * fro..domain..." />
-                <marker date="1397328364630" expanded="true" signature="1981:2018" placeholder="SELECT * fro..subdomain..." />
+                <marker date="1397332581267" expanded="true" signature="1598:1630" placeholder="SELECT * fro..user..." />
+                <marker date="1397332581267" expanded="true" signature="1724:1756" placeholder="SELECT * fro..user..." />
+                <marker date="1397332581267" expanded="true" signature="1851:1885" placeholder="SELECT * fro..domain..." />
+                <marker date="1397332581267" expanded="true" signature="2058:2095" placeholder="SELECT * fro..subdomain..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/protected/views/ticket/view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="32" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.6230366" vertical-offset="0" max-vertical-offset="3808">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,7 +92,6 @@
         <option value="$PROJECT_DIR$/protected/controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/protected/views/home/dMentorHome.php" />
         <option value="$PROJECT_DIR$/protected/models/Comment.php" />
-        <option value="$PROJECT_DIR$/protected/views/ticket/view.php" />
         <option value="$PROJECT_DIR$/protected/views/home/pMentorHome.php" />
         <option value="$PROJECT_DIR$/protected/components/UserIdentity.php" />
         <option value="$PROJECT_DIR$/protected/controllers/CommentController.php" />
@@ -132,11 +123,12 @@
         <option value="$PROJECT_DIR$/protected/controllers/SubdomainController.php" />
         <option value="$PROJECT_DIR$/protected/views/userDomain/_form.php" />
         <option value="$PROJECT_DIR$/protected/controllers/UserDomainController.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
         <option value="$PROJECT_DIR$/protected/models/User.php" />
         <option value="$PROJECT_DIR$/protected/views/subdomain/add.php" />
         <option value="$PROJECT_DIR$/protected/views/ticket/create.php" />
         <option value="$PROJECT_DIR$/protected/views/ticket/_form.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
+        <option value="$PROJECT_DIR$/protected/views/ticket/view.php" />
       </list>
     </option>
   </component>
@@ -412,7 +404,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -479,11 +471,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/protected/views/message/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="242" column="0" selection-start="9889" selection-end="9889" vertical-scroll-proportion="-1.8738621" vertical-offset="5555" max-vertical-offset="6324" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/email/index1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="425" />
@@ -763,13 +750,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="16" selection-start="3551" selection-end="3551" vertical-scroll-proportion="0.7120419" vertical-offset="1173" max-vertical-offset="4386">
+        <state line="65" column="134" selection-start="2384" selection-end="2384" vertical-scroll-proportion="-13.076923" vertical-offset="765" max-vertical-offset="4403">
           <folding>
-            <marker date="1397328364630" expanded="true" signature="1598:1630" placeholder="SELECT * fro..user..." />
-            <marker date="1397328364630" expanded="true" signature="1724:1756" placeholder="SELECT * fro..user..." />
-            <marker date="1397328364630" expanded="true" signature="1851:1885" placeholder="SELECT * fro..domain..." />
-            <marker date="1397328364630" expanded="true" signature="1981:2018" placeholder="SELECT * fro..subdomain..." />
+            <marker date="1397332581267" expanded="true" signature="1598:1630" placeholder="SELECT * fro..user..." />
+            <marker date="1397332581267" expanded="true" signature="1724:1756" placeholder="SELECT * fro..user..." />
+            <marker date="1397332581267" expanded="true" signature="1851:1885" placeholder="SELECT * fro..domain..." />
+            <marker date="1397332581267" expanded="true" signature="2058:2095" placeholder="SELECT * fro..subdomain..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/ticket/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="32" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.6230366" vertical-offset="0" max-vertical-offset="3808">
+          <folding />
         </state>
       </provider>
     </entry>
