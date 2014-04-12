@@ -12,7 +12,6 @@ class MessageController extends Controller
 		
 	public function actionSend($username = null, $reply=null, $selfReply = null)
 	{
-		echo Yii::app()->user->name;
 		$user = new User;
 		$model = new Message;
 		$message = null;		
@@ -23,7 +22,7 @@ class MessageController extends Controller
 		foreach($models as $aUser)
 		{
 			$users[] = array(
-					'label'=>$aUser->fname . ' ' . $aUser->lname,
+					'label'=>CHtml::image($aUser->pic_url, '', array('width'=>'20px')) . '  ' .$aUser->fname . ' ' . $aUser->lname,
 					'value'=>"\"" .$aUser->fname . " ".$aUser->lname."\" <" .$aUser->username . ">"
 			);
 		}
@@ -35,7 +34,7 @@ class MessageController extends Controller
 			
 				$model->sender = Yii::app()->user->name;
 				$model->created_date = date('Y-m-d H:i:s');
-				//$model->userImage = $model->sender0->image_url;
+				$model->userImage = $model->sender0->pic_url;
 
 				$model->subject = $_POST['Message']['subject'];
 				
@@ -131,7 +130,7 @@ class MessageController extends Controller
 				$messages[] = $aMessage;
 		}
 		
-		foreach ($user->messages1(array('order'=>'id DESC')) as $aMessage)
+		foreach ($user->messages(array('order'=>'id DESC')) as $aMessage)
 		{
 			if ($aMessage->been_deleted)
 				$messages[] = $aMessage;
@@ -143,7 +142,7 @@ class MessageController extends Controller
 	public function actionSetAsRead($id)
 	{
 		$message = Message::model()->findByPk($id);
-		$message->been_read = true;
+		$message->been_read = 1;
 		$message->save();
 	}
 	
@@ -154,7 +153,7 @@ class MessageController extends Controller
 		{
 			$theId = intval($id);
 			$message = Message::model()->findByPK($theId);
-			$message->been_deleted = true;
+			$message->been_deleted = 1;
 			$message->save(false);
 		}
 	}

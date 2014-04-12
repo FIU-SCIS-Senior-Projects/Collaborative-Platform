@@ -236,13 +236,15 @@ class User extends CActiveRecord
     public function sendVerificationEmail()
     {
         $email = Yii::app()->email;
-        $address = $this->email;
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/user/VerifyEmail?username=' . $this->username
             . '&activation_chain=' . $this->activation_chain);
-        $email->to = $address;
+        $message = "You need to verify your account before logging in. <br/> $link to verify your account.";
+        $html = $this->replaceMessage($this->fname, $message);
+
+        $email->to = $this->email;
         $email->from = 'Collaborative Platform';
         $email->subject = 'Verify your account on the Collaborative Platform';
-        $email->message = "You need to verify your account before logging in.  $link to verify your account.";
+        $email->message = $html;
         $email->send();
     }
 
@@ -250,22 +252,28 @@ class User extends CActiveRecord
     {
         $user = User::model()->find("id=:id",array(':id' => $user_id));
 
+        $message = "Your password on the Collaborative Platform Portal has change. If you are not aware of this change contact the system administrator as soon as possible.";
+        $html = User::replaceMessage($user->fname, $message);
+
         $email = Yii::app()->email;
         $email->to = $user->email;
         $email->from = 'Collaborative Platform';
         $email->subject = 'Password Change';
-        $email->message = "$user->fname $user->lname, your password on the Collaborative Platform Portal has change. If you are not aware of this change contact the system administrator as soon as possible.";
+        $email->message = $html;
         $email->send();
     }
 
-    public static function sendEmailWithNewPassword($address, $password, $username, $message)
+    public static function sendEmailWithNewPassword($username, $password)
     {
-        $email = Yii::app()->email;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        $message = "Your new password in the Collaborative Platform is: $password";
+        $html = User::replaceMessage($user->fname, $message);
 
-        $email->to = $address;
+        $email = Yii::app()->email;
+        $email->to = $user->email;
         $email->from = 'Collaborative Platform';
         $email->subject = 'Your New Password';
-        $email->message = $message;
+        $email->message = $html;
         $email->send();
     }
 

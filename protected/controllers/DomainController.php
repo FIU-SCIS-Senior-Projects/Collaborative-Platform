@@ -70,8 +70,8 @@ class DomainController extends Controller
 		if(isset($_POST['Domain']))
 		{
 			$model->attributes=$_POST['Domain'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+            if($model->save())
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('create',array(

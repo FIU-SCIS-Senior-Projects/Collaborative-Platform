@@ -2,19 +2,33 @@
 /* @var $this SiteController */
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
-
+/*
 $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
 	'Login',
-);
+);*/
 ?>
 
-<div class="form">
 
-    <img style="float:left; height:50px; margin-left:50px"src='/coplat/images/mentor.png'/>
+
+<div class="form">
+    <!--<img style="float:left; height:50px; margin-left:50px"src='/coplat/images/mentor.png'/>
     <h2 style="margin-bottom:40px;float:left;margin-left:10px">Collaborative Platform Login</h2>
-    <div id="login">
-		<?php 
+
+    -->
+    <div style="float:left; border:1px solid;width: auto" >
+        <?php $this->widget('bootstrap.widgets.TbCarousel', array(
+            'items'=>array(
+                array('image'=>'/coplat/images/carousel/img1.jpeg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
+                array('image'=>'/coplat/images/carousel/mentor.png', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
+
+            ),
+            'htmlOptions' => array('style'=>'width:600px;'),
+        )); ?>
+    </div>
+
+    <div id="login" style="height: 60px">
+        <?php
 			$form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             	'id'=>'login-form',
 				'type'=>'horizontal',

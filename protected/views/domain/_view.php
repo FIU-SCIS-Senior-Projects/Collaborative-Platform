@@ -17,5 +17,9 @@
 	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('validator')); ?>:</b>
+	<?php echo CHtml::encode($data->validator); ?>
+	<br />
+
 
 </div>

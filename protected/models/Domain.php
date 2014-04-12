@@ -7,10 +7,11 @@
  * @property string $id
  * @property string $name
  * @property string $description
+ * @property integer $validator
  *
  * The followings are the available model relations:
+ * @property Subdomain[] $subdomains
  * @property Ticket[] $tickets
- * @property Topic[] $topics
  * @property UserDomain[] $userDomains
  */
 class Domain extends CActiveRecord
@@ -42,11 +43,12 @@ class Domain extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
+			array('validator', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
 			array('description', 'length', 'max'=>500),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, description', 'safe', 'on'=>'search'),
+			array('id, name, description, validator', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,8 +60,8 @@ class Domain extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'subdomains' => array(self::HAS_MANY, 'Subdomain', 'domain_id'),
 			'tickets' => array(self::HAS_MANY, 'Ticket', 'domain_id'),
-			'topics' => array(self::HAS_MANY, 'Topic', 'domain_id'),
 			'userDomains' => array(self::HAS_MANY, 'UserDomain', 'domain_id'),
 		);
 	}
@@ -73,6 +75,7 @@ class Domain extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Domain',
 			'description' => 'Description',
+			'validator' => 'Validator',
 		);
 	}
 
@@ -90,6 +93,7 @@ class Domain extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
+		$criteria->compare('validator',$this->validator);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

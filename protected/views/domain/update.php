@@ -18,4 +18,4 @@ $this->breadcrumbs=array(
 
 <h2>Update Domain: <?php echo $model->name; ?></h2>
 
-<?php echo $this->renderPartial('add', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('change', array('model'=>$model)); ?>

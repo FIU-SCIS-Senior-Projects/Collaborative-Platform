@@ -44,6 +44,7 @@ $('.search-form form').submit(function(){
 		//'id',
 		'name',
 		//'description',
+		//'validator',
 		array(
 			'class'=>'CButtonColumn',
 		),

@@ -1,5 +1,6 @@
 <?php 
-	//$this->redirect("/coplat/index.php/site/login");
+	if(Yii::app()->user->isGuest)
+	    $this->redirect("/coplat/index.php/site/login");
 	
 	
 	//$this->pageTitle=Yii::app()->name;

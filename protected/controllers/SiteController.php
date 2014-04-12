@@ -158,7 +158,7 @@ class SiteController extends Controller
 			$hasher = new PasswordHash(8, false);
 			$model->password = $hasher->HashPassword($password);
 			$model->save(false);
-			User::sendEmailWithNewPassword($email, $password, $model->username);
+			User::sendEmailWithNewPassword($model->username, $password);
 			$error = 'Email has been sent';
 			$this->render('forgotPassword', array('error'=>$error));
 			return;

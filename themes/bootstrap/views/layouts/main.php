@@ -15,7 +15,7 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/jquery.jgrowl.css" />
-	
+    <link href="carousel.css" rel="stylesheet">
 	
     <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
 	<script src="http://vjs.zencdn.net/c/video.js"></script>
@@ -29,7 +29,15 @@
 </head>
 
 <body>
-<?php 
+<?php
+    $userinfo = "";
+    if(!Yii::app()->user->isGuest)
+    {
+        $userinfo = User::model()->findBySql("SELECT fname FROM user WHERE username=:user", array(':user'=> Yii::app()->user->name))." ".User::model()->findBySql("SELECT lname FROM user WHERE username=:user", array(':user'=> Yii::app()->user->name));
+    }
+    else
+        $userinfo = "(Guest)";
+
 	$profile = '/profile/view';
 	//var_dump(!Yii::app()->user->isGuest && !User::isCurrentUserAdmin(Yii::app()->user->name));
 	//exit;
@@ -39,7 +47,7 @@
 		'items'=>array(
 			array(
 				'class'=>'bootstrap.widgets.TbMenu',
-				'items'=>array(
+                'items'=>array(
 					/*array('label'=>'Home','visible'=>!Yii::app()->user->isGuest,
 					'class'=>'bootstrap.widgets.TbMenu',
 					'htmlOptions'=>array('class'=>'pull-left'),
@@ -55,9 +63,7 @@
 							),
 					),*/
 
-                    //array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-					//array('label'=>'Contact', 'url'=>array('/site/contact')),
-					array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
+                    array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
 
 					/*array('label'=>'Meeting','visible'=>!Yii::app()->user->isGuest && (User::isCurrentUserDomMentor(Yii::app()->user->name)|| User::isCurrentUserPerMentor(Yii::app()->user->name)),
 					'class'=>'bootstrap.widgets.TbMenu',
@@ -104,42 +110,50 @@
 							),
 					),*/
 					
-					//array('label'=>'Manage','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserAdmin(Yii::app()->user->name),
-					//'class'=>'bootstrap.widgets.TbMenu',
-					//'htmlOptions'=>array('class'=>'pull-left'),
-					//'items'=>array('-',
-						//			array('label'=>'User','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/,
-						//			'class'=>'bootstrap.widgets.TbMenu',
-						//			'htmlOptions'=>array('class'=>'pull-left'),
-							//		'items'=>array(array('label'=>'Manage', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-							//						array('label'=>'Add Administrator', 'url'=>array('user/create_admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+					array('label'=>'Manage','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserAdmin(Yii::app()->user->name),
+					'class'=>'bootstrap.widgets.TbMenu',
+					'htmlOptions'=>array('class'=>'pull-left'),
+					'items'=>array('-',
+									array('label'=>'User','visible'=>!Yii::app()->user->isGuest,
+									'class'=>'bootstrap.widgets.TbMenu',
+									'htmlOptions'=>array('class'=>'pull-left'),
+									'items'=>array(array('label'=>'Manage', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'Add Administrator', 'url'=>array('user/create_admin'), 'visible'=>!Yii::app()->user->isGuest),
 													
-							//				),
-							//		),
-							//		array('label'=>'Domain','visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/,
-							//		'class'=>'bootstrap.widgets.TbMenu',
-							//		'htmlOptions'=>array('class'=>'pull-left'),
-							//		'items'=>array(array('label'=>'Manage', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
-								//					array('label'=>'Create', 'url'=>array('domain/create'), 'visible'=>!Yii::app()->user->isGuest /*& !User::isCurrentUserAdmin(Yii::app()->user->name)*/),
+											),
+									),
+									array('label'=>'Domain','visible'=>!Yii::app()->user->isGuest,
+									'class'=>'bootstrap.widgets.TbMenu',
+									'htmlOptions'=>array('class'=>'pull-left'),
+									'items'=>array(array('label'=>'Manage', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'Create', 'url'=>array('domain/create'), 'visible'=>!Yii::app()->user->isGuest),
 													
-							//				),
-							//		),
-									
-						//	),
-					//),
+											),
+									),
+                                    array('label'=>'Sub-Domain','visible'=>!Yii::app()->user->isGuest,
+                                        'class'=>'bootstrap.widgets.TbMenu',
+                                        'htmlOptions'=>array('class'=>'pull-left'),
+                                        'items'=>array(array('label'=>'Manage', 'url'=>array('subdomain/admin'), 'visible'=>!Yii::app()->user->isGuest),
+                                            array('label'=>'Create', 'url'=>array('subdomain/create'), 'visible'=>!Yii::app()->user->isGuest),
 
-                   // array('label'=>'New Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
+                                        ),
+                                    ),
+							),
+					),
+
+
 
                 )
 			),
-			
-			array(
+            array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+            array('label'=>'Contact', 'url'=>array('site/contact')),
+
+            array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array('-',
-						//array('label'=> '('.Yii::app()->user->name.')', 'url'=>'#', 'items'=>array(
-                          array('label'=>  User::model()->findBySql("SELECT fname FROM user WHERE username=:user", array(':user'=> Yii::app()->user->name)).' '.
-                                          User::model()->findBySql("SELECT lname FROM user WHERE username=:user", array(':user'=> Yii::app()->user->name)), 'url'=>'#', 'items'=>array(
+                            array('label'=>'New Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
+                            array('label'=>  $userinfo, 'url'=>'#', 'items'=>array(
 							array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!Yii::app()->user->isGuest),
 							array('label'=>'Change Password','visible'=>!Yii::app()->user->isGuest, 'url'=>'/coplat/index.php/user/ChangePassword'),
 						
@@ -163,7 +177,7 @@
 		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		));*/ ?><!-- breadcrumbs -->
-	<?php /*endif*/?>
+	<?php //endif?>
 
 	<?php echo $content; ?>
 
