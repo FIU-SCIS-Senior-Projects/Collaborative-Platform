@@ -75,7 +75,8 @@ class MessageController extends Controller
 			   $username = $message->sender;
 			
 			$model->subject = $message->subject;
-			$model->message = "\n\n\nOn " . $message->created_date . ", " . $message->sender . " wrote:\n" . $message->message;
+            $from = User::model()->find("username=:username", array(':username' => $message->sender));
+			$model->message = "\n\n\nOn " . $message->created_date . ", " . $from->fname ." ". $from->lname . " wrote:\n" . $message->message;
 		}	
 		
 		$this->render('send', array('user'=>$user, 'users'=>$users, 'model'=>$model, 'username'=>$username));		
