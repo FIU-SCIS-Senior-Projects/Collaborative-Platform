@@ -108,9 +108,20 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->save())
+            $model->username = $model->fname."#".$this->genRandomString(10);
+            $hasher = new PasswordHash(8, false);
+            $plain_pwd = $this->genRandomString(10);
+            $model->password = $hasher->HashPassword($plain_pwd);
+            $model->isAdmin = 1;
+            $model->isPerMentor = 1;
+            $model->isProMentor = 1;
+            $model->isDomMentor = 1;
+
+            if($model->save()){
+                User::sendNewAdministratorEmailNotification($model->email, $plain_pwd);
 				$this->redirect(array('/user/admin','id'=>$model->id));
-		}
+            }
+        }
 
 		$this->render('create_admin',array(
 			'model'=>$model,
@@ -131,11 +142,11 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->save())
+            if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
-		$this->render('update',array(
+		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}

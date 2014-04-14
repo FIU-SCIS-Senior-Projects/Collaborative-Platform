@@ -13,6 +13,5 @@ $this->breadcrumbs=array(
 );*/
 ?>
 
-
-
+<h2 style="margin-left:300px">New Administrator</h2>
 <?php echo $this->renderPartial('formAddAdmin', array('model'=>$model)); ?>

@@ -3,10 +3,8 @@
 /* @var $model User */
 /* @var $form CActiveForm */
 ?>
-<link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 
-<h2 style="margin-left:300px">New Administrator</h2>
 <div class="form" style="margin-left:300px">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -35,19 +33,7 @@
         <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>
         <?php echo $form->error($model,'email'); ?>
         
-		<?php echo $form->labelEx($model,'username'); ?>
-        <?php echo $form->textField($model,'username',array('size'=>45,'maxlength'=>45)); ?>
-        <?php echo $form->error($model,'username'); ?>
-    
-        <?php echo $form->labelEx($model,'password'); ?>
-        <?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'password'); ?>
-    
-    	<?php echo $form->labelEx($model,'password2'); ?>
-        <?php echo $form->passwordField($model,'password2',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'password2'); ?>
- 		
-        <div>   
+		<div>
     		<?php echo CHtml::submitButton('Create', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
    	   	</div>
 	</div>

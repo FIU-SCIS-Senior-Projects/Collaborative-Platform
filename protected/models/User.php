@@ -142,7 +142,7 @@ class User extends CActiveRecord
             'linkedin_id' => 'Linkedin',
             'fiucs_id' => 'Fiucs',
             'google_id' => 'Google',
-            'isAdmin' => 'Is Admin',
+            'isAdmin' => 'Administrator',
             'isProMentor' => 'Project Mentor',
             'isPerMentor' => 'Personal Mentor',
             'isDomMentor' => 'Domain Mentor',
@@ -292,10 +292,10 @@ class User extends CActiveRecord
     {
         $send = User::model()->find("username=:username", array(':username' => $sender));
         $receive = User::model()->find("username=:username", array(':username' => $receiver));
-        $link= CHtml::link('Click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
+        $link= CHtml::link('Click here', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
         $from = $send->fname." ".$send->lname;
         $to = $receive->fname." ".$receive->lname;
-        $msg = "You just got a message from ".$from."<br/>".$message."<br/>".$link;
+        $msg = "You just got a message from ".$from."<br/>".$message."<br/>".$link."to see the message";
         $html = User::replaceMessage($to, $msg);
 
         $email = Yii::app()->email;
@@ -306,6 +306,21 @@ class User extends CActiveRecord
         $email->send();
     }
 
+    public static function sendNewAdministratorEmailNotification($email, $password)
+    {
+        $user = User::model()->find("email=:email", array(':email' => $email));
+        $to = $user->fname." ".$user->lname;
+        $link = CHtml::link('Click here', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php');
+        $message = "You has been chosen to be part of the Collaborative Platform as System Administrator.<br/> Temporary Password:" .$password."<br/>".$link. "to access the platform";
+        $html = User::replaceMessage($to, $message);
+
+        $email = Yii::app()->email;
+        $email->to = $email;
+        $email->subject = "Welcome";
+        $email->from = 'Collaborative Platform';
+        $email->message = $html;
+        $email->send();
+    }
     public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain)
     {
         $creator = User::model()->find("id=:id",array(':id' => $creator_id));
