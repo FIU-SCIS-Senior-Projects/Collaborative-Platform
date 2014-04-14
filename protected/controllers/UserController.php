@@ -151,35 +151,21 @@ class UserController extends Controller
             $plain_pwd = $this->genRandomString(10);
             $model->password = $hasher->HashPassword($plain_pwd);
             $model->isAdmin = 1;
-            $model->isPerMentor = 1;
-            $model->isProMentor = 1;
-            $model->isDomMentor = 1;
 
             if($model->save()){
-
+                $model->username = $model->fname."_".$model->id;
+                $model->save(false);
                 $admin = new Administrator;
                 $admin->user_id = $model->id;
                 $admin->save();
-
-                $perMentor = new PersonalMentor;
-                $perMentor->user_id = $model->id;
-                $perMentor->save();
-
-                $proMentor = new ProjectMentor;
-                $proMentor->user_id = $model->id;
-                $proMentor->save();
-
-                $domainMentor = new DomainMentor;
-                $domainMentor->user_id = $model->id;
-                $domainMentor->save();
 
                 User::sendNewAdministratorEmailNotification($model->email, $plain_pwd);
 				$this->redirect(array('/user/admin','id'=>$model->id));
             }
         }
-
+        $error = '';
 		$this->render('create_admin',array(
-			'model'=>$model,
+			'model'=>$model, 'error' => $error
 		));
 	}
 	/**

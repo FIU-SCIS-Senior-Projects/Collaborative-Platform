@@ -47,7 +47,6 @@ class User extends CActiveRecord
     public $men_role;
     public $rmj_role;
     /*assign variables */
-    public $topic;
     public $userDomain;
     public $userId;
     /*Change the value when the system is deploy */
@@ -311,7 +310,7 @@ class User extends CActiveRecord
         $user = User::model()->find("email=:email", array(':email' => $email));
         $to = $user->fname." ".$user->lname;
         $link = CHtml::link('Click here', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php');
-        $message = "You has been chosen to be part of the Collaborative Platform as System Administrator.<br/> Temporary Password:" .$password."<br/>".$link. "to access the platform";
+        $message = "You has been chosen to be part of the Collaborative Platform as System Administrator.<br/> Username: ".$user->username."<br/>Password:" .$password."<br/>".$link. "to access the platform.";
         $html = User::replaceMessage($to, $message);
 
         $email = Yii::app()->email;
