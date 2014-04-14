@@ -288,13 +288,21 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    public static function sendNewMessageEmailNotification($address, $message)
+    public static function sendNewMessageEmailNotification($sender, $receiver, $message)
     {
+        $send = User::model()->find("username=:username", array(':username' => $sender));
+        $receive = User::model()->find("username=:username", array(':username' => $receiver));
+        $link= CHtml::link('Click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
+        $from = $send->fname." ".$send->lname;
+        $to = $receive->fname." ".$receive->lname;
+        $msg = "You just got a message from ".$from."<br/>".$message."<br/>".$link;
+        $html = User::replaceMessage($to, $msg);
+
         $email = Yii::app()->email;
-        $email->to = $address;
+        $email->to = $receive->email;
         $email->from = 'Collaborative Platform';
         $email->subject = 'New Message';
-        $email->message = $message;
+        $email->message = $html;
         $email->send();
     }
 
