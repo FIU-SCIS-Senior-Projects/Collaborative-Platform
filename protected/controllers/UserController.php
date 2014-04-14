@@ -158,7 +158,6 @@ class UserController extends Controller
                 $admin = new Administrator;
                 $admin->user_id = $model->id;
                 $admin->save();
-
                 User::sendNewAdministratorEmailNotification($model->email, $plain_pwd);
 				$this->redirect(array('/user/admin','id'=>$model->id));
             }
