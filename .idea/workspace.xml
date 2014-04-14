@@ -2,25 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protected/views/user/change.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/UserController.php" afterPath="$PROJECT_DIR$/protected/controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/add.php" afterPath="$PROJECT_DIR$/protected/views/user/add.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log.1" afterPath="$PROJECT_DIR$/protected/runtime/application.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log.2" afterPath="$PROJECT_DIR$/protected/runtime/application.log.2" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/create.php" afterPath="$PROJECT_DIR$/protected/views/domain/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/create.php" afterPath="$PROJECT_DIR$/protected/views/user/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/create_admin.php" afterPath="$PROJECT_DIR$/protected/views/user/create_admin.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/formAddAdmin.php" afterPath="$PROJECT_DIR$/protected/views/user/formAddAdmin.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/index.php" afterPath="$PROJECT_DIR$/protected/views/domain/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/index.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/search.php" afterPath="$PROJECT_DIR$/protected/views/user/search.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/update.php" afterPath="$PROJECT_DIR$/protected/views/ticket/update.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/update.php" afterPath="$PROJECT_DIR$/protected/views/user/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/update.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -48,7 +39,7 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="308" column="64" selection-start="11741" selection-end="11741" vertical-scroll-proportion="-14.538462" vertical-offset="4858" max-vertical-offset="9826">
+            <state line="67" column="40" selection-start="1946" selection-end="1946" vertical-scroll-proportion="-0.65384614" vertical-offset="1122" max-vertical-offset="9826">
               <folding>
                 <marker date="1397443531208" expanded="true" signature="7818:7856" placeholder="SELECT id fr..user..." />
                 <marker date="1397443531208" expanded="true" signature="19626:19675" placeholder="SELECT * FRO..user_domain..." />
@@ -63,7 +54,7 @@
       <file leaf-file-name="add.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/user/add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="10" selection-start="4249" selection-end="4249" vertical-scroll-proportion="-28.115385" vertical-offset="1173" max-vertical-offset="2261">
+            <state line="47" column="55" selection-start="1213" selection-end="1839" vertical-scroll-proportion="-20.26923" vertical-offset="272" max-vertical-offset="2261">
               <folding />
             </state>
           </provider>
@@ -92,8 +83,10 @@
       <file leaf-file-name="formAddAdmin.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/user/formAddAdmin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="8" selection-start="1213" selection-end="1213" vertical-scroll-proportion="-17.653847" vertical-offset="136" max-vertical-offset="901">
-              <folding />
+            <state line="44" column="109" selection-start="1784" selection-end="1784" vertical-scroll-proportion="-24.846153" vertical-offset="102" max-vertical-offset="1105">
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,7 +136,7 @@
       <file leaf-file-name="UserController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="36" selection-start="3344" selection-end="3344" vertical-scroll-proportion="0.5777778" vertical-offset="1547" max-vertical-offset="6120">
+            <state line="203" column="29" selection-start="5868" selection-end="5868" vertical-scroll-proportion="0.8" vertical-offset="2839" max-vertical-offset="7055">
               <folding />
             </state>
           </provider>
@@ -217,8 +210,8 @@
         <option value="$PROJECT_DIR$/protected/views/user/change.php" />
         <option value="$PROJECT_DIR$/protected/views/user/search.php" />
         <option value="$PROJECT_DIR$/protected/views/user/create_admin.php" />
-        <option value="$PROJECT_DIR$/protected/views/user/formAddAdmin.php" />
         <option value="$PROJECT_DIR$/protected/models/User.php" />
+        <option value="$PROJECT_DIR$/protected/views/user/formAddAdmin.php" />
         <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
       </list>
     </option>
@@ -844,13 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/user/add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="10" selection-start="4249" selection-end="4249" vertical-scroll-proportion="-28.115385" vertical-offset="1173" max-vertical-offset="2261">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/create.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="2" selection-start="64" selection-end="64" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="374">
@@ -867,16 +853,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/user/formAddAdmin.php">
+    <entry file="file://$PROJECT_DIR$/protected/views/user/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="8" selection-start="1213" selection-end="1213" vertical-scroll-proportion="-17.653847" vertical-offset="136" max-vertical-offset="901">
+        <state line="47" column="55" selection-start="1213" selection-end="1839" vertical-scroll-proportion="-20.26923" vertical-offset="272" max-vertical-offset="2261">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="308" column="64" selection-start="11741" selection-end="11741" vertical-scroll-proportion="-14.538462" vertical-offset="4858" max-vertical-offset="9826">
+        <state line="67" column="40" selection-start="1946" selection-end="1946" vertical-scroll-proportion="-0.65384614" vertical-offset="1122" max-vertical-offset="9826">
           <folding>
             <marker date="1397443531208" expanded="true" signature="7818:7856" placeholder="SELECT id fr..user..." />
             <marker date="1397443531208" expanded="true" signature="19626:19675" placeholder="SELECT * FRO..user_domain..." />
@@ -887,9 +873,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/formAddAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="109" selection-start="1784" selection-end="1784" vertical-scroll-proportion="-24.846153" vertical-offset="102" max-vertical-offset="1105">
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="36" selection-start="3344" selection-end="3344" vertical-scroll-proportion="0.5777778" vertical-offset="1547" max-vertical-offset="6120">
+        <state line="203" column="29" selection-start="5868" selection-end="5868" vertical-scroll-proportion="0.8" vertical-offset="2839" max-vertical-offset="7055">
           <folding />
         </state>
       </provider>
