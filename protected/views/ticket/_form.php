@@ -18,12 +18,12 @@
 
     <div id="regbox">
         <?php echo $form->labelEx($model, 'domain_id'); ?>
-        <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?>
+        <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name'), array('prompt' => 'Select')); ?>
         <?php echo $form->error($model, 'domain_id'); ?>
 
         <?php echo $form->labelEx($model, 'subdomain_id'); ?>
         <?php
-        echo $form->dropDownList($model, 'subdomain_id', CHtml::listData(Subdomain::model()->findAll(), 'id', 'name'), array('prompt' => 'Select'));
+        echo $form->dropDownList($model, 'subdomain_id', array(), array('prompt' => 'Select'));
         ?>
         <?php echo $form->error($model, 'subdomain_id'); ?>
 
@@ -79,9 +79,6 @@
             <?php echo $form->error($model, 'assign_user_id');?>
         <?php }?>
 
-
-
-
         <br/><br/>
         <?php echo CHtml::submitButton('Submit', array("class" => "btn btn-primary")); ?>
     </div>
@@ -90,3 +87,20 @@
     <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<!-- Script for populate the dependent dropdown list domain and subdomain -->
+<script>
+    $('#Ticket_domain_id').on('change', function(){
+        var domain = $(this).val();
+
+        if(domain != null) {
+            $.post('/coplat/index.php/ticket/create/', {domain: domain}, function(domains){
+
+                for(var i = 0; i < domains.length; i++) {
+                    var domain = domains[i];
+                    $('#Ticket_subdomain_id').append("<option value=\""+domain.id+"\">"+domain.name+"</option>");
+                }
+            }, 'json');
+        }
+    });
+</script>

@@ -9,7 +9,6 @@
 
 <div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h3></div>
 <br>
-
 <div><h4>Tickets</h4></div>
 
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
