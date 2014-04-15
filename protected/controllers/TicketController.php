@@ -77,8 +77,8 @@ class TicketController extends Controller
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
+        /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
-
             $all = array();
             $subdomains = Subdomain::model()->findAll("domain_id=:id",array(':id'=>$_POST['domain']));//   $subdomain->getAllByDomain($_POST['domain']);
             foreach ($subdomains as $subdom) {
@@ -87,22 +87,10 @@ class TicketController extends Controller
                     'name' => $subdom->name,
                 );
             }
-
-            /*$all = array(
-                array(
-                    'name' => "Test",
-                    'id' => "30",
-                ),
-                array(
-                    'name' => "Hello",
-                    'id' => "10",
-                ),
-            );*/
-
             echo json_encode($all);
             exit();
         }
-
+        /*Post for create a new Ticket */
         if (isset($_POST['Ticket'])) {
             $model->attributes = $_POST['Ticket'];
             $domain_id = $model->domain_id;

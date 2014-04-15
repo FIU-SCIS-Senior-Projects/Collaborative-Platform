@@ -92,10 +92,8 @@
 <script>
     $('#Ticket_domain_id').on('change', function(){
         var domain = $(this).val();
-
         if(domain != null) {
             $.post('/coplat/index.php/ticket/create/', {domain: domain}, function(domains){
-
                 var subdomainSelect = $('#Ticket_subdomain_id');
                 subdomainSelect.html("");
                 subdomainSelect.append('<option value="">Optional</option>');

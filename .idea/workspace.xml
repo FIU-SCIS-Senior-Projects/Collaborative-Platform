@@ -48,15 +48,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TicketController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TicketController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="0" selection-start="3344" selection-end="3344" vertical-scroll-proportion="68.208336" vertical-offset="2882" max-vertical-offset="5040">
+            <state line="96" column="0" selection-start="3826" selection-end="3826" vertical-scroll-proportion="0.62025315" vertical-offset="1097" max-vertical-offset="4860">
               <folding>
-                <marker date="1397601495000" expanded="true" signature="1991:2023" placeholder="SELECT * fro..user..." />
-                <marker date="1397601495000" expanded="true" signature="2117:2149" placeholder="SELECT * fro..user..." />
-                <marker date="1397601495000" expanded="true" signature="2244:2278" placeholder="SELECT * fro..domain..." />
-                <marker date="1397601495000" expanded="true" signature="2452:2489" placeholder="SELECT * fro..subdomain..." />
+                <marker date="1397603091000" expanded="true" signature="1991:2023" placeholder="SELECT * fro..user..." />
+                <marker date="1397603091000" expanded="true" signature="2117:2149" placeholder="SELECT * fro..user..." />
+                <marker date="1397603091000" expanded="true" signature="2244:2278" placeholder="SELECT * fro..domain..." />
+                <marker date="1397603091000" expanded="true" signature="2452:2489" placeholder="SELECT * fro..subdomain..." />
               </folding>
             </state>
           </provider>
@@ -103,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_form.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/ticket/_form.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="0" selection-start="4195" selection-end="4195" vertical-scroll-proportion="0.67450273" vertical-offset="1112" max-vertical-offset="1725">
+            <state line="99" column="0" selection-start="4313" selection-end="4313" vertical-scroll-proportion="-16.791666" vertical-offset="1082" max-vertical-offset="1695">
               <folding />
             </state>
           </provider>
@@ -240,8 +240,8 @@
         <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ProfileController.php" />
         <option value="$PROJECT_DIR$/protected/views/profile/userProfile.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
         <option value="$PROJECT_DIR$/protected/views/ticket/_form.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
       </list>
     </option>
   </component>
@@ -1267,22 +1267,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
+    <entry file="file://$PROJECT_DIR$/protected/views/ticket/_form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="3344" selection-end="3344" vertical-scroll-proportion="68.208336" vertical-offset="2882" max-vertical-offset="5040">
-          <folding>
-            <marker date="1397601495000" expanded="true" signature="1991:2023" placeholder="SELECT * fro..user..." />
-            <marker date="1397601495000" expanded="true" signature="2117:2149" placeholder="SELECT * fro..user..." />
-            <marker date="1397601495000" expanded="true" signature="2244:2278" placeholder="SELECT * fro..domain..." />
-            <marker date="1397601495000" expanded="true" signature="2452:2489" placeholder="SELECT * fro..subdomain..." />
-          </folding>
+        <state line="99" column="0" selection-start="4313" selection-end="4313" vertical-scroll-proportion="-16.791666" vertical-offset="1082" max-vertical-offset="1695">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/ticket/_form.php">
+    <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="0" selection-start="4195" selection-end="4195" vertical-scroll-proportion="0.67450273" vertical-offset="1112" max-vertical-offset="1725">
-          <folding />
+        <state line="96" column="0" selection-start="3826" selection-end="3826" vertical-scroll-proportion="0.62025315" vertical-offset="1097" max-vertical-offset="4860">
+          <folding>
+            <marker date="1397603091000" expanded="true" signature="1991:2023" placeholder="SELECT * fro..user..." />
+            <marker date="1397603091000" expanded="true" signature="2117:2149" placeholder="SELECT * fro..user..." />
+            <marker date="1397603091000" expanded="true" signature="2244:2278" placeholder="SELECT * fro..domain..." />
+            <marker date="1397603091000" expanded="true" signature="2452:2489" placeholder="SELECT * fro..subdomain..." />
+          </folding>
         </state>
       </provider>
     </entry>
