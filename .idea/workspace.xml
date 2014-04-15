@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protected/views/user/change.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/MessageController.php" afterPath="$PROJECT_DIR$/protected/controllers/MessageController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
@@ -22,6 +23,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/message/view.php" afterPath="$PROJECT_DIR$/protected/views/message/view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/view.php" afterPath="$PROJECT_DIR$/protected/views/ticket/view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/create.php" afterPath="$PROJECT_DIR$/protected/views/domain/create.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/index.php" afterPath="$PROJECT_DIR$/protected/views/domain/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/index.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/update.php" afterPath="$PROJECT_DIR$/protected/views/ticket/update.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/update.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/update.php" />
+>>>>>>> FETCH_HEAD
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -721,8 +732,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="7" y="22" width="1246" height="778" extended-state="0" />
     <editor active="true" />
+=======
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <editor active="false" />
+>>>>>>> FETCH_HEAD
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -730,7 +746,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.014950166" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24958949" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19601329" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> FETCH_HEAD
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11625404" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.02878788" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
