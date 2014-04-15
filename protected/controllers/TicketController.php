@@ -79,8 +79,7 @@ class TicketController extends Controller
 
         if (isset($_POST['domain'])) {
 
-            //$all = array();
-            $all = (array) null;
+            $all = array();
             $subdomains = Subdomain::model()->findAll("domain_id=:id",array(':id'=>$_POST['domain']));//   $subdomain->getAllByDomain($_POST['domain']);
             foreach ($subdomains as $subdom) {
                 $all[] = array(

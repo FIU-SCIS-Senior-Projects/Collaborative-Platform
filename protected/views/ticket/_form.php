@@ -23,7 +23,7 @@
 
         <?php echo $form->labelEx($model, 'subdomain_id'); ?>
         <?php
-        echo $form->dropDownList($model, 'subdomain_id', array(), array('prompt' => 'Select'));
+        echo $form->dropDownList($model, 'subdomain_id', array(), array('prompt' => 'Optional'));
         ?>
         <?php echo $form->error($model, 'subdomain_id'); ?>
 
@@ -96,11 +96,15 @@
         if(domain != null) {
             $.post('/coplat/index.php/ticket/create/', {domain: domain}, function(domains){
 
+                var subdomainSelect = $('#Ticket_subdomain_id');
+                subdomainSelect.html("");
+                subdomainSelect.append('<option value="">Optional</option>');
+
                 for(var i = 0; i < domains.length; i++) {
                     var domain = domains[i];
-                    $('#Ticket_subdomain_id').append("<option value=\""+domain.id+"\">"+domain.name+"</option>");
+                    subdomainSelect.append("<option value=\""+domain.id+"\">"+domain.name+"</option>");
                 }
             }, 'json');
         }
-    });
+    }).trigger('change');
 </script>
