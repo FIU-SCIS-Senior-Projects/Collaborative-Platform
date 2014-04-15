@@ -53,7 +53,6 @@ class User extends CActiveRecord
     public static $admin = 5;
     /* The most expert in the Domain */
     public static $condition = 8;
-
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -250,7 +249,7 @@ class User extends CActiveRecord
 
     public static function sendEmailPasswordChanged($user_id)
     {
-        $user = User::model()->find("id=:id", array(':id' => $user_id));
+        $user = User::model()->find("id=:id",array(':id' => $user_id));
 
         $message = "Your password on the Collaborative Platform Portal has change. If you are not aware of this change contact the system administrator as soon as possible.";
         $html = User::replaceMessage($user->fname, $message);
@@ -292,10 +291,10 @@ class User extends CActiveRecord
     {
         $send = User::model()->find("username=:username", array(':username' => $sender));
         $receive = User::model()->find("username=:username", array(':username' => $receiver));
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/message');
-        $from = $send->fname . " " . $send->lname;
-        $to = $receive->fname . " " . $receive->lname;
-        $msg = "You just got a message from " . $from . "<br/>" . $message . "<br/>" . $link . "to see the message";
+        $link= CHtml::link('Click here', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
+        $from = $send->fname." ".$send->lname;
+        $to = $receive->fname." ".$receive->lname;
+        $msg = "You just got a message from ".$from."<br/>".$message."<br/>".$link."to see the message";
         $html = User::replaceMessage($to, $msg);
 
         $email = Yii::app()->email;
@@ -309,9 +308,9 @@ class User extends CActiveRecord
     public static function sendNewAdministratorEmailNotification($receiver_email, $password)
     {
         $user = User::model()->find("email=:email", array(':email' => $receiver_email));
-        $to = $user->fname . " " . $user->lname;
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-        $message = "You has been chosen to be part of the Collaborative Platform as System Administrator.<br/> Username: " . $user->username . "<br/>Password:" . $password . "<br/>" . $link . "to access the platform.";
+        $to = $user->fname." ".$user->lname;
+        $link = CHtml::link('Click here', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php');
+        $message = "You has been chosen to be part of the Collaborative Platform as System Administrator.<br/> Username: ".$user->username."<br/>Password:" .$password."<br/>".$link. "to access the platform.";
         $html = User::replaceMessage($to, $message);
 
         $email = Yii::app()->email;
@@ -322,58 +321,60 @@ class User extends CActiveRecord
 
         $email->send();
     }
-
     public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain)
     {
-        $creator = User::model()->find("id=:id", array(':id' => $creator_id));
-        $domMentor = User::model()->find("id=:id", array(':id' => $assign_id));
-        $domain = Domain::model()->find("id=:id", array(':id' => $ticket_domain));
+        $creator = User::model()->find("id=:id",array(':id' => $creator_id));
+        $domMentor = User::model()->find("id=:id",array(':id' => $assign_id));
+        $domain = Domain::model()->find("id=:id",array(':id' => $ticket_domain));
 
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
         $email = Yii::app()->email;
         $email->to = $domMentor->email;
         $email->from = 'Collaborative Platform';
-        $email->subject = 'New Ticket related to ' . $domain->name;
-        $email->message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. $link to view";
+        $email->subject = 'New Ticket related to '.$domain->name;
+        $email->message = "The user, ".$creator->fname." ".$creator->lname.", has created a ticket that has being assigned to you. $link to view";
         $email->send();
 
     }
 
     public static function sendTicketCommentedEmailNotification($ticket_id)
     {
-        $ticket = Ticket::model()->find("id=:id", array(':id' => $ticket_id));
-        $ticket_creator = User::model()->find("id=:id", array(':id' => $ticket->creator_user_id));
-        $ticket_mentor = User::model()->find("id=:id", array(':id' => $ticket->assign_user_id));
+        $ticket = Ticket::model()->find("id=:id",array(':id' => $ticket_id));
+        $ticket_creator = User::model()->find("id=:id",array(':id' => $ticket->creator_user_id));
+        $ticket_mentor = User::model()->find("id=:id",array(':id' => $ticket->assign_user_id));
 
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
 
-        if ($ticket_creator->id == User::model()->getCurrentUser()->id) {
+        if($ticket_creator->id == User::model()->getCurrentUser()->id)
+        {
             $email = Yii::app()->email;
             $email->to = $ticket_mentor->email;
             $email->from = 'Collaborative Platform';
-            $email->subject = 'Comment added to Ticket #' . $ticket->id;
-            $email->message = "The user, " . $ticket_creator->fname . " " . $ticket_creator->lname . " has added a new comment to the his/her ticket #" . $ticket->id . ". $link to view the comment.";
+            $email->subject = 'Comment added to Ticket #'.$ticket->id;
+            $email->message = "The user, ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the his/her ticket #".$ticket->id.". $link to view the comment.";
             $email->send();
-        } elseif ($ticket_mentor->id == User::model()->getCurrentUser()->id) {
+        }
+        elseif($ticket_mentor->id == User::model()->getCurrentUser()->id)
+        {
             $email = Yii::app()->email;
             $email->to = $ticket_creator->email;
             $email->from = 'Collaborative Platform';
-            $email->subject = 'Comment added to Ticket #' . $ticket->id;
-            $email->message = "The Domain Mentor, " . $ticket_mentor->fname . " " . $ticket_mentor->lname . " has added a new comment to the ticket #" . $ticket->id . ". $link to view the comment.";
+            $email->subject = 'Comment added to Ticket #'.$ticket->id;
+            $email->message = "The Domain Mentor, ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
             $email->send();
-        } else {
+        }
+        else{
             $comment_creator = User::model()->getCurrentUser();
             $email = Yii::app()->email;
-            $email->to = $ticket_mentor->email . "," . $ticket_creator->email;
+            $email->to = $ticket_mentor->email.",".$ticket_creator->email;
             $email->from = 'Collaborative Platform';
-            $email->subject = 'Comment added to Ticket #' . $ticket->id;
-            $email->message = "The user " . $comment_creator->fname . " " . $comment_creator->lname . " has added a new comment to the ticket #" . $ticket->id . ". $link to view the comment.";
+            $email->subject = 'Comment added to Ticket #'.$ticket->id;
+            $email->message = "The user ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
             $email->send();
         }
     }
-
     public static function addNewMessageNotification($sender, $reciver, $link, $level)
     {
 
@@ -521,31 +522,35 @@ class User extends CActiveRecord
 
 
     /*Assign Domain Mentor to a Ticket */
-
     public static function assignTicket($domain_id, $sub)
-    {   /*Query to the User_Domain model */
-        if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id",
-                          array(":id" => $domain_id));
+    {
+        /*Query to the User_Domain model */
+
+        if($sub){
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id", array(":id" => $domain_id));
             $subdomain = Subdomain::model()->findByPk($domain_id);
             $validator = $subdomain->validator;
-        } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id",
-                          array(":id" => $domain_id));
+        }
+        else{
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
+
         if ($userDomain != null && is_array($userDomain)) {
             foreach ($userDomain as $auserDomain) {
+                /** @var UserDomain $auserDomain */
                 if ($auserDomain->tier_team == 1) {
+
+
                     if ($auserDomain->rate >= $validator) {
                         /*Query to the domain mentor to see how many tickets is allowed to be assigned */
-                        $domainMentor = DomainMentor::model()->findAllBySql("SELECT * FROM domain_mentor
-                                        WHERE user_id =:id", array(":id" => $auserDomain->user_id));
+                        $domainMentor = DomainMentor::model()->findAllBySql("SELECT * FROM domain_mentor WHERE user_id =:id", array(":id" => $auserDomain->user_id));
+                        /** @var Ticket $count */
                         if (is_array($domainMentor)) {
                             foreach ($domainMentor as $adomainMentor) {
-                                $count = Ticket::model()->findBySql("SELECT COUNT(id) as `id` FROM ticket
-                                         WHERE assign_user_id =:id", array(":id" => $adomainMentor->user_id));
+                                /** @var DomainMentor $adomainMentor */
+                                $count = Ticket::model()->findBySql("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id =:id", array(":id" => $adomainMentor->user_id));
                                 if ($count->id < $adomainMentor->max_tickets) {
                                     /*return the first available domain mentor on queue */
                                     return $auserDomain->user_id;

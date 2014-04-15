@@ -3,10 +3,8 @@
 /* @var $model User */
 /* @var $form CActiveForm */
 ?>
-<link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 
-<h2>Collaborative Platform Registration</h2>
 <div class="wide form">
 
     <?php $form=$this->beginWidget('CActiveForm', array(

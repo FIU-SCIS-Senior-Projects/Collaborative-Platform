@@ -28,7 +28,7 @@
                    id="#mytable" width="100%" style="table-layout:fixed; background-color:  #EEE">
 
                 <thead class="header">
-                <tr>
+                <tr  >
                     <th width="5%">No</th>
                     <th width="25%">Creator Name</th>
                     <th width="13%">Domain</th>
@@ -41,7 +41,9 @@
                     $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
                     $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
                     <tbody>
-                    <tr id="<?= $Ticket->id ?>" class="triggerTicketClick">
+                    <tr
+
+                    <tr id="<?php echo $Ticket->id ?>" class="triggerTicketClick">
                         <td width="5%"><?php echo $Ticket->id; ?></td>
                         <td width="25%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
                         <td width="13%"><?php echo $domain->name; ?></td>
@@ -90,12 +92,13 @@
 </div>
 <!-- End FullContent -->
 
-<script>
+<script type="text/javascript">
     $('.triggerTicketClick').on('click', function () {
-        //window.location = "/coplat/index.php/ticket/view/" + $(this).attr('id');
         window.location = "/coplat/index.php/ticket/view/" + $(this).attr('id');
-
     });
+
+</script>
+
 
     $('.table-fixed-header').fixedHeader();
 </script>

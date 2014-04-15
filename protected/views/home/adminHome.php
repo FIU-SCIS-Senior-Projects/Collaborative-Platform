@@ -38,7 +38,7 @@
                         $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
                         $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
                         <tbody>
-                        <tr id="<?= $Ticket->id ?>" class="triggerTicketClick">
+                        <tr id="<?php echo $Ticket->id ?>" class="triggerTicketClick">
                             <td width="5%"><?php echo $Ticket->id; ?></td>
                             <td width="25%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
                             <td width="13%"><?php echo $domain->name; ?></td>

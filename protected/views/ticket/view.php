@@ -354,7 +354,7 @@
 <script>
     $('a#changestatus').on('click', function () {
         $.post('/coplat/index.php/ticket/changestatus/<?php echo $model->id?>', $('#ticket-form').serialize(), function (message) {
-            window.location = location;
+            window.location = location.pathname;
         });
         return false;
     })

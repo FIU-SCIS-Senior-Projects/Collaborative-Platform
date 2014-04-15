@@ -3,14 +3,12 @@
 /* @var $model User */
 /* @var $form CActiveForm */
 ?>
-<link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 
-<h2 style="margin-left:300px">New Administrator</h2>
 <div class="form" style="margin-left:300px">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'user-Register-form',
+	'id'=>'add-Admin-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -34,20 +32,21 @@
 		<?php echo $form->labelEx($model,'email'); ?>
         <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>
         <?php echo $form->error($model,'email'); ?>
+        <div hidden="true">
+        <?php $form->labelEx($model,'username'); ?>
+        <?php echo $form->textField($model,'username',array('size'=>45,'value'=>'temp','maxlength'=>45)); ?>
+        <?php $form->error($model,'username'); ?>
+
+        <?php $form->labelEx($model,'password'); ?>
+        <?php echo $form->passwordField($model,'password',array('size'=>60,'value'=>'temp','maxlength'=>255)); ?>
+        <?php $form->error($model,'password'); ?>
+
+        <?php $form->labelEx($model,'password2'); ?>
+        <?php echo $form->passwordField($model,'password2',array('size'=>60,'value'=>'temp','maxlength'=>255)); ?>
+        <?php $form->error($model,'password2'); ?>
+        </div>
         
-		<?php echo $form->labelEx($model,'username'); ?>
-        <?php echo $form->textField($model,'username',array('size'=>45,'maxlength'=>45)); ?>
-        <?php echo $form->error($model,'username'); ?>
-    
-        <?php echo $form->labelEx($model,'password'); ?>
-        <?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'password'); ?>
-    
-    	<?php echo $form->labelEx($model,'password2'); ?>
-        <?php echo $form->passwordField($model,'password2',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'password2'); ?>
- 		
-        <div>   
+		<div>
     		<?php echo CHtml::submitButton('Create', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
    	   	</div>
 	</div>

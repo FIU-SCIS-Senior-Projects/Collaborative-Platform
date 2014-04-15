@@ -72,7 +72,7 @@ $(function(){
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image tooltipster' title='Send to Trash'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 
-						theMessage.message	+ "</pre><div id='message_footer'></div><div class='reply_image2 tooltipster' title='Reply'></div>");
+						theMessage.message	+ "</pre><div id='message_footer'></div>");
 				
 
 				$('.tooltipster').tooltipster({position:'bottom'});
@@ -153,7 +153,7 @@ $(function(){
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "&selfReply=1' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image tooltipster' title='Send to Trash'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 
-						theMessage.message	+ "</pre><div id='message_footer'></div><div class='reply_image2 tooltipster' title='Reply'></div>");
+						theMessage.message	+ "</pre><div id='message_footer'></div>");
 				
 
 				$('.tooltipster').tooltipster({position:'bottom'});
@@ -288,7 +288,7 @@ $(function(){
 						+ "'>" + theMessage.sender + "</a><span id='message_date'>Date: "+messageDate+"</span><a href='/coplat/index.php/message/send?reply="
 						+ theMessage.id + "' class='reply_image tooltipster' title='Reply'></a>"
 						+ "<div id='trash_" + theMessage.id + "' class='trash_image3 tooltipster' title='Delete Forever'></div><span id='message_receiver'>To: " + theMessage.receiver + "</span><div style='clear:both'></div><pre class='messageContent'>" + 
-						theMessage.message	+ "</pre><div id='message_footer'></div><div class='reply_image2 tooltipster' title='Reply'></div>");
+						theMessage.message	+ "</pre><div id='message_footer'></div>");
 				
 
 				$('.tooltipster').tooltipster({position:'bottom'});

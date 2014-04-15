@@ -2,13 +2,13 @@
 /* @var $this UserController */
 /* @var $model User */
 
-$this->breadcrumbs=array(
+/*$this->breadcrumbs=array(
 	'Users'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
 
-/*$this->menu=array(
+$this->menu=array(
 	array('label'=>'List User', 'url'=>array('index')),
 	array('label'=>'Create User', 'url'=>array('create')),
 	array('label'=>'View User', 'url'=>array('view', 'id'=>$model->id)),
@@ -16,5 +16,5 @@ $this->breadcrumbs=array(
 );*/
 ?>
 
-
-<?php echo $this->renderPartial('/profile/userProfile', array('model'=>$model)); ?>
+<h2>Update User Profile</h2>
+<?php echo $this->renderPartial('change', array('model'=>$model)); ?>

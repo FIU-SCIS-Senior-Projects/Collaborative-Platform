@@ -48,13 +48,10 @@ class MessageController extends Controller
 						$model->save();
 
                     User::addNewMessageNotification(Yii::app()->user->id, $model->receiver, 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message', 3);
-                    $link= CHtml::link('Click here to see the message', 'http://'.Yii::app()->request->getServerName().'/coplat/index.php/message');
-                    $recive = User::model()->find("username=:username",array(':username'=>$model->receiver));
-                    if ($recive != NULL){
-                        $message = "You just got a message from ".$model->sender."<br/>".$model->message."<br/>".$link;
-                        $html = User::replaceMessage($recive->username, $message);
-                        User::sendNewMessageEmailNotification($recive->email, $html);
-                    }
+
+                    if (User::model()->find("username=:username",array(':username'=>$model->receiver)) != NULL)
+                        User::sendNewMessageEmailNotification($model->sender, $model->receiver, $model->message);
+
 					$model = new Message;
 					$model->attributes = $_POST['Message'];						
 					$model->sender = Yii::app()->user->name;
@@ -78,7 +75,8 @@ class MessageController extends Controller
 			   $username = $message->sender;
 			
 			$model->subject = $message->subject;
-			$model->message = "\n\n\nOn " . $message->created_date . ", " . $message->sender . " wrote:\n" . $message->message;
+            $from = User::model()->find("username=:username", array(':username' => $message->sender));
+			$model->message = "\n\n\nOn " . $message->created_date . ", " . $from->fname ." ". $from->lname . " wrote:\n" . $message->message;
 		}	
 		
 		$this->render('send', array('user'=>$user, 'users'=>$users, 'model'=>$model, 'username'=>$username));		
@@ -204,19 +202,22 @@ class MessageController extends Controller
 	{
 		$receivers = array();
 		$startPos = strpos($string, "<");
-		while ($startPos !== false)
-		{
-			$endPos = strpos($string, ">");
-			$receivers[] = substr($string , $startPos + 1, $endPos - $startPos - 1);
-			
-			$string = substr($string , $endPos + 2);
-			
-			if($string)
-			  $startPos = strpos($string, "<");
-			else
-			  $startPos = false;
-		}
-		return $receivers;
+		if($startPos == false && $string)
+            $receivers[] = $string;
+        else
+            while ($startPos != false)
+            {
+                $endPos = strpos($string, ">");
+                $receivers[] = substr($string , $startPos + 1, $endPos - $startPos - 1);
+
+                $string = substr($string , $endPos + 2);
+
+                if($string)
+                  $startPos = strpos($string, "<");
+                else
+                  $startPos = false;
+            }
+        return $receivers;
 	}
 	
 	

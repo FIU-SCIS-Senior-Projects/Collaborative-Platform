@@ -86,9 +86,44 @@ class UserController extends Controller
 			$model->password = $hasher->HashPassword($model->password);
 
 			if($model->save()){
-				//$model->sendVerificationEmail();
-			    $this->actionSendVerificationEmail($model->email);
-				//$this->redirect(array('/site/login','id'=>$model->id));
+
+                if($model->isAdmin == 1)
+                {
+                    $admin = new Administrator;
+                    $admin->user_id = $model->id;
+                    $admin->save();
+                }
+
+                if($model->isPerMentor == 1)
+                {
+                    $perMentor = new PersonalMentor;
+                    $perMentor->user_id = $model->id;
+                    $perMentor->save();
+                }
+
+                if($model->isProMentor == 1)
+                {
+                    $proMentor = new ProjectMentor;
+                    $proMentor->user_id = $model->id;
+                    $proMentor->save();
+                }
+
+                if($model->isDomMentor == 1)
+                {
+                    $domainMentor = new DomainMentor;
+                    $domainMentor->user_id = $model->id;
+                    $domainMentor->save();
+                }
+
+                if($model->isMentee == 1)
+                {
+                    $mentee = new Mentee();
+                    $mentee->user_id = $model->id;
+                    $mentee->save();
+                }
+
+                $this->actionSendVerificationEmail($model->email);
+
             }
 		}
         $error = '';
@@ -108,12 +143,28 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('/user/admin','id'=>$model->id));
-		}
 
+            $model->pic_url = '/coplat/images/profileimages/avatarsmall.gif';
+            $model->activation_chain = $this->genRandomString(10);
+            $model->username = $model->fname."_".$this->genRandomString(10);
+            $hasher = new PasswordHash(8, false);
+            $plain_pwd = $this->genRandomString(10);
+            $model->password = $hasher->HashPassword($plain_pwd);
+            $model->isAdmin = 1;
+
+            if($model->save()){
+                $model->username = $model->fname."_".$model->id;
+                $model->save(false);
+                $admin = new Administrator;
+                $admin->user_id = $model->id;
+                $admin->save();
+                User::sendNewAdministratorEmailNotification($model->email, $plain_pwd);
+				$this->redirect(array('/user/admin','id'=>$model->id));
+            }
+        }
+        $error = '';
 		$this->render('create_admin',array(
-			'model'=>$model,
+			'model'=>$model, 'error' => $error
 		));
 	}
 	/**
@@ -131,8 +182,8 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+            if($model->save())
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('update',array(
