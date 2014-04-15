@@ -20,30 +20,30 @@
                     <td width="15%"><h5>Domain</h5></td>
                     <td width="85%"><?php echo $domainName->name; ?> </td>
                 </tr>
-		<tr style="background-color: #EEE">
+                <tr style="background-color: #C9E0ED">
                     <td width="15%"><h5>Sub-Domain</h5></td>
                     <td width="85%">
                         <?php
-                            if($subdomainName != null)
-                                echo $subdomainName->name;
-                            else
-                                echo "--";
+                        if ($subdomainName != null)
+                            echo $subdomainName->name;
+                        else
+                            echo "--";
                         ?>
                     </td>
                 </tr>
-                <tr style="background-color: #C9E0ED">
+                <tr style="background-color: #EEE">
                     <td width="15%"><h5>Status</h5></td>
                     <td width="85%"><?php echo $model->status; ?></td>
                 </tr>
-                <tr style="background-color: #EEE">
+                <tr style="background-color: #C9E0ED">
                     <td width="15%"><h5>Date Created</h5></td>
                     <td width="85%"><?php echo date("M d, Y", strtotime($model->created_date)); ?></td>
                 </tr>
-                <tr style="background-color: #C9E0ED">
+                <tr style="background-color: #EEE">
                     <td width="15%"><h5>Description </h5></td>
                     <td width="85%"><?php echo $model->description; ?></td>
                 </tr>
-                <tr style="background-color: #EEE">
+                <tr style="background-color:#C9E0ED">
                     <td width="15%"><h5>Assigned To</h5></td>
                     <td width="85%"><?php echo $userAssign->fname . ' ' . $userAssign->lname; ?></td>
                 </tr>
@@ -53,39 +53,69 @@
 
     <div class="span2"> <!-- Buttons Options -->
         <table>
-            <tr><td>
-                    <?php
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                        'buttonType' => 'link', 'url' => '#',
-                        'htmlOptions' => array('style' => 'width: 120px',
-                            'id' => 'my-back',
-                        ),
-                        'type' => 'primary', 'label' => 'Back'));
-?>
-            </tr></td><td><br>
-                <!-- Comment Button -->
+            <tr>
+                <td>
+                    <!-- Comment Button -->
 
-                <?php $this->widget('bootstrap.widgets.TbButton', array(
-                    'label' => 'Add Comment',
+                    <?php $this->widget('bootstrap.widgets.TbButton', array(
+                        'label' => 'Add Comment',
+                        'type' => 'primary',
+                        'htmlOptions' => array(
+                            'data-toggle' => 'modal',
+                            'data-target' => '#myModalComment',
+                            'style' => 'width: 120px',
+                        ),
+                    )); ?>
+            </tr>
+            </td>
+            <td><br>
+                <!-- Comment Button -->
+                <?php
+                    if(User::isCurrentUserMentee() || User::isCurrentUserStudent())
+                    {
+                    $this->widget('bootstrap.widgets.TbButton', array(
+                    'label' => 'Change Status',
                     'type' => 'primary',
                     'htmlOptions' => array(
                         'data-toggle' => 'modal',
-                        'data-target' => '#myModalComment',
+                        'data-target' => '#myModalChangeStatus',
                         'style' => 'width: 120px',
                     ),
-                )); ?>
-            </tr></td><td><br>
-                <!-- Button trigger modal -->
-                <?php $this->widget('bootstrap.widgets.TbButton', array(
-                    'label' => 'Re-Assign',
+                ));} ?>
+
+                </tr></td>
+            <td><br>
+                <!-- Button trigger modal Reassign -->
+                <?php
+                    if(User::isCurrentUserAdmin() || User::isCurrentUserDomMentor() || User::isCurrentUserProMentor())
+                    {
+                    $this->widget('bootstrap.widgets.TbButton', array(
+                    'label' => 'Re Assign',
                     'type' => 'primary',
                     'htmlOptions' => array(
                         'data-toggle' => 'modal',
                         'data-target' => '#myModalReAssign',
                         'style' => 'width: 120px',
-	),
-)); ?>
-            </td></tr>
+                    ),
+                )); }?>
+                </tr></td>
+            <td><br>
+                <?php
+                /*$tier = UserDomain::model()->find("user_id=:id", array(':id' => $model->assign_user_id));
+
+                if ($tier->tier_team == 1) {
+                    $this->widget('bootstrap.widgets.TbButton', array(
+                        'label' => 'Escalate',
+                        'type' => 'primary',
+                        'htmlOptions' => array(
+                            'data-toggle' => 'modal',
+                            'data-target' => '#myModalEscalate',
+                            'style' => 'width: 120px',
+                        ),
+                    ));
+                } */?>
+            </td>
+            </tr>
         </table>
         <!-- Update Button  -->
         <?php
@@ -115,6 +145,7 @@
     <br>
     <!-- End Container -->
     <br>
+
     <div class="container" style="width: 800px; margin-left: 0px; overflow-y: scroll">
         <div style="color: #0044cc"><h3>Comments</h3></div>
         <br>
@@ -179,7 +210,7 @@
             'htmlOptions' => array('data-dismiss' => 'modal'),
         ));
         ?>
-        <?php /*$this->endWidget()*/ ?>
+        <?php /*$this->endWidget() */?>
         <?php $this->endWidget() ?>
     </div>
 </div>
@@ -193,25 +224,143 @@
     })
 </script>
 <!-- End Comment Modal
+
+
 <!-- Modal RE-ASSIGN-->
+
 <div class="modal fade" id="myModalReAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Re-Assign Ticket</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Re-Assign</button>
-            </div>
-        </div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Re-Assign Ticket #<?php echo $model->id ?></h4>
+    </div>
+    <div class="modal-body">
+        <?php $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'ticket-form',
+            //'enableAjaxValidation'=>false,
+        )); ?>
+        <!-- <input style ="display:none" type = "text" id = "ticket_id" value='<?php /* echo $model->id;*/ ?>'</input>
+                <input style ="display:none" type = "text" id = "domain_id" value='<?php /*echo $model->domain_id;*/ ?>'</input>
+                <input style ="display:none" type = "text" id = "creator_user_id" value='<?php /*echo $model->creator_user_id;*/ ?>'</input>
+                <input style ="display:none" type = "text" id = "status" value='<?php /*echo $model->status;*/ ?>'</input>
+                <input style ="display:none" type = "text" id = "created_date" value='<?php /*echo $model->created_date; */ ?>'</input>
+                <input style ="display:none" type = "text" id = "subject" value='<?php /*echo $model->subject; */ ?>'</input>
+                <input style ="display:none" type = "text" id = "description" value='<?php /*echo $model->description; */ ?>'</input>
+                <input style ="display:none" type = "text" id = "domain_id" value='<?php /*echo $model->domain_id;*/ ?>'</input>
+                <input style ="display:none" type = "text" id = "subdomain_id" value='<?php /*echo $model->subdomain_id; */ ?>'</input>
+                <input style ="display:none" type = "text" id = "file" value='<?php /*echo $model->file;*/ ?>'</input> -->
+        <?php
+        //Logic to identified is a subdomain is being specified
+        $userDomain = User::model()->findAll("isDomMentor=:isDomMentor", array(':isDomMentor' => 1));
+        $data = array();
+        foreach ($userDomain as $mod) {
+            $data[$mod->id] = $mod->fname . ' ' . $mod->lname;
+        }
+        ?>
+        <?php echo $form->labelEx($mod, 'Domain Mentor'); ?>
+        <?php echo $form->dropDownList($model, 'assign_user_id', $data, array('prompt' => 'Select')); ?>
+        <?php echo $form->error($model, 'assign_user_id'); ?>
+
+
+        <?php /*echo $form->textField($model, 'assign_user_id', array('size' => 1, 'maxlength' => 1)); */ ?>
+    </div>
+
+    <div class="modal-footer">
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Reassign', 'url' => '#',
+            'htmlOptions' => array('id' => 'reassign'),
+        ));
+        ?>
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'label' => 'Close', 'url' => '#',
+            'htmlOptions' => array('data-dismiss' => 'modal'),
+        ));
+        ?>
+        <?php /*$this->endWidget()*/ ?>
+        <?php $this->endWidget() ?>
     </div>
 </div>
+<!-- Script for Comment modal -->
+<script>
+    $('a#reassign').on('click', function () {
+        var confirmed = confirm("Do you really want to reassign the ticket?");
+        if(confirmed) {
+        $.post('/coplat/index.php/ticket/reassign/<?php echo $model->id?>', $('#ticket-form').serialize(), function (message) {
+            window.location = location;
+        });
+        }
+        return false;
+    })
+</script>
+
+
+<!-- Modal Change Status-->
+<div class="modal fade" id="myModalChangeStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Change Status of Ticket #<?php echo $model->id ?></h4>
+    </div>
+    <div class="modal-body">
+        <?php $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'ticket-form',
+            //'enableAjaxValidation'=>false,
+        )); ?>
+                <input  type = "text" id = "ticket_id" value='<?php  echo $model->id;?>'</input>
+                <input  type = "text" id = "domain_id" value='<?php echo $model->domain_id; ?>'</input>
+                <input  type = "text" id = "creator_user_id" value='<?php echo $model->creator_user_id; ?>'</input>
+                <input  type = "text" id = "created_date" value='<?php echo $model->created_date;  ?>'</input>
+                <input  type = "text" id = "subject" value='<?php echo $model->subject;  ?>'</input>
+                <input type = "text" id = "description" value='<?php echo $model->description;  ?>'</input>
+                <input type = "text" id = "domain_id" value='<?php echo $model->domain_id; ?>'</input>
+                <input  type = "text" id = "subdomain_id" value='<?php echo $model->subdomain_id;  ?>'</input>
+                <input  type = "text" id = "file" value='<?php echo $model->file;?>'</input>
+                <input  type = "text" id = "assign_user_id" value='<?php echo $model->assign_user_id;?>'</input>
+
+        <?php
+        //Logic to identified is a subdomain is being specified\
+        //$data = array("Close", "Reject");
+        $data = array("Close","Reject");
+        ?>
+
+        <?php echo $form->labelEx($model, 'Status');?>
+        <?php echo $form->dropDownList($model, 'status', $data,array('prompt' => 'Select'));?>
+       <?php /* echo $form->dropDownList($model,'status',array("Close","Reject"));*/ ?>
+
+        <?php echo $form->error($model, 'status'); ?>
+        <?php /*echo $form->textField($model, 'status', array('size' => 1, 'maxlength' => 1)); */?>
+
+    </div>
+    <div class="modal-footer">
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Change Status', 'url' => '#',
+            'htmlOptions' => array('id' => 'changestatus'),
+        ));
+        ?>
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'label' => 'Close', 'url' => '#',
+            'htmlOptions' => array('data-dismiss' => 'modal'),
+        ));
+        ?>
+        <?php /*$this->endWidget()*/ ?>
+        <?php $this->endWidget() ?>
+    </div>
+
+</div>
+
+
+<!-- Script for Comment modal -->
+<script>
+    $('a#changestatus').on('click', function () {
+        $.post('/coplat/index.php/ticket/changestatus/<?php echo $model->id?>', $('#ticket-form').serialize(), function (message) {
+            window.location = location;
+        });
+        return false;
+    })
+</script>
+
+
 <script>
     $('#my-back').on('click', function () {
         window.history.back();

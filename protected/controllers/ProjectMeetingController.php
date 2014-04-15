@@ -288,13 +288,6 @@ class ProjectMeetingController extends Controller
             }
         }
 
-        /*foreach($pmentees as $p)
-        {
-            echo $p->user_id;
-            echo $p->projectmentor_project_id;
-        }
-        //var_dump($pmentees);
-       exit;*/
         $pmentee = array();
         foreach ($pmentees as $pment) {
             foreach ($pment as $pm) {

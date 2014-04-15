@@ -25,7 +25,7 @@
             ?>
             <table cellpadding="0" cellspacing="0" border="0"
                    class="table table-striped table-bordered table-fixed-header"
-                   id="#mytable" width="100%" style="table-layout:fixed">
+                   id="#mytable" width="100%" style="table-layout:fixed; background-color:  #EEE">
 
                 <thead class="header">
                 <tr>
@@ -63,29 +63,22 @@
         <table>
             <tr>
                 <td>
-                    <!-- Admin Button -->
-                    <?php $this->widget('bootstrap.widgets.TbButton', array(
-                        'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/create', 'type' => 'primary',
-                        'label' => '  New Ticket ', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
+                    <!-- Manage Domain Button -->
+                    <?php if ($user->isProMentor()) {
+                        $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMentorViewProjects', 'type' => 'primary',
+                            'label' => 'Project Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                    } elseif ($user->isMentee()) {
+                        $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMenteeViewProjects', 'type' => 'primary',
+                            'label' => 'Project', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                    }
                     ?>
             </tr>
             </td>
             <td>
                 <br>
-                <!-- Manage Domain Button -->
-                <?php if($user->isProMentor())
-                {
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMentorViewProjects', 'type' => 'primary',
-                    'label' => 'Project Mentor', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
-                }
-                elseif($user->isMentee())
-                    {
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMenteeViewProjects', 'type' => 'primary',
-                            'label' => 'Project', 'size' => 'medium','htmlOptions' => array('style' => 'width: 120px')));
-                    }
-                    ?>
+
 
             </td>
             </tr>
@@ -99,7 +92,9 @@
 
 <script>
     $('.triggerTicketClick').on('click', function () {
+        //window.location = "/coplat/index.php/ticket/view/" + $(this).attr('id');
         window.location = "/coplat/index.php/ticket/view/" + $(this).attr('id');
+
     });
 
     $('.table-fixed-header').fixedHeader();
