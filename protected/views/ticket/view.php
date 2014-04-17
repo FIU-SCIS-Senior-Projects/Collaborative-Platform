@@ -69,9 +69,10 @@
             </tr>
             </td>
             <td><br>
-                <!-- Comment Button -->
+                <!-- Change Status Button -->
                 <?php
-                    if(User::isCurrentUserMentee() || User::isCurrentUserStudent())
+                    /*if(User::isCurrentUserMentee() || User::isCurrentUserStudent())*/
+                    if(((User::getCurrentUserId() == $userCreator->id) || User::isCurrentUserAdmin()) && $model->status != 'Close')
                     {
                     $this->widget('bootstrap.widgets.TbButton', array(
                     'label' => 'Change Status',
@@ -304,38 +305,21 @@
     </div>
     <div class="modal-body">
         <?php $form = $this->beginWidget('CActiveForm', array(
-            'id' => 'ticket-form',
+            'id' => 'ticket-form-status',
             //'enableAjaxValidation'=>false,
         )); ?>
-                <input  type = "text" id = "ticket_id" value='<?php  echo $model->id;?>'</input>
-                <input  type = "text" id = "domain_id" value='<?php echo $model->domain_id; ?>'</input>
-                <input  type = "text" id = "creator_user_id" value='<?php echo $model->creator_user_id; ?>'</input>
-                <input  type = "text" id = "created_date" value='<?php echo $model->created_date;  ?>'</input>
-                <input  type = "text" id = "subject" value='<?php echo $model->subject;  ?>'</input>
-                <input type = "text" id = "description" value='<?php echo $model->description;  ?>'</input>
-                <input type = "text" id = "domain_id" value='<?php echo $model->domain_id; ?>'</input>
-                <input  type = "text" id = "subdomain_id" value='<?php echo $model->subdomain_id;  ?>'</input>
-                <input  type = "text" id = "file" value='<?php echo $model->file;?>'</input>
-                <input  type = "text" id = "assign_user_id" value='<?php echo $model->assign_user_id;?>'</input>
-
         <?php
-        //Logic to identified is a subdomain is being specified\
-        //$data = array("Close", "Reject");
-        $data = array("Close","Reject");
+        $data = array("Close", "Reject");
         ?>
-
         <?php echo $form->labelEx($model, 'Status');?>
-        <?php echo $form->dropDownList($model, 'status', $data,array('prompt' => 'Select'));?>
-       <?php /* echo $form->dropDownList($model,'status',array("Close","Reject"));*/ ?>
-
+        <?php echo $form->dropDownList($model, 'status', $data, array('prompt' => 'Select'));?>
         <?php echo $form->error($model, 'status'); ?>
-        <?php /*echo $form->textField($model, 'status', array('size' => 1, 'maxlength' => 1)); */?>
-
     </div>
+
     <div class="modal-footer">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Change Status', 'url' => '#',
-            'htmlOptions' => array('id' => 'changestatus'),
+            'htmlOptions' => array('id' => 'change'),
         ));
         ?>
         <?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -346,14 +330,12 @@
         <?php /*$this->endWidget()*/ ?>
         <?php $this->endWidget() ?>
     </div>
-
 </div>
-
 
 <!-- Script for Comment modal -->
 <script>
-    $('a#changestatus').on('click', function () {
-        $.post('/coplat/index.php/ticket/changestatus/<?php echo $model->id?>', $('#ticket-form').serialize(), function (message) {
+    $('a#change').on('click', function () {
+        $.post('/coplat/index.php/ticket/change/<?php echo $model->id?>', $('#ticket-form-status').serialize(), function (message) {
             window.location = location.pathname;
         });
         return false;

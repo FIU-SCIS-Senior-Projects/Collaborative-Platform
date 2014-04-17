@@ -28,15 +28,15 @@ class TicketController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'reassign', 'changestatus', 'adminHome', 'userHome'),
+                'actions' => array('index', 'view', 'reassign', 'change', 'adminHome', 'userHome'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'reassign', 'changestatus', 'adminHome', 'userHome'),
+                'actions' => array('create', 'update', 'reassign', 'change', 'adminHome', 'userHome'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'reassign', 'changestatus', 'adminHome', 'userHome'),
+                'actions' => array('admin', 'delete', 'reassign', 'change', 'adminHome', 'userHome'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
@@ -80,7 +80,7 @@ class TicketController extends Controller
         /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
             $all = array();
-            $subdomains = Subdomain::model()->findAll("domain_id=:id",array(':id'=>$_POST['domain']));//   $subdomain->getAllByDomain($_POST['domain']);
+            $subdomains = Subdomain::model()->findAll("domain_id=:id", array(':id' => $_POST['domain'])); //   $subdomain->getAllByDomain($_POST['domain']);
             foreach ($subdomains as $subdom) {
                 $all[] = array(
                     'id' => $subdom->id,
@@ -168,51 +168,41 @@ class TicketController extends Controller
         ));
     }
 
-    public function actionChangeStatus($id)
+    /*Function to change the status of the ticket */
+    public function actionChange($id)
     {
         $model = $this->loadModel($id);
-
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['Ticket'])) {
-            $model->attributes = $_POST['Ticket'];
-
-
-            if ($model->status == 0) {
+        if (isset($_POST['Ticket']['status'])) {
+            $newStatus = $_POST['Ticket']['status'];
+            //$model->attributes = $_POST['Ticket'];
+            if ($newStatus == 0) {
                 $model->status = 'Close';
-            }
-            if ($model->status == 1) {
+                if ($model->save()) {
+
+                    /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+                    /*User::sendTicketAssignedEmailNotification($model->creator_user_id,
+                        $model->assign_user_id, $model->domain_id);*/
+                    $this->redirect(array('view', 'id' => $model->id));
+                }
+            } elseif ($newStatus == 1) {
                 $model->status = 'Reject';
+                if ($model->save()) {
+                    /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+                   /* User::sendTicketAssignedEmailNotification($model->creator_user_id,
+                        $model->assign_user_id, $model->domain_id); */
+                    $this->redirect(array('view', 'id' => $model->id));
+                }
             }
-            if ($model->save()) {
-
-                /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                /*User::sendTicketAssignedEmailNotification($model->creator_user_id,
-                    $model->assign_user_id, $model->domain_id);*/
-                $this->redirect(array('view', 'id' => $model->id));
-                //          }
-            }
-
-            //if($model->status == 'Reject')
-            //{
-            /*send notification to the admin */
-            //}
-
-            //if ($model->save()){
-
-            /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-            /*User::sendTicketAssignedEmailNotification($model->creator_user_id,
-                $model->assign_user_id, $model->domain_id);*/
-            //$this->redirect(array('view', 'id' => $model->id));
-            // }
-
+            exit();
         }
-
         $this->render('update', array(
             'model' => $model,
         ));
     }
+
 
     /**
      * Deletes a particular model.
