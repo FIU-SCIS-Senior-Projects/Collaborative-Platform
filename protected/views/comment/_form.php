@@ -15,9 +15,9 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-<div id = "container"; style="margin-top:10px; width: 800px; border: 1px solid #C9E0ED; border-radius: 5px;">
+<div id = "container" style="margin-top:10px; width: 800px; border: 1px solid #C9E0ED; border-radius: 5px;">
  	
-	<div class ="row"; style = "margin-left: 40px">
+	<div class ="row" style = "margin-left: 40px">
 		<?php echo $form->labelEx($model,'comment'); ?>
 		<?php echo $form->textArea($model,'comment',array('id'=>'comment', 'style'=>'width:500px', 'cols'=>110, 'rows'=>5,
                'width'=>'300px')); ?>
@@ -40,7 +40,7 @@
  	
 </div>
 <br>
-	<div id ="row buttons"; style="margin-top:10px; margin-top: 5px;" >
+	<div id ="row buttons" style="margin-top:10px; margin-top: 5px;" >
     	<?php echo CHtml::submitButton('Save', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
 		
 		<?php
