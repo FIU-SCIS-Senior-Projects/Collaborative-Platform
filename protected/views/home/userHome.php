@@ -41,8 +41,6 @@
                     $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
                     $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
                     <tbody>
-                    <tr
-
                     <tr id="<?php echo $Ticket->id ?>" class="triggerTicketClick">
                         <td width="5%"><?php echo $Ticket->id; ?></td>
                         <td width="25%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
@@ -60,7 +58,7 @@
         </div>
         <!-- </div> -->
 
-        <div class="span2" style="margin-left: 30px"
+        <div class="span2" style="margin-left: 30px">
         <!-- Cancel Button -->
         <table>
             <tr>
@@ -76,8 +74,10 @@
                             'label' => 'Project', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
                     }
                     ?>
-            </tr>
+            
             </td>
+            </tr>
+            <tr>
             <td>
                 <br>
 
@@ -96,8 +96,6 @@
     $('.triggerTicketClick').on('click', function () {
         window.location = "/coplat/index.php/ticket/view/" + $(this).attr('id');
     });
-
-</script>
 
 
     $('.table-fixed-header').fixedHeader();

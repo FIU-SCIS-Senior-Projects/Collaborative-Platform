@@ -54,22 +54,26 @@
         </div>
         <!-- </div> -->
 
-        <div class="span2" style="margin-left: 30px"
+        <div class="span2" style="margin-left: 30px">
         <!-- Cancel Button -->
         <table>
             <tr>
                 <td>
                     <h4>Manage</h4>
-            </tr>
+            
             </td>
+            </tr>
+            <tr>
             <td>
                 <!-- Profile Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/profiles', 'type' => 'primary',
                     'label' => 'Profiles', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
                 ?>
-                </tr>
+                
             </td>
+            </tr>
+            <tr>
             <td><br>
                 <!-- Manage Domain Button -->
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -85,8 +89,10 @@
             <tr><?php if (User::isCurrentUserProMentor()) { ?>
                 <td>
                     <h4>Mentoring</h4>
-            </tr>
+            
             </td>
+            </tr>
+            <tr>
             <td>
                 <!-- Manage Domain Button -->
                 <?php
@@ -95,7 +101,9 @@
                         'label' => 'Project Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
                 }?>
 
-                </tr></td>
+                </td>
+                </tr>
+                <tr>
             <td><br>
 
             </td>

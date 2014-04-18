@@ -15,7 +15,7 @@ $this->menu=array(
 
 <div id = "wrapper" >
 	<span><strong>Comment</strong></span>
-		<div 
+		<div>
 			<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 		</div> 
 </div>
