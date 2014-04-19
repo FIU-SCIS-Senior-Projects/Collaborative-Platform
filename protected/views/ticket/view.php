@@ -52,82 +52,63 @@
     </div>
 
     <div class="span2"> <!-- Buttons Options -->
-        <table>
-            <tr>
-                <td>
-                    <!-- Comment Button -->
-
-                    <?php $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => 'Add Comment',
-                        'type' => 'primary',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#myModalComment',
-                            'style' => 'width: 120px',
-                        ),
-                    )); ?>
-            </tr>
-            </td>
-            <td><br>
-                <!-- Change Status Button -->
-                <?php
-                    /*if(User::isCurrentUserMentee() || User::isCurrentUserStudent())*/
-                    if(((User::getCurrentUserId() == $userCreator->id) || User::isCurrentUserAdmin()) && $model->status != 'Close')
-                    {
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                    'label' => 'Change Status',
-                    'type' => 'primary',
-                    'htmlOptions' => array(
-                        'data-toggle' => 'modal',
-                        'data-target' => '#myModalChangeStatus',
-                        'style' => 'width: 120px',
-                    ),
-                ));} ?>
-
-                </tr></td>
-            <td><br>
-                <!-- Button trigger modal Reassign -->
-                <?php
-                    if(User::isCurrentUserAdmin() || User::isCurrentUserDomMentor() || User::isCurrentUserProMentor())
-                    {
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                    'label' => 'Re Assign',
-                    'type' => 'primary',
-                    'htmlOptions' => array(
-                        'data-toggle' => 'modal',
-                        'data-target' => '#myModalReAssign',
-                        'style' => 'width: 120px',
-                    ),
-                )); }?>
-                </tr></td>
-            <td><br>
-                <?php
-                /*$tier = UserDomain::model()->find("user_id=:id", array(':id' => $model->assign_user_id));
-
-                if ($tier->tier_team == 1) {
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => 'Escalate',
-                        'type' => 'primary',
-                        'htmlOptions' => array(
-                            'data-toggle' => 'modal',
-                            'data-target' => '#myModalEscalate',
-                            'style' => 'width: 120px',
-                        ),
-                    ));
-                } */?>
-            </td>
-            </tr>
-        </table>
-        <!-- Update Button  -->
+        <?php if ($model->status != 'Close') { ?>
+            <!-- Comment Button -->
+            <?php $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => 'Add Comment',
+                'type' => 'primary',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#myModalComment',
+                    'style' => 'width: 120px',
+                ),
+            )); ?>
+        <?php } ?>
+        <br/>
+        <br/>
+        <!-- Change Status Button -->
         <?php
-        /*$this->widget('bootstrap.widgets.TbButton', array(
-             'buttonType'=>'link', 'id'=>'new-box', 'url'=>array('update', 'id'=>$model->id),*/
-        //'confirm' => 'Do you want to proceed and make change on this ticket?',
-        /*'type'=>'primary', 'label'=>'Edit'));*/
-        ?>
-        <!-- Delete Button -->
-        <?php /*echo CHtml::button('Delete', array("class"=>"btn btn-primary", 'submit' => array('Delete', 'id'=>$model->id),
-			'confirm' => 'Do you want to Drop this ticket from the Mentoring Module?')); */
+        if (((User::getCurrentUserId() == $userCreator->id) || User::isCurrentUserAdmin()) && $model->status != 'Close') {
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => 'Change Status',
+                'type' => 'primary',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#myModalChangeStatus',
+                    'style' => 'width: 120px',
+                ),
+            ));
+        } ?>
+        <br/>
+        <br/>
+        <!-- Button trigger modal Reassign -->
+        <?php
+        if ((User::isCurrentUserAdmin() || User::isCurrentUserDomMentor() || User::isCurrentUserProMentor()) && $model->status != 'Close') {
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => 'Re Assign',
+                'type' => 'primary',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#myModalReAssign',
+                    'style' => 'width: 120px',
+                ),
+            ));
+        }?>
+
+        <?php
+        /*$tier = UserDomain::model()->find("user_id=:id", array(':id' => $model->assign_user_id));
+
+        if ($tier->tier_team == 1) {
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => 'Escalate',
+                'type' => 'primary',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#myModalEscalate',
+                    'style' => 'width: 120px',
+                ),
+            ));
+        } */
         ?>
     </div>
     <!-- End Buttons Options -->
@@ -211,7 +192,7 @@
             'htmlOptions' => array('data-dismiss' => 'modal'),
         ));
         ?>
-        <?php /*$this->endWidget() */?>
+        <?php /*$this->endWidget() */ ?>
         <?php $this->endWidget() ?>
     </div>
 </div>
@@ -285,10 +266,10 @@
 <script>
     $('a#reassign').on('click', function () {
         var confirmed = confirm("Do you really want to reassign the ticket?");
-        if(confirmed) {
-        $.post('/coplat/index.php/ticket/reassign/<?php echo $model->id?>', $('#ticket-form').serialize(), function (message) {
-            window.location = location;
-        });
+        if (confirmed) {
+            $.post('/coplat/index.php/ticket/reassign/<?php echo $model->id?>', $('#ticket-form').serialize(), function (message) {
+                window.location = location;
+            });
         }
         return false;
     })
@@ -311,8 +292,8 @@
         <?php
         $data = array("Close", "Reject");
         ?>
-        <?php echo $form->labelEx($model, 'Status');?>
-        <?php echo $form->dropDownList($model, 'status', $data, array('prompt' => 'Select'));?>
+        <?php echo $form->labelEx($model, 'Status'); ?>
+        <?php echo $form->dropDownList($model, 'status', $data, array('prompt' => 'Select')); ?>
         <?php echo $form->error($model, 'status'); ?>
     </div>
 

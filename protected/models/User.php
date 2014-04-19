@@ -616,5 +616,13 @@ class User extends CActiveRecord
         return sprintf("%s %s", $this->fname, $this->lname);
     }
 
+    /*Ticket has closed by the creator */
+    //public static function sendCloseTicketEmailNotification($model->creator_user_id,$model->assign_user_id, $model->status);
+
+    /* Ticket has been rejected by the creator, send notification to admin */
+    //public static function sendRejectEmailNotification($model->creator_user_id, $model->assign_user_id, $model->status);
+
+    /*Meeting notification */
+    //public static function sendMeetingNotification($model->project_mentor_user_id, $model->mentee_user_id, $model->date, $model->time);
 
 }

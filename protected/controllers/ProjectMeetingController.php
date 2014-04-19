@@ -28,15 +28,15 @@ class ProjectMeetingController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','adminViewProjects','pMentorViewProjects'),
+				'actions'=>array('index','view','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','adminViewProjects','pMentorViewProjects'),
+				'actions'=>array('create','update','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','adminViewProjects','pMentorViewProjects'),
+				'actions'=>array('admin','delete','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -72,15 +72,13 @@ class ProjectMeetingController extends Controller
 			$model->attributes=$_POST['ProjectMeeting'];
             $model->project_mentor_user_id = $id;
 
-            $model->save(false);
+            if($model->save()) {
 
-			//if($model->save())
-			//	$this->redirect(array('view','id'=>$model->id));
+               /* User::sendMeetingNotification($model->project_mentor_user_id, $model->mentee_user_id,
+                    $model->date, $model->time);
+                    */
+            }
 		}
-
-		/*$this->render('create',array(
-			'model'=>$model,
-		));*/
 	}
 
 
@@ -183,7 +181,7 @@ class ProjectMeetingController extends Controller
 
 
     /*Implemented by Lorenzo Sanchez */
-    public function actionadminViewProjects()
+    public function actionadminViewMeetings()
     {
         /** @var  User $user */
         $username = Yii::app()->user->name;
@@ -238,7 +236,7 @@ class ProjectMeetingController extends Controller
 
         /* End Return all the mentees for the project mentor */
 
-        $this->render('adminViewProjects', array( /*'menteeName' => $menteeName,*/
+        $this->render('adminViewMeetings', array( /*'menteeName' => $menteeName,*/
             'user' => $user,
             'meetings' => $meetings,
             'projects' => $projects,
@@ -248,7 +246,7 @@ class ProjectMeetingController extends Controller
     }
 
     /*Implemented by Lorenzo Sanchez */
-    public function actionpMentorViewProjects()
+    public function actionpMentorViewMeetings()
     {
         /** @var  User $user */
         $username = Yii::app()->user->name;
@@ -271,10 +269,6 @@ class ProjectMeetingController extends Controller
         /*  */
         /* Return all the mentees for the project mentor */
         /** @var Projectmentor_project $projectmentor_project */
-
-        //$projectmentor_project = ProjectmentorProject::model()->findAllBySql("SELECT * FROM projectmentor_project WHERE project_mentor_user_id=:id", array(":id"=>$user->id));
-
-        /*$projectmentor_project = Project::model()->findAll("project_mentor_user_id=:id", array(":id" => $user->id)); */
 
         $pmentees = array();
 
@@ -309,7 +303,7 @@ class ProjectMeetingController extends Controller
 
         /* End Return all the mentees for the project mentor */
 
-        $this->render('pMentorViewProjects', array( /*'menteeName' => $menteeName,*/
+        $this->render('pMentorViewMeetings', array( /*'menteeName' => $menteeName,*/
             'user' => $user,
             'meetings' => $meetings,
             'projects' => $projects,
@@ -318,7 +312,70 @@ class ProjectMeetingController extends Controller
         ));
     }
 
+    /*Implemented by Lorenzo Sanchez */
+    public function actionpMenteeViewMeetings()
+    {
+        /** @var  User $user */
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+
+        /*Return all the meetings for the current user */
+        /** @var ProjectMeeting $meetings */
+        $meetings = ProjectMeeting::model()->findAllBySql("SELECT * FROM project_meeting WHERE mentee_user_id =:id ORDER BY `date` ASC", array(":id" => $user->id));
+
+        /*mentee array */
+        $mentees = array();
+        /** @var User $mentee */
+        foreach ($meetings as $id => $meetin) {
+            $mentees[$id] = User::model()->findBySql("SELECT * FROM user WHERE id =:id OR id =:iid", array(":id" => $meetin->mentee_user_id,
+                                                        ":iid"=>$meetin->project_mentor_user_id));
+        }
 
 
+        /*Return all the projects for the current Project Mentor */
+        $pro = Mentee::model()->find("user_id=:id", array(':id'=>$user->id));
+
+        $projects = Project::model()->findAll("id=:project_id", array(':project_id' => $pro->project_id));
+
+        /* Return all the mentees for the project mentor */
+        $pmentees = array();
+        foreach ($projects as $pm) {
+
+            /** @var ProjectMentorProject $pm */
+            $allMentees = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE project_id=:id", array(":id" => $pm->id));
+            foreach ($allMentees as $i => $m) {
+                $pmentees[$pm->id][$m->user_id] = $m;
+            }
+        }
+
+        $pmentee = array();
+        foreach ($pmentees as $pment) {
+            foreach ($pment as $pm) {
+                $pmentee[$pm->user_id] = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id" => $pm->user_id));
+            }
+        }
+
+        foreach ($projects as $project) {
+            /** @var Project $project */
+
+            $project->description .= sprintf("<h4>Mentees</h4><ul>");
+            foreach ($pmentees[$project->id] as $projectMenteeId => $menteeObject) {
+                $project->description .= sprintf("<li>%s</li>", $pmentee[$projectMenteeId]);
+            }
+            $project->description .= sprintf("</ul>");
+        }
+
+        /** @var User $usermentee */
+
+        /* End Return all the mentees for the project mentor */
+
+        $this->render('pMenteeViewMeetings', array( /*'menteeName' => $menteeName,*/
+            'user' => $user,
+            'meetings' => $meetings,
+            'projects' => $projects,
+            'pmentee' => $pmentee,
+            'mentees' => $mentees,
+        ));
+    }
 
 }

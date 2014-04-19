@@ -62,7 +62,7 @@
         if (User::isCurrentUserMentee()) {
 
             $mentee = Mentee::model()->findByPk(User::getCurrentUserId());
-            $projectmentor = ProjectmentorProject::model()->findByPk($mentee->projectmentor_project_id);
+            $projectmentor = Project::model()->findByPk($mentee->project_id);
 
             $mentor = User::model()->find("id=:id", array(':id'=>$projectmentor->project_mentor_user_id));
 

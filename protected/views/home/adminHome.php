@@ -23,10 +23,11 @@
                 <thead class="header">
                 <tr>
                     <th width="5%">No</th>
-                    <th width="25%">Creator Name</th>
+                    <th width="15%">Creator Name</th>
                     <th width="13%">Domain</th>
-                    <th width="37%">Subject</th>
-                    <th width="20%">Created Date</th>
+                    <th width="42%">Subject</th>
+                    <th width="15%">Created Date</th>
+                    <th width="10%">Status</th>
                 </tr>
                 </thead>
                 <?php if ($Tickets == null) {
@@ -39,10 +40,11 @@
                         <tbody>
                         <tr id="<?php echo $Ticket->id ?>" class="triggerTicketClick">
                             <td width="5%"><?php echo $Ticket->id; ?></td>
-                            <td width="25%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
+                            <td width="15%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
                             <td width="13%"><?php echo $domain->name; ?></td>
-                            <td width="37%"><?php echo $Ticket->subject; ?></td>
-                            <td width="20%"><?php echo date("M d, Y", strtotime($Ticket->created_date)); ?></td>
+                            <td width="42%"><?php echo $Ticket->subject; ?></td>
+                            <td width="15%"><?php echo date("M d, Y", strtotime($Ticket->created_date)); ?></td>
+                            <td width="10%"><?php echo $Ticket->status ?></td>
                         </tr>
                         </tbody>
                     <?php
@@ -55,62 +57,62 @@
         <!-- </div> -->
 
         <div class="span2" style="margin-left: 30px">
-        <!-- Cancel Button -->
-        <table>
-            <tr>
-                <td>
-                    <h4>Manage</h4>
-            
-            </td>
-            </tr>
-            <tr>
-            <td>
-                <!-- Profile Button -->
-                <?php $this->widget('bootstrap.widgets.TbButton', array(
-                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/profiles', 'type' => 'primary',
-                    'label' => 'Profiles', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
-                ?>
-                
-            </td>
-            </tr>
-            <tr>
-            <td><br>
-                <!-- Manage Domain Button -->
-                <?php $this->widget('bootstrap.widgets.TbButton', array(
-                    'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/adminViewProjects', 'type' => 'primary',
-                    'label' => 'Project Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
-                ?>
+            <!-- Cancel Button -->
+            <table>
+                <tr>
+                    <td>
+                        <h4>Manage</h4>
 
-            </td>
-            </tr>
-        </table>
-        <br/>
-        <table>
-            <tr><?php if (User::isCurrentUserProMentor()) { ?>
-                <td>
-                    <h4>Mentoring</h4>
-            
-            </td>
-            </tr>
-            <tr>
-            <td>
-                <!-- Manage Domain Button -->
-                <?php
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                        'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMentorViewProjects', 'type' => 'primary',
-                        'label' => 'Project Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
-                }?>
-
-                </td>
+                    </td>
                 </tr>
                 <tr>
-            <td><br>
+                    <td>
+                        <!-- Profile Button -->
+                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/profiles', 'type' => 'primary',
+                            'label' => 'Profiles', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                        ?>
 
-            </td>
-            </tr>
-        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><br>
+                        <!-- Manage Domain Button -->
+                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/adminViewMeetings', 'type' => 'primary',
+                            'label' => 'Project Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                        ?>
+
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <table>
+                <tr><?php if (User::isCurrentUserProMentor()) { ?>
+                    <td>
+                        <h4>Mentoring</h4>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!-- Manage Domain Button -->
+                        <?php
+                        $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMentorViewProjects', 'type' => 'primary',
+                            'label' => 'Project Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                        }?>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><br>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
 </div>
 <!-- End FullContent -->
 

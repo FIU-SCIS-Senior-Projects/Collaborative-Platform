@@ -6096,3 +6096,343 @@ Stack trace:
 REQUEST_URI=/coplat/index.php
 HTTP_REFERER=http://localhost/coplat/index.php
 ---
+2014/04/19 20:49:58 [error] [php] fopen(/var/www/html/coplat/email/index1.html): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php:447)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/TicketController.php(133): sendTicketAssignedEmailNotification()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): TicketController->actionCreate()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): TicketController->runAction()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): TicketController->filterAccessControl()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): TicketController->runActionWithFilters()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): TicketController->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php (447)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php (335)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/TicketController.php (133)
+2014/04/19 20:50:31 [error] [php] fopen(/var/www/html/coplat/email/index1.html): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php:447)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/TicketController.php(133): sendTicketAssignedEmailNotification()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): TicketController->actionCreate()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): TicketController->runAction()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): TicketController->filterAccessControl()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): TicketController->runActionWithFilters()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): TicketController->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php (447)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php (335)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/TicketController.php (133)
+2014/04/19 21:01:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 21:01:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 21:13:00 [error] [php] Undefined variable: model (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/views/home/adminHome.php:47)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(869): HomeController->renderFile()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(782): HomeController->renderPartial()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/HomeController.php(81): HomeController->render()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): HomeController->actionadminHome()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): HomeController->runAction()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): HomeController->filterAccessControl()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): HomeController->runActionWithFilters()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): HomeController->run()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/adminHome
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/views/home/adminHome.php (47)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/HomeController.php (81)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 21:31:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 21:32:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profiles".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('profiles')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profiles
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2014/04/19 21:49:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 21:59:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 22:00:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 22:00:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 22:01:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 22:01:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pMenteeViewProjects".' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(270): CController->missingAction('pMenteeViewProj...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewProj...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 22:17:06 [error] [exception.CException] exception 'CException' with message 'Property "User.project_id" is not defined.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(143): CComponent->__get('project_id')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(339): CActiveRecord->__get('project_id')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionpMenteeViewMeetings()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewMeet...')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewMeetings
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 22:17:48 [error] [php] Trying to get property of non-object (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php:329)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): ProjectMeetingController->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewMeetings
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (329)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 22:19:59 [error] [php] Trying to get property of non-object (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php:327)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): ProjectMeetingController->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewMeetings
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (327)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 22:20:43 [error] [php] Trying to get property of non-object (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php:327)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): ProjectMeetingController->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewMeetings
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (327)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 22:20:55 [error] [php] Array to string conversion (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php:327)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): ProjectMeetingController->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewMeetings
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (327)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 22:21:49 [error] [exception.CException] exception 'CException' with message 'Property "User.project_id" is not defined.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(143): CComponent->__get('project_id')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(340): CActiveRecord->__get('project_id')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionpMenteeViewMeetings()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewMeet...')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewMeetings
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 22:24:46 [error] [php] Undefined variable: projects (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php:347)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): ProjectMeetingController->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewMeetings
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (347)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 22:27:28 [error] [exception.CException] exception 'CException' with message 'Property "User.project_id" is not defined.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(143): CComponent->__get('project_id')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(341): CActiveRecord->__get('project_id')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionpMenteeViewMeetings()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMenteeViewMeet...')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMenteeViewMeetings
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 22:41:01 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`project_meeting`, CONSTRAINT `fk_project_meeting_project_mentor1` FOREIGN KEY (`project_mentor_user_id`) REFERENCES `project_mentor` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTI). The SQL statement executed was: INSERT INTO `project_meeting` (`mentee_user_id`, `date`, `time`, `project_mentor_user_id`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (75)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 22:41:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`project_meeting`, CONSTRAINT `fk_project_meeting_project_mentor1` FOREIGN KEY (`project_mentor_user_id`) REFERENCES `project_mentor` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTI). The SQL statement executed was: INSERT INTO `project_meeting` (`mentee_user_id`, `date`, `time`, `project_mentor_user_id`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(75): CActiveRecord->save()
+#3 [internal function]: ProjectMeetingController->actionCreate('8')
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(ProjectMeetingController), Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProjectMeetingController), Object(ReflectionMethod), Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#16 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/create/8
+HTTP_REFERER=http://localhost/coplat/index.php/projectMeeting/pMenteeViewMeetings
+---
