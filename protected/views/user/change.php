@@ -6,9 +6,9 @@
 ?>
 <div style="width: 1050px; height: 1425px;">
 <div id="left">
-<form method="POST" enctype="multipart/form-data" action="view">
-    
-<div id="container" class="my-box-container3" style="height: 360px;" >   
+<form method="POST" enctype="multipart/form-data" action="View?id=<?php $model->id; ?>">
+
+<div id="container" class="my-box-container3" style="height: 360px;" >
         <div class="titlebox"><h3><?php echo ucfirst($model->fname) ." " . ucfirst($model->lname)?></h3></div>
         <div id="profileImage">
         <br><img style="width:150px; height:205px;" src="<?php echo $model->pic_url ?>" />

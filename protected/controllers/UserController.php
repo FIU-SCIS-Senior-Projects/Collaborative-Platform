@@ -389,7 +389,7 @@ class UserController extends Controller
         $this->redirect('/coplat/index.php/site/page?view=verification');
     }
 
-    public function actionVerifyEmail($username, $activation_chain)
+        public function actionVerifyEmail($username, $activation_chain)
     {
         $usermodel = User::model()->find("username=:username AND activation_chain=:activation_chain",array(':username'=>$username, ':activation_chain'=>$activation_chain));
         if ($usermodel != null)
