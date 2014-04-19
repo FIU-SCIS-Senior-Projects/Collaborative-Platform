@@ -8,14 +8,8 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
-	array('label'=>'List Invitation', 'url'=>array('index')),
-	array('label'=>'Create Invitation', 'url'=>array('create')),
-	array('label'=>'View Invitation', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Invitation', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Update Invitation <?php echo $model->id; ?></h1>
+<h2>Update Invitation <?php echo $model->id; ?></h2>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('change', array('model'=>$model)); ?>

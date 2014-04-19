@@ -136,6 +136,14 @@
 
                                         ),
                                     ),
+                                    array('label'=>'Invitation','visible'=>!Yii::app()->user->isGuest,
+                                        'class'=>'bootstrap.widgets.TbMenu',
+                                        'htmlOptions'=>array('class'=>'pull-left'),
+                                        'items'=>array(array('label'=>'Manage', 'url'=>array('invitation/admin'), 'visible'=>!Yii::app()->user->isGuest),
+                                            array('label'=>'Send', 'url'=>array('invitation/create'), 'visible'=>!Yii::app()->user->isGuest),
+
+                                        ),
+                                    ),
 							),
 					),
 

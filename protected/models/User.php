@@ -321,6 +321,7 @@ class User extends CActiveRecord
 
         $email->send();
     }
+
     public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain)
     {
         $creator = User::model()->find("id=:id",array(':id' => $creator_id));
@@ -329,11 +330,15 @@ class User extends CActiveRecord
 
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
+        $message = "The user, ".$creator->fname." ".$creator->lname.", has created a ticket that has being assigned to you. $link to view";
+        $name = $domMentor->fname . ' '. $domMentor->lname;
+        $html = User::replaceMessage($name, $message);
+
         $email = Yii::app()->email;
         $email->to = $domMentor->email;
         $email->from = 'Collaborative Platform';
         $email->subject = 'New Ticket related to '.$domain->name;
-        $email->message = "The user, ".$creator->fname." ".$creator->lname.", has created a ticket that has being assigned to you. $link to view";
+        $email->message = $html;
         $email->send();
 
     }
@@ -349,31 +354,71 @@ class User extends CActiveRecord
 
         if($ticket_creator->id == User::model()->getCurrentUser()->id)
         {
+            $message = "The user, ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the his/her ticket #".$ticket->id.". $link to view the comment.";
+            $name = $ticket_mentor->fname . ' '. $ticket_mentor->lname;
+            $html = User::replaceMessage($name, $message);
+
             $email = Yii::app()->email;
             $email->to = $ticket_mentor->email;
             $email->from = 'Collaborative Platform';
             $email->subject = 'Comment added to Ticket #'.$ticket->id;
-            $email->message = "The user, ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the his/her ticket #".$ticket->id.". $link to view the comment.";
+            $email->message = $html;
             $email->send();
         }
         elseif($ticket_mentor->id == User::model()->getCurrentUser()->id)
         {
+            $message = "The Domain Mentor, ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
+            $name = $ticket_creator->fname . ' '. $ticket_creator->lname;
+            $html = User::replaceMessage($name, $message);
+
             $email = Yii::app()->email;
             $email->to = $ticket_creator->email;
             $email->from = 'Collaborative Platform';
             $email->subject = 'Comment added to Ticket #'.$ticket->id;
-            $email->message = "The Domain Mentor, ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
+            $email->message = $html;
             $email->send();
         }
         else{
             $comment_creator = User::model()->getCurrentUser();
+            $message = "The user ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
+            $name = "";
+            $html = User::replaceMessage($name, $message);
+
             $email = Yii::app()->email;
             $email->to = $ticket_mentor->email.",".$ticket_creator->email;
             $email->from = 'Collaborative Platform';
             $email->subject = 'Comment added to Ticket #'.$ticket->id;
-            $email->message = "The user ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
+            $email->message = $html;
             $email->send();
         }
+    }
+
+    public static function sendInvitationEmail($invitation)
+    {
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+        $admin = User::model()->findByPk($invitation->administrator_user_id);
+        $to = "";
+        $message = "The Collaborative Platform, system administrator ". $admin->fname." ".$admin->lname." through this email would like to invite you to participate on it as: <br/>";
+        if($invitation->administrator == 1)
+            $message = $message."<b>System Administrator:</b><br/>";
+        if($invitation->mentor == 1)
+            $message = $message."<b>Mentor: </b><br/>&nbsp;&nbsp;<i>Domain Mentor: </i><br/>&nbsp;&nbsp;<i>Project Mentor: </i><br/>&nbsp;&nbsp;<i>Personal Mentor: </i><br/>";
+        if($invitation->employer == 1)
+            $message = $message."<b>Employer: </b><br/>";
+        if($invitation->judge == 1)
+            $message = $message."<b>Judge: </b><br/>";
+        if($invitation->mentee == 1)
+            $message = $message."<b>Mentee: </b><br/>";
+
+        $html = User::replaceMessage($to, $message);
+
+        $email = Yii::app()->email;
+        $email->to = $invitation->email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'We need you.';
+        $email->message = $html;
+        $email->send();
+
     }
     public static function addNewMessageNotification($sender, $reciver, $link, $level)
     {

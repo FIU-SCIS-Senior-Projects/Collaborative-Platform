@@ -5,9 +5,14 @@
  *
  * The followings are the available columns in table 'invitation':
  * @property string $id
- * @property string $date
- * @property integer $status
+ * @property string $email
  * @property string $administrator_user_id
+ * @property string $date
+ * @property integer $administrator
+ * @property integer $mentor
+ * @property integer $mentee
+ * @property integer $employer
+ * @property integer $judge
  *
  * The followings are the available model relations:
  * @property Administrator $administratorUser
@@ -40,13 +45,14 @@ class Invitation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('administrator_user_id', 'required'),
-			array('status', 'numerical', 'integerOnly'=>true),
+			array('email, administrator_user_id', 'required'),
+			array('administrator, mentor, mentee, employer, judge', 'numerical', 'integerOnly'=>true),
+			array('email', 'length', 'max'=>100),
 			array('administrator_user_id', 'length', 'max'=>11),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, date, status, administrator_user_id', 'safe', 'on'=>'search'),
+			array('id, email, administrator_user_id, date, administrator, mentor, mentee, employer, judge', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,9 +75,14 @@ class Invitation extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'date' => 'Date',
-			'status' => 'Status',
+			'email' => 'Email',
 			'administrator_user_id' => 'Administrator User',
+			'date' => 'Date',
+			'administrator' => 'Administrator',
+			'mentor' => 'Mentor',
+			'mentee' => 'Mentee',
+			'employer' => 'Employer',
+			'judge' => 'Judge',
 		);
 	}
 
@@ -87,9 +98,14 @@ class Invitation extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('date',$this->date,true);
-		$criteria->compare('status',$this->status);
+		$criteria->compare('email',$this->email,true);
 		$criteria->compare('administrator_user_id',$this->administrator_user_id,true);
+		$criteria->compare('date',$this->date,true);
+		$criteria->compare('administrator',$this->administrator);
+		$criteria->compare('mentor',$this->mentor);
+		$criteria->compare('mentee',$this->mentee);
+		$criteria->compare('employer',$this->employer);
+		$criteria->compare('judge',$this->judge);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
