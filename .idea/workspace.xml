@@ -2,47 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\controllers\MenteeController.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\controllers\ProjectmentorProjectController.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\models\Mentee.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\models\ProjectmentorProject.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\mentee\_form.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\mentee\_search.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\mentee\_view.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\mentee\admin.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\mentee\create.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\mentee\index.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\mentee\update.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\mentee\view.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\projectmentorProject\_form.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\projectmentorProject\_search.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\projectmentorProject\_view.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\projectmentorProject\admin.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\projectmentorProject\create.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\projectmentorProject\index.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\projectmentorProject\update.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\projectmentorProject\view.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/MenteeController.php" afterPath="$PROJECT_DIR$/protected/controllers/MenteeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/Project.php" afterPath="$PROJECT_DIR$/protected/models/Project.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/ProjectController.php" afterPath="$PROJECT_DIR$/protected/controllers/ProjectController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/project/_form.php" afterPath="$PROJECT_DIR$/protected/views/project/_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/project/_search.php" afterPath="$PROJECT_DIR$/protected/views/project/_search.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/project/_view.php" afterPath="$PROJECT_DIR$/protected/views/project/_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/project/admin.php" afterPath="$PROJECT_DIR$/protected/views/project/admin.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/admin.php" afterPath="$PROJECT_DIR$/protected/views/domain/admin.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/subdomain/admin.php" afterPath="$PROJECT_DIR$/protected/views/subdomain/admin.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/admin.php" afterPath="$PROJECT_DIR$/protected/views/user/admin.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/create.php" afterPath="$PROJECT_DIR$/protected/views/domain/create.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/mentee/create.php" afterPath="$PROJECT_DIR$/protected/views/mentee/create.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/project/create.php" afterPath="$PROJECT_DIR$/protected/views/project/create.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/index.php" afterPath="$PROJECT_DIR$/protected/views/domain/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/invitation/index.php" afterPath="$PROJECT_DIR$/protected/views/invitation/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/mentee/index.php" afterPath="$PROJECT_DIR$/protected/views/mentee/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/project/index.php" afterPath="$PROJECT_DIR$/protected/views/project/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/index.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" afterPath="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/views/site/index.php" afterPath="$PROJECT_DIR$/themes/bootstrap/views/site/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" afterPath="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/subdomain/search.php" afterPath="$PROJECT_DIR$/protected/views/subdomain/search.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/search.php" afterPath="$PROJECT_DIR$/protected/views/user/search.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/mentee/update.php" afterPath="$PROJECT_DIR$/protected/views/mentee/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/project/update.php" afterPath="$PROJECT_DIR$/protected/views/project/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/update.php" afterPath="$PROJECT_DIR$/protected/views/ticket/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/update.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/update.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/project/view.php" afterPath="$PROJECT_DIR$/protected/views/project/view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/view.php" afterPath="$PROJECT_DIR$/protected/views/user/view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,29 +49,7 @@
     <favorites_list name="coplat" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="102" selection-start="8443" selection-end="8443" vertical-scroll-proportion="-82.38461" vertical-offset="204" max-vertical-offset="3502">
-              <folding>
-                <marker date="1397909683940" expanded="true" signature="1640:1683" placeholder="SELECT fname..user..." />
-                <marker date="1397909683940" expanded="true" signature="1757:1800" placeholder="SELECT lname..user..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="60" selection-start="933" selection-end="933" vertical-scroll-proportion="0.37573615" vertical-offset="72" max-vertical-offset="1326">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -106,10 +69,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/protected/controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/protected/views/home/dMentorHome.php" />
-        <option value="$PROJECT_DIR$/protected/models/Comment.php" />
-        <option value="$PROJECT_DIR$/protected/views/home/pMentorHome.php" />
         <option value="$PROJECT_DIR$/protected/components/UserIdentity.php" />
         <option value="$PROJECT_DIR$/protected/views/site/forgotPassword.php" />
         <option value="$PROJECT_DIR$/protected/views/user/ChangePassword.php" />
@@ -118,16 +77,13 @@
         <option value="$PROJECT_DIR$/protected/models/Domain.php" />
         <option value="$PROJECT_DIR$/protected/views/subdomain/update.php" />
         <option value="$PROJECT_DIR$/protected/views/subdomain/create.php" />
-        <option value="$PROJECT_DIR$/protected/views/subdomain/admin.php" />
         <option value="$PROJECT_DIR$/protected/views/subdomain/view.php" />
-        <option value="$PROJECT_DIR$/protected/views/subdomain/search.php" />
         <option value="$PROJECT_DIR$/protected/models/Subdomain.php" />
         <option value="$PROJECT_DIR$/protected/controllers/SiteController.php" />
         <option value="$PROJECT_DIR$/protected/models/ContactForm.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/site/contact.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/pages/about.php" />
         <option value="$PROJECT_DIR$/protected/views/site/index.php" />
-        <option value="$PROJECT_DIR$/themes/bootstrap/views/site/index.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/layouts/column2.php" />
         <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/protected/views/domain/add.php" />
@@ -144,12 +100,10 @@
         <option value="$PROJECT_DIR$/themes/bootstrap/views/site/index_vjf.php" />
         <option value="$PROJECT_DIR$/protected/views/home/userHome.php" />
         <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/ProfileController.php" />
         <option value="$PROJECT_DIR$/protected/views/profile/userProfile.php" />
         <option value="$PROJECT_DIR$/protected/views/ticket/_form.php" />
         <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
         <option value="$PROJECT_DIR$/protected/views/ticket/view.php" />
-        <option value="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
         <option value="$PROJECT_DIR$/protected/views/invitation/create.php" />
         <option value="$PROJECT_DIR$/protected/views/invitation/admin.php" />
         <option value="$PROJECT_DIR$/protected/views/invitation/update.php" />
@@ -157,6 +111,15 @@
         <option value="$PROJECT_DIR$/protected/controllers/InvitationController.php" />
         <option value="$PROJECT_DIR$/protected/models/User.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" />
+        <option value="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
+        <option value="$PROJECT_DIR$/protected/views/user/view.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/ProfileController.php" />
+        <option value="$PROJECT_DIR$/protected/views/subdomain/admin.php" />
+        <option value="$PROJECT_DIR$/protected/views/subdomain/search.php" />
+        <option value="$PROJECT_DIR$/protected/views/domain/admin.php" />
+        <option value="$PROJECT_DIR$/protected/views/user/search.php" />
+        <option value="$PROJECT_DIR$/protected/views/user/admin.php" />
+        <option value="$PROJECT_DIR$/themes/bootstrap/views/site/index.php" />
       </list>
     </option>
   </component>
@@ -312,14 +275,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.014583333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24958949" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15260416" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Framework" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15260416" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19601329" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11625404" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -380,86 +343,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/protected/models/UserDomain.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.5340314" vertical-offset="408" max-vertical-offset="1955" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/UserDomainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="12" selection-start="1904" selection-end="1904" vertical-scroll-proportion="-22.23077" vertical-offset="680" max-vertical-offset="3077" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/subdomain/add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="117" selection-start="563" selection-end="563" vertical-scroll-proportion="0.41099477" vertical-offset="9" max-vertical-offset="799" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/ticket/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="135" selection-end="135" vertical-scroll-proportion="0.26574802" vertical-offset="0" max-vertical-offset="508" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/ticket/update.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="532" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.4957118" vertical-offset="872" max-vertical-offset="1455" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/CommentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="18" selection-start="2424" selection-end="2424" vertical-scroll-proportion="-14.375" vertical-offset="1065" max-vertical-offset="3120" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="274" column="49" selection-start="8270" selection-end="8270" vertical-scroll-proportion="0.3939394" vertical-offset="3915" max-vertical-offset="4950" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/userDomain/_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="65" selection-start="1527" selection-end="1554" vertical-scroll-proportion="0.5917667" vertical-offset="240" max-vertical-offset="1245" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/pMentorViewProjects.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="16" selection-start="3988" selection-end="3988" vertical-scroll-proportion="29.125" vertical-offset="2274" max-vertical-offset="2850" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="16" selection-start="64" selection-end="66" vertical-scroll-proportion="-1.7307693" vertical-offset="0" max-vertical-offset="2550" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/css/bootstrap-theme.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="31" selection-start="81" selection-end="81" vertical-scroll-proportion="0.054446463" vertical-offset="0" max-vertical-offset="551" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/css/bootstrap-theme.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="56" selection-start="1630" selection-end="1632" vertical-scroll-proportion="0.33333334" vertical-offset="742" max-vertical-offset="6030" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="13" selection-start="3453" selection-end="3456" vertical-scroll-proportion="0.3321234" vertical-offset="3942" max-vertical-offset="106845" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/print.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/screen.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="196" selection-start="690" selection-end="692" vertical-scroll-proportion="0.31881532" vertical-offset="42" max-vertical-offset="3660" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="37" selection-start="78" selection-end="80" vertical-scroll-proportion="0.12776831" vertical-offset="0" max-vertical-offset="3510" />
@@ -493,11 +376,6 @@
     <entry file="file://$PROJECT_DIR$/protected/views/site/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="77" selection-end="77" vertical-scroll-proportion="0.13250883" vertical-offset="0" max-vertical-offset="566" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="28" selection-start="286" selection-end="286" vertical-scroll-proportion="0.34452298" vertical-offset="0" max-vertical-offset="566" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/login_vjf.php">
@@ -550,21 +428,9 @@
         <state line="10" column="4" selection-start="186" selection-end="186" vertical-scroll-proportion="45.708332" vertical-offset="1247" max-vertical-offset="1800" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="6800" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/framework/db/ar/CActiveRecord.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="19" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.34719712" vertical-offset="63" max-vertical-offset="35745">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/ticket/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="4556" selection-end="4556" vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="6069" />
+        <state line="24" column="19" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.34719712" vertical-offset="63" max-vertical-offset="35745" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/ticket/_form.php">
@@ -579,16 +445,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/invitation/create.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="56" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323">
-          <folding />
-        </state>
+        <state line="13" column="56" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/invitation/update.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="51" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
-          <folding />
-        </state>
+        <state line="14" column="51" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/domain/add.php">
@@ -598,74 +460,142 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/invitation/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="79" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="884">
-          <folding />
-        </state>
+        <state line="33" column="79" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="884" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="8" selection-start="2478" selection-end="2544" vertical-scroll-proportion="-17.0" vertical-offset="663" max-vertical-offset="2261">
-          <folding />
-        </state>
+        <state line="65" column="8" selection-start="2478" selection-end="2544" vertical-scroll-proportion="-17.0" vertical-offset="663" max-vertical-offset="2261" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="37" selection-start="858" selection-end="858" vertical-scroll-proportion="0.34040046" vertical-offset="204" max-vertical-offset="4318">
-          <folding />
-        </state>
+        <state line="29" column="37" selection-start="858" selection-end="858" vertical-scroll-proportion="0.34040046" vertical-offset="204" max-vertical-offset="4318" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/InvitationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="28" selection-start="2129" selection-end="2129" vertical-scroll-proportion="0.6808009" vertical-offset="816" max-vertical-offset="3128">
-          <folding />
-        </state>
+        <state line="82" column="28" selection-start="2129" selection-end="2129" vertical-scroll-proportion="0.6808009" vertical-offset="816" max-vertical-offset="3128" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/Invitation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="34" selection-start="1415" selection-end="1415" vertical-scroll-proportion="0.36042404" vertical-offset="561" max-vertical-offset="2023">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="418" column="48" selection-start="17443" selection-end="17443" vertical-scroll-proportion="0.5083732" vertical-offset="6681" max-vertical-offset="10625">
-          <folding>
-            <marker date="1397921047631" expanded="true" signature="-1:-1" placeholder="SELECT id fr..user..." />
-            <marker date="1397921047631" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1397921047631" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1397921047631" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1397921047631" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
-          </folding>
-        </state>
+        <state line="51" column="34" selection-start="1415" selection-end="1415" vertical-scroll-proportion="0.36042404" vertical-offset="561" max-vertical-offset="2023" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/invitation/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="16" selection-start="882" selection-end="882" vertical-scroll-proportion="0.7196702" vertical-offset="69" max-vertical-offset="918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="102" selection-start="8443" selection-end="8443" vertical-scroll-proportion="-82.38461" vertical-offset="204" max-vertical-offset="3502">
-          <folding>
-            <marker date="1397909683940" expanded="true" signature="1640:1683" placeholder="SELECT fname..user..." />
-            <marker date="1397909683940" expanded="true" signature="1757:1800" placeholder="SELECT lname..user..." />
-          </folding>
-        </state>
+        <state line="40" column="16" selection-start="882" selection-end="882" vertical-scroll-proportion="0.7196702" vertical-offset="69" max-vertical-offset="918" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="60" selection-start="933" selection-end="933" vertical-scroll-proportion="0.37573615" vertical-offset="72" max-vertical-offset="1326">
-          <folding />
-        </state>
+        <state line="26" column="60" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.43580684" vertical-offset="72" max-vertical-offset="1326" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="153" selection-start="8758" selection-end="8758" vertical-scroll-proportion="0.6100478" vertical-offset="1887" max-vertical-offset="3468" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="875" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="875" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="21" selection-start="601" selection-end="601" vertical-scroll-proportion="0.7809187" vertical-offset="0" max-vertical-offset="849" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="7" selection-start="59" selection-end="59" vertical-scroll-proportion="0.080094226" vertical-offset="0" max-vertical-offset="1292" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/ticket/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="17" selection-start="2935" selection-end="2935" vertical-scroll-proportion="0.40047115" vertical-offset="816" max-vertical-offset="6035" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/_search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.12014134" vertical-offset="102" max-vertical-offset="1768" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/change.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="94" selection-start="777" selection-end="777" vertical-scroll-proportion="0.48056537" vertical-offset="0" max-vertical-offset="1836" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/subdomain/add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="875" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/subdomain/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="27" selection-start="604" selection-end="604" vertical-scroll-proportion="0.39929327" vertical-offset="137" max-vertical-offset="986" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/subdomain/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="26" selection-start="639" selection-end="639" vertical-scroll-proportion="0.4605418" vertical-offset="0" max-vertical-offset="849" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/domain/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="22" selection-start="371" selection-end="371" vertical-scroll-proportion="0.4204947" vertical-offset="0" max-vertical-offset="849" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="875" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="13" selection-start="803" selection-end="803" vertical-scroll-proportion="0.54063606" vertical-offset="0" max-vertical-offset="1326" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="4" selection-start="262" selection-end="262" vertical-scroll-proportion="0.1401649" vertical-offset="0" max-vertical-offset="849" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1972" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="7" selection-start="521" selection-end="521" vertical-scroll-proportion="0.41931686" vertical-offset="18" max-vertical-offset="1071" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="0" selection-start="2345" selection-end="2345" vertical-scroll-proportion="-0.5206125" vertical-offset="1938" max-vertical-offset="6800" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/AdministratorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.6219081" vertical-offset="1377" max-vertical-offset="3043" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="190" column="60" selection-start="7550" selection-end="7550" vertical-scroll-proportion="0.75239235" vertical-offset="2601" max-vertical-offset="10625" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/domain/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="249" selection-end="249" vertical-scroll-proportion="0.24028268" vertical-offset="0" max-vertical-offset="849" />
       </provider>
     </entry>
   </component>

@@ -28,7 +28,6 @@ $('.search-form form').submit(function(){
 
 <h2>Manage Sub-Domains</h2>
 
-
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('search',array(
@@ -43,7 +42,7 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		//'id',
 		'name',
-		//'description',
+		'description',
 		//'validator',
 		//'domain_id',
 		array(
