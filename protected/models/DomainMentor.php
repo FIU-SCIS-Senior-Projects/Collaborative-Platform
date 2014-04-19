@@ -88,4 +88,13 @@ class DomainMentor extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public static function getCurrentUser()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        $dommentor = DomainMentor::model()->findBySql("SELECT * FROM domain_mentor WHERE user_id=$user->id");
+
+        return $dommentor;
+    }
 }

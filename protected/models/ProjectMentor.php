@@ -95,4 +95,13 @@ class ProjectMentor extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public static function getCurrentUser()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
+
+        return $promentor;
+    }
 }

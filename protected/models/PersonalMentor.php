@@ -93,4 +93,13 @@ class PersonalMentor extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public static function getCurrentUser()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
+
+        return $permentor;
+    }
 }
