@@ -4,7 +4,6 @@
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/InvitationController.php" afterPath="$PROJECT_DIR$/protected/controllers/InvitationController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/create.php" afterPath="$PROJECT_DIR$/protected/views/domain/create.php" />
@@ -35,88 +34,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="102" selection-start="8443" selection-end="8443" vertical-scroll-proportion="0.0" vertical-offset="2346" max-vertical-offset="3553">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Invitation.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/Invitation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="3" selection-start="510" selection-end="510" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2023">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InvitationController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/InvitationController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="65" selection-start="2058" selection-end="2058" vertical-scroll-proportion="-18.961538" vertical-offset="816" max-vertical-offset="3128">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="39" selection-start="986" selection-end="1006" vertical-scroll-proportion="-15.038462" vertical-offset="204" max-vertical-offset="4318">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/invitation/create.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="56" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/invitation/update.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="51" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/invitation/add.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="79" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="884">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/user/add.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="8" selection-start="2478" selection-end="2544" vertical-scroll-proportion="-17.0" vertical-offset="663" max-vertical-offset="2261">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="User.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="414" column="35" selection-start="17277" selection-end="17277" vertical-scroll-proportion="0.501845" vertical-offset="6630" max-vertical-offset="10591">
+            <state line="411" column="0" selection-start="17187" selection-end="17187" vertical-scroll-proportion="0.42703348" vertical-offset="6630" max-vertical-offset="10625">
               <folding>
-                <marker date="1397919267197" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
-                <marker date="1397919267197" expanded="true" signature="21751:21800" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1397919267197" expanded="true" signature="22032:22078" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1397919267197" expanded="true" signature="22688:22734" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1397919267197" expanded="true" signature="23095:23157" placeholder="SELECT COUNT..." />
+                <marker date="1397920424775" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
+                <marker date="1397920424775" expanded="true" signature="21814:21863" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1397920424775" expanded="true" signature="22095:22141" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1397920424775" expanded="true" signature="22751:22797" placeholder="SELECT * FRO..domain_mentor..." />
+                <marker date="1397920424775" expanded="true" signature="23158:23220" placeholder="SELECT COUNT..." />
               </folding>
             </state>
           </provider>
@@ -634,13 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/Invitation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="3" selection-start="510" selection-end="510" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2023">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/invitation/admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="16" selection-start="882" selection-end="882" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="918">
@@ -683,27 +603,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="39" selection-start="986" selection-end="1006" vertical-scroll-proportion="-15.038462" vertical-offset="204" max-vertical-offset="4318">
+        <state line="29" column="37" selection-start="858" selection-end="858" vertical-scroll-proportion="0.34040046" vertical-offset="204" max-vertical-offset="4318">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/InvitationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="65" selection-start="2058" selection-end="2058" vertical-scroll-proportion="-18.961538" vertical-offset="816" max-vertical-offset="3128">
+        <state line="82" column="28" selection-start="2129" selection-end="2129" vertical-scroll-proportion="0.6808009" vertical-offset="816" max-vertical-offset="3128">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/Invitation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="34" selection-start="1415" selection-end="1415" vertical-scroll-proportion="0.36042404" vertical-offset="561" max-vertical-offset="2023">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="414" column="35" selection-start="17277" selection-end="17277" vertical-scroll-proportion="0.501845" vertical-offset="6630" max-vertical-offset="10591">
+        <state line="411" column="0" selection-start="17187" selection-end="17187" vertical-scroll-proportion="0.42703348" vertical-offset="6630" max-vertical-offset="10625">
           <folding>
-            <marker date="1397919267197" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
-            <marker date="1397919267197" expanded="true" signature="21751:21800" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1397919267197" expanded="true" signature="22032:22078" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1397919267197" expanded="true" signature="22688:22734" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1397919267197" expanded="true" signature="23095:23157" placeholder="SELECT COUNT..." />
+            <marker date="1397920424775" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
+            <marker date="1397920424775" expanded="true" signature="21814:21863" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1397920424775" expanded="true" signature="22095:22141" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1397920424775" expanded="true" signature="22751:22797" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1397920424775" expanded="true" signature="23158:23220" placeholder="SELECT COUNT..." />
           </folding>
         </state>
       </provider>

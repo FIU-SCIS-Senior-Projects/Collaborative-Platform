@@ -400,15 +400,17 @@ class User extends CActiveRecord
         $to = "";
         $message = "The Collaborative Platform, system administrator ". $admin->fname." ".$admin->lname." through this email would like to invite you to participate on it as: <br/>";
         if($invitation->administrator == 1)
-            $message = $message."<b><u>System Administrator:</u> Role Description.</b><br/>";
+            $message = $message."<b><u>System Administrator</u>: Role Description.</b><br/>";
         if($invitation->mentor == 1)
             $message = $message."<b><u>Mentor</u></b><br/>&nbsp;&nbsp;<i>Domain Mentor: Role Description.</i><br/>&nbsp;&nbsp;<i>Project Mentor: Role Description.</i><br/>&nbsp;&nbsp;<i>Personal Mentor: Role Description.</i><br/>";
         if($invitation->employer == 1)
-            $message = $message."<b><u>Employer:</u> Role Description.</b><br/>";
+            $message = $message."<b><u>Employer</u>: Role Description.</b><br/>";
         if($invitation->judge == 1)
-            $message = $message."<b><u>Judge:</u> Role Description.</b><br/>";
+            $message = $message."<b><u>Judge</u>: Role Description.</b><br/>";
         if($invitation->mentee == 1)
-            $message = $message."<b><u>Mentee:</u> Role Description.</b><br/>";
+            $message = $message."<b><u>Mentee</u>: Role Description.</b><br/>";
+
+        $message = $message.$link." to access the platform.";
 
         $html = User::replaceMessage($to, $message);
 
