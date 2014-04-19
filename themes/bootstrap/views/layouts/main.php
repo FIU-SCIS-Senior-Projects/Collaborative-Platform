@@ -147,8 +147,6 @@
 							),
 					),
 
-
-
                 )
 			),
             array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),

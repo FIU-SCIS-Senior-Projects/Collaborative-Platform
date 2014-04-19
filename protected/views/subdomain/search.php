@@ -12,11 +12,8 @@
 )); ?>
 
 	<div id="regbox">
-		<?php echo $form->label($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
-
 		<?php echo $form->label($model,'domain_id'); ?>
-        <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?>
+        <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name'), array('prompt' => 'Select')); ?>
         <br/>
 
 		<?php echo CHtml::submitButton('Search', array("class"=>"btn btn-primary")); ?>

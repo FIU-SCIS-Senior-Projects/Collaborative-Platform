@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 	array('label'=>'Create User', 'url'=>array('create')),
 );*/
 
-Yii::app()->clientScript->registerScript('search', "
+/*Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
 	return false;
@@ -23,14 +23,13 @@ $('.search-form form').submit(function(){
 	});
 	return false;
 });
-");
+");*/
 ?>
 
 <h2>Manage Users</h2>
 
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
+<?php //echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<!--<div class="search-form" style="display:none">
 <?php $this->renderPartial('search',array(
 	'model'=>$model,
 )); ?>
@@ -45,8 +44,11 @@ $('.search-form form').submit(function(){
 		'username',
 		'email',
 		'fname',
-		'activated',
-		'disable',
+        'mname',
+        'lname',
+
+		//'activated',
+		//'disable',
 		
 		array(
 			'class'=>'CButtonColumn',
