@@ -3,16 +3,25 @@
 /* @var $model User */
 /* @var $form CActiveForm */
 ?>
+<?php
+    $user = User::getCurrentUser();
+    $this->breadcrumbs=array(
+        'Change Password',
+    );
+?>
+
 <h2>Change Password</h2>
 
-<?php $user = User::getCurrentUser(); ?>
+
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'user-changePassword-form',
 	'enableAjaxValidation'=>false,
-)); ?>
+));
+
+?>
 	<div id="regbox">
         <?php if ($error != '') {?>
         <p style="color:red;"> <?php echo $error?></p>

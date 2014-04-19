@@ -51,8 +51,12 @@ class SubdomainController extends Controller
 	 */
 	public function actionView($id)
 	{
+        $subdomain = Subdomain::model()->findByPk($id);
+        $domainName = Domain::model()->findByPk($subdomain->domain_id);
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+            'domainName' => $domainName,
 		));
 	}
 

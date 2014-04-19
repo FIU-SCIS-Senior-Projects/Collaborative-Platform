@@ -198,7 +198,14 @@ class UserController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+	    //Soft delete (Disable the User)
+        $model=$this->loadModel($id);
+        $model->disable = 1;
+
+        $model->save(false);
+
+	    //Hard delete
+		//$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

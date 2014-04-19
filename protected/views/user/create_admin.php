@@ -3,14 +3,10 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
+	'Manage Users'=>array('admin'),
 	'New Administrator',
 );
 
-/*$this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
-);*/
 ?>
 
 <h2 style="margin-left:300px">New Administrator</h2>

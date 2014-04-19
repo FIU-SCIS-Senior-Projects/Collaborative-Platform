@@ -1,16 +1,18 @@
 <?php
 /* @var $this UserController */
 /* @var $model User */
-
-$this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->id,
-);
+if(User::isCurrentUserAdmin())
+{
+    $this->breadcrumbs=array(
+        'Manage Users'=>array('admin'),
+        $model->fname,
+    );
+}
 
 
 ?>
 
-<h1>View User #<?php echo $model->id; ?></h1>
+<h2>View User #<?php echo $model->id; ?></h2>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

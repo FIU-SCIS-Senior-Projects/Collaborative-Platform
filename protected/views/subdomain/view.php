@@ -3,7 +3,7 @@
 /* @var $model Subdomain */
 
 $this->breadcrumbs=array(
-	'Manage'=>array('admin'),
+	'Manage Sub-Domains'=>array('admin'),
 	$model->name,
 );
 
