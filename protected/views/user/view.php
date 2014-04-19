@@ -229,7 +229,7 @@ if(User::isCurrentUserAdmin())
 
     <br><br>
     <div style="float:right"><br><br>
-    <?php echo CHtml::submitButton('Edit', array('submit' => 'update', "class"=>"btn btn-primary")); ?>
+    <?php echo CHtml::submitButton('Edit', array('submit' => 'update/'.$model->id, "class"=>"btn btn-primary")); ?>
     </div>
 </div>
 <!--end right-->

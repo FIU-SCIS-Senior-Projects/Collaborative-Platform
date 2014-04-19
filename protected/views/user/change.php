@@ -1,3 +1,9 @@
+<?php
+    $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id IS NULL");
+    $userdoms = UserDomain::model()->findAllBySql("SELECT domain_id FROM user_domain WHERE user_id=$model->id");
+    $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id IS NULL");
+    $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$model->id));
+?>
 <div style="width: 1050px; height: 1425px;">
 <div id="left">
 <form method="POST" enctype="multipart/form-data" action="view">
