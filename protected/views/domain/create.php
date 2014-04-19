@@ -3,7 +3,7 @@
 /* @var $model Domain */
 
 $this->breadcrumbs=array(
-	'Domains'=>array('index'),
+	'Manage Domains'=>array('admin'),
 	'Create',
 );
 

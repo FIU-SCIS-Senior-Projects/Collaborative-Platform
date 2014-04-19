@@ -75,7 +75,7 @@ class Domain extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Domain',
 			'description' => 'Description',
-			'validator' => 'Validator',
+			'validator' => 'Proficiency Cutoff',
 		);
 	}
 

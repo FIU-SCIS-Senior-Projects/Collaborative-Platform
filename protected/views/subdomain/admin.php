@@ -3,14 +3,9 @@
 /* @var $model Subdomain */
 
 $this->breadcrumbs=array(
-	'Subdomains'=>array('index'),
-	'Manage',
+	'Manage Sub-Domains',
 );
 
-/*$this->menu=array(
-	array('label'=>'List Subdomain', 'url'=>array('index')),
-	array('label'=>'Create Subdomain', 'url'=>array('create')),
-);*/
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){

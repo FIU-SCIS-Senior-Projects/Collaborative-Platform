@@ -3,16 +3,12 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Subdomains',
+	'Sub-Domains',
 );
 
-$this->menu=array(
-	array('label'=>'Create Subdomain', 'url'=>array('create')),
-	array('label'=>'Manage Subdomain', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Subdomains</h1>
+<h2>Sub-Domains</h2>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

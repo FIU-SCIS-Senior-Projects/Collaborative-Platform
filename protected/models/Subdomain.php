@@ -77,7 +77,7 @@ class Subdomain extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Sub-Domain',
 			'description' => 'Description',
-			'validator' => 'Validator',
+			'validator' => 'Proficiency Cutoff',
 			'domain_id' => 'Domain',
 		);
 	}

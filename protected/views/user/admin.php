@@ -3,8 +3,7 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Manage',
+	'Manage Users',
 );
 
 /*$this->menu=array(
@@ -46,9 +45,8 @@ $('.search-form form').submit(function(){
 		'fname',
         'mname',
         'lname',
-
-		//'activated',
-		//'disable',
+		'activated',
+		'disable',
 		
 		array(
 			'class'=>'CButtonColumn',

@@ -32,7 +32,7 @@ class SubdomainController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','delete','admin'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,8 +51,12 @@ class SubdomainController extends Controller
 	 */
 	public function actionView($id)
 	{
+        $subdomain = Subdomain::model()->findByPk($id);
+        $domainName = Domain::model()->findByPk($subdomain->domain_id);
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+            'domainName' => $domainName
 		));
 	}
 
@@ -123,7 +127,7 @@ class SubdomainController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Subdomain');
-		$this->render('index',array(
+		$this->render('admin',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
