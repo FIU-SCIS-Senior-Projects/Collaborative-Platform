@@ -32,7 +32,7 @@ class SubdomainController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','delete','admin'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -123,7 +123,7 @@ class SubdomainController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Subdomain');
-		$this->render('index',array(
+		$this->render('admin',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}

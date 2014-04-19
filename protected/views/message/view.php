@@ -11,8 +11,7 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Message'=>array('/message'),
-	'View',
+	'Message',
 );
 ?>
 

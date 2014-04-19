@@ -15,57 +15,36 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'administrator_user_id'); ?>
-		<?php echo $form->textField($model,'administrator_user_id',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'administrator_user_id'); ?>
-	</div>
+    <div id="regbox">
+        <?php echo $form->labelEx($model,'email'); ?>
+        <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
+        <?php echo $form->error($model,'email'); ?>
+        <br/>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'date'); ?>
-		<?php echo $form->textField($model,'date'); ?>
-		<?php echo $form->error($model,'date'); ?>
-	</div>
+        <?php echo $form->checkBox($model,'administrator',array('style'=>'float:left', 'checked' => 'checked')); ?>
+        <p style="float:left; margin-left:5px">System Administrator</p></br></br>
+        <?php echo $form->error($model,'administrator'); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'administrator'); ?>
-		<?php echo $form->textField($model,'administrator'); ?>
-		<?php echo $form->error($model,'administrator'); ?>
-	</div>
+        <?php echo $form->checkBox($model,'mentor',array('style'=>'float:left')); ?>
+        <p style="float:left; margin-left:5px">Mentor</p></br></br>
+        <?php echo $form->error($model,'mentor'); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'mentor'); ?>
-		<?php echo $form->textField($model,'mentor'); ?>
-		<?php echo $form->error($model,'mentor'); ?>
-	</div>
+        <?php echo $form->checkBox($model,'employer',array('style'=>'float:left')); ?>
+        <p style="float:left; margin-left:5px">Employer</p></br></br>
+        <?php echo $form->error($model,'employer'); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'mentee'); ?>
-		<?php echo $form->textField($model,'mentee'); ?>
-		<?php echo $form->error($model,'mentee'); ?>
-	</div>
+        <?php echo $form->checkBox($model,'judge',array('style'=>'float:left')); ?>
+        <p style="float:left; margin-left:5px">Judge</p></br></br>
+        <?php echo $form->error($model,'judge'); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'employer'); ?>
-		<?php echo $form->textField($model,'employer'); ?>
-		<?php echo $form->error($model,'employer'); ?>
-	</div>
+        <?php echo $form->checkBox($model,'mentee',array('style'=>'float:left')); ?>
+        <p style="float:left; margin-left:5px">Mentee</p></br></br>
+        <?php echo $form->error($model,'mentee'); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'judge'); ?>
-		<?php echo $form->textField($model,'judge'); ?>
-		<?php echo $form->error($model,'judge'); ?>
-	</div>
+        <?php echo CHtml::submitButton('Send', array("class"=>"btn btn-primary")); ?>
+    </div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
 
 <?php $this->endWidget(); ?>
 

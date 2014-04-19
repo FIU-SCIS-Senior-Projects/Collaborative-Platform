@@ -3,27 +3,35 @@
 /* @var $model Domain */
 
 $this->breadcrumbs=array(
-	'Domains'=>array('index'),
+	'Manage'=>array('admin'),
 	$model->name,
 );
 
-$this->menu=array(
-	array('label'=>'List Domain', 'url'=>array('index')),
-	array('label'=>'Create Domain', 'url'=>array('create')),
-	array('label'=>'Update Domain', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Domain', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Domain', 'url'=>array('admin')),
-);
 ?>
 
-<h1>View Domain #<?php echo $model->id; ?></h1>
+<h2><?php echo $model->name; ?> Domain</h2>
+<div class="span6" style="width: 800px; margin-left: 0px;">
+    <table cellpadding="0" cellspacing="0" border="0"
+           class="table table-striped table-bordered table-fixed-header"
+           id="#mytable" width="100%" style="table-layout:fixed">
+        <tr style="background-color: #C9E0ED">
+            <td width="15%"><h5>Domain ID </h5></td>
+            <td width="85%"><?php echo $model->id; ?> </td>
+        </tr>
+        <tr style="background-color: #EEE">
+            <td width="15%"><h5>Name</h5></td>
+            <td width="85%"><?php echo $model->name; ?> </td>
+        </tr>
+        <tr style="background-color: #C9E0ED">
+            <td width="15%"><h5>Description</h5></td>
+            <td width="85%">
+                <?php echo $model->description; ?>
+            </td>
+        </tr>
+        <tr style="background-color: #EEE">
+            <td width="15%"><h5>Proficiency Cutoff</h5></td>
+            <td width="85%"><?php echo $model->validator; ?></td>
+        </tr>
+    </table>
+</div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'name',
-		'description',
-		'validator',
-	),
-)); ?>

@@ -29,7 +29,7 @@
 		<?php echo $form->labelEx($model,'validator'); ?>
         <?php echo $form->numberField($model, 'validator', array('max'=> 10, 'min' => 1)); ?>
         <?php echo $form->error($model,'validator'); ?>
-
+        <br/>
 		<?php echo CHtml::submitButton('Save', array("class"=>"btn btn-primary")); ?>
 	</div>
 
