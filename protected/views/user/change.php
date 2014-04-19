@@ -1,6 +1,6 @@
 <div style="width: 1050px; height: 1425px;">
 <div id="left">
-<form method="POST" enctype="multipart/form-data" action="userProfile">
+<form method="POST" enctype="multipart/form-data" action="view">
     
 <div id="container" class="my-box-container3" style="height: 360px;" >   
         <div class="titlebox"><h3><?php echo ucfirst($model->fname) ." " . ucfirst($model->lname)?></h3></div>
