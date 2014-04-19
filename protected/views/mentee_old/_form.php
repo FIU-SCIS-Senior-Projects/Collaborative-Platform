@@ -22,15 +22,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'personal_mentor_user_id'); ?>
-		<?php echo $form->textField($model,'personal_mentor_user_id',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'personal_mentor_user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'project_id'); ?>
-		<?php echo $form->textField($model,'project_id',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'project_id'); ?>
+		<?php echo $form->labelEx($model,'projectmentor_project_id'); ?>
+		<?php echo $form->textField($model,'projectmentor_project_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->error($model,'projectmentor_project_id'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -5,13 +5,11 @@
  *
  * The followings are the available columns in table 'mentee':
  * @property string $user_id
- * @property string $personal_mentor_user_id
- * @property string $project_id
+ * @property string $projectmentor_project_id
  *
  * The followings are the available model relations:
  * @property User $user
- * @property PersonalMentor $personalMentorUser
- * @property Project $project
+ * @property ProjectmentorProject $projectmentorProject
  * @property PersonalMeeting[] $personalMeetings
  * @property ProjectMeeting[] $projectMeetings
  */
@@ -44,10 +42,10 @@ class Mentee extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id', 'required'),
-			array('user_id, personal_mentor_user_id, project_id', 'length', 'max'=>11),
+			array('user_id, projectmentor_project_id', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('user_id, personal_mentor_user_id, project_id', 'safe', 'on'=>'search'),
+			array('user_id, projectmentor_project_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,8 +58,7 @@ class Mentee extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'personalMentorUser' => array(self::BELONGS_TO, 'PersonalMentor', 'personal_mentor_user_id'),
-			'project' => array(self::BELONGS_TO, 'Project', 'project_id'),
+			'projectmentorProject' => array(self::BELONGS_TO, 'ProjectmentorProject', 'projectmentor_project_id'),
 			'personalMeetings' => array(self::HAS_MANY, 'PersonalMeeting', 'mentee_user_id'),
 			'projectMeetings' => array(self::HAS_MANY, 'ProjectMeeting', 'mentee_user_id'),
 		);
@@ -74,8 +71,7 @@ class Mentee extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'personal_mentor_user_id' => 'Personal Mentor User',
-			'project_id' => 'Project',
+			'projectmentor_project_id' => 'Projectmentor Project',
 		);
 	}
 
@@ -91,8 +87,7 @@ class Mentee extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id,true);
-		$criteria->compare('personal_mentor_user_id',$this->personal_mentor_user_id,true);
-		$criteria->compare('project_id',$this->project_id,true);
+		$criteria->compare('projectmentor_project_id',$this->projectmentor_project_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

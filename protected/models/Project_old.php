@@ -7,15 +7,12 @@
  * @property string $id
  * @property string $title
  * @property string $description
- * @property string $propose_by_user_id
- * @property string $project_mentor_user_id
  * @property string $start_date
  * @property string $due_date
+ * @property integer $mentor_id
  *
  * The followings are the available model relations:
- * @property Mentee[] $mentees
- * @property User $proposeByUser
- * @property ProjectMentor $projectMentorUser
+ * @property ProjectmentorProject[] $projectmentorProjects
  */
 class Project extends CActiveRecord
 {
@@ -45,14 +42,15 @@ class Project extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, propose_by_user_id', 'required'),
-			array('id, propose_by_user_id, project_mentor_user_id', 'length', 'max'=>11),
+			array('id', 'required'),
+			array('mentor_id', 'numerical', 'integerOnly'=>true),
+			array('id', 'length', 'max'=>11),
 			array('title', 'length', 'max'=>45),
-			array('description', 'length', 'max'=>1024),
+            array('description','length','max'=>1024),
 			array('start_date, due_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, description, propose_by_user_id, project_mentor_user_id, start_date, due_date', 'safe', 'on'=>'search'),
+			array('id, title, description, start_date, due_date, mentor_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,9 +62,7 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'mentees' => array(self::HAS_MANY, 'Mentee', 'project_id'),
-			'proposeByUser' => array(self::BELONGS_TO, 'User', 'propose_by_user_id'),
-			'projectMentorUser' => array(self::BELONGS_TO, 'ProjectMentor', 'project_mentor_user_id'),
+			'projectmentorProjects' => array(self::HAS_MANY, 'ProjectmentorProject', 'project_id'),
 		);
 	}
 
@@ -79,10 +75,9 @@ class Project extends CActiveRecord
 			'id' => 'ID',
 			'title' => 'Title',
 			'description' => 'Description',
-			'propose_by_user_id' => 'Propose By User',
-			'project_mentor_user_id' => 'Project Mentor User',
 			'start_date' => 'Start Date',
 			'due_date' => 'Due Date',
+			'mentor_id' => 'Mentor',
 		);
 	}
 
@@ -100,10 +95,9 @@ class Project extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('propose_by_user_id',$this->propose_by_user_id,true);
-		$criteria->compare('project_mentor_user_id',$this->project_mentor_user_id,true);
 		$criteria->compare('start_date',$this->start_date,true);
 		$criteria->compare('due_date',$this->due_date,true);
+		$criteria->compare('mentor_id',$this->mentor_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -23,17 +23,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'description'); ?>
-		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>1024)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'propose_by_user_id'); ?>
-		<?php echo $form->textField($model,'propose_by_user_id',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'project_mentor_user_id'); ?>
-		<?php echo $form->textField($model,'project_mentor_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->textField($model,'description',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
@@ -44,6 +34,11 @@
 	<div class="row">
 		<?php echo $form->label($model,'due_date'); ?>
 		<?php echo $form->textField($model,'due_date'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'mentor_id'); ?>
+		<?php echo $form->textField($model,'mentor_id'); ?>
 	</div>
 
 	<div class="row buttons">

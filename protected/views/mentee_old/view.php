@@ -22,7 +22,6 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'user_id',
-		'personal_mentor_user_id',
-		'project_id',
+		'projectmentor_project_id',
 	),
 )); ?>

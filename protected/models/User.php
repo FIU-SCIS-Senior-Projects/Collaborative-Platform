@@ -354,7 +354,7 @@ class User extends CActiveRecord
 
         if($ticket_creator->id == User::model()->getCurrentUser()->id)
         {
-            $message = "The user, ".$ticket_creator->fname." ".$ticket_creator->lname. " has added a new comment to the his/her ticket #".$ticket->id.". $link to view the comment.";
+            $message = "The user, ".$ticket_creator->fname." ".$ticket_creator->lname. ", has added a new comment to the his/her ticket #".$ticket->id.". $link to view the comment.";
             $name = $ticket_mentor->fname . ' '. $ticket_mentor->lname;
             $html = User::replaceMessage($name, $message);
 
@@ -367,7 +367,7 @@ class User extends CActiveRecord
         }
         elseif($ticket_mentor->id == User::model()->getCurrentUser()->id)
         {
-            $message = "The Domain Mentor, ".$ticket_mentor->fname." ".$ticket_mentor->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
+            $message = "The Domain Mentor, ".$ticket_mentor->fname." ".$ticket_mentor->lname. ", has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
             $name = $ticket_creator->fname . ' '. $ticket_creator->lname;
             $html = User::replaceMessage($name, $message);
 
@@ -380,7 +380,7 @@ class User extends CActiveRecord
         }
         else{
             $comment_creator = User::model()->getCurrentUser();
-            $message = "The user ".$comment_creator->fname." ".$comment_creator->lname. " has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
+            $message = "The user, ".$comment_creator->fname." ".$comment_creator->lname. ", has added a new comment to the ticket #".$ticket->id.". $link to view the comment.";
             $name = "";
             $html = User::replaceMessage($name, $message);
 
@@ -398,7 +398,7 @@ class User extends CActiveRecord
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
         $admin = User::model()->findByPk($invitation->administrator_user_id);
         $to = "";
-        $message = "The Collaborative Platform, system administrator ". $admin->fname." ".$admin->lname." through this email would like to invite you to participate on it as: <br/>";
+        $message = "The Collaborative Platform system administrator, ". $admin->fname." ".$admin->lname.", through this email would like to invite you to participate on it as: <br/>";
         if($invitation->administrator == 1)
             $message = $message."<b><u>System Administrator</u>: Role Description.</b><br/>";
         if($invitation->mentor == 1)
@@ -410,7 +410,7 @@ class User extends CActiveRecord
         if($invitation->mentee == 1)
             $message = $message."<b><u>Mentee</u>: Role Description.</b><br/>";
 
-        $message = $message.$link." to access the platform.";
+        $message = $message."<br/>".$link." to access the platform.";
 
         $html = User::replaceMessage($to, $message);
 

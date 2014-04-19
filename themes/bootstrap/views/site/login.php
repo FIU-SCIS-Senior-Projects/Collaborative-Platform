@@ -20,7 +20,8 @@ $this->breadcrumbs=array(
         <?php $this->widget('bootstrap.widgets.TbCarousel', array(
             'items'=>array(
                 array('image'=>'/coplat/images/carousel/img1.jpeg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
-                array('image'=>'/coplat/images/carousel/mentor.png', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
+                array('image'=>'/coplat/images/carousel/img2.jpg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
+                array('image'=>'/coplat/images/carousel/img3.jpg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
 
             ),
             'htmlOptions' => array('style'=>'width:600px;'),
