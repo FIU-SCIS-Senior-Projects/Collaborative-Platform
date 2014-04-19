@@ -56,7 +56,7 @@ class SubdomainController extends Controller
 
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-            'domainName' => $domainName,
+            'domainName' => $domainName
 		));
 	}
 

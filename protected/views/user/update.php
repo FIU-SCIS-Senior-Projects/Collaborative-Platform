@@ -10,5 +10,4 @@ if(User::isCurrentUserAdmin())
     }
 ?>
 
-<h2>Update User Profile</h2>
-<?php echo $this->renderPartial('change', array('model'=>$model)); ?>
+<?php echo $this->render('change', array('model'=>$model)); ?>
