@@ -5748,3 +5748,351 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/invitation/create
 HTTP_REFERER=http://localhost/coplat/
 ---
+2014/04/19 17:47:50 [error] [php] include(ProjectmentorProject.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/coplat/framework/YiiBase.php:421)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(207): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionadminViewProjects()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): ProjectMeetingController->runAction()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): ProjectMeetingController->runActionWithFilters()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): ProjectMeetingController->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/adminViewProjects
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (207)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 17:47:55 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mentor_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `project` `t` WHERE mentor_id=:mentor_id.
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (268)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 17:47:55 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mentor_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `project` `t` WHERE mentor_id=:mentor_id' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:541
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1297): CDbCommand->queryAll()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1416): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(268): CActiveRecord->findAll('mentor_id=:ment...', Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionpMentorViewProjects()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMentorViewProj...')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMentorViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2014/04/19 17:50:32 [error] [php] include(ProjectmentorProject.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/coplat/framework/YiiBase.php:421)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(207): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionadminViewProjects()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): ProjectMeetingController->runAction()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): ProjectMeetingController->runActionWithFilters()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): ProjectMeetingController->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/adminViewProjects
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (207)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 17:54:59 [error] [php] include(ProjectmentorProject.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/coplat/framework/YiiBase.php:421)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(207): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionadminViewProjects()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): ProjectMeetingController->runAction()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): ProjectMeetingController->runActionWithFilters()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): ProjectMeetingController->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/adminViewProjects
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (207)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:01:41 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mentor_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `project` `t` WHERE mentor_id=:mentor_id.
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (268)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:01:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mentor_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `project` `t` WHERE mentor_id=:mentor_id' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:541
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1297): CDbCommand->queryAll()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1416): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(268): CActiveRecord->findAll('mentor_id=:ment...', Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionpMentorViewProjects()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMentorViewProj...')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMentorViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 18:02:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'project_mentor_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `project` `t` WHERE project_mentor_id=:mentor_id.
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (268)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:02:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'project_mentor_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `project` `t` WHERE project_mentor_id=:mentor_id' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:541
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1297): CDbCommand->queryAll()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1416): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(268): CActiveRecord->findAll('project_mentor_...', Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionpMentorViewProjects()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMentorViewProj...')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMentorViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 18:02:43 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'project_mentor_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `project` `t` WHERE project_mentor_id=:mentor_id.
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php (268)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:02:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'project_mentor_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `project` `t` WHERE project_mentor_id=:mentor_id' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:541
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1297): CDbCommand->queryAll()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1416): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(268): CActiveRecord->findAll('project_mentor_...', Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionpMentorViewProjects()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMentorViewProj...')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMentorViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 18:13:05 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`mentee`, CONSTRAINT `fk_mentee_personal_mentor1` FOREIGN KEY (`personal_mentor_user_id`) REFERENCES `personal_mentor` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2).
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php (73)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:13:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`mentee`, CONSTRAINT `fk_mentee_personal_mentor1` FOREIGN KEY (`personal_mentor_user_id`) REFERENCES `personal_mentor` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2)' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php(73): CActiveRecord->save()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): MenteeController->actionCreate()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('mentee/create')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/mentee/create
+HTTP_REFERER=http://localhost/coplat/index.php/mentee/create
+---
+2014/04/19 18:13:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`mentee`, CONSTRAINT `fk_mentee_personal_mentor1` FOREIGN KEY (`personal_mentor_user_id`) REFERENCES `personal_mentor` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2).
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php (73)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:13:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`mentee`, CONSTRAINT `fk_mentee_personal_mentor1` FOREIGN KEY (`personal_mentor_user_id`) REFERENCES `personal_mentor` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2)' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php(73): CActiveRecord->save()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): MenteeController->actionCreate()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('mentee/create')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/mentee/create
+HTTP_REFERER=http://localhost/coplat/index.php/mentee/create
+---
+2014/04/19 18:15:50 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`mentee`, CONSTRAINT `fk_mentee_personal_mentor1` FOREIGN KEY (`personal_mentor_user_id`) REFERENCES `personal_mentor` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2).
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php (73)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:15:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`mentee`, CONSTRAINT `fk_mentee_personal_mentor1` FOREIGN KEY (`personal_mentor_user_id`) REFERENCES `personal_mentor` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2)' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php(73): CActiveRecord->save()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): MenteeController->actionCreate()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('mentee/create')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/mentee/create
+HTTP_REFERER=http://localhost/coplat/index.php/mentee/create
+---
+2014/04/19 18:28:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '8' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2).
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php (73)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:28:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '8' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2)' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php(73): CActiveRecord->save()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): MenteeController->actionCreate()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('mentee/create')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/mentee/create
+HTTP_REFERER=http://localhost/coplat/index.php/mentee/create
+---
+2014/04/19 18:30:38 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '8' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2).
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php (73)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/19 18:30:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '8' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `mentee` (`user_id`, `personal_mentor_user_id`, `project_id`) VALUES (:yp0, :yp1, :yp2)' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/MenteeController.php(73): CActiveRecord->save()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): MenteeController->actionCreate()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('mentee/create')
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/mentee/create
+HTTP_REFERER=http://localhost/coplat/index.php/mentee/create
+---
+2014/04/19 18:30:55 [error] [exception.CException] exception 'CException' with message 'Property "Project.project_id" is not defined.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(143): CComponent->__get('project_id')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(287): CActiveRecord->__get('project_id')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionpMentorViewProjects()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('pMentorViewProj...')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/pMentorViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/04/19 18:33:35 [error] [exception.CException] exception 'CException' with message 'Property "Project.project_id" is not defined.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/db/ar/CActiveRecord.php(143): CComponent->__get('project_id')
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/ProjectMeetingController.php(215): CActiveRecord->__get('project_id')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ProjectMeetingController->actionadminViewProjects()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('adminViewProjec...')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('projectMeeting/...')
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#14 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/projectMeeting/adminViewProjects
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2014/04/19 18:44:05 [error] [exception.CException] exception 'CException' with message 'SiteController has an extra endWidget() call in its view.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CBaseController.php:210
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/themes/bootstrap/views/site/index.php(11): CBaseController->endWidget()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CBaseController.php(126): require('/Applications/X...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/X...', NULL, true)
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Applications/X...', NULL, true)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/SiteController.php(32): CController->render('index')
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('')
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/coplat/index.php
+HTTP_REFERER=http://localhost/coplat/index.php
+---

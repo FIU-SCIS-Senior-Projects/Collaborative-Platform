@@ -204,15 +204,15 @@ class ProjectMeetingController extends Controller
 
         /* Return all the mentees for the project mentor */
         /** @var Projectmentor_project $projectmentor_project */
-        $projectmentor_project = ProjectmentorProject::model()->findAll();
+        /*$projectmentor_project = Project::model()->findAll(); */
 
         $pmentees = array();
 
-        foreach ($projectmentor_project as $pm) {
+        foreach ($projects as $pm) {
            /** @var ProjectMentorProject $pm */
-            $allMentees = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE projectmentor_project_id=:id", array(":id" => $pm->id));
+            $allMentees = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE project_id=:id", array(":id" => $pm->id));
             foreach ($allMentees as $i => $m) {
-                $pmentees[$pm->project_id][$m->user_id] = $m;
+                $pmentees[$pm->id][$m->user_id] = $m;
             }
         }
 
@@ -265,7 +265,7 @@ class ProjectMeetingController extends Controller
             $mentees[$id] = User::model()->findBySql("SELECT * FROM user WHERE id =:id", array(":id" => $meetin->mentee_user_id));
         }
         /*Return all the projects for the current Project Mentor */
-        $projects = Project::model()->findAll("mentor_id=:mentor_id", array(':mentor_id' => $user->id));
+        $projects = Project::model()->findAll("project_mentor_user_id=:mentor_id", array(':mentor_id' => $user->id));
 
 
         /*  */
@@ -274,17 +274,17 @@ class ProjectMeetingController extends Controller
 
         //$projectmentor_project = ProjectmentorProject::model()->findAllBySql("SELECT * FROM projectmentor_project WHERE project_mentor_user_id=:id", array(":id"=>$user->id));
 
-        $projectmentor_project = ProjectmentorProject::model()->findAll("project_mentor_user_id=:id", array(":id" => $user->id));
+        /*$projectmentor_project = Project::model()->findAll("project_mentor_user_id=:id", array(":id" => $user->id)); */
 
         $pmentees = array();
 
-        foreach ($projectmentor_project as $pm) {
+        foreach ($projects as $pm) {
             //$pmentees = Mentee::model()->findAll("projectmentor_project_id=:id", array(":id"=>$pm->id));
 
             /** @var ProjectMentorProject $pm */
-            $allMentees = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE projectmentor_project_id=:id", array(":id" => $pm->id));
+            $allMentees = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE project_id=:id", array(":id" => $pm->id));
             foreach ($allMentees as $i => $m) {
-                $pmentees[$pm->project_id][$m->user_id] = $m;
+                $pmentees[$pm->id][$m->user_id] = $m;
             }
         }
 

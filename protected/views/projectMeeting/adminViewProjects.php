@@ -35,8 +35,7 @@
                                data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
 
                         <div id="content-myPopOver-<?= $project->id ?>" style="display: none;">
-                            <p><?= $project->description ?></p></div>
-
+                            <p><?php echo $project->description ?></p></div>
                         <strong>Start
                             date:</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
                         <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
