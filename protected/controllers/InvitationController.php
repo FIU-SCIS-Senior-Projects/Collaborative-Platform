@@ -70,7 +70,7 @@ class InvitationController extends Controller
 		if(isset($_POST['Invitation']))
 		{
 			$model->attributes=$_POST['Invitation'];
-            $model->administrator_user_id = User::getCurrentUserId();
+            $model->administrator_user_id = (int)User::getCurrentUserId();
             $model->date = date('Y-m-d H:i:s');
 			if($model->save())
             {
