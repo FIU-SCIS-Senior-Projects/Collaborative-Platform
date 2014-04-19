@@ -2,29 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705e4e3d-5071-4017-842a-f02239ac3155" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protected/views/invitation/add.php" />
-      <change type="DELETED" beforePath="C:\wamp\www\coplat\protected\views\invitation\_form.php" afterPath="" />
-      <change type="MOVED" beforePath="C:\wamp\www\coplat\protected\views\invitation\_search.php" afterPath="$PROJECT_DIR$/protected/views/invitation/search.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ControllerCode.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/CrudCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/Invitation.php" afterPath="$PROJECT_DIR$/protected/models/Invitation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/InvitationController.php" afterPath="$PROJECT_DIR$/protected/controllers/InvitationController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" afterPath="$PROJECT_DIR$/protected/runtime/gii-1.1.13/ModelCode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/invitation/_view.php" afterPath="$PROJECT_DIR$/protected/views/invitation/_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/invitation/admin.php" afterPath="$PROJECT_DIR$/protected/views/invitation/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/create.php" afterPath="$PROJECT_DIR$/protected/views/domain/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/invitation/create.php" afterPath="$PROJECT_DIR$/protected/views/invitation/create.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/domain/index.php" afterPath="$PROJECT_DIR$/protected/views/domain/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/invitation/index.php" afterPath="$PROJECT_DIR$/protected/views/invitation/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/index.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" afterPath="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/invitation/update.php" afterPath="$PROJECT_DIR$/protected/views/invitation/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/update.php" afterPath="$PROJECT_DIR$/protected/views/ticket/update.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/userDomain/update.php" afterPath="$PROJECT_DIR$/protected/views/userDomain/update.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/invitation/view.php" afterPath="$PROJECT_DIR$/protected/views/invitation/view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,10 +52,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InvitationController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="InvitationController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/InvitationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="41" selection-start="635" selection-end="635" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="3043">
+            <state line="77" column="65" selection-start="2053" selection-end="2053" vertical-scroll-proportion="0.535109" vertical-offset="867" max-vertical-offset="3128">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="39" selection-start="986" selection-end="1006" vertical-scroll-proportion="-15.038462" vertical-offset="204" max-vertical-offset="4318">
               <folding />
             </state>
           </provider>
@@ -86,7 +82,7 @@
       <file leaf-file-name="update.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/invitation/update.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="51" selection-start="301" selection-end="301" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="340">
+            <state line="14" column="51" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
               <folding />
             </state>
           </provider>
@@ -95,22 +91,16 @@
       <file leaf-file-name="add.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/invitation/add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="79" selection-start="1284" selection-end="1284" vertical-scroll-proportion="-20.23077" vertical-offset="35" max-vertical-offset="884">
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#4;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="33" column="79" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="884">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="add.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/user/add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="8" selection-start="2478" selection-end="2544" vertical-scroll-proportion="0.5206125" vertical-offset="663" max-vertical-offset="2261">
+            <state line="65" column="8" selection-start="2478" selection-end="2544" vertical-scroll-proportion="-17.0" vertical-offset="663" max-vertical-offset="2261">
               <folding />
             </state>
           </provider>
@@ -119,7 +109,7 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="395" column="38" selection-start="16005" selection-end="16005" vertical-scroll-proportion="-3.2692308" vertical-offset="6630" max-vertical-offset="10591">
+            <state line="395" column="38" selection-start="16005" selection-end="16005" vertical-scroll-proportion="0.0" vertical-offset="6630" max-vertical-offset="10591">
               <folding>
                 <marker date="1397916488151" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
                 <marker date="1397916488151" expanded="true" signature="21598:21647" placeholder="SELECT * FRO..user_domain..." />
@@ -160,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/protected/models/Project.php" />
         <option value="$PROJECT_DIR$/protected/controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/protected/views/home/dMentorHome.php" />
         <option value="$PROJECT_DIR$/protected/models/Comment.php" />
@@ -211,6 +200,7 @@
         <option value="$PROJECT_DIR$/protected/views/invitation/update.php" />
         <option value="$PROJECT_DIR$/protected/models/User.php" />
         <option value="$PROJECT_DIR$/protected/views/invitation/add.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/InvitationController.php" />
       </list>
     </option>
   </component>
@@ -365,7 +355,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -382,12 +372,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934132" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934132" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -407,9 +397,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24958949" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20016207" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -434,11 +424,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/protected/controllers/DomainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="30" selection-start="2409" selection-end="2409" vertical-scroll-proportion="-0.2670157" vertical-offset="1836" max-vertical-offset="3043" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/UserDomain.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.5340314" vertical-offset="408" max-vertical-offset="1955" />
@@ -655,13 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/InvitationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="41" selection-start="635" selection-end="635" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="3043">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/invitation/admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="16" selection-start="882" selection-end="882" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="918">
@@ -678,21 +656,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/invitation/update.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="51" selection-start="301" selection-end="301" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="340">
+        <state line="14" column="51" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/domain/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="49" selection-start="1144" selection-end="1177" vertical-scroll-proportion="-22.884615" vertical-offset="0" max-vertical-offset="782">
-          <folding />
-        </state>
+        <state line="35" column="49" selection-start="1144" selection-end="1177" vertical-scroll-proportion="-22.884615" vertical-offset="0" max-vertical-offset="782" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="395" column="38" selection-start="16005" selection-end="16005" vertical-scroll-proportion="-3.2692308" vertical-offset="6630" max-vertical-offset="10591">
+        <state line="395" column="38" selection-start="16005" selection-end="16005" vertical-scroll-proportion="0.0" vertical-offset="6630" max-vertical-offset="10591">
           <folding>
             <marker date="1397916488151" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
             <marker date="1397916488151" expanded="true" signature="21598:21647" placeholder="SELECT * FRO..user_domain..." />
@@ -705,20 +681,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/invitation/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="79" selection-start="1284" selection-end="1284" vertical-scroll-proportion="-20.23077" vertical-offset="35" max-vertical-offset="884">
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#4;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="33" column="79" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="884">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="8" selection-start="2478" selection-end="2544" vertical-scroll-proportion="0.5206125" vertical-offset="663" max-vertical-offset="2261">
+        <state line="65" column="8" selection-start="2478" selection-end="2544" vertical-scroll-proportion="-17.0" vertical-offset="663" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/MessageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="39" selection-start="986" selection-end="1006" vertical-scroll-proportion="-15.038462" vertical-offset="204" max-vertical-offset="4318">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/InvitationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="65" selection-start="2053" selection-end="2053" vertical-scroll-proportion="0.535109" vertical-offset="867" max-vertical-offset="3128">
           <folding />
         </state>
       </provider>
