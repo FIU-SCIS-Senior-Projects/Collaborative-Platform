@@ -7867,3 +7867,1001 @@ REQUEST_URI=/coplat/index.php/user/20
 in C:\wamp\www\coplat\protected\views\user\view.php (207)
 in C:\wamp\www\coplat\protected\controllers\UserController.php (173)
 in C:\wamp\www\coplat\index.php (13)
+2014/04/20 12:45:46 [error] [php] Trying to get property of non-object (C:\wamp\www\coplat\protected\views\user\view.php:111)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(173): UserController->render()
+#3 unknown(0): UserController->actionView()
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/6
+in C:\wamp\www\coplat\protected\views\user\view.php (111)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (173)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 12:45:51 [error] [php] Trying to get property of non-object (C:\wamp\www\coplat\protected\views\user\view.php:119)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(173): UserController->render()
+#3 unknown(0): UserController->actionView()
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/7
+in C:\wamp\www\coplat\protected\views\user\view.php (119)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (173)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 12:46:07 [error] [php] Trying to get property of non-object (C:\wamp\www\coplat\protected\views\user\view.php:119)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(173): UserController->render()
+#3 unknown(0): UserController->actionView()
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/7
+in C:\wamp\www\coplat\protected\views\user\view.php (119)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (173)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:03:59 [error] [php] Undefined offset: 0 (C:\wamp\www\coplat\framework\web\CController.php:699)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(867): UserController->getViewFile()
+#1 C:\wamp\www\coplat\protected\controllers\UserController.php(298): UserController->renderPartial()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\wamp\www\coplat\protected\controllers\UserController.php (298)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:04:27 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test-test' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18).
+in C:\wamp\www\coplat\protected\controllers\UserController.php (261)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:04:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test-test' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(261): CActiveRecord->save()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:05:16 [error] [php] Undefined offset: 0 (C:\wamp\www\coplat\framework\web\CController.php:699)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(867): UserController->getViewFile()
+#1 C:\wamp\www\coplat\protected\controllers\UserController.php(298): UserController->renderPartial()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\wamp\www\coplat\protected\controllers\UserController.php (298)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:06:41 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test32-test' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18).
+in C:\wamp\www\coplat\protected\controllers\UserController.php (261)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:06:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test32-test' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(261): CActiveRecord->save()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:07:56 [error] [php] strpos() expects parameter 1 to be string, array given (C:\wamp\www\coplat\framework\web\CController.php:706)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(586): CTheme->getViewFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(867): UserController->getViewFile()
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(298): UserController->renderPartial()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\wamp\www\coplat\protected\controllers\UserController.php (298)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:14:09 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:15:19 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:15:19 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:15:20 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:15:20 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:15:21 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:15:21 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:15:21 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:19:30 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/update
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:20:13 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/update
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:29:28 [error] [exception.CException] exception 'CException' with message 'UserController cannot find the requested view "/coplat/index.php/user/setRoles".' in C:\wamp\www\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\wamp\www\coplat\protected\controllers\UserController.php(54): CController->renderPartial('/coplat/index.p...', Array)
+#1 [internal function]: UserController->actionsetRoles('30')
+#2 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles/30
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:33:12 [error] [php] Undefined variable: model (C:\wamp\www\coplat\protected\views\user\setRoles.php:3)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(300): UserController->render()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\wamp\www\coplat\protected\views\user\setRoles.php (3)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (300)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:33:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user6-user@user.php' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18).
+in C:\wamp\www\coplat\protected\controllers\UserController.php (263)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:33:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user6-user@user.php' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(263): CActiveRecord->save()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:48:48 [error] [exception.CException] exception 'CException' with message 'UserController cannot find the requested view "set".' in C:\wamp\www\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(782): CController->renderPartial('set', Array, true)
+#1 C:\wamp\www\coplat\protected\controllers\UserController.php(301): CController->render('set', Array)
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:49:05 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user10-user10@user.php' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18).
+in C:\wamp\www\coplat\protected\controllers\UserController.php (264)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:49:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user10-user10@user.php' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(264): CActiveRecord->save()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:50:49 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:41 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:42 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:46 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:46 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:46 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:51:48 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:52:42 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:52:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:52:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:52:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:52:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:52:44 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:52:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('roles')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/roles')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/roles
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:53:33 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user13-user13' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18).
+in C:\wamp\www\coplat\protected\controllers\UserController.php (264)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 13:53:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user13-user13' for key 'username'. The SQL statement executed was: INSERT INTO `user` (`activated`, `disable`, `isAdmin`, `isProMentor`, `isPerMentor`, `isDomMentor`, `isStudent`, `isMentee`, `isJudge`, `isEmployer`, `fname`, `mname`, `lname`, `email`, `username`, `password`, `pic_url`, `biography`, `activation_chain`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18)' in C:\wamp\www\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(264): CActiveRecord->save()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 13:58:57 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT domain_id FROM user_domain WHERE user_id=.
+in C:\wamp\www\coplat\protected\views\user\setRoles.php (3)
+in C:\wamp\www\coplat\protected\views\user\create.php (17)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (310)
+2014/04/20 13:58:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT domain_id FROM user_domain WHERE user_id=' in C:\wamp\www\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(1527): CDbCommand->queryAll()
+#2 C:\wamp\www\coplat\protected\views\user\setRoles.php(3): CActiveRecord->findAllBySql('SELECT domain_i...')
+#3 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require('C:\wamp\www\cop...')
+#4 C:\wamp\www\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\cop...', Array, true)
+#5 C:\wamp\www\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\cop...', Array, true)
+#6 C:\wamp\www\coplat\protected\views\user\create.php(17): CController->renderPartial('setRoles', Array)
+#7 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require('C:\wamp\www\cop...')
+#8 C:\wamp\www\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\cop...', Array, true)
+#9 C:\wamp\www\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\cop...', Array, true)
+#10 C:\wamp\www\coplat\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#11 C:\wamp\www\coplat\protected\controllers\UserController.php(310): CController->render('create', Array)
+#12 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#13 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create')
+#22 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#23 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#24 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/coplat/index.php/user/create
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 14:02:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setRoles".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('setRoles')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles/44
+HTTP_REFERER=http://localhost/coplat/index.php/user/create
+---
+2014/04/20 14:13:00 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('setRoles')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/setRoles')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/setRoles/51
+HTTP_REFERER=http://localhost/coplat/index.php/site/login
+---

@@ -3,12 +3,11 @@
 /* @var $model Invitation */
 
 $this->breadcrumbs=array(
-	'Invitations'=>array('index'),
-	'Manage',
+	'Manage Invitations',
 );
 
 
-Yii::app()->clientScript->registerScript('search', "
+/*Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
 	return false;
@@ -19,19 +18,12 @@ $('.search-form form').submit(function(){
 	});
 	return false;
 });
-");
+");*/
 ?>
 
 <h2>Manage Invitations</h2>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'invitation-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,

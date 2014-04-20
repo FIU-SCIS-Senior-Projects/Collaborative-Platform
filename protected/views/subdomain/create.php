@@ -7,10 +7,7 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-/*-$this->menu=array(
-	array('label'=>'List Subdomain', 'url'=>array('index')),
-	array('label'=>'Manage Subdomain', 'url'=>array('admin')),
-);*/
+
 ?>
 
 <h2>Create Sub-Domain</h2>

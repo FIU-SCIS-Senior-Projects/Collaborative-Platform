@@ -30,7 +30,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('create'),
+				'actions'=>array('create','roles'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -46,6 +46,20 @@ class UserController extends Controller
 			),
 		);
 	}
+
+    public function actionsetRoles($id)
+    {
+        $model = $this->loadModel($id);
+
+        $this->redirect('setRoles/'.$id);
+    }
+
+    public function actionRoles($id)
+    {
+        $model = $this->loadModel($id);
+
+        $this->render('roles', array('model'=> $model));
+    }
 
 	/**
 	 * Displays a particular model.
@@ -248,6 +262,7 @@ class UserController extends Controller
             $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
             $model->biography = "Tell us something about yourself...";
             $model->activation_chain = $this->genRandomString(10);
+            $model->activated == 0;
 
             //Hash the password before storing it into the database
 			$hasher = new PasswordHash(8, false);
@@ -290,8 +305,7 @@ class UserController extends Controller
                     $mentee->save();
                 }
 
-                //$this->actionSendVerificationEmail($model->email);
-
+                $this->render('create', array('model' => $model));
             }
 		}
         $error = '';

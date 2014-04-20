@@ -10,9 +10,4 @@
 ?>
 
 <h2>Collaborative Platform Registration</h2>
-<?php
-    if($model->username == null)
-        echo $this->renderPartial('add', array('model'=>$model));
-    else
-        echo $this->renderPartial('roles', array('model'=>$model));
-?>
+<?php echo $this->redirect('/coplat/index.php/user/setRoles/'.$model->id); ?>
