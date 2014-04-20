@@ -7301,3 +7301,106 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/profile/userProfile
 HTTP_REFERER=http://localhost/coplat/index.php/profile/editProfile
 ---
+2014/04/20 05:22:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profiles".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profiles')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profiles
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2014/04/20 05:22:27 [error] [php] Undefined offset: 0 (C:\wamp\www\coplat\protected\controllers\ProjectMeetingController.php:229)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): ProjectMeetingController->run()
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/adminViewMeetings
+in C:\wamp\www\coplat\protected\controllers\ProjectMeetingController.php (229)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 05:23:26 [error] [php] Undefined offset: 0 (C:\wamp\www\coplat\protected\controllers\ProjectMeetingController.php:296)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): ProjectMeetingController->run()
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/pMentorViewMeetings
+in C:\wamp\www\coplat\protected\controllers\ProjectMeetingController.php (296)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 05:29:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\coplat\protected\controllers\UserController.php:478
+Stack trace:
+#0 C:\wamp\www\coplat\protected\controllers\UserController.php(291): UserController->loadModel('')
+#1 [internal function]: UserController->actionUpdate('')
+#2 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update/Vie...')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/update/View?id=
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 05:47:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profiles".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profiles')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profiles
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2014/04/20 05:47:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profiles".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profiles')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profiles
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2014/04/20 05:53:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\coplat\protected\controllers\UserController.php:478
+Stack trace:
+#0 C:\wamp\www\coplat\protected\controllers\UserController.php(291): UserController->loadModel('')
+#1 [internal function]: UserController->actionUpdate('')
+#2 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update/Vie...')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/update/View?id=
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/32
+---
