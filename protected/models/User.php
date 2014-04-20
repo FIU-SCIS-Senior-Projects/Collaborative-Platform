@@ -637,12 +637,43 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    public static function sendRejectEmailNotification($creator_user_id, $assign_user_id, $id, $rejected_by)
+    public static function sendRejectEmailNotification($creator_user_id, $assign_user_id, $ticket_id, $rejected_by)
     {
         $creator = User::model()->findByPk($creator_user_id);
-        $new_mentor = User::model()->findByPk($assign_user_id);
+        $mentor = User::model()->findByPk($assign_user_id);
         $reject = User::model()->findByPk($rejected_by);
+        $ticket = Ticket::model()->findByPk($ticket_id);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+        $from = $reject->fname.' '.$reject->lname;
+
+        if($creator_user_id == $rejected_by)
+        {
+            $to = $mentor->fname.' '.$mentor->lname;
+            $message = "The user, ".$from.", has reject the latest comment in the ticket #".$ticket_id.", related to ".$ticket->subject.".<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+
+            $email = Yii::app()->email;
+            $email->to = $mentor->email;
+            $email->from = 'Collaborative Platform';
+            $email->subject = 'Ticket #'.$ticket_id.", status changed to Rejected";
+            $email->message = $html;
+            $email->send();
+        }
+        else
+        {
+            $to = '';
+            $message = "The System Administrator, ".$from.", has reject the latest comment in the ticket #".$ticket_id.", related to ".$ticket->subject.".<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+
+            $email = Yii::app()->email;
+            $email->to = $mentor->email.';'.$creator->email;
+            $email->from = 'Collaborative Platform';
+            $email->subject = 'Ticket #'.$ticket_id.", status changed to Rejected";
+            $email->message = $html;
+            $email->send();
+        }
     }
+
     /* Ticket has been reassigned, send notification to all parties involved*/
     public static function sendReassignedEmailNotification($creator_user_id, $assign_user_id, $ticket_id, $prev_mentor, $assigned_by)
     {
@@ -655,7 +686,6 @@ class User extends CActiveRecord
 
         $email_from = 'Collaborative Platform';
         $email_subject = 'Ticket # '.$ticket_id.' has been reassigned.';
-
 
 
         if($creator_user_id == $assigned_by)
@@ -673,7 +703,7 @@ class User extends CActiveRecord
             $email->send();
 
             $to = $old_mentor->fname.' '.$old_mentor->lname;
-            $message = "The user, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.". Therefor the ticket is now out of your queue.<br/>".$link." to see the its information.";
+            $message = "The user, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.". Therefore, the ticket is now out of your queue.<br/>".$link." to see the its information.";
             $html = User::replaceMessage($to,$message);
             $email1 = Yii::app()->email;
             $email1->from = $email_from;
@@ -743,6 +773,22 @@ class User extends CActiveRecord
     }
 
     /*Meeting notification */
-    //public static function sendMeetingNotification($model->project_mentor_user_id, $model->mentee_user_id, $model->date, $model->time);
+    public static function sendMeetingNotification($project_mentor_user_id, $mentee_user_id, $date, $time)
+    {
+        $mentee = User::model()->findByPk($mentee_user_id);
+        $mentor = User::model()->findByPk($project_mentor_user_id);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+
+        $to = $mentee->fname.' '.$mentee->lname;
+        $from = $mentor->fname.' '.$mentor->lname;
+        $message = "Your Senior Project mentor, ".$from.", setup a meeting for ".$date.", at ".$time.".<br/>".$link." for more details.";
+        $html = User::replaceMessage($to,$message);
+        $email = Yii::app()->email;
+        $email->to = $mentee->email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Project Meeting';
+        $email->message = $html;
+        $email->send();
+    }
 
 }

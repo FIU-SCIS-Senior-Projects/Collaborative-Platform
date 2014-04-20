@@ -74,9 +74,8 @@ class ProjectMeetingController extends Controller
 
             if($model->save()) {
 
-               /* User::sendMeetingNotification($model->project_mentor_user_id, $model->mentee_user_id,
+                User::sendMeetingNotification($model->project_mentor_user_id, $model->mentee_user_id,
                     $model->date, $model->time);
-                    */
             }
 		}
 	}
