@@ -402,6 +402,7 @@
     </div><?php }?>
     <br><br>
 </div>
+</div>
 <?php }?>
 <div style="float:right">
     <!--<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-primary")); ?>-->

@@ -104,4 +104,11 @@ class ProjectMentor extends CActiveRecord
 
         return $promentor;
     }
+    
+    public static function getProMentor($id)
+    {
+        $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$id");
+        
+        return $promentor;
+    }
 }

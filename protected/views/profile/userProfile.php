@@ -121,10 +121,7 @@
         <?php  echo "Max Hours: " . $promentor->max_hours; } ?>
 	</div>
 	<?php 
-        if(User::isCurrentUserDomMentor())
-        {
 
-        }
 }?>
     </div>
 </div>
@@ -210,7 +207,6 @@ if(User::isCurrentUserDomMentor())
             
             foreach($Mentees as $mentee)
             {
-                //$mentee = Mentee::model()->findBySql("SELECT * FROM mentee");
                 $usr = User::model()->findBySql("SELECT * FROM user WHERE id=$mentee->user_id");
                 ?>
                 <tbody>

@@ -102,4 +102,11 @@ class PersonalMentor extends CActiveRecord
 
         return $permentor;
     }
+    
+    public static function getPerMentor($id)
+    {
+        $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$id");
+        
+        return $permentor;
+    }
 }

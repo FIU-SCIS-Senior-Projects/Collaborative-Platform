@@ -7404,3 +7404,466 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/user/update/View?id=
 HTTP_REFERER=http://localhost/coplat/index.php/user/update/32
 ---
+2014/04/20 06:00:43 [error] [php] Creating default object from empty value (C:\wamp\www\coplat\protected\controllers\ProfileController.php:182)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): ProfileController->runAction()
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): ProfileController->filterAccessControl()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): ProfileController->runActionWithFilters()
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): ProfileController->run()
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/profile/userProfile
+in C:\wamp\www\coplat\protected\controllers\ProfileController.php (182)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 06:02:20 [error] [php] fopen(/var/www/html/coplat/email/index1.html): failed to open stream: No such file or directory (C:\wamp\www\coplat\protected\models\User.php:447)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\controllers\UserController.php(388): User->sendVerificationEmail()
+#1 C:\wamp\www\coplat\protected\controllers\UserController.php(239): UserController->actionSendVerificationEmail()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\wamp\www\coplat\protected\models\User.php (447)
+in C:\wamp\www\coplat\protected\models\User.php (241)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (388)
+2014/04/20 06:05:54 [error] [php] fopen(/var/www/html/coplat/email/index1.html): failed to open stream: No such file or directory (C:\wamp\www\coplat\protected\models\User.php:447)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\controllers\UserController.php(388): User->sendVerificationEmail()
+#1 C:\wamp\www\coplat\protected\controllers\UserController.php(239): UserController->actionSendVerificationEmail()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\wamp\www\coplat\protected\models\User.php (447)
+in C:\wamp\www\coplat\protected\models\User.php (241)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (388)
+2014/04/20 06:06:19 [error] [php] fopen(/var/www/html/coplat/email/index1.html): failed to open stream: No such file or directory (C:\wamp\www\coplat\protected\models\User.php:447)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\controllers\UserController.php(388): User->sendVerificationEmail()
+#1 C:\wamp\www\coplat\protected\controllers\UserController.php(239): UserController->actionSendVerificationEmail()
+#2 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#3 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#11 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\wamp\www\coplat\protected\models\User.php (447)
+in C:\wamp\www\coplat\protected\models\User.php (241)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (388)
+2014/04/20 06:16:03 [error] [php] Undefined offset: 0 (C:\wamp\www\coplat\protected\controllers\ProjectMeetingController.php:296)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): ProjectMeetingController->run()
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/pMentorViewMeetings
+in C:\wamp\www\coplat\protected\controllers\ProjectMeetingController.php (296)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 06:22:03 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update/cop...')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/update/coplat/index.php/user/19
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 06:22:27 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update/cop...')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/update/coplat/index.php/user/19
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 06:23:27 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\coplat\framework\web\CController.php:336
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update/cop...')
+#10 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/user/update/coplat/index.php/user/19
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 06:41:06 [error] [php] Undefined offset: 3 (C:\wamp\www\coplat\protected\controllers\ProjectMeetingController.php:296)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): ProjectMeetingController->runAction()
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): ProjectMeetingController->filterAccessControl()
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): ProjectMeetingController->runActionWithFilters()
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): ProjectMeetingController->run()
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/projectMeeting/pMentorViewMeetings
+in C:\wamp\www\coplat\protected\controllers\ProjectMeetingController.php (296)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 07:11:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "View19".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('View19')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('View19')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/View19')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/View19
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 07:12:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "View19".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('View19')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('View19')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/View19')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/View19
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 07:12:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "View(19)".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('View(19)')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('View(19)')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/View(19)')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/View(19)
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 07:12:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "View(19)".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('View(19)')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('View(19)')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/View(19)')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/View(19)
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 07:12:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "View(19)".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('View(19)')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('View(19)')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/View(19)')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/View(19)
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 07:12:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "View'19'".' in C:\wamp\www\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(270): CController->missingAction('View'19'')
+#1 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('View'19'')
+#2 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/View'19'')
+#3 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/View'19'
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 07:13:24 [error] [php] Creating default object from empty value (C:\wamp\www\coplat\protected\controllers\UserController.php:95)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#3 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#10 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/19
+in C:\wamp\www\coplat\protected\controllers\UserController.php (95)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 07:15:30 [error] [php] Creating default object from empty value (C:\wamp\www\coplat\protected\controllers\UserController.php:95)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#3 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#10 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/19
+in C:\wamp\www\coplat\protected\controllers\UserController.php (95)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 07:20:19 [error] [php] Creating default object from empty value (C:\wamp\www\coplat\protected\controllers\UserController.php:96)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#3 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#10 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/19
+in C:\wamp\www\coplat\protected\controllers\UserController.php (96)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 07:27:02 [error] [php] Creating default object from empty value (C:\wamp\www\coplat\protected\controllers\UserController.php:134)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#3 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#10 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/19
+in C:\wamp\www\coplat\protected\controllers\UserController.php (134)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 07:28:51 [error] [php] Creating default object from empty value (C:\wamp\www\coplat\protected\controllers\UserController.php:134)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#3 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#10 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/19
+in C:\wamp\www\coplat\protected\controllers\UserController.php (134)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 07:29:32 [error] [php] Creating default object from empty value (C:\wamp\www\coplat\protected\controllers\UserController.php:134)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#3 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#9 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#10 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/19
+in C:\wamp\www\coplat\protected\controllers\UserController.php (134)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 07:30:52 [error] [exception.CException] exception 'CException' with message 'PersonalMentor and its behaviors do not have a method or closure named "getPerMentor".' in C:\wamp\www\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\wamp\www\coplat\framework\db\ar\CActiveRecord.php(225): CComponent->__call('getPerMentor', Array)
+#1 C:\wamp\www\coplat\protected\controllers\UserController.php(58): CActiveRecord->__call('getPerMentor', Array)
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(58): PersonalMentor->getPerMentor('19')
+#3 [internal function]: UserController->actionView('19')
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('view')
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/user/19
+HTTP_REFERER=http://localhost/coplat/index.php/user/update/19
+---
+2014/04/20 07:43:08 [error] [php] Trying to get property of non-object (C:\wamp\www\coplat\protected\views\user\view.php:164)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(173): UserController->render()
+#3 unknown(0): UserController->actionView()
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/19
+in C:\wamp\www\coplat\protected\views\user\view.php (164)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (173)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 10:26:01 [error] [php] Undefined variable: user (C:\wamp\www\coplat\protected\views\user\change.php:311)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\views\user\update.php(13): UserController->render()
+#3 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require()
+#4 C:\wamp\www\coplat\framework\web\CBaseController.php(95): UserController->renderInternal()
+#5 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#6 C:\wamp\www\coplat\protected\controllers\UserController.php(299): UserController->renderPartial()
+#7 unknown(0): UserController->actionUpdate()
+#8 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#9 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#12 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#15 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#18 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#19 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#21 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/update/7
+in C:\wamp\www\coplat\protected\views\user\change.php (311)
+in C:\wamp\www\coplat\protected\views\user\update.php (13)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (299)
+2014/04/20 10:37:47 [error] [php] Undefined variable: user (C:\wamp\www\coplat\protected\views\user\view.php:17)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(173): UserController->render()
+#3 unknown(0): UserController->actionView()
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/6
+in C:\wamp\www\coplat\protected\views\user\view.php (17)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (173)
+in C:\wamp\www\coplat\index.php (13)
+2014/04/20 10:42:11 [error] [php] Object of class Mentee could not be converted to string (C:\wamp\www\coplat\protected\views\user\view.php:207)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\controllers\UserController.php(173): UserController->render()
+#3 unknown(0): UserController->actionView()
+#4 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#5 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#8 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#14 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#15 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/20
+in C:\wamp\www\coplat\protected\views\user\view.php (207)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (173)
+in C:\wamp\www\coplat\index.php (13)

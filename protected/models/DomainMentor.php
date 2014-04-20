@@ -97,4 +97,11 @@ class DomainMentor extends CActiveRecord
 
         return $dommentor;
     }
+    
+    public static function getDomMentor($id)
+    {
+        $dommentor = DomainMentor::model()->findBySql("SELECT * FROM domain_mentor WHERE user_id=$id");
+        
+        return $dommentor;
+    }
 }

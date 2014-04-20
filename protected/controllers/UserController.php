@@ -54,9 +54,9 @@ class UserController extends Controller
 	public function actionView($id)
 	{
         $model = $this->loadModel($id);
-        $promentor = ProjectMentor::getCurrentUser();
-        $permentor = PersonalMentor::getCurrentUser();
-        $dommentor = DomainMentor::getCurrentUser();
+        $promentor = ProjectMentor::model()->getProMentor($id);
+        $permentor = PersonalMentor::model()->getPerMentor($id);
+        $dommentor = DomainMentor::model()->getDomMentor($id);
 
 
         if(isset($_POST['submit']))
@@ -131,8 +131,14 @@ class UserController extends Controller
 
             if($model->isPerMentor == 1)
             {
-                $permentor->max_hours = $_POST['pmenHours'];
-                $permentor->max_mentees = $_POST['numMentees'];
+                if(isset($_POST['pmentHours']))
+                {
+                    $permentor->max_hours = $_POST['pmenHours'];
+                }
+                if(isset($_POST['numMentees']))
+                {
+                    $permentor->max_mentees = $_POST['numMentees'];
+                }
                 $permentor->save();
 
                 if(isset($_POST['mentees']))
@@ -191,7 +197,7 @@ class UserController extends Controller
             }*/
 
 			$model->attributes=$_POST['User'];
-            $model->pic_url = '/coplat/images/profileimages/avatarsmall.gif';
+            $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
 
             $model->activation_chain = $this->genRandomString(10);
 
@@ -236,7 +242,7 @@ class UserController extends Controller
                     $mentee->save();
                 }
 
-                $this->actionSendVerificationEmail($model->email);
+                //$this->actionSendVerificationEmail($model->email);
 
             }
 		}

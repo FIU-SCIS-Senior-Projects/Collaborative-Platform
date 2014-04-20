@@ -9,23 +9,34 @@ if(User::isCurrentUserAdmin())
     );
 }
 ?>
-
 <div style =" width: 1050px;">
 <div id="leftup">
 <div id="container" class="my-box-container3" style="height: 350px;" >  
         <div class="titlebox"><h3><?php echo ucfirst($model->fname) ." " . ucfirst($model->lname)?></h3></div>
         <div  id="profileImage">
         <br><img style="width:150px; height:205px;" src="<?php echo $model->pic_url ?>" />
- 
-        <!--<?php echo CHtml::submitButton('Edit Photo', array('submit' => 'editProfile', "class"=>"btn btn-primary"));?>-->
+        <?php echo CHtml::submitButton('Edit Photo', array('editProfile', "class"=>"btn btn-primary"));?>
     	<!--<?php echo CHtml::submitButton('Sync LinkedIn', array("class"=>"btn btn-primary")); ?>-->
-        <br>Role Type(s): <?php if($model->isAdmin) {?> <b>Domain Mentor </b> <?php }?>
+        <br>Role Type(s): <?php if($model->isDomMentor) {?> <b>Domain Mentor </b> <?php }?>
                           <?php if($model->isPerMentor) {?> <b>Personal Mentor </b> <?php }?>
                           <?php if($model->isProMentor) {?> <b>Project Mentor </b> <?php }?>
                           <?php if($model->isMentee) {?> <b>Mentee</b> <?php }?>        
        </div>
 </div> 
-
+<!--only mentee 
+<?php if($model->isMentee)
+    {?>     </div><div id="right">
+        <div id="experience">
+        <div class="titlebox"><h4>BIOGRAPHY & WORK HISTORY</h4></div><br><br><br>   
+        <h8><?php if($model->biography == null)
+        {
+            echo"Please edit your biography";
+        }
+        else
+        {
+            echo $model->biography;
+            }?></h8></div></div></div>
+<?php }?>-->
 <!-- div for project mentors -->
 <?php if($model->isProMentor)
 {?>
@@ -42,27 +53,15 @@ if(User::isCurrentUserAdmin())
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
             <thread>
                 <tr>    
-                    <th width="50%">Project Name</th>
-                    <!--<th width="50%">Mentees</th>-->
+                    <th width="100%">Project Name</th>
                 </tr>
             </thread>
             <?php foreach($projects as $project)
-            {   
-                //$pmen = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE projectmentor_project_id=$project->id");
-                
-                /*foreach($pmen as $pm)
-                {
-                   $m = User::model()->findBySql("SELECT id FROM user WHERE id=$pm->user_id");
-                   echo $m->fname. " " . $m->lname;
-                }
-                //$ment = User::model()->findbysql("SELECT * FROM user WHERE id=$pmen->user_id");
-                 * 
-                 */
+            {
             ?>
             <tbody>
                 <tr>
                     <td><?php echo $project->title?></td>
-                    <!--<td><?php echo"Names to be imported" ?></td>-->
                 </tr>
             </tbody> 
             <?php }?>
@@ -122,15 +121,13 @@ if(User::isCurrentUserAdmin())
         <?php  echo "Max Hours: " . $promentor->max_hours; } ?>
 	</div>
 	<?php 
-        if($model->isDomMentor)
-        {
 
-        }
 }?>
     </div>
 </div>
 <!-- end left div -->
-
+<?php if(!$model->isMentee)
+{?>
 <div id="rightup">
     <div id="experience">
         <div class="titlebox"><h4>BIOGRAPHY & WORK HISTORY</h4></div><br><br><br>   
@@ -142,24 +139,24 @@ if(User::isCurrentUserAdmin())
         {
             echo $model->biography;
         }?></h8>
-        
         <br>
     </div>
    
 <!-- div to show domains for Domain and Personal Mentors ONLY; only included for project mentors if they are also domain or personal --> 
-<?php if($model->isDomMentor)
+<?php 
+if($model->isDomMentor)
 {?>
-
-    <div id="container" class="my-box-container5" style="height: 250px; overflow-y: scroll; ">
-       <div class="titlebox"><h4>DOMAINS</h4></div>
-     <?php 
-               if($userdoms == null)
-               { 
-                    echo "No Assigned Domains";
-               }
-               else
-               { ?>
-     <div id="container" class="my-box-container" style="height: 200px; overflow-y: scroll ">
+    <div id="container" class="my-box-container5" style="height: 275px; overflow-y: scroll; ">
+        <div class="titlebox"><h4>DOMAINS</h4></div>
+        <?php 
+            if ($userdoms == null)
+            {?>
+            <div id="container" class="my-box-container" style="height: 200px; overflow-y: scroll ">
+            <?php echo "No Assigned Domains</div>"; 
+            }
+            else 
+            {?>
+        <div id="container" class="my-box-container" style="height: 200px; overflow-y: scroll ">
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
                 <thead>
                         <tr>
@@ -168,26 +165,22 @@ if(User::isCurrentUserAdmin())
                         </tr>
                         </thead>
                         <?php foreach($userdoms as $userdom)
-                        {
+                        { 
                             $domain = Domain::model()->find("id=:id", array(":id"=>$userdom->domain_id));
-                            $userdom = UserDomain::model()->find("id=:id", array(":id"=>$domain->id));
+                            $userdom = UserDomain::model()->findBySql("SELECT rate FROM user_domain WHERE domain_id=$domain->id AND user_id=$model->id");
                             ?>
                             <tbody>
                             <tr>
                                 <td><?php echo $domain->name; ?></td>
-                                <td><?php //echo $userdom->rate;?></td>
+                                <td><?php echo $userdom->rate;?></td>
                             </tr>
                             </tbody>
                         <?php
                         }
-               }
-                        ?>
+               }?>
             </table><br>
-     </div>
-     <br>
-    </div>
-   <?php }?>
-
+        </div><br> </div>
+ <?php }?>   
 <!-- div for personal mentors -->
 <?php if($model->isPerMentor) 
     {?>
@@ -210,7 +203,6 @@ if(User::isCurrentUserAdmin())
             
             foreach($Mentees as $mentee)
             {
-                //$mentee = Mentee::model()->findBySql("SELECT * FROM mentee");
                 $usr = User::model()->findBySql("SELECT * FROM user WHERE id=$mentee->user_id");
                 ?>
                 <tbody>
@@ -226,11 +218,14 @@ if(User::isCurrentUserAdmin())
 
     <h9>***Note: Click on students to see their project and description(s)</h9>
  <?php } ?>
-
+<?php }?>
     <br><br>
-    <div style="float:right"><br><br>
-    <?php echo CHtml::submitButton('Edit', array('submit' => 'update/'.$model->id, "class"=>"btn btn-primary")); ?>
-    </div>
+    
 </div>
 <!--end right-->
 </div>
+    <div style="float:right; padding:1px;"><br><br>
+    <?php echo CHtml::submitButton('Edit', array('submit' => 'update/'.$model->id, "class"=>"btn btn-primary")); ?>
+    </div>
+
+<!--end right-->
