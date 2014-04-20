@@ -75,7 +75,7 @@ class Domain extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Domain',
 			'description' => 'Description',
-			'validator' => 'Proficiency Cutoff',
+			'validator' => 'Validator',
 		);
 	}
 
@@ -99,4 +99,23 @@ class Domain extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function domainExists($domain)
+        {
+            $d = Domain::model()->findAllBySql("SELECT name FROM domain WHERE name='$domain'");
+            
+            return $d;
+            /*
+            for($i = 0; $i < count($d); $i++)
+            {
+                if(strcasecmp($domain, $d[$i]->name))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }*/
+        }
 }

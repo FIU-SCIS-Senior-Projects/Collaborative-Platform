@@ -7,17 +7,24 @@
         <div id="profileImage">
         <br><img style="width:150px; height:205px;" src="<?php echo $user->pic_url ?>" />
         
-        <!--<input type="file" name="photo" style="width:95px;">-->
+        <input type="file" name="photo" style="width:95px;" class="btn btn-primary">
         
     	<!--<?php echo CHtml::submitButton('Sync LinkedIn', array("class"=>"btn btn-primary")); ?>-->
-        <br>Role Type(s): <?php if(User::isCurrentUserAdmin()) {?> <b>Administrator </h> <?php }?>
+        <br>Role Type(s): <?php if(User::isCurrentUserAdmin()) {?> <b> Administrator </b> <?php }?>
                           <?php if(User::isCurrentUserDomMentor()) {?> <b>Domain Mentor </b> <?php }?>
                           <?php if(User::isCurrentUserPerMentor()) {?> <b>Personal Mentor </b> <?php }?>
                           <?php if(User::isCurrentUserProMentor()) {?> <b>Project Mentor </b> <?php }?>
                           <?php if(User::isCurrentUserMentee()) {?> <b> Mentee </b> <?php }?>        
         </div> 
 </div> 
-
+<!--only mentee -->
+<?php if(User::isCurrentUserMentee() || User::isCurrentUserAdmin() )
+    {?> <div id="rightup">
+        <div id="experience">
+        <div class="titlebox"><h4>BIOGRAPHY & WORK HISTORY</h4></div><br><br><br>   
+            <h8><textarea id="bio" style="width:475px; height:150px;"name="biography"><?php echo $user->biography ?></textarea>
+                <br></div></div></div></div>
+<?php }?>
 <!-- div for project mentors -->
 <?php $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
       $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$user->id"));?>
@@ -27,6 +34,7 @@
     <h4>Current Senior Projects<br><br>
     Check the projects(s) that you are interested in </h4>
     You can add up to <?php echo $promentor->max_projects-count($p); ?> more project(s).
+    
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
         <?php
         if($projects == null)
@@ -65,7 +73,6 @@
                 <tr>
                     <th width="1%"></th>
                     <th width="40%">Project Name</th>
-                    <th width="40%">Mentees</th>
                 </tr>
             </thread>
             <?php if($projects == null)
@@ -80,7 +87,6 @@
                 <tr>
                     <td><input type="checkbox" name="nwproj[]" value="<?php echo $project->title; ?>"></td>
                     <td><?php echo $project->title?></td>
-                    <td><?php echo"Names to be imported" //$puser->fname . " " . $puser->lname; ?></td>
                 </tr>
             </tbody>
             <?php }
@@ -90,7 +96,7 @@
     <h9>Note: Click on projects to see their description</h9>
  
 <?php } 
-      elseif(User::isCurrentUserProMentor())
+      elseif(User::isCurrentUserProMentor() && count($p) != 0)
       {?>
         <h4>My Current Assigned Senior Projects</h4>
         <h5>***Max Projects Already Assigned***</h5>
@@ -100,8 +106,7 @@
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
             <thread>
                 <tr>    
-                    <th width="40%">Project Name</th>
-                    <!--<th width="40%">Mentees</th>-->
+                    <th width="100%">Project Name</th>
                 </tr>
             </thread>
             <?php
@@ -112,7 +117,6 @@
             <tbody>
                 <tr>
                     <td><?php echo $project->title?></td>
-                    <!--<td><?php echo"Names to be imported" //$puser->fname . " " . $puser->lname; ?></td>-->
                 </tr>
             </tbody> 
             <?php }?>
@@ -120,7 +124,7 @@
         <?php }?>
     </div>
       <?php }?>
-
+        
  <?php if(User::isCurrentUserDomMentor() || User::isCurrentUserProMentor() || User::isCurrentUserPerMentor())
  {?>
     <div id="container" class="my-box-container3" style="height: 350px">       
@@ -205,31 +209,49 @@
             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
             <?php }?>
             </select><br>
-	</div>
+	</div>  
         <?php } ?>
-   
-    </div>
- <?php } ?>       
-</div>  <!-- end left div -->
-
-<div id="right">    
+    <?php } ?></div>
+    
+   </div> 
+ <!-- end left div -->
+<?php if(!User::isCurrentUserMentee() && !User::isCurrentUserAdmin())
+{?>
+<div id="rightup">    
     <div id="experience">
         <div class="titlebox"><h4>BIOGRAPHY & WORK HISTORY</h4></div><br><br><br>   
             <h8><textarea id="bio" style="width:475px; height:150px;"name="biography"><?php echo $user->biography ?></textarea>
-    <!--<input type="text" name="biography" value="<?php echo $user->biography ?>"/>-->
-    <br><!--<?php echo CHtml::submitButton('Edit', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>-->
-    </div>
+    <br></div>
      
 <!-- div to show domains for Domain and Personal Mentors ONLY; only included for project mentors if they are also domain or personal --> 
 <?php if(User::isCurrentUserDomMentor())
 {?>
-    <div id="container" class="my-box-container5" style="height: 250px; ">
+    <div id="container" class="my-box-container5" style="height: 300px; ">
        <div class="titlebox"><h4>DOMAINS</h4></div>
      <?php 
                if($userdoms == null)
-               { 
-                    echo "<br><br>No Assigned Domains<br><br>";
-               }
+               {?>
+                <div id="container" class="my-box-container" style="height: 200px; overflow-y: scroll ">
+                <?php
+                    echo "<h7>Rating: 1:low: < 2yrs experience, 5:moderate2-5yrs exp, 10: > 5yrs exp</h7>"
+                        . "<h6>Add new domain:";?>
+                <input type="text" style ="width:100px;" name="domainName">
+                <select name="ratings" style="width:60px;">
+                <?php for ($i = 1; $i <= 10; $i++)
+                {?>
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                <?php }
+                ?></select></h6><br>
+ 
+           Add Current Domain(s)<select multiple name ="existDoms[]" style="width:100px;">
+            <?php $dm = Domain::model()->findAllBySql("SELECT * FROM domain WHERE id NOT IN (SELECT domain_id FROM user_domain WHERE user_id=$user->id)");
+                    for($i = 0; $i < count($dm); $i++)
+                    {?>
+               <option value="<?php echo $dm[$i]->name; ?>"><?php echo $dm[$i]->name; ?></option>
+                  <?php  }
+               ?>
+           </select></h6></div>
+       <?php }
                else
                { ?>
      <div id="container" class="my-box-container" style="height: 175px; overflow-y: scroll ">
@@ -243,27 +265,55 @@
                         <?php foreach($userdoms as $userdom)
                         {
                             $domain = Domain::model()->find("id=:id", array(":id"=>$userdom->domain_id));
-                            $userdom = UserDomain::model()->find("id=:id", array(":id"=>$domain->id));
+                            $userdom = UserDomain::model()->findBySql("SELECT rate FROM user_domain WHERE domain_id=$domain->id AND user_id=$user->id");
                             ?>
                             <tbody>
                             <tr>
                                 <td><?php echo $domain->name; ?></td>
-                                <td><?php // echo $userdom->rate;?></td>
+                                <td><?php  
+                                if($userdom->rate == null)
+                                {?>
+                                <select name="unrated[]" style="width:60px;">
+                                <?php for ($i = 1; $i <= 10; $i++)
+                                {?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                <?php }?></select> 
+                                <?php
+                                }
+                                else
+                                {
+                                    echo $userdom->rate;
+                                }?></td>
                             </tr>
                             </tbody>
                         <?php
                         }
-               }?>
+               ?>
             </table><br>
-     </div>
-       <br> <!--<b>Add Domain: </b> <input type="text" name="ndomain" style="width:100px;">
-                                <input type="text" name="nrating" style="width:100px"> -->
-     <?php }?>
-</div>    
+     </div><h7>Rating: 1:low: < 2yrs experience, 5:moderate2-5yrs exp, 10: > 5yrs exp</h7>
+       <h6>Add Domain <input type="text" style ="width:100px;" name="domainName">
+           <select name="ratings" style="width:60px;">
+                <?php for ($i = 1; $i <= 10; $i++)
+                {?>
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                <?php }
+                ?></select>
+           Add Current Domain(s)<select multiple name ="existDoms[]" style="width:100px;">
+            <?php $dm = Domain::model()->findAllBySql("SELECT * FROM domain WHERE id NOT IN (SELECT domain_id FROM user_domain WHERE user_id=$user->id)");
+                    for($i = 0; $i < count($dm); $i++)
+                    {?>
+               <option value="<?php echo $dm[$i]->name; ?>"><?php echo $dm[$i]->name; ?></option>
+                  <?php  }
+               ?>
+          </select></h6>
+       </h6>         
+   <?php }}?></div> 
+ 
     
 <!-- div for personal mentors -->
 <?php $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id"); 
       $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$user->id");?>
+
 <?php if(User::isCurrentUserPerMentor() && count($m) < $permentor->max_mentees) 
     {?>
     <h4>Current Senior Project Students<br><br>
@@ -296,11 +346,9 @@
                     <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
                 </tr>
                 </tbody>
-            
      <?php }?>
                 </table>
-     <?php } ?>
-	</div>		
+            <?php } ?></div>		
     <h2>OR</h2> 
     <h4>Check the student(s) that you are NOT interested in</h4>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
@@ -322,12 +370,10 @@
                     <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
                 </tr>
                 </tbody>
-            
-     <?php }?>
-                </table>
+     <?php }?></table>
     </div>
     <h9>Note: Click on students to see their project and description(s)</h9>
- <?php } elseif(User::isCurrentUserPerMentor())
+    <?php } elseif(User::isCurrentUserPerMentor())
       {?>
         <h4>My Current Assigned Mentees</h4>
         <h5>***Max Mentees Already Assigned***</h5>
@@ -351,21 +397,16 @@
                     <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
                 </tr>
                 </tbody>
-            
-     <?php }?>
-                </table>
         <?php }?>
-    </div>
-      <?php }?>
+                </table><?php }?>
+    </div><?php }?>
     <br><br>
-    
 </div>
+<?php }?>
 <div style="float:right">
     <!--<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-primary")); ?>-->
     <input type="submit" name="submit" value="Save" class="btn btn-primary">
     </form>
     </div> 
-
-<!--end right-->
-    </div><!--end form-->
 </div>
+<!--end right-->

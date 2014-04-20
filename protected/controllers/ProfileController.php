@@ -90,7 +90,7 @@ class ProfileController extends Controller
                      else
                      {
                         $pro = $_POST['proj']; 
-                        $curr = Project::model()->findbysql("SELECT * FROM project WHERE project_mentor_user_id=$model->id");
+                        //$curr = Project::model()->findbysql("SELECT * FROM project WHERE project_mentor_user_id=$model->id");
                         for($i = 0; $i < count($pro); $i++)
                         {
                             //while($promentor->max_projects > count($curr))
@@ -134,9 +134,56 @@ class ProfileController extends Controller
             {
                 $dommentor->max_tickets = $_POST['numTickets'];
                 $dommentor->save();
-                //$dommentor->update("UPDATE domain_mentor SET max_tickets-$dommentor->max_tickets WHERE user_id=$model->id");
+                
+                
+                if(isset($_POST['domainName']))
+                {
+                    $d = new Domain();
+                    $d->name = $_POST['domainName'];
+                    if(Domain::model()->domainExists($d->name))
+                    {
+                        //do nothing
+                    }
+                    else
+                    {
+                        $d = new Domain();
+                        $ud = new UserDomain();
+
+                        $d->name = $_POST['domainName'];
+                        $d->save();
+
+                        $ud->domain_id = $d->id;
+                        $ud->user_id = $model->id;
+                        $ud->rate = $_POST['ratings'];
+                        $ud->save();
+                    }
+                }
+                if(isset($_POST['existDoms']))
+                {
+                    $doms = $_POST['existDoms'];
+                    for($i = 0; $i < count($doms); $i++)
+                    {
+                        $d = Domain::model()->findBySql("SELECT id FROM domain WHERE name='$doms[$i]'");
+                        $ud = new UserDomain();
+                        
+                        $ud->domain_id = $d->id;
+                        $ud->user_id = $model->id;
+                        $ud->save();
+                    }
+                }
+                
+                if(isset($_POST['unrated']))
+                {
+                    $ud = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE rate IS NULL AND user_id=$model->id ");
+                    $ur = $_POST['unrated'];
+                    
+                    for($i = 0; $i < count($ur); $i++)
+                    {
+                        $ud[$i]->rate = $ur[$i];
+                        $ud[$i]->save();
+                    }
+                }
             }
-            //$model->update("UPDATE user SET biography=$model->biography WHERE user_id=$model->id");
         }
         
         /** @var User $username */
