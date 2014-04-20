@@ -617,7 +617,25 @@ class User extends CActiveRecord
     }
 
     /*Ticket has closed by the creator */
-    //public static function sendCloseTicketEmailNotification($model->creator_user_id,$model->assign_user_id, $model->status);
+    public static function sendCloseTicketEmailNotification($creator_user_id,$assign_user_id, $ticket_id)
+    {
+        $creator = User::model()->findByPk($creator_user_id);
+        $mentor = User::model()->findByPk($assign_user_id);
+        $ticket = Ticket::model()->findByPk($ticket_id);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/view/'.$ticket_id);
+        $to = $mentor->fname.' '.$mentor->lname;
+        $from = $creator->fname.' '.$creator->lname;
+        $message = "The user, ".$from.", has closed the ticket #".$ticket_id.", related to ".$ticket->subject.".<br/>".$link." to see the its information.";
+        $html = User::replaceMessage($to,$message);
+
+        $email = Yii::app()->email;
+
+        $email->to = $mentor->email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Ticket # '.$ticket_id.' has been closed.';
+        $email->message = $html;
+        $email->send();
+    }
 
     /* Ticket has been rejected by the creator, send notification to admin */
     //public static function sendRejectEmailNotification($model->creator_user_id, $model->assign_user_id, $model->status);

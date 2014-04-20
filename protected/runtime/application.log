@@ -9317,3 +9317,25 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/ticket/download?download_file=coplat/uploads/coplat_local.sql
 HTTP_REFERER=http://localhost/coplat/index.php/ticket/13
 ---
+2014/04/20 16:09:32 [error] [php] fopen(/var/www/html/coplat/email/index1.html): failed to open stream: No such file or directory (C:\wamp\www\coplat\protected\models\User.php:447)
+Stack trace:
+#0 C:\wamp\www\coplat\protected\controllers\InvitationController.php(105): sendInvitationEmail()
+#1 unknown(0): InvitationController->actionUpdate()
+#2 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): InvitationController->runAction()
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): InvitationController->filterAccessControl()
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): InvitationController->runActionWithFilters()
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): InvitationController->run()
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/invitation/update/3
+in C:\wamp\www\coplat\protected\models\User.php (447)
+in C:\wamp\www\coplat\protected\models\User.php (415)
+in C:\wamp\www\coplat\protected\controllers\InvitationController.php (105)

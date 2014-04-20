@@ -136,8 +136,8 @@ class TicketController extends Controller
             }
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-               /* User::sendTicketAssignedEmailNotification($model->creator_user_id,
-                    $model->assign_user_id, $model->domain_id);*/
+                User::sendTicketAssignedEmailNotification($model->creator_user_id,
+                    $model->assign_user_id, $model->domain_id);
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }
@@ -163,8 +163,8 @@ class TicketController extends Controller
             if ($model->save()) {
 
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                /*User::sendTicketAssignedEmailNotification($model->creator_user_id,
-                    $model->assign_user_id, $model->domain_id);*/
+                User::sendTicketAssignedEmailNotification($model->creator_user_id,
+                    $model->assign_user_id, $model->domain_id);
                 $this->redirect(array('view', 'id' => $model->id));
             }
 
@@ -190,8 +190,8 @@ class TicketController extends Controller
                 if ($model->save()) {
 
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    /*User::sendCloseTicketEmailNotification($model->creator_user_id,
-                        $model->assign_user_id, $model->status);*/
+                    User::sendCloseTicketEmailNotification($model->creator_user_id,
+                        $model->assign_user_id, $model->id);
                     $this->redirect(array('view', 'id' => $model->id));
                 }
             } elseif ($newStatus == 1) {
