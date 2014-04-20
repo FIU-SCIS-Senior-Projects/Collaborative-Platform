@@ -79,6 +79,7 @@ class TicketController extends Controller
 
         /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
+
             $all = array();
             $subdomains = Subdomain::model()->findAll("domain_id=:id", array(':id' => $_POST['domain'])); //   $subdomain->getAllByDomain($_POST['domain']);
             foreach ($subdomains as $subdom) {
@@ -93,6 +94,12 @@ class TicketController extends Controller
         /*Post for create a new Ticket */
         if (isset($_POST['Ticket'])) {
             $model->attributes = $_POST['Ticket'];
+
+
+            if ($model->domain_id == '') {
+                $model->domain_id = null;
+            }
+
             $domain_id = $model->domain_id;
 
             /* Populate ticket attributes */
@@ -112,9 +119,9 @@ class TicketController extends Controller
                     $sub = false;
                     $model->subdomain_id = null;
                 }
-                if (!$sub) /*Assign the ticket to the most appropiate Domain mentor */
+                if (!$sub && $domain_id != null) /*Assign the ticket to the most appropiate Domain mentor */
                     $model->assign_user_id = User::assignTicket($domain_id, $sub);
-                else
+                elseif($domain_id != null)
                     $model->assign_user_id = User::assignTicket($model->subdomain_id, $sub);
             }
             $model->status = 'Pending'; /* Assign the first status of the ticket as a pending*/

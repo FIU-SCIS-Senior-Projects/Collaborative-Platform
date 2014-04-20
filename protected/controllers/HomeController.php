@@ -51,9 +51,11 @@ class HomeController extends Controller
         $username = Yii::app()->user->name;
         $user = User::model()->find("username=:username", array(':username' => $username));
 
-        $Tickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id or creator_user_id=:id", array(":id" => $user->id));
+        $TicketsP = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'pending'));
+        $TicketsC = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'close'));
+        $TicketsR = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'reject'));
 
-        $this->render('userHome', array('Tickets' => $Tickets,
+        $this->render('userHome', array('TicketsP' => $TicketsP, 'TicketsC' => $TicketsC, 'TicketsR' => $TicketsR,
             //'results' => $results,
             'user' => $user));
 
@@ -74,9 +76,11 @@ class HomeController extends Controller
         $user = User::model()->find("username=:username", array(':username' => $username));
 
         /* Get all tickets on the mentoring subsystem */
-        $Tickets = Ticket::model()->findAll();
+        $TicketsP = Ticket::model()->findAll("status=:status",array(':status'=>'pending'));
+        $TicketsC = Ticket::model()->findAll("status=:status",array(':status'=>'close'));
+        $TicketsR = Ticket::model()->findAll("status=:status",array(':status'=>'reject'));
 
-        $this->render('adminHome', array('Tickets' => $Tickets,
+        $this->render('adminHome', array('TicketsP' => $TicketsP, 'TicketsC'=> $TicketsC, 'TicketsR'=> $TicketsR,
             //'results' => $results,
             'user' => $user));
 
