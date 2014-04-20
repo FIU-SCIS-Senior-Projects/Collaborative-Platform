@@ -242,7 +242,7 @@
                {?>
                 <div id="container" class="my-box-container" style="height: 200px; overflow-y: scroll ">
                 <?php
-                    echo "<h7>Rating: 1:low: < 2yrs experience, 5:moderate2-5yrs exp, 10: > 5yrs exp</h7>"
+                    echo "<h7>Rating: 1 : low: < 2yrs experience, 5 : moderate2-5yrs exp, 10 : > 5yrs exp</h7>"
                         . "<h6>Add new domain:";?>
                 <input type="text" style ="width:100px;" name="domainName">
                 <select name="ratings" style="width:60px;">

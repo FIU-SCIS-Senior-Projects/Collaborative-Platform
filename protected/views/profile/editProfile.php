@@ -217,7 +217,7 @@
  <!-- end left div -->
 <?php if(!User::isCurrentUserMentee() && !User::isCurrentUserAdmin())
 {?>
-<div id="rightup">    
+   <div id="rightup"> 
     <div id="experience">
         <div class="titlebox"><h4>BIOGRAPHY & WORK HISTORY</h4></div><br><br><br>   
             <h8><textarea id="bio" style="width:475px; height:150px;"name="biography"><?php echo $user->biography ?></textarea>
@@ -233,7 +233,7 @@
                {?>
                 <div id="container" class="my-box-container" style="height: 200px; overflow-y: scroll ">
                 <?php
-                    echo "<h7>Rating: 1:low: < 2yrs experience, 5:moderate2-5yrs exp, 10: > 5yrs exp</h7>"
+                    echo "<h7>Rating: 1:low: < 2yrs experience,<br> 5:moderate 2-5yrs exp, <br>10: > 5yrs exp</h7>"
                         . "<h6>Add new domain:";?>
                 <input type="text" style ="width:100px;" name="domainName">
                 <select name="ratings" style="width:60px;">
