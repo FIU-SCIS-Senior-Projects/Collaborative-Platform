@@ -622,7 +622,7 @@ class User extends CActiveRecord
         $creator = User::model()->findByPk($creator_user_id);
         $mentor = User::model()->findByPk($assign_user_id);
         $ticket = Ticket::model()->findByPk($ticket_id);
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/view/'.$ticket_id);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
         $to = $mentor->fname.' '.$mentor->lname;
         $from = $creator->fname.' '.$creator->lname;
         $message = "The user, ".$from.", has closed the ticket #".$ticket_id.", related to ".$ticket->subject.".<br/>".$link." to see the its information.";
@@ -638,7 +638,80 @@ class User extends CActiveRecord
     }
 
     /* Ticket has been rejected by the creator, send notification to admin */
-    //public static function sendRejectEmailNotification($model->creator_user_id, $model->assign_user_id, $model->status);
+    public static function sendRejectEmailNotification($creator_user_id, $assign_user_id, $ticket_id, $prev_mentor, $assigned_by)
+    {
+        $creator = User::model()->findByPk($creator_user_id);
+        $new_mentor = User::model()->findByPk($assign_user_id);
+        $old_mentor = User::model()->findByPk($prev_mentor);
+        $assignator = User::model()->findByPk($assigned_by);
+        $ticket = Ticket::model()->findByPk($ticket_id);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+
+        $email = Yii::app()->email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Ticket # '.$ticket_id.' has been reassigned.';
+
+        if($creator_user_id == $assigned_by)
+        {
+            $to = $new_mentor->fname.' '.$new_mentor->lname;
+            $from = $creator->fname.' '.$creator->lname;
+            $message = "The user, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject." to you.<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+            $email->to = $new_mentor->email;
+            $email->message = $html;
+            $email->send();
+
+            $to = $old_mentor->fname.' '.$old_mentor->lname;
+            $message = "The user, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.". Therefor the ticket is now out of your queue.<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+            $email->to = $old_mentor->email;
+            $email->message = $html;
+            $email->send();
+        }
+        elseif($prev_mentor == $assigned_by)
+        {
+            $to = $new_mentor->fname.' '.$new_mentor->lname;
+            $from = $old_mentor->fname.' '.$old_mentor->lname;
+            $message = "The domain mentor, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject." to you.<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+            $email->to = $new_mentor->email;
+            $email->message = $html;
+            $email->send();
+
+            $to = $creator->fname.' '.$creator->lname;
+            $mentor = $new_mentor->fname.' '.$new_mentor->lname;
+            $message = "The domain mentor, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.", to the domain mentor, ".$mentor.".<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+            $email->to = $creator->email;
+            $email->message = $html;
+            $email->send();
+        }
+        else
+        {
+            $to = $new_mentor->fname.' '.$new_mentor->lname;
+            $from = $assignator->fname.' '.$assignator->lname;
+            $message = "The System Administrator, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject." to you.<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+            $email->to = $new_mentor->email;
+            $email->message = $html;
+            $email->send();
+
+            $to = $creator->fname.' '.$creator->lname;
+            $mentor = $new_mentor->fname.' '.$new_mentor->lname;
+            $message = "The domain mentor, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.", to the domain mentor, ".$mentor.".<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+            $email->to = $creator->email;
+            $email->message = $html;
+            $email->send();
+
+            $to = $old_mentor->fname.' '.$old_mentor->lname;
+            $message = "The System Administrator, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.". Therefor the ticket is now out of your queue.<br/>".$link." to see the its information.";
+            $html = User::replaceMessage($to,$message);
+            $email->to = $old_mentor->email;
+            $email->message = $html;
+            $email->send();
+        }
+    }
 
     /*Meeting notification */
     //public static function sendMeetingNotification($model->project_mentor_user_id, $model->mentee_user_id, $model->date, $model->time);

@@ -181,7 +181,7 @@ class TicketController extends Controller
         $model = $this->loadModel($id);
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-
+        $old_mentor = $model->assign_user_id;
         if (isset($_POST['Ticket']['status'])) {
             $newStatus = $_POST['Ticket']['status'];
             //$model->attributes = $_POST['Ticket'];
@@ -199,7 +199,7 @@ class TicketController extends Controller
                 if ($model->save()) {
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
                     User::sendRejectEmailNotification($model->creator_user_id,
-                        $model->assign_user_id, $model->status);
+                        $model->assign_user_id, $model->id, $old_mentor, User::getCurrentUserId());
                     $this->redirect(array('view', 'id' => $model->id));
                 }
             }
