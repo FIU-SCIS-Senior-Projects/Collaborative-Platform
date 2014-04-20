@@ -47,6 +47,22 @@
                     <td width="15%"><h5>Assigned To</h5></td>
                     <td width="85%"><?php echo $userAssign->fname . ' ' . $userAssign->lname; ?></td>
                 </tr>
+
+                <tr>
+                    <td width="15%"><h5>Attachment</h5></td>
+                    <td width="85%">    <?php if ($model->file != null) {
+                            //echo CHtml::link(CHtml::encode('Download File'), $model->file, array('target'=>'_blank', 'style'=>'float:left'));
+                            echo '<a href="download?download_file=' . $model->file . '">Click here to download the file</a>';
+                        } else {
+                            echo 'No File Uploaded';
+                        }
+                        ?>
+                    </td>
+                    <br>
+                </tr>
+
+
+
             </table>
         </div>
     </div>
@@ -112,18 +128,7 @@
         ?>
     </div>
     <!-- End Buttons Options -->
-    <div class="span6" style="width: 800px; margin-left: 0px">
-        <div style="color: #0044cc"><h3>Attachment</h3>
-            <?php if ($model->file != null) {
-                //echo CHtml::link(CHtml::encode('Download File'), $model->file, array('target'=>'_blank', 'style'=>'float:left'));
-                echo '<a href="download?download_file=' . $model->file . '">Click here to download the file</a>';
-            } else {
-                echo 'No File Uploaded';
-            }
-            ?>
-        </div>
-        <br>
-    </div>
+
     <br>
     <!-- End Container -->
     <br>
@@ -274,8 +279,6 @@
         return false;
     })
 </script>
-
-
 <!-- Modal Change Status-->
 <div class="modal fade" id="myModalChangeStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true" style="display: none;">
@@ -316,9 +319,12 @@
 <!-- Script for Comment modal -->
 <script>
     $('a#change').on('click', function () {
+        var confirmed = confirm("Do you really want to change the ticket status?");
+        if (confirmed) {
         $.post('/coplat/index.php/ticket/change/<?php echo $model->id?>', $('#ticket-form-status').serialize(), function (message) {
             window.location = location.pathname;
         });
+        }
         return false;
     })
 </script>
