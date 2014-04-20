@@ -332,12 +332,12 @@
       {
           $permentor->max_mentees = 0; $permentor->save();
       }*/?>
-<?php if((User::isCurrentUserPerMentor() && count($m) < $permentor->max_mentees) || count($m) != 0 && count($m) != $permentor->max_mentees) 
+<?php if((User::isCurrentUserPerMentor() && ((count($m) < $permentor->max_mentees) || count($m) == 0)))
     {?>
         
     <h4>Current Senior Project Students<br><br>
     Check the student(s) that you are interested in </h4>
-    <?php if($permentor->max_mentees == 0)
+    <?php if(empty($permentor->max_mentees))
     {
         echo" Select the desired amount of mentees below and choose a maximum amount on the left";
     }
