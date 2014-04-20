@@ -16,6 +16,11 @@
 		<?php echo $form->textField($model,'id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
+    <div class="row">
+        <?php echo $form->label($model,'name'); ?>
+        <?php echo $form->textField($model,'name',array('size'=>256,'maxlength'=>256)); ?>
+    </div>
+
 	<div class="row">
 		<?php echo $form->label($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>

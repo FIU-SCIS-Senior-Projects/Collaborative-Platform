@@ -14,7 +14,12 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<div id="regbox">
-		<?php echo $form->labelEx($model,'email'); ?>
+        <?php echo $form->labelEx($model,'name'); ?>
+        <?php echo $form->textField($model,'name',array('size'=>256,'maxlength'=>256)); ?>
+        <?php echo $form->error($model,'name'); ?>
+        <br/>
+
+        <?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'email'); ?>
         <br/>

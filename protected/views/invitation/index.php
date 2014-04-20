@@ -6,10 +6,6 @@ $this->breadcrumbs=array(
 	'Invitations',
 );
 
-$this->menu=array(
-	array('label'=>'Create Invitation', 'url'=>array('create')),
-	array('label'=>'Manage Invitation', 'url'=>array('admin')),
-);
 ?>
 
 <h1>Invitations</h1>

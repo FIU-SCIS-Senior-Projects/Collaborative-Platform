@@ -17,6 +17,10 @@
 
 
     <div id="regbox">
+        <?php echo $form->labelEx($model,'name'); ?>
+        <?php echo $form->textField($model,'name',array('size'=>256,'maxlength'=>256)); ?>
+        <?php echo $form->error($model,'name'); ?>
+        <br/>
         <?php echo $form->labelEx($model,'email'); ?>
         <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
         <?php echo $form->error($model,'email'); ?>
@@ -42,7 +46,7 @@
         <p style="float:left; margin-left:5px">Mentee</p></br></br>
         <?php echo $form->error($model,'mentee'); ?>
 
-        <?php echo CHtml::submitButton('Send', array("class"=>"btn btn-primary")); ?>
+        <?php echo CHtml::submitButton('Re-Send', array("class"=>"btn btn-primary")); ?>
     </div>
 
 

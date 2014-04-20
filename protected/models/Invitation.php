@@ -45,14 +45,15 @@ class Invitation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('email, administrator_user_id', 'required'),
+			array('name, email, administrator_user_id', 'required'),
 			array('administrator, mentor, mentee, employer, judge', 'numerical', 'integerOnly'=>true),
 			array('email', 'length', 'max'=>100),
+            array('name', 'length', 'max'=>256),
 			array('administrator_user_id', 'length', 'max'=>11),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, email, administrator_user_id, date, administrator, mentor, mentee, employer, judge', 'safe', 'on'=>'search'),
+			array('id, name, email, administrator_user_id, date, administrator, mentor, mentee, employer, judge', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,6 +76,7 @@ class Invitation extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+            'name' => 'Name',
 			'email' => 'Email',
 			'administrator_user_id' => 'Administrator User',
 			'date' => 'Date',
@@ -98,7 +100,8 @@ class Invitation extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('email',$this->email,true);
+        $criteria->compare('name',$this->name,true);
+        $criteria->compare('email',$this->email,true);
 		$criteria->compare('administrator_user_id',$this->administrator_user_id,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('administrator',$this->administrator);

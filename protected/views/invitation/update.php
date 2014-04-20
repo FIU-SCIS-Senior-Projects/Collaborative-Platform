@@ -3,13 +3,13 @@
 /* @var $model Invitation */
 
 $this->breadcrumbs=array(
-	'Invitations'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Manage Invitations'=>array('admin'),
+	$model->name,
+
 );
 
 ?>
 
-<h2>Update Invitation <?php echo $model->id; ?></h2>
+<h2>Resend Invitation to <?php echo $model->name; ?></h2>
 
 <?php echo $this->renderPartial('change', array('model'=>$model)); ?>
