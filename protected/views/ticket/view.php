@@ -48,7 +48,7 @@
                     <td width="85%"><?php echo $userAssign->fname . ' ' . $userAssign->lname; ?></td>
                 </tr>
 
-                <tr>
+                <tr style="background-color: #EEE">
                     <td width="15%"><h5>Attachment</h5></td>
                     <td width="85%">    <?php if ($model->file != null) {
                             //echo CHtml::link(CHtml::encode('Download File'), $model->file, array('target'=>'_blank', 'style'=>'float:left'));
@@ -140,7 +140,7 @@
                id="example"
                width="100%">
             <thead class="header">
-            <tr>
+            <tr style="background-color: #EEE">
                 <th width="1%"> No</th>
                 <th width="65%">Description</th>
                 <th width="14%">Date Added</th>

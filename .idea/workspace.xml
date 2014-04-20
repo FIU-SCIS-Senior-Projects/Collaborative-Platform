@@ -269,6 +269,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/fd1800c8/gridview/styles.css" afterPath="$PROJECT_DIR$/assets/fd1800c8/gridview/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/fd1800c8/listview/styles.css" afterPath="$PROJECT_DIR$/assets/fd1800c8/listview/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/home/userHome.php" afterPath="$PROJECT_DIR$/protected/views/home/userHome.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/ticket/view.php" afterPath="$PROJECT_DIR$/protected/views/ticket/view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coplat.iws" />
@@ -295,38 +296,12 @@
       <file leaf-file-name="view.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/ticket/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="119" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.6281407" vertical-offset="435" max-vertical-offset="4995">
+            <state line="142" column="46" selection-start="5771" selection-end="5771" vertical-scroll-proportion="0.6532663" vertical-offset="1560" max-vertical-offset="4995">
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#2;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#3;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#4;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#5;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#6;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TicketController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="25" selection-start="1149" selection-end="1149" vertical-scroll-proportion="154.5" vertical-offset="4218" max-vertical-offset="4815">
-              <folding>
-                <marker date="1398008613000" expanded="true" signature="2006:2038" placeholder="SELECT * fro..user..." />
-                <marker date="1398008613000" expanded="true" signature="2132:2164" placeholder="SELECT * fro..user..." />
-                <marker date="1398008613000" expanded="true" signature="2259:2293" placeholder="SELECT * fro..domain..." />
-                <marker date="1398008613000" expanded="true" signature="2467:2504" placeholder="SELECT * fro..subdomain..." />
+                <element signature="n#style#0;n#tr#7;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#thead#0;n#table#0;n#div#2;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1121,36 +1096,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="25" selection-start="1149" selection-end="1149" vertical-scroll-proportion="154.5" vertical-offset="4218" max-vertical-offset="4815">
+        <state line="34" column="25" selection-start="1149" selection-end="1149" vertical-scroll-proportion="-6.2110553" vertical-offset="4218" max-vertical-offset="4815">
           <folding>
-            <marker date="1398008613000" expanded="true" signature="2006:2038" placeholder="SELECT * fro..user..." />
-            <marker date="1398008613000" expanded="true" signature="2132:2164" placeholder="SELECT * fro..user..." />
-            <marker date="1398008613000" expanded="true" signature="2259:2293" placeholder="SELECT * fro..domain..." />
-            <marker date="1398008613000" expanded="true" signature="2467:2504" placeholder="SELECT * fro..subdomain..." />
+            <marker date="1398008613000" expanded="true" signature="-1:-1" placeholder="SELECT * fro..user..." />
+            <marker date="1398008613000" expanded="true" signature="-1:-1" placeholder="SELECT * fro..user..." />
+            <marker date="1398008613000" expanded="true" signature="-1:-1" placeholder="SELECT * fro..domain..." />
+            <marker date="1398008613000" expanded="true" signature="-1:-1" placeholder="SELECT * fro..subdomain..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/ticket/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="119" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.6281407" vertical-offset="435" max-vertical-offset="4995">
+        <state line="142" column="46" selection-start="5771" selection-end="5771" vertical-scroll-proportion="0.6532663" vertical-offset="1560" max-vertical-offset="4995">
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#2;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#3;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#4;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#5;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#6;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#7;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#thead#0;n#table#0;n#div#2;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
