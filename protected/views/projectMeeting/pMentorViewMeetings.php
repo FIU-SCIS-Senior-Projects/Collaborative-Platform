@@ -34,13 +34,13 @@
                         <p><strong>Title :</strong> <?php echo $project->title; ?>
                             <!--<a href="#" class="enable-tooltip" data-toggle="tooltip"
                                data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
-                        <div id="content-myPopOver-<?= $project->id ?>" style="display: none;">
+                        <div id="content-myPopOver-<?php echo $project->id ?>" style="display: none;">
                             <p><?php echo $project->description ?></p></div>
 
                         <strong>Start
                             date:</strong> <?php printf(date("M d, Y", strtotime($project->start_date))); ?><br>
                         <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
-                        <a href="#test" id="myPopOver-<?= $project->id ?>"
+                        <a href="#test" id="myPopOver-<?php echo $project->id ?>"
                            class="btn btn-primary btn-mini pull-right mypopover"
                            title="<?php echo $project->title; ?>">more
                         </a><br>

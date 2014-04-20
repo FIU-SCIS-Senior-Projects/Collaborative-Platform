@@ -66,17 +66,12 @@ class CommentController extends Controller
 	{
 		$model = new Comment;
 
-		
-		/*Retrieve the ticket id from the instance ticket */
-		//$idticket=$_GET['id'];
-
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Comment']))
 		{
-			$model->attributes=$_POST['Comment'];
-			
+            $model-> description = $_POST['Comment']['description'];
 			$model -> ticket_id = $id;
 			/*Set the date */
 			$model -> added_date = new CDbExpression('NOW()');
@@ -86,17 +81,12 @@ class CommentController extends Controller
             /** @var User user_added */
             $model ->user_added = $user->fname.' '.$user->lname;
 			
-			$model->save(false);
-
-            /* Send Notification about the comment added to a ticket */
-            User::sendTicketCommentedEmailNotification($model->ticket_id);
-
-			//if($model->save())
-				//$this->redirect(array('/ticket/view','id'=>$id));
+			if($model->save(false))
+            {
+                /* Send Notification about the comment added to a ticket */
+                //User::sendTicketCommentedEmailNotification($model->ticket_id);
+            }
 		}
-		/*$this->render('create',array(
-			'model'=>$model,
-		));*/
 	}
 
 	/**
