@@ -36,11 +36,18 @@
 <?php $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$model->id");
       $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$model->id"));?>
      
-<?php if($model->isProMentor && count($p) < $promentor->max_projects )
+<?php if(($model->isProMentor && count($p) < $promentor->max_projects) || count($p) == 0)
 {?>
     <h4>Current Senior Projects<br><br>
     Check the projects(s) that you are interested in </h4>
-    <?php echo ucfirst($model->fname);?> can add up to <?php echo $promentor->max_projects-count($p); ?> more project(s).
+    <?php if(count($p) == 0)
+    {
+        echo" Select the desired amount of projects below and choose a maximum amount on the left";
+    }
+    else
+    {
+        echo "ucfirst($model->fname);?> can add up to ". $promentor->max_projects-count($p)." more project(s).";
+    }?>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
         <?php
         if($projects == null)
@@ -320,11 +327,19 @@
 <!-- div for personal mentors -->
 <?php $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$model->id");
       $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$model->id");?>
-<?php if($model->isPerMentor && count($m) < $permentor->max_mentees) 
+<?php if(($model->isPerMentor && count($m) < $permentor->max_mentees) || count($m) == 0)
     {?>
     <h4>Current Senior Project Students<br><br>
     Check the student(s) that you are interested in </h4>
-     You can add up to <?php echo $permentor->max_mentees - count($m); ?> more mentee(s).
+    <?php 
+    if(count($m) == 0)
+    {
+        echo" Select the desired amount of mentees below and choose a maximum amount on the left";
+    }
+    else
+    {
+        echo "ucfirst($model->fname);?> can add up to ". $permounter-count($m)." more mentee(s).";
+    }?>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
             
         <?php 

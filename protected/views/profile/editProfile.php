@@ -29,12 +29,19 @@
 <?php $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
       $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$user->id"));?>
      
-<?php if(User::isCurrentUserProMentor() && count($p) < $promentor->max_projects )
+<?php if((User::isCurrentUserProMentor() && count($p) < $promentor->max_projects) || count($p) == 0)
 {?>
     <h4>Current Senior Projects<br><br>
     Check the projects(s) that you are interested in </h4>
-    You can add up to <?php echo $promentor->max_projects-count($p); ?> more project(s).
-    
+
+    <?php if(count($p) == 0)
+    {
+        echo" Select the desired amount of projects below and choose a maximum amount on the left";
+    }
+    else
+    {
+     echo "You can add up to ". ($promentor->max_projects - count($p)) ." more projects(s).";
+    }?>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
         <?php
         if($projects == null)
@@ -96,7 +103,7 @@
     <h9>Note: Click on projects to see their description</h9>
  
 <?php } 
-      elseif(User::isCurrentUserProMentor() && count($p) != 0)
+      elseif(User::isCurrentUserProMentor() && count($p) || count($p) == 0)
       {?>
         <h4>My Current Assigned Senior Projects</h4>
         <h5>***Max Projects Already Assigned***</h5>
@@ -314,11 +321,19 @@
 <?php $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id"); 
       $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$user->id");?>
 
-<?php if(User::isCurrentUserPerMentor() && count($m) < $permentor->max_mentees) 
+<?php if((User::isCurrentUserPerMentor() && count($m) < $permentor->max_mentees) || count($m) == 0) 
     {?>
+        
     <h4>Current Senior Project Students<br><br>
     Check the student(s) that you are interested in </h4>
-     You can add up to <?php echo $permentor->max_mentees - count($m); ?> more mentee(s).
+    <?php if(count($m) == 0)
+    {
+        echo" Select the desired amount of mentees below and choose a maximum amount on the left";
+    }
+    else
+    {
+     echo "You can add up to " . $permentor->max_mentees - count($m). " more mentee(s).";
+    }?>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
             
         <?php 
