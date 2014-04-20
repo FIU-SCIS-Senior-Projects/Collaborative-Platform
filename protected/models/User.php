@@ -637,8 +637,14 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    /* Ticket has been rejected by the creator, send notification to admin */
-    public static function sendRejectEmailNotification($creator_user_id, $assign_user_id, $ticket_id, $prev_mentor, $assigned_by)
+    public static function sendRejectEmailNotification($creator_user_id, $assign_user_id, $id, $rejected_by)
+    {
+        $creator = User::model()->findByPk($creator_user_id);
+        $new_mentor = User::model()->findByPk($assign_user_id);
+        $reject = User::model()->findByPk($rejected_by);
+    }
+    /* Ticket has been reassigned, send notification to all parties involved*/
+    public static function sendReassignedEmailNotification($creator_user_id, $assign_user_id, $ticket_id, $prev_mentor, $assigned_by)
     {
         $creator = User::model()->findByPk($creator_user_id);
         $new_mentor = User::model()->findByPk($assign_user_id);
@@ -647,9 +653,10 @@ class User extends CActiveRecord
         $ticket = Ticket::model()->findByPk($ticket_id);
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $email = Yii::app()->email;
-        $email->from = 'Collaborative Platform';
-        $email->subject = 'Ticket # '.$ticket_id.' has been reassigned.';
+        $email_from = 'Collaborative Platform';
+        $email_subject = 'Ticket # '.$ticket_id.' has been reassigned.';
+
+
 
         if($creator_user_id == $assigned_by)
         {
@@ -657,6 +664,10 @@ class User extends CActiveRecord
             $from = $creator->fname.' '.$creator->lname;
             $message = "The user, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject." to you.<br/>".$link." to see the its information.";
             $html = User::replaceMessage($to,$message);
+
+            $email = Yii::app()->email;
+            $email->from = $email_from;
+            $email->subject = $email_subject;
             $email->to = $new_mentor->email;
             $email->message = $html;
             $email->send();
@@ -664,9 +675,12 @@ class User extends CActiveRecord
             $to = $old_mentor->fname.' '.$old_mentor->lname;
             $message = "The user, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.". Therefor the ticket is now out of your queue.<br/>".$link." to see the its information.";
             $html = User::replaceMessage($to,$message);
-            $email->to = $old_mentor->email;
-            $email->message = $html;
-            $email->send();
+            $email1 = Yii::app()->email;
+            $email1->from = $email_from;
+            $email1->subject = $email_subject;
+            $email1->to = $old_mentor->email;
+            $email1->message = $html;
+            $email1->send();
         }
         elseif($prev_mentor == $assigned_by)
         {
@@ -674,6 +688,9 @@ class User extends CActiveRecord
             $from = $old_mentor->fname.' '.$old_mentor->lname;
             $message = "The domain mentor, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject." to you.<br/>".$link." to see the its information.";
             $html = User::replaceMessage($to,$message);
+            $email = Yii::app()->email;
+            $email->from = $email_from;
+            $email->subject = $email_subject;
             $email->to = $new_mentor->email;
             $email->message = $html;
             $email->send();
@@ -682,9 +699,12 @@ class User extends CActiveRecord
             $mentor = $new_mentor->fname.' '.$new_mentor->lname;
             $message = "The domain mentor, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.", to the domain mentor, ".$mentor.".<br/>".$link." to see the its information.";
             $html = User::replaceMessage($to,$message);
-            $email->to = $creator->email;
-            $email->message = $html;
-            $email->send();
+            $email1 = Yii::app()->email;
+            $email1->from = $email_from;
+            $email1->subject = $email_subject;
+            $email1->to = $creator->email;
+            $email1->message = $html;
+            $email1->send();
         }
         else
         {
@@ -692,24 +712,33 @@ class User extends CActiveRecord
             $from = $assignator->fname.' '.$assignator->lname;
             $message = "The System Administrator, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject." to you.<br/>".$link." to see the its information.";
             $html = User::replaceMessage($to,$message);
+            $email = Yii::app()->email;
+            $email->from = $email_from;
+            $email->subject = $email_subject;
             $email->to = $new_mentor->email;
             $email->message = $html;
             $email->send();
 
             $to = $creator->fname.' '.$creator->lname;
             $mentor = $new_mentor->fname.' '.$new_mentor->lname;
-            $message = "The domain mentor, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.", to the domain mentor, ".$mentor.".<br/>".$link." to see the its information.";
+            $message = "The System Administrator, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.", to the domain mentor, ".$mentor.".<br/>".$link." to see the its information.";
             $html = User::replaceMessage($to,$message);
-            $email->to = $creator->email;
-            $email->message = $html;
-            $email->send();
+            $email1 = Yii::app()->email;
+            $email1->from = $email_from;
+            $email1->subject = $email_subject;
+            $email1->to = $creator->email;
+            $email1->message = $html;
+            $email1->send();
 
             $to = $old_mentor->fname.' '.$old_mentor->lname;
-            $message = "The System Administrator, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.". Therefor the ticket is now out of your queue.<br/>".$link." to see the its information.";
+            $message = "The System Administrator, ".$from.", has reassigned the ticket #".$ticket_id.", related to ".$ticket->subject.". Therefore, the ticket is now out of your queue.<br/>".$link." to see the its information.";
             $html = User::replaceMessage($to,$message);
-            $email->to = $old_mentor->email;
-            $email->message = $html;
-            $email->send();
+            $email2 = Yii::app()->email;
+            $email2->from = $email_from;
+            $email2->subject = $email_subject;
+            $email2->to = $old_mentor->email;
+            $email2->message = $html;
+            $email2->send();
         }
     }
 
