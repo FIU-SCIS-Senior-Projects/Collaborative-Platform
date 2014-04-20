@@ -7,7 +7,7 @@
  */
 ?>
 
-<div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h3></div>
+<div><h3><?php echo ucfirst($user->fname); ?> <?php echo ucfirst($user->lname); ?> Dashboard</h3></div>
 <br>
 <div><h4>Tickets</h4></div>
 

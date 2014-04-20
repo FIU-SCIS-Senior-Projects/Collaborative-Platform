@@ -27,14 +27,21 @@
 <?php }?>
 <!-- div for project mentors -->
 <?php $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
-      $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$user->id"));?>
+      $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$user->id"));
+      /*$pm = ProjectMentor::model()->findbysql("SELECT max_projects FROM project_mentor WHERE user_id=$user->id");
+       if(is_null($pm))
+      {
+          $promentor->max_projects = 0; $promentor->save();
+      }*/
+  // var_dump($p)
+    //  var_dump($promentor->max_projects);?>
      
-<?php if((User::isCurrentUserProMentor() && count($p) < $promentor->max_projects) || count($p) == 0)
+<?php if((User::isCurrentUserProMentor() && (count($p) < $promentor->max_projects) || count($p) == 0))
 {?>
     <h4>Current Senior Projects<br><br>
     Check the projects(s) that you are interested in </h4>
 
-    <?php if(count($p) == 0)
+    <?php if(empty($promentor->max_projects))
     {
         echo" Select the desired amount of projects below and choose a maximum amount on the left";
     }
@@ -103,7 +110,7 @@
     <h9>Note: Click on projects to see their description</h9>
  
 <?php } 
-      elseif(User::isCurrentUserProMentor() && count($p) || count($p) == 0)
+      elseif(User::isCurrentUserProMentor())
       {?>
         <h4>My Current Assigned Senior Projects</h4>
         <h5>***Max Projects Already Assigned***</h5>
@@ -259,7 +266,7 @@
                ?>
            </select></h6></div>
        <?php }
-               else
+       else
                { ?>
      <div id="container" class="my-box-container" style="height: 175px; overflow-y: scroll ">
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
@@ -313,26 +320,30 @@
                   <?php  }
                ?>
           </select></h6>
-       </h6>         
-   <?php }}?></div> 
+       </h6> <?php }}?>   </div>      
+   
  
     
 <!-- div for personal mentors -->
 <?php $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id"); 
-      $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$user->id");?>
-
-<?php if((User::isCurrentUserPerMentor() && count($m) < $permentor->max_mentees) || count($m) == 0) 
+      $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$user->id");
+      /*$pm = PersonalMentor::model()->findbysql("SELECT max_mentees FROM personal_mentor WHERE user_id=$user->id");
+      if(is_null($pm))
+      {
+          $permentor->max_mentees = 0; $permentor->save();
+      }*/?>
+<?php if((User::isCurrentUserPerMentor() && count($m) < $permentor->max_mentees) || count($m) != 0 && count($m) != $permentor->max_mentees) 
     {?>
         
     <h4>Current Senior Project Students<br><br>
     Check the student(s) that you are interested in </h4>
-    <?php if(count($m) == 0)
+    <?php if($permentor->max_mentees == 0)
     {
         echo" Select the desired amount of mentees below and choose a maximum amount on the left";
     }
     else
     {
-     echo "You can add up to " . $permentor->max_mentees - count($m). " more mentee(s).";
+     echo "You can add up to " . ($permentor->max_mentees - count($m)) . " more mentee(s).";
     }?>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
             

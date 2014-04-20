@@ -34,19 +34,22 @@
 <?php } ?>
 <!-- div for project mentors -->
 <?php $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$model->id");
-      $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$model->id"));?>
-     
-<?php if(($model->isProMentor && count($p) < $promentor->max_projects) || count($p) == 0)
+      $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$model->id"));
+      if(is_null($promentor->max_projects))
+      {
+          $promentor->max_projects = 0; $promentor->save();
+      }?>
+<?php if(($model->isProMentor && ((count($p) < $promentor->max_projects) || count($p) == 0)))
 {?>
     <h4>Current Senior Projects<br><br>
     Check the projects(s) that you are interested in </h4>
-    <?php if(count($p) == 0)
+    <?php if(empty($promentor->max_projects))
     {
         echo" Select the desired amount of projects below and choose a maximum amount on the left";
     }
     else
     {
-        echo "ucfirst($model->fname);?> can add up to ". $promentor->max_projects-count($p)." more project(s).";
+     echo "You can add up to ". ($promentor->max_projects - count($p)) ." more projects(s).";
     }?>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
         <?php
@@ -327,18 +330,19 @@
 <!-- div for personal mentors -->
 <?php $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$model->id");
       $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$model->id");?>
-<?php if(($model->isPerMentor && count($m) < $permentor->max_mentees) || count($m) == 0)
-    {?>
+
+<?php if(($model->isPerMentor && ((count($m) < $permentor->max_mentees) || count($m) == 0)))
+    {
+    echo empty($permentor->max_mentees);?>
     <h4>Current Senior Project Students<br><br>
     Check the student(s) that you are interested in </h4>
-    <?php 
-    if(count($m) == 0)
+   <?php if(empty($permentor->max_mentees))
     {
         echo" Select the desired amount of mentees below and choose a maximum amount on the left";
     }
     else
     {
-        echo "ucfirst($model->fname);?> can add up to ". $permounter-count($m)." more mentee(s).";
+     echo "You can add up to " . ($permentor->max_mentees - count($m)) . " more mentee(s).";
     }?>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
             

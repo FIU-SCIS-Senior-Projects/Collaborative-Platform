@@ -220,7 +220,6 @@ class UserController extends Controller
                         $ud[$i]->save();
                     }
                 }
-            //$model->update("UPDATE user SET biography=$model->biography WHERE user_id=$model->id");
             }
         }
 
