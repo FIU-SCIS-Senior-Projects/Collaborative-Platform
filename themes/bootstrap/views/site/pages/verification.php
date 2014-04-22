@@ -1,11 +1,12 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name . ' - About';
+/*$this->pageTitle=Yii::app()->name . ' - About';
 $this->breadcrumbs=array(
 	'Verify Account',
-);
+);*/
 ?>
-<h1>Account Verification</h1>
+<h2>Account Verification</h2>
 
-<p>Please Check your email to verify your account.</p>
+<p>Thanks for your interest in becoming part of our platform.</p>
+<p>Your account information has being forwarded to the System Administrators. You will receive and email upon completion of the verification process.</p><br/>

@@ -303,8 +303,9 @@ class UserController extends Controller
                     $mentee->user_id = $model->id;
                     $mentee->save();
                 }
+                $userfullName = $model->fname.' '.$model->lname;
 
-                $this->render('create', array('model' => $model));
+                $this->actionSendVerificationEmail($userfullName, $model->email);
             }
 		}
         $error = '';
@@ -340,6 +341,7 @@ class UserController extends Controller
                 $admin->user_id = $model->id;
                 $admin->save();
                 User::sendNewAdministratorEmailNotification($model->email, $plain_pwd);
+
 				$this->redirect(array('/user/admin','id'=>$model->id));
             }
         }
@@ -443,20 +445,21 @@ class UserController extends Controller
 		}
 	}
 
-    public function actionSendVerificationEmail($email = null){
+    public function actionSendVerificationEmail($userfullName, $user_email){
 
-        if (!isset($email)) {
-            $username = $_GET['username'];
-            $user = User::model()->find("username=:username",array(':username'=>$username));
-        } else {
-            $user = User::model()->find("email=:email",array(':email'=>$email));
+        $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user inner join administrator on user.id = administrator.user_id WHERE user.disable = 0 and user.activated = 1");
+
+        foreach($admins as $ad)
+        {
+            $adminfullName = $ad->fname.' '.$ad->lname;
+            User::sendVerificationEmail($userfullName, $user_email, $adminfullName, $ad->email);
         }
 
-        $user->sendVerificationEmail();
         $this->redirect('/coplat/index.php/site/page?view=verification');
+
     }
 
-        public function actionVerifyEmail($username, $activation_chain)
+    public function actionVerifyEmail($username, $activation_chain)
     {
         $usermodel = User::model()->find("username=:username AND activation_chain=:activation_chain",array(':username'=>$username, ':activation_chain'=>$activation_chain));
         if ($usermodel != null)

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" afterPath="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
-    </list>
+    <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="" />
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,13 +26,13 @@
       <file leaf-file-name="User.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="793" column="1" selection-start="32704" selection-end="32704" vertical-scroll-proportion="0.96055686" vertical-offset="12653" max-vertical-offset="13583">
+            <state line="244" column="53" selection-start="9241" selection-end="9241" vertical-scroll-proportion="0.5314685" vertical-offset="3692" max-vertical-offset="13583">
               <folding>
-                <marker date="1398026376168" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
-                <marker date="1398026376168" expanded="true" signature="21827:21876" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1398026376168" expanded="true" signature="22108:22154" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1398026376168" expanded="true" signature="22764:22810" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1398026376168" expanded="true" signature="23171:23233" placeholder="SELECT COUNT..." />
+                <marker date="1398199681173" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
+                <marker date="1398199681173" expanded="true" signature="21840:21889" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1398199681173" expanded="true" signature="22121:22167" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1398199681173" expanded="true" signature="22777:22823" placeholder="SELECT * FRO..domain_mentor..." />
+                <marker date="1398199681173" expanded="true" signature="23184:23246" placeholder="SELECT COUNT..." />
               </folding>
             </state>
           </provider>
@@ -65,7 +62,6 @@
         <option value="$PROJECT_DIR$/protected/views/subdomain/create.php" />
         <option value="$PROJECT_DIR$/protected/views/user/set.php" />
         <option value="$PROJECT_DIR$/protected/views/user/create.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/protected/views/user/roles.php" />
         <option value="$PROJECT_DIR$/protected/views/invitation/admin.php" />
         <option value="$PROJECT_DIR$/protected/views/home/userHome.php" />
@@ -78,17 +74,20 @@
         <option value="$PROJECT_DIR$/protected/views/ticket/view.php" />
         <option value="$PROJECT_DIR$/protected/models/Invitation.php" />
         <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
-        <option value="$PROJECT_DIR$/protected/models/User.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" />
+        <option value="$PROJECT_DIR$/protected/models/User.php" />
+        <option value="$PROJECT_DIR$/protected/views/site/pages/verification.php" />
+        <option value="$PROJECT_DIR$/themes/bootstrap/views/site/pages/verification.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1050" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -116,6 +115,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -158,7 +158,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protected" />
+              <option name="myItemId" value="themes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -172,7 +172,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protected" />
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -190,7 +194,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protected" />
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -198,7 +206,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="invitation" />
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -213,16 +269,11 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="protected" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -256,7 +307,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -301,13 +352,26 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="572" column="1" selection-start="21690" selection-end="21690" vertical-scroll-proportion="0.0" vertical-offset="9724" max-vertical-offset="9826">
+          <folding>
+            <marker date="1398199681173" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
+            <marker date="1398199681173" expanded="true" signature="21840:21889" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398199681173" expanded="true" signature="22121:22167" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398199681173" expanded="true" signature="22777:22823" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1398199681173" expanded="true" signature="23184:23246" placeholder="SELECT COUNT..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="642" column="63" selection-start="25112" selection-end="25112" vertical-scroll-proportion="0.0" vertical-offset="10732" max-vertical-offset="12801">
           <folding>
-            <marker date="1398026376168" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
-            <marker date="1398026376168" expanded="true" signature="21827:21876" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398026376168" expanded="true" signature="22108:22154" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398026376168" expanded="true" signature="22764:22810" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1398026376168" expanded="true" signature="23171:23233" placeholder="SELECT COUNT..." />
+            <marker date="1398199681173" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
+            <marker date="1398199681173" expanded="true" signature="21840:21889" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398199681173" expanded="true" signature="22121:22167" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398199681173" expanded="true" signature="22777:22823" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1398199681173" expanded="true" signature="23184:23246" placeholder="SELECT COUNT..." />
           </folding>
         </state>
       </provider>
@@ -315,7 +379,12 @@
     <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="201" column="99" selection-start="8448" selection-end="8448" vertical-scroll-proportion="0.0" vertical-offset="2950" max-vertical-offset="5457">
-          <folding />
+          <folding>
+            <marker date="1398193045731" expanded="true" signature="-1:-1" placeholder="SELECT * fro..user..." />
+            <marker date="1398193045731" expanded="true" signature="-1:-1" placeholder="SELECT * fro..user..." />
+            <marker date="1398193045731" expanded="true" signature="-1:-1" placeholder="SELECT * fro..domain..." />
+            <marker date="1398193045731" expanded="true" signature="-1:-1" placeholder="SELECT * fro..subdomain..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -323,11 +392,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="711" column="27" selection-start="29104" selection-end="29104" vertical-scroll-proportion="0.0" vertical-offset="10783" max-vertical-offset="12308">
           <folding>
-            <marker date="1398026376168" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
-            <marker date="1398026376168" expanded="true" signature="21827:21876" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398026376168" expanded="true" signature="22108:22154" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398026376168" expanded="true" signature="22764:22810" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1398026376168" expanded="true" signature="23171:23233" placeholder="SELECT COUNT..." />
+            <marker date="1398199681173" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
+            <marker date="1398199681173" expanded="true" signature="21840:21889" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398199681173" expanded="true" signature="22121:22167" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398199681173" expanded="true" signature="22777:22823" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1398199681173" expanded="true" signature="23184:23246" placeholder="SELECT COUNT..." />
           </folding>
         </state>
       </provider>
@@ -427,11 +496,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="634" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/user/view_old.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/change.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="65" selection-start="601" selection-end="601" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="7361" />
@@ -440,11 +504,6 @@
     <entry file="file://$PROJECT_DIR$/protected/views/subdomain/change.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/user/setRoles.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="7378" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php">
@@ -472,11 +531,6 @@
         <state line="16" column="40" selection-start="342" selection-end="347" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="391" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/user/roles.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="76" selection-start="269" selection-end="269" vertical-scroll-proportion="0.23314285" vertical-offset="0" max-vertical-offset="875" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/update.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="878" />
@@ -487,29 +541,9 @@
         <state line="20" column="5" selection-start="415" selection-end="415" vertical-scroll-proportion="0.39508197" vertical-offset="59" max-vertical-offset="690" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="1581" selection-end="1581" vertical-scroll-proportion="0.42043552" vertical-offset="394" max-vertical-offset="5670" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/Ticket.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.9930314" vertical-offset="570" max-vertical-offset="1950" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/home/userHome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="46" selection-start="1650" selection-end="1650" vertical-scroll-proportion="0.7035176" vertical-offset="195" max-vertical-offset="2850" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/ticket/_form.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="0" selection-start="2899" selection-end="2899" vertical-scroll-proportion="0.7788945" vertical-offset="465" max-vertical-offset="1695" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="39" selection-start="2085" selection-end="2085" vertical-scroll-proportion="0.44723618" vertical-offset="588" max-vertical-offset="1515" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/subdomain/admin.php">
@@ -527,21 +561,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.7086883" vertical-offset="1003" max-vertical-offset="1590" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/pMentorViewMeetings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.29094076" vertical-offset="403" max-vertical-offset="2895" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/pMenteeViewMeetings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="64" selection-start="1540" selection-end="1540" vertical-scroll-proportion="0.46409807" vertical-offset="200" max-vertical-offset="1215" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/adminViewMeetings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="43" selection-start="1791" selection-end="1791" vertical-scroll-proportion="0.5166375" vertical-offset="275" max-vertical-offset="2670" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/CommentController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="86" column="18" selection-start="2294" selection-end="2294" vertical-scroll-proportion="0.2704918" vertical-offset="1125" max-vertical-offset="2970" />
@@ -557,41 +576,95 @@
         <state line="47" column="36" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.58285713" vertical-offset="289" max-vertical-offset="2074" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="48" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.4857143" vertical-offset="884" max-vertical-offset="6562" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/home/userHome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="46" selection-start="1650" selection-end="1650" vertical-scroll-proportion="-19.615385" vertical-offset="102" max-vertical-offset="3145">
+          <folding>
+            <marker date="1398193046022" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..domain..." />
+            <marker date="1398193046022" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..domain..." />
+            <marker date="1398193046022" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..domain..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="9" selection-start="12159" selection-end="12159" vertical-scroll-proportion="0.81560284" vertical-offset="4580" max-vertical-offset="5457">
+        <state line="310" column="9" selection-start="12159" selection-end="12159" vertical-scroll-proportion="-27.26923" vertical-offset="4561" max-vertical-offset="5457">
+          <folding>
+            <marker date="1398193045731" expanded="true" signature="-1:-1" placeholder="SELECT * fro..user..." />
+            <marker date="1398193045731" expanded="true" signature="-1:-1" placeholder="SELECT * fro..user..." />
+            <marker date="1398193045731" expanded="true" signature="-1:-1" placeholder="SELECT * fro..domain..." />
+            <marker date="1398193045731" expanded="true" signature="-1:-1" placeholder="SELECT * fro..subdomain..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/Ticket.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="50.53846" vertical-offset="1314" max-vertical-offset="2210">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
+    <entry file="file://$PROJECT_DIR$/protected/controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="48" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.4857143" vertical-offset="884" max-vertical-offset="6562">
+        <state line="51" column="91" selection-start="1470" selection-end="1470" vertical-scroll-proportion="-11.961538" vertical-offset="556" max-vertical-offset="1717">
           <folding>
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project_meeting..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project_meeting..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1398026501428" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
+            <marker date="1398193045725" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ticket..." />
+            <marker date="1398193045725" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ticket..." />
+            <marker date="1398193045725" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ticket..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/pages/verification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="68" selection-start="307" selection-end="307" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/site/pages/verification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="142" selection-end="397" vertical-scroll-proportion="0.15178572" vertical-offset="0" max-vertical-offset="896">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="456" column="0" selection-start="15548" selection-end="15548" vertical-scroll-proportion="0.52812856" vertical-offset="4385" max-vertical-offset="6953">
+          <folding>
+            <element signature="n#actionView#0;n#UserController#0;n#!!top" expanded="false" />
+            <element signature="e#1973#7842#0" expanded="false" />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT id FR..domain..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT title..project..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT domai..user_domain..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT user_..mentee..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ticket..." />
+            <marker date="1398200083225" expanded="true" signature="-1:-1" placeholder="SELECT fname..user..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="793" column="1" selection-start="32704" selection-end="32704" vertical-scroll-proportion="0.96055686" vertical-offset="12653" max-vertical-offset="13583">
+        <state line="244" column="53" selection-start="9241" selection-end="9241" vertical-scroll-proportion="0.5314685" vertical-offset="3692" max-vertical-offset="13583">
           <folding>
-            <marker date="1398026376168" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
-            <marker date="1398026376168" expanded="true" signature="21827:21876" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398026376168" expanded="true" signature="22108:22154" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398026376168" expanded="true" signature="22764:22810" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1398026376168" expanded="true" signature="23171:23233" placeholder="SELECT COUNT..." />
+            <marker date="1398199681173" expanded="true" signature="7799:7837" placeholder="SELECT id fr..user..." />
+            <marker date="1398199681173" expanded="true" signature="21840:21889" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398199681173" expanded="true" signature="22121:22167" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398199681173" expanded="true" signature="22777:22823" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1398199681173" expanded="true" signature="23184:23246" placeholder="SELECT COUNT..." />
           </folding>
         </state>
       </provider>

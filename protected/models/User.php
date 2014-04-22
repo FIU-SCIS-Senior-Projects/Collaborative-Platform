@@ -232,17 +232,17 @@ class User extends CActiveRecord
     }
 
 
-    public function sendVerificationEmail()
+    public static function sendVerificationEmail($userfullName, $user_email, $adminfullName, $admin_email)
     {
         $email = Yii::app()->email;
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/user/VerifyEmail?username=' . $this->username
-            . '&activation_chain=' . $this->activation_chain);
-        $message = "You need to verify your account before logging in. <br/> $link to verify your account.";
-        $html = $this->replaceMessage($this->fname, $message);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $email->to = $this->email;
+        $message = $userfullName.", has register on the system. Administration, verification is needed to complete the registration process.<br>".$link. " to follow access the platform.";
+        $html = User::replaceMessage($adminfullName, $message);
+
+        $email->to = $admin_email;
         $email->from = 'Collaborative Platform';
-        $email->subject = 'Verify your account on the Collaborative Platform';
+        $email->subject = 'We have a New Member!!!!';
         $email->message = $html;
         $email->send();
     }
