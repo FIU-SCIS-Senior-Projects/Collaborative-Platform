@@ -113,11 +113,9 @@ class CommentController extends Controller
 
             if($model->save(false))
             {
-                /*Get the id of the person who was reassign the ticket */
-                $reassing = Ticket::model()->find("id=:id", array(":id"=>$model->ticket_id));
 
                 /* Send Notification about the comment added to a ticket */
-                User::sendTicketReassingCommentedEmailNotification($model->ticket_id,$model->description, $reassing->assign_user_id);
+                User::sendTicketReassingCommentedEmailNotification($model->ticket_id,$model->description, User::getCurrentUserId());
 
             }
 

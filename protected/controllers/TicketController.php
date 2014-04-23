@@ -160,6 +160,10 @@ class TicketController extends Controller
         // $this->performAjaxValidation($model);
         $old_mentor = $model->assign_user_id;
 
+        $comment = new CommentController(new Comment());
+
+        $comment->actionCreate($id);
+
 
         if (isset($_POST['Ticket'])) {
             $model->attributes = $_POST['Ticket'];
@@ -168,8 +172,7 @@ class TicketController extends Controller
             if ($model->save()) {
 
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                //User::sendReassignedEmailNotification($model->creator_user_id,
-                   // $model->assign_user_id, $model->id, $old_mentor, User::getCurrentUserId());
+                User::sendReassignedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());
 
                 //if(User::isCurrentUserAdmin()) {
                  //   $this->redirect("/coplat/index.php/home/adminHome");
