@@ -1,8 +1,9 @@
-<div style="width: 1050px; height: 1425px;">
+<div style="width: 1050px;">
+    
 <div id="left">
 <form method="POST" enctype="multipart/form-data" action="userProfile">
     
-<div id="container" class="my-box-container3" style="height: 360px;" >   
+<div id="container" class="my-box-container3" style="height: 325px;" >   
         <div class="titlebox"><h3><?php echo ucfirst($user->fname) ." " . ucfirst($user->lname)?></h3></div>
         <div id="profileImage">
         <br><img style="width:150px; height:205px;" src="<?php echo $user->pic_url ?>" />
@@ -17,39 +18,25 @@
                           <?php if(User::isCurrentUserMentee()) {?> <b> Mentee </b> <?php }?>        
         </div> 
 </div> 
-<!--only mentee -->
-<?php if(User::isCurrentUserMentee() || User::isCurrentUserAdmin() )
-    {?> <div id="rightup">
-        <div id="experience">
-        <div class="titlebox"><h4>BIOGRAPHY & WORK HISTORY</h4></div><br><br><br>   
-            <h8><textarea id="bio" style="width:475px; height:150px;"name="biography"><?php echo $user->biography ?></textarea>
-                <br></div></div></div></div>
-<?php }?>
+
 <!-- div for project mentors -->
-<?php $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
-      $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$user->id"));
-      /*$pm = ProjectMentor::model()->findbysql("SELECT max_projects FROM project_mentor WHERE user_id=$user->id");
-       if(is_null($pm))
-      {
-          $promentor->max_projects = 0; $promentor->save();
-      }*/
-  // var_dump($p)
-    //  var_dump($promentor->max_projects);?>
-     
-<?php if((User::isCurrentUserProMentor() && (count($p) < $promentor->max_projects) || count($p) == 0))
-{?>
+<?php if(User::isCurrentUserProMentor())
+{   $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
+    $p = Project::model()->findAllBySql(("SELECT * FROM project WHERE project_mentor_user_id=$user->id"));?>
+    <?php if((User::isCurrentUserProMentor() && (count($p) < $promentor->max_projects) || count($p) == 0))
+    {?>
     <h4>Current Senior Projects<br><br>
     Check the projects(s) that you are interested in </h4>
-
     <?php if(empty($promentor->max_projects))
-    {
-        echo" Select the desired amount of projects below and choose a maximum amount on the left";
-    }
+    {   echo" Select the desired amount of projects below and choose a maximum amount on the left"; }
     else
-    {
-     echo "You can add up to ". ($promentor->max_projects - count($p)) ." more projects(s).";
-    }?>
-    <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
+    {   echo "You can add up to ". ($promentor->max_projects - count($p)) ." more projects(s).";    }?>
+    <div id="container" class="my-box-container2" 
+    style="<?php if(User::isCurrentUserProMentor())
+        {     echo 'display:block; '; }
+        else
+        {     echo 'display:none; ';  } ?> height: 200px; overflow-y: scroll">
+        
         <?php
         if($projects == null)
         {
@@ -81,7 +68,11 @@
 	<h2>OR</h2>
         
     <h4>Check the project(s) that you are NOT interested in</h4>
-    <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
+    <div id="container" class="my-box-container2"
+        style="<?php if(User::isCurrentUserProMentor())
+                    {     echo 'display:block; '; }
+                    else
+                    {     echo 'display:none; ';  } ?> height: 200px; overflow-y: scroll ">
            <table cellpadding="0" vecllspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
             <thread>
                 <tr>
@@ -107,14 +98,16 @@
             }?>
         </table>
     </div>
-    <h9>Note: Click on projects to see their description</h9>
- 
 <?php } 
       elseif(User::isCurrentUserProMentor())
       {?>
         <h4>My Current Assigned Senior Projects</h4>
         <h5>***Max Projects Already Assigned***</h5>
-        <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
+        <div id="container" class="my-box-container2" 
+        style="<?php if(User::isCurrentUserProMentor())
+        {     echo 'display:block; '; }
+        else
+        {     echo 'display:none; ';  } ?> height: 200px; overflow-y: scroll ">
         <?php
         {?>
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
@@ -138,10 +131,16 @@
         <?php }?>
     </div>
       <?php }?>
+<?php } ?>
+<!-- end if project mentor -->
         
  <?php if(User::isCurrentUserDomMentor() || User::isCurrentUserProMentor() || User::isCurrentUserPerMentor())
  {?>
-    <div id="container" class="my-box-container3" style="height: 350px">       
+    <div id="container" class="my-box-container3" 
+         style="<?php if(User::isCurrentUserProMentor() || User::isCurrentUserDomMentor() || User::isCurrentUserPerMentor())
+        {     echo 'display:block; '; }
+        else
+        {     echo 'display:none; ';  } ?> height: 100%">       
         <div class="contactlinks">
         <h4>Availability</h4>
         
@@ -180,6 +179,7 @@
             ?><?php
         } 
         ?>
+                
         <?php
         if(User::isCurrentUserPerMentor())
         {
@@ -201,8 +201,8 @@
             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
             <?php }?>
             </select><br>
-        <?php
-        }
+        
+        <?php }
         if(User::isCurrentUserProMentor())
         {
             ?><h6>Project Mentor Availability</h6><?php
@@ -223,29 +223,31 @@
             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
             <?php }?>
             </select><br>
-	</div>  
-        <?php } ?>
-    <?php } ?></div>
-    
-   </div> 
+	</div>  <?php } ?>
+    </div>  </div><?php } ?>
+
  <!-- end left div -->
-<?php if(!User::isCurrentUserMentee() && !User::isCurrentUserAdmin())
-{?>
-   <div id="rightup"> 
+ 
+<div id="rightup"> 
     <div id="experience">
         <div class="titlebox"><h4>BIOGRAPHY & WORK HISTORY</h4></div><br><br><br>   
             <h8><textarea id="bio" style="width:475px; height:150px;"name="biography"><?php echo $user->biography ?></textarea>
-    <br></div>
+    <br>
+    </div>
      
-<!-- div to show domains for Domain and Personal Mentors ONLY; only included for project mentors if they are also domain or personal --> 
+<!-- div to show domains for domain mentors only, unless have other roles as well -->
 <?php if(User::isCurrentUserDomMentor())
 {?>
-    <div id="container" class="my-box-container5" style="height: 300px; ">
+    <div id="container" class="my-box-container5" 
+       style="<?php if(User::isCurrentUserDomMentor())
+        {     echo 'display:block; '; }
+        else
+        {     echo 'display:none; ';  } ?> height: 300px; ">
        <div class="titlebox"><h4>DOMAINS</h4></div>
-     <?php 
+       <?php 
                if($userdoms == null)
                {?>
-                <div id="container" class="my-box-container" style="height: 200px; overflow-y: scroll ">
+                <div id="container" class="my-box-container" style="height: 225px; overflow-y: scroll ">
                 <?php
                     echo "<h7>Rating: 1:low: < 2yrs experience,<br> 5:moderate 2-5yrs exp, <br>10: > 5yrs exp</h7>"
                         . "<h6>Add new domain:";?>
@@ -320,19 +322,16 @@
                   <?php  }
                ?>
           </select></h6>
-       </h6> <?php }}?>   </div>      
+       </h6> 
+<?php }
+}?>   </div> 
    
- 
-    
 <!-- div for personal mentors -->
-<?php $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id"); 
-      $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$user->id");
-      /*$pm = PersonalMentor::model()->findbysql("SELECT max_mentees FROM personal_mentor WHERE user_id=$user->id");
-      if(is_null($pm))
-      {
-          $permentor->max_mentees = 0; $permentor->save();
-      }*/?>
-<?php if((User::isCurrentUserPerMentor() && ((count($m) < $permentor->max_mentees) || count($m) == 0)))
+<?php if(User::isCurrentUserPerMentor())
+{
+      $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id"); 
+      $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$user->id");?>
+    <?php if((User::isCurrentUserPerMentor() && ((count($m) < $permentor->max_mentees) || count($m) == 0)))
     {?>
         
     <h4>Current Senior Project Students<br><br>
@@ -345,8 +344,11 @@
     {
      echo "You can add up to " . ($permentor->max_mentees - count($m)) . " more mentee(s).";
     }?>
-    <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
-            
+    <div id="container" class="my-box-container2" 
+        style="<?php if(User::isCurrentUserPerMentor())
+        {     echo 'display:block; '; }
+        else
+        {     echo 'display:none; ';  } ?>height: 200px; overflow-y: scroll ">
         <?php 
         if($Mentees == null)
         {
@@ -398,7 +400,6 @@
                 </tbody>
      <?php }?></table>
     </div>
-    <h9>Note: Click on students to see their project and description(s)</h9>
     <?php } elseif(User::isCurrentUserPerMentor())
       {?>
         <h4>My Current Assigned Mentees</h4>
@@ -425,15 +426,12 @@
                 </tbody>
         <?php }?>
                 </table><?php }?>
-    </div><?php }?>
-    <br><br>
-</div>
-</div>
-<?php }?>
-<div style="float:right">
-    <!--<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-primary")); ?>-->
-    <input type="submit" name="submit" value="Save" class="btn btn-primary">
-    </form>
     </div> 
+    <br>
+        <?php } ?>
+    <?php }?><br>
+    <input type="submit" name="submit" value="Save" class="btn btn-primary">
+    </form></div>
+   
 </div>
-<!--end right-->
+

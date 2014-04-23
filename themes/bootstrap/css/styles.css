@@ -18,25 +18,22 @@ body{
 #left{
     float:left;
     width: 500px;
-    height: 1200px;
 }
 
 #leftup{
     float:left;
     width: 500px;
-    height: 1000px;
+    clear:left;
 }
 
 #right{
     float:right;
     width: 500px;
-    height: 1200px;
 }
 
 #rightup{
     float:right;
     width: 500px;
-    height: 1000px;
 }
 
 
