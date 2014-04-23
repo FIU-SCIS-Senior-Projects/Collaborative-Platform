@@ -51,11 +51,13 @@ class HomeController extends Controller
         $username = Yii::app()->user->name;
         $user = User::model()->find("username=:username", array(':username' => $username));
 
-        $TicketsP = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'pending'));
+        $TicketsO = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id)
+        and (status=:pending or status=:reject)", array(":id" => $user->id,":pending"=>'pending', ":reject"=>'reject' ));
+       // $TicketsR = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'reject'));
         $TicketsC = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'close'));
-        $TicketsR = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'reject'));
 
-        $this->render('userHome', array('TicketsP' => $TicketsP, 'TicketsC' => $TicketsC, 'TicketsR' => $TicketsR,
+
+        $this->render('userHome', array('TicketsO' => $TicketsO, 'TicketsC' => $TicketsC,
             //'results' => $results,
             'user' => $user));
 
@@ -76,11 +78,12 @@ class HomeController extends Controller
         $user = User::model()->find("username=:username", array(':username' => $username));
 
         /* Get all tickets on the mentoring subsystem */
-        $TicketsP = Ticket::model()->findAll("status=:status",array(':status'=>'pending'));
+        //$TicketsO = Ticket::model()->findAll("status=:pending" or "status=:reject",array(':pending'=>'pending', ':reject'=>'reject'));
+        $TicketsO = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (status=:pending or status=:reject)",array(':pending'=>'pending', ':reject'=>'reject') );
         $TicketsC = Ticket::model()->findAll("status=:status",array(':status'=>'close'));
-        $TicketsR = Ticket::model()->findAll("status=:status",array(':status'=>'reject'));
+        //$TicketsR = Ticket::model()->findAll("status=:status",array(':status'=>'reject'));
 
-        $this->render('adminHome', array('TicketsP' => $TicketsP, 'TicketsC'=> $TicketsC, 'TicketsR'=> $TicketsR,
+        $this->render('adminHome', array('TicketsO' => $TicketsO, 'TicketsC'=> $TicketsC,
             //'results' => $results,
             'user' => $user));
 

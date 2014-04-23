@@ -17,12 +17,11 @@
     <div>
         <div class="span4" style="width: 800px; margin-left: 0px">
             <ul class="nav nav-tabs">
-                <li><a href="#pending" data-toggle="tab">Pending</a></li>
+                <li><a href="#open" data-toggle="tab">Open</a></li>
                 <li><a href="#close" data-toggle="tab">Close</a></li>
-                <li><a href="#reject" data-toggle="tab">Reject</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="pending">
+                <div class="tab-pane active" id="open">
                     <table cellpadding="0" cellspacing="0" border="0"
                            class="table table-striped table-bordered table-fixed-header"
                            id="#mytable1" width="100%" style="table-layout:fixed; background-color:  #EEE">
@@ -37,11 +36,11 @@
                             <th width="10%">Status</th>
                         </tr>
                         </thead>
-                        <?php if ($TicketsP == null) {
+                        <?php if ($TicketsO == null) {
                             echo "No tickets";
                         } else {
                             ?>
-                            <?php foreach ($TicketsP as $Ticket) {
+                            <?php foreach ($TicketsO as $Ticket) {
                                 $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
                                 $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
                                 <tbody>
@@ -99,45 +98,7 @@
                     </table>
 
                 </div>
-                <div class="tab-pane" id="reject">
-                    <table cellpadding="0" cellspacing="0" border="0"
-                           class="table table-striped table-bordered table-fixed-header"
-                           id="#mytable3" width="100%" style="table-layout:fixed; background-color:  #EEE">
 
-                        <thead class="header">
-                        <tr>
-                            <th width="5%">No</th>
-                            <th width="15%">Creator Name</th>
-                            <th width="13%">Domain</th>
-                            <th width="42%">Subject</th>
-                            <th width="15%">Created Date</th>
-                            <th width="10%">Status</th>
-                        </tr>
-                        </thead>
-                        <?php if ($TicketsR == null) {
-                            echo "No tickets";
-                        } else {
-                            ?>
-                            <?php foreach ($TicketsR as $Ticket) {
-                                $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
-                                $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
-                                <tbody>
-                                <tr id="<?php echo $Ticket->id ?>" class="triggerTicketClick">
-                                    <td width="5%"><?php echo $Ticket->id; ?></td>
-                                    <td width="15%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
-                                    <td width="13%"><?php echo $domain->name; ?></td>
-                                    <td width="42%"><?php echo $Ticket->subject; ?></td>
-                                    <td width="15%"><?php echo date("M d, Y", strtotime($Ticket->created_date)); ?></td>
-                                    <td width="10%"><?php echo $Ticket->status ?></td>
-                                </tr>
-                                </tbody>
-                            <?php
-                            }
-                        }
-                        ?>
-                    </table>
-
-                </div>
             </div>
 
         </div>

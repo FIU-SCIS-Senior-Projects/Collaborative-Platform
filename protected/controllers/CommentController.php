@@ -32,7 +32,7 @@ class CommentController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','message'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -85,9 +85,44 @@ class CommentController extends Controller
             {
                 /* Send Notification about the comment added to a ticket */
                 //User::sendTicketCommentedEmailNotification($model->ticket_id);
+
+
             }
 		}
 	}
+
+    public function actionMessage($id)
+    {
+        $model = new Comment;
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+
+        if(isset($_POST['Comment']))
+        {
+            $model-> description = $_POST['Comment']['description'];
+            $model -> ticket_id = $id;
+            /*Set the date */
+            $model -> added_date = new CDbExpression('NOW()');
+
+            /* Get the name and lastname of the current user */
+            $user = User::model()->getCurrentUser();
+            /** @var User user_added */
+            $model ->user_added = $user->fname.' '.$user->lname;
+
+
+            if($model->save(false))
+            {
+                /*Get the id of the person who was reassign the ticket */
+                $reassing = Ticket::model()->find("id=:id", array(":id"=>$model->ticket_id));
+
+                /* Send Notification about the comment added to a ticket */
+                User::sendTicketReassingCommentedEmailNotification($model->ticket_id,$model->description, $reassing->assign_user_id);
+
+            }
+
+        }
+    }
 
 	/**
 	 * Updates a particular model.

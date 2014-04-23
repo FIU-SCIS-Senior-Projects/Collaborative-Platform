@@ -238,7 +238,7 @@
                 <input style ="display:none" type = "text" id = "file" value='<?php /*echo $model->file;*/ ?>'</input> -->
         <?php
         //Logic to identified is a subdomain is being specified
-        $userDomain = User::model()->findAll("isDomMentor=:isDomMentor", array(':isDomMentor' => 1));
+        $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE isDomMentor=:isDomMentor and id!=:userid", array(':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
         $data = array();
         foreach ($userDomain as $mod) {
             $data[$mod->id] = $mod->fname . ' ' . $mod->lname;
@@ -247,6 +247,24 @@
         <?php echo $form->labelEx($mod, 'Domain Mentor'); ?>
         <?php echo $form->dropDownList($model, 'assign_user_id', $data, array('prompt' => 'Select')); ?>
         <?php echo $form->error($model, 'assign_user_id'); ?>
+
+        <?php $this->endWidget() ?>
+
+
+        <?php
+        /*Leave a message when the ticket is reassign */
+        $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'message-form',
+            //'enableAjaxValidation'=>false,
+        )); ?>
+        <div>
+            <h4>Comment</h4>
+            <?php $comment = new Comment(); ?>
+            <!--  	<input style ="display:none" type = "text" id = "ticket_id" value=<?php /*echo $model->id;*/ ?>></input>-->
+            <?php echo $form->textArea($comment, 'description', array(
+                'id' => 'description', 'style' => 'width:480px', 'cols' => 20, 'rows' => 5,
+                'width' => '400px')); ?>
+        </div>
 
 
         <?php /*echo $form->textField($model, 'assign_user_id', array('size' => 1, 'maxlength' => 1)); */ ?>
@@ -263,7 +281,7 @@
             'htmlOptions' => array('data-dismiss' => 'modal'),
         ));
         ?>
-        <?php /*$this->endWidget()*/ ?>
+
         <?php $this->endWidget() ?>
     </div>
 </div>
@@ -273,12 +291,16 @@
         var confirmed = confirm("Do you really want to reassign the ticket?");
         if (confirmed) {
             $.post('/coplat/index.php/ticket/reassign/<?php echo $model->id?>', $('#ticket-form').serialize(), function (message) {
-                window.location = location;
-            });
+                $.post('/coplat/index.php/comment/message/<?php echo $model->id?>', $('#message-form').serialize(), function (message) {
+                    window.location = location.pathname;
+                });
+            } );
         }
         return false;
     })
 </script>
+
+
 <!-- Modal Change Status-->
 <div class="modal fade" id="myModalChangeStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true" style="display: none;">
