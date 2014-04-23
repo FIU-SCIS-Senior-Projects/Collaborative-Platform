@@ -1,22 +1,19 @@
 <?php
     $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id IS NULL");
     $userdoms = UserDomain::model()->findAllBySql("SELECT domain_id FROM user_domain WHERE user_id=$model->id");
-    $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id IS NULL");
-    $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$model->id));
+    $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id IS NULL"); 
 ?>
-<div style="width: 1050px; height: 1425px;">
+<div style="width: 1050px;">
+
 <div id="left">
-    
 <form method="POST" enctype="multipart/form-data" action="/coplat/index.php/user/<?php echo $model->id; ?>">
 
 <div id="container" class="my-box-container3" style="height: 360px;" >
         <div class="titlebox"><h3><?php echo ucfirst($model->fname) ." " . ucfirst($model->lname)?></h3></div>
         <div id="profileImage">
         <br><img style="width:150px; height:205px;" src="<?php echo $model->pic_url ?>" />
-        
         <input type="file" name="photo" style="width:95px;" class="btn-primary">
         
-    	<!--<?php echo CHtml::submitButton('Sync LinkedIn', array("class"=>"btn btn-primary")); ?>-->
         <br>Role Type(s): <?php if($model->isAdmin) {?> <b> Administrator </b> <?php }?>
                           <?php if($model->isDomMentor) {?> <b>Domain Mentor </b> <?php }?>
                           <?php if($model->isPerMentor) {?> <b>Personal Mentor </b> <?php }?>
@@ -24,6 +21,7 @@
                           <?php if($model->isMentee) {?> <b> Mentee </b> <?php }?>        
         </div> 
 </div> 
+    
 <!-- only mentee -->
 <?php if($model->isMentee || $model->isAdmin)
     {?> <div id="rightup">
