@@ -264,11 +264,9 @@ class ProjectMeetingController extends Controller
         /*Return all the projects for the current Project Mentor */
         $projects = Project::model()->findAll("project_mentor_user_id=:mentor_id", array(':mentor_id' => $user->id));
 
-
         /*  */
         /* Return all the mentees for the project mentor */
         /** @var Projectmentor_project $projectmentor_project */
-
         $pmentees = array();
 
         foreach ($projects as $pm) {
@@ -288,6 +286,18 @@ class ProjectMeetingController extends Controller
             }
         }
 
+        /*Get all tickets for his mentees */
+        $tickets = array();
+        foreach($pmentee as  $id=>$menteeTickets){
+            $myTickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE creator_user_id=:id and assign_user_id!=:id2",
+                array(':id'=>$menteeTickets->id, ':id2'=>User::getCurrentUserId()));
+            if(is_array($myTickets)) {
+                $tickets = array_merge($tickets, $myTickets);
+            }
+        }
+
+
+        /* Popover */
         foreach ($projects as $project) {
             /** @var Project $project */
 
@@ -308,6 +318,7 @@ class ProjectMeetingController extends Controller
             'projects' => $projects,
             'pmentee' => $pmentee,
             'mentees' => $mentees,
+            'tickets' => $tickets,
         ));
     }
 

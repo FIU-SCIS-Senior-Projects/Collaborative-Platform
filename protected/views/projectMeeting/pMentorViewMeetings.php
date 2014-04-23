@@ -18,12 +18,16 @@
     <div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?></h3></div>
     <br>
 
-    <div class="row row-fluid">
+    <div class="row row-fluid" style="margin-left: 3px">
         <div class="span5">
             <h3 class="my-box-container-title">My projects</h3>
 
             <div class="my-box-container" style="height: 300px; overflow-y: scroll ">
                 <?php
+
+                /*var_dump($pmentee);
+                exit; */
+
                 /** @var Project $projects */
                 if ($projects == null) {
                     echo "No Projects Assigned";
@@ -89,6 +93,50 @@
             </div>
         </div>
     </div>
+    <br/>
+    <h4>Mentee Tickets</h4>
+    <table cellpadding="0" cellspacing="0" border="0"
+           class="table table-striped table-bordered table-fixed-header"
+           id="#mytable1" width="100%" style="table-layout:fixed; background-color:  #EEE">
+
+        <thead class="header">
+        <tr>
+            <th width="5%">No</th>
+            <th width="15%">Creator Name</th>
+            <th width="13%">Domain</th>
+            <th width="42%">Subject</th>
+            <th width="15%">Created Date</th>
+            <th width="10%">Status</th>
+        </tr>
+        </thead>
+        <?php if ($tickets == null) {
+            echo "No tickets";
+        } else {
+            ?>
+            <?php
+            foreach ($tickets as $menteeTicket) {
+                if ($menteeTicket == null) {
+                    continue;
+                }
+                $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $menteeTicket->domain_id));
+                $creator = User::model()->find("id=:id", array(":id" => $menteeTicket->creator_user_id)); ?>
+                <tbody>
+                <tr id="<?php echo $menteeTicket->id ?>" class="triggerTicketClick">
+                    <td width="5%"><?php echo $menteeTicket->id; ?></td>
+                    <td width="15%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
+                    <td width="13%"><?php echo $domain->name; ?></td>
+                    <td width="42%"><?php echo $menteeTicket->subject; ?></td>
+                    <td width="15%"><?php echo date("M d, Y", strtotime($menteeTicket->created_date)); ?></td>
+                    <td width="10%"><?php echo $menteeTicket->status ?></td>
+                </tr>
+                </tbody>
+            <?php
+            }
+        }
+        ?>
+    </table>
+
+
 </div>
 
 
