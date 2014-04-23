@@ -31,25 +31,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="User.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/protected/models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="783" column="4" selection-start="33055" selection-end="33165" vertical-scroll-proportion="0.77482677" vertical-offset="11074" max-vertical-offset="11940">
-              <folding>
-                <marker date="1398277394000" expanded="true" signature="7800:7838" placeholder="SELECT id fr..user..." />
-                <marker date="1398277394000" expanded="true" signature="21954:22003" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1398277394000" expanded="true" signature="22228:22274" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1398277394000" expanded="true" signature="22884:22930" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1398277394000" expanded="true" signature="23291:23353" placeholder="SELECT COUNT..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="view.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/ticket/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="261" column="46" selection-start="11545" selection-end="11545" vertical-scroll-proportion="-28.583334" vertical-offset="2914" max-vertical-offset="5190">
+            <state line="213" column="0" selection-start="8647" selection-end="8647" vertical-scroll-proportion="0.11662818" vertical-offset="2914" max-vertical-offset="5190">
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -198,7 +183,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1354" />
+    <option name="x" value="1052" />
     <option name="y" value="-81" />
     <option name="width" value="1761" />
     <option name="height" value="1047" />
@@ -545,7 +530,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1354" y="-81" width="1761" height="1047" extended-state="0" />
+    <frame x="1052" y="-81" width="1761" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -897,9 +882,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="760" column="9" selection-start="32109" selection-end="32109" vertical-scroll-proportion="0.37644342" vertical-offset="11074" max-vertical-offset="11940">
+          <folding>
+            <marker date="1398277394000" expanded="true" signature="-1:-1" placeholder="SELECT id fr..user..." />
+            <marker date="1398277394000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398277394000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398277394000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1398277394000" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/ticket/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="261" column="46" selection-start="11545" selection-end="11545" vertical-scroll-proportion="-28.583334" vertical-offset="2914" max-vertical-offset="5190">
+        <state line="213" column="0" selection-start="8647" selection-end="8647" vertical-scroll-proportion="0.11662818" vertical-offset="2914" max-vertical-offset="5190">
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -925,19 +923,6 @@
             <marker date="1398276271000" expanded="true" signature="11468:11515" placeholder="..." />
             <marker date="1398276271000" expanded="true" signature="12579:12658" placeholder="..." />
             <marker date="1398276271000" expanded="true" signature="14665:14742" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="783" column="4" selection-start="33055" selection-end="33165" vertical-scroll-proportion="0.77482677" vertical-offset="11074" max-vertical-offset="11940">
-          <folding>
-            <marker date="1398277394000" expanded="true" signature="7800:7838" placeholder="SELECT id fr..user..." />
-            <marker date="1398277394000" expanded="true" signature="21954:22003" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398277394000" expanded="true" signature="22228:22274" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398277394000" expanded="true" signature="22884:22930" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1398277394000" expanded="true" signature="23291:23353" placeholder="SELECT COUNT..." />
           </folding>
         </state>
       </provider>
