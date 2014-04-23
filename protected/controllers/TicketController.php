@@ -155,38 +155,35 @@ class TicketController extends Controller
     {
         $model = $this->loadModel($id);
 
-
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
         $old_mentor = $model->assign_user_id;
 
-        $comment = new CommentController(new Comment());
-
-        $comment->actionCreate($id);
-
-
         if (isset($_POST['Ticket'])) {
             $model->attributes = $_POST['Ticket'];
 
-
-            if ($model->save()) {
-
-                /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                User::sendReassignedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());
-
-                //if(User::isCurrentUserAdmin()) {
-                 //   $this->redirect("/coplat/index.php/home/adminHome");
-               // }else {
-                    $this->redirect("/coplat/index.php/home/userHome");
-                //}
-
+            $response = array();
+            /*Change the status of the ticket to Pending from Reject */
+            if($model->status = 'Reject'){
+                $model->status = 'Pending';
             }
 
-        }
+            if ($model->save()) {
+                /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+                User::sendReassignedEmailNotificationToOldMentor($model->id, $old_mentor,
+                    User::getCurrentUserId());
 
-        //$this->render('update', array(
-            //'model' => $model,
-   //     ));
+                if (User::isCurrentUserAdmin()) {
+                    $response['url'] = "/coplat/index.php/home/adminHome";
+                } else {
+                    $response['url'] = "/coplat/index.php/home/userHome";
+                }
+            } else {
+                $response['url'] = "/coplat/index.php/home/userHome";
+            }
+            echo json_encode($response);
+            exit();
+        }
     }
 
     /*Function to change the status of the ticket */
@@ -204,24 +201,41 @@ class TicketController extends Controller
                 if ($model->save()) {
 
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    User::sendCloseTicketEmailNotification($model->creator_user_id,
-                        $model->assign_user_id, $model->id);
-                    $this->redirect(array('view', 'id' => $model->id));
+                    //User::sendCloseTicketEmailNotification($model->creator_user_id,
+                    //  $model->assign_user_id, $model->id);
+                    //$this->redirect(array('view', 'id' => $model->id));
+                    if (User::isCurrentUserAdmin()) {
+                        $response['url'] = "/coplat/index.php/home/adminHome";
+                    } else {
+                        $response['url'] = "/coplat/index.php/home/userHome";
+                    }
+                } else {
+                    $response['url'] = "/coplat/index.php/home/userHome";
                 }
+                echo json_encode($response);
+                exit();
+
+
             } elseif ($newStatus == 1) {
                 $model->status = 'Reject';
                 if ($model->save()) {
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
                     User::sendRejectEmailNotification($model->creator_user_id,
                         $model->assign_user_id, $model->id, User::getCurrentUserId());
-                    $this->redirect(array('view', 'id' => $model->id));
+                    //$this->redirect(array('view', 'id' => $model->id));
+                    if (User::isCurrentUserAdmin()) {
+                        $response['url'] = "/coplat/index.php/home/adminHome";
+                    } else {
+                        $response['url'] = "/coplat/index.php/home/userHome";
+                    }
+                } else {
+                    $response['url'] = "/coplat/index.php/home/userHome";
                 }
+                echo json_encode($response);
+                exit();
             }
-            exit();
         }
-        $this->render('update', array(
-            'model' => $model,
-        ));
+
     }
 
 

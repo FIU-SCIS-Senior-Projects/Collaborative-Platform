@@ -94,7 +94,6 @@ class CommentController extends Controller
     public function actionMessage($id)
     {
         $model = new Comment;
-
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
@@ -110,15 +109,23 @@ class CommentController extends Controller
             /** @var User user_added */
             $model ->user_added = $user->fname.' '.$user->lname;
 
-
             if($model->save(false))
             {
+                /*Get the ticket status */
+                $TicketStatus = Ticket::model()->find("id=:id", array(":id"=>$model->ticket_id));
 
-                /* Send Notification about the comment added to a ticket */
-                User::sendTicketReassingCommentedEmailNotification($model->ticket_id,$model->description, User::getCurrentUserId());
+                if($TicketStatus->status = 'Close')
+                {
+                    /* Call the function Here*/
+                }elseif($TicketStatus->status = 'Reject' ){
 
+                    /* Call the function Here*/
+
+                }else{
+                    /* Send Notification about the comment added to a ticket */
+                    // User::sendTicketReassingCommentedEmailNotification($model->ticket_id,$model->description, User::getCurrentUserId());
+                }
             }
-
         }
     }
 

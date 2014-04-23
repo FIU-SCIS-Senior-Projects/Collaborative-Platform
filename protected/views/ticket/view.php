@@ -62,13 +62,12 @@
                 </tr>
 
 
-
             </table>
         </div>
     </div>
 
     <div class="span2"> <!-- Buttons Options -->
-        <?php if ($model->status != 'Close') { ?>
+        <?php if ($model->status != 'Close' && $model->status != 'Reject' ) { ?>
             <!-- Comment Button -->
             <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Add Comment',
@@ -84,7 +83,8 @@
         <br/>
         <!-- Change Status Button -->
         <?php
-        if (((User::getCurrentUserId() == $userCreator->id) || User::isCurrentUserAdmin()) && $model->status != 'Close') {
+        if (((User::getCurrentUserId() == $userCreator->id) || User::isCurrentUserAdmin())
+            && $model->status != 'Close' && $model->status != 'Reject') {
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Change Status',
                 'type' => 'primary',
@@ -281,20 +281,20 @@
             'htmlOptions' => array('data-dismiss' => 'modal'),
         ));
         ?>
-
         <?php $this->endWidget() ?>
     </div>
 </div>
-<!-- Script for Comment modal -->
+<!-- Script for Reassign modal -->
 <script>
     $('a#reassign').on('click', function () {
         var confirmed = confirm("Do you really want to reassign the ticket?");
         if (confirmed) {
             $.post('/coplat/index.php/ticket/reassign/<?php echo $model->id?>', $('#ticket-form').serialize(), function (message) {
+                var url = message.url;
                 $.post('/coplat/index.php/comment/message/<?php echo $model->id?>', $('#message-form').serialize(), function (message) {
-                    window.location = location.pathname;
+                    window.location = url;
                 });
-            } );
+            }, 'json');
         }
         return false;
     })
@@ -320,8 +320,27 @@
         <?php echo $form->labelEx($model, 'Status'); ?>
         <?php echo $form->dropDownList($model, 'status', $data, array('prompt' => 'Select')); ?>
         <?php echo $form->error($model, 'status'); ?>
-    </div>
 
+
+        <?php $this->endWidget() ?>
+
+
+        <?php
+        /*Leave a message when the ticket is reassign */
+        $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'message-status-form',
+            //'enableAjaxValidation'=>false,
+        )); ?>
+        <div>
+            <h4>Leave Comment</h4>
+            <?php $comment = new Comment(); ?>
+            <!--  	<input style ="display:none" type = "text" id = "ticket_id" value=<?php /*echo $model->id;*/ ?>></input>-->
+            <?php echo $form->textArea($comment, 'description', array(
+                'id' => 'description', 'style' => 'width:480px', 'cols' => 20, 'rows' => 5,
+                'width' => '400px')); ?>
+        </div>
+
+    </div>
     <div class="modal-footer">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Change Status', 'url' => '#',
@@ -341,11 +360,14 @@
 <!-- Script for Comment modal -->
 <script>
     $('a#change').on('click', function () {
-        var confirmed = confirm("Do you really want to change the ticket status?");
+        var confirmed = confirm("Do you really want to reassign the ticket?");
         if (confirmed) {
-        $.post('/coplat/index.php/ticket/change/<?php echo $model->id?>', $('#ticket-form-status').serialize(), function (message) {
-            window.location = location.pathname;
-        });
+            $.post('/coplat/index.php/ticket/change/<?php echo $model->id?>', $('#ticket-form-status').serialize(), function (message) {
+                var url = message.url;
+                $.post('/coplat/index.php/comment/message/<?php echo $model->id?>', $('#message-status-form').serialize(), function (message) {
+                    window.location = url;
+                });
+            }, 'json');
         }
         return false;
     })
