@@ -84,7 +84,7 @@ class CommentController extends Controller
 			if($model->save(false))
             {
                 /* Send Notification about the comment added to a ticket */
-                //User::sendTicketCommentedEmailNotification($model->ticket_id);
+                User::sendTicketCommentedEmailNotification($model->ticket_id);
 
 
             }
