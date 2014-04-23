@@ -149,3 +149,127 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/comment/message/15
 HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/15
 ---
+2014/04/23 20:56:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "profiles".' in C:\wamp\www\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('profiles')
+#1 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/profiles
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2014/04/23 21:03:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\coplat\protected\controllers\UserController.php:548
+Stack trace:
+#0 C:\wamp\www\coplat\protected\controllers\UserController.php(360): UserController->loadModel('21')
+#1 [internal function]: UserController->actionUpdate('21')
+#2 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update')
+#14 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/user/update/21
+---
+2014/04/23 21:03:48 [error] [php] Trying to get property of non-object (C:\wamp\www\coplat\protected\views\user\change.php:38)
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\wamp\www\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\wamp\www\coplat\protected\views\user\update.php(13): UserController->render()
+#3 C:\wamp\www\coplat\framework\web\CBaseController.php(126): require()
+#4 C:\wamp\www\coplat\framework\web\CBaseController.php(95): UserController->renderInternal()
+#5 C:\wamp\www\coplat\framework\web\CController.php(869): UserController->renderFile()
+#6 C:\wamp\www\coplat\protected\controllers\UserController.php(362): UserController->renderPartial()
+#7 unknown(0): UserController->actionUpdate()
+#8 C:\wamp\www\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#9 C:\wamp\www\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\www\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#12 C:\wamp\www\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#15 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#18 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#19 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#21 C:\wamp\www\coplat\index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/update/5
+in C:\wamp\www\coplat\protected\views\user\change.php (38)
+in C:\wamp\www\coplat\protected\views\user\update.php (13)
+in C:\wamp\www\coplat\protected\controllers\UserController.php (362)
+2014/04/23 21:04:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('update')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/update')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/update/6
+---
+2014/04/23 21:05:53 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+HTTP_REFERER=http://localhost/coplat/index.php/user/create_admin
+---
+2014/04/23 21:06:08 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create_admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create_adm...')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/create_admin
+---
+2014/04/23 21:06:44 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\wamp\www\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp\www\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\coplat\framework\web\CWebApplication.php(282): CController->run('create_admin')
+#8 C:\wamp\www\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create_adm...')
+#9 C:\wamp\www\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\wamp\www\coplat\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/create_admin
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
