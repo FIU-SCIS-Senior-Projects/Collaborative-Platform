@@ -233,3 +233,11 @@
 </script>
 
 <!-- End Comment Modal-->
+<script type="text/javascript">
+    $('.triggerTicketClick').on('click', function () {
+        window.location = "/coplat/index.php/ticket/view/" + $(this).attr('id');
+    });
+
+
+    //$('.table-fixed-header').fixedHeader();
+</script>

@@ -170,8 +170,8 @@ class TicketController extends Controller
 
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                User::sendReassignedEmailNotificationToOldMentor($model->id, $old_mentor,
-                    User::getCurrentUserId());
+                //User::sendReassignedEmailNotificationToOldMentor($model->id, $old_mentor,
+                    //User::getCurrentUserId());
 
                 if (User::isCurrentUserAdmin()) {
                     $response['url'] = "/coplat/index.php/home/adminHome";
@@ -220,8 +220,8 @@ class TicketController extends Controller
                 $model->status = 'Reject';
                 if ($model->save()) {
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    User::sendRejectEmailNotification($model->creator_user_id,
-                        $model->assign_user_id, $model->id, User::getCurrentUserId());
+                    //User::sendRejectEmailNotification($model->creator_user_id,
+                       // $model->assign_user_id, $model->id, User::getCurrentUserId());
                     //$this->redirect(array('view', 'id' => $model->id));
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
