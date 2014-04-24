@@ -136,9 +136,10 @@ class TicketController extends Controller
             } else {
                 $model->file = '';
             }
+            $send = $model->isNewRecord;
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                if($model->isNewRecord)
+                if($send)
                     User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
 
                 $this->redirect(array('view', 'id' => $model->id));
