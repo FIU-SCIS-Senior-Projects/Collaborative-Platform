@@ -134,7 +134,7 @@
                                         'class'=>'bootstrap.widgets.TbMenu',
                                         'htmlOptions'=>array('class'=>'pull-left'),
                                         'items'=>array(array('label'=>'Manage', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest),
-                                            array('label'=>'Send', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),
+                                            array('label'=>'Create', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),
 
                                         ),
                                     ),
