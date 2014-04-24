@@ -669,9 +669,9 @@ class User extends CActiveRecord
         }
     }
     /* Ticket has being reassigned, notification to previous mentor working on the ticket */
-    public static function sendStatusCommentedEmailNotificationToOldMentor($ticket_id, $prev_mentor, $done_by)
+    public static function sendStatusReassignedEmailNotificationToOldMentor($ticket_id, $prev_mentor, $done_by)
     {
-        $ticket = Ticket::model()->findAllByPk($ticket_id);
+        $ticket = Ticket::model()->findByPk($ticket_id);
         $old_mentor = User::model()->findByPk($prev_mentor);
         $user = User::model()->findByPk($done_by);
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
@@ -679,19 +679,13 @@ class User extends CActiveRecord
         $to = $old_mentor->fname . ' ' . $old_mentor->lname;
         $from = $user->fname . ' ' . $user->lname;
 
-        if($ticket->status == 'Pending')
-            $status = 'reassign';
-        else
-            $status = strtolower($ticket->status);
-
-
-        $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>" . $link . " to see the its information.";
+        $message = $from . ", has reassigned the ticket #" . $ticket_id . ", related to " . $ticket->subject . ". Therefore, is now out of your queue.<br/>" . $link . " to see the its information.";
         $html = User::replaceMessage($to, $message);
 
         $email = Yii::app()->email;
         $email->to = $old_mentor->email;
         $email->from = 'Collaborative Platform';
-        $email->subject = 'Ticket # ' . $ticket_id . ' has been '.$status.'ed.';
+        $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
         $email->message = $html;
         $email->send();
     }

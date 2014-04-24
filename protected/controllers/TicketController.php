@@ -174,7 +174,7 @@ class TicketController extends Controller
 
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::model()->getCurrentUserId());
+                User::sendStatusReassignedEmailNotificationToOldMentor($model->id, $old_mentor, User::model()->getCurrentUserId());
 
                 if (User::isCurrentUserAdmin()) {
                     $response['url'] = "/coplat/index.php/home/adminHome";
