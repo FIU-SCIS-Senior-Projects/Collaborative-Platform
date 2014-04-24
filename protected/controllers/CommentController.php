@@ -84,7 +84,7 @@ class CommentController extends Controller
 			if($model->save(false))
             {
                 /* Send Notification about the comment added to a ticket */
-               // User::sendTicketCommentedEmailNotification($model->ticket_id);
+                User::sendTicketCommentedEmailNotification($model->ticket_id);
 
 
             }
@@ -115,7 +115,7 @@ class CommentController extends Controller
                 //$TicketStatus = Ticket::model()->find("id=:id", array(":id"=>$model->ticket_id));
 
                 /* Send Notification about the comment added to a ticket */
-                User::sendTicketStatusCommentedEmailNotification($model->ticket_id,$model->description, User::getCurrentUserId());
+                User::sendTicketStatusCommentedEmailNotification($model->ticket_id, $model->description, User::model()->getCurrentUserId());
 
             }
         }

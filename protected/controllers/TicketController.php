@@ -174,7 +174,7 @@ class TicketController extends Controller
 
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());
+                User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::model()->getCurrentUserId());
 
                 if (User::isCurrentUserAdmin()) {
                     $response['url'] = "/coplat/index.php/home/adminHome";
@@ -195,7 +195,7 @@ class TicketController extends Controller
         $model = $this->loadModel($id);
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-        $old_mentor = $model->assign_user_id;
+        //$old_mentor = $model->assign_user_id;
         if (isset($_POST['Ticket']['status'])) {
             $newStatus = $_POST['Ticket']['status'];
             //$model->attributes = $_POST['Ticket'];
@@ -204,7 +204,7 @@ class TicketController extends Controller
                 if ($model->save()) {
 
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());
+                    //User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());
                     //$this->redirect(array('view', 'id' => $model->id));
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
@@ -222,7 +222,7 @@ class TicketController extends Controller
                 $model->status = 'Reject';
                 if ($model->save()) {
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());//$this->redirect(array('view', 'id' => $model->id));
+                    //User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());//$this->redirect(array('view', 'id' => $model->id));
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
                     } else {

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/CommentController.php" afterPath="$PROJECT_DIR$/protected/controllers/CommentController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/TicketController.php" afterPath="$PROJECT_DIR$/protected/controllers/TicketController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/User.php" afterPath="$PROJECT_DIR$/protected/models/User.php" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,12 +30,37 @@
       <file leaf-file-name="TicketController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="0" selection-start="6035" selection-end="6035" vertical-scroll-proportion="0.9028571" vertical-offset="1641" max-vertical-offset="5933">
+            <state line="167" column="0" selection-start="6753" selection-end="6753" vertical-scroll-proportion="0.26057142" vertical-offset="1302" max-vertical-offset="4624">
               <folding>
-                <marker date="1398332170890" expanded="true" signature="2006:2038" placeholder="SELECT * fro..user..." />
-                <marker date="1398332170890" expanded="true" signature="2132:2164" placeholder="SELECT * fro..user..." />
-                <marker date="1398332170890" expanded="true" signature="2259:2293" placeholder="SELECT * fro..domain..." />
-                <marker date="1398332170890" expanded="true" signature="2467:2504" placeholder="SELECT * fro..subdomain..." />
+                <element signature="n#actionCreate#0;n#TicketController#0;n#!!top" expanded="false" />
+                <marker date="1398333041341" expanded="true" signature="2006:2038" placeholder="SELECT * fro..user..." />
+                <marker date="1398333041341" expanded="true" signature="2132:2164" placeholder="SELECT * fro..user..." />
+                <marker date="1398333041341" expanded="true" signature="2259:2293" placeholder="SELECT * fro..domain..." />
+                <marker date="1398333041341" expanded="true" signature="2467:2504" placeholder="SELECT * fro..subdomain..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/CommentController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="85" column="75" selection-start="2285" selection-end="2285" vertical-scroll-proportion="-54.692307" vertical-offset="23" max-vertical-offset="3910">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/models/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="692" column="48" selection-start="27717" selection-end="27717" vertical-scroll-proportion="-9.890909" vertical-offset="11220" max-vertical-offset="13226">
+              <folding>
+                <marker date="1398333234904" expanded="true" signature="7800:7838" placeholder="SELECT id fr..user..." />
+                <marker date="1398333234904" expanded="true" signature="12170:12219" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1398333234904" expanded="true" signature="12444:12490" placeholder="SELECT * FRO..user_domain..." />
+                <marker date="1398333234904" expanded="true" signature="13100:13146" placeholder="SELECT * FRO..domain_mentor..." />
+                <marker date="1398333234904" expanded="true" signature="13507:13569" placeholder="SELECT COUNT..." />
               </folding>
             </state>
           </provider>
@@ -77,9 +104,9 @@
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/pMentorViewMeetings.php" />
         <option value="$PROJECT_DIR$/protected/views/home/userHome.php" />
         <option value="$PROJECT_DIR$/protected/views/ticket/view.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
         <option value="$PROJECT_DIR$/protected/controllers/CommentController.php" />
         <option value="$PROJECT_DIR$/protected/models/User.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
       </list>
     </option>
   </component>
@@ -313,73 +340,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coplat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coplat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="protected" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ticket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coplat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coplat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="protected" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projectMeeting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coplat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coplat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="protected" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -427,6 +388,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="" />
@@ -734,34 +712,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/CommentController.php">
+    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="18" selection-start="3168" selection-end="3168" vertical-scroll-proportion="-19.038462" vertical-offset="1443" max-vertical-offset="3910">
-          <folding />
+        <state line="692" column="48" selection-start="27717" selection-end="27717" vertical-scroll-proportion="-9.890909" vertical-offset="11220" max-vertical-offset="13226">
+          <folding>
+            <marker date="1398333234904" expanded="true" signature="7800:7838" placeholder="SELECT id fr..user..." />
+            <marker date="1398333234904" expanded="true" signature="12170:12219" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398333234904" expanded="true" signature="12444:12490" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398333234904" expanded="true" signature="13100:13146" placeholder="SELECT * FRO..domain_mentor..." />
+            <marker date="1398333234904" expanded="true" signature="13507:13569" placeholder="SELECT COUNT..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
+    <entry file="file://$PROJECT_DIR$/protected/controllers/CommentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="715" column="5" selection-start="28854" selection-end="28854" vertical-scroll-proportion="0.44779584" vertical-offset="11769" max-vertical-offset="13226">
-          <folding>
-            <marker date="1398331766552" expanded="true" signature="-1:-1" placeholder="SELECT id fr..user..." />
-            <marker date="1398331766552" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398331766552" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398331766552" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1398331766552" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
-          </folding>
+        <state line="85" column="75" selection-start="2285" selection-end="2285" vertical-scroll-proportion="-54.692307" vertical-offset="23" max-vertical-offset="3910">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/TicketController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="0" selection-start="6035" selection-end="6035" vertical-scroll-proportion="0.9028571" vertical-offset="1641" max-vertical-offset="5933">
+        <state line="167" column="0" selection-start="6753" selection-end="6753" vertical-scroll-proportion="0.26057142" vertical-offset="1302" max-vertical-offset="4624">
           <folding>
-            <marker date="1398332170890" expanded="true" signature="2006:2038" placeholder="SELECT * fro..user..." />
-            <marker date="1398332170890" expanded="true" signature="2132:2164" placeholder="SELECT * fro..user..." />
-            <marker date="1398332170890" expanded="true" signature="2259:2293" placeholder="SELECT * fro..domain..." />
-            <marker date="1398332170890" expanded="true" signature="2467:2504" placeholder="SELECT * fro..subdomain..." />
+            <element signature="n#actionCreate#0;n#TicketController#0;n#!!top" expanded="false" />
+            <marker date="1398333041341" expanded="true" signature="2006:2038" placeholder="SELECT * fro..user..." />
+            <marker date="1398333041341" expanded="true" signature="2132:2164" placeholder="SELECT * fro..user..." />
+            <marker date="1398333041341" expanded="true" signature="2259:2293" placeholder="SELECT * fro..domain..." />
+            <marker date="1398333041341" expanded="true" signature="2467:2504" placeholder="SELECT * fro..subdomain..." />
           </folding>
         </state>
       </provider>

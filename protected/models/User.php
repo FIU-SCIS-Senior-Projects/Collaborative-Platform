@@ -527,7 +527,7 @@ class User extends CActiveRecord
 
 
         if ($ticket_creator->id == User::model()->getCurrentUser()->id) {
-            $message = "The user, " . $ticket_creator->fname . " " . $ticket_creator->lname . ", has added a new comment to the his/her ticket #" . $ticket->id . ". $link to view the comment.";
+            $message = $ticket_creator->fname . " " . $ticket_creator->lname . ", has added a new comment to the his/her ticket #" . $ticket->id . ". $link to view the comment.";
             $name = $ticket_mentor->fname . ' ' . $ticket_mentor->lname;
             $html = User::replaceMessage($name, $message);
 
@@ -538,7 +538,7 @@ class User extends CActiveRecord
             $email->message = $html;
             $email->send();
         } elseif ($ticket_mentor->id == User::model()->getCurrentUser()->id) {
-            $message = "The Domain Mentor, " . $ticket_mentor->fname . " " . $ticket_mentor->lname . ", has added a new comment to the ticket #" . $ticket->id . ". $link to view the comment.";
+            $message = $ticket_mentor->fname . " " . $ticket_mentor->lname . ", has added a new comment to the ticket #" . $ticket->id . ". $link to view the comment.";
             $name = $ticket_creator->fname . ' ' . $ticket_creator->lname;
             $html = User::replaceMessage($name, $message);
 
@@ -550,7 +550,7 @@ class User extends CActiveRecord
             $email->send();
         } else {
             $comment_creator = User::model()->getCurrentUser();
-            $message = "The user, " . $comment_creator->fname . " " . $comment_creator->lname . ", has added a new comment to the ticket #" . $ticket->id . ". $link to view the comment.";
+            $message = $comment_creator->fname . " " . $comment_creator->lname . ", has added a new comment to the ticket #" . $ticket->id . ". $link to view the comment.";
             $name = "";
             $html = User::replaceMessage($name, $message);
 
@@ -593,13 +593,13 @@ class User extends CActiveRecord
 
     }
 
-    public static function addNewMessageNotification($sender, $reciver, $link, $level)
+    public static function addNewMessageNotification($sender, $receiver, $link, $level)
     {
 
         $model = new Notification;
         $model->sender_id = $sender;
 
-        $recive = User::model()->find("username=:username", array(':username' => $reciver));
+        $recive = User::model()->find("username=:username", array(':username' => $receiver));
         if ($recive != NULL) {
             $model->receiver_id = $recive->id;
             $model->datetime = date('Y-m-d H:i:s');
@@ -669,11 +669,11 @@ class User extends CActiveRecord
         }
     }
     /* Ticket has being reassigned, notification to previous mentor working on the ticket */
-    public static function sendStatusCommentedEmailNotificationToOldMentor($ticket_id, $prev_mentor, $assigned_by)
+    public static function sendStatusCommentedEmailNotificationToOldMentor($ticket_id, $prev_mentor, $done_by)
     {
         $ticket = Ticket::model()->findAllByPk($ticket_id);
         $old_mentor = User::model()->findByPk($prev_mentor);
-        $user = User::model()->findByPk($assigned_by);
+        $user = User::model()->findByPk($done_by);
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
         $to = $old_mentor->fname . ' ' . $old_mentor->lname;
