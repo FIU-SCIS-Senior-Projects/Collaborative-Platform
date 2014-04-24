@@ -233,9 +233,9 @@ class TicketController extends Controller
                 $model->status = 'Reject';
                 if ($model->save()) {
                     if (User::isCurrentUserAdmin()) {
-                        $this->actionTicketRejectedAdminAlert(User::model()->getCurrentUserId(), $model->id);
                         $response['url'] = "/coplat/index.php/home/adminHome";
                     } else {
+                        $this->actionTicketRejectedAdminAlert(User::model()->getCurrentUserId(), $model->id);
                         $response['url'] = "/coplat/index.php/home/userHome";
                     }
                 } else {
