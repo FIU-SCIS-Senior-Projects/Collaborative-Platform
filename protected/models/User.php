@@ -233,12 +233,185 @@ class User extends CActiveRecord
     }
 
 
+    public static function replaceMessage($to, $message)
+    {
+        $file = fopen("/var/www/html/coplat/email/index1.html", "r");
+        //$file = fopen("C:/wamp/www/coplat/email/index1.html", "r");
+        $html = "";
+        while (!feof($file)) {
+            $html .= fgets($file);
+        }
+        $html = str_replace("%USER%", $to, $html);
+        $html = str_replace("%MESSAGE%", $message, $html);
+        return $html;
+    }
+
+    public function isAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    public function isProMentor()
+    {
+        return $this->isProMentor;
+    }
+
+    public function isPerMentor()
+    {
+        return $this->isPerMentor;
+    }
+
+    public function isDomMentor()
+    {
+        return $this->isDomMentor;
+    }
+
+    public function isMentee()
+    {
+        return $this->isMentee;
+    }
+
+    public function isJudge()
+    {
+        return $this->isJudge;
+    }
+
+    public function isEmployer()
+    {
+        return $this->isEmployer;
+    }
+
+    public function isStudent()
+    {
+        return $this->isStudent;
+    }
+
+    public static function isCurrentUserAdmin()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isAdmin;
+    }
+
+    public static function isCurrentUserMentee()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isMentee;
+    }
+
+    public static function isCurrentUserProMentor()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isProMentor;
+    }
+
+    public static function isCurrentUserDomMentor()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isDomMentor;
+    }
+
+    public static function isCurrentUserPerMentor()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isPerMentor;
+    }
+
+    public static function isCurrentUserJudge()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isJudge;
+    }
+
+    public static function isCurrentUserEmployer()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isEmployer;
+    }
+
+    public static function isCurrentUserStudent()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isStudent;
+    }
+
+
+    /*Assign Domain Mentor to a Ticket */
+    public static function assignTicket($domain_id, $sub)
+    {
+        /*Query to the User_Domain model */
+
+        if ($sub) {
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id", array(":id" => $domain_id));
+            $subdomain = Subdomain::model()->findByPk($domain_id);
+            $validator = $subdomain->validator;
+        } else {
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
+            $domain = Domain::model()->findByPk($domain_id);
+            $validator = $domain->validator;
+        }
+
+        if ($userDomain != null && is_array($userDomain)) {
+            foreach ($userDomain as $auserDomain) {
+                /** @var UserDomain $auserDomain */
+                if ($auserDomain->tier_team == 1) {
+
+
+                    if ($auserDomain->rate >= $validator) {
+                        /*Query to the domain mentor to see how many tickets is allowed to be assigned */
+                        $domainMentor = DomainMentor::model()->findAllBySql("SELECT * FROM domain_mentor WHERE user_id =:id", array(":id" => $auserDomain->user_id));
+                        /** @var Ticket $count */
+                        if (is_array($domainMentor)) {
+                            foreach ($domainMentor as $adomainMentor) {
+                                /** @var DomainMentor $adomainMentor */
+                                $count = Ticket::model()->findBySql("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id =:id", array(":id" => $adomainMentor->user_id));
+                                if ($count->id < $adomainMentor->max_tickets) {
+                                    /*return the first available domain mentor on queue */
+                                    return $auserDomain->user_id;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return self::$admin; /* Assign the ticket to the admin for reassign */
+    }
+
+    function __toString()
+    {
+        return sprintf("%s %s", $this->fname, $this->lname);
+    }
+
     public static function sendVerificationEmail($userfullName, $user_email, $adminfullName, $admin_email)
     {
         $email = Yii::app()->email;
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $message = $userfullName . ", has register on the system. Administration, verification is needed to complete the registration process.<br>" . $link . " to follow access the platform.";
+        $message = $userfullName . ", has register on the system. Administration, verification is needed to complete the registration process.<br> User email address = ".$user_email."<br/>" . $link . " to follow access the platform.";
         $html = User::replaceMessage($adminfullName, $message);
 
         $email->to = $admin_email;
@@ -440,181 +613,110 @@ class User extends CActiveRecord
 
     }
 
-    public static function replaceMessage($to, $message)
+    /* Ticket has been reassigned, send notification to all parties involved*/
+    public static function sendTicketStatusCommentedEmailNotification($ticket_id, $description, $done_by)
     {
-        $file = fopen("/var/www/html/coplat/email/index1.html", "r");
-        //$file = fopen("C:/wamp/www/coplat/email/index1.html", "r");
-        $html = "";
-        while (!feof($file)) {
-            $html .= fgets($file);
-        }
-        $html = str_replace("%USER%", $to, $html);
-        $html = str_replace("%MESSAGE%", $message, $html);
-        return $html;
-    }
+        $ticket = Ticket::model()->findByPk($ticket_id);
+        $creator = User::model()->findByPk($ticket->creator_user_id);
+        $mentor = User::model()->findByPk($ticket->assign_user_id);
+        $user= User::model()->findByPk($done_by);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-    public function isAdmin()
-    {
-        return $this->isAdmin;
-    }
+        $email_from = 'Collaborative Platform';
+        if($ticket->status == 'Pending')
+            $status = 'Reassign';
+        else
+            $status = strtolower($ticket->status);
 
-    public function isProMentor()
-    {
-        return $this->isProMentor;
-    }
-
-    public function isPerMentor()
-    {
-        return $this->isPerMentor;
-    }
-
-    public function isDomMentor()
-    {
-        return $this->isDomMentor;
-    }
-
-    public function isMentee()
-    {
-        return $this->isMentee;
-    }
-
-    public function isJudge()
-    {
-        return $this->isJudge;
-    }
-
-    public function isEmployer()
-    {
-        return $this->isEmployer;
-    }
-
-    public function isStudent()
-    {
-        return $this->isStudent;
-    }
-
-    public static function isCurrentUserAdmin()
-    {
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
-            return false;
-        return $user->isAdmin;
-    }
-
-    public static function isCurrentUserMentee()
-    {
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
-            return false;
-        return $user->isMentee;
-    }
-
-    public static function isCurrentUserProMentor()
-    {
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
-            return false;
-        return $user->isProMentor;
-    }
-
-    public static function isCurrentUserDomMentor()
-    {
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
-            return false;
-        return $user->isDomMentor;
-    }
-
-    public static function isCurrentUserPerMentor()
-    {
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
-            return false;
-        return $user->isPerMentor;
-    }
-
-    public static function isCurrentUserJudge()
-    {
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
-            return false;
-        return $user->isJudge;
-    }
-
-    public static function isCurrentUserEmployer()
-    {
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
-            return false;
-        return $user->isEmployer;
-    }
-
-    public static function isCurrentUserStudent()
-    {
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
-            return false;
-        return $user->isStudent;
-    }
+        $email_subject = 'Ticket # ' . $ticket_id . ' has been '.$status.'ed.';
 
 
-    /*Assign Domain Mentor to a Ticket */
-    public static function assignTicket($domain_id, $sub)
-    {
-        /*Query to the User_Domain model */
+        if ($creator->id == $done_by) {
+            $to = $mentor->fname . ' ' . $mentor->lname;
+            $from = $creator->fname . ' ' . $creator->lname;
+            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
+            $html = User::replaceMessage($to, $message);
 
-        if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id", array(":id" => $domain_id));
-            $subdomain = Subdomain::model()->findByPk($domain_id);
-            $validator = $subdomain->validator;
+            $email = Yii::app()->email;
+            $email->from = $email_from;
+            $email->subject = $email_subject;
+            $email->to = $mentor->email;
+            $email->message = $html;
+            $email->send();
+
+
         } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
-            $domain = Domain::model()->findByPk($domain_id);
-            $validator = $domain->validator;
+            $to = $mentor->fname . ' ' . $mentor->lname;
+            $from = $user->fname . ' ' . $user->lname;
+            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
+            $html = User::replaceMessage($to, $message);
+            $email = Yii::app()->email;
+            $email->from = $email_from;
+            $email->subject = $email_subject;
+            $email->to = $mentor->email;
+            $email->message = $html;
+            $email->send();
+
+            $to = $creator->fname . ' ' . $creator->lname;
+            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
+            $html = User::replaceMessage($to, $message);
+            $email1 = Yii::app()->email;
+            $email1->from = $email_from;
+            $email1->subject = $email_subject;
+            $email1->to = $creator->email;
+            $email1->message = $html;
+            $email1->send();
         }
+    }
+    /* Ticket has being reassigned, notification to previous mentor working on the ticket */
+    public static function sendStatusCommentedEmailNotificationToOldMentor($ticket_id, $prev_mentor, $assigned_by)
+    {
+        $ticket = Ticket::model()->findAllByPk($ticket_id);
+        $old_mentor = User::model()->findByPk($prev_mentor);
+        $user = User::model()->findByPk($assigned_by);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        if ($userDomain != null && is_array($userDomain)) {
-            foreach ($userDomain as $auserDomain) {
-                /** @var UserDomain $auserDomain */
-                if ($auserDomain->tier_team == 1) {
+        $to = $old_mentor->fname . ' ' . $old_mentor->lname;
+        $from = $user->fname . ' ' . $user->lname;
+
+        if($ticket->status == 'Pending')
+            $status = 'reassign';
+        else
+            $status = strtolower($ticket->status);
 
 
-                    if ($auserDomain->rate >= $validator) {
-                        /*Query to the domain mentor to see how many tickets is allowed to be assigned */
-                        $domainMentor = DomainMentor::model()->findAllBySql("SELECT * FROM domain_mentor WHERE user_id =:id", array(":id" => $auserDomain->user_id));
-                        /** @var Ticket $count */
-                        if (is_array($domainMentor)) {
-                            foreach ($domainMentor as $adomainMentor) {
-                                /** @var DomainMentor $adomainMentor */
-                                $count = Ticket::model()->findBySql("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id =:id", array(":id" => $adomainMentor->user_id));
-                                if ($count->id < $adomainMentor->max_tickets) {
-                                    /*return the first available domain mentor on queue */
-                                    return $auserDomain->user_id;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return self::$admin; /* Assign the ticket to the admin for reassign */
+        $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>" . $link . " to see the its information.";
+        $html = User::replaceMessage($to, $message);
+
+        $email = Yii::app()->email;
+        $email->to = $old_mentor->email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Ticket # ' . $ticket_id . ' has been '.$status.'ed.';
+        $email->message = $html;
+        $email->send();
     }
 
-    function __toString()
+    /*Meeting notification */
+    public static function sendMeetingNotification($project_mentor_user_id, $mentee_user_id, $date, $time)
     {
-        return sprintf("%s %s", $this->fname, $this->lname);
+        $mentee = User::model()->findByPk($mentee_user_id);
+        $mentor = User::model()->findByPk($project_mentor_user_id);
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+
+        $to = $mentee->fname . ' ' . $mentee->lname;
+        $from = $mentor->fname . ' ' . $mentor->lname;
+        $message = "Your Senior Project mentor, " . $from . ", setup a meeting for " . $date . ", at " . $time . ".<br/>" . $link . " for more details.";
+        $html = User::replaceMessage($to, $message);
+        $email = Yii::app()->email;
+        $email->to = $mentee->email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Project Meeting';
+        $email->message = $html;
+        $email->send();
     }
 
     /*Ticket has closed by the creator */
-    public static function sendCloseTicketEmailNotification($creator_user_id, $assign_user_id, $ticket_id)
+    /*public static function sendCloseTicketEmailNotification($creator_user_id, $assign_user_id, $ticket_id)
     {
         $creator = User::model()->findByPk($creator_user_id);
         $mentor = User::model()->findByPk($assign_user_id);
@@ -632,9 +734,9 @@ class User extends CActiveRecord
         $email->subject = 'Ticket # ' . $ticket_id . ' has been closed.';
         $email->message = $html;
         $email->send();
-    }
+    }*/
 
-    public static function sendRejectEmailNotification($creator_user_id, $assign_user_id, $ticket_id, $rejected_by)
+    /*public static function sendRejectEmailNotification($creator_user_id, $assign_user_id, $ticket_id, $rejected_by)
     {
         $creator = User::model()->findByPk($creator_user_id);
         $mentor = User::model()->findByPk($assign_user_id);
@@ -666,96 +768,6 @@ class User extends CActiveRecord
             $email->message = $html;
             $email->send();
         }
-    }
+    }*/
 
-
-    /* Ticket has been reassigned, send notification to all parties involved*/
-    public static function sendTicketReassingCommentedEmailNotification($ticket_id, $description, $assigned_by)
-    {
-        $ticket = Ticket::model()->findByPk($ticket_id);
-        $creator = User::model()->findByPk($ticket->creator_user_id);
-        $new_mentor = User::model()->findByPk($ticket->assign_user_id);
-        $assignator = User::model()->findByPk($assigned_by);
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-
-        $email_from = 'Collaborative Platform';
-        $email_subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
-
-
-        if ($creator->id == $assigned_by) {
-            $to = $new_mentor->fname . ' ' . $new_mentor->lname;
-            $from = $creator->fname . ' ' . $creator->lname;
-            $message = $from . ", has reassigned the ticket #" . $ticket_id . ", related to " . $ticket->subject . " to you.<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
-            $html = User::replaceMessage($to, $message);
-
-            $email = Yii::app()->email;
-            $email->from = $email_from;
-            $email->subject = $email_subject;
-            $email->to = $new_mentor->email;
-            $email->message = $html;
-            $email->send();
-
-        } else {
-            $to = $new_mentor->fname . ' ' . $new_mentor->lname;
-            $from = $assignator->fname . ' ' . $assignator->lname;
-            $message = $from . ", has reassigned the ticket #" . $ticket_id . ", related to " . $ticket->subject . " to you.<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
-            $html = User::replaceMessage($to, $message);
-            $email = Yii::app()->email;
-            $email->from = $email_from;
-            $email->subject = $email_subject;
-            $email->to = $new_mentor->email;
-            $email->message = $html;
-            $email->send();
-
-            $to = $creator->fname . ' ' . $creator->lname;
-            $mentor = $new_mentor->fname . ' ' . $new_mentor->lname;
-            $message = $from . ", has reassigned the ticket #" . $ticket_id . ", related to " . $ticket->subject . ", to the domain mentor, " . $mentor . ".<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
-            $html = User::replaceMessage($to, $message);
-            $email1 = Yii::app()->email;
-            $email1->from = $email_from;
-            $email1->subject = $email_subject;
-            $email1->to = $creator->email;
-            $email1->message = $html;
-            $email1->send();
-        }
-    }
-    /* Ticket has being reassigned, notification to previous mentor working on the ticket */
-    public static function sendReassignedEmailNotificationToOldMentor($ticket_id, $prev_mentor, $assigned_by)
-    {
-        $ticket = Ticket::model()->findAllByPk($ticket_id);
-        $old_mentor = User::model()->findByPk($prev_mentor);
-        $assignator = User::model()->findByPk($assigned_by);
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-
-        $to = $old_mentor->fname . ' ' . $old_mentor->lname;
-        $from = $assignator->fname . ' ' . $assignator->lname;
-        $message = $from . ", has reassigned the ticket #" . $ticket_id . ", related to " . $ticket->subject . " to you.<br/>" . $link . " to see the its information.";
-        $html = User::replaceMessage($to, $message);
-
-        $email = Yii::app()->email;
-        $email->to = $old_mentor->email;
-        $email->from = 'Collaborative Platform';
-        $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
-        $email->message = $html;
-        $email->send();
-    }
-
-    /*Meeting notification */
-    public static function sendMeetingNotification($project_mentor_user_id, $mentee_user_id, $date, $time)
-    {
-        $mentee = User::model()->findByPk($mentee_user_id);
-        $mentor = User::model()->findByPk($project_mentor_user_id);
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-
-        $to = $mentee->fname . ' ' . $mentee->lname;
-        $from = $mentor->fname . ' ' . $mentor->lname;
-        $message = "Your Senior Project mentor, " . $from . ", setup a meeting for " . $date . ", at " . $time . ".<br/>" . $link . " for more details.";
-        $html = User::replaceMessage($to, $message);
-        $email = Yii::app()->email;
-        $email->to = $mentee->email;
-        $email->from = 'Collaborative Platform';
-        $email->subject = 'Project Meeting';
-        $email->message = $html;
-        $email->send();
-    }
 }

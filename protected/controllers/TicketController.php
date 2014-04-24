@@ -138,8 +138,9 @@ class TicketController extends Controller
             }
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-               // User::sendTicketAssignedEmailNotification($model->creator_user_id,
-                 //   $model->assign_user_id, $model->domain_id);
+                if($model->isNewRecord)
+                    User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
+
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }
@@ -172,8 +173,7 @@ class TicketController extends Controller
 
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                //User::sendReassignedEmailNotificationToOldMentor($model->id, $old_mentor,
-                    //User::getCurrentUserId());
+                User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());
 
                 if (User::isCurrentUserAdmin()) {
                     $response['url'] = "/coplat/index.php/home/adminHome";
@@ -194,7 +194,7 @@ class TicketController extends Controller
         $model = $this->loadModel($id);
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-
+        $old_mentor = $model->assign_user_id;
         if (isset($_POST['Ticket']['status'])) {
             $newStatus = $_POST['Ticket']['status'];
             //$model->attributes = $_POST['Ticket'];
@@ -203,8 +203,7 @@ class TicketController extends Controller
                 if ($model->save()) {
 
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    //User::sendCloseTicketEmailNotification($model->creator_user_id,
-                    //  $model->assign_user_id, $model->id);
+                    User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());
                     //$this->redirect(array('view', 'id' => $model->id));
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
@@ -222,9 +221,7 @@ class TicketController extends Controller
                 $model->status = 'Reject';
                 if ($model->save()) {
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    //User::sendRejectEmailNotification($model->creator_user_id,
-                       // $model->assign_user_id, $model->id, User::getCurrentUserId());
-                    //$this->redirect(array('view', 'id' => $model->id));
+                    User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());//$this->redirect(array('view', 'id' => $model->id));
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
                     } else {

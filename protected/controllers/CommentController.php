@@ -112,19 +112,11 @@ class CommentController extends Controller
             if($model->save(false))
             {
                 /*Get the ticket status */
-                $TicketStatus = Ticket::model()->find("id=:id", array(":id"=>$model->ticket_id));
+                //$TicketStatus = Ticket::model()->find("id=:id", array(":id"=>$model->ticket_id));
 
-                if($TicketStatus->status = 'Close')
-                {
-                    /* Call the function Here*/
-                }elseif($TicketStatus->status = 'Reject' ){
+                /* Send Notification about the comment added to a ticket */
+                User::sendTicketStatusCommentedEmailNotification($model->ticket_id,$model->description, User::getCurrentUserId());
 
-                    /* Call the function Here*/
-
-                }else{
-                    /* Send Notification about the comment added to a ticket */
-                    // User::sendTicketReassingCommentedEmailNotification($model->ticket_id,$model->description, User::getCurrentUserId());
-                }
             }
         }
     }
