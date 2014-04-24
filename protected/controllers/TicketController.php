@@ -28,15 +28,15 @@ class TicketController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'Download','reassign', 'change', 'adminHome', 'userHome'),
+                'actions' => array('index', 'view', 'download','reassign', 'change', 'adminHome', 'userHome'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'Download','reassign', 'change', 'adminHome', 'userHome'),
+                'actions' => array('create', 'update', 'download','reassign', 'change', 'adminHome', 'userHome'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'Download','reassign', 'change', 'adminHome', 'userHome'),
+                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
@@ -125,19 +125,21 @@ class TicketController extends Controller
                     $model->assign_user_id = User::assignTicket($model->subdomain_id, $sub);
             }
             $model->status = 'Pending'; /* Assign the first status of the ticket as a pending*/
+
             $uploadedFile = CUploadedFile::getInstance($model, 'file'); /*Attach file */
             $fileName = "{$uploadedFile}";
             if ($fileName != null) {
                 /*Save file uploaded in the Uploads folder */
-                $model->file = 'coplat/uploads/' . $fileName;
+                $model->file = '/coplat/uploads/' . $fileName;
                 $uploadedFile->saveAs(Yii::getPathOfAlias('webroot') . '/uploads/' . $fileName);
+
             } else {
                 $model->file = '';
             }
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                User::sendTicketAssignedEmailNotification($model->creator_user_id,
-                    $model->assign_user_id, $model->domain_id);
+               // User::sendTicketAssignedEmailNotification($model->creator_user_id,
+                 //   $model->assign_user_id, $model->domain_id);
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }

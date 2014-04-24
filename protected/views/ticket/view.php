@@ -52,7 +52,7 @@
                     <td width="15%"><h5>Attachment</h5></td>
                     <td width="85%">    <?php if ($model->file != null) {
                             //echo CHtml::link(CHtml::encode('Download File'), $model->file, array('target'=>'_blank', 'style'=>'float:left'));
-                            echo '<a href="download?download_file=' . $model->file . '">Click here to download the file</a>';
+                            echo '<a href="/coplat/index.php/ticket/download?download_file='.$model->file.'">Click here to download the file</a>';
                         } else {
                             echo 'No File Uploaded';
                         }

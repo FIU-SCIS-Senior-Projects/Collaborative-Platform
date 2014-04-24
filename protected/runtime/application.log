@@ -435,3 +435,527 @@ REQUEST_URI=/coplat/index.php/ticket/reassign/14
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php (732)
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/TicketController.php (174)
 in /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php (13)
+2014/04/24 02:10:31 [error] [php] fopen(/var/www/html/coplat/email/index1.html): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php:445)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/TicketController.php(140): sendTicketAssignedEmailNotification()
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): TicketController->actionCreate()
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): TicketController->runAction()
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): TicketController->filterAccessControl()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): TicketController->runActionWithFilters()
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): TicketController->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php (445)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/models/User.php (336)
+in /Applications/XAMPP/xamppfiles/htdocs/coplat/protected/controllers/TicketController.php (140)
+2014/04/24 02:11:38 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:12:26 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:13:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:13:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:14:34 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:14:50 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:16:52 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:17:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:19:11 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/tic...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/ticket?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:19:15 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/tic...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/ticket?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:19:27 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/tic...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/ticket?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:20:29 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:21:09 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:21:13 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:23:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:24:04 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:37:21 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:37:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:38:18 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:38:40 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:38:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:40:38 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/asg4.mal
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/8
+---
+2014/04/24 02:45:49 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/asg4.mal
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/8
+---
+2014/04/24 02:45:59 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/asg4.mal
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/8
+---
+2014/04/24 02:46:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/asg4.mal
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/8
+---
+2014/04/24 02:47:01 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:51:38 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
+2014/04/24 02:52:53 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('ticket/view/dow...')
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/download?download_file=coplat/uploads/goback.txt
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/16
+---
