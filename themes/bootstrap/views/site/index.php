@@ -9,7 +9,6 @@
 	
 	
 
-	//$this->pageTitle=Yii::app()->name;
 	$this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
     'heading'=>CHtml::encode(Yii::app()->name
     	),));
