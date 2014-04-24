@@ -456,7 +456,6 @@ class UserController extends Controller
         }
 
         $this->redirect('/coplat/index.php/site/page?view=verification');
-
     }
 
     public function actionVerifyEmail($username, $activation_chain)

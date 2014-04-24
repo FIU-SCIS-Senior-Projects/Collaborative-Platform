@@ -421,6 +421,21 @@ class User extends CActiveRecord
         $email->send();
     }
 
+    public static function sendRejectionAlertToAdmin($ticket_id, $userfullName, $user_email, $adminfullName, $admin_email)
+    {
+        $email = Yii::app()->email;
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+
+        $message = $userfullName . ", has rejected the ticket #".$ticket_id.".<br> User email address = ".$user_email."<br/>" . $link . " to find the view the rejection reason.";
+        $html = User::replaceMessage($adminfullName, $message);
+
+        $email->to = $admin_email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Ticket #'.$ticket_id.' has been rejected.';
+        $email->message = $html;
+        $email->send();
+    }
+
     public static function sendEmailPasswordChanged($user_id)
     {
         $user = User::model()->find("id=:id", array(':id' => $user_id));

@@ -155,6 +155,7 @@ class TicketController extends Controller
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
+
     public function actionReassign($id)
     {
         $model = $this->loadModel($id);
@@ -189,6 +190,19 @@ class TicketController extends Controller
         }
     }
 
+    public function actionTicketRejectedAdminAlert($user, $ticket_id)
+    {
+        $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user inner join administrator on user.id = administrator.user_id WHERE user.disable = 0 and user.activated = 1");
+        $userfullName = $user->fname.' '.$user->lname;
+
+        foreach($admins as $ad)
+        {
+            $adminfullName = $ad->fname.' '.$ad->lname;
+            User::sendRejectionAlertToAdmin($ticket_id, $userfullName, $user->email, $adminfullName, $ad->email);
+        }
+    }
+
+
     /*Function to change the status of the ticket */
     public function actionChange($id)
     {
@@ -202,10 +216,6 @@ class TicketController extends Controller
             if ($newStatus == 0) {
                 $model->status = 'Close';
                 if ($model->save()) {
-
-                    /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    //User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());
-                    //$this->redirect(array('view', 'id' => $model->id));
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
                     } else {
@@ -221,9 +231,8 @@ class TicketController extends Controller
             } elseif ($newStatus == 1) {
                 $model->status = 'Reject';
                 if ($model->save()) {
-                    /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                    //User::sendStatusCommentedEmailNotificationToOldMentor($model->id, $old_mentor, User::getCurrentUserId());//$this->redirect(array('view', 'id' => $model->id));
                     if (User::isCurrentUserAdmin()) {
+                        $this->actionTicketRejectedAdminAlert(User::getCurrentUserId(), $model->id);
                         $response['url'] = "/coplat/index.php/home/adminHome";
                     } else {
                         $response['url'] = "/coplat/index.php/home/userHome";
