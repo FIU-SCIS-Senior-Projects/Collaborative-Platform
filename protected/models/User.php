@@ -649,7 +649,7 @@ class User extends CActiveRecord
         if ($creator->id == $done_by) {
             $to = $mentor->fname . ' ' . $mentor->lname;
             $from = $creator->fname . ' ' . $creator->lname;
-            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
+            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/><h2 style=color: #ff0000>Reason: ".$description.".</h2><br/>" . $link . " to see the its information.";
             $html = User::replaceMessage($to, $message);
 
             $email = Yii::app()->email;
@@ -663,7 +663,7 @@ class User extends CActiveRecord
         } else {
             $to = $mentor->fname . ' ' . $mentor->lname;
             $from = $user->fname . ' ' . $user->lname;
-            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
+            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/><h2 style=color: #ff0000>Reason: ".$description.".</h2><br/>" . $link . " to see the its information.";
             $html = User::replaceMessage($to, $message);
             $email = Yii::app()->email;
             $email->from = $email_from;
@@ -673,7 +673,7 @@ class User extends CActiveRecord
             $email->send();
 
             $to = $creator->fname . ' ' . $creator->lname;
-            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>Reason: ".$description."<br/>" . $link . " to see the its information.";
+            $message = $from . ", has ".$status."ed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/><h2 style=color: #ff0000>Reason: ".$description.".</h2><br/>" . $link . " to see the its information.";
             $html = User::replaceMessage($to, $message);
             $email1 = Yii::app()->email;
             $email1->from = $email_from;

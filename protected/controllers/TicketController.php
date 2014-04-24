@@ -190,9 +190,10 @@ class TicketController extends Controller
         }
     }
 
-    public function actionTicketRejectedAdminAlert($user, $ticket_id)
+    public function actionTicketRejectedAdminAlert($user_id, $ticket_id)
     {
         $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user inner join administrator on user.id = administrator.user_id WHERE user.disable = 0 and user.activated = 1");
+        $user = User::model()->findByPk($user_id);
         $userfullName = $user->fname.' '.$user->lname;
 
         foreach($admins as $ad)
@@ -232,7 +233,7 @@ class TicketController extends Controller
                 $model->status = 'Reject';
                 if ($model->save()) {
                     if (User::isCurrentUserAdmin()) {
-                        $this->actionTicketRejectedAdminAlert(User::getCurrentUserId(), $model->id);
+                        $this->actionTicketRejectedAdminAlert(User::model()->getCurrentUserId(), $model->id);
                         $response['url'] = "/coplat/index.php/home/adminHome";
                     } else {
                         $response['url'] = "/coplat/index.php/home/userHome";
