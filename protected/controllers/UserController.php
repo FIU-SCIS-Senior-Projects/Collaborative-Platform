@@ -72,11 +72,19 @@ class UserController extends Controller
         $permentor = PersonalMentor::model()->getPerMentor($id);
         $dommentor = DomainMentor::model()->getDomMentor($id);
 
+        $isactive = $model->activated;
 
         if(isset($_POST['submit']))
         {
             $model->biography = $_POST['biography'];
+            if(!isactive){
+                $model->activated = 1;
+                User::sendAccountValidatedEmailNotification($model->id, User::model()->getCurrentUserId());
+            }
             $model->save(false);
+
+
+
 
             if($model->isProMentor == 1)
             {
