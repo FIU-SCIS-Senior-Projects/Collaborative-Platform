@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/UserController.php" afterPath="$PROJECT_DIR$/protected/controllers/UserController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/views/site/pages/about.php" afterPath="$PROJECT_DIR$/themes/bootstrap/views/site/pages/about.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" afterPath="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" afterPath="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coplat.iws" />
@@ -25,37 +28,7 @@
     <favorites_list name="coplat" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="UserController.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="0" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.60228574" vertical-offset="935" max-vertical-offset="7157">
-              <folding>
-                <element signature="n#actionCreate#0;n#UserController#0;n#!!top" expanded="false" />
-                <element signature="n#actionCreate_Admin#0;n#UserController#0;n#!!top" expanded="false" />
-                <element signature="n#actionVerifyRegistration#0;n#UserController#0;n#!!top" expanded="false" />
-                <element signature="n#loadModel#0;n#UserController#0;n#!!top" expanded="false" />
-                <marker date="1398439549219" expanded="true" signature="2935:2996" placeholder="SELECT * FRO..project..." />
-                <marker date="1398439549219" expanded="true" signature="3209:3253" placeholder="SELECT * FRO..project..." />
-                <marker date="1398439549219" expanded="true" signature="4016:4077" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1398439549219" expanded="true" signature="4266:4309" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1398439549219" expanded="true" signature="5660:5704" placeholder="SELECT id FR..domain..." />
-                <marker date="1398439549219" expanded="true" signature="6154:6221" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1398439549219" expanded="true" signature="6611:6669" placeholder="SELECT title..project..." />
-                <marker date="1398439549219" expanded="true" signature="6728:6779" placeholder="SELECT domai..user_domain..." />
-                <marker date="1398439549219" expanded="true" signature="6833:6893" placeholder="SELECT user_..mentee..." />
-                <marker date="1398439549219" expanded="true" signature="6946:6991" placeholder="SELECT * FRO..ticket..." />
-                <marker date="1398439549219" expanded="true" signature="7332:7390" placeholder="SELECT title..project..." />
-                <marker date="1398439549219" expanded="true" signature="7453:7504" placeholder="SELECT domai..user_domain..." />
-                <marker date="1398439549219" expanded="true" signature="7562:7622" placeholder="SELECT user_..mentee..." />
-                <marker date="1398439549219" expanded="true" signature="7679:7724" placeholder="SELECT * FRO..ticket..." />
-                <marker date="1398439549219" expanded="true" signature="14659:14801" placeholder="SELECT fname..user..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -94,8 +67,6 @@
         <option value="$PROJECT_DIR$/DomainTest.php" />
         <option value="$PROJECT_DIR$/protected/controllers/CommentController.php" />
         <option value="$PROJECT_DIR$/email/index1.html" />
-        <option value="$PROJECT_DIR$/themes/bootstrap/views/site/pages/about.php" />
-        <option value="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/site/index.php" />
         <option value="$PROJECT_DIR$/protected/views/project/create.php" />
         <option value="$PROJECT_DIR$/protected/views/project/index.php" />
@@ -112,6 +83,9 @@
         <option value="$PROJECT_DIR$/protected/controllers/TicketController.php" />
         <option value="$PROJECT_DIR$/protected/models/User.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ProjectController.php" />
+        <option value="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" />
+        <option value="$PROJECT_DIR$/themes/bootstrap/views/site/pages/about.php" />
+        <option value="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
         <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
       </list>
     </option>
@@ -149,7 +123,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -178,7 +151,99 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protected" />
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -193,10 +258,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="protected" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -220,6 +281,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -319,7 +381,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1932" height="1050" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -391,11 +453,6 @@
         <state line="56" column="28" selection-start="2834" selection-end="2834" vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="2670" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="5" selection-start="2437" selection-end="2437" vertical-scroll-proportion="0.7487437" vertical-offset="648" max-vertical-offset="1560" />
@@ -431,19 +488,9 @@
         <state line="24" column="22" selection-start="761" selection-end="761" vertical-scroll-proportion="0.24665178" vertical-offset="0" max-vertical-offset="896" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/pages/about.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="0" selection-start="385" selection-end="385" vertical-scroll-proportion="0.31085715" vertical-offset="0" max-vertical-offset="875" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="7" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="2618" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/Message.php">
@@ -613,29 +660,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/pages/about.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="115" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1326">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="30" selection-start="6272" selection-end="6272" vertical-scroll-proportion="0.7494199" vertical-offset="1275" max-vertical-offset="2618">
+          <folding>
+            <marker date="1398446935799" expanded="true" signature="-1:-1" placeholder="SELECT fname..user..." />
+            <marker date="1398446935799" expanded="true" signature="-1:-1" placeholder="SELECT lname..user..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="0" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.60228574" vertical-offset="935" max-vertical-offset="7157">
+        <state line="362" column="0" selection-start="12500" selection-end="12500" vertical-scroll-proportion="0.82514286" vertical-offset="4174" max-vertical-offset="7786">
           <folding>
             <element signature="n#actionCreate#0;n#UserController#0;n#!!top" expanded="false" />
-            <element signature="n#actionCreate_Admin#0;n#UserController#0;n#!!top" expanded="false" />
             <element signature="n#actionVerifyRegistration#0;n#UserController#0;n#!!top" expanded="false" />
             <element signature="n#loadModel#0;n#UserController#0;n#!!top" expanded="false" />
-            <marker date="1398439549219" expanded="true" signature="2935:2996" placeholder="SELECT * FRO..project..." />
-            <marker date="1398439549219" expanded="true" signature="3209:3253" placeholder="SELECT * FRO..project..." />
-            <marker date="1398439549219" expanded="true" signature="4016:4077" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1398439549219" expanded="true" signature="4266:4309" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1398439549219" expanded="true" signature="5660:5704" placeholder="SELECT id FR..domain..." />
-            <marker date="1398439549219" expanded="true" signature="6154:6221" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398439549219" expanded="true" signature="6611:6669" placeholder="SELECT title..project..." />
-            <marker date="1398439549219" expanded="true" signature="6728:6779" placeholder="SELECT domai..user_domain..." />
-            <marker date="1398439549219" expanded="true" signature="6833:6893" placeholder="SELECT user_..mentee..." />
-            <marker date="1398439549219" expanded="true" signature="6946:6991" placeholder="SELECT * FRO..ticket..." />
-            <marker date="1398439549219" expanded="true" signature="7332:7390" placeholder="SELECT title..project..." />
-            <marker date="1398439549219" expanded="true" signature="7453:7504" placeholder="SELECT domai..user_domain..." />
-            <marker date="1398439549219" expanded="true" signature="7562:7622" placeholder="SELECT user_..mentee..." />
-            <marker date="1398439549219" expanded="true" signature="7679:7724" placeholder="SELECT * FRO..ticket..." />
-            <marker date="1398439549219" expanded="true" signature="14659:14801" placeholder="SELECT fname..user..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT id FR..domain..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_domain..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT title..project..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT domai..user_domain..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT user_..mentee..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ticket..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT title..project..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT domai..user_domain..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT user_..mentee..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..ticket..." />
+            <marker date="1398447123971" expanded="true" signature="-1:-1" placeholder="SELECT fname..user..." />
           </folding>
         </state>
       </provider>

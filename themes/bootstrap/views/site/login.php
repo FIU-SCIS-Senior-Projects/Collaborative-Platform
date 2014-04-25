@@ -19,9 +19,9 @@ $this->breadcrumbs=array(
     <div style="float:left; border:1px solid;width: auto" >
         <?php $this->widget('bootstrap.widgets.TbCarousel', array(
             'items'=>array(
-                array('image'=>'/coplat/images/carousel/img1.jpeg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
-                array('image'=>'/coplat/images/carousel/img2.jpg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
-                array('image'=>'/coplat/images/carousel/img3.jpg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
+                array('image'=>'/coplat/images/carousel/img1.jpeg', 'label'=>'Collaborative Platform','caption'=>' '),
+                array('image'=>'/coplat/images/carousel/img2.jpg', 'label'=>'Collaborative Platform','caption'=>' '),
+                array('image'=>'/coplat/images/carousel/img3.jpg', 'label'=>'Collaborative Platform', 'caption'=>' '),
 
             ),
             'htmlOptions' => array('style'=>'width:600px;'),

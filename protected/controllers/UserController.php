@@ -358,7 +358,10 @@ class UserController extends Controller
 	{
 	    //Soft delete (Disable the User)
         $model=$this->loadModel($id);
-        $model->disable = 1;
+        if($model->disable == 0)
+            $model->disable = 1;
+        else
+            $model->disable = 0;
 
         $model->save(false);
 
