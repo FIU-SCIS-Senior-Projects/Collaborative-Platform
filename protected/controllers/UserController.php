@@ -171,6 +171,7 @@ class UserController extends Controller
                         
                         $ud->domain_id = $d->id;
                         $ud->user_id = $model->id;
+                        $ud->rate = $_POST['ratings'];
                         $ud->save();
                     }
                 }
@@ -201,8 +202,17 @@ class UserController extends Controller
 			'model'=>$this->loadModel($id),
 		));*/
 	}
+        else 
+        {
+            $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
+            $userdoms = UserDomain::model()->findAllBySql("SELECT domain_id FROM user_domain WHERE user_id=$id");
+            $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
+            $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
+            
+            $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects,
+			'model'=>$this->loadModel($id)));
         }
-
+        }
 
 	/**
 	 * Creates a new model.
