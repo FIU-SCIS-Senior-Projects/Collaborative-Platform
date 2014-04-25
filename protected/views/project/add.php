@@ -5,13 +5,12 @@
 ?>
 
 <?php
-$users = User::model()->findAllBySql("select fname, lname from user where activated = 1 and disable = 0");
+$users = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0");
 $data = array();
-$count = 0;
-foreach($users as $u){
-    $data[$count] = $u->fname.' '.$u->lname;
-    $count++;
-}
+
+foreach($users as $u)
+    $data[$u->id] = $u->fname.' '.$u->lname;
+
 ?>
 
 <div class="form">

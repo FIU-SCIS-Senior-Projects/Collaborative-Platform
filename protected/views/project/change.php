@@ -4,6 +4,15 @@
 /* @var $form CActiveForm */
 ?>
 
+
+<?php
+$users = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0");
+$data = array();
+
+foreach($users as $u){
+    $data[$u->id] = $u->fname.' '.$u->lname;
+}
+?>
 <div class="form">
 
     <?php $form=$this->beginWidget('CActiveForm', array(
@@ -20,15 +29,7 @@
         <?php echo $form->textField($model,'title',array('size'=>45,'maxlength'=>45)); ?>
         <?php echo $form->error($model,'title'); ?>
 
-        <?php
-        $users = User::model()->findAllBySql("select fname, lname from user where activated = 1 and disable = 0");
-        $data = array();
-        $count = 0;
-        foreach($users as $u){
-            $data[$count] = $u->fname.' '.$u->lname;
-            $count++;
-        }
-        ?>
+
         <?php echo $form->labelEx($model,'propose_by_user_id'); ?>
         <?php echo $form->dropDownList($model, 'propose_by_user_id', $data); ?>
         <?php echo $form->error($model,'propose_by_user_id'); ?>

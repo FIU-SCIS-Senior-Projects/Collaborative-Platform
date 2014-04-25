@@ -75,9 +75,10 @@ class ProjectController extends Controller
 
 		if(isset($_POST['Project']))
 		{
-			$model->attributes=$_POST['Project'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+            $model->attributes=$_POST['Project'];
+
+            if($model->save())
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -101,7 +102,7 @@ class ProjectController extends Controller
 		{
 			$model->attributes=$_POST['Project'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('update',array(
