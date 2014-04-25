@@ -77,7 +77,7 @@ class UserController extends Controller
         if(isset($_POST['submit']))
         {
             $model->biography = $_POST['biography'];
-            if(!isactive){
+            if(!$isactive){
                 $model->activated = 1;
                 User::sendAccountValidatedEmailNotification($model->id, User::model()->getCurrentUserId());
             }
