@@ -1,4 +1,4 @@
-<div style="width: 1050px;">
+<div style="width: 1030px;">
     
 <div id="left">
 <form method="POST" enctype="multipart/form-data" action="userProfile">
@@ -9,8 +9,6 @@
         <br><img style="width:150px; height:205px;" src="<?php echo $user->pic_url ?>" />
         
         <input type="file" name="photo" style="width:95px;" class="btn btn-primary">
-        
-    	<!--<?php echo CHtml::submitButton('Sync LinkedIn', array("class"=>"btn btn-primary")); ?>-->
         <br>Role Type(s): <?php if(User::isCurrentUserAdmin()) {?> <b> Administrator </b> <?php }?>
                           <?php if(User::isCurrentUserDomMentor()) {?> <b>Domain Mentor </b> <?php }?>
                           <?php if(User::isCurrentUserPerMentor()) {?> <b>Personal Mentor </b> <?php }?>
@@ -31,12 +29,11 @@
     {   echo" Select the desired amount of projects below and choose a maximum amount on the left"; }
     else
     {   echo "You can add up to ". ($promentor->max_projects - count($p)) ." more projects(s).";    }?>
-    <div id="container" class="my-box-container2" 
+    <div id="container" class="my-box-container6" 
     style="<?php if(User::isCurrentUserProMentor())
         {     echo 'display:block; '; }
         else
         {     echo 'display:none; ';  } ?> height: 200px; overflow-y: scroll">
-        
         <?php
         if($projects == null)
         {
@@ -65,10 +62,10 @@
         <?php }?>
     </div>
 
-	<h2>OR</h2>
+	<!--<h2>OR</h2>
         
     <h4>Check the project(s) that you are NOT interested in</h4>
-    <div id="container" class="my-box-container2"
+    <div id="container" class="my-box-container6"
         style="<?php if(User::isCurrentUserProMentor())
                     {     echo 'display:block; '; }
                     else
@@ -97,7 +94,7 @@
             <?php }
             }?>
         </table>
-    </div>
+    </div>-->
 <?php } 
       elseif(User::isCurrentUserProMentor())
       {?>
@@ -234,7 +231,7 @@
             <h8><textarea id="bio" style="width:475px; height:150px;"name="biography"><?php echo $user->biography ?></textarea>
     <br>
     </div>
-     
+    
 <!-- div to show domains for domain mentors only, unless have other roles as well -->
 <?php if(User::isCurrentUserDomMentor())
 {?>
@@ -248,29 +245,26 @@
                if($userdoms == null)
                {?>
                 <div id="container" class="my-box-container" style="height: 225px; overflow-y: scroll ">
-                <?php
-                    echo "<h7>Rating: 1:low: < 2yrs experience,<br> 5:moderate 2-5yrs exp, <br>10: > 5yrs exp</h7>"
-                        . "<h6>Add new domain:";?>
-                <input type="text" style ="width:100px;" name="domainName">
+                <h7><center>Rating: 1: Basic experience, 5: Moderate exp, 10: Mastered</h7>
+           <h6>Add Current Domain(s)
+                <select name ="existDoms[]" style="width:100px;">
+                <?php $dm = Domain::model()->findAllBySql("SELECT * FROM domain WHERE id NOT IN (SELECT domain_id FROM user_domain WHERE user_id=$user->id)");
+                    for($i = 0; $i < count($dm); $i++)
+                    {?>
+                    <option value="<?php echo $dm[$i]->name; ?>"><?php echo $dm[$i]->name; ?></option>
+                    <?php  }
+                    ?>
+                </select>           
                 <select name="ratings" style="width:60px;">
                 <?php for ($i = 1; $i <= 10; $i++)
                 {?>
                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php }
-                ?></select></h6><br>
- 
-           Add Current Domain(s)<select multiple name ="existDoms[]" style="width:100px;">
-            <?php $dm = Domain::model()->findAllBySql("SELECT * FROM domain WHERE id NOT IN (SELECT domain_id FROM user_domain WHERE user_id=$user->id)");
-                    for($i = 0; $i < count($dm); $i++)
-                    {?>
-               <option value="<?php echo $dm[$i]->name; ?>"><?php echo $dm[$i]->name; ?></option>
-                  <?php  }
-               ?>
-           </select></h6></div>
+                ?></select></h6></center></div>
        <?php }
        else
                { ?>
-     <div id="container" class="my-box-container" style="height: 175px; overflow-y: scroll ">
+     <div id="container" class="my-box-container" style="height: 200px; overflow-y: scroll ">
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
                 <thead>
                         <tr>
@@ -306,25 +300,25 @@
                         }
                ?>
             </table><br>
-     </div><h7>Rating: 1:low: < 2yrs experience, 5:moderate2-5yrs exp, 10: > 5yrs exp</h7>
-       <h6>Add Domain <input type="text" style ="width:100px;" name="domainName">
-           <select name="ratings" style="width:60px;">
+     </div><h7><center>Rating: 1: Basic experience, 5: Moderate exp, 10: Mastered</h7>
+           <h6>Add Current Domain(s)
+                <select name ="existDoms[]" style="width:100px;">
+                <?php $dm = Domain::model()->findAllBySql("SELECT * FROM domain WHERE id NOT IN (SELECT domain_id FROM user_domain WHERE user_id=$user->id)");
+                    for($i = 0; $i < count($dm); $i++)
+                    {?>
+                    <option value="<?php echo $dm[$i]->name; ?>"><?php echo $dm[$i]->name; ?></option>
+                    <?php  }
+                    ?>
+                </select>           
+                <select name="ratings" style="width:60px;">
                 <?php for ($i = 1; $i <= 10; $i++)
                 {?>
                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php }
-                ?></select>
-           Add Current Domain(s)<select multiple name ="existDoms[]" style="width:100px;">
-            <?php $dm = Domain::model()->findAllBySql("SELECT * FROM domain WHERE id NOT IN (SELECT domain_id FROM user_domain WHERE user_id=$user->id)");
-                    for($i = 0; $i < count($dm); $i++)
-                    {?>
-               <option value="<?php echo $dm[$i]->name; ?>"><?php echo $dm[$i]->name; ?></option>
-                  <?php  }
-               ?>
-          </select></h6>
+                ?></select></h6></center>
        </h6> 
-<?php }
-}?>   </div> 
+ <?php } ?></div>
+<?php }?>  
    
 <!-- div for personal mentors -->
 <?php if(User::isCurrentUserPerMentor())
@@ -377,7 +371,7 @@
      <?php }?>
                 </table>
             <?php } ?></div>		
-    <h2>OR</h2> 
+    <!--<h2>OR</h2> 
     <h4>Check the student(s) that you are NOT interested in</h4>
     <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
@@ -399,7 +393,7 @@
                 </tr>
                 </tbody>
      <?php }?></table>
-    </div>
+    </div>-->
     <?php } elseif(User::isCurrentUserPerMentor())
       {?>
         <h4>My Current Assigned Mentees</h4>
@@ -432,6 +426,4 @@
     <?php }?><br>
     <input type="submit" name="submit" value="Save" class="btn btn-primary">
     </form></div>
-   
 </div>
-

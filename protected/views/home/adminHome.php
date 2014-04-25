@@ -117,7 +117,7 @@
                     <td>
                         <!-- Profile Button -->
                         <?php $this->widget('bootstrap.widgets.TbButton', array(
-                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/profiles', 'type' => 'primary',
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/user/admin', 'type' => 'primary',
                             'label' => 'Profiles', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
                         ?>
 

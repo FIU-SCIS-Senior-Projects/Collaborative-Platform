@@ -77,33 +77,7 @@ class UserController extends Controller
         {
             $model->biography = $_POST['biography'];
             $model->save(false);
-            /*if(isset($_POST['photo']))
-            {
-                  $image = $_POST['photo'];
-                  //Stores the filename as it was on the client computer.
-                  $imagename = $_FILES['photo']['name'];
-                  //Stores the filetype e.g image/jpeg
-                  $imagetype = $_FILES['photo']['type'];
-                  //Stores any error codes from the upload.
-                  $imageerror = $_FILES['photo']['error'];
-                  //Stores the tempname as it is given by the host when uploaded.
-                  $imagetemp = $_FILES['photo']['tmp_name'];
 
-                  //The path you wish to upload the image to
-                  $imagePath = "/coplat/images/profileimages/";
-
-                  if(is_uploaded_file($imagetemp)) {
-                      if(move_uploaded_file($imagetemp, $imagePath . $imagename)) {
-                          echo "Sussecfully uploaded your image.";
-                      }
-                      else {
-                          echo "Failed to move your image.";
-                      }
-                  }
-                  else {
-                      echo "Failed to upload your image.";
-                  }
-            }*/
             if($model->isProMentor == 1)
             {
                 $promentor->max_hours = $_POST['proHours'];
@@ -121,24 +95,14 @@ class UserController extends Controller
                     else
                     {
                         $pro = $_POST['proj'];
-                        $curr = Project::model()->findbysql("SELECT * FROM project WHERE project_mentor_user_id=$model->id");
-                        for($i = 0; $i < count($pro); $i++)
-                        {
-                            //while($promentor->max_projects > count($curr))
-                            //{
-                            $p = Project::model()->findBySql("SELECT * FROM project WHERE title='$pro[$i]'");
-                            $p->project_mentor_user_id = $model->id;
-                            $p->save();
-                            //$p->update("UPDATE project SET mentor_id=$model->id");
-                            //}
+                        $curr = Project::model()->findallbysql("SELECT * FROM project WHERE project_mentor_user_id=$model->id");
+                        
+                        for($i = 0; $i < ($promentor->max_projects - count($curr)); $i++)
+                        {  
+                                $p = Project::model()->findBySql("SELECT * FROM project WHERE title='$pro[$i]'");
+                                $p->project_mentor_user_id = $model->id;
+                                $p->save();
                         }
-                        //$p = Project::model()->findBySql("SELECT * FROM project WHERE title='$pro[0]'");
-                        //var_dump($p);
-                        //$p->mentor_id = $model->id;
-                        //$p->update("UPDATE project SET mentor_id=$model->id");
-
-                        //$p = Project::getProject($pro[0]);
-                        //echo $id->id;
                     }
                 }
             }
@@ -158,7 +122,9 @@ class UserController extends Controller
                 if(isset($_POST['mentees']))
                 {
                     $men = $_POST['mentees'];
-                    for($i = 0; $i < count($men); $i++)
+                    $curr = Mentee::model()->findallbysql("SELECT * FROM mentee WHERE personal_mentor_user_id=$model->id");
+                    
+                    for($i = 0; $i < ($permentor->max_mentees - count($curr)); $i++)
                     {
                         $m = Mentee::model()->findBySql("SELECT * FROM mentee WHERE user_id=$men[$i]");
                         $m->personal_mentor_user_id = $model->id;
@@ -194,7 +160,7 @@ class UserController extends Controller
                         $ud->rate = $_POST['ratings'];
                         $ud->save();
                     }
-                }
+
                 if(isset($_POST['existDoms']))
                 {
                     $doms = $_POST['existDoms'];
@@ -224,8 +190,6 @@ class UserController extends Controller
         }
 
         /** @var User $username */
-        //$username = Yii::app()->user->name;
-        //$user = User::model()->find("username=:username", array(':username' => $username));
         $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
         $userdoms = UserDomain::model()->findAllBySql("SELECT domain_id FROM user_domain WHERE user_id=$id");
         $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
@@ -237,6 +201,7 @@ class UserController extends Controller
 			'model'=>$this->loadModel($id),
 		));*/
 	}
+        }
 
 
 	/**
@@ -280,6 +245,7 @@ class UserController extends Controller
                 {
                     $perMentor = new PersonalMentor;
                     $perMentor->user_id = $model->id;
+                    $perMentor->max_hours = 0; $perMentor->max_mentees = 0;
                     $perMentor->save();
                 }
 
@@ -287,6 +253,7 @@ class UserController extends Controller
                 {
                     $proMentor = new ProjectMentor;
                     $proMentor->user_id = $model->id;
+                    $proMentor->max_hours = 0; $proMentor->max_projects = 0;
                     $proMentor->save();
                 }
 
@@ -294,6 +261,7 @@ class UserController extends Controller
                 {
                     $domainMentor = new DomainMentor;
                     $domainMentor->user_id = $model->id;
+                    $domainMentor->max_tickets = 0;
                     $domainMentor->save();
                 }
 
@@ -456,6 +424,7 @@ class UserController extends Controller
         }
 
         $this->redirect('/coplat/index.php/site/page?view=verification');
+
     }
 
     public function actionVerifyEmail($username, $activation_chain)

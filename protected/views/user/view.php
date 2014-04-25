@@ -9,7 +9,8 @@ if(User::isCurrentUserAdmin())
     );
 }
 ?>
-<div style =" width: 1050px;">
+
+<div style =" width: 1000px;">
     
 <div id="leftup">
     
@@ -28,12 +29,12 @@ if(User::isCurrentUserAdmin())
 <!-- div for project mentors -->
 <?php if($model->isProMentor)
 {?>
-    <div id="container" class="my-box-container2" 
+    <h4>My Current Senior Projects</h4>
+    <div id="container" class="my-box-container6" 
         style="<?php if($model->isProMentor)
         { echo 'display:block; '; }
         else 
         { echo 'display:none; '; }?> height: 200px; overflow-y: scroll ">
-        <h4>My Current Senior Projects</h4>
         <?php
         if($projects == null)
         {
@@ -61,8 +62,7 @@ if(User::isCurrentUserAdmin())
         ?>
     </div>
 <?php } ?>
-
- <?php if($model->isDomMentor || $model->isProMentor || $model->isPerMentor)
+<?php if($model->isDomMentor || $model->isProMentor || $model->isPerMentor)
  {?>
     <div id="container" class="my-box-container3" 
         style="<?php if($model->isDomMentor || $model->isProMentor || $model->isPerMentor)
@@ -85,7 +85,8 @@ if(User::isCurrentUserAdmin())
             {
                 echo "Max tickets: " .$dommentor->max_tickets;
             }
-            ?><br><?php 
+            ?><br>
+            <!--<?php 
             if($userdom == null)
             {
                 echo "Tier Team: N/A";
@@ -93,7 +94,8 @@ if(User::isCurrentUserAdmin())
             else
             {
                 echo "Tier Level: " . $userdom->tier_team;
-            }
+            }?>-->
+        <?php
         } 
         ?>
         <?php
@@ -132,6 +134,72 @@ if(User::isCurrentUserAdmin())
         }?></h8>
         <br>
     </div>
+    <?php if($model->isMentee)
+{       $pmentors = Mentee::model()->findBySql("SELECT * FROM mentee WHERE user_id=$model->id");
+        $pmentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$pmentors->personal_mentor_user_id");
+        $myproject = Mentee::model()->findBySql("SELECT project_id FROM mentee WHERE user_id=$model->id");
+        $proj= Project::model()->findBySql("SELECT * FROM project WHERE id=$myproject->project_id");
+        ?>     <h6> My Personal Mentee </h6>
+        <div id="container" class="my-box-container6"    
+             style="<?php if($model->isMentee)
+        { echo 'display:block;'; }
+        else
+        { echo 'display:none;';  } ?> height: 200px; overflow-y: scroll">
+
+        <?php 
+        if($pmentor == null)
+        {
+            echo "You do not currently have a personal mentor";
+        }
+        else
+        {?>
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+            <thread>
+                <tr>
+                    <th width="100%">Personal Mentor Name</th>
+                </tr>
+            </thread>
+            <?php
+                $usr = User::model()->findBySql("SELECT * FROM user WHERE id='$pmentor->user_id'");?>
+                <tbody>
+                <tr>
+                    <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
+                </tr>
+                </tbody>
+                </table>
+     <?php }?>
+    </div>
+<h6> My Senior Project </h6>
+        <div id="container" class="my-box-container6"    
+             style="<?php if($model->isMentee)
+        { echo 'display:block;'; }
+        else
+        { echo 'display:none;';  } ?> height: 200px; overflow-y: scroll">
+        
+        <?php 
+        if($pmentor == null)
+        {
+            echo "You do not currently have a senior project";
+        }
+        else
+        {?>
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+            <thread>
+                <tr>
+                    <th width="100%">Senior Project</th>
+                </tr>
+            </thread>
+            <?php?>
+                <tbody>
+                <tr>
+                    <td><?php echo $proj->title;?></td>
+                </tr>
+                </tbody>
+                </table>
+     <?php }?>
+    </div>
+<?php    
+}?>
    
 <!-- div to show domains for Domain and Personal Mentors ONLY; only included for project mentors if they are also domain or personal --> 
 <?php 
@@ -180,13 +248,13 @@ if($model->isDomMentor)
 <!-- div for personal mentors -->
 <?php if($model->isPerMentor) 
     {?>
-
-    <div id="container" class="my-box-container2" 
+    <h4>My Current Personal Mentees </h4>
+    <div id="container" class="my-box-container6" 
     style="<?php if($model->isPerMentor)
     {   echo 'display:block; '; }
     else
     {   echo 'display:none; '; } ?> height: 200px; overflow-y: scroll ">
-        <h4>My Current Personal Mentees </h4><?php 
+        <?php 
         if($Mentees == null)
         {
             echo "You are not a personal mentor to any mentee";

@@ -1,4 +1,4 @@
-<div style ="width: 1050px;">
+<div style ="width: 1000px;">
     
 <div id="leftup">
     
@@ -19,12 +19,13 @@
 
  <?php if(User::isCurrentUserProMentor())
     {?>
-    <div id="container" class="my-box-container5" 
+    <h4>My Current Senior Projects</h4>
+    <div id="container" class="my-box-container6" 
         style="<?php if(User::isCurrentUserProMentor())
         {     echo 'display:block; '; }
         else
         {     echo 'display:none; ';  } ?> height: 200px; overflow-y: scroll ">
-        <h4>My Current Senior Projects</h4>
+        
         <?php
         if($projects == null)
         {
@@ -114,7 +115,73 @@
         }?></h8>
         <br>
     </div>
+<?php if(User::isCurrentUserMentee())
+{       $pmentors = Mentee::model()->findBySql("SELECT * FROM mentee WHERE user_id=$user->id");
+        $pmentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$pmentors->personal_mentor_user_id");
+        $myproject = Mentee::model()->findBySql("SELECT project_id FROM mentee WHERE user_id=$user->id");
+        $proj= Project::model()->findBySql("SELECT * FROM project WHERE id=$myproject->project_id");
+    
+    ?>     <h6> My Personal Mentee </h6>
+        <div id="container" class="my-box-container6"    
+             style="<?php if(User::isCurrentUserMentee())
+        { echo 'display:block;'; }
+        else
+        { echo 'display:none;';  } ?> height: 200px; overflow-y: scroll">
 
+        <?php 
+        if($pmentor == null)
+        {
+            echo "You do not currently have a personal mentor";
+        }
+        else
+        {?>
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+            <thread>
+                <tr>
+                    <th width="100%">Personal Mentor Name</th>
+                </tr>
+            </thread>
+            <?php
+                $usr = User::model()->findBySql("SELECT * FROM user WHERE id='$pmentor->user_id'");?>
+                <tbody>
+                <tr>
+                    <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
+                </tr>
+                </tbody>
+                </table>
+     <?php }?>
+    </div>
+<h6> My Senior Project </h6>
+        <div id="container" class="my-box-container6"    
+             style="<?php if(User::isCurrentUserMentee())
+        { echo 'display:block;'; }
+        else
+        { echo 'display:none;';  } ?> height: 200px; overflow-y: scroll">
+        
+        <?php 
+        if($pmentor == null)
+        {
+            echo "You do not currently have a senior project";
+        }
+        else
+        {?>
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+            <thread>
+                <tr>
+                    <th width="100%">Senior Project</th>
+                </tr>
+            </thread>
+            <?php?>
+                <tbody>
+                <tr>
+                    <td><?php echo $proj->title;?></td>
+                </tr>
+                </tbody>
+                </table>
+     <?php }?>
+    </div>
+<?php    
+}?>
 <?php if(User::isCurrentUserDomMentor()) 
     { ?>
 <!-- div to show domains for Domain Mentors ONLY; only included for project or personal mentors if they are also domain --> 
@@ -162,13 +229,14 @@
 
 <?php if(User::isCurrentUserPerMentor()) 
 { ?>
+        <h4>My Current Personal Mentees </h4>
 <!-- div for personal mentors -->
-    <div id="container" class="my-box-container2"    
+    <div id="container" class="my-box-container6"    
     style="<?php if(User::isCurrentUserPerMentor())
         { echo 'display:block;'; }
         else
         { echo 'display:none;';  } ?> height: 200px; overflow-y: scroll">
-        <h4>My Current Personal Mentees </h4>
+        
         <?php 
         if($Mentees == null)
         {
