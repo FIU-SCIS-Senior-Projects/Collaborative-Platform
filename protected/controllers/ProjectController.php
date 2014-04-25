@@ -77,8 +77,8 @@ class ProjectController extends Controller
 		{
             $model->attributes=$_POST['Project'];
 
-            /*var_dump($model);
-            exit;*/
+            if($model->project_mentor_user_id == '')
+                $model->project_mentor_user_id = null;
 
             if($model->save())
 				$this->redirect(array('admin','id'=>$model->id));
@@ -104,7 +104,11 @@ class ProjectController extends Controller
 		if(isset($_POST['Project']))
 		{
 			$model->attributes=$_POST['Project'];
-			if($model->save())
+
+            if($model->project_mentor_user_id == '')
+                $model->project_mentor_user_id = null;
+
+            if($model->save())
 				$this->redirect(array('admin','id'=>$model->id));
 		}
 

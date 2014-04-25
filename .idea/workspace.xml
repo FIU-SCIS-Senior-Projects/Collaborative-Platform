@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/ProjectController.php" afterPath="$PROJECT_DIR$/protected/controllers/ProjectController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,14 +28,8 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="758" column="23" selection-start="31925" selection-end="31925" vertical-scroll-proportion="-27.26923" vertical-offset="12177" max-vertical-offset="13039">
-              <folding>
-                <marker date="1398432710332" expanded="true" signature="7800:7838" placeholder="SELECT id fr..user..." />
-                <marker date="1398432710332" expanded="true" signature="12170:12219" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1398432710332" expanded="true" signature="12444:12490" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1398432710332" expanded="true" signature="13100:13146" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1398432710332" expanded="true" signature="13507:13569" placeholder="SELECT COUNT..." />
-              </folding>
+            <state line="758" column="23" selection-start="31925" selection-end="31925" vertical-scroll-proportion="0.0" vertical-offset="12177" max-vertical-offset="13039">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -44,7 +37,7 @@
       <file leaf-file-name="ProjectController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="19" selection-start="2127" selection-end="2127" vertical-scroll-proportion="0.7382857" vertical-offset="714" max-vertical-offset="3213">
+            <state line="110" column="12" selection-start="2892" selection-end="2892" vertical-scroll-proportion="0.64114285" vertical-offset="1309" max-vertical-offset="3281">
               <folding />
             </state>
           </provider>
@@ -159,7 +152,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -322,6 +314,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -437,11 +430,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -718,20 +711,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="758" column="23" selection-start="31925" selection-end="31925" vertical-scroll-proportion="-27.26923" vertical-offset="12177" max-vertical-offset="13039">
-          <folding>
-            <marker date="1398432710332" expanded="true" signature="7800:7838" placeholder="SELECT id fr..user..." />
-            <marker date="1398432710332" expanded="true" signature="12170:12219" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398432710332" expanded="true" signature="12444:12490" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1398432710332" expanded="true" signature="13100:13146" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1398432710332" expanded="true" signature="13507:13569" placeholder="SELECT COUNT..." />
-          </folding>
+        <state line="758" column="23" selection-start="31925" selection-end="31925" vertical-scroll-proportion="0.0" vertical-offset="12177" max-vertical-offset="13039">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="19" selection-start="2127" selection-end="2127" vertical-scroll-proportion="0.7382857" vertical-offset="714" max-vertical-offset="3213">
+        <state line="110" column="12" selection-start="2892" selection-end="2892" vertical-scroll-proportion="0.64114285" vertical-offset="1309" max-vertical-offset="3281">
           <folding />
         </state>
       </provider>
