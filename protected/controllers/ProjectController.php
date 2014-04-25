@@ -77,6 +77,9 @@ class ProjectController extends Controller
 		{
             $model->attributes=$_POST['Project'];
 
+            /*var_dump($model);
+            exit;*/
+
             if($model->save())
 				$this->redirect(array('admin','id'=>$model->id));
 		}
