@@ -411,7 +411,7 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $message = $userfullName . ", has register on the system. Administration, verification is needed to complete the registration process.<br> User email address = ".$user_email."<br/>" . $link . " to follow access the platform.";
+        $message = $userfullName . ", has registered on the platform. Administration verification is needed to complete the registration process.<br> User email address: ".$user_email."</h2><br/>" . $link . " to follow access the platform.";
         $html = User::replaceMessage($adminfullName, $message);
 
         $email->to = $admin_email;
@@ -426,7 +426,7 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $message = $userfullName . ", has rejected the ticket #".$ticket_id.".<br> User email address = ".$user_email."<br/>" . $link . " to find the view the rejection reason.";
+        $message = $userfullName . ", has rejected the ticket #".$ticket_id.".<br> User e-mail address: ".$user_email."</h2><br/>" . $link . " to view the rejection reason.";
         $html = User::replaceMessage($adminfullName, $message);
 
         $email->to = $admin_email;
@@ -439,8 +439,9 @@ class User extends CActiveRecord
     public static function sendEmailPasswordChanged($user_id)
     {
         $user = User::model()->find("id=:id", array(':id' => $user_id));
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $message = "Your password on the Collaborative Platform Portal has change. If you are not aware of this change contact the system administrator as soon as possible.";
+        $message = "Your password on the Collaborative Platform Portal was changed. If you are not aware of this change.</h2><br/>".$link." to contact a system administrator as soon as possible.";
         $html = User::replaceMessage($user->fname, $message);
 
         $email = Yii::app()->email;
@@ -454,7 +455,9 @@ class User extends CActiveRecord
     public static function sendEmailWithNewPassword($username, $password)
     {
         $user = User::model()->find("username=:username", array(':username' => $username));
-        $message = "Your new password in the Collaborative Platform is: $password";
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+
+        $message = "Your new password in the Collaborative Platform is: ".$password." </h2><br/>".$link." to access the platform.";
         $html = User::replaceMessage($user->fname, $message);
 
         $email = Yii::app()->email;
@@ -467,7 +470,6 @@ class User extends CActiveRecord
 
     public static function sendEmailNotificationAlert($address, $to, $from, $message)
     {
-
         $email = Yii::app()->email;
         $email->to = $address;
         $email->from = 'Collaborative Platform';
@@ -483,7 +485,7 @@ class User extends CActiveRecord
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/message');
         $from = $send->fname . " " . $send->lname;
         $to = $receive->fname . " " . $receive->lname;
-        $msg = "You just got a message from " . $from . "<br/>" . $message . "<br/>" . $link . "to see the message";
+        $msg = "You just got a message from " . $from . "<br/>" . $message . "</h2><br/>" . $link . "to see the message";
         $html = User::replaceMessage($to, $msg);
 
         $email = Yii::app()->email;
@@ -499,7 +501,7 @@ class User extends CActiveRecord
         $user = User::model()->find("email=:email", array(':email' => $receiver_email));
         $to = $user->fname . " " . $user->lname;
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-        $message = "You has been chosen to be part of the Collaborative Platform as System Administrator.<br/> Username: " . $user->username . "<br/>Password:" . $password . "<br/>" . $link . "to access the platform.";
+        $message = "You has been chosen to be part of the Collaborative Platform as System Administrator.<br/> Username: " . $user->username . "<br/>Password:" . $password . "</h2><br/>" . $link . "to access the platform.";
         $html = User::replaceMessage($to, $message);
 
         $email = Yii::app()->email;
@@ -519,7 +521,7 @@ class User extends CActiveRecord
 
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. $link to view";
+        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/>".$link." for more information.";
         $name = $domMentor->fname . ' ' . $domMentor->lname;
         $html = User::replaceMessage($name, $message);
 
@@ -542,7 +544,7 @@ class User extends CActiveRecord
 
 
         if ($ticket_creator->id == User::model()->getCurrentUser()->id) {
-            $message = $ticket_creator->fname . " " . $ticket_creator->lname . ", has added a new comment to the his/her ticket #" . $ticket->id . ". $link to view the comment.";
+            $message = $ticket_creator->fname . " " . $ticket_creator->lname . ", has added a new comment to the his/her ticket #" . $ticket->id . "</h2><br/>. $link to view the comment.";
             $name = $ticket_mentor->fname . ' ' . $ticket_mentor->lname;
             $html = User::replaceMessage($name, $message);
 
@@ -553,7 +555,7 @@ class User extends CActiveRecord
             $email->message = $html;
             $email->send();
         } elseif ($ticket_mentor->id == User::model()->getCurrentUser()->id) {
-            $message = $ticket_mentor->fname . " " . $ticket_mentor->lname . ", has added a new comment to the ticket #" . $ticket->id . ". $link to view the comment.";
+            $message = $ticket_mentor->fname . " " . $ticket_mentor->lname . ", has added a new comment to the ticket #" . $ticket->id . ". </h2><br/>".$link." to view the comment.";
             $name = $ticket_creator->fname . ' ' . $ticket_creator->lname;
             $html = User::replaceMessage($name, $message);
 
@@ -565,7 +567,7 @@ class User extends CActiveRecord
             $email->send();
         } else {
             $comment_creator = User::model()->getCurrentUser();
-            $message = $comment_creator->fname . " " . $comment_creator->lname . ", has added a new comment to the ticket #" . $ticket->id . ". $link to view the comment.";
+            $message = $comment_creator->fname . " " . $comment_creator->lname . ", has added a new comment to the ticket #" . $ticket->id . ". </h2><br/>".$link." to view the comment.";
             $name = "";
             $html = User::replaceMessage($name, $message);
 
@@ -585,17 +587,17 @@ class User extends CActiveRecord
         $to = "";
         $message = "The Collaborative Platform system administrator, " . $admin->fname . " " . $admin->lname . ", through this email would like to invite you to participate on it as: <br/>";
         if ($invitation->administrator == 1)
-            $message = $message . "<b><u>System Administrator</u>: Role Description.</b><br/>";
+            $message = $message . "<b><u>System Administrator</u>: Responsible, for users, invitations, projects, domains and sub-domains management.</b><br/>";
         if ($invitation->mentor == 1)
-            $message = $message . "<b><u>Mentor</u></b><br/>&nbsp;&nbsp;<i>Domain Mentor: Role Description.</i><br/>&nbsp;&nbsp;<i>Project Mentor: Role Description.</i><br/>&nbsp;&nbsp;<i>Personal Mentor: Role Description.</i><br/>";
+            $message = $message . "<b><u>Mentor</u></b><br/>&nbsp;&nbsp;<i>Domain Mentor: Provide solutions using his/her expertise in specific domains to questions within the platform.</i><br/>&nbsp;&nbsp;<i>Project Mentor: Guide the project development through the semester.</i><br/>&nbsp;&nbsp;<i>Personal Mentor: Provide assistance and guidance to his/her mentees.</i><br/>";
         if ($invitation->employer == 1)
-            $message = $message . "<b><u>Employer</u>: Role Description.</b><br/>";
+            $message = $message . "<b><u>Employer</u>: Publish Job offers, and get to interview potential employees through the Virtual Job Fair Module.</b><br/>";
         if ($invitation->judge == 1)
-            $message = $message . "<b><u>Judge</u>: Role Description.</b><br/>";
+            $message = $message . "<b><u>Judge</u>: Judge Senior Projects presentations through the Remote Judge Module.</b><br/>";
         if ($invitation->mentee == 1)
-            $message = $message . "<b><u>Mentee</u>: Role Description.</b><br/>";
+            $message = $message . "<b><u>Mentee</u>: Platform general user that will interact will the all the users of the platform trough the Mentoring Module..</b><br/>";
 
-        $message = $message . "<br/>" . $link . " to access the platform.";
+        $message = $message . "</h2><br/>" . $link . " to access the platform.";
 
         $html = User::replaceMessage($to, $message);
 
