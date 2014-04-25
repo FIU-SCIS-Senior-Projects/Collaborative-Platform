@@ -726,59 +726,37 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    /*Ticket has closed by the creator */
-    /*public static function sendCloseTicketEmailNotification($creator_user_id, $assign_user_id, $ticket_id)
+    public static function sendAccountValidatedEmailNotification($user_id, $admin_id)
     {
-        $creator = User::model()->findByPk($creator_user_id);
-        $mentor = User::model()->findByPk($assign_user_id);
-        $ticket = Ticket::model()->findByPk($ticket_id);
+        $user = User::model()->findByPk($user_id);
+        $admin = User::model()->findByPk($admin_id);
+
+        $to = $user->fname.' '.$user->lname;
+        $from = $admin->fname.' '.$admin->lname;
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-        $to = $mentor->fname . ' ' . $mentor->lname;
-        $from = $creator->fname . ' ' . $creator->lname;
-        $message = "The user, " . $from . ", has closed the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>" . $link . " to see the its information.";
+        $message = "The System Administrator, ".$from.", has successfully validated your account. You may now try too login.<br/>Thanks for your patience.</h2><br/>".$link." for access.";
         $html = User::replaceMessage($to, $message);
 
         $email = Yii::app()->email;
-
-        $email->to = $mentor->email;
-        $email->from = 'Collaborative Platform';
-        $email->subject = 'Ticket # ' . $ticket_id . ' has been closed.';
+        $email->to = $user->email;
+        $email->from = 'Collaborative Platform.';
+        $email->subject = 'Your Account has being verified.';
         $email->message = $html;
         $email->send();
-    }*/
+    }
 
-    /*public static function sendRejectEmailNotification($creator_user_id, $assign_user_id, $ticket_id, $rejected_by)
+    public static function sendProfileChangedAdminNotification($adminfullName, $admin_email, $userfullName)
     {
-        $creator = User::model()->findByPk($creator_user_id);
-        $mentor = User::model()->findByPk($assign_user_id);
-        $reject = User::model()->findByPk($rejected_by);
-        $ticket = Ticket::model()->findByPk($ticket_id);
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-        $from = $reject->fname . ' ' . $reject->lname;
+        $message = "The user, ".$userfullName. ", has made some changes to his/her profile that require administration review.</h2><br/>".$link." to view the changes.";
+        $html = User::replaceMessage($adminfullName, $message);
 
-        if ($creator_user_id == $rejected_by) {
-            $to = $mentor->fname . ' ' . $mentor->lname;
-            $message = "The user, " . $from . ", has reject the latest comment in the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>" . $link . " to see the its information.";
-            $html = User::replaceMessage($to, $message);
-
-            $email = Yii::app()->email;
-            $email->to = $mentor->email;
-            $email->from = 'Collaborative Platform';
-            $email->subject = 'Ticket #' . $ticket_id . ", status changed to Rejected";
-            $email->message = $html;
-            $email->send();
-        } else {
-            $to = '';
-            $message = "The System Administrator, " . $from . ", has reject the latest comment in the ticket #" . $ticket_id . ", related to " . $ticket->subject . ".<br/>" . $link . " to see the its information.";
-            $html = User::replaceMessage($to, $message);
-
-            $email = Yii::app()->email;
-            $email->to = $mentor->email . ';' . $creator->email;
-            $email->from = 'Collaborative Platform';
-            $email->subject = 'Ticket #' . $ticket_id . ", status changed to Rejected";
-            $email->message = $html;
-            $email->send();
-        }
-    }*/
+        $email = Yii::app()->email;
+        $email->to = $admin_email;
+        $email->from = 'Collaborative Platform.';
+        $email->subject = 'Profile Changed';
+        $email->message = $html;
+        $email->send();
+    }
 
 }

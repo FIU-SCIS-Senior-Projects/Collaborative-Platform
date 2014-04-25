@@ -47,7 +47,8 @@ foreach($users as $u){
             ),
         )); ?>
         (yyyy-mm-dd)
-		<?php echo CHtml::submitButton('Search'); ?>
+        <br/>
+		<?php echo CHtml::submitButton('Search', array("class"=>"btn btn-primary")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -45,7 +45,7 @@ class Project extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, propose_by_user_id', 'required'),
+			array('propose_by_user_id', 'required'),
 			array('id, propose_by_user_id, project_mentor_user_id', 'length', 'max'=>11),
 			array('title', 'length', 'max'=>45),
 			array('description', 'length', 'max'=>1024),
