@@ -3,30 +3,46 @@
 /* @var $model Project */
 
 $this->breadcrumbs=array(
-	'Projects'=>array('index'),
+	'Manage Projects'=>array('admin'),
 	$model->title,
 );
 
-$this->menu=array(
-	array('label'=>'List Project', 'url'=>array('index')),
-	array('label'=>'Create Project', 'url'=>array('create')),
-	array('label'=>'Update Project', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Project', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Project', 'url'=>array('admin')),
-);
+
 ?>
 
-<h1>View Project #<?php echo $model->id; ?></h1>
+<h2>Project <?php echo $model->title; ?></h2>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'title',
-		'description',
-		'propose_by_user_id',
-		'project_mentor_user_id',
-		'start_date',
-		'due_date',
-	),
-)); ?>
+<div class="span6" style="width: 800px; margin-left: 0px;">
+    <table cellpadding="0" cellspacing="0" border="0"
+           class="table table-striped table-bordered table-fixed-header"
+           id="#mytable" width="100%" style="table-layout:fixed">
+        <tr>
+            <td style="background-color: #C9E0ED" width="15%"><h5>Project ID </h5></td>
+            <td style="background-color: #EEF1F3" width="85%"><?php echo $model->id; ?> </td>
+        </tr>
+        <tr>
+            <td style="background-color: #C9E0ED" width="15%"><h5>Title</h5></td>
+            <td style="background-color: #EEF1F3" width="85%"><?php echo $model->title; ?> </td>
+        </tr>
+        <tr>
+            <td style="background-color: #C9E0ED" width="15%"><h5>Propose By</h5></td>
+            <td style="background-color: #EEF1F3" width="85%"><?php echo $propose_by->fname.' '.$propose_by->lname; ?> </td>
+        </tr>
+        <tr>
+            <td style="background-color: #C9E0ED" width="15%"><h5>Project Mentor</h5></td>
+            <td style="background-color: #EEF1F3" width="85%"><?php if($promentor != null)  echo $promentor->fname.' '.$promentor->lname; else echo  '---'; ?> </td>
+        </tr>
+        <tr>
+            <td style="background-color: #C9E0ED" width="15%"><h5>Start Date</h5></td>
+            <td style="background-color: #EEF1F3" width="85%"> <?php echo $model->start_date; ?> </td>
+        </tr>
+        <tr>
+            <td style="background-color: #C9E0ED" width="15%"><h5>Due Date</h5></td>
+            <td style="background-color: #EEF1F3" width="85%"> <?php echo $model->due_date; ?> </td>
+        </tr>
+        <tr>
+            <td style="background-color: #C9E0ED" width="15%"><h5>Description</h5></td>
+            <td style="background-color: #EEF1F3" width="85%"> <?php echo $model->description; ?> </td>
+        </tr>
+    </table>
+</div>

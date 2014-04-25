@@ -79,8 +79,8 @@ class Project extends CActiveRecord
 			'id' => 'ID',
 			'title' => 'Title',
 			'description' => 'Description',
-			'propose_by_user_id' => 'Propose By User',
-			'project_mentor_user_id' => 'Project Mentor User',
+			'propose_by_user_id' => 'Propose By',
+			'project_mentor_user_id' => 'Project Mentor',
 			'start_date' => 'Start Date',
 			'due_date' => 'Due Date',
 		);

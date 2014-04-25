@@ -3,16 +3,12 @@
 /* @var $model Project */
 
 $this->breadcrumbs=array(
-	'Projects'=>array('index'),
-	'Create',
+	'Manage Projects'=>array('admin'),
+	'Add',
 );
 
-$this->menu=array(
-	array('label'=>'List Project', 'url'=>array('index')),
-	array('label'=>'Manage Project', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Create Project</h1>
+<h2>Add New Project</h2>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('add', array('model'=>$model)); ?>

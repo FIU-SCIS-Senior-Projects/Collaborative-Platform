@@ -3,19 +3,12 @@
 /* @var $model Project */
 
 $this->breadcrumbs=array(
-	'Projects'=>array('index'),
-	$model->title=>array('view','id'=>$model->id),
-	'Update',
+	'Manage Projects'=>array('admin'),
+	$model->title,
 );
 
-$this->menu=array(
-	array('label'=>'List Project', 'url'=>array('index')),
-	array('label'=>'Create Project', 'url'=>array('create')),
-	array('label'=>'View Project', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Project', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Update Project <?php echo $model->id; ?></h1>
+<h1>Update Project <?php echo $model->title; ?></h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('change', array('model'=>$model)); ?>
