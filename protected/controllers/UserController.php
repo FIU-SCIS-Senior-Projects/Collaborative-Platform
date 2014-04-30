@@ -82,9 +82,49 @@ class UserController extends Controller
                 User::sendAccountValidatedEmailNotification($model->id, User::model()->getCurrentUserId());
             }
             $model->save(false);
-
-
-
+            
+            
+            if(isset($_POST['domment'])) // remove domain mentor role
+            {
+                
+            }
+            
+            if(isset($_POST['dmentor'])) // add domain mentor role
+            {
+                $user = new DomainMentor;
+                $user->user_id = $model->id;
+                $user->save();
+                $model->isDomMentor = 1;
+                $model->save();
+            }
+            
+            if(isset($_POST['perment'])) // remove personal mentor role
+            {
+                
+            }
+                
+            if(isset($_POST['pmentor'])) // add personal mentor role
+            {
+                $user = new PersonalMentor;
+                $user->user_id = $model->id;
+                $user->save();
+                $model->isPerMentor = 1;
+                $model->save();
+            }
+            
+            if(isset($_POST['proment'])) // remove project mentor role
+            {
+                
+            }
+            
+            if(isset($_POST['prmentor'])) // add project mentor role
+            {
+                $model->isProMentor = 1;
+                $user = new ProjectMentor;
+                $user->user_id = $model->id;
+                $user->save();
+                $model->save();
+            }
 
             if($model->isProMentor == 1)
             {
@@ -113,6 +153,24 @@ class UserController extends Controller
                         }
                     }
                 }
+                
+                if(isset($_POST['nwproj']))
+                {
+                    $projs = $_POST['nwproj'];
+                    
+                    if(empty($projs))
+                    {
+                    }
+                    else
+                    {
+                        for($i = 0; $i < count($projs); $i++)
+                        {
+                            $proj = Project::model()->findBySql("SELECT * FROM project WHERE title='$projs[$i]'");
+                            $proj->project_mentor_user_id = NULL;
+                            $proj->save();
+                        }
+                    }
+                }
             }
 
             if($model->isPerMentor == 1)
@@ -120,13 +178,14 @@ class UserController extends Controller
                 if(isset($_POST['pmentHours']))
                 {
                     $permentor->max_hours = $_POST['pmenHours'];
+                    $permentor->save();
                 }
                 if(isset($_POST['numMentees']))
                 {
                     $permentor->max_mentees = $_POST['numMentees'];
+                    $permentor->save();
                 }
-                $permentor->save();
-
+                
                 if(isset($_POST['mentees']))
                 {
                     $men = $_POST['mentees'];
@@ -137,6 +196,23 @@ class UserController extends Controller
                         $m = Mentee::model()->findBySql("SELECT * FROM mentee WHERE user_id=$men[$i]");
                         $m->personal_mentor_user_id = $model->id;
                         $m->save();
+                    }
+                }
+                
+                if(isset($_POST['nwmtees']))
+                {
+                    $mentees = $_POST['nwmtees'];
+                    if(empty($mentees))
+                    {
+                    }
+                    else
+                    {
+                        for($i = 0; $i < count($mentees); $i++)
+                        {
+                            $mtee = Mentee::model()->findBySql("SELECT * FROM mentee WHERE user_id=$mentees[$i]");
+                            $mtee->personal_mentor_user_id = NULL;
+                            $mtee->save();
+                        }
                     }
                 }
             }
@@ -171,17 +247,17 @@ class UserController extends Controller
 
                 if(isset($_POST['existDoms']))
                 {
-                    $doms = $_POST['existDoms'];
-                    for($i = 0; $i < count($doms); $i++)
-                    {
-                        $d = Domain::model()->findBySql("SELECT id FROM domain WHERE name='$doms[$i]'");
+                    $doms = new Domain();     
+                    $doms->name = $_POST['existDoms'];
+                    //for($i = 0; $i < count($doms); $i++)
+                    //{
+                        $d = Domain::model()->findBySql("SELECT id FROM domain WHERE name='$doms->name'");
                         $ud = new UserDomain();
-                        
                         $ud->domain_id = $d->id;
                         $ud->user_id = $model->id;
                         $ud->rate = $_POST['ratings'];
                         $ud->save();
-                    }
+                    //}
                 }
                 
                 if(isset($_POST['unrated']))

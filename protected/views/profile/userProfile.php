@@ -94,7 +94,8 @@
             echo "Max Projects: " . $promentor->max_projects; ?><br>
         <?php  echo "Max Hours: " . $promentor->max_hours; 
         }?>
-<?php }?>	</div>
+<?php }?>	
+        </div>
     </div>
 </div>
     

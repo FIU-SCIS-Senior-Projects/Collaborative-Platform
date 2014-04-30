@@ -21,7 +21,37 @@
                           <?php if($model->isMentee) {?> <b> Mentee </b> <?php }?>        
         </div> 
 </div> 
-    
+<div id="container" class="my-box-container3" style="height: 100%;" >
+    Role Type(s): <br>    <?php if($model->isAdmin) {?> <b> Administrator </b><br> <?php }?>
+                          <?php if($model->isDomMentor) 
+                          {?> <input type="checkbox" name="domment" value="domment"> <b>Domain Mentor</b> - Remove<br> 
+                          <?php 
+                          }
+                          else
+                          {?> <input type = "checkbox" name="dmentor" value="dmentor"> <b> Domain Mentor </b> - Add <br>
+                          <?php
+                          }
+                          if($model->isPerMentor) 
+                          {?> <input type="checkbox" name="perment" value="perment"> <b>Personal Mentor </b> - Remove<br> 
+                          <?php
+                          }
+                          else
+                          {?>
+                          <input type ="checkbox" name="pmentor" value="pmentor"> <b> Personal Mentor </b> - Add <br> 
+                          <?php 
+                          }
+                          if($model->isProMentor) 
+                          {?> <input type="checkbox" name="proment" value="proment"> <b>Project Mentor </b> - Remove<br> 
+                          <?php 
+                          }
+                          else
+                          {?>
+                          <input type="checkbox" name="prmentor" value="prmentor"> <b> Project Mentor </b> - Add <br>
+                          <?php 
+                          }?>
+                          <?php if($model->isMentee) {?> <b> Mentee </b><br> <?php }?>        
+        
+</div>     
 <!-- div for project mentors -->
 <?php if($model->isProMentor)
 {
@@ -77,36 +107,36 @@
         <?php }?>
     </div>
 
-	<!--<h2>OR</h2>
+	<h2>OR</h2>
         
-    <h4>Check the project(s) that you are NOT interested in</h4>
+    <h4>Remove a current project</h4>
     <div id="container" class="my-box-container6" style="height: 200px; overflow-y: scroll ">
-           <table cellpadding="0" vecllspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+        <?php $currProjs = Project::model()->findAllBySql("SELECT * FROM project WHERE project_mentor_user_id=$model->id");  ?>  
+        <table cellpadding="0" vecllspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
             <thread>
                 <tr>
                     <th width="1%"></th>
                     <th width="40%">Project Name</th>
                 </tr>
             </thread>
-            <?php if($projects == null)
+            <?php if($currProjs == null)
             {
                 echo "No Projects Found";
             }
             else
             {?>
-            <?php foreach($projects as $project)
+            <?php foreach($currProjs as $project)
             { ?>
             <tbody>
                 <tr>
                     <td><input type="checkbox" name="nwproj[]" value="<?php echo $project->title; ?>"></td>
                     <td><?php echo $project->title?></td>
-                    
                 </tr>
             </tbody>
             <?php }
             }?>
         </table>
-    </div>-->   
+    </div>   
 <?php } 
       elseif($model->isProMentor)
       {?>
@@ -138,6 +168,36 @@
             <?php }?>
         </table>
         <?php }?>
+    </div>
+        	<h2>OR</h2>
+        
+    <h4>Remove a current project</h4>
+    <div id="container" class="my-box-container6" style="height: 200px; overflow-y: scroll ">
+        <?php $currProjs = Project::model()->findAllBySql("SELECT * FROM project WHERE project_mentor_user_id=$model->id");  ?>  
+        <table cellpadding="0" vecllspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+            <thread>
+                <tr>
+                    <th width="1%"></th>
+                    <th width="40%">Project Name</th>
+                </tr>
+            </thread>
+            <?php if($currProjs == null)
+            {
+                echo "No Projects Found";
+            }
+            else
+            {?>
+            <?php foreach($currProjs as $project)
+            { ?>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" name="nwproj[]" value="<?php echo $project->title; ?>"></td>
+                    <td><?php echo $project->title?></td>
+                </tr>
+            </tbody>
+            <?php }
+            }?>
+        </table>
     </div>
       <?php }?>
 
@@ -262,7 +322,7 @@
                 <div id="container" class="my-box-container" style="height: 225px; overflow-y: scroll ">
                 <h7><center>Rating: 1: Basic experience, 5: Moderate exp, 10: Mastered</h7>
            <h6>Add Current Domain(s)
-                <select name ="existDoms[]" style="width:100px;">
+                <select name ="existDoms" style="width:100px;">
                 <?php $dm = Domain::model()->findAllBySql("SELECT * FROM domain WHERE id NOT IN (SELECT domain_id FROM user_domain WHERE user_id=$model->id)");
                     for($i = 0; $i < count($dm); $i++)
                     {?>
@@ -382,31 +442,36 @@
                 </table>
      <?php } ?>
 	</div>		
-    <!--<h2>OR</h2> 
-    <h4>Check the student(s) that you are NOT interested in</h4>
+    <h2>OR</h2> 
+    <h4>Remove a current mentee</h4>
     <div id="container" class="my-box-container6" style="height: 200px; overflow-y: scroll ">
-            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+        <?php $currMtees = Mentee::model()->findallbysql("SELECT * FROM mentee WHERE personal_mentor_user_id=$model->id"); ?>  
+        <table cellpadding="0" vecllspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
             <thread>
                 <tr>
                     <th width="1%"></th>
                     <th width="40%">Student Name</th>
                 </tr>
             </thread>
-            <?php
-            foreach($Mentees as $mentee)
+            <?php if($currMtees == null)
             {
-                $usr = User::model()->findBySql("SELECT * FROM user WHERE id=$mentee->user_id");
-                ?>
-                <tbody>
+                echo "No Mentees Found";
+            }
+            else
+            {?>
+            <?php foreach($currMtees as $mentee)
+            { 
+            $usr = User::model()->findBySql("SELECT * FROM user WHERE id=$mentee->user_id")?>
+            <tbody>
                 <tr>
-                    <td><input type="checkbox" name="nmentees[]" value="<?php echo $mentee->user_id; ?>"</td>
-                    <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
+                    <td><input type="checkbox" name="nwmtees[]" value="<?php echo $mentee->user_id; ?>"></td>
+                    <td><?php echo ucfirst($usr->fname). " " . ucfirst($usr->lname); ?></td>
                 </tr>
-                </tbody>
-            
-     <?php }?>
-                </table>
-    </div>-->
+            </tbody>
+            <?php }
+            }?>
+        </table>
+    </div>
      <?php } elseif($model->isPerMentor)
       {?>
         <h4><?php echo ucfirst($model->fname) . "'s "?>Current Assigned Mentees</h4>
@@ -434,6 +499,36 @@
             
     <?php }?>
     </table><?php }?>
+                <h2>OR</h2> 
+    <h4>Remove a current mentee</h4>
+    <div id="container" class="my-box-container6" style="height: 200px; overflow-y: scroll ">
+        <?php $currMtees = Mentee::model()->findallbysql("SELECT * FROM mentee WHERE personal_mentor_user_id=$model->id"); ?>  
+        <table cellpadding="0" vecllspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+            <thread>
+                <tr>
+                    <th width="1%"></th>
+                    <th width="40%">Student Name</th>
+                </tr>
+            </thread>
+            <?php if($currMtees == null)
+            {
+                echo "No Mentees Found";
+            }
+            else
+            {?>
+            <?php foreach($currMtees as $mentee)
+            { 
+            $usr = User::model()->findBySql("SELECT * FROM user WHERE id=$mentee->user_id")?>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" name="nwmtees[]" value="<?php echo $mentee->user_id; ?>"></td>
+                    <td><?php echo ucfirst($usr->fname). " " . ucfirst($usr->lname); ?></td>
+                </tr>
+            </tbody>
+            <?php }
+            }?>
+        </table>
+    </div>
     </div>
       <?php }
     }?>
