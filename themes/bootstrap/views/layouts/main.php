@@ -111,7 +111,7 @@
 							array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 							array('label'=>'Register', 'url'=>array('/user/create'), 'visible'=>Yii::app()->user->isGuest),
 						    )),
-                            //array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+                            array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
                             //array('label'=>'Contact', 'url'=>array('site/contact')),
 
             ),

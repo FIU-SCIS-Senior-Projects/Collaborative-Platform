@@ -46,6 +46,7 @@ class LoginForm extends CFormModel
 	 */
 	public function authenticate($attribute,$params)
 	{
+
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
@@ -71,7 +72,9 @@ class LoginForm extends CFormModel
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			$this->_identity->authenticate();
-		}
+            echo "Hello world";
+
+        }
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
 			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days

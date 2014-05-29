@@ -1,7 +1,6 @@
 <?php
 
-// uncomment the following to define a path alias
-// Yii::setPathOfAlias('local','path/to/local-folder');
+// uncomment the following to define a path alias Yii::setPathOfAlias('local','path/to/local-folder');
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
@@ -72,7 +71,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=coplat',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '9Qst32+',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		
