@@ -1,4 +1,10 @@
 <?php
+if(User::isCurrentUserAdmin())
+{
+    echo "<script> window.location ='adminHome' </script>";
+
+} else
+{
 /**
  * Created by PhpStorm.
  * User: lorenzo_mac
@@ -143,3 +149,4 @@
 
     //$('.table-fixed-header').fixedHeader();
 </script>
+<?php }?>

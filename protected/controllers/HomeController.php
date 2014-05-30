@@ -8,6 +8,7 @@
  */
 class HomeController extends Controller
 {
+
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -35,7 +36,7 @@ class HomeController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'pMentorViewProjects', 'userHome', 'adminHome', 'adminViewProjects'),
+                'actions' => array('create', 'update', 'pMentorViewProjects', 'userHome', 'adminHome', 'adminViewProjects','actionImport'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -95,4 +96,14 @@ class HomeController extends Controller
     {
         $this->render('coplat/projectMeeting/pMentorViewProjects');
     }
+
+
+
+
+
+    /**
+     * @return int
+     */
+
+
 }

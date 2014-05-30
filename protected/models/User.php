@@ -152,7 +152,8 @@ class User extends CActiveRecord
             'isEmployer' => 'Employer',
             'vjf_role' => 'Virtual Job Fair Roles:',
             'men_role' => 'Mentoring Platform Roles:',
-            'rmj_role' => 'Remote Mobil Judge Roles:'
+            'rmj_role' => 'Remote Mobil Judge Roles:',
+            'tpassword'=> 'Temporary Password'
         );
     }
 
@@ -195,6 +196,7 @@ class User extends CActiveRecord
             'criteria' => $criteria,
         ));
     }
+
 
     /* retrieve all user ids in the system */
     public static function getAllUserId()
@@ -758,5 +760,92 @@ class User extends CActiveRecord
         $email->message = $html;
         $email->send();
     }
+/*
+    public static function importData()
+    {
+        if(isset($_POST["go"]))
+        {
+            $url = "http://spws.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
+            $json = file_get_contents($url);
+            $students = json_decode($json, true);
+
+            foreach ($students as $student )
+            {
+
+               User::importStudent($student['email'],$student['id'],$student['firstName'],$student['lastName'],$student['middle'],$student['valid']);
+            }
+
+        }
+        //$this->render('adminHome');
+        // $this->refresh(false,'#');
+    }
+
+    private static function passwordGenerator()
+    {
+        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
+
+    }
+    private static function alreadyIn($username)
+    {
+        $model = User::model()->find("username = '".$username."'");
+        if (empty($model))
+        {
+            return false;
+
+        }
+        return true;
+    }
+
+    public  static function importStudent($email,$pid,$firstname,$lastname,$middle,$valid)
+    {
+        if(User::alreadyIn($email)==false)
+        {
+
+            $us = new User;
+            $us->email = $email."@fiu.edu";
+            $us->fiucs_id = $pid;
+            $us->fname = ucfirst($firstname);
+            $us->lname = ucfirst($lastname);
+
+            $us->username = $email;
+            if($valid==true)
+            {
+                $us->activated = 1;
+            } else
+            {
+                $us->activated = 0;
+            }
+            //$us->activation_chain = $this->genRandomString(10);
+
+            $us->isMentee =1;
+            $us->isStudent=1;
+
+            $randPassword = User::passwordGenerator();
+            $us->tpassword =  $randPassword;
+            $hasher = new PasswordHash(8, false);
+            $us->password = $hasher->HashPassword($randPassword);
+
+            $us->save(false);
+
+            $mentee = new Mentee();
+            $mentee->user_id = $us->id;
+            $mentee->save(false);
+        }
+
+        //$userfullName = $model->fname.' '.$model->lname;
+        $error = '';
+
+        // $this->actionSendVerificationEmail($userfullName, $model->email);
+
+    }*/
+
+
 
 }
