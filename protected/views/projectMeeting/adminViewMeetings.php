@@ -10,7 +10,6 @@
 
 /* @var $this HomeController */
 /* @var $dataProvider CActiveDataProvider */
-
 ?>
 
 

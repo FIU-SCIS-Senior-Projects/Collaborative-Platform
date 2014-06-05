@@ -14,13 +14,15 @@
  * @property string $domain_id
  * @property string $subdomain_id
  * @property string $file
+ * @property integer $priority_id
  *
  * The followings are the available model relations:
  * @property Comment[] $comments
+ * @property User $creatorUser
+ * @property User $assignUser
  * @property Domain $domain
  * @property Subdomain $subdomain
- * @property User $assignUser
- * @property User $creatorUser
+ * @property Priority $priority
  */
 class Ticket extends CActiveRecord
 {
@@ -50,14 +52,15 @@ class Ticket extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('creator_user_id, status, created_date, subject, description, domain_id', 'required'),
+			array('creator_user_id, status, created_date, subject, description, domain_id, priority_id', 'required'),
+			array('priority_id', 'numerical', 'integerOnly'=>true),
 			array('creator_user_id, assign_user_id, domain_id, subdomain_id', 'length', 'max'=>11),
 			array('status, subject', 'length', 'max'=>45),
 			array('description', 'length', 'max'=>500),
 			array('file', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file', 'safe', 'on'=>'search'),
+			array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,10 +73,11 @@ class Ticket extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'comments' => array(self::HAS_MANY, 'Comment', 'ticket_id'),
+			'creatorUser' => array(self::BELONGS_TO, 'User', 'creator_user_id'),
+			'assignUser' => array(self::BELONGS_TO, 'User', 'assign_user_id'),
 			'domain' => array(self::BELONGS_TO, 'Domain', 'domain_id'),
 			'subdomain' => array(self::BELONGS_TO, 'Subdomain', 'subdomain_id'),
-			'assignUser' => array(self::BELONGS_TO, 'User', 'assign_user_id'),
-			'creatorUser' => array(self::BELONGS_TO, 'User', 'creator_user_id'),
+			'priority' => array(self::BELONGS_TO, 'Priority', 'priority_id'),
 		);
 	}
 
@@ -93,6 +97,7 @@ class Ticket extends CActiveRecord
 			'domain_id' => 'Domain',
 			'subdomain_id' => 'Subdomain',
 			'file' => 'File',
+			'priority_id' => 'Priority',
 		);
 	}
 
@@ -117,6 +122,7 @@ class Ticket extends CActiveRecord
 		$criteria->compare('domain_id',$this->domain_id,true);
 		$criteria->compare('subdomain_id',$this->subdomain_id,true);
 		$criteria->compare('file',$this->file,true);
+		$criteria->compare('priority_id',$this->priority_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

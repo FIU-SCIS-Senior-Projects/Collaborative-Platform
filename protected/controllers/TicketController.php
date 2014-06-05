@@ -57,13 +57,15 @@ class TicketController extends Controller
         $userCreator = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $ticket->creator_user_id));
         $userAssign = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $ticket->assign_user_id));
         $domainName = Domain::model()->findBySql("SELECT * from domain  WHERE id=:id", array(":id" => $ticket->domain_id));
+        $priority = Priority::model()->findBySql("SELECT * from priority WHERE id=:id", array(":id" => $ticket->priority_id));
+        $tier = UserDomain::model()->findBySql("SELECT * from user_domain WHERE user_id =:id and domain_id =:id2 and subdomain_id =:id3", array(":id" => $ticket->assign_user_id, ":id2" => $ticket->domain_id, ":id3" => $ticket->subdomain_id));
         $subdomainName = null;
         if ($ticket->subdomain_id != null)
             $subdomainName = Subdomain::model()->findBySql("SELECT * from subdomain  WHERE id=:id", array(":id" => $ticket->subdomain_id));
 
         $this->render('view', array(
             'model' => $this->loadModel($id), /*Return all the ticket details */
-            'userCreator' => $userCreator, 'userAssign' => $userAssign, 'domainName' => $domainName, 'subdomainName' => $subdomainName
+            'userCreator' => $userCreator, 'userAssign' => $userAssign, 'domainName' => $domainName, 'subdomainName' => $subdomainName, 'priority' => $priority, 'tier' =>$tier
         ));
     }
 
@@ -102,12 +104,18 @@ class TicketController extends Controller
 
             $domain_id = $model->domain_id;
 
+            if ($model->priority_id == '') {
+                $model->priority_id = null;
+            }
+
+            $priority_id = $model->priority_id;
+
             /* Populate ticket attributes */
             $model->creator_user_id = User::getCurrentUserId(); /*Get the ID of the user */
             $model->created_date = new CDbExpression('NOW()'); /* Get the current date and time */
 
             if ($model->assign_user_id != null) { /*Check first if the user has selected the assign user */
-                $model->assign_user_id = $model->assign_user_id;
+                    $model->assign_user_id = $model->assign_user_id;
                 $sub = true;
                 if ($model->subdomain_id == '') {
                     $sub = false;
@@ -156,7 +164,8 @@ class TicketController extends Controller
      * @param integer $id the ID of the model to be updated
      */
 
-    public function actionReassign($id)
+       //tito
+    public function actionReassign($id)//when mentors select in assign: automatically reassignment
     {
         $model = $this->loadModel($id);
 
@@ -166,6 +175,20 @@ class TicketController extends Controller
 
         if (isset($_POST['Ticket'])) {
             $model->attributes = $_POST['Ticket'];
+
+            //tito
+            $systemID = User::model()->findBySql("SELECT * from user  WHERE username=:id", array(":id" => 'SYSTEM'));
+            if($model->assign_user_id == $systemID->id){
+
+                $boolean = true; /* Identify is the subdomain was specified by the user */
+                if ($model->subdomain_id == null) {
+                    $boolean = false;
+                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor);
+                }
+                else{
+                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor);
+                }
+            }
 
             $response = array();
             /*Change the status of the ticket to Pending from Reject */

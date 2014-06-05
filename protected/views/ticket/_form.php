@@ -57,19 +57,37 @@
             <?php echo $form->error($model, 'assign_user_id');?>
         <?php } ?>
 
+        <br/><br/>
+        <?php
+            $priority = Priority::model()->findAll();
+            $data = array();
+            foreach ($priority as $prio) {
+                $data[$prio->id] = $prio->description;
+            } ?>
+        <?php echo $form->labelEx($model, 'Assign a Priority'); ?>
+        <?php echo $form->dropDownList($model, 'priority_id', $data, array('prompt' => 'Select'));?>
+        <?php echo $form->error($model, 'priority_id');?>
+
+
         <?php
         /* If the user if project mentor. He has the option of assign the ticket to another project mentor */
         if (User::isCurrentUserMentee()) {
-
+            // find project mentor
             $mentee = Mentee::model()->findByPk(User::getCurrentUserId());
             $projectmentor = Project::model()->findByPk($mentee->project_id);
-
             $mentor = User::model()->find("id=:id", array(':id'=>$projectmentor->project_mentor_user_id));
 
+            //Tito: Find perssonnal mentor
+            $personalMentorID = ($mentee->personal_mentor_user_id);
+            $personalMentor = User::model()->find("id=:id", array(':id'=>$personalMentorID));
 
             $data = array();
            // foreach ($mentor as $mod) {
                 $data[$mentor->id] = $mentor->fname . ' ' . $mentor->lname;
+
+            // Tito add personal mentor to $data
+                $data[$personalMentor->id] = $personalMentor->fname . ' ' . $personalMentor->lname;
+
             //}?>
             <br/><br/>
             <?php echo $form->labelEx($model, 'Assign to a Mentor (optional)'); ?>

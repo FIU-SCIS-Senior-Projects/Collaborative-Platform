@@ -1,10 +1,4 @@
 <?php
-if(User::isCurrentUserAdmin())
-{
-    echo "<script> window.location ='adminHome' </script>";
-
-} else
-{
 /**
  * Created by PhpStorm.
  * User: lorenzo_mac
@@ -124,6 +118,16 @@ if(User::isCurrentUserAdmin())
                                 'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMenteeViewMeetings', 'type' => 'primary',
                                 'label' => 'Project', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
                         }
+                        //Tito:
+                        ?>
+                        <br/>
+                        <br/>
+                        <?php
+                        if ($user->isPerMentor()) {
+                            $this->widget('bootstrap.widgets.TbButton', array(
+                                'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/personalMentorViewMeetings', 'type' => 'primary',
+                                'label' => 'Personal Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                        }
                         ?>
 
                     </td>
@@ -149,4 +153,3 @@ if(User::isCurrentUserAdmin())
 
     //$('.table-fixed-header').fixedHeader();
 </script>
-<?php }?>

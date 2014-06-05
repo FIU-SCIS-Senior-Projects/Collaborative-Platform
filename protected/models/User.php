@@ -152,8 +152,7 @@ class User extends CActiveRecord
             'isEmployer' => 'Employer',
             'vjf_role' => 'Virtual Job Fair Roles:',
             'men_role' => 'Mentoring Platform Roles:',
-            'rmj_role' => 'Remote Mobil Judge Roles:',
-            'tpassword'=> 'Temporary Password'
+            'rmj_role' => 'Remote Mobil Judge Roles:'
         );
     }
 
@@ -197,7 +196,6 @@ class User extends CActiveRecord
         ));
     }
 
-
     /* retrieve all user ids in the system */
     public static function getAllUserId()
     {
@@ -237,8 +235,8 @@ class User extends CActiveRecord
 
     public static function replaceMessage($to, $message)
     {
-        $file = fopen("/var/www/html/coplat/email/index1.html", "r");
-        //$file = fopen("C:/wamp/www/coplat/email/index1.html", "r");
+        //$file = fopen("/var/www/html/coplat/email/index1.html", "r");
+        $file = fopen("C:/xampp/htdocs/coplat/email/index1.html", "r");
         $html = "";
         while (!feof($file)) {
             $html .= fgets($file);
@@ -372,6 +370,47 @@ class User extends CActiveRecord
             $validator = $subdomain->validator;
         } else {
             $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
+            $domain = Domain::model()->findByPk($domain_id);
+            $validator = $domain->validator;
+        }
+
+        if ($userDomain != null && is_array($userDomain)) {
+            foreach ($userDomain as $auserDomain) {
+                /** @var UserDomain $auserDomain */
+                if ($auserDomain->tier_team == 1) {
+
+
+                    if ($auserDomain->rate >= $validator) {
+                        /*Query to the domain mentor to see how many tickets is allowed to be assigned */
+                        $domainMentor = DomainMentor::model()->findAllBySql("SELECT * FROM domain_mentor WHERE user_id =:id", array(":id" => $auserDomain->user_id));
+                        /** @var Ticket $count */
+                        if (is_array($domainMentor)) {
+                            foreach ($domainMentor as $adomainMentor) {
+                                /** @var DomainMentor $adomainMentor */
+                                $count = Ticket::model()->findBySql("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id =:id", array(":id" => $adomainMentor->user_id));
+                                if ($count->id < $adomainMentor->max_tickets) {
+                                    /*return the first available domain mentor on queue */
+                                    return $auserDomain->user_id;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return self::$admin; /* Assign the ticket to the admin for reassign */
+    }
+
+    //tito   /*Assign Domain Mentor to a Ticket */
+    public static function reassignTicket($domain_id, $sub, $oldMentorId)
+    {
+        /*Query to the User_Domain model */
+        if ($sub) {
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id and user_id !=:id2", array(":id" => $domain_id, ":id2" => $oldMentorId));
+            $subdomain = Subdomain::model()->findByPk($domain_id);
+            $validator = $subdomain->validator;
+        } else {
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id and user_id !=:id2", array(":id" => $domain_id, ":id2" => $oldMentorId));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
@@ -760,92 +799,5 @@ class User extends CActiveRecord
         $email->message = $html;
         $email->send();
     }
-/*
-    public static function importData()
-    {
-        if(isset($_POST["go"]))
-        {
-            $url = "http://spws.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
-            $json = file_get_contents($url);
-            $students = json_decode($json, true);
-
-            foreach ($students as $student )
-            {
-
-               User::importStudent($student['email'],$student['id'],$student['firstName'],$student['lastName'],$student['middle'],$student['valid']);
-            }
-
-        }
-        //$this->render('adminHome');
-        // $this->refresh(false,'#');
-    }
-
-    private static function passwordGenerator()
-    {
-        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-        $pass = array(); //remember to declare $pass as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < 8; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        return implode($pass); //turn the array into a string
-
-    }
-    private static function alreadyIn($username)
-    {
-        $model = User::model()->find("username = '".$username."'");
-        if (empty($model))
-        {
-            return false;
-
-        }
-        return true;
-    }
-
-    public  static function importStudent($email,$pid,$firstname,$lastname,$middle,$valid)
-    {
-        if(User::alreadyIn($email)==false)
-        {
-
-            $us = new User;
-            $us->email = $email."@fiu.edu";
-            $us->fiucs_id = $pid;
-            $us->fname = ucfirst($firstname);
-            $us->lname = ucfirst($lastname);
-
-            $us->username = $email;
-            if($valid==true)
-            {
-                $us->activated = 1;
-            } else
-            {
-                $us->activated = 0;
-            }
-            //$us->activation_chain = $this->genRandomString(10);
-
-            $us->isMentee =1;
-            $us->isStudent=1;
-
-            $randPassword = User::passwordGenerator();
-            $us->tpassword =  $randPassword;
-            $hasher = new PasswordHash(8, false);
-            $us->password = $hasher->HashPassword($randPassword);
-
-            $us->save(false);
-
-            $mentee = new Mentee();
-            $mentee->user_id = $us->id;
-            $mentee->save(false);
-        }
-
-        //$userfullName = $model->fname.' '.$model->lname;
-        $error = '';
-
-        // $this->actionSendVerificationEmail($userfullName, $model->email);
-
-    }*/
-
-
 
 }

@@ -28,15 +28,15 @@ class ProjectMeetingController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings'),
+				'actions'=>array('index','view','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings'),
+				'actions'=>array('create','update','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings'),
+				'actions'=>array('admin','delete','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -387,5 +387,49 @@ class ProjectMeetingController extends Controller
             'mentees' => $mentees,
         ));
     }
+
+    /*Implemented by TITO */
+    public function actionpersonalMentorViewMeetings()
+    {
+        /** @var  User $user */
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+
+        $pmentees = array();
+       // tito
+        $allMentees = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=:id", array(":id" => $user->id));
+        foreach ($allMentees as $i => $m) {
+            //tito $pmentees[$pm->id][$m->user_id] = $m;
+            $pmentees[4352][$m->user_id] = $m;
+        }
+
+        $pmentee = array();
+        foreach ($pmentees as $pment) {
+            foreach ($pment as $pm) {
+                $pmentee[$pm->user_id] = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id" => $pm->user_id));
+            }
+        }
+
+        /*Get all tickets for his mentees */
+        $tickets = array();
+        foreach($pmentee as  $id=>$menteeTickets){
+            $myTickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE creator_user_id=:id and assign_user_id!=:id2",
+                array(':id'=>$menteeTickets->id, ':id2'=>User::getCurrentUserId()));
+            if(is_array($myTickets)) {
+                $tickets = array_merge($tickets, $myTickets);
+            }
+        }
+
+        /** @var User $usermentee */
+
+        /* End Return all the mentees for the project mentor */
+
+        $this->render('personalMentorViewMeetings', array( /*'menteeName' => $menteeName,*/
+            'user' => $user,
+            'pmentee' => $pmentee,
+            'tickets' => $tickets,
+        ));
+    }
+
 
 }

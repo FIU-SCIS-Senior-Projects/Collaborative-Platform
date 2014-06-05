@@ -8,7 +8,6 @@
  */
 class HomeController extends Controller
 {
-
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -36,7 +35,7 @@ class HomeController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'pMentorViewProjects', 'userHome', 'adminHome', 'adminViewProjects','actionImport'),
+                'actions' => array('create', 'update', 'pMentorViewProjects', 'userHome', 'adminHome', 'adminViewProjects'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -54,9 +53,10 @@ class HomeController extends Controller
 
         $TicketsO = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id)
         and (status=:pending or status=:reject)", array(":id" => $user->id,":pending"=>'pending', ":reject"=>'reject' ));
-       // $TicketsR = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'reject'));
-        $TicketsC = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'close'));
 
+
+        // $TicketsR = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'reject'));
+        $TicketsC = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'close'));
 
         $this->render('userHome', array('TicketsO' => $TicketsO, 'TicketsC' => $TicketsC,
             //'results' => $results,
@@ -96,14 +96,4 @@ class HomeController extends Controller
     {
         $this->render('coplat/projectMeeting/pMentorViewProjects');
     }
-
-
-
-
-
-    /**
-     * @return int
-     */
-
-
 }

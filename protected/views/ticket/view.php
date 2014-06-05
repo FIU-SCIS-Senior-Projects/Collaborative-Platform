@@ -47,7 +47,10 @@
                     <td width="15%"><h5>Assigned To</h5></td>
                     <td width="85%"><?php echo $userAssign->fname . ' ' . $userAssign->lname; ?></td>
                 </tr>
-
+                <tr style="background-color: #EEE">
+                    <td width="15%"><h5>Priority</h5></td>
+                    <td width="85%"><?php echo $priority->description; ?></td>
+                </tr>
                 <tr style="background-color: #EEE">
                     <td width="15%"><h5>Attachment</h5></td>
                     <td width="85%">    <?php if ($model->file != null) {
@@ -107,6 +110,21 @@
                     'data-toggle' => 'modal',
                     'data-target' => '#myModalReAssign',
                     'style' => 'width: 120px',
+                ),
+            ));
+        }?>
+        <br/>
+        <br/>
+        <!-- Button trigger escalate -->
+        <?php
+        if ( (User::isCurrentUserAdmin() || User::isCurrentUserDomMentor()) && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1) {
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => 'Escalate',
+                'type' => 'primary',
+                'htmlOptions' => array(
+                    'data-toggle' => 'modal',
+                    'data-target' => '#myModalEscalate',
+                    'style' => 'width: 120px'
                 ),
             ));
         }?>
@@ -238,8 +256,9 @@
                 <input style ="display:none" type = "text" id = "file" value='<?php /*echo $model->file;*/ ?>'</input> -->
         <?php
         //Logic to identified is a subdomain is being specified
-        $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE isDomMentor=:isDomMentor and id!=:userid", array(':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
+        $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE activated =:activated and (isAdmin =:isAdmin or isDomMentor=:isDomMentor and id!=:userid)", array(':activated' => 1, ':isAdmin' => 1, ':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
         $data = array();
+        //tito
         foreach ($userDomain as $mod) {
             $data[$mod->id] = $mod->fname . ' ' . $mod->lname;
         }
@@ -284,6 +303,7 @@
         <?php $this->endWidget() ?>
     </div>
 </div>
+
 <!-- Script for Reassign modal -->
 <script>
     $('a#reassign').on('click', function () {
@@ -357,6 +377,32 @@
     </div>
 </div>
 
+
+
+<!-- Modal Escalate-->
+<div class="modal fade" id="myModalEscalate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ticket #<?php echo $model->id ?> was escalated</h4>
+    </div>
+
+    <div class="modal-footer">
+
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'label' => 'OK', 'url' => '#',
+            'htmlOptions' => array('data-dismiss' => 'modal'),
+        ));
+        ?>
+        <?php /*$this->endWidget()*/ ?>
+
+    </div>
+
+</div>
+
+
+
 <!-- Script for Comment modal -->
 <script>
     $('a#change').on('click', function () {
@@ -372,6 +418,8 @@
         return false;
     })
 </script>
+
+
 
 
 <script>
