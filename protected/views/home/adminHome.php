@@ -1,11 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lorenzo_mac
- * Date: 4/9/14
- * Time: 2:08 PM
- */
-?>
+if(User::isCurrentUserAdmin()==false)
+{
+    echo "<script> window.location ='userHome' </script>";
+
+} else
+{
+    /**
+     * Created by PhpStorm.
+     * User: lorenzo_mac
+     * Date: 4/9/14
+     * Time: 2:08 PM
+     */
+    /* @var $this HomeController */
+    ?>
 
 <div><h3><?php echo ucfirst($user->fname); ?> <?php echo ucfirst($user->lname); ?> Dashboard</h3></div>
 <br>
@@ -132,6 +139,22 @@
 
                     </td>
                 </tr>
+                <tr>
+
+
+                    <td><br>
+
+                        <!-- Import Button -->
+                        <?php
+                        $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link','id'=>'new-box', 'type' => 'secondary',
+                            'label' => 'Sync with SPW', 'size' => 'medium', 'htmlOptions' => array('name'=>"go", 'submit'=>'?r=Import/import','value'=>'val','style' => 'width: 120px')));
+
+                        ?>
+
+
+                    </td>
+                </tr>
             </table>
             <br/>
             <table>
@@ -170,3 +193,4 @@
 
     //$('.table-fixed-header').fixedHeader();
 </script>
+<?php }?>
