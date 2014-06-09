@@ -1,5 +1,12 @@
 <?php
-
+require_once("protected/extensions/Oauth2/Token.php");
+require_once("protected/extensions/Oauth2/Client.php");
+require_once("protected/extensions/Oauth2/DataStore.php");
+require_once("protected/extensions/Oauth2/HttpClient.php");
+require_once("protected/extensions/Oauth2/Exception.php");
+require_once("protected/extensions/Oauth2/Service/Configuration.php");
+require_once("protected/extensions/Oauth2/DataStore/Session.php");
+require_once("protected/extensions/Oauth2/Service.php");
 /**
  * LoginForm class.
  * LoginForm is the data structure for keeping

@@ -1,3 +1,4 @@
+
 <?php
 /* @var $this SiteController */
 /* @var $model LoginForm */
@@ -22,8 +23,8 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username'); ?>
@@ -36,7 +37,7 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($model,'password'); ?>
 		<p class="hint">
 			<!--Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.-->
-<a href= "/coplat/index.php/site/forgotPassword" > Forgot your Password? </a>			
+<a href= "/coplat/index.php/site/forgotPassword" > Forgot your Password? </a>
 		</p>
 	</div>
 
@@ -47,7 +48,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton('HO'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

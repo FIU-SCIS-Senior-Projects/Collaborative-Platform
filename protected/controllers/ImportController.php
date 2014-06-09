@@ -30,9 +30,11 @@ class ImportController extends Controller
     public function actionImport()
     {
 
-        if(User::isCurrentUserAdmin())
+       if(User::isCurrentUserAdmin())
         {
+            //$url = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
             $url = "http://spws.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
+
             $json = file_get_contents($url);
             $students = json_decode($json, true);
 

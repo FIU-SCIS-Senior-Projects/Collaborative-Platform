@@ -155,6 +155,7 @@ if(User::isCurrentUserAdmin()==false)
 
                     </td>
                 </tr>
+
             </table>
             <br/>
             <table>

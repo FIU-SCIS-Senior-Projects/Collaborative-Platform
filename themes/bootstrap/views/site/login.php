@@ -8,15 +8,15 @@ $this->breadcrumbs=array(
 	'Login',
 );*/
 ?>
+<br><br><br>
 
+<div class="form"  style="width:800px; margin:0 auto;">
 
-
-<div class="form">
     <!--<img style="float:left; height:50px; margin-left:50px"src='/coplat/images/mentor.png'/>
     <h2 style="margin-bottom:40px;float:left;margin-left:10px">Collaborative Platform Login</h2>
 
     -->
-    <div style="float:left; border:1px solid;width: auto" >
+    <div style="float:left; border:1px solid;width: auto" align="center">
         <?php $this->widget('bootstrap.widgets.TbCarousel', array(
             'items'=>array(
                 array('image'=>'/coplat/images/carousel/img1.jpeg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
@@ -24,11 +24,22 @@ $this->breadcrumbs=array(
                 array('image'=>'/coplat/images/carousel/img3.jpg', 'label'=>'Collaborative Platform', 'caption'=>'Collaborative Platform is a space'),
 
             ),
-            'htmlOptions' => array('style'=>'width:600px;'),
+            'htmlOptions' => array('style'=>'width:400px;'),
         )); ?>
     </div>
 
+
+
+
     <div id="login" style="height: 60px">
+
+        <div id="googlelogin" style="height: 60px">
+            <?php
+            $image = CHtml::image(Yii::app()->baseUrl.'/images/login/fiu_cs_login.png');
+            echo CHtml::link($image, '?r=Login/fiu_oauth2')."<br><br><br>";
+            ?>
+        </div>
+
         <?php
 			$form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             	'id'=>'login-form',
@@ -64,9 +75,10 @@ $this->breadcrumbs=array(
 			<div style="clear:both"></div>
 			<a style="float:left;" href= "/coplat/index.php/user/create" > Register  </a>	
 		</div>
-        
+
         
    </div>
+
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
