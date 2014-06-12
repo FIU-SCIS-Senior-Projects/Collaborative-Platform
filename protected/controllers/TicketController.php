@@ -254,6 +254,7 @@ class TicketController extends Controller
 
             } elseif ($newStatus == 1) {
                 $model->status = 'Reject';
+                $model->assign_user_id = User::$admin;
                 if ($model->save()) {
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
