@@ -83,10 +83,10 @@
 
             $data = array();
            // foreach ($mentor as $mod) {
-                $data[$mentor->id] = $mentor->fname . ' ' . $mentor->lname;
+            if($mentor != null)   $data[$mentor->id] = $mentor->fname . ' ' . $mentor->lname;
 
             // Tito add personal mentor to $data
-                $data[$personalMentor->id] = $personalMentor->fname . ' ' . $personalMentor->lname;
+            if($personalMentor != null)   $data[$personalMentor->id] = $personalMentor->fname . ' ' . $personalMentor->lname;
 
             //}?>
             <br/><br/>

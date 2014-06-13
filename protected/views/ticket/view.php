@@ -406,7 +406,7 @@
 <!-- Script for Comment modal -->
 <script>
     $('a#change').on('click', function () {
-        var confirmed = confirm("Do you really want to reassign the ticket?");
+        var confirmed = confirm("Do you really want to proceed?");
         if (confirmed) {
             $.post('/coplat/index.php/ticket/change/<?php echo $model->id?>', $('#ticket-form-status').serialize(), function (message) {
                 var url = message.url;
