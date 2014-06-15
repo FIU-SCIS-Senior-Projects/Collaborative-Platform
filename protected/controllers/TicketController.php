@@ -215,7 +215,7 @@ class TicketController extends Controller
 
     public function actionTicketRejectedAdminAlert($user_id, $ticket_id)
     {
-        $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user inner join administrator on user.id = administrator.user_id WHERE user.disable = 0 and user.activated = 1");
+        $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user WHERE disable = 0 and activated = 1 and isAdmin = 1 and username != 'SYSTEM'");
         $user = User::model()->findByPk($user_id);
         $userfullName = $user->fname.' '.$user->lname;
 
