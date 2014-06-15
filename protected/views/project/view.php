@@ -3,8 +3,8 @@
 /* @var $model Project */
 
 $this->breadcrumbs=array(
-	'Manage Projects'=>array('admin'),
-	$model->title,
+    'Manage Projects'=>array('admin'),
+    $model->title,
 );
 
 
@@ -26,7 +26,22 @@ $this->breadcrumbs=array(
         </tr>
         <tr>
             <td style="background-color: #C9E0ED" width="15%"><h5>Propose By</h5></td>
-            <td style="background-color: #EEF1F3" width="85%"><?php echo $propose_by->fname.' '.$propose_by->lname; ?> </td>
+            <td style="background-color: #EEF1F3" width="85%">
+                <?php
+
+                if($propose_by==null)
+                {
+
+                    echo "---";
+                } else
+                {
+
+                    echo $propose_by->fname.' '.$propose_by->lname;
+                }
+                ?>
+
+
+            </td>
         </tr>
         <tr>
             <td style="background-color: #C9E0ED" width="15%"><h5>Project Mentor</h5></td>

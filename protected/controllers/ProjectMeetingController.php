@@ -2,74 +2,74 @@
 
 class ProjectMeetingController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/column2';
+    /**
+     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+     * using two-column layout. See 'protected/views/layouts/column2.php'.
+     */
+    public $layout='//layouts/column2';
 
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
 
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+        return array(
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'actions'=>array('index','view','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
+                'users'=>array('*'),
+            ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions'=>array('create','update','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
+                'users'=>array('@'),
+            ),
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions'=>array('admin','delete','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
+                'users'=>array('admin'),
+            ),
+            array('deny',  // deny all users
+                'users'=>array('*'),
+            ),
+        );
+    }
 
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}
+    /**
+     * Displays a particular model.
+     * @param integer $id the ID of the model to be displayed
+     */
+    public function actionView($id)
+    {
+        $this->render('view',array(
+            'model'=>$this->loadModel($id),
+        ));
+    }
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate($id)
-	{
-		$model=new ProjectMeeting;
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionCreate($id)
+    {
+        $model=new ProjectMeeting;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
 
-		if(isset($_POST['ProjectMeeting']))
-		{
-			$model->attributes=$_POST['ProjectMeeting'];
+        if(isset($_POST['ProjectMeeting']))
+        {
+            $model->attributes=$_POST['ProjectMeeting'];
             $model->project_mentor_user_id = $id;
 
             if($model->save()) {
@@ -77,106 +77,106 @@ class ProjectMeetingController extends Controller
                 User::sendMeetingNotification($model->project_mentor_user_id, $model->mentee_user_id,
                     $model->date, $model->time);
             }
-		}
-	}
+        }
+    }
 
 
 
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
+    public function actionUpdate($id)
+    {
+        $model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
 
-		if(isset($_POST['ProjectMeeting']))
-		{
-			$model->attributes=$_POST['ProjectMeeting'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+        if(isset($_POST['ProjectMeeting']))
+        {
+            $model->attributes=$_POST['ProjectMeeting'];
+            if($model->save())
+                $this->redirect(array('view','id'=>$model->id));
+        }
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
+        $this->render('update',array(
+            'model'=>$model,
+        ));
+    }
 
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
+    public function actionDelete($id)
+    {
+        $this->loadModel($id)->delete();
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+        if(!isset($_GET['ajax']))
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+    }
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('ProjectMeeting');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
+    /**
+     * Lists all models.
+     */
+    public function actionIndex()
+    {
+        $dataProvider=new CActiveDataProvider('ProjectMeeting');
+        $this->render('index',array(
+            'dataProvider'=>$dataProvider,
+        ));
+    }
 
     /**
      * Lists all models.
      */
 
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new ProjectMeeting('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['ProjectMeeting']))
-			$model->attributes=$_GET['ProjectMeeting'];
+    /**
+     * Manages all models.
+     */
+    public function actionAdmin()
+    {
+        $model=new ProjectMeeting('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['ProjectMeeting']))
+            $model->attributes=$_GET['ProjectMeeting'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
+        $this->render('admin',array(
+            'model'=>$model,
+        ));
+    }
 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return ProjectMeeting the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model=ProjectMeeting::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer $id the ID of the model to be loaded
+     * @return ProjectMeeting the loaded model
+     * @throws CHttpException
+     */
+    public function loadModel($id)
+    {
+        $model=ProjectMeeting::model()->findByPk($id);
+        if($model===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+        return $model;
+    }
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param ProjectMeeting $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='project-meeting-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
+    /**
+     * Performs the AJAX validation.
+     * @param ProjectMeeting $model the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='project-meeting-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
 
 
     /*Implemented by Lorenzo Sanchez */
@@ -206,7 +206,7 @@ class ProjectMeetingController extends Controller
         $pmentees = array();
 
         foreach ($projects as $pm) {
-           /** @var ProjectMentorProject $pm */
+            /** @var ProjectMentorProject $pm */
             $allMentees = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE project_id=:id", array(":id" => $pm->id));
             foreach ($allMentees as $i => $m) {
                 $pmentees[$pm->id][$m->user_id] = $m;
@@ -225,8 +225,12 @@ class ProjectMeetingController extends Controller
             /** @var Project $project */
 
             $project->description .= sprintf("<h4>Mentees</h4><ul>");
-            foreach ($pmentees[$project->id] as $projectMenteeId=>$menteeObject) {
-                $project->description .= sprintf("<li>%s</li>", $pmentee[$projectMenteeId]);
+            if($pmentees!=null)
+            {
+                foreach ($pmentees[$project->id] as $projectMenteeId=>$menteeObject)
+                {
+                    $project->description .= sprintf("<li>%s</li>", $pmentee[$projectMenteeId]);
+                }
             }
             $project->description .= sprintf("</ul>");
         }
@@ -298,13 +302,21 @@ class ProjectMeetingController extends Controller
 
 
         /* Popover */
-        foreach ($projects as $project) {
+        foreach ($projects as $project)
+        {
             /** @var Project $project */
 
+
             $project->description .= sprintf("<h4>Mentees</h4><ul>");
-            foreach ($pmentees[$project->id] as $projectMenteeId => $menteeObject) {
-                $project->description .= sprintf("<li>%s</li>", $pmentee[$projectMenteeId]);
+            if($pmentees!=null)
+            {
+                foreach ($pmentees[$project->id] as $projectMenteeId => $menteeObject)
+                {
+                    $project->description .= sprintf("<li>%s</li>", $pmentee[$projectMenteeId]);
+
+                }
             }
+
             $project->description .= sprintf("</ul>");
         }
 
@@ -338,7 +350,7 @@ class ProjectMeetingController extends Controller
         /** @var User $mentee */
         foreach ($meetings as $id => $meetin) {
             $mentees[$id] = User::model()->findBySql("SELECT * FROM user WHERE id =:id OR id =:iid", array(":id" => $meetin->mentee_user_id,
-                                                        ":iid"=>$meetin->project_mentor_user_id));
+                ":iid"=>$meetin->project_mentor_user_id));
         }
 
 
@@ -396,7 +408,7 @@ class ProjectMeetingController extends Controller
         $user = User::model()->find("username=:username", array(':username' => $username));
 
         $pmentees = array();
-       // tito
+        // tito
         $allMentees = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=:id", array(":id" => $user->id));
         foreach ($allMentees as $i => $m) {
             //tito $pmentees[$pm->id][$m->user_id] = $m;

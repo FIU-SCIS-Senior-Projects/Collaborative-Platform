@@ -82,17 +82,36 @@
             if(User::isCurrentUserPerMentor())
             {?>
                 <h6>Personal Mentor Availability</h6><?php
-                $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
-                echo "Max Mentees: " . $permentor->max_mentees;
+
+                $permentor = ProjectMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
+                $max_mentees=0;
+                $max_hours=0;
+                if($permentor!=null)
+                {
+                    $max_mentees = $permentor->max_mentees;
+                    $max_hours = $permentor->max_hours;
+                }
+
+                //$permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
+                echo "Max Mentees: " . $max_mentees;
                 ?><br>
-                <?php  echo "Max hours: " . $permentor->max_hours; } ?><br>
+                <?php  echo "Max hours: " . $max_hours; } ?><br>
             <?php
             if(User::isCurrentUserProMentor())
             {?>
                 <h6>Project Mentor Availability</h6><?php
+
                 $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
-                echo "Max Projects: " . $promentor->max_projects; ?><br>
-                <?php  echo "Max Hours: " . $promentor->max_hours;
+                $max_projects=null;
+                $max_h=null;
+                if($promentor!=null)
+                {
+                    $max_projects = $promentor->max_projects;
+                    $max_h = $promentor->max_hours;
+                }
+                // $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
+                echo "Max Projects: " . $max_projects; ?><br>
+                <?php  echo "Max Hours: " . $max_h;
             }?>
             <?php }?>	</div>
     </div>

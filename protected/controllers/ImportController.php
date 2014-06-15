@@ -103,6 +103,7 @@ class ImportController extends Controller
                 'condition'=>'username=:un',
                 'params'=>array(':un'=>$username),
             ));
+
             $record=Mentee::model()->findByPk($id);
             $record->project_id = $project_id;
             $record->save(false);
@@ -176,7 +177,7 @@ class ImportController extends Controller
             $project->title=$title;
             $project->description = $description;
             //$list= Yii::app()->db->createCommand('select user_id from project_mentor where spw_legacy_id=:idd')->bindValue('idd',$proposed_by)->queryAll();
-            //$project->propose_by_user_id = $proposed_by;//$list[0]['user_id'];
+            //$project->propose_by = $proposed_by;//$list[0]['user_id'];
             $project->save(false);
 
 
