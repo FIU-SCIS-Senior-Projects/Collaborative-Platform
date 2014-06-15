@@ -30,33 +30,42 @@ class ImportController extends Controller
     public function actionImport()
     {
 
-       if(User::isCurrentUserAdmin())
+        //if(User::isCurrentUserAdmin())
         {
-            //$url = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
-            $url = "http://spws.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
+            //  $projectURL = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getProjects/123FIUspw/";
+            $projectURL = "http://spws-dev.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getProjects/123FIUspw/";
 
-            $json = file_get_contents($url);
-            $students = json_decode($json, true);
+            $jsonProjects = file_get_contents($projectURL);
+            $projects = json_decode($jsonProjects, true);
 
-                foreach ($students as $student )
-               {
-
-
-                   $this->importStudent($student['email'],$student['id'],$student['firstName'],$student['lastName'],$student['middle'],$student['valid']);
-               }
+            foreach ($projects as $project)
+            {
+                $this->importProject($project['title'],$project['description'],$project['proposed_by_id'],$project['project_id']);
 
 
-          echo "<script type='text/javascript'>
+            }
 
-                alert('Data from SPW has been imported');
 
-                window.location = 'adminHome';
+            //$studentsURL = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
+            $studentsURL = "http://spws-dev.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
+            $jsonStudents = file_get_contents($studentsURL);
+            $students = json_decode($jsonStudents, true);
 
-              </script>";
+            foreach ($students as $student )
+            {
+
+                $this->importMentee($student['email'],$student['id'],$student['firstName'],$student['lastName'],$student['middle'],$student['valid']);
+
+                $this->assignProjectforUser($student['email'],$student['projectID']);
+            }
+
+            echo "<script> window.alert('Data has been imported from SPW');window.location = 'adminHome'</script>";
+
+
             //s$this->refresh(false,'#');
-        } else
+        } //else
         {
-            echo "<script> window.location ='userHome' </script>";
+            //echo "<script> window.location ='userHome' </script>";
 
         }
     }
@@ -85,49 +94,117 @@ class ImportController extends Controller
         }
         return true;
     }
+    public function assignProjectforUser($username,$project_id)
+    {
+        if ($project_id!=null)
+        {
+            $id=User::model()->find(array(
+                'select'=>'id',
+                'condition'=>'username=:un',
+                'params'=>array(':un'=>$username),
+            ));
+            $record=Mentee::model()->findByPk($id);
+            $record->project_id = $project_id;
+            $record->save(false);
 
-    public function importStudent($email,$pid,$firstname,$lastname,$middle,$valid)
+
+
+        }
+    }
+
+    public function importMentee($email,$pid,$firstname,$lastname,$middle,$valid)
     {
         if($this->exists($email)==false)
         {
+            $us = new User;
 
-        $us = new User;
-        $us->email = $email."@fiu.edu";
-        $us->fiucs_id = $pid;
-        $us->fname = ucfirst($firstname);
-        $us->lname = ucfirst($lastname);
+            if($valid==true)
+            {
+                $us->activated = 1;
 
-        $us->username = $email;
-        if($valid==true)
+                $us->email = $email."@fiu.edu";
+                $us->fiucs_id = $pid;
+                $us->fname = ucfirst($firstname);
+                $us->lname = ucfirst($lastname);
+
+                $us->username = $email;
+                //$us->activation_chain = $this->genRandomString(10);
+
+                $us->isMentee =1;
+                //$us->isStudent=1;
+
+                $randPassword = $this->passwordGenerator();
+                $us->tpassword =  $randPassword;
+                $hasher = new PasswordHash(8, false);
+                $us->password = $hasher->HashPassword($randPassword);
+
+                $us->save(false);
+
+                $mentee = new Mentee();
+                $mentee->user_id = $us->id;
+                $mentee->save(false);
+
+
+            } else
+
+            {
+                $us->disable = 1;
+                $us->save(false);
+
+
+            }
+        }
+
+        //$userfullName = $model->fname.' '.$model->lname;
+        $error = '';
+
+        // $this->actionSendVerificationEmail($userfullName, $model->email);
+
+    }
+
+
+    public function importProject($title,$description,$proposed_by, $spw_project_legacy_id)
+    {
+
+        $exists = Project::model()->find("id = '".$spw_project_legacy_id."'");
+
+        if (empty($exists))
         {
-            $us->activated = 1;
-        } else
+
+            $project = new Project();
+            $project->id = $spw_project_legacy_id;
+            $project->title=$title;
+            $project->description = $description;
+            //$list= Yii::app()->db->createCommand('select user_id from project_mentor where spw_legacy_id=:idd')->bindValue('idd',$proposed_by)->queryAll();
+            //$project->propose_by_user_id = $proposed_by;//$list[0]['user_id'];
+            $project->save(false);
+
+
+
+        }
+
+
+    }
+    /*
+
+    public function disableOldMentees()
+    {
+        $studentsURL = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
+        // $url = "http://spws-dev.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
+        $jsonStudents = file_get_contents($studentsURL);
+        $students = json_decode($jsonStudents, true);
+        foreach ($students as $student )
         {
-            $us->activated = 0;
-        }
-        //$us->activation_chain = $this->genRandomString(10);
-
-        $us->isMentee =1;
-        //$us->isStudent=1;
-
-        $randPassword = $this->passwordGenerator();
-        $us->tpassword =  $randPassword;
-        $hasher = new PasswordHash(8, false);
-        $us->password = $hasher->HashPassword($randPassword);
-
-        $us->save(false);
-
-        $mentee = new Mentee();
-        $mentee->user_id = $us->id;
-        $mentee->save(false);
-        }
-
-            //$userfullName = $model->fname.' '.$model->lname;
-            $error = '';
-
-           // $this->actionSendVerificationEmail($userfullName, $model->email);
 
         }
+
+
+    }
+  */
+
+
+
+
 }
 
 

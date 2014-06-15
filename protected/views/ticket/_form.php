@@ -45,7 +45,7 @@
         if (User::isCurrentUserProMentor() || User::isCurrentUserAdmin()) {
 
             $pmentor = User::model()->findAll("isProMentor=:isProMentor and id!=:id", array(':isProMentor' => 1, ':id'=>
-            User::model()->getCurrentUserId()));
+                User::model()->getCurrentUserId()));
             //select * from user where isProMentor = '1' AND username != 'lsanc104'
             $data = array();
             foreach ($pmentor as $mod) {
@@ -59,11 +59,11 @@
 
         <br/><br/>
         <?php
-            $priority = Priority::model()->findAll();
-            $data = array();
-            foreach ($priority as $prio) {
-                $data[$prio->id] = $prio->description;
-            } ?>
+        $priority = Priority::model()->findAll();
+        $data = array();
+        foreach ($priority as $prio) {
+            $data[$prio->id] = $prio->description;
+        } ?>
         <?php echo $form->labelEx($model, 'Assign a Priority'); ?>
         <?php echo $form->dropDownList($model, 'priority_id', $data, array('prompt' => 'Select'));?>
         <?php echo $form->error($model, 'priority_id');?>
@@ -73,20 +73,38 @@
         /* If the user if project mentor. He has the option of assign the ticket to another project mentor */
         if (User::isCurrentUserMentee()) {
             // find project mentor
+
             $mentee = Mentee::model()->findByPk(User::getCurrentUserId());
+            $mentor = null;
             $projectmentor = Project::model()->findByPk($mentee->project_id);
-            $mentor = User::model()->find("id=:id", array(':id'=>$projectmentor->project_mentor_user_id));
+            if($projectmentor!=null)
+            {
+                $mentor = User::model()->find("id=:id", array(':id'=>$projectmentor->project_mentor_user_id));
+            } else{
+
+            }
+
 
             //Tito: Find perssonnal mentor
-            $personalMentorID = ($mentee->personal_mentor_user_id);
-            $personalMentor = User::model()->find("id=:id", array(':id'=>$personalMentorID));
-
+            $personalMentor=null;
+            if($mentee->personal_mentor_user_id!=null)
+            {
+                $personalMentorID = ($mentee->personal_mentor_user_id);
+                $personalMentor = User::model()->find("id=:id", array(':id'=>$personalMentorID));
+            }
             $data = array();
-           // foreach ($mentor as $mod) {
-            if($mentor != null)   $data[$mentor->id] = $mentor->fname . ' ' . $mentor->lname;
+            // foreach ($mentor as $mod) {
+            if($mentor != null)
+            {
+                $data[$mentor->id] = $mentor->fname . ' ' . $mentor->lname;
+            }
 
             // Tito add personal mentor to $data
-            if($personalMentor != null)   $data[$personalMentor->id] = $personalMentor->fname . ' ' . $personalMentor->lname;
+            if($personalMentor != null)
+            {
+                $data[$personalMentor->id] = $personalMentor->fname . ' ' . $personalMentor->lname;
+            }
+
 
             //}?>
             <br/><br/>
