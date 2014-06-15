@@ -261,6 +261,7 @@ class TicketController extends Controller
                     } else {
                         $this->actionTicketRejectedAdminAlert(User::model()->getCurrentUserId(), $model->id);
                         $model->assign_user_id = User::$admin; //tito
+                        $model->save(); //tito
                         $response['url'] = "/coplat/index.php/home/userHome";
                     }
                 } else {
