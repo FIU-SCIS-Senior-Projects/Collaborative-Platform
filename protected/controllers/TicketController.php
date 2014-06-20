@@ -28,15 +28,15 @@ class TicketController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'download','reassign', 'change', 'adminHome', 'userHome'),
+                'actions' => array('index', 'view', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'download','reassign', 'change', 'adminHome', 'userHome'),
+                'actions' => array('create', 'update', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome'),
+                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
@@ -58,11 +58,14 @@ class TicketController extends Controller
         $userAssign = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $ticket->assign_user_id));
         $domainName = Domain::model()->findBySql("SELECT * from domain  WHERE id=:id", array(":id" => $ticket->domain_id));
         $priority = Priority::model()->findBySql("SELECT * from priority WHERE id=:id", array(":id" => $ticket->priority_id));
-        $tier = UserDomain::model()->findBySql("SELECT * from user_domain WHERE user_id =:id and domain_id =:id2 and subdomain_id =:id3", array(":id" => $ticket->assign_user_id, ":id2" => $ticket->domain_id, ":id3" => $ticket->subdomain_id));
+        $tier = UserDomain::model()->findBySql("SELECT * from user_domain WHERE user_id =:id and domain_id =:id2", array(":id" => $ticket->assign_user_id, ":id2" => $ticket->domain_id));
         $subdomainName = null;
         if ($ticket->subdomain_id != null)
+        {
             $subdomainName = Subdomain::model()->findBySql("SELECT * from subdomain  WHERE id=:id", array(":id" => $ticket->subdomain_id));
+            $tier = UserDomain::model()->findBySql("SELECT * from user_domain WHERE user_id =:id and domain_id =:id2 and subdomain_id =:id3", array(":id" => $ticket->assign_user_id, ":id2" => $ticket->domain_id, ":id3" => $ticket->subdomain_id));
 
+        }
         $this->render('view', array(
             'model' => $this->loadModel($id), /*Return all the ticket details */
             'userCreator' => $userCreator, 'userAssign' => $userAssign, 'domainName' => $domainName, 'subdomainName' => $subdomainName, 'priority' => $priority, 'tier' =>$tier
@@ -347,6 +350,21 @@ class TicketController extends Controller
             Yii::app()->end();
         }
     }
+
+    public function actionEscalate($id)
+    {
+        $response = array();
+        /*Change the status of the ticket to Pending from Reject */
+
+
+
+            $response['url'] = "/coplat/index.php/home/userHome";
+
+        echo json_encode($response);
+
+        exit();
+    }
+
 
     public function actionDownload()
     {

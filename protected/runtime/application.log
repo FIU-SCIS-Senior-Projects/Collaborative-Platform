@@ -9418,3 +9418,105 @@ Stack trace:
 #18 {main}
 REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
 ---
+2014/06/20 00:49:23 [error] [exception.CException] exception 'CException' with message 'TicketController has an extra endWidget() call in its view.' in C:\xampp\htdocs\coplat\framework\web\CBaseController.php:210
+Stack trace:
+#0 C:\xampp\htdocs\coplat\protected\views\ticket\view.php(404): CBaseController->endWidget()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#5 C:\xampp\htdocs\coplat\protected\controllers\TicketController.php(72): CController->render('view', Array)
+#6 [internal function]: TicketController->actionView('5')
+#7 C:\xampp\htdocs\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(TicketController), Array)
+#8 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TicketController), Object(ReflectionMethod), Array)
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('view')
+#18 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/view')
+#19 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/5
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/06/20 00:51:51 [error] [exception.CException] exception 'CException' with message 'TicketController has an extra endWidget() call in its view.' in C:\xampp\htdocs\coplat\framework\web\CBaseController.php:210
+Stack trace:
+#0 C:\xampp\htdocs\coplat\protected\views\ticket\view.php(404): CBaseController->endWidget()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#5 C:\xampp\htdocs\coplat\protected\controllers\TicketController.php(72): CController->render('view', Array)
+#6 [internal function]: TicketController->actionView('9')
+#7 C:\xampp\htdocs\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(TicketController), Array)
+#8 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TicketController), Object(ReflectionMethod), Array)
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('view')
+#18 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/view')
+#19 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/9
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/06/20 02:08:04 [error] [exception.CException] exception 'CException' with message 'TicketController contains improperly nested widget tags in its view "C:\xampp\htdocs\coplat\protected\views\ticket\view.php". A CActiveForm widget does not have an endWidget() call.' in C:\xampp\htdocs\coplat\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#2 C:\xampp\htdocs\coplat\protected\controllers\TicketController.php(72): CController->render('view', Array)
+#3 [internal function]: TicketController->actionView('5')
+#4 C:\xampp\htdocs\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(TicketController), Array)
+#5 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TicketController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('view')
+#15 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/view')
+#16 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/5
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---
+2014/06/20 02:09:17 [error] [exception.CException] exception 'CException' with message 'TicketController contains improperly nested widget tags in its view "C:\xampp\htdocs\coplat\protected\views\ticket\view.php". A CActiveForm widget does not have an endWidget() call.' in C:\xampp\htdocs\coplat\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#2 C:\xampp\htdocs\coplat\protected\controllers\TicketController.php(72): CController->render('view', Array)
+#3 [internal function]: TicketController->actionView('5')
+#4 C:\xampp\htdocs\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(TicketController), Array)
+#5 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TicketController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('view')
+#15 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/view')
+#16 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/ticket/view/5
+HTTP_REFERER=http://localhost/coplat/index.php/home/userHome
+---

@@ -117,7 +117,8 @@
         <br/>
         <!-- Button trigger escalate -->
         <?php
-        if ( (User::isCurrentUserAdmin() || User::isCurrentUserDomMentor()) && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1) {
+        if ( (User::isCurrentUserAdmin() || User::isCurrentUserDomMentor()) && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1)
+        {
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Escalate',
                 'type' => 'primary',
@@ -377,29 +378,66 @@
     </div>
 </div>
 
-
-
 <!-- Modal Escalate-->
 <div class="modal fade" id="myModalEscalate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true" style="display: none;">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Ticket #<?php echo $model->id ?> was escalated</h4>
+        <h4 class="modal-title" id="myModalLabel">Do you want to escalate Ticket #<?php echo $model->id ?>?</h4>
     </div>
+
+
+    <div class="modal-body">
+        <?php $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'escalate-form',
+            //'enableAjaxValidation'=>false,
+        )); ?>
+
+    </div>
+
+
+
+
+
 
     <div class="modal-footer">
 
         <?php $this->widget('bootstrap.widgets.TbButton', array(
-            'label' => 'OK', 'url' => '#',
+            'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Escalate', 'url' => '#',
+            'htmlOptions' => array('id' => 'escalate'),
+        ));
+        ?>
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+            'label' => 'Close', 'url' => '#',
             'htmlOptions' => array('data-dismiss' => 'modal'),
         ));
         ?>
-        <?php /*$this->endWidget()*/ ?>
+        <?php $this->endWidget() ?>
 
     </div>
 
 </div>
+
+
+<!-- Script for Escalate -->
+<script>
+    $('a#escalate').on('click', function () {
+
+        $.post('/coplat/index.php/ticket/escalate/<?php echo $model->id?>', $('#escalate-form').serialize(), function (message) {
+            var url = message.url;
+            //$.post('/coplat/index.php/comment/message/<?php echo $model->id?>', $('#message-form').serialize(), function (message) {
+               window.location = url;
+            //});
+        }, 'json');
+
+        return false;
+    })
+</script>
+
+
+
+
 
 
 
