@@ -353,17 +353,55 @@ class TicketController extends Controller
 
     public function actionEscalate($id)
     {
+        $model = $this->loadModel($id);
+        $modelNew = new Ticket;
+
+        $modelNew->creator_user_id = User::getCurrentUserId();
+        $modelNew->status = 'Pending';
+        $modelNew->created_date = new CDbExpression('NOW()');
+        $modelNew->subject = $model->subject;
+        $modelNew->description = $model->description;
+        $modelNew->domain_id = $model->domain_id;
+        $modelNew->subdomain_id = $model->subdomain_id;
+        $modelNew->file = $model->file;
+        $modelNew->priority_id = $model->priority_id;
+
+        /*Assign the ticket to the most appropiate Domain mentor in tier2*/
+        $sub = true;
+        if ($model->subdomain_id == null) {
+            $sub = false;
+        }
+        if (!$sub)  $modelNew->assign_user_id = User::escalateTicket($model->domain_id, $sub);
+        else $modelNew->assign_user_id = User::escalateTicket($model->subdomain_id, $sub);
+
+        //$send = $modelNew->isNewRecord;
+        if ($modelNew->save()) {
+            /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+            // if($send)
+            User::sendTicketAssignedEmailNotification($modelNew->creator_user_id,$modelNew->assign_user_id, $modelNew->domain_id);
+
+            // $this->redirect(array('view', 'id' => $modelNew->id));
+        }
+
+        $sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) SELECT description, added_date,' . $modelNew->id . ', user_added FROM comment WHERE ticket_id =' . $model->id;
+        $command = Yii::app()->db->createCommand($sql);
+        $command->execute();
+
+        $sql2 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' escalate to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $model->id . ', "System")';
+        $command2 = Yii::app()->db->createCommand($sql2);
+        $command2->execute();
+
+        $sql3 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' escalate to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $modelNew->id . ', "System")';
+        $command3 = Yii::app()->db->createCommand($sql3);
+        $command3->execute();
+
+
         $response = array();
-        /*Change the status of the ticket to Pending from Reject */
-
-
-
-            $response['url'] = "/coplat/index.php/home/userHome";
-
+        $response['url'] = "/coplat/index.php/home/userHome";
         echo json_encode($response);
-
         exit();
     }
+
 
 
     public function actionDownload()

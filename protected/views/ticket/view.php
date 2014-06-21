@@ -394,14 +394,6 @@
             //'enableAjaxValidation'=>false,
         )); ?>
 
-    </div>
-
-
-
-
-
-
-    <div class="modal-footer">
 
         <?php $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType' => 'Submit', 'type' => 'primary', 'label' => 'Escalate', 'url' => '#',
@@ -426,15 +418,14 @@
 
         $.post('/coplat/index.php/ticket/escalate/<?php echo $model->id?>', $('#escalate-form').serialize(), function (message) {
             var url = message.url;
-            //$.post('/coplat/index.php/comment/message/<?php echo $model->id?>', $('#message-form').serialize(), function (message) {
-               window.location = url;
+            // $.post('/coplat/index.php/comment/escalate/<?php echo $model->id?>', $('#escalate-form').serialize(), function (message) {
+            window.location = url;
             //});
         }, 'json');
 
         return false;
     })
 </script>
-
 
 
 

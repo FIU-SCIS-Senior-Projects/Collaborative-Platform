@@ -800,4 +800,42 @@ class User extends CActiveRecord
         $email->send();
     }
 
+    public static function escalateTicket($domain_id, $sub)
+    {
+        if ($sub) {
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id", array(":id" => $domain_id));
+            $subdomain = Subdomain::model()->findByPk($domain_id);
+            $validator = $subdomain->validator;
+        } else {
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
+            $domain = Domain::model()->findByPk($domain_id);
+            $validator = $domain->validator;
+        }
+
+        if ($userDomain != null && is_array($userDomain)) {
+            foreach ($userDomain as $auserDomain) {
+                /** @var UserDomain $auserDomain */
+                if ($auserDomain->tier_team == 2) {
+
+
+                    if ($auserDomain->rate >= $validator) {
+                        /*Query to the domain mentor to see how many tickets is allowed to be assigned */
+                        $domainMentor = DomainMentor::model()->findAllBySql("SELECT * FROM domain_mentor WHERE user_id =:id", array(":id" => $auserDomain->user_id));
+                        /** @var Ticket $count */
+                        if (is_array($domainMentor)) {
+                            foreach ($domainMentor as $adomainMentor) {
+                                /** @var DomainMentor $adomainMentor */
+                                $count = Ticket::model()->findBySql("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id =:id", array(":id" => $adomainMentor->user_id));
+                                if ($count->id < $adomainMentor->max_tickets) {
+                                    /*return the first available domain mentor on queue */
+                                    return $auserDomain->user_id;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return self::$admin; /* Assign the ticket to the admin for reassign */
+    }
 }
