@@ -104,8 +104,10 @@ class ImportController extends Controller
                 'params'=>array(':un'=>$username),
             ));
 
-            $record=Mentee::model()->findByPk($id);
+            $record=Mentee::model()->findByPk($id->id);
             $record->project_id = $project_id;
+
+
             $record->save(false);
 
 
@@ -135,7 +137,7 @@ class ImportController extends Controller
                 //$us->isStudent=1;
 
                 $randPassword = $this->passwordGenerator();
-                $us->tpassword =  $randPassword;
+                //$us->tpassword =  $randPassword;
                 $hasher = new PasswordHash(8, false);
                 $us->password = $hasher->HashPassword($randPassword);
 
@@ -143,6 +145,9 @@ class ImportController extends Controller
 
                 $mentee = new Mentee();
                 $mentee->user_id = $us->id;
+                $mentorid = User::model()->findBySql("select * from user where username = 'DEFAULT' ");
+                $mentee->personal_mentor_user_id = $mentorid->id;
+                //$mentee->project_id = 999;
                 $mentee->save(false);
 
 
@@ -176,6 +181,9 @@ class ImportController extends Controller
             $project->id = $spw_project_legacy_id;
             $project->title=$title;
             $project->description = $description;
+            $mentorid = User::model()->findBySql("select * from user where username = 'DEFAULT' ");
+            $project->propose_by_user_id = $mentorid->id;
+            $project->project_mentor_user_id = $mentorid->id;
             //$list= Yii::app()->db->createCommand('select user_id from project_mentor where spw_legacy_id=:idd')->bindValue('idd',$proposed_by)->queryAll();
             //$project->propose_by = $proposed_by;//$list[0]['user_id'];
             $project->save(false);

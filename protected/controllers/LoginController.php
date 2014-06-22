@@ -19,8 +19,8 @@ class LoginController extends Controller
 
     public function actionFiu_oauth2() {
         $client = new OAuth2\Client(
-            //'207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://localhost:8888/coplat/index.php/site/login?r=Login/google_oauth2_callback'
-            '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback'
+           // '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://localhost:8888/coplat/index.php/site/login?r=Login/google_oauth2_callback'
+           '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback'
 
         );
 
@@ -39,8 +39,8 @@ class LoginController extends Controller
 
     public function google_oauth2() {
         $client = new OAuth2\Client(
-       //     '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://localhost:8888/coplat/index.php/site/login?r=Login/google_oauth2_callback'
-            '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback'
+         // '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://localhost:8888/coplat/index.php/site/login?r=Login/google_oauth2_callback'
+          '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback'
 
         );
 //104217401955-72dtm4gbmujaca9bjl90ohg03lp22cqs.apps.googleusercontent.com
@@ -62,8 +62,8 @@ class LoginController extends Controller
         $code=null;// = $this->input->get("code");
 
         $client = new OAuth2\Client(
-            //'207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://localhost:8888/coplat/index.php/site/login?r=Login/google_oauth2_callback'
-        '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback'
+           // '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://localhost:8888/coplat/index.php/site/login?r=Login/google_oauth2_callback'
+       '207722926532-qm6v42pj1apdo6j07btif9u19n100082.apps.googleusercontent.com', 'HTmrpkL7KVYFAa9nzYA9Fcjh', 'http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback'
 
         );
 
