@@ -46,7 +46,7 @@
                         <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
                         <a href="#test" id="myPopOver-<?php echo $project->id ?>"
                            class="btn btn-primary btn-mini pull-right mypopover"
-                           title="<?php echo $project->title; ?>">more
+                           title="">more
                         </a><br>
                         <hr/>
                         </p>
@@ -224,7 +224,7 @@
 
     $('.mypopover').popover({
         placement: 'right',
-        trigger: 'click',
+        trigger: 'hover',
         html: true,
         content: function () {
             return $("#content-" + $(this).attr('id')).html();

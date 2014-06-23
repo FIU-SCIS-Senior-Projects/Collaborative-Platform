@@ -30,7 +30,7 @@
                     foreach ($projects as $project) {
                         /** @var $project Project */
                         ?>
-                        <p><strong>Title :</strong> <?php echo $project->title; ?>
+                        <p><strong><?php echo "Title: ".$project->title; ?></strong>
                             <!--<a href="#" class="enable-tooltip" data-toggle="tooltip"
                                data-original-title="<?php /*echo $project->description;*/ ?>">More..</a><br> -->
 
@@ -41,7 +41,7 @@
                         <strong>End date :</strong> <?php printf(date("M d, Y", strtotime($project->due_date))); ?>
                         <a href="#test" id="myPopOver-<?php echo $project->id ?>"
                            class="btn btn-primary btn-mini pull-right mypopover"
-                           title="<?php echo $project->title; ?>">more
+                           title="">more
                         </a><br>
                         <hr/>
                         </p>
@@ -174,7 +174,7 @@
 
     $('.mypopover').popover({
         placement: 'right',
-        trigger: 'click',
+        trigger: 'hover',
         html: true,
         content: function () {
             return $("#content-" + $(this).attr('id')).html();
