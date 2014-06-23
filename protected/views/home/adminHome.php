@@ -19,10 +19,10 @@ if(User::isCurrentUserAdmin()==false)
 <div><h4>Tickets</h4></div>
 
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
-<div id="fullcontent">
+<div id="fullcontent" >
 
     <div>
-        <div class="span4" style="width: 800px; margin-left: 0px">
+        <div class="span4"  style="overflow-y: scroll; height:400px; width:800px;margin-left: 0px">
             <ul class="nav nav-tabs">
                 <li><a href="#open" data-toggle="tab">Open</a></li>
                 <li><a href="#close" data-toggle="tab">Close</a></li>

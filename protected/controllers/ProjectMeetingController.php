@@ -219,20 +219,33 @@ class ProjectMeetingController extends Controller
                 $pmentee[$pm->user_id] = User::model()->findBySql("SELECT * FROM user WHERE id=:id", array(":id" => $pm->user_id));
             }
         }
-
         /*return the mentees for each project */
-        foreach ($projects as $project) {
+
+         $count1 = sizeof($projects);
+        for ($i=0;$i<$count1;$i++) {
             /** @var Project $project */
 
-            $project->description .= sprintf("<h4>Mentees</h4><ul>");
+            $projects[$i]->description .= sprintf("<h4>Mentees</h4><ul>");
             if($pmentees!=null)
             {
-                foreach ($pmentees[$project->id] as $projectMenteeId=>$menteeObject)
-                {
-                    $project->description .= sprintf("<li>%s</li>", $pmentee[$projectMenteeId]);
-                }
+                $pid = $projects[$i]->id;
+
+                $all = Mentee::model()->findAllBySql("select * from mentee where project_id = $pid");
+
+                $count2 = sizeof($all);
+
+                for ($j=0;$j<$count2;$j++)
+            {
+                $pid = $all[$j]->user_id;
+
+                $t = User::model()->findBySql("select * from user where id = $pid");
+                $projects[$i]->description .= sprintf("<li>%s</li>", $t->fname.' '.$t->lname);
+
+
             }
-            $project->description .= sprintf("</ul>");
+
+            }
+            $projects[$i]->description .= sprintf("</ul>");
         }
 
         /** @var User $usermentee */
@@ -302,22 +315,31 @@ class ProjectMeetingController extends Controller
 
 
         /* Popover */
-        foreach ($projects as $project)
-        {
+        $count1 = sizeof($projects);
+        for ($i=0;$i<$count1;$i++) {
             /** @var Project $project */
 
-
-            $project->description .= sprintf("<h4>Mentees</h4><ul>");
+            $projects[$i]->description .= sprintf("<h4>Mentees</h4><ul>");
             if($pmentees!=null)
             {
-                foreach ($pmentees[$project->id] as $projectMenteeId => $menteeObject)
+                $pid = $projects[$i]->id;
+
+                $all = Mentee::model()->findAllBySql("select * from mentee where project_id = $pid");
+
+                $count2 = sizeof($all);
+
+                for ($j=0;$j<$count2;$j++)
                 {
-                    $project->description .= sprintf("<li>%s</li>", $pmentee[$projectMenteeId]);
+                    $pid = $all[$j]->user_id;
+
+                    $t = User::model()->findBySql("select * from user where id = $pid");
+                    $projects[$i]->description .= sprintf("<li>%s</li>", $t->fname.' '.$t->lname);
+
 
                 }
-            }
 
-            $project->description .= sprintf("</ul>");
+            }
+            $projects[$i]->description .= sprintf("</ul>");
         }
 
         /** @var User $usermentee */
