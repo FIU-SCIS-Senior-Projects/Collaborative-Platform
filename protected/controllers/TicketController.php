@@ -183,13 +183,16 @@ class TicketController extends Controller
             $systemID = User::model()->findBySql("SELECT * from user  WHERE username=:id", array(":id" => 'SYSTEM'));
             if($model->assign_user_id == $systemID->id){
 
+                $tier = 1;
+                if($model->isEscalated != null){$tier = 2;}
+
                 $boolean = true; /* Identify is the subdomain was specified by the user */
                 if ($model->subdomain_id == null) {
                     $boolean = false;
-                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor);
+                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier );
                 }
                 else{
-                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor);
+                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier );
                 }
             }
 
@@ -365,6 +368,7 @@ class TicketController extends Controller
         $modelNew->subdomain_id = $model->subdomain_id;
         $modelNew->file = $model->file;
         $modelNew->priority_id = $model->priority_id;
+        $modelNew->isEscalated = 1;
 
         /*Assign the ticket to the most appropiate Domain mentor in tier2*/
         $sub = true;
@@ -387,11 +391,11 @@ class TicketController extends Controller
         $command = Yii::app()->db->createCommand($sql);
         $command->execute();
 
-        $sql2 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' escalate to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $model->id . ', "System")';
+        $sql2 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $model->id . ', "System")';
         $command2 = Yii::app()->db->createCommand($sql2);
         $command2->execute();
 
-        $sql3 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' escalate to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $modelNew->id . ', "System")';
+        $sql3 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $modelNew->id . ', "System")';
         $command3 = Yii::app()->db->createCommand($sql3);
         $command3->execute();
 

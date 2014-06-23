@@ -117,7 +117,7 @@
         <br/>
         <!-- Button trigger escalate -->
         <?php
-        if ( (User::isCurrentUserAdmin() || User::isCurrentUserDomMentor()) && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1)
+        if ( (User::isCurrentUserAdmin() || User::isCurrentUserDomMentor()) && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId() != $model->creator_user_id )
         {
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Escalate',

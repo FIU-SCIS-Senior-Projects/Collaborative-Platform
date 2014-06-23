@@ -372,3 +372,31 @@ Stack trace:
 #18 {main}
 REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
 ---
+2014/06/24 00:15:20 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_ticket_user1` FOREIGN KEY (`assign_user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: UPDATE `ticket` SET `id`=:yp0, `creator_user_id`=:yp1, `status`=:yp2, `created_date`=:yp3, `subject`=:yp4, `description`=:yp5, `assign_user_id`=:yp6, `domain_id`=:yp7, `subdomain_id`=:yp8, `file`=:yp9, `priority_id`=:yp10, `reassignTime`=:yp11, `reassign`=:yp12, `isEscalated`=:yp13 WHERE `ticket`.`id`='9'.
+in C:\xampp\htdocs\coplat\protected\controllers\TicketController.php (205)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/06/24 00:15:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_ticket_user1` FOREIGN KEY (`assign_user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: UPDATE `ticket` SET `id`=:yp0, `creator_user_id`=:yp1, `status`=:yp2, `created_date`=:yp3, `subject`=:yp4, `description`=:yp5, `assign_user_id`=:yp6, `domain_id`=:yp7, `subdomain_id`=:yp8, `file`=:yp9, `priority_id`=:yp10, `reassignTime`=:yp11, `reassign`=:yp12, `isEscalated`=:yp13 WHERE `ticket`.`id`='9'' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1691): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1070): CActiveRecord->updateByPk('9', Array)
+#2 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->update(NULL)
+#3 C:\xampp\htdocs\coplat\protected\controllers\TicketController.php(205): CActiveRecord->save()
+#4 [internal function]: TicketController->actionReassign('9')
+#5 C:\xampp\htdocs\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(TicketController), Array)
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TicketController), Object(ReflectionMethod), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('reassign')
+#16 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ticket/reassign')
+#17 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/coplat/index.php/ticket/reassign/9
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/view/9
+---

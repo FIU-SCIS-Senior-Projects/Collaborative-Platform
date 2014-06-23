@@ -402,7 +402,7 @@ class User extends CActiveRecord
     }
 
     //tito   /*Assign Domain Mentor to a Ticket */
-    public static function reassignTicket($domain_id, $sub, $oldMentorId)
+    public static function reassignTicket($domain_id, $sub, $oldMentorId, $tier)
     {
         /*Query to the User_Domain model */
         if ($sub) {
@@ -418,7 +418,7 @@ class User extends CActiveRecord
         if ($userDomain != null && is_array($userDomain)) {
             foreach ($userDomain as $auserDomain) {
                 /** @var UserDomain $auserDomain */
-                if ($auserDomain->tier_team == 1) {
+                if ($auserDomain->tier_team ==  $tier) {
 
 
                     if ($auserDomain->rate >= $validator) {
