@@ -22,195 +22,195 @@
     <br>
     <br>
     <div id="contain" class ="my-box-container6">
-    <h4> My Personal Mentor </h4>
-    <div id="container" class="my-box-container6"
-         style="<?php if(User::isCurrentUserMentee())
-         { echo 'display:block;'; }
-         else
-         { echo 'display:none;';  } ?> height: auto; overflow-y: scroll;width: 400px">
+        <h4> My Personal Mentor </h4>
+        <div id="container" class="my-box-container6"
+             style="<?php if(User::isCurrentUserMentee())
+             { echo 'display:block;'; }
+             else
+             { echo 'display:none;';  } ?> height: auto; overflow-y: scroll;width: 400px">
 
-        <?php
-        if($pmentor == null)
-        {
-            echo "You do not currently have a personal mentor";
-        }
-        else
-        {?>
-            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
-                <thread>
+            <?php
+            if($pmentor == null)
+            {
+                echo "You do not currently have a personal mentor";
+            }
+            else
+            {?>
+                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+                    <thread>
+                        <tr>
+                            <th width="100%">Personal Mentor Name</th>
+                        </tr>
+                    </thread>
+                    <?php
+                    $usr = User::model()->findBySql("SELECT * FROM user WHERE id='$pmentor->user_id'");?>
+                    <tbody>
                     <tr>
-                        <th width="100%">Personal Mentor Name</th>
+                        <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
                     </tr>
-                </thread>
-                <?php
-                $usr = User::model()->findBySql("SELECT * FROM user WHERE id='$pmentor->user_id'");?>
-                <tbody>
-                <tr>
-                    <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
-                </tr>
-                </tbody>
-            </table>
-        <?php }?>
-    </div>
-    <h4> My Senior Project </h4>
-    <div id="container" class="my-box-container6"
-         style="<?php if(User::isCurrentUserMentee())
-         { echo 'display:block;'; }
-         else
-         { echo 'display:none;';  } ?> height: auto; overflow-y: scroll;width: 400px">
+                    </tbody>
+                </table>
+            <?php }?>
+        </div>
+        <h4> My Senior Project </h4>
+        <div id="container" class="my-box-container6"
+             style="<?php if(User::isCurrentUserMentee())
+             { echo 'display:block;'; }
+             else
+             { echo 'display:none;';  } ?> height: auto; overflow-y: scroll;width: 400px">
 
-        <?php
-        if($proj== null)
-        {
-            echo "You do not currently have a senior project";
-        }
-        else
-        {?>
-            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
-                <thread>
+            <?php
+            if($proj== null)
+            {
+                echo "You do not currently have a senior project";
+            }
+            else
+            {?>
+                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+                    <thread>
+                        <tr>
+                            <th width="100%">Senior Project</th>
+                        </tr>
+                    </thread>
+                    <?php ?>
+                    <tbody>
                     <tr>
-                        <th width="100%">Senior Project</th>
+                        <td><?php echo $proj->title;?></td>
                     </tr>
-                </thread>
-                <?php ?>
-                <tbody>
-                <tr>
-                    <td><?php echo $proj->title;?></td>
-                </tr>
-                </tbody>
-            </table>
-        <?php }?>
-    </div>
+                    </tbody>
+                </table>
+            <?php }?>
+        </div>
     </div>
     <br>
     <br>
 <?php
 }?>
-    <?php if(User::isCurrentUserProMentor())
+<?php if(User::isCurrentUserProMentor())
+{?>
+    <div class="titlebox" style="width: auto" align="center"><h3>Project Mentor</h3></div>
+    <br>
+    <br>
+
+
+
+
+    <div id="container" class="my-box-container5" style="width: auto"
+         style="<?php if(User::isCurrentUserProMentor())
+         {     echo 'display:block; '; }
+         else
+         {     echo 'display:none; ';  } ?> height: auto; overflow-y: scroll ;width:auto">
+        <h4>Current Senior Projects</h4>
+
+        <?php
+        if($projects == null)
+        {
+            echo "No projects registered that you are a mentor of.";
+        }
+        else
+        {?>
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+                <thread>
+                    <tr>
+                        <th width="100%">Project Name</th>
+                    </tr>
+                </thread>
+                <?php foreach($projects as $project)
+                { ?>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $project->title?></td>
+                    </tr>
+                    </tbody>
+                <?php }?>
+            </table>
+        <?php }?>
+        <br>
+        <h4>Project Mentor Availability</h4>
+        <?php
+
+        $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
+        $max_projects=null;
+        $max_h=null;
+        if($promentor!=null)
+        {
+            $max_projects = $promentor->max_projects;
+            $max_h = $promentor->max_hours;
+        }
+        // $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
+        echo "Max Projects: " . $max_projects;
+        ?>
+        <br>
+        <?php  echo "Max Hours: " . $max_h;?>
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+<?php }?>
+
+<?php if(User::isCurrentUserPerMentor())
+{?>
+<div class="titlebox" style="width: auto" align="center"><h3>Personal Mentor</h3></div>
+<br>
+<br>
+
+
+<div id="container" class="my-box-container5" style="width: auto"
+     style="<?php if(User::isCurrentUserProMentor())
+     {     echo 'display:block; '; }
+     else
+     {     echo 'display:none; ';  } ?> height: auto; overflow-y: scroll ;width:auto">
+    <h4>Current Personal Mentees </h4>
+
+
+    <?php
+    if($Mentees == null)
+    {
+        echo "You are not a personal mentor to any mentee";
+    }
+    else
     {?>
-        <div class="titlebox" style="width: auto" align="center"><h3>Project Mentor</h3></div>
-        <br>
-        <br>
-
-
-
-
-        <div id="container" class="my-box-container5" style="width: auto"
-             style="<?php if(User::isCurrentUserProMentor())
-             {     echo 'display:block; '; }
-             else
-             {     echo 'display:none; ';  } ?> height: auto; overflow-y: scroll ;width:auto">
-            <h4>Current Senior Projects</h4>
-
-            <?php
-            if($projects == null)
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+            <thread>
+                <tr>
+                    <th width="100%">Mentees Names</th>
+                </tr>
+            </thread>
+            <?php foreach($Mentees as $mentee)
             {
-                echo "No projects registered that you are a mentor of.";
-            }
-            else
-            {?>
-                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
-                    <thread>
-                        <tr>
-                            <th width="100%">Project Name</th>
-                        </tr>
-                    </thread>
-                    <?php foreach($projects as $project)
-                    { ?>
-                        <tbody>
-                        <tr>
-                            <td><?php echo $project->title?></td>
-                        </tr>
-                        </tbody>
-                    <?php }?>
-                </table>
+                $usr = User::model()->findBySql("SELECT * FROM user WHERE id=$mentee->user_id");
+
+                ?>
+                <tbody>
+                <tr>
+                    <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
+                </tr>
+                </tbody>
             <?php }?>
-            <br>
-            <h4>Project Mentor Availability</h4>
-            <?php
-
-            $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
-            $max_projects=null;
-            $max_h=null;
-            if($promentor!=null)
-            {
-                $max_projects = $promentor->max_projects;
-                $max_h = $promentor->max_hours;
-            }
-            // $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
-            echo "Max Projects: " . $max_projects;
-            ?>
-            <br>
-            <?php  echo "Max Hours: " . $max_h;?>
-
-
-        </div>
-
-        <br>
-        <br>
-        <br>
-
+        </table>
     <?php }?>
+    <br>
+    <h4>Personal Mentor Availability</h4><?php
 
-    <?php if(User::isCurrentUserPerMentor())
-    {?>
-        <div class="titlebox" style="width: auto" align="center"><h3>Personal Mentor</h3></div>
-        <br>
-        <br>
+    $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
+    $max_mentees=0;
+    $max_hours=0;
+    if($permentor!=null)
+    {
+        $max_mentees = $permentor->max_mentees;
+        $max_hours = $permentor->max_hours;
+    }
 
-
-        <div id="container" class="my-box-container5" style="width: auto"
-             style="<?php if(User::isCurrentUserProMentor())
-             {     echo 'display:block; '; }
-             else
-             {     echo 'display:none; ';  } ?> height: auto; overflow-y: scroll ;width:auto">
-            <h4>Current Personal Mentees </h4>
-
-
-            <?php
-            if($Mentees == null)
-            {
-                echo "You are not a personal mentor to any mentee";
-            }
-            else
-            {?>
-                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
-                    <thread>
-                        <tr>
-                            <th width="100%">Mentees Names</th>
-                        </tr>
-                    </thread>
-                    <?php foreach($Mentees as $mentee)
-                    {
-                        $usr = User::model()->findBySql("SELECT * FROM user WHERE id=$mentee->user_id");
-
-                        ?>
-                        <tbody>
-                        <tr>
-                            <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
-                        </tr>
-                        </tbody>
-                    <?php }?>
-                </table>
-            <?php }?>
-            <br>
-            <h4>Personal Mentor Availability</h4><?php
-
-            $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
-            $max_mentees=0;
-            $max_hours=0;
-            if($permentor!=null)
-            {
-                $max_mentees = $permentor->max_mentees;
-                $max_hours = $permentor->max_hours;
-            }
-
-            //$permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
-            echo "Max Mentees: " . $max_mentees;
-            ?><br>
-            <?php  echo "Max hours: " . $max_hours; } ?>
-            <br>
-        </div>
+    //$permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
+    echo "Max Mentees: " . $max_mentees;
+    ?><br>
+    <?php  echo "Max hours: " . $max_hours; } ?>
+    <br>
+</div>
 
 
 
@@ -234,8 +234,8 @@
 </div>
 <div class="column-left" >
 
-    <div  id="profileImage" style="width: auto;">
-        <div class="titlebox" style="width: auto;background:#000000;" align="center";><h3><?php echo ucfirst($user->fname) ." " . ucfirst($user->lname)?></h3></div>
+    <div  id="profileImage" style="width: auto">
+        <div class="titlebox" style="width: auto;background:#000000;" align="center"><h3><?php echo ucfirst($user->fname) ." " . ucfirst($user->lname)?></h3></div>
         <br>
         <br>
         <img style="width:150px; height:205px; " src="<?php echo $user->pic_url ?>" />
@@ -266,83 +266,78 @@
 
 
 
-    <div><br><?php echo CHtml::submitButton('Edit', array('submit' => 'editProfile', "class"=>"btn btn-primary")); ?></div>
+        <div><br><?php echo CHtml::submitButton('Edit', array('submit' => 'editProfile', "class"=>"btn btn-primary")); ?></div>
+
+
+    </div>
 
 
 </div>
-
-
-</div>
-
-
-
-
-
-
 <div class="column-right">
 
     <?php if(User::isCurrentUserDomMentor())
     {
 
-    ?>
-    <div class="titlebox" style="width: auto" align="center"><h3>Domain Mentor</h3></div>
-    <br>
-    <br>
-    <!-- div to show domains for Domain Mentors ONLY; only included for project or personal mentors if they are also domain -->
-    <div id="container" class="my-box-container5"
-         style="<?php if(User::isCurrentUserDomMentor())
-         { echo 'display:block; '; }
-         else
-         { echo 'display:none; ';  }?> height: auto; overflow-y: scroll; width: auto">
-        <h4> Domains </h4>
-        <?php
-        if ($userdoms == null)
-        {?>
-            <?php echo "No Assigned Domains";
+        ?>
+        <div class="titlebox" style="width: auto" align="center"><h3>Domain Mentor</h3></div>
+        <br>
+        <br>
+        <!-- div to show domains for Domain Mentors ONLY; only included for project or personal mentors if they are also domain -->
+        <div id="container" class="my-box-container5"
+             style="<?php if(User::isCurrentUserDomMentor())
+             { echo 'display:block; '; }
+             else
+             { echo 'display:none; ';  }?> height: auto; overflow-y: scroll; width: auto">
+            <h4> Domains </h4>
+            <?php
+            if ($userdoms == null)
+            {?>
+                <?php echo "No Assigned Domains";
             }
             else
             {?>
-                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
-                    <thead>
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
+                <thead>
+                <tr>
+                    <th width="50%">Domain Name</th>
+                    <th width="50%">Expertise Level</th>
+                </tr>
+                </thead>
+                <?php foreach($userdoms as $userdom)
+                {
+                    $domain = Domain::model()->find("id=:id", array(":id"=>$userdom->domain_id));
+                    $userdom = UserDomain::model()->findBySql("SELECT rate FROM user_domain WHERE domain_id=$domain->id AND user_id=$user->id");
+                    ?>
+                    <tbody>
                     <tr>
-                        <th width="50%">Domain Name</th>
-                        <th width="50%">Expertise Level</th>
+                        <td><?php echo $domain->name; ?></td>
+                        <td><?php echo $userdom->rate;?></td>
                     </tr>
-                    </thead>
-                    <?php foreach($userdoms as $userdom)
-                    {
-                        $domain = Domain::model()->find("id=:id", array(":id"=>$userdom->domain_id));
-                        $userdom = UserDomain::model()->findBySql("SELECT rate FROM user_domain WHERE domain_id=$domain->id AND user_id=$user->id");
-                        ?>
-                        <tbody>
-                        <tr>
-                            <td><?php echo $domain->name; ?></td>
-                            <td><?php echo $userdom->rate;?></td>
-                        </tr>
-                        </tbody>
-                    <?php
-                    }
-                    }?>
-                </table>
-        <br>
-        <h4>Domain Mentor Availability</h4><?php
-        $dommentor = DomainMentor::model()->findBySql("SELECT max_tickets FROM domain_mentor WHERE user_id=$user->id");
-        $userdom = UserDomain::model()->findBySql("SELECT tier_team FROM user_domain WHERE user_id=$user->id");
-        if($dommentor->max_tickets == null)
-        {
-            echo "Max tickets: N/A";
-        }
-        else
-        {
-            echo "Max tickets: " .$dommentor->max_tickets;
-        }?>
+                    </tbody>
+                <?php
+                }
+                }?>
+            </table>
+            <br>
+            <h4>Domain Mentor Availability</h4><?php
+            $dommentor = DomainMentor::model()->findBySql("SELECT max_tickets FROM domain_mentor WHERE user_id=$user->id");
+            $userdom = UserDomain::model()->findBySql("SELECT tier_team FROM user_domain WHERE user_id=$user->id");
+            if($dommentor->max_tickets == null)
+            {
+                echo "Max tickets: N/A";
+            }
+            else
+            {
+                echo "Max tickets: " .$dommentor->max_tickets;
+            }?>
         </div>
 
 
-        <?php }?>
+    <?php }?>
 
 
 
 
 
+</div>
 </div>
