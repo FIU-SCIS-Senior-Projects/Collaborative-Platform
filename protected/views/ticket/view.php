@@ -102,7 +102,7 @@
         <br/>
         <!-- Button trigger modal Reassign -->
         <?php
-        if ((User::isCurrentUserAdmin() || User::isCurrentUserDomMentor() || User::isCurrentUserProMentor()) && $model->status != 'Close') {
+        if ((User::isCurrentUserAdmin() || User::isCurrentUserDomMentor() || User::isCurrentUserProMentor()) && $model->status != 'Close' && User::getCurrentUserId() != $model->creator_user_id ){
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Re Assign',
                 'type' => 'primary',
