@@ -21,7 +21,8 @@
     <div class="titlebox" style="width: auto" align="center"><h3>Mentee</h3></div>
     <br>
     <br>
-    <h4> My Personal Mentee </h4>
+    <div id="contain" class ="my-box-container6">
+    <h4> My Personal Mentor </h4>
     <div id="container" class="my-box-container6"
          style="<?php if(User::isCurrentUserMentee())
          { echo 'display:block;'; }
@@ -59,7 +60,7 @@
          { echo 'display:none;';  } ?> height: auto; overflow-y: scroll;width: 400px">
 
         <?php
-        if($pmentor == null)
+        if($proj== null)
         {
             echo "You do not currently have a senior project";
         }
@@ -80,6 +81,7 @@
             </table>
         <?php }?>
     </div>
+    </div>
     <br>
     <br>
 <?php
@@ -90,15 +92,15 @@
         <br>
         <br>
 
-        <h4>Current Senior Projects</h4>
 
 
 
-        <div id="container" class="my-box-container6" style="width: auto"
+        <div id="container" class="my-box-container5" style="width: auto"
              style="<?php if(User::isCurrentUserProMentor())
              {     echo 'display:block; '; }
              else
              {     echo 'display:none; ';  } ?> height: auto; overflow-y: scroll ;width:auto">
+            <h4>Current Senior Projects</h4>
 
             <?php
             if($projects == null)
@@ -123,29 +125,30 @@
                     <?php }?>
                 </table>
             <?php }?>
+            <br>
+            <h4>Project Mentor Availability</h4>
+            <?php
+
+            $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
+            $max_projects=null;
+            $max_h=null;
+            if($promentor!=null)
+            {
+                $max_projects = $promentor->max_projects;
+                $max_h = $promentor->max_hours;
+            }
+            // $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
+            echo "Max Projects: " . $max_projects;
+            ?>
+            <br>
+            <?php  echo "Max Hours: " . $max_h;?>
+
 
         </div>
-        <br>
-        <h4>Project Mentor Availability</h4>
-        <?php
-
-        $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
-        $max_projects=null;
-        $max_h=null;
-        if($promentor!=null)
-        {
-            $max_projects = $promentor->max_projects;
-            $max_h = $promentor->max_hours;
-        }
-        // $promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
-        echo "Max Projects: " . $max_projects;
-        ?>
-        <br>
-        <?php  echo "Max Hours: " . $max_h;?>
 
         <br>
         <br>
-
+        <br>
 
     <?php }?>
 
@@ -154,14 +157,15 @@
         <div class="titlebox" style="width: auto" align="center"><h3>Personal Mentor</h3></div>
         <br>
         <br>
-        <h4>Current Personal Mentees </h4>
 
 
-        <div id="container" class="my-box-container6" style="width: auto"
+        <div id="container" class="my-box-container5" style="width: auto"
              style="<?php if(User::isCurrentUserProMentor())
              {     echo 'display:block; '; }
              else
              {     echo 'display:none; ';  } ?> height: auto; overflow-y: scroll ;width:auto">
+            <h4>Current Personal Mentees </h4>
+
 
             <?php
             if($Mentees == null)
@@ -189,27 +193,26 @@
                     <?php }?>
                 </table>
             <?php }?>
+            <br>
+            <h4>Personal Mentor Availability</h4><?php
 
+            $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
+            $max_mentees=0;
+            $max_hours=0;
+            if($permentor!=null)
+            {
+                $max_mentees = $permentor->max_mentees;
+                $max_hours = $permentor->max_hours;
+            }
+
+            //$permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
+            echo "Max Mentees: " . $max_mentees;
+            ?><br>
+            <?php  echo "Max hours: " . $max_hours; } ?>
+            <br>
         </div>
 
-        <br>
-        <br>
-        <h4>Personal Mentor Availability</h4><?php
 
-        $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
-        $max_mentees=0;
-        $max_hours=0;
-        if($permentor!=null)
-        {
-            $max_mentees = $permentor->max_mentees;
-            $max_hours = $permentor->max_hours;
-        }
-
-        //$permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
-        echo "Max Mentees: " . $max_mentees;
-        ?><br>
-        <?php  echo "Max hours: " . $max_hours; } ?>
-    <br>
 
 
 
@@ -232,10 +235,10 @@
 <div class="column-left" >
 
     <div  id="profileImage" style="width: auto;">
-        <div class="titlebox" style="width: auto;background:#000000" align="center";><h3><?php echo ucfirst($user->fname) ." " . ucfirst($user->lname)?></h3></div>
+        <div class="titlebox" style="width: auto;background:#000000;" align="center";><h3><?php echo ucfirst($user->fname) ." " . ucfirst($user->lname)?></h3></div>
         <br>
         <br>
-        <img style="width:150px; height:205px;" src="<?php echo $user->pic_url ?>" />
+        <img style="width:150px; height:205px; " src="<?php echo $user->pic_url ?>" />
         <br>
         Role Type(s):<br>
         <?php if(User::isCurrentUserAdmin()) {?> <b> Administrator </b><br> <?php }?>
@@ -245,8 +248,10 @@
         <?php if(User::isCurrentUserMentee()) {?> <b>Mentee</b> <br><?php }?>
 
         <br>
+        <br>
+        <br>
 
-        <div id="experience" style="width:auto;height: auto;overflow-y: scroll " >
+        <div id="experience" style="width:auto;height: auto;overflow-y: scroll; " >
             <div class="titlebox"><h4>BIOGRAPHY & WORK HISTORY</h4></div><br><br><br>
             <h8><?php if($user->biography == null)
                 {
@@ -288,17 +293,15 @@
          style="<?php if(User::isCurrentUserDomMentor())
          { echo 'display:block; '; }
          else
-         { echo 'display:none; ';  }?> height: 275px; overflow-y: scroll; width: auto">
-        <div class="titlebox"><h4>DOMAINS</h4></div>
+         { echo 'display:none; ';  }?> height: auto; overflow-y: scroll; width: auto">
+        <h4> Domains </h4>
         <?php
         if ($userdoms == null)
         {?>
-        <div id="container" class="my-box-container" style="height: auto; overflow-y: scroll ">
-            <?php echo "No Assigned Domains</div>";
+            <?php echo "No Assigned Domains";
             }
             else
             {?>
-            <div id="container" class="my-box-container" style="height: auto; overflow-y: scroll ">
                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
                     <thead>
                     <tr>
@@ -321,9 +324,6 @@
                     }
                     }?>
                 </table>
-            </div>
-        </div>
-        <br>
         <br>
         <h4>Domain Mentor Availability</h4><?php
         $dommentor = DomainMentor::model()->findBySql("SELECT max_tickets FROM domain_mentor WHERE user_id=$user->id");
@@ -336,6 +336,8 @@
         {
             echo "Max tickets: " .$dommentor->max_tickets;
         }?>
+        </div>
+
 
         <?php }?>
 
