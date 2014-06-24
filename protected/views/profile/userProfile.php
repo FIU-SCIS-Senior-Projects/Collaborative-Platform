@@ -209,29 +209,20 @@
     echo "Max Mentees: " . $max_mentees;
     ?><br>
     <?php  echo "Max hours: " . $max_hours; } ?>
+
+
+
+
     <br>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 </div>
+
+<?php if(User::isCurrentUserPerMentor())
+{
+    echo "</div>";
+}?>
 <div class="column-left" >
 
     <div  id="profileImage" style="width: auto">
