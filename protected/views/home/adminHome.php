@@ -140,6 +140,16 @@ if(User::isCurrentUserAdmin()==false)
                     </td>
                 </tr>
                 <tr>
+                    <td><br>
+                        <!-- Manage Domain Button -->
+                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/priority/admin', 'type' => 'primary',
+                            'label' => 'Priorities', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                        ?>
+
+                    </td>
+                </tr>
+                <tr>
 
 
                     <td><br>
