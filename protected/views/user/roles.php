@@ -9,5 +9,4 @@
 */
 ?>
 
-<h2>Collaborative Platform Registration</h2>
-<?php echo $this->redirect('/coplat/index.php/user/setRoles/'.$model->id); ?>
+<?php echo $this->render('setRoles', array('model'=>$model)); ?>

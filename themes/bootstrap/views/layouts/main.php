@@ -55,8 +55,10 @@
 									'htmlOptions'=>array('class'=>'pull-left'),
 									'items'=>array(array('label'=>'Manage', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest),
 													array('label'=>'Add Administrator', 'url'=>array('user/create_admin'), 'visible'=>!Yii::app()->user->isGuest),
-													
-											),
+                                              array('label'=>'Add User', 'url'=>array('user/create'), 'visible'=>!Yii::app()->user->isGuest),
+
+
+                                    ),
 									),
 									array('label'=>'Domain','visible'=>!Yii::app()->user->isGuest,
 									'class'=>'bootstrap.widgets.TbMenu',
