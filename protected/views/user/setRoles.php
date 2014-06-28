@@ -231,6 +231,17 @@
                             ?>
                         </select>
 
+                        <br><br><br>
+                        <h5 style="margin: auto">Max Tickets</h5>
+                        <select name="mydropdown" style="position: absolute;">
+                            <?php for ($i=1;$i<=20;$i++)
+                            {
+                                echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
+
+                            ?>
+                        </select>
+
 
                     </div>
                     <?php
