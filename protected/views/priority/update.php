@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Priority', 'url'=>array('index')),
-	array('label'=>'Create Priority', 'url'=>array('create')),
+	//array('label'=>'Create Priority', 'url'=>array('create')),
 	array('label'=>'View Priority', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'Manage Priority', 'url'=>array('admin')),
 );
