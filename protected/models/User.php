@@ -358,7 +358,21 @@ class User extends CActiveRecord
         return $user->isStudent;
     }
 
+    public static function sendTicketClosedNotification($ticket_id, $userfullName,  $mentorfullName, $mentor_email)
+    {
+        $email = Yii::app()->email;
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
+        $message = $userfullName . ", has closed the ticket #".$ticket_id;
+        $html = User::replaceMessage($mentorfullName, $message);
+
+        $email->to = $mentor_email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Ticket #'.$ticket_id.' has been closed.';
+        $email->message = $html;
+        $email->send();
+    }
+    
     /*Assign Domain Mentor to a Ticket */
     public static function assignTicket($domain_id, $sub)
     {

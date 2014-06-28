@@ -232,6 +232,15 @@ class TicketController extends Controller
         }
     }
 
+    public function actionTicketCloseddMentorAlert($user_id, $mentor_id, $ticket_id)
+    {
+        $mentor = User::model()->findByPk($mentor_id);
+        $user = User::model()->findByPk($user_id);
+        $userfullName = $user->fname.' '.$user->lname;
+        $mentorfullName = $mentor->fname.' '.$mentor->lname;
+        User::sendTicketClosedNotification($ticket_id, $userfullName, $user->email, $mentorfullName, $mentor->email);
+    }
+
 
     /*Function to change the status of the ticket */
     public function actionChange($id)
@@ -247,8 +256,10 @@ class TicketController extends Controller
                 $model->status = 'Close';
                 if ($model->save()) {
                     if (User::isCurrentUserAdmin()) {
+                        $this->actionTicketCloseddMentorAlert(User::model()->getCurrentUserId(), $model->assign_user_id, $model->id)
                         $response['url'] = "/coplat/index.php/home/adminHome";
                     } else {
+                        $this->actionTicketCloseddMentorAlert(User::model()->getCurrentUserId(), $model->assign_user_id, $model->id)
                         $response['url'] = "/coplat/index.php/home/userHome";
                     }
                 } else {
