@@ -357,7 +357,7 @@ class User extends CActiveRecord
             return false;
         return $user->isStudent;
     }
-/*
+
     public static function sendTicketClosedNotification($ticket_id, $userfullName,  $mentorfullName, $mentor_email)
     {
         $email = Yii::app()->email;
@@ -371,7 +371,7 @@ class User extends CActiveRecord
         $email->subject = 'Ticket #'.$ticket_id.' has been closed.';
         $email->message = $html;
         $email->send();
-    }*/
+    }
     
     /*Assign Domain Mentor to a Ticket */
     public static function assignTicket($domain_id, $sub)
