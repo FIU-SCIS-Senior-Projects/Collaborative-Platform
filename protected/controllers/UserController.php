@@ -291,7 +291,7 @@ class UserController extends Controller
                 }
                 $userfullName = $model->fname.' '.$model->lname;
 
-                $this->actionSendVerificationEmail($userfullName, $model->email);
+                //s$this->actionSendVerificationEmail($userfullName, $model->email);
             }
 		}
         $error = '';
