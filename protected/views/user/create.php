@@ -15,4 +15,16 @@
         echo $this->renderPartial('add', array('model'=>$model));
     else
         echo $this->renderPartial('roles', array('model'=>$model));
+
+
+
+
+
 ?>
+
+
+
+
+
+
+

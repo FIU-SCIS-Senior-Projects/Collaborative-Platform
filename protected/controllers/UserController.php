@@ -229,7 +229,6 @@ class UserController extends Controller
 	public function actionCreate()
 	{
 		$model=new User;
-
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -240,17 +239,23 @@ class UserController extends Controller
                 $this->render('create', array('model'=>$model));
             }*/
 
+
             $model->attributes=$_POST['User'];
             $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
             $model->biography = "Tell us something about yourself...";
             $model->activation_chain = $this->genRandomString(10);
-            $model->activated == 0;
+            $model->save(false);
+
+
+
+            //$model->activated == 0;
 
             //Hash the password before storing it into the database
-			$hasher = new PasswordHash(8, false);
-			$model->password = $hasher->HashPassword($model->password);
+			//$hasher = new PasswordHash(8, false);
+			//$model->password = $hasher->HashPassword($model->password);
 
-			if($model->save()){
+            /*
+			if($model->save(false)){
 
                 if($model->isAdmin == 1)
                 {
@@ -289,11 +294,72 @@ class UserController extends Controller
                     $mentee->user_id = $model->id;
                     $mentee->save();
                 }
+
                 $userfullName = $model->fname.' '.$model->lname;
 
                 //s$this->actionSendVerificationEmail($userfullName, $model->email);
-            }
+            }*/
 		}
+        if(isset($_POST['Roles']))
+        {
+            $user = User::model()->findByPk($_COOKIE['UserID']);
+            if($user->isProMentor ==1)
+            {
+            $proMentor = new ProjectMentor;
+            $proMentor->user_id = $_COOKIE['UserID'];
+            $proMentor->max_hours =$_POST['pjmhours'] ;
+            $proMentor->max_projects = 0;
+            $proMentor->save();
+            $all = Project::model()->findAll();
+            foreach ($all as $each)
+            {
+                if(isset($_POST[$each->id]))
+                {
+                    $p = Project::model()->findByPk($each->id);
+                    $p->project_mentor_user_id = $_COOKIE['UserID'];
+                    $p->save(false);
+                }
+
+            }
+            }
+
+            if($user->isDomMentor ==1)
+            {
+                $domMentor = new DomainMentor();
+                $domMentor->user_id = $_COOKIE['UserID'];
+                $domMentor->max_tickets = $_POST['dmmaxtickets'];
+                $domMentor->save();
+
+
+                $all = Domain::model()->findAll();
+                foreach ($all as $each)
+                {
+
+
+                    if(isset($_POST[$each->id]))
+                    {
+                        $rate = $each->id.'dmrate';
+                        $tier = $each->id.'dmtier';
+                        $user_domain = new UserDomain();
+                        $user_domain->user_id = $domMentor->user_id;
+                        $user_domain->domain_id= $each->id;
+                        $user_domain->rate = $_POST[$rate];
+                        $user_domain->tier_team = $_POST[$tier];
+                        $user_domain->active=1;
+                        $user_domain->save(false);
+
+
+                    }
+
+                }
+
+
+            }
+
+
+
+
+        }
         $error = '';
         $this->render('create',array(
             'model'=>$model,'error' => $error
