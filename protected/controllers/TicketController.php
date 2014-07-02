@@ -116,6 +116,7 @@ class TicketController extends Controller
             /* Populate ticket attributes */
             $model->creator_user_id = User::getCurrentUserId(); /*Get the ID of the user */
             $model->created_date = new CDbExpression('NOW()'); /* Get the current date and time */
+            $model->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
 
             if ($model->assign_user_id != null) { /*Check first if the user has selected the assign user */
                     $model->assign_user_id = $model->assign_user_id;
@@ -202,6 +203,9 @@ class TicketController extends Controller
                 $model->status = 'Pending';
             }
 
+
+            $model->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
+
             if ($model->save()) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
                 User::sendStatusReassignedEmailNotificationToOldMentor($model->id, $old_mentor, User::model()->getCurrentUserId());
@@ -217,6 +221,36 @@ class TicketController extends Controller
             echo json_encode($response);
             exit();
         }
+    }
+
+    public function actionAutomaticReassignBySystem()
+    {
+        $TicketsO = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE id in (SELECT T.id FROM ticket T
+                    LEFT JOIN
+                    (SELECT MAX(C3.id) AS CommID, C3.ticket_id FROM comment C3 WHERE (C3.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T1.assign_user_id FROM ticket T1 where T1.id = C3.ticket_id)), ' ',(SELECT u2.lname FROM user u2 where u2.id = (select T2.assign_user_id FROM ticket T2 where T2.id = C3.ticket_id)) )) )
+                    GROUP BY ticket_id)
+                    C2 ON  (C2.ticket_id=T.id)
+                    LEFT JOIN
+                    (SELECT MIN(C4.id) AS CommID2, C4.ticket_id FROM comment C4 WHERE
+                    (C4.id > (SELECT MAX(C3.id) AS CommID FROM comment C3 WHERE (C3.ticket_id = C4.ticket_id) and (C3.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T1.assign_user_id FROM ticket T1 where T1.id = C3.ticket_id)), ' ',(SELECT u2.lname FROM user u2 where u2.id = (select T2.assign_user_id FROM ticket T2 where T2.id = C3.ticket_id)) )) )
+                    GROUP BY ticket_id))
+                     AND
+                    (C4.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T3.creator_user_id FROM ticket T3 where T3.id = C4.ticket_id)), ' ',(SELECT u3.lname FROM user u3 where u3.id = (select T4.creator_user_id FROM ticket T4 where T4.id = C4.ticket_id)) )) )
+                    GROUP BY ticket_id)
+                    C5 ON  (C5.ticket_id=T.id)
+                    LEFT JOIN comment CMentor ON (CMentor.id=CommID)
+                    LEFT JOIN comment CMentee ON (CMentee.id=CommID2)
+                    LEFT JOIN priority P ON T.priority_id = P.id
+                    WHERE
+                    T.status = 'Pending'
+                    AND (
+                        (CMentee.added_date IS NOT NULL AND (NOW() > CMentee.added_date + INTERVAL P.reassignHours hour) AND  (NOW() > T.assigned_date + INTERVAL P.reassignHours hour))
+                    OR (CMentee.added_date IS NULL AND CMentor.added_date IS NULL AND  (NOW() > T.assigned_date + INTERVAL P.reassignHours hour))
+                        ))
+                    ");
+
+
+
     }
 
     public function actionTicketRejectedAdminAlert($user_id, $ticket_id)

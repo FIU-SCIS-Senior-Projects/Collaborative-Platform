@@ -15,6 +15,10 @@
  * @property string $subdomain_id
  * @property string $file
  * @property integer $priority_id
+ * @property string $assigned_date
+ * @property integer $isEscalated
+ * @property integer $Mentor1
+ * @property integer $Mentor2
  *
  * The followings are the available model relations:
  * @property Comment[] $comments
@@ -53,14 +57,15 @@ class Ticket extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('creator_user_id, status, created_date, subject, description, domain_id, priority_id', 'required'),
-			array('priority_id', 'numerical', 'integerOnly'=>true),
+			array('priority_id', isEscalated, Mentor1, Mentor2', 'numerical', 'integerOnly'=>true),
 			array('creator_user_id, assign_user_id, domain_id, subdomain_id', 'length', 'max'=>11),
 			array('status, subject', 'length', 'max'=>45),
 			array('description', 'length', 'max'=>500),
 			array('file', 'length', 'max'=>255),
+			array('assigned_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id', 'safe', 'on'=>'search'),
+			array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id', assigned_date, isEscalated, Mentor1, Mentor2', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -98,6 +103,10 @@ class Ticket extends CActiveRecord
 			'subdomain_id' => 'Subdomain',
 			'file' => 'File',
 			'priority_id' => 'Priority',
+			'assigned_date' => 'Assigned Date',
+			'isEscalated' => 'Is Escalated',
+			'Mentor1' => 'Mentor1',
+			'Mentor2' => 'Mentor2',
 		);
 	}
 
@@ -123,6 +132,12 @@ class Ticket extends CActiveRecord
 		$criteria->compare('subdomain_id',$this->subdomain_id,true);
 		$criteria->compare('file',$this->file,true);
 		$criteria->compare('priority_id',$this->priority_id);
+		$criteria->compare('assigned_date',$this->assigned_date,true);
+		$criteria->compare('isEscalated',$this->isEscalated);
+		$criteria->compare('Mentor1',$this->Mentor1);
+		$criteria->compare('Mentor2',$this->Mentor2);
+
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
