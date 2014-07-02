@@ -57,7 +57,7 @@ class Ticket extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('creator_user_id, status, created_date, subject, description, domain_id, priority_id', 'required'),
-			array('priority_id', isEscalated, Mentor1, Mentor2', 'numerical', 'integerOnly'=>true),
+			array('priority_id, isEscalated, Mentor1, Mentor2', 'numerical', 'integerOnly'=>true),
 			array('creator_user_id, assign_user_id, domain_id, subdomain_id', 'length', 'max'=>11),
 			array('status, subject', 'length', 'max'=>45),
 			array('description', 'length', 'max'=>500),
@@ -65,7 +65,7 @@ class Ticket extends CActiveRecord
 			array('assigned_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id', assigned_date, isEscalated, Mentor1, Mentor2', 'safe', 'on'=>'search'),
+			array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id, assigned_date, isEscalated, Mentor1, Mentor2', 'safe', 'on'=>'search'),
 		);
 	}
 
