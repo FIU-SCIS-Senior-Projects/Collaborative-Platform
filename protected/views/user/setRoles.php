@@ -3,8 +3,9 @@
 <head>
 
 
-
     <script>
+
+
         function load()
         {
             <?php
@@ -138,6 +139,9 @@
         };
 
 
+
+
+
     </style>
 
 </head>
@@ -164,23 +168,81 @@ if($model->isProMentor==1)
             <br>
             <h4>Select the projects for this project mentor:</h4>
             <br>
-            <?php  $projects = Project::model()->findAll();?>
+
+            <?php
+
+            $projects = Project::model()->findAll();
+
+            ?>
             <div name ="pjmprojects" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
 
+                <table>
 
-                <?php foreach ($projects as $project)
-                {
+                    <?php
+                    $i=0;
+                    foreach ($projects as $project)
+                    {
+                        $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$project->id ");
+                        $res ='';
+                        if($mymenids!=null)
+                        {
 
-                    echo '<input type="checkbox" name ="'.$project->id .'"/>'. $project->title .'<br /><br>';
 
-                }
+                            foreach($mymenids as $m)
+                            {
+                                $pid = $m->user_id;
 
-                ?>
+                                $t = User::model()->findBySql("select * from user where id = $pid");
+                                $res .=$t->fname.' '.$t->lname.'<br>';
 
+
+                            }
+                        }
+
+                        echo '<div id="content-myPopOver-'. $project->id.'" style="display: none;">
+                           <p>
+                           <h4>
+                           '.$project->title.'
+                           </h4>'.'<h5>Hours Req: X</h5>'.$project->description.'
+                            <h5>Mentees:</h5>'.
+                            $res.'
+                           </p></div>';
+
+                        $color = '';
+                        if ($i++ % 2)
+                        {
+                            $color = 'style="background: #e8edff;padding: 15px;"';
+                        } else
+                        {
+                            $color = 'style="padding: 15px;"';
+                        }
+                        echo'<tr><td   '.$color.'  >';
+
+                        echo '<a href="#test" id="myPopOver-'.$project->id.'" class="mypopover" >';
+
+                        echo '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$project->id .'"/>  '. $project->title .'<br>';
+                        echo '</td></a></tr>';
+
+                    }
+
+                    ?>
+
+
+                </table>
 
             </div>
 
         </div>
+        <script>
+            $('.mypopover').popover({
+                placement: 'right',
+                trigger: 'hover',
+                html: true,
+                content: function () {
+                    return $("#content-" + $(this).attr('id')).html();
+                }
+            });
+        </script>
 
         <div class="my-box-container3" style="width: auto; float:right">
 
@@ -188,6 +250,7 @@ if($model->isProMentor==1)
             <br>
             <h4>Select how many hours are required:</h4>
             <br>
+
             <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;">
                 <br>
                 <h5 style="margin: auto">Max hours</h5>
@@ -235,7 +298,7 @@ if($model->isDomMentor==1)
 
         <h3><span class="font_normal_07em_black">Role: Domain Mentor</span></h3><br />
         <div  class="my-box-container3" style="width: auto; float:left;">
-        <h3>Current Domains</h3>
+            <h3>Current Domains</h3>
             <br>
             <h4>Select domains:</h4>
             <br>
@@ -318,21 +381,21 @@ if($model->isDomMentor==1)
 
             </select> */?>
 
-</div>
+        </div>
         <div  class="my-box-container3" style="width: auto;height: auto; float:right;">
-        <h3>Max Tickets</h3>
-        <br>
-        <h4>Select max tickets for mentor:</h4>
-        <br>
-        <h5 style="margin: auto">Max tickets</h5>
-        <select name="dmmaxtickets" style="position: absolute; width: 80px">
-            <?php for ($i=1;$i<=20;$i++)
-            {
-                echo '<option name="'.$i.'">'.$i.'</option>';
-            }
+            <h3>Max Tickets</h3>
+            <br>
+            <h4>Select max tickets for mentor:</h4>
+            <br>
+            <h5 style="margin: auto">Max tickets</h5>
+            <select name="dmmaxtickets" style="position: absolute; width: 80px">
+                <?php for ($i=1;$i<=20;$i++)
+                {
+                    echo '<option name="'.$i.'">'.$i.'</option>';
+                }
 
-            ?>
-        </select>
+                ?>
+            </select>
         </div>
 
 
@@ -353,7 +416,7 @@ if($model->isPerMentor==1)
         <div  class="my-box-container3" style="width: auto; float:left;">
             <h3>Current Senior Project Mentees</h3>
             <br>
-            <h4>Selec mentees for this personal mentor:</h4>
+            <h4>Select mentees for this personal mentor:</h4>
             <br>
             <?php  $mentees = User::model()->findAllBySql("select * from user where isMentee=1");?>
             <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
@@ -361,7 +424,7 @@ if($model->isPerMentor==1)
 
                 <?php foreach ($mentees as $mentee)
                 {
-                    echo '<input type="checkbox" name = "'.$mentee->user_id.'"/>'. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
+                    echo '<input type="checkbox" name = "'.$mentee->id.'"/>'. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
 
                 }
 
@@ -422,6 +485,7 @@ if($model->isPerMentor==1)
     <input class="btn btn-primary" name="Roles" id="next" value="Next" type="submit" />
 </div>
 
+
 </form>
 <hr />
 
@@ -435,7 +499,11 @@ if($model->isPerMentor==1)
 <script type="text/javascript" src="/coplat/js/jquery-ui-1.8.5.custom.min.js"></script>
 <script type="text/javascript" src="/coplat/js/jquery.form.wizard.js"></script>
 
+
+
 <script type="text/javascript">
+
+
     $(function(){
         $("#demoForm").formwizard({
                 validationEnabled: true,
@@ -452,12 +520,10 @@ if($model->isPerMentor==1)
             }
         );
     });
+
+
 </script>
 </body>
 </html>
 
-
-<script>
-
-</script>
 
