@@ -253,6 +253,8 @@ class TicketController extends Controller
         foreach ($TicketsO as $model)
         {
             $old_mentor = $model->assign_user_id;
+            $theOldMentor = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $old_mentor));
+            $theOldMentorName  = $theOldMentor->fname . " " . $theOldMentor->lname;
 
             $mentor1 = 0;
             if ($model->Mentor1 != null){$mentor1 = $model->Mentor1;}
@@ -296,7 +298,7 @@ class TicketController extends Controller
                     foreach($admins as $ad)
                     {
                         $adminfullName = $ad->fname.' '.$ad->lname;
-                        User::sendNotification( $ad->email,"Ticket #" . $model->id . " require your attention", "The ticket was not been answered and there is not another available mentor" , $adminfullName);
+                        User::sendNotification( $ad->email,"Ticket #" . $model->id . " require your attention", "The ticket has not been answered and there is not another available mentor." , $adminfullName);
 
                     }
 
@@ -318,7 +320,7 @@ class TicketController extends Controller
                     foreach($admins as $ad)
                     {
                         $adminfullName = $ad->fname.' '.$ad->lname;
-                        User::sendNotification( $ad->email,"Ticket #" . $model->id . " require your attention", "The ticket was not been answered. It requires your attention." , $adminfullName);
+                        User::sendNotification( $ad->email,"Ticket #" . $model->id . " require your attention", "The ticket has not been answered. It requires your attention." , $adminfullName);
                     }
 
                     //send notification to admin tito2
@@ -340,21 +342,39 @@ class TicketController extends Controller
                 $model->assign_user_id = $newMentorId;
                 $model->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
 
+
                 //create comment to ticket
 
                 if ($model->save()) {
 
-                    $sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("This ticket was reassigned to a new mentor by the system","'  . $model->assigned_date . '",' . $model->id . ', "System")';
+                    $theNew = $model->assign_user_id;
+                    $theNewMentor = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $theNew));
+                    $theNewMentorName  = $theNewMentor->fname . " " .$theNewMentor->lname;
+
+                    $time =  new CDbExpression('NOW()');
+
+                    $sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES (" This ticket was automatically reassigned by the system from mentor '.$theOldMentorName. ' to mentor ' . $theNewMentorName .'",'  . $time . ',' . $model->id . ', "System")';
                     $command = Yii::app()->db->createCommand($sql);
                     $command->execute();
 
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
                     $systemID = User::model()->findBySql("SELECT * from user  WHERE username=:id", array(":id" => 'SYSTEM'));
                     User::sendStatusAutoReassignedEmailNotificationToOldMentor($model->id, $old_mentor, $systemID);
+
+                    $Mentee = $model->creator_user_id;
+                    $theMentee = User::model()->findBySql("SELECT * from user  WHERE id=:id", array(":id" => $Mentee));
+                    $theMenteeName  = $theMentee->fname . " " .$theMentee->lname;
+
+                    //mentee
+                    User::sendNotification( $theMentee->email,"Ticket #" . $model->id . " was reassigned", "Ticket #" . $model->id . " was reassigned" , $theMenteeName);
+                    //new mentor
+                    User::sendNotification( $theNewMentor->email,"Ticket #" . $model->id . " has been assigned to you.", "Ticket #" . $model->id . " has been assigned to you." , $theNewMentorName);
+
                 }
             }
         }
     }
+
 
     public function actionTicketRejectedAdminAlert($user_id, $ticket_id)
     {
