@@ -1961,13 +1961,12 @@ padding-left: 40px;
 }
 
 .popover{
-    position: absolute;
-    width:100%;
-    height:auto;
-    word-wrap: break-word;
+    display:block !important;
+    max-width: 500px!important;
+    width:auto;
 
 }
-.column-left{ float: left; width: 30%%; }
+.column-left{ float: left; width: 30%; }
 .column-right{ float: right; width: 33%; }
 .column-center{ display: inline-block; width: 30%; }
 

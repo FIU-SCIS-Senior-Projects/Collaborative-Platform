@@ -2,9 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 
-
     <script>
-
 
         function load()
         {
@@ -147,12 +145,12 @@
 </head>
 <body>
 <div id="demoWrapper" class="my-box-container3">
-<h3>Registration form for <?php echo $model->fname.' '.$model->lname .' ID#'.$model->id?></h3>
+<h2>User: <?php echo $model->fname.' '.$model->lname ?></h2>
 <ul>
 </ul>
 <hr />
 <h5 id="status"></h5>
-<form id="demoForm" name ="demoForm" method="post"  class="bbq">
+<form id="demoForm"   name ="demoForm" method="post"  class="bbq">
 <div id="fieldWrapper">
 
 <?php
@@ -251,10 +249,10 @@ if($model->isProMentor==1)
             <h4>Select how many hours are required:</h4>
             <br>
 
-            <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;">
+            <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;padding:0 3cm;background: #e8edff">
                 <br>
-                <h5 style="margin: auto">Max hours</h5>
-                <select name="pjmhours" style="width: 80px ">
+                <h5 style="text-align:center" >Max hours</h5>
+                <select  name="pjmhours" style="width: 100px;">
                     <?php for ($i=1;$i<=24;$i++)
                     {
                         echo '<option name="'.$i.'">'.$i.'</option>';
@@ -489,7 +487,6 @@ if($model->isPerMentor==1)
 </form>
 <hr />
 
-<p id="data"></p>
 </div>
 
 <script type="text/javascript" src="/coplat/js/jquery-1.4.2.min.js"></script>

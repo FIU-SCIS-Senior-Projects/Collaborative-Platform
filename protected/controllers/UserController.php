@@ -302,11 +302,13 @@ class UserController extends Controller
 		}
         if(isset($_POST['Roles']))
         {
+
+            //$model->save(false);
             $user = User::model()->findByPk($_COOKIE['UserID']);
             if($user->isProMentor ==1)
             {
             $proMentor = new ProjectMentor;
-            $proMentor->user_id = $_COOKIE['UserID'];
+            $proMentor->user_id = $user->id;
             $proMentor->max_hours =$_POST['pjmhours'] ;
             $proMentor->max_projects = 0;
             $proMentor->save();
@@ -316,7 +318,7 @@ class UserController extends Controller
                 if(isset($_POST[$each->id]))
                 {
                     $p = Project::model()->findByPk($each->id);
-                    $p->project_mentor_user_id = $_COOKIE['UserID'];
+                    $p->project_mentor_user_id =$_COOKIE['UserID'];
                     $p->save(false);
                 }
 
