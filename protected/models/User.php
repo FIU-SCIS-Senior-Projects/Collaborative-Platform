@@ -762,6 +762,28 @@ class User extends CActiveRecord
         $email->send();
     }
 
+    /* Ticket has being reassigned, notification to previous mentor working on the ticket */
+    public static function sendStatusAutoReassignedEmailNotificationToOldMentor($ticket_id, $prev_mentor, $done_by)
+    {
+        $ticket = Ticket::model()->findByPk($ticket_id);
+        $old_mentor = User::model()->findByPk($prev_mentor);
+        $user = User::model()->findBySql("SELECT * from user  WHERE username=:id", array(":id" => 'SYSTEM'));
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+
+        $to = $old_mentor->fname . ' ' . $old_mentor->lname;
+        $from = $user->fname . ' ' . $user->lname;
+
+        $message = $from . ", has reassigned the ticket #" . $ticket_id . ", related to " . $ticket->subject . ". Therefore, is now out of your queue.<br/>" . $link . " to see the its information.";
+        $html = User::replaceMessage($to, $message);
+
+        $email = Yii::app()->email;
+        $email->to = $old_mentor->email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
+        $email->message = $html;
+        $email->send();
+    }
+
     /*Meeting notification */
     public static function sendMeetingNotification($project_mentor_user_id, $mentee_user_id, $date, $time)
     {
@@ -813,6 +835,63 @@ class User extends CActiveRecord
         $email->message = $html;
         $email->send();
     }
+
+    public static function sendNotification($admin_email, $subject, $message , $adminfullName)
+    {
+        $email = Yii::app()->email;
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+
+        $html = User::replaceMessage($adminfullName, $message);
+
+        $email->to = $admin_email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = $subject;
+        $email->message = $html;
+        $email->send();
+    }
+
+
+
+    public static function automaticReassignBySystem($domain_id, $sub, $oldMentorId, $tier ,$mentor1 , $mentor2)
+    {
+        /*Query to the User_Domain model */
+        if ($sub) {
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id and user_id !=:id2  and user_id !=:id3  and user_id !=:id4", array(":id" => $domain_id, ":id2" => $oldMentorId, ":id3" => $mentor1, ":id4" => $mentor2));
+            $subdomain = Subdomain::model()->findByPk($domain_id);
+            $validator = $subdomain->validator;
+        } else {
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id and user_id !=:id2 and user_id !=:id3 and user_id !=:id4", array(":id" => $domain_id, ":id2" => $oldMentorId, ":id3" => $mentor1, ":id4" => $mentor2));
+            $domain = Domain::model()->findByPk($domain_id);
+            $validator = $domain->validator;
+        }
+
+        if ($userDomain != null && is_array($userDomain)) {
+            foreach ($userDomain as $auserDomain) {
+                /** @var UserDomain $auserDomain */
+                if ($auserDomain->tier_team ==  $tier) {
+
+
+                    if ($auserDomain->rate >= $validator) {
+                        /*Query to the domain mentor to see how many tickets is allowed to be assigned */
+                        $domainMentor = DomainMentor::model()->findAllBySql("SELECT * FROM domain_mentor WHERE user_id =:id", array(":id" => $auserDomain->user_id));
+                        /** @var Ticket $count */
+                        if (is_array($domainMentor)) {
+                            foreach ($domainMentor as $adomainMentor) {
+                                /** @var DomainMentor $adomainMentor */
+                                $count = Ticket::model()->findBySql("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id =:id", array(":id" => $adomainMentor->user_id));
+                                if ($count->id < $adomainMentor->max_tickets) {
+                                    /*return the first available domain mentor on queue */
+                                    return $auserDomain->user_id;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return 0; /* No avalible mentors */
+    }
+
 
     public static function escalateTicket($domain_id, $sub)
     {

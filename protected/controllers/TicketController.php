@@ -28,15 +28,15 @@ class TicketController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate'),
+                'actions' => array('index', 'view', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate'),
+                'actions' => array('create', 'update', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate'),
+                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
@@ -226,31 +226,134 @@ class TicketController extends Controller
     public function actionAutomaticReassignBySystem()
     {
         $TicketsO = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE id in (SELECT T.id FROM ticket T
-                    LEFT JOIN
-                    (SELECT MAX(C3.id) AS CommID, C3.ticket_id FROM comment C3 WHERE (C3.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T1.assign_user_id FROM ticket T1 where T1.id = C3.ticket_id)), ' ',(SELECT u2.lname FROM user u2 where u2.id = (select T2.assign_user_id FROM ticket T2 where T2.id = C3.ticket_id)) )) )
-                    GROUP BY ticket_id)
-                    C2 ON  (C2.ticket_id=T.id)
-                    LEFT JOIN
-                    (SELECT MIN(C4.id) AS CommID2, C4.ticket_id FROM comment C4 WHERE
-                    (C4.id > (SELECT MAX(C3.id) AS CommID FROM comment C3 WHERE (C3.ticket_id = C4.ticket_id) and (C3.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T1.assign_user_id FROM ticket T1 where T1.id = C3.ticket_id)), ' ',(SELECT u2.lname FROM user u2 where u2.id = (select T2.assign_user_id FROM ticket T2 where T2.id = C3.ticket_id)) )) )
-                    GROUP BY ticket_id))
-                     AND
-                    (C4.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T3.creator_user_id FROM ticket T3 where T3.id = C4.ticket_id)), ' ',(SELECT u3.lname FROM user u3 where u3.id = (select T4.creator_user_id FROM ticket T4 where T4.id = C4.ticket_id)) )) )
-                    GROUP BY ticket_id)
-                    C5 ON  (C5.ticket_id=T.id)
-                    LEFT JOIN comment CMentor ON (CMentor.id=CommID)
-                    LEFT JOIN comment CMentee ON (CMentee.id=CommID2)
-                    LEFT JOIN priority P ON T.priority_id = P.id
-                    WHERE
-                    T.status = 'Pending'
-                    AND (
-                        (CMentee.added_date IS NOT NULL AND (NOW() > CMentee.added_date + INTERVAL P.reassignHours hour) AND  (NOW() > T.assigned_date + INTERVAL P.reassignHours hour))
-                    OR (CMentee.added_date IS NULL AND CMentor.added_date IS NULL AND  (NOW() > T.assigned_date + INTERVAL P.reassignHours hour))
-                        ))
+                        LEFT JOIN
+                        (SELECT MAX(C3.id) AS CommID, C3.ticket_id FROM comment C3 WHERE (C3.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T1.assign_user_id FROM ticket T1 where T1.id = C3.ticket_id)), ' ',(SELECT u2.lname FROM user u2 where u2.id = (select T2.assign_user_id FROM ticket T2 where T2.id = C3.ticket_id)) )) )
+                        GROUP BY ticket_id)
+                        C2 ON  (C2.ticket_id=T.id)
+                        LEFT JOIN
+                        (SELECT MIN(C4.id) AS CommID2, C4.ticket_id FROM comment C4 WHERE
+                        (C4.id > (SELECT MAX(C3.id) AS CommID FROM comment C3 WHERE (C3.ticket_id = C4.ticket_id) and (C3.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T1.assign_user_id FROM ticket T1 where T1.id = C3.ticket_id)), ' ',(SELECT u2.lname FROM user u2 where u2.id = (select T2.assign_user_id FROM ticket T2 where T2.id = C3.ticket_id)) )) )
+                        GROUP BY ticket_id))
+                         AND
+                        (C4.user_added = (CONCAT((SELECT u1.fname FROM user u1 WHERE u1.id = (select T3.creator_user_id FROM ticket T3 where T3.id = C4.ticket_id)), ' ',(SELECT u3.lname FROM user u3 where u3.id = (select T4.creator_user_id FROM ticket T4 where T4.id = C4.ticket_id)) )) )
+                        GROUP BY ticket_id)
+                        C5 ON  (C5.ticket_id=T.id)
+                        LEFT JOIN comment CMentor ON (CMentor.id=CommID)
+                        LEFT JOIN comment CMentee ON (CMentee.id=CommID2)
+                        LEFT JOIN priority P ON T.priority_id = P.id
+                        WHERE
+                        T.status = 'Pending'
+                        AND (
+                            (CMentee.added_date IS NOT NULL AND (NOW() > CMentee.added_date + INTERVAL P.reassignHours hour) AND  (NOW() > T.assigned_date + INTERVAL P.reassignHours hour))
+                        OR (CMentee.added_date IS NULL AND CMentor.added_date IS NULL AND  (NOW() > T.assigned_date + INTERVAL P.reassignHours hour))
+                            ))
                     ");
 
 
+        foreach ($TicketsO as $model)
+        {
+            $old_mentor = $model->assign_user_id;
 
+            $mentor1 = 0;
+            if ($model->Mentor1 != null){$mentor1 = $model->Mentor1;}
+
+            $mentor2 = 0;
+            if ($model->Mentor2 != null){$mentor2 = $model->Mentor2;}
+
+            $tier = 1;
+            if($model->isEscalated != null){$tier = 2;}
+
+            $newMentorId = 0;
+
+            $boolean = true; /* Identify is the subdomain was specified */
+            if ($model->subdomain_id == null) {
+                $boolean = false;
+                $newMentorId = User::automaticReassignBySystem($model->domain_id, $boolean, $old_mentor, $tier, $mentor1 , $mentor2 );
+            }
+            else{
+                $newMentorId = User::automaticReassignBySystem($model->subdomain_id, $boolean, $old_mentor, $tier, $mentor1, $mentor2 );
+            }
+
+            if($newMentorId == 0)/* no available mentor different to current mentor, Mentor1 and Mentor2*/
+            {
+                $boolean = true; /* Identify is the subdomain was specified */
+                if ($model->subdomain_id == null) {
+                    $boolean = false;
+                    $newMentorId = User::automaticReassignBySystem($model->domain_id, $boolean, $old_mentor, $tier, 0 , 0);
+                }
+                else{
+                    $newMentorId = User::automaticReassignBySystem($model->subdomain_id, $boolean, $old_mentor, $tier, 0, 0 );
+                }
+
+                if($newMentorId == 0)/* no available mentor different that current mentor*/
+                {
+                    //$sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("This ticket was not reassigned","'  . $model->assigned_date . '",' . $model->id . ', "System")';
+                    //$command = Yii::app()->db->createCommand($sql);
+                    //$command->execute();
+
+                    $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user WHERE disable = 0 and activated = 1 and isAdmin = 1 and username != 'SYSTEM'");
+
+                    foreach($admins as $ad)
+                    {
+                        $adminfullName = $ad->fname.' '.$ad->lname;
+                        User::sendNotification( $ad->email,"Ticket #" . $model->id . " require your attention", "The ticket was not been answered and there is not another available mentor" , $adminfullName);
+
+                    }
+
+                    //send notification to admin tito1
+                    $model->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
+                    $model->Mentor1 = null;
+                    $model->Mentor2 = null;
+                    if ($model->save()) {}
+                }
+            }
+
+
+            if($newMentorId != 0)
+            {
+                if ($model->Mentor2 != null)
+                {
+                    $admins = User::model()->findAllBySql("SELECT * FROM user WHERE disable = 0 and activated = 1 and isAdmin = 1 and username != 'SYSTEM' and email is not null");
+
+                    foreach($admins as $ad)
+                    {
+                        $adminfullName = $ad->fname.' '.$ad->lname;
+                        User::sendNotification( $ad->email,"Ticket #" . $model->id . " require your attention", "The ticket was not been answered. It requires your attention." , $adminfullName);
+                    }
+
+                    //send notification to admin tito2
+                    $model->Mentor1 = null;
+                    $model->Mentor2 = null;
+                }
+                else
+                {
+                    if ($model->Mentor1 == null)
+                    {
+                        $model->Mentor1 = $model->assign_user_id;
+                    }
+                    else
+                    {
+                        $model->Mentor2 = $model->assign_user_id;
+                    }
+                }
+
+                $model->assign_user_id = $newMentorId;
+                $model->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
+
+                //create comment to ticket
+
+                if ($model->save()) {
+
+                    $sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("This ticket was reassigned to a new mentor by the system","'  . $model->assigned_date . '",' . $model->id . ', "System")';
+                    $command = Yii::app()->db->createCommand($sql);
+                    $command->execute();
+
+                    /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+                    $systemID = User::model()->findBySql("SELECT * from user  WHERE username=:id", array(":id" => 'SYSTEM'));
+                    User::sendStatusAutoReassignedEmailNotificationToOldMentor($model->id, $old_mentor, $systemID);
+                }
+            }
+        }
     }
 
     public function actionTicketRejectedAdminAlert($user_id, $ticket_id)

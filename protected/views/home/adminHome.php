@@ -150,6 +150,16 @@ if(User::isCurrentUserAdmin()==false)
                     </td>
                 </tr>
                 <tr>
+                    <td><br>
+                        <!-- Manage Domain Button -->
+                        <?php $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/ticket/AutomaticReassignBySystem', 'type' => 'primary',
+                            'label' => 'Auto Reassignment', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                        ?>
+
+                    </td>
+                </tr>
+                <tr>
 
 
                     <td><br>
