@@ -480,7 +480,7 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $link = CHtml::link('Click here to go to the site', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $message = $adminfullName.' has registered you on the platform. Please use the credentials below to log in:<br><br>Username:' . $username . ' <br>Password: '.$password.'<br><br>Thank you<br><br>'.$link.'';
+        $message = $adminfullName.' has registered you on the platform. Please use the credentials below to log in:<br><br>Username:' . $username . ' <br>Password: '.$password.'<br><br>You can change your password once logged in. <br><br>Thank you<br><br>'.$link.'';
         $html = User::replaceMessage($userfullName, $message);
 
         $email->to = $user_email;
