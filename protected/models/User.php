@@ -460,7 +460,7 @@ class User extends CActiveRecord
     {
         return sprintf("%s %s", $this->fname, $this->lname);
     }
-
+/*
     public static function sendVerificationEmail($userfullName, $user_email, $adminfullName, $admin_email)
     {
         $email = Yii::app()->email;
@@ -472,6 +472,20 @@ class User extends CActiveRecord
         $email->to = $admin_email;
         $email->from = 'Collaborative Platform';
         $email->subject = 'We have a New Member!!!!';
+        $email->message = $html;
+        $email->send();
+    }*/
+    public static function sendConfirmationEmail($userfullName, $user_email, $username, $password, $adminfullName)
+    {
+        $email = Yii::app()->email;
+        $link = CHtml::link('Click here to log in', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+
+        $message = 'Hello '.$userfullName . '<br>,'.$adminfullName.' has registered you on the platform. Please use the credentials below to log in:<br/>Username:' . $username . ' <br>Password: '.$password.'<br><br>'.$link.'';
+        $html = User::replaceMessage($adminfullName, $message);
+
+        $email->to = $user_email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Congratulations!';
         $email->message = $html;
         $email->send();
     }

@@ -12,6 +12,13 @@
               {
               print('document.getElementById("'.$one->id.'dmrate").disabled=true;');
               print('document.getElementById("'.$one->id.'dmtier").disabled=true;');
+               //print( '$("#'.$one->id.'dmsub").find("*").prop("disabled", true);');
+              print('
+              var nodes = document.getElementById("'.$one->id.'dmsub").getElementsByTagName(\'*\');
+            for(var i = 0; i < nodes.length; i++)
+            {
+            nodes[i].disabled = true;
+            }');
 
               }
 
@@ -30,12 +37,23 @@
                 {
                     document.getElementById("'.$dm->id.'dmrate").disabled=false;
                     document.getElementById("'.$dm->id.'dmtier").disabled=false;
+                    var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
+                    for(var i = 0; i < nodes.length; i++)
+                    {
+                    nodes[i].disabled = false;
+                    }
 
 
                 } else
                 {
                     document.getElementById("'.$dm->id.'dmrate").disabled=true;
                     document.getElementById("'.$dm->id.'dmtier").disabled=true;
+                    var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
+                    for(var i = 0; i < nodes.length; i++)
+                    {
+                    nodes[i].disabled = true;
+                    nodes[i].checked = false;
+                    }
 
 
 
@@ -143,7 +161,7 @@
     </style>
 
 </head>
-<body>
+<body >
 <div id="demoWrapper" class="my-box-container3">
 <h2>User: <?php echo $model->fname.' '.$model->lname ?></h2>
 <ul>
@@ -181,7 +199,7 @@ if($model->isProMentor==1)
                     foreach ($projects as $project)
                     {
                         $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$project->id ");
-                        $res ='';
+                        $res ='No mentees for this project';
                         if($mymenids!=null)
                         {
 
@@ -196,7 +214,7 @@ if($model->isProMentor==1)
 
                             }
                         }
-
+                        /*popover div*/
                         echo '<div id="content-myPopOver-'. $project->id.'" style="display: none;">
                            <p>
                            <h4>
@@ -293,66 +311,102 @@ if($model->isDomMentor==1)
 
     <div id="finland" class="step">
 
-
+        <?php //stop here?>
         <h3><span class="font_normal_07em_black">Role: Domain Mentor</span></h3><br />
         <div  class="my-box-container3" style="width: auto; float:left;">
             <h3>Current Domains</h3>
             <br>
             <h4>Select domains:</h4>
             <br>
-            <?php
-            $domains = Domain::model()->findAll();
-            $subdomains = Subdomain::model()->findAll();
-            $acc1='';
-            $acc2='';
 
 
-            ?>
 
+            <div name ="domain" class="container" style="border:2px solid #ccc; width:auto; height: 400px;margin: auto;overflow-y: scroll">
 
-            <body onload="load()">
+                <body onload="load()">
 
-            <div name ="domain" class="container" style="border:2px solid #ccc; width:auto; height: auto; overflow-y: scroll;margin: auto;">
-
-                <table border="1"  style="width:auto">
+                <table  style="width:auto;">
                     <tr>
                         <th>Domain</th>
                         <th>Rate</th>
                         <th>Tier</th>
+                        <th>Subdomain</th>
                     </tr>
                     <?php
+                    $domains = Domain::model()->findAll();
+
+
+
+                    $optionR='';
+                    $optionT='';
+                    /*rate numbers*/
+                    for ($i=1;$i<=8;$i++)
+                    {
+                        $optionR.= '<option value="'.$i.'">'.$i.'</option>';
+                    }
+                    $optionR .='</select>';
+
+                    /*tier numbers*/
+                    for ($i=1;$i<=2;$i++)
+                    {
+                        $optionT .='<option value="'.$i.'">'.$i.'</option>';
+                    }
+                    $optionT .= '</select>';
+
+
+
+                    $i=0;
                     foreach ($domains as $domain)
                     {
-                        $acc1 ='<select  id = "'.$domain->id.'dmrate" name="'.$domain->id.'dmrate" style="width: 80px";>';
-                        for ($i=1;$i<=10;$i++)
-                        {
-                            $acc1.= '<option value="'.$i.'">'.$i.'</option>';
-                        }
-                        $acc1.='</select>';
+                        /*row color */
 
-                        $acc2 = '<select id = "'.$domain->id.'dmtier" name="'.$domain->id.'dmtier" style="width: 80px;" >';
-                        for ($i=1;$i<=2;$i++)
+                        $color = '';
+                        $sdcolor ='';
+                        if ($i++ % 2)
                         {
-                            $acc2 .='<option value="'.$i.'">'.$i.'</option>';
+                            $color = 'style="background: #e8edff;padding: 15px;"';
+                            $sdcolor = 'background: #e8edff;padding: 10px';
+
+                        } else
+                        {
+                            $color = 'style="padding: 15px;"';
+                            $sdcolor = 'padding: 10px';
                         }
-                        $acc2 .= '</select>';
+
+
+                        $selectR ='<select  id = "'.$domain->id.'dmrate" name="'.$domain->id.'dmrate" style="width: 50px";>';
+
+
+                        $selectT = '<select id = "'.$domain->id.'dmtier" name="'.$domain->id.'dmtier" style="width: 50px;" >';
+
+                        $selectS ='<div border:1px id = "'.$domain->id.'dmsub" name="'.$domain->id.'dmsub" style="width: 150px;height:100px;overflow-y: scroll;'.$sdcolor.'">';
+
+                        $curPSubdomains = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $domain->id");
+                        /*subdomains*/
+                        $optionS='';
+                        foreach($curPSubdomains as $subdomain)
+                        {
+                            $optionS.='<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name .'<br>';
+                        }
+                        $optionS.='</div>';
+
 
                         echo'<tr>';
-                        echo '<td>'.'<input type="checkbox" id= "'.$domain->id .'"  name ="'.$domain->id .'"/>'. $domain->name .'</td>';
-                        echo '<td>'.$acc1.'</td>';
-                        echo '<td>'.$acc2.'</td>';
+                        echo '<td '.$color.'>'.'<input type="checkbox" id= "'.$domain->id .'"  name ="'.$domain->id .'"/>  '. $domain->name .'</td>';
+                        echo '<td '.$color.'>'.$selectR.$optionR.'</td>';
+                        echo '<td '.$color.'>'.$selectT.$optionT.'</td>';
+                        echo '<td>'.$selectS.$optionS.'</td>';
                         echo '</tr>';
                     }
                     ?>
 
 
                 </table>
-
+                </body>
 
 
 
             </div>
-            </body>
             <?php /*
             <select  name="subdomain" multiple="multiple" size="5" style="width: auto">
 
@@ -380,13 +434,14 @@ if($model->isDomMentor==1)
             </select> */?>
 
         </div>
-        <div  class="my-box-container3" style="width: auto;height: auto; float:right;">
+
+        <div  class="my-box-container3" style="width: 200px;height: auto; float:right">
             <h3>Max Tickets</h3>
             <br>
             <h4>Select max tickets for mentor:</h4>
             <br>
             <h5 style="margin: auto">Max tickets</h5>
-            <select name="dmmaxtickets" style="position: absolute; width: 80px">
+            <select name="dmmaxtickets" style=" width: 80px">
                 <?php for ($i=1;$i<=20;$i++)
                 {
                     echo '<option name="'.$i.'">'.$i.'</option>';
@@ -408,80 +463,126 @@ if($model->isDomMentor==1)
 if($model->isPerMentor==1)
 {
 
-    ?>
-    <div id="confirmation" class="step">
-        <h3><span class="font_normal_07em_black">Role: Personal Mentor</span></h3><br />
-        <div  class="my-box-container3" style="width: auto; float:left;">
-            <h3>Current Senior Project Mentees</h3>
-            <br>
-            <h4>Select mentees for this personal mentor:</h4>
-            <br>
-            <?php  $mentees = User::model()->findAllBySql("select * from user where isMentee=1");?>
-            <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
+?>
+<div id="confirmation" class="step">
+    <h3><span class="font_normal_07em_black">Role: Personal Mentor</span></h3><br />
+    <div  class="my-box-container3" style="width: auto; float:left;">
+        <h3>Current Senior Project Mentees</h3>
+        <br>
+        <h4>Select mentees for this personal mentor:</h4>
+        <br>
+        <?php  $mentees = User::model()->findAllBySql("select * from user where isMentee=1");?>
+        <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
 
 
-                <?php foreach ($mentees as $mentee)
+            <table style="width: 330px">
+
+                <?php
+                $i = 0;
+                foreach ($mentees as $mentee)
                 {
-                    echo '<input type="checkbox" name = "'.$mentee->id.'"/>'. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
 
+
+                    $menteeProj='';
+                    $projMentor='';
+                    $title = 'No project chosen';
+                    $pmName='No mentor assigned';
+                    $aMentee = Mentee::model()->findBySql("select * from mentee where user_id = $mentee->id");
+                    if($aMentee->project_id!=null)
+                    {
+                        $menteeProj = Project::model()->findBySql("select * from project where id = $aMentee->project_id");
+                        $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
+                        $title = $menteeProj->title;
+                        $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
+                    }
+
+                    echo '<div id="inside-mpop-'. $mentee->id.'" style="display: none;">
+                           <p>
+                           <h4>Project: </h4>'.$title.'
+                            <h4>Project Mentor:</h4>'. $pmName.'
+                           </p></div>';
+
+                    $color = '';
+                    if ($i++ % 2)
+                    {
+                        $color = 'style="background: #e8edff;padding: 12px;"';
+                    } else
+                    {
+                        $color = 'style="padding: 12px;"';
+                    }
+                    echo'<tr><td   '.$color.'  >';
+                    echo '<a href="#test" id="mpop-'.$mentee->id.'" class="mpop" >';
+                    echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->id.'"/>  '. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
+                    echo '</td></a></tr>';
                 }
 
                 ?>
 
-
-            </div>
-
+            </table>
         </div>
 
-        <div class="my-box-container3" style="width: auto; float:right">
+    </div>
+    <script>
+        $('.mpop').popover({
+            placement: 'right',
+            trigger: 'hover',
+            html: true,
+            content: function () {
+                return $("#inside-" + $(this).attr('id')).html();
+            }
+        });
+    </script>
 
-            <h3>Availability</h3>
+    <div class="my-box-container3" style="width: auto; float:right">
+
+        <h3>Availability</h3>
+        <br>
+        <h4>Select how many hours are required:</h4>
+        <br>
+        <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;padding:0 3cm;background: #e8edff">
+
             <br>
-            <h4>Select how many hours are required:</h4>
-            <br>
-            <div class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
+            <h5 style="text-align:center">Max hours</h5>
+            <select name="pmhours" style="width: 100px">
+            <?php for ($i=1;$i<=24;$i++)
+            {
+                echo '<option value="'.$i.'">'.$i.'</option>';
+            }
 
-                <br>
-                <h5 style="margin: auto">Max hours</h5>
-                <select name="pmhours" style="position: absolute;">
-                    <?php for ($i=1;$i<=24;$i++)
-                    {
-                        echo '<option value="'.$i.'">'.$i.'</option>';
-                    }
-
-                    ?>
+            ?>
                 </select>
 
 
-            </div>
+
+                </div>
 
 
 
+                </div>
+            <?php
+            /*
+            ?>
+            <span class="font_normal_07em_black">Last step - Username</span><br />
+            <label for="username">User name</label><br />
+            <input class="input_field_12em" name="username" id="username" /><br />
+            <label for="password">Password</label><br />
+            <input class="input_field_12em" name="password" id="password" type="password" /><br />
+            <label for="retypePassword">Retype password</label><br />
+            <input class="input_field_12em" name="retypePassword" id="retypePassword" type="password" /><br />
+            */
+            ?>
+
+                </div>
+            <?php }?>
+
+
+
+                </div>
+
+                <div id="demoNavigation">
+            <input class="btn btn-primary" id="back" value="Back" type="reset" />
+            <input class="btn btn-primary" name="Roles" id="next" value="Next" type="submit" />
         </div>
-        <?php
-        /*
-        ?>
-        <span class="font_normal_07em_black">Last step - Username</span><br />
-        <label for="username">User name</label><br />
-        <input class="input_field_12em" name="username" id="username" /><br />
-        <label for="password">Password</label><br />
-        <input class="input_field_12em" name="password" id="password" type="password" /><br />
-        <label for="retypePassword">Retype password</label><br />
-        <input class="input_field_12em" name="retypePassword" id="retypePassword" type="password" /><br />
-        */
-        ?>
-
-    </div>
-<?php }?>
-
-
-
-</div>
-
-<div id="demoNavigation">
-    <input class="btn btn-primary" id="back" value="Back" type="reset" />
-    <input class="btn btn-primary" name="Roles" id="next" value="Next" type="submit" />
-</div>
 
 
 </form>
@@ -498,7 +599,9 @@ if($model->isPerMentor==1)
 
 
 
+
 <script type="text/javascript">
+
 
 
     $(function(){

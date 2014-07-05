@@ -4,48 +4,48 @@ require ('PasswordHash.php');
 
 class UserController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/column2';
+    /**
+     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+     * using two-column layout. See 'protected/views/layouts/column2.php'.
+     */
+    public $layout='//layouts/column2';
 
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
 
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('create','roles','setRoles'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('ChangePassword'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+        return array(
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'actions'=>array('create','roles','setRoles'),
+                'users'=>array('*'),
+            ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions'=>array('ChangePassword'),
+                'users'=>array('@'),
+            ),
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin'),
+                'users'=>array('admin'),
+            ),
+            array('deny',  // deny all users
+                'users'=>array('*'),
+            ),
+        );
+    }
 
     public function actionsetRoles($id)
     {
@@ -61,12 +61,12 @@ class UserController extends Controller
         $this->render('roles', array('model'=> $model));
     }
 
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
+    /**
+     * Displays a particular model.
+     * @param integer $id the ID of the model to be displayed
+     */
+    public function actionView($id)
+    {
         $model = $this->loadModel($id);
         $promentor = ProjectMentor::model()->getProMentor($id);
         $permentor = PersonalMentor::model()->getPerMentor($id);
@@ -104,12 +104,12 @@ class UserController extends Controller
                     {
                         $pro = $_POST['proj'];
                         $curr = Project::model()->findallbysql("SELECT * FROM project WHERE project_mentor_user_id=$model->id");
-                        
+
                         for($i = 0; $i < ($promentor->max_projects - count($curr)); $i++)
-                        {  
-                                $p = Project::model()->findBySql("SELECT * FROM project WHERE title='$pro[$i]'");
-                                $p->project_mentor_user_id = $model->id;
-                                $p->save();
+                        {
+                            $p = Project::model()->findBySql("SELECT * FROM project WHERE title='$pro[$i]'");
+                            $p->project_mentor_user_id = $model->id;
+                            $p->save();
                         }
                     }
                 }
@@ -131,7 +131,7 @@ class UserController extends Controller
                 {
                     $men = $_POST['mentees'];
                     $curr = Mentee::model()->findallbysql("SELECT * FROM mentee WHERE personal_mentor_user_id=$model->id");
-                    
+
                     for($i = 0; $i < ($permentor->max_mentees - count($curr)); $i++)
                     {
                         $m = Mentee::model()->findBySql("SELECT * FROM mentee WHERE user_id=$men[$i]");
@@ -145,8 +145,8 @@ class UserController extends Controller
             {
                 $dommentor->max_tickets = $_POST['numTickets'];
                 $dommentor->save();
-                
-                
+
+
                 if(isset($_POST['domainName']))
                 {
                     $d = new Domain();
@@ -169,72 +169,72 @@ class UserController extends Controller
                         $ud->save();
                     }
 
-                if(isset($_POST['existDoms']))
-                {
-                    $doms = $_POST['existDoms'];
-                    for($i = 0; $i < count($doms); $i++)
+                    if(isset($_POST['existDoms']))
                     {
-                        $d = Domain::model()->findBySql("SELECT id FROM domain WHERE name='$doms[$i]'");
-                        $ud = new UserDomain();
-                        
-                        $ud->domain_id = $d->id;
-                        $ud->user_id = $model->id;
-                        $ud->rate = $_POST['ratings'];
-                        $ud->save();
+                        $doms = $_POST['existDoms'];
+                        for($i = 0; $i < count($doms); $i++)
+                        {
+                            $d = Domain::model()->findBySql("SELECT id FROM domain WHERE name='$doms[$i]'");
+                            $ud = new UserDomain();
+
+                            $ud->domain_id = $d->id;
+                            $ud->user_id = $model->id;
+                            $ud->rate = $_POST['ratings'];
+                            $ud->save();
+                        }
                     }
-                }
-                
-                if(isset($_POST['unrated']))
-                {
-                    $ud = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE rate IS NULL AND user_id=$model->id ");
-                    $ur = $_POST['unrated'];
-                    
-                    for($i = 0; $i < count($ur); $i++)
+
+                    if(isset($_POST['unrated']))
                     {
-                        $ud[$i]->rate = $ur[$i];
-                        $ud[$i]->save();
+                        $ud = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE rate IS NULL AND user_id=$model->id ");
+                        $ur = $_POST['unrated'];
+
+                        for($i = 0; $i < count($ur); $i++)
+                        {
+                            $ud[$i]->rate = $ur[$i];
+                            $ud[$i]->save();
+                        }
                     }
                 }
             }
-        }
 
-        /** @var User $username */
-        $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
-        $userdoms = UserDomain::model()->findAllBySql("SELECT domain_id FROM user_domain WHERE user_id=$id");
-        $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
-        $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
-
-        $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects));
-
-        /*$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));*/
-	}
-        else 
-        {
+            /** @var User $username */
             $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
-            $userdoms = UserDomain::model()->findAllBySql("SELECT domain_id FROM user_domain WHERE user_id=$id");
+            $userdoms = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$id");
             $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
             $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
-            
-            $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects,
-			'model'=>$this->loadModel($id)));
-        }
-        }
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new User;
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+            $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects));
+
+            /*$this->render('view',array(
+                'model'=>$this->loadModel($id),
+            ));*/
+        }
+        else
+        {
+            $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
+            $userdoms = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$id");
+            $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
+            $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
+
+            $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects,
+                'model'=>$this->loadModel($id)));
+        }
+    }
+
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionCreate()
+    {
+        $model=new User;
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
 
 
         if(isset($_POST['User']))
-		{
+        {
             /*if ($this->actionVerifyRegistration() != "") {
                 $this->render('create', array('model'=>$model));
             }*/
@@ -244,6 +244,7 @@ class UserController extends Controller
             $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
             $model->biography = "Tell us something about yourself...";
             $model->activation_chain = $this->genRandomString(10);
+
             $model->save(false);
 
 
@@ -251,8 +252,8 @@ class UserController extends Controller
             //$model->activated == 0;
 
             //Hash the password before storing it into the database
-			//$hasher = new PasswordHash(8, false);
-			//$model->password = $hasher->HashPassword($model->password);
+            //$hasher = new PasswordHash(8, false);
+            //$model->password = $hasher->HashPassword($model->password);
 
             /*
 			if($model->save(false)){
@@ -299,30 +300,38 @@ class UserController extends Controller
 
                 //s$this->actionSendVerificationEmail($userfullName, $model->email);
             }*/
-		}
+        }
         if(isset($_POST['Roles']))
         {
 
             //$model->save(false);
             $user = User::model()->findByPk($_COOKIE['UserID']);
+
             if($user->isProMentor ==1)
             {
-            $proMentor = new ProjectMentor;
-            $proMentor->user_id = $user->id;
-            $proMentor->max_hours =$_POST['pjmhours'] ;
-            $proMentor->max_projects = 0;
-            $proMentor->save();
-            $all = Project::model()->findAll();
-            foreach ($all as $each)
-            {
-                if(isset($_POST[$each->id]))
+                $proMentor = new ProjectMentor;
+                $proMentor->user_id = $user->id;
+                $proMentor->max_hours =$_POST['pjmhours'] ;
+                $all = Project::model()->findAll();
+                $proMentor->save();
+
+                $count =0;
+                foreach ($all as $each)
                 {
-                    $p = Project::model()->findByPk($each->id);
-                    $p->project_mentor_user_id =$_COOKIE['UserID'];
-                    $p->save(false);
+                    if(isset($_POST[$each->id]))
+                    {
+                        $p = Project::model()->findByPk($each->id);
+                        $p->project_mentor_user_id =$_COOKIE['UserID'];
+                        $p->save(false);
+                        $count++;
+                    }
+
                 }
 
-            }
+                $proMentor->max_projects = $count;
+                $proMentor->save();
+
+
             }
 
             if($user->isDomMentor ==1)
@@ -340,15 +349,34 @@ class UserController extends Controller
 
                     if(isset($_POST[$each->id]))
                     {
+
+
+
                         $rate = $each->id.'dmrate';
                         $tier = $each->id.'dmtier';
-                        $user_domain = new UserDomain();
-                        $user_domain->user_id = $domMentor->user_id;
-                        $user_domain->domain_id= $each->id;
-                        $user_domain->rate = $_POST[$rate];
-                        $user_domain->tier_team = $_POST[$tier];
-                        $user_domain->active=1;
-                        $user_domain->save(false);
+
+
+                        $allsubs = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $each->id");
+
+                        foreach( $allsubs as $onesub)
+                        {
+                            $temp = $onesub->id.'ddmsub';
+                            if(isset($_POST[$temp]))
+                            {
+                                $user_domain = new UserDomain();
+                                $user_domain->user_id = $domMentor->user_id;
+                                $user_domain->domain_id= $each->id;
+                                $user_domain->rate = $_POST[$rate];
+                                $user_domain->tier_team = $_POST[$tier];
+                                $user_domain->active=1;
+                                $user_domain->subdomain_id = $onesub->id;
+                                $user_domain->save(false);
+
+
+
+                            }
+                        }
+
 
 
                     }
@@ -357,8 +385,41 @@ class UserController extends Controller
 
 
             }
+            if($user->isPerMentor)
+            {
+                $perMentor = new PersonalMentor();
+                $perMentor->user_id = $user->id;
+                $perMentor->max_hours =$_POST['pmhours'] ;
+                $all = Mentee::model()->findAll();
+                $perMentor->save();
+
+                $count =0;
+                foreach ($all as $each)
+                {
+                    if(isset($_POST[$each->user_id]))
+                    {
+                        $p = Mentee::model()->findByPk($each->user_id);
+                        $p->personal_mentor_user_id =$_COOKIE['UserID'];
+                        $p->save(false);
+                        $count++;
+                    }
+
+                }
+
+                $perMentor->max_mentees = $count;
+                $perMentor->save();
 
 
+
+            }
+
+            $hasher = new PasswordHash(8, false);
+            $pw = $this->genRandomString(8);
+            $user->password = $hasher->HashPassword($pw);
+            $user->save();
+            $userfullName = $user->fname.' '.$user->lname;
+            $adminName = User::getCurrentUser();
+            User::sendConfirmationEmail($userfullName, $user->email,$user->username,$pw,$adminName->fname.' '.$adminName->lname);
 
 
         }
@@ -368,17 +429,17 @@ class UserController extends Controller
         ));
         //$this->render('add',array('model'=>$model, 'error' => $error));
 
-	}
-	public function actionCreate_Admin()
-	{
-		$model=new User;
+    }
+    public function actionCreate_Admin()
+    {
+        $model=new User;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
 
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
+        if(isset($_POST['User']))
+        {
+            $model->attributes=$_POST['User'];
 
             $model->pic_url = '/coplat/images/profileimages/avatarsmall.gif';
             $model->activation_chain = $this->genRandomString(10);
@@ -396,108 +457,109 @@ class UserController extends Controller
                 $admin->save();
                 User::sendNewAdministratorEmailNotification($model->email, $plain_pwd);
 
-				$this->redirect(array('/user/admin','id'=>$model->id));
+                $this->redirect(array('/user/admin','id'=>$model->id));
             }
         }
         $error = '';
-		$this->render('create_admin',array(
-			'model'=>$model, 'error' => $error
-		));
-	}
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
+        $this->render('create_admin',array(
+            'model'=>$model, 'error' => $error
+        ));
+    }
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
+    public function actionUpdate($id)
+    {
         $model = $this->loadModel($id);
 
         $this->renderPartial('update', array('model'=> $model));
 
-	}
+    }
 
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-	    //Soft delete (Disable the User)
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
+    public function actionDelete($id)
+    {
+        //Soft delete (Disable the User)
         $model=$this->loadModel($id);
         $model->disable = 1;
 
         $model->save(false);
 
-	    //Hard delete
-		//$this->loadModel($id)->delete();
+        //Hard delete
+        //$this->loadModel($id)->delete();
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+        if(!isset($_GET['ajax']))
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+    }
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('User');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
+    /**
+     * Lists all models.
+     */
+    public function actionIndex()
+    {
+        $dataProvider=new CActiveDataProvider('User');
+        $this->render('index',array(
+            'dataProvider'=>$dataProvider,
+        ));
+    }
 
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new User('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User']))
-			$model->attributes=$_GET['User'];
+    /**
+     * Manages all models.
+     */
+    public function actionAdmin()
+    {
+        $model=new User('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['User']))
+            $model->attributes=$_GET['User'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
+        $this->render('admin',array(
+            'model'=>$model,
+        ));
+    }
 
-	public function actionChangePassword() {
-		$model = User::getCurrentUser();
-		$error = '';
-		if(isset($_POST['User'])) {
-			$pass = $_POST['User']['password'];
-			$p1 = $_POST['User']['password1'];
-			$p2 = $_POST['User']['password2'];
-			//verify old password
-			$username = Yii::app()->user->name;
-			$hasher = new PasswordHash(8, false);
-			$login = new LoginForm;
-			$login->username = $username;
-			$login->password = $pass;
+    public function actionChangePassword() {
+        $model = User::getCurrentUser();
+        $error = '';
+        if(isset($_POST['User'])) {
+            $pass = $_POST['User']['password'];
+            $p1 = $_POST['User']['password1'];
+            $p2 = $_POST['User']['password2'];
+            //verify old password
+            $username = Yii::app()->user->name;
+            $hasher = new PasswordHash(8, false);
+            $login = new LoginForm;
+            $login->username = $username;
+            $login->password = $pass;
 
-			//$user = User::model()->find("username=:username AND password=:password", array(":username"=> $username, ":password"=>$password));
-			if (!$login->validate()){
-				$error = "Old Password was incorrect.";
-				$this->render('ChangePassword',array('model'=>$model, 'error' => $error));
-			} elseif ($p1 == $p2) {
-				//Hash the password before storing it into the database
-				$hasher = new PasswordHash(8, false);
-				$user = User::getCurrentUser();
-				$user->password = $hasher->HashPassword($p1);
-				$user->save(false);
+            //$user = User::model()->find("username=:username AND password=:password", array(":username"=> $username, ":password"=>$password));
+            if (!$login->validate()){
+                $error = "Old Password was incorrect.";
+                $this->render('ChangePassword',array('model'=>$model, 'error' => $error));
+            } elseif ($p1 == $p2) {
+                //Hash the password before storing it into the database
+                $hasher = new PasswordHash(8, false);
+                $user = User::getCurrentUser();
+                $user->password = $hasher->HashPassword($p1);
+                $user->save(false);
                 User::sendEmailPasswordChanged($user->id);
-				$this->redirect("/coplat/index.php");
-			} else {
-				$error = "Passwords do not match.";
-				$this->render('ChangePassword',array('model'=>$model, 'error' => $error));
-			}
-		} else {
-			$this->render('ChangePassword',array('model'=>$model, 'error' => $error));
-		}
-	}
+                $this->redirect("/coplat/index.php");
+            } else {
+                $error = "Passwords do not match.";
+                $this->render('ChangePassword',array('model'=>$model, 'error' => $error));
+            }
+        } else {
+            $this->render('ChangePassword',array('model'=>$model, 'error' => $error));
+        }
+    }
+
 
     public function actionSendVerificationEmail($userfullName, $user_email){
 
@@ -509,7 +571,7 @@ class UserController extends Controller
             User::sendVerificationEmail($userfullName, $user_email, $adminfullName, $ad->email);
         }
 
-        $this->redirect('/coplat/index.php/site/page?view=verification');
+        //$this->redirect('/coplat/index.php/site/page?view=verification');
 
     }
 
@@ -588,41 +650,41 @@ class UserController extends Controller
         return $error;
     }
 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return User the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model=User::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
-	
-	public static function genRandomString($length = 10) {
-		$characters = "0123456789abcdefghijklmnopqrstuvwxyz";
-		$string = "";
-		for ($p = 0; $p < $length; $p++) {
-			$string .= $characters[mt_rand(0, strlen($characters) - 1)];
-		}
-	
-		return $string;
-	}
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer $id the ID of the model to be loaded
+     * @return User the loaded model
+     * @throws CHttpException
+     */
+    public function loadModel($id)
+    {
+        $model=User::model()->findByPk($id);
+        if($model===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+        return $model;
+    }
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param User $model the model to be validated
-	 */
-	/*protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='user-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}*/
+    public static function genRandomString($length) {
+        $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+        $string = "";
+        for ($p = 0; $p < $length; $p++) {
+            $string .= $characters[mt_rand(0, strlen($characters) - 1)];
+        }
+
+        return $string;
+    }
+
+    /**
+     * Performs the AJAX validation.
+     * @param User $model the model to be validated
+     */
+    /*protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='user-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }*/
 }
