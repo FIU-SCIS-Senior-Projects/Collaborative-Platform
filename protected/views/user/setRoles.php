@@ -236,7 +236,7 @@ if($model->isProMentor==1)
 
                         echo '<a href="#test" id="myPopOver-'.$project->id.'" class="mypopover" >';
 
-                        echo '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$project->id .'"/>  '. $project->title .'<br>';
+                        echo '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$project->id .'pjm"/>  '. $project->title .'<br>';
                         echo '</td></a></tr>';
 
                     }
@@ -512,7 +512,7 @@ if($model->isPerMentor==1)
                     }
                     echo'<tr><td   '.$color.'  >';
                     echo '<a href="#test" id="mpop-'.$mentee->id.'" class="mpop" >';
-                    echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->id.'"/>  '. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
+                    echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->id.'pm"/>  '. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
                     echo '</td></a></tr>';
                 }
 

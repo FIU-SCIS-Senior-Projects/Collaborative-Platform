@@ -319,7 +319,7 @@ class UserController extends Controller
                 $count =0;
                 foreach ($all as $each)
                 {
-                    if(isset($_POST[$each->id]))
+                    if(isset($_POST[$each->id.'pjm']))
                     {
                         $p = Project::model()->findByPk($each->id);
                         $p->project_mentor_user_id =$_COOKIE['UserID'];
@@ -397,7 +397,7 @@ class UserController extends Controller
                 $count =0;
                 foreach ($all as $each)
                 {
-                    if(isset($_POST[$each->user_id]))
+                    if(isset($_POST[$each->user_id.'pm']))
                     {
                         $p = Mentee::model()->findByPk($each->user_id);
                         $p->personal_mentor_user_id =$_COOKIE['UserID'];
