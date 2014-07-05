@@ -202,7 +202,7 @@ if($model->isProMentor==1)
                         $res ='No mentees for this project';
                         if($mymenids!=null)
                         {
-
+                            $res = '';
 
                             foreach($mymenids as $m)
                             {
