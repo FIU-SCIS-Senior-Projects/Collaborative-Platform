@@ -478,9 +478,9 @@ class User extends CActiveRecord
     public static function sendConfirmationEmail($userfullName, $user_email, $username, $password, $adminfullName)
     {
         $email = Yii::app()->email;
-        $link = CHtml::link('Click here to log in', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+        $link = CHtml::link('Click here to go to the site', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $message = $adminfullName.' has registered you on the platform. Please use the credentials below to log in:<br<br>Username:' . $username . ' <br>Password: '.$password.'<br><br>'.$link.'';
+        $message = $adminfullName.' has registered you on the platform. Please use the credentials below to log in:<br><br>Username:' . $username . ' <br>Password: '.$password.'<br><br>Thank you<br><br>'.$link.'';
         $html = User::replaceMessage($userfullName, $message);
 
         $email->to = $user_email;

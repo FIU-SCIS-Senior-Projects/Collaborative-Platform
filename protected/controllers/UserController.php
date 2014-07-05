@@ -244,6 +244,7 @@ class UserController extends Controller
             $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
             $model->biography = "Tell us something about yourself...";
             $model->activation_chain = $this->genRandomString(10);
+            $model->activated == 1;
 
             $model->save(false);
 
