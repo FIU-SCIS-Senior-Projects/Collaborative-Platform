@@ -416,7 +416,7 @@ class UserController extends Controller
             $hasher = new PasswordHash(8, false);
             $pw = $this->genRandomString(8);
             $user->password = $hasher->HashPassword($pw);
-            $user->save();
+            $user->save(false);
             $userfullName = $user->fname.' '.$user->lname;
             $adminName = User::getCurrentUser();
             User::sendConfirmationEmail($userfullName, $user->email,$user->username,$pw,$adminName->fname.' '.$adminName->lname);
