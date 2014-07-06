@@ -186,7 +186,7 @@ if($model->isProMentor==1)
 
             <?php
 
-            $projects = Project::model()->findAll();
+            $projects = Project::model()->findAllBySql("select * from project where project_mentor_user_id = 999");
 
             ?>
             <div  name ="pjmprojects" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;background-color:white">
@@ -462,126 +462,132 @@ if($model->isDomMentor==1)
 if($model->isPerMentor==1)
 {
 
-?>
-<div id="confirmation" class="step">
-    <h3><span class="font_normal_07em_black">Role: Personal Mentor</span></h3><br />
-    <div  class="my-box-container7" style="width: auto; float:left;">
-        <h3>Current Senior Project Mentees</h3>
-        <br>
-        <h4>Select mentees for this personal mentor:</h4>
-        <br>
-        <?php  $mentees = User::model()->findAllBySql("select * from user where isMentee=1");?>
-        <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
+    ?>
+    <div id="confirmation" class="step">
+        <h3><span class="font_normal_07em_black">Role: Personal Mentor</span></h3><br />
+        <div  class="my-box-container7" style="width: auto; float:left;">
+            <h3>Current Senior Project Mentees</h3>
+            <br>
+            <h4>Select mentees for this personal mentor:</h4>
+            <br>
+            <?php  $mentees = User::model()->findAllBySql("select * from user where isMentee=1");?>
+            <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
 
 
-            <table style="width: 330px">
+                <table style="width: 330px">
 
-                <?php
-                $i = 0;
-                foreach ($mentees as $mentee)
-                {
-
-
-                    $menteeProj='';
-                    $projMentor='';
-                    $title = 'No project chosen';
-                    $pmName='No mentor assigned';
-                    $aMentee = Mentee::model()->findBySql("select * from mentee where user_id = $mentee->id");
-                    if($aMentee->project_id!=null)
+                    <?php
+                    $i = 0;
+                    foreach ($mentees as $mentee)
                     {
-                        $menteeProj = Project::model()->findBySql("select * from project where id = $aMentee->project_id");
-                        $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
-                        $title = $menteeProj->title;
-                        $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
-                    }
+                        $aMentee = Mentee::model()->findBySql("select * from mentee where user_id = $mentee->id ");
 
-                    echo '<div id="inside-mpop-'. $mentee->id.'" style="display: none;">
+                        if($aMentee->personal_mentor_user_id!=null)
+                        {
+
+
+                            $menteeProj='';
+                            $projMentor='';
+                            $title = 'No project chosen';
+                            $pmName='No mentor assigned';
+                            if( $aMentee->project_id!=null)
+                            {
+
+                                $menteeProj = Project::model()->findBySql("select * from project where id = $aMentee->project_id");
+                                $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
+                                $title = $menteeProj->title;
+                                $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
+
+                            }
+
+                            echo '<div id="inside-mpop-'. $mentee->id.'" style="display: none;">
                            <p>
                            <h4>Project: </h4>'.$title.'
                             <h4>Project Mentor:</h4>'. $pmName.'
                            </p></div>';
 
-                    $color = '';
-                    if ($i++ % 2)
-                    {
-                        $color = 'style="background: #e8edff;padding: 12px;"';
-                    } else
-                    {
-                        $color = 'style="padding: 12px;"';
+                            $color = '';
+                            if ($i++ % 2)
+                            {
+                                $color = 'style="background: #e8edff;padding: 12px;"';
+                            } else
+                            {
+                                $color = 'style="padding: 12px;"';
+                            }
+                            echo'<tr><td   '.$color.'  >';
+                            echo '<a href="#test" id="mpop-'.$mentee->id.'" class="mpop" >';
+                            echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->id.'pm"/>  '. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
+                            echo '</td></a></tr>';
+                        }
                     }
-                    echo'<tr><td   '.$color.'  >';
-                    echo '<a href="#test" id="mpop-'.$mentee->id.'" class="mpop" >';
-                    echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->id.'pm"/>  '. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
-                    echo '</td></a></tr>';
-                }
 
-                ?>
+                    ?>
 
-            </table>
+                </table>
+            </div>
+
         </div>
+        <script>
+            $('.mpop').popover({
+                placement: 'right',
+                trigger: 'hover',
+                html: true,
+                content: function () {
+                    return $("#inside-" + $(this).attr('id')).html();
+                }
+            });
+        </script>
 
-    </div>
-    <script>
-        $('.mpop').popover({
-            placement: 'right',
-            trigger: 'hover',
-            html: true,
-            content: function () {
-                return $("#inside-" + $(this).attr('id')).html();
-            }
-        });
-    </script>
+        <div class="my-box-container7" style="width: auto; float:right">
 
-    <div class="my-box-container7" style="width: auto; float:right">
-
-        <h3>Availability</h3>
-        <br>
-        <h4>Select how many hours are required:</h4>
-        <br>
-        <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;padding:0 3cm;background: #e8edff">
-
+            <h3>Availability</h3>
             <br>
-            <h5 style="text-align:center">Max hours</h5>
-            <select name="pmhours" style="width: 100px">
-            <?php for ($i=1;$i<=24;$i++)
-            {
-                echo '<option value="'.$i.'">'.$i.'</option>';
-            }
+            <h4>Select how many hours are required:</h4>
+            <br>
+            <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;padding:0 3cm;background: #e8edff">
 
-            ?>
+                <br>
+                <h5 style="text-align:center">Max hours</h5>
+                <select name="pmhours" style="width: 100px">
+                    <?php for ($i=1;$i<=24;$i++)
+                    {
+                        echo '<option value="'.$i.'">'.$i.'</option>';
+                    }
+
+                    ?>
                 </select>
 
 
 
-                </div>
+            </div>
 
 
 
-                </div>
-            <?php
-            /*
-            ?>
-            <span class="font_normal_07em_black">Last step - Username</span><br />
-            <label for="username">User name</label><br />
-            <input class="input_field_12em" name="username" id="username" /><br />
-            <label for="password">Password</label><br />
-            <input class="input_field_12em" name="password" id="password" type="password" /><br />
-            <label for="retypePassword">Retype password</label><br />
-            <input class="input_field_12em" name="retypePassword" id="retypePassword" type="password" /><br />
-            */
-            ?>
-
-                </div>
-            <?php }?>
-
-
-
-                </div>
-
-                <div id="demoNavigation">
-            <input class="btn btn-primary" id="back" value="Back" type="reset" />
-            <input class="btn btn-primary" name="Roles" id="next" value="Next" type="submit" />
         </div>
+        <?php
+        /*
+        ?>
+        <span class="font_normal_07em_black">Last step - Username</span><br />
+        <label for="username">User name</label><br />
+        <input class="input_field_12em" name="username" id="username" /><br />
+        <label for="password">Password</label><br />
+        <input class="input_field_12em" name="password" id="password" type="password" /><br />
+        <label for="retypePassword">Retype password</label><br />
+        <input class="input_field_12em" name="retypePassword" id="retypePassword" type="password" /><br />
+        */
+        ?>
+
+    </div>
+<?php }?>
+
+
+
+</div>
+
+<div id="demoNavigation">
+    <input class="btn btn-primary" id="back" value="Back" type="reset" />
+    <input class="btn btn-primary" name="Roles" id="next" value="Next" type="submit" />
+</div>
 
 
 </form>

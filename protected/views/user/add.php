@@ -37,6 +37,8 @@
         <?php echo $form->labelEx($model,'username'); ?>
         <?php echo $form->textField($model,'username',array('size'=>45,'maxlength'=>45)); ?>
         <?php echo $form->error($model,'username'); ?>
+        <p style="color:rgb(255, 16, 40);"><?php echo $error?></p>
+
 
     </div>
 

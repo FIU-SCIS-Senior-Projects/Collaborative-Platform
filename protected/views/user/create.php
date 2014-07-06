@@ -11,10 +11,11 @@
 
 <h2>Collaborative Platform Registration</h2>
 <?php
-    if($model->username == null)
-        echo $this->renderPartial('add', array('model'=>$model));
-    else
-        echo $this->renderPartial('roles', array('model'=>$model));
+
+if($model->username == null || $error!=null)
+    echo $this->renderPartial('add', array('model'=>$model, 'error'=>$error));
+else
+    echo $this->renderPartial('roles', array('model'=>$model));
 
 
 

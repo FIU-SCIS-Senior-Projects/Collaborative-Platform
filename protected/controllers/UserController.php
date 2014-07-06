@@ -231,6 +231,7 @@ class UserController extends Controller
         $model=new User;
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
+        $error='';
 
 
         if(isset($_POST['User']))
@@ -246,7 +247,13 @@ class UserController extends Controller
             $model->activation_chain = $this->genRandomString(10);
             $model->activated = 1;
 
-            $model->save(false);
+            $error = $this->verifyRegistration();
+            if($error==null)
+            {
+                $model->save(false);
+            }
+
+
 
 
 
@@ -424,10 +431,12 @@ class UserController extends Controller
 
 
         }
-        $error = '';
+        //$error = '';
         $this->render('create',array(
             'model'=>$model,'error' => $error
         ));
+        return;
+
         //$this->render('add',array('model'=>$model, 'error' => $error));
 
     }
@@ -618,13 +627,13 @@ class UserController extends Controller
         return true;
     }
 
-    public function actionVerifyRegistration(){
+    public function verifyRegistration(){
         $user = $_POST['User'];
         $error = "";
 
         $username = $user['username'];
-        $password = $user['password'];
-        $password2 = $user['password2'];
+        //$password = $user['password'];
+        //$password2 = $user['password2'];
         $email = $user['email'];
 
 
@@ -637,12 +646,12 @@ class UserController extends Controller
         if (User::model()->find("email=:email",array(':email'=>$email))) {
             $error .= "Email is taken<br />";
         }
-        if ($password != $password2) {
-            $error .= "Passwords do not match<br />";
-        }
-        if (strlen($password) < 6) {
-            $error .= "Password must be more than 5 characters<br />";
-        }
+        //if ($password != $password2) {
+        //   $error .= "Passwords do not match<br />";
+        //}
+        //if (strlen($password) < 6) {
+        //   $error .= "Password must be more than 5 characters<br />";
+        // }
         if (!$this->check_email_address($email)){
             $error .= "Email is not correct format<br />";
         }
