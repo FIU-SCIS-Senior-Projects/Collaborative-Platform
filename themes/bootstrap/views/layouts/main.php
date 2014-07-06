@@ -39,7 +39,9 @@
 ?>
 <?php 
 	$this->widget('bootstrap.widgets.TbNavbar',array(
-		'items'=>array(
+        'htmlOptions'=>array('class'=>'myNavbar','style'=>''),
+        'type'=>'inverse',
+        'items'=>array(
 			array(
 				'class'=>'bootstrap.widgets.TbMenu',
                 'items'=>array(

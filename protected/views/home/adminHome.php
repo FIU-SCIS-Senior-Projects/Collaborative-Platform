@@ -14,9 +14,9 @@ if(User::isCurrentUserAdmin()==false)
     /* @var $this HomeController */
     ?>
 
-<div><h3><?php echo ucfirst($user->fname); ?> <?php echo ucfirst($user->lname); ?> Dashboard</h3></div>
+<div><h2><?php echo ucfirst($user->fname); ?> <?php echo ucfirst($user->lname); ?> Dashboard</h2></div>
 <br>
-<div><h4>Tickets</h4></div>
+<div><h3>Tickets</h3></div>
 
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
 <div id="fullcontent" >

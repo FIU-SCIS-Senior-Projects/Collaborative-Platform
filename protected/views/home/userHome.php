@@ -13,10 +13,10 @@ if(User::isCurrentUserAdmin())
  */
 ?>
 
-<div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h3></div>
+<div><h2><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h2></div>
 <br>
 
-<div><h4>My To Do</h4></div>
+<div><h3>My To Do</h3></div>
 
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
 <div id="fullcontent">

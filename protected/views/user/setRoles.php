@@ -1,5 +1,4 @@
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 
     <script>
@@ -162,7 +161,7 @@
 
 </head>
 <body >
-<div id="demoWrapper" class="my-box-container3">
+<div id="demoWrapper"  class="my-box-container7">
 <h2>User: <?php echo $model->fname.' '.$model->lname ?></h2>
 <ul>
 </ul>
@@ -179,7 +178,7 @@ if($model->isProMentor==1)
     ?>
     <div class="step" id="first">
         <h3><span class="font_normal_07em_black">Role: Project Mentor</span></h3>.<br />
-        <div  class="my-box-container3" style="width: auto; float:left;">
+        <div  class="my-box-container7" style="width: auto; float:left;">
             <h3>Current Senior Projects</h3>
             <br>
             <h4>Select the projects for this project mentor:</h4>
@@ -190,7 +189,7 @@ if($model->isProMentor==1)
             $projects = Project::model()->findAll();
 
             ?>
-            <div name ="pjmprojects" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
+            <div  name ="pjmprojects" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;background-color:white">
 
                 <table>
 
@@ -260,7 +259,7 @@ if($model->isProMentor==1)
             });
         </script>
 
-        <div class="my-box-container3" style="width: auto; float:right">
+        <div class="my-box-container7" style="width: auto; float:right">
 
             <h3>Availability</h3>
             <br>
@@ -313,7 +312,7 @@ if($model->isDomMentor==1)
 
         <?php //stop here?>
         <h3><span class="font_normal_07em_black">Role: Domain Mentor</span></h3><br />
-        <div  class="my-box-container3" style="width: auto; float:left;">
+        <div  class="my-box-container7" style="width: auto; float:left;">
             <h3>Current Domains</h3>
             <br>
             <h4>Select domains:</h4>
@@ -435,7 +434,7 @@ if($model->isDomMentor==1)
 
         </div>
 
-        <div  class="my-box-container3" style="width: 200px;height: auto; float:right">
+        <div  class="my-box-container7" style="width: 200px;height: auto; float:right">
             <h3>Max Tickets</h3>
             <br>
             <h4>Select max tickets for mentor:</h4>
@@ -466,7 +465,7 @@ if($model->isPerMentor==1)
 ?>
 <div id="confirmation" class="step">
     <h3><span class="font_normal_07em_black">Role: Personal Mentor</span></h3><br />
-    <div  class="my-box-container3" style="width: auto; float:left;">
+    <div  class="my-box-container7" style="width: auto; float:left;">
         <h3>Current Senior Project Mentees</h3>
         <br>
         <h4>Select mentees for this personal mentor:</h4>
@@ -533,7 +532,7 @@ if($model->isPerMentor==1)
         });
     </script>
 
-    <div class="my-box-container3" style="width: auto; float:right">
+    <div class="my-box-container7" style="width: auto; float:right">
 
         <h3>Availability</h3>
         <br>
@@ -624,6 +623,5 @@ if($model->isPerMentor==1)
 
 </script>
 </body>
-</html>
 
 

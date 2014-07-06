@@ -10,7 +10,8 @@ $this->breadcrumbs=array(
 ?>
 <br><br><br>
 
-<div class="form"  style="width:800px; margin:0 auto;">
+<div  class="login-card" style="width:800px; margin:0 auto; ">
+    <body >
 
     <!--<img style="float:left; height:50px; margin-left:50px"src='/coplat/images/mentor.png'/>
     <h2 style="margin-bottom:40px;float:left;margin-left:10px">Collaborative Platform Login</h2>
@@ -48,37 +49,38 @@ $this->breadcrumbs=array(
             	'clientOptions'=>array(
                 'validateOnSubmit'=>true,
             	),
-        	)); 
+        	));
 		?>
-    
+
 		<?php echo $form->textField($model,'username',array('placeholder'=>'User Name')); ?>
-        <?php echo $form->error($model,'username'); ?></br></br>
-    
+        <?php echo $form->error($model,'username'); ?></br>
+
         <?php echo $form->passwordField($model,'password',array('placeholder'=>'Password')); ?>
-        <?php echo $form->error($model,'password'); ?></br></br>
-        
-        <?php 
-			echo $form->checkBox($model,'rememberMe',array('style'=>'float:left')); 
+        <?php echo $form->error($model,'password'); ?></br>
+
+        <?php
+			echo $form->checkBox($model,'rememberMe',array('style'=>'float:left'));
 		?>
 		<p style="float:left; margin-left:5px">Remember Me</p></br></br>
-        
+
         <div style="float:left;">
             <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'submit',
                 'type'=>'primary',
                 'label'=>'Login',
-            )); ?>	
+            )); ?>
         </div>
-        
+
 		<div style="float:left; margin-left: 10px;margin-top: -5px;">
-			<a style="float:left;" href= "/coplat/index.php/site/forgotPassword" >  Forgot Password? </a>	
+			<a style="float:left;" href= "/coplat/index.php/site/forgotPassword" >  Forgot Password? </a>
 			<div style="clear:both"></div>
-			<a style="float:left;" href= "/coplat/index.php/user/create" > Register  </a>	
+			<?php //<a style="float:left;" href= "/coplat/index.php/user/create" > Register  </a>	?>
 		</div>
 
-        
+
    </div>
 
 
 <?php $this->endWidget(); ?>
+    </body>
 </div><!-- form -->
