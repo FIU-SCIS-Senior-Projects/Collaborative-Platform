@@ -389,16 +389,6 @@ class TicketController extends Controller
         }
     }
 
-    public function actionClosedTicketAlert($user_id, $mentor_id, $ticket_id)
-    {
-        $mentor = User::model()->findByPk($mentor_id);
-        $user = User::model()->findByPk($user_id);
-        $userfullName = $user->fname.' '.$user->lname;
-        $mentorfullName = $mentor->fname.' '.$mentor->lname;
-        User::sendTicketClosedNotification($ticket_id, $userfullName, $user->email, $mentorfullName, $mentor->email);
-    }
-
-
     /*Function to change the status of the ticket */
     public function actionChange($id)
     {
@@ -413,12 +403,18 @@ class TicketController extends Controller
                 $model->status = 'Close';
                 if ($model->save()) {
                     if (User::isCurrentUserAdmin()) {
-                        $this->actionClosedTicketAlert(User::model()->getCurrentUserId(), $model->assign_user_id ,$model->id);
                         $response['url'] = "/coplat/index.php/home/adminHome";
                     } else {
-                        $this->actionClosedTicketAlert(User::model()->getCurrentUserId(), $model->assign_user_id ,$model->id);
                         $response['url'] = "/coplat/index.php/home/userHome";
                     }
+
+                    //mentor notification
+                    $mentor_id = $model->assign_user_id;
+                    $mentor = User::model()->findByPk($mentor_id);
+                    $mentorfullName = $mentor->fname.' '.$mentor->lname;
+                    User::sendNotification( $mentor->email,"Ticket #" . $model->id . " has been closed.", "Ticket #" . $model->id . " has been closed." , $mentorfullName);
+
+
                 } else {
                     $response['url'] = "/coplat/index.php/home/userHome";
                 }
@@ -438,8 +434,6 @@ class TicketController extends Controller
                 } else {
                     $response['url'] = "/coplat/index.php/home/userHome";
                 }
-
-
 
                 echo json_encode($response);
                 exit();
@@ -537,6 +531,8 @@ class TicketController extends Controller
         $modelNew->file = $model->file;
         $modelNew->priority_id = $model->priority_id;
         $modelNew->isEscalated = 1;
+        $modelNew->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
+
 
         /*Assign the ticket to the most appropiate Domain mentor in tier2*/
         $sub = true;
