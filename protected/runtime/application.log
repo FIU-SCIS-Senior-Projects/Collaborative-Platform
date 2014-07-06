@@ -2691,3 +2691,1235 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/site/login
 HTTP_REFERER=http://localhost:8888/coplat/index.php/site/login
 ---
+2014/07/07 00:06:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:07:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:08:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:09:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:10:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:11:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:12:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:13:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:14:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:15:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:15:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/User.php(64): CActiveRecord::model('User')
+#8 /Applications/MAMP/htdocs/coplat/protected/models/User.php(292): User::model()
+#9 /Applications/MAMP/htdocs/coplat/themes/bootstrap/views/site/index.php(5): User::isCurrentUserAdmin()
+#10 /Applications/MAMP/htdocs/coplat/framework/web/CBaseController.php(126): require('/Applications/M...')
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', NULL, true)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', NULL, true)
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#14 /Applications/MAMP/htdocs/coplat/protected/controllers/SiteController.php(32): CController->render('index')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#16 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#18 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('')
+#20 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#21 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#22 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#23 {main}
+REQUEST_URI=/coplat/index.php
+HTTP_REFERER=http://localhost:8888/coplat/index.php/home/adminHome
+---
+2014/07/07 00:16:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:17:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:18:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:19:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:20:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:21:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:22:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:23:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:24:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:25:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:26:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:27:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:28:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:29:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:30:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:31:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:32:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:33:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:34:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:35:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:36:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:37:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:38:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:39:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:40:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:41:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:42:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:43:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:44:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:45:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:46:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:47:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:48:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:49:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/User.php(64): CActiveRecord::model('User')
+#8 /Applications/MAMP/htdocs/coplat/protected/models/User.php(292): User::model()
+#9 /Applications/MAMP/htdocs/coplat/themes/bootstrap/views/site/index.php(5): User::isCurrentUserAdmin()
+#10 /Applications/MAMP/htdocs/coplat/framework/web/CBaseController.php(126): require('/Applications/M...')
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', NULL, true)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', NULL, true)
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#14 /Applications/MAMP/htdocs/coplat/protected/controllers/SiteController.php(32): CController->render('index')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#16 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#18 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('')
+#20 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#21 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#22 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#23 {main}
+REQUEST_URI=/coplat/index.php
+---
+2014/07/07 00:49:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:50:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/User.php(64): CActiveRecord::model('User')
+#8 /Applications/MAMP/htdocs/coplat/protected/components/UserIdentity.php(21): User::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/models/LoginForm.php(59): UserIdentity->authenticate()
+#10 /Applications/MAMP/htdocs/coplat/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#11 /Applications/MAMP/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#12 /Applications/MAMP/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#13 /Applications/MAMP/htdocs/coplat/protected/controllers/SiteController.php(94): CModel->validate()
+#14 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('login')
+#19 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#20 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/site/login
+HTTP_REFERER=http://localhost:8888/coplat/index.php/site/login
+---
+2014/07/07 00:50:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/User.php(64): CActiveRecord::model('User')
+#8 /Applications/MAMP/htdocs/coplat/protected/components/UserIdentity.php(21): User::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/models/LoginForm.php(59): UserIdentity->authenticate()
+#10 /Applications/MAMP/htdocs/coplat/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#11 /Applications/MAMP/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#12 /Applications/MAMP/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#13 /Applications/MAMP/htdocs/coplat/protected/controllers/SiteController.php(94): CModel->validate()
+#14 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('login')
+#19 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#20 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/site/login
+HTTP_REFERER=http://localhost:8888/coplat/index.php/site/login
+---
+2014/07/07 00:51:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(Project))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/Project.php(29): CActiveRecord::model('Project')
+#8 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(175): Project::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/controllers/ImportController.php(43): ImportController->importProject('Question & Answ...', 'This project ai...', '162', '72')
+#10 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): ImportController->actionImport()
+#11 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('import')
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('Import/import')
+#16 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+---
+2014/07/07 00:51:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/User.php(64): CActiveRecord::model('User')
+#8 /Applications/MAMP/htdocs/coplat/protected/components/UserIdentity.php(21): User::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/models/LoginForm.php(59): UserIdentity->authenticate()
+#10 /Applications/MAMP/htdocs/coplat/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#11 /Applications/MAMP/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#12 /Applications/MAMP/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#13 /Applications/MAMP/htdocs/coplat/protected/controllers/SiteController.php(94): CModel->validate()
+#14 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('login')
+#19 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#20 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/site/login
+HTTP_REFERER=http://localhost:8888/coplat/index.php/site/login
+---
+2014/07/07 00:51:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/User.php(64): CActiveRecord::model('User')
+#8 /Applications/MAMP/htdocs/coplat/protected/components/UserIdentity.php(21): User::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/models/LoginForm.php(59): UserIdentity->authenticate()
+#10 /Applications/MAMP/htdocs/coplat/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#11 /Applications/MAMP/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#12 /Applications/MAMP/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#13 /Applications/MAMP/htdocs/coplat/protected/controllers/SiteController.php(94): CModel->validate()
+#14 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('login')
+#19 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#20 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/site/login
+HTTP_REFERER=http://localhost:8888/coplat/index.php/site/login
+---
+2014/07/07 00:51:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Applications/MAMP/htdocs/coplat/protected/models/User.php(64): CActiveRecord::model('User')
+#8 /Applications/MAMP/htdocs/coplat/protected/components/UserIdentity.php(21): User::model()
+#9 /Applications/MAMP/htdocs/coplat/protected/models/LoginForm.php(59): UserIdentity->authenticate()
+#10 /Applications/MAMP/htdocs/coplat/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#11 /Applications/MAMP/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#12 /Applications/MAMP/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#13 /Applications/MAMP/htdocs/coplat/protected/controllers/SiteController.php(94): CModel->validate()
+#14 /Applications/MAMP/htdocs/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#15 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /Applications/MAMP/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('login')
+#19 /Applications/MAMP/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#20 /Applications/MAMP/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Applications/MAMP/htdocs/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/site/login
+HTTP_REFERER=http://localhost:8888/coplat/index.php/site/login
+---

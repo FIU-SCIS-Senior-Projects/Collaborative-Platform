@@ -158,7 +158,7 @@ class ProfileController extends Controller
         $username = Yii::app()->user->name;
         $user = User::model()->find("username=:username", array(':username' => $username));
         $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$user->id");
-        $userdoms = UserDomain::model()->findAllBySql("SELECT domain_id FROM user_domain WHERE user_id=$user->id");
+        $userdoms = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$user->id");
         $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$user->id");
         $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$user->id));
 
