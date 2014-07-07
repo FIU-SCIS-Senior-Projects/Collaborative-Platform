@@ -13,13 +13,13 @@ if(User::isCurrentUserAdmin()==false)
      */
     /* @var $this HomeController */
     ?>
-
+<div >
 <div><h2><?php echo ucfirst($user->fname); ?> <?php echo ucfirst($user->lname); ?> Dashboard</h2></div>
 <br>
 <div><h3>Tickets</h3></div>
 
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
-<div id="fullcontent" >
+<div  id="fullcontent" >
 
     <div>
         <div class="span4"  style="overflow-y: scroll; height:400px; width:800px;margin-left: 0px">
@@ -206,3 +206,4 @@ if(User::isCurrentUserAdmin()==false)
     //$('.table-fixed-header').fixedHeader();
 </script>
 <?php }?>
+    </div>

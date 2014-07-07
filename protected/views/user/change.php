@@ -78,7 +78,7 @@ else
     </div>
 
     <!--<h2>OR</h2>
-        
+
     <h4>Check the project(s) that you are NOT interested in</h4>
     <div id="container" class="my-box-container6" style="height: 200px; overflow-y: scroll ">
            <table cellpadding="0" vecllspacing="0" border="0" class="table table-striped table-bordered" id="#mytable" width="100%">
@@ -100,7 +100,7 @@ else
                 <tr>
                     <td><input type="checkbox" name="nwproj[]" value="<?php echo $project->title; ?>"></td>
                     <td><?php echo $project->title?></td>
-                    
+
                 </tr>
             </tbody>
             <?php }
@@ -403,7 +403,7 @@ elseif($model->isProMentor)
                     <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
                 </tr>
                 </tbody>
-            
+
      <?php }?>
                 </table>
     </div>-->

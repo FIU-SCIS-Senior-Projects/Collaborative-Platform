@@ -10,8 +10,11 @@ $this->breadcrumbs=array(
 ?>
 <br><br><br>
 
+
 <div  class="login-card" style="width:800px; margin:0 auto; ">
     <body >
+    <div style="text-align: center"><h2>Welcome to the Collaborative Platform</h2></div>
+    <br><br>
 
     <!--<img style="float:left; height:50px; margin-left:50px"src='/coplat/images/mentor.png'/>
     <h2 style="margin-bottom:40px;float:left;margin-left:10px">Collaborative Platform Login</h2>
@@ -35,11 +38,15 @@ $this->breadcrumbs=array(
     <div id="login" style="height: 60px">
 
         <div id="googlelogin" style="height: 60px">
+            <div><h4>Senior Project Student login:</h4></div>
             <?php
+
             $image = CHtml::image(Yii::app()->baseUrl.'/images/login/fiu_cs_login.png');
             echo CHtml::link($image, '?r=Login/fiu_oauth2')."<br><br><br>";
             ?>
         </div>
+        <br><br>
+        <div><h4>All mentors login:</h4></div>
 
         <?php
 			$form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
