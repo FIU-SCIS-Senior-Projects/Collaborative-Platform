@@ -558,7 +558,7 @@ if($model->isPerMentor==1)
             <h4>Select mentees for this personal mentor:</h4>
             <br>
             <?php
-            $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id=999 or or personal_mentor_user_id is null");
+            $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id=999 or  personal_mentor_user_id is null");
             $myPerMentor = PersonalMentor::model()->findByPk($model->id);
             $myMentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id = $model->id");
             ?>
