@@ -161,7 +161,7 @@
 
 </head>
 <body >
-<div id="demoWrapper"  class="my-box-container7" style="background-color: #f0f4ff">
+<div id="demoWrapper"  class="my-box-container7" style="background-color: #ffffff">
 <h2>User: <?php echo $model->fname.' '.$model->lname ?></h2>
 <ul>
 </ul>

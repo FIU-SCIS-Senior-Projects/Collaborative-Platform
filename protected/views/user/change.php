@@ -150,7 +150,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
 </head>
 <body >
-<div id="demoWrapper"  class="my-box-container7" style="background-color: #f0f4ff">
+<div id="demoWrapper"  class="my-box-container7" style="background-color: #ffffff">
 <h2>User: <?php echo $model->fname.' '.$model->lname ?></h2>
 <ul>
 </ul>
