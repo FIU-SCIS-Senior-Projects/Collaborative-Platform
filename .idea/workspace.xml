@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log.1" afterPath="$PROJECT_DIR$/protected/runtime/application.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log.2" afterPath="$PROJECT_DIR$/protected/runtime/application.log.2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log.3" afterPath="$PROJECT_DIR$/protected/runtime/application.log.3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log.4" afterPath="$PROJECT_DIR$/protected/runtime/application.log.4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log.5" afterPath="$PROJECT_DIR$/protected/runtime/application.log.5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/change.php" afterPath="$PROJECT_DIR$/protected/views/user/change.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/setRoles.php" afterPath="$PROJECT_DIR$/protected/views/user/setRoles.php" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,10 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setRoles.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="setRoles.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/user/setRoles.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="81" selection-start="3684" selection-end="3684" vertical-scroll-proportion="0.20761245" vertical-offset="2325" max-vertical-offset="9570">
+            <state line="163" column="81" selection-start="3684" selection-end="3684" vertical-scroll-proportion="-5.0" vertical-offset="2325" max-vertical-offset="9570">
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -182,10 +185,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-13.125" vertical-offset="765" max-vertical-offset="1725">
+            <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.5329949" vertical-offset="765" max-vertical-offset="1725">
               <folding />
             </state>
           </provider>
@@ -314,9 +317,9 @@
         <option value="$PROJECT_DIR$/protected/controllers/ProfileController.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" />
         <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
-        <option value="$PROJECT_DIR$/protected/config/main.php" />
         <option value="$PROJECT_DIR$/protected/views/user/change.php" />
         <option value="$PROJECT_DIR$/protected/views/user/setRoles.php" />
+        <option value="$PROJECT_DIR$/protected/config/main.php" />
       </list>
     </option>
   </component>
@@ -1095,13 +1098,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-13.125" vertical-offset="765" max-vertical-offset="1725">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/bootstrap/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2079" column="20" selection-start="38933" selection-end="39028" vertical-scroll-proportion="0.0" vertical-offset="30823" max-vertical-offset="31590">
@@ -1204,7 +1200,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/setRoles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="81" selection-start="3684" selection-end="3684" vertical-scroll-proportion="0.20761245" vertical-offset="2325" max-vertical-offset="9570">
+        <state line="163" column="81" selection-start="3684" selection-end="3684" vertical-scroll-proportion="-5.0" vertical-offset="2325" max-vertical-offset="9570">
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -1233,6 +1229,13 @@
             <marker date="1404795500000" expanded="true" signature="13602:13692" placeholder="select * fro..mentee..." />
             <marker date="1404795500000" expanded="true" signature="14378:14430" placeholder="select * fro..project..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.5329949" vertical-offset="765" max-vertical-offset="1725">
+          <folding />
         </state>
       </provider>
     </entry>
