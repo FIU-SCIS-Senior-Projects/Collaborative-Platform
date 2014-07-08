@@ -270,7 +270,7 @@ if($model->isProMentor==1)
                 <br>
                 <h5 style="text-align:center" >Max hours</h5>
                 <select  name="pjmhours" style="width: 100px;">
-                    <?php for ($i=1;$i<=24;$i++)
+                    <?php for ($i=0;$i<=24;$i++)
                     {
                         echo '<option name="'.$i.'">'.$i.'</option>';
                     }
@@ -441,7 +441,7 @@ if($model->isDomMentor==1)
             <br>
             <h5 style="margin: auto">Max tickets</h5>
             <select name="dmmaxtickets" style=" width: 80px">
-                <?php for ($i=1;$i<=20;$i++)
+                <?php for ($i=0;$i<=20;$i++)
                 {
                     echo '<option name="'.$i.'">'.$i.'</option>';
                 }
@@ -470,7 +470,7 @@ if($model->isPerMentor==1)
             <br>
             <h4>Select mentees for this personal mentor:</h4>
             <br>
-            <?php  $mentees = User::model()->findAllBySql("select * from user where isMentee=1");?>
+            <?php  $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id in (999,NULL )");?>
             <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
 
 
@@ -480,27 +480,26 @@ if($model->isPerMentor==1)
                     $i = 0;
                     foreach ($mentees as $mentee)
                     {
-                        $aMentee = Mentee::model()->findBySql("select * from mentee where user_id = $mentee->id ");
 
-                        if($aMentee->personal_mentor_user_id!=null)
-                        {
+
 
 
                             $menteeProj='';
                             $projMentor='';
                             $title = 'No project chosen';
                             $pmName='No mentor assigned';
-                            if( $aMentee->project_id!=null)
+                            if( $mentee->project_id!=null)
                             {
 
-                                $menteeProj = Project::model()->findBySql("select * from project where id = $aMentee->project_id");
+                                $menteeProj = Project::model()->findBySql("select * from project where id = $mentee->project_id");
                                 $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
                                 $title = $menteeProj->title;
                                 $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
                             }
+                            $menteeUser = User::model()->findByPk($mentee->user_id);
 
-                            echo '<div id="inside-mpop-'. $mentee->id.'" style="display: none;">
+                            echo '<div id="inside-mpop-'. $mentee->user_id.'" style="display: none;">
                            <p>
                            <h4>Project: </h4>'.$title.'
                             <h4>Project Mentor:</h4>'. $pmName.'
@@ -515,11 +514,11 @@ if($model->isPerMentor==1)
                                 $color = 'style="padding: 12px;"';
                             }
                             echo'<tr><td   '.$color.'  >';
-                            echo '<a href="#test" id="mpop-'.$mentee->id.'" class="mpop" >';
-                            echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->id.'pm"/>  '. ucfirst($mentee->fname) ." " . ucfirst($mentee->lname).'<br /><br>';
+                            echo '<a href="#test" id="mpop-'.$mentee->user_id.'" class="mpop" >';
+                            echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->user_id.'pm"/>  '. ucfirst($menteeUser->fname) ." " . ucfirst($menteeUser->lname).'<br /><br>';
                             echo '</td></a></tr>';
                         }
-                    }
+
 
                     ?>
 
@@ -549,7 +548,7 @@ if($model->isPerMentor==1)
                 <br>
                 <h5 style="text-align:center">Max hours</h5>
                 <select name="pmhours" style="width: 100px">
-                    <?php for ($i=1;$i<=24;$i++)
+                    <?php for ($i=0;$i<=24;$i++)
                     {
                         echo '<option value="'.$i.'">'.$i.'</option>';
                     }
