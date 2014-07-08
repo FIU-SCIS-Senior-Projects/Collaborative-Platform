@@ -345,7 +345,7 @@ if($model->isDomMentor==1)
             <br>
 
                 <?php
-                $myDomainMentor = Domain::model()->findByPk($model->id);
+                $myDomainMentor = DomainMentor::model()->findByPk($model->id);
                 $myUserDomains = UserDomain::model()->findAllBySql("select distinct domain_id from user_domain where user_id = $model->id");
                 ?>
 
@@ -659,7 +659,7 @@ if($model->isPerMentor==1)
 
                         if($myPerMentor!=null)
                         {
-                            if($myPerMentor->max_hours = $i)
+                            if($myPerMentor->max_hours == $i)
                             {
                                 echo '<option value="'.$i.'" selected>'.$i.'</option>';
                             }
