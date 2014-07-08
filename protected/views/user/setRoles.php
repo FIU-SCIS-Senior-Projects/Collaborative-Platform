@@ -470,7 +470,7 @@ if($model->isPerMentor==1)
             <br>
             <h4>Select mentees for this personal mentor:</h4>
             <br>
-            <?php  $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id in (999,NULL )");?>
+            <?php  $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id =999 or personal_mentor_user_id is null ");?>
             <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
 
 
