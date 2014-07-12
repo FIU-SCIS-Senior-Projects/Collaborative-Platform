@@ -28,15 +28,15 @@ class ProjectMeetingController extends Controller
     {
         return array(
             array('allow',  // allow all users to perform 'index' and 'view' actions
-                'actions'=>array('index','view','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
+                'actions'=>array('index','view','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings','domainMentorViewMeetings'),
                 'users'=>array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('create','update','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
+                'actions'=>array('create','update','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings','domainMentorViewMeetings'),
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin','delete','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings'),
+                'actions'=>array('admin','delete','adminViewMeetings','pMentorViewMeetings','pMenteeViewMeetings','personalMentorViewMeetings','domainMentorViewMeetings'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -221,7 +221,7 @@ class ProjectMeetingController extends Controller
         }
         /*return the mentees for each project */
 
-         $count1 = sizeof($projects);
+        $count1 = sizeof($projects);
         for ($i=0;$i<$count1;$i++) {
             /** @var Project $project */
 
@@ -235,14 +235,14 @@ class ProjectMeetingController extends Controller
                 $count2 = sizeof($all);
 
                 for ($j=0;$j<$count2;$j++)
-            {
-                $pid = $all[$j]->user_id;
+                {
+                    $pid = $all[$j]->user_id;
 
-                $t = User::model()->findBySql("select * from user where id = $pid");
-                $projects[$i]->description .= sprintf("<li>%s</li>", $t->fname.' '.$t->lname);
+                    $t = User::model()->findBySql("select * from user where id = $pid");
+                    $projects[$i]->description .= sprintf("<li>%s</li>", $t->fname.' '.$t->lname);
 
 
-            }
+                }
 
             }
             $projects[$i]->description .= sprintf("</ul>");
@@ -461,6 +461,24 @@ class ProjectMeetingController extends Controller
         $this->render('personalMentorViewMeetings', array( /*'menteeName' => $menteeName,*/
             'user' => $user,
             'pmentee' => $pmentee,
+            'tickets' => $tickets,
+        ));
+    }
+
+
+
+
+    public function actiondomainMentorViewMeetings()
+    {
+        /** @var  User $user */
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+
+        $tickets = Ticket::model()->findBySql("select * from ticket where assign_user_id = $user->id");
+
+
+        $this->render('domainMentorViewMeetings', array( /*'menteeName' => $menteeName,*/
+            'user' => $user,
             'tickets' => $tickets,
         ));
     }

@@ -15,7 +15,7 @@
 
 <div id="fullcontent">
 
-    <div><h3><?php echo $user->fname; ?> <?php echo $user->lname; ?></h3></div>
+    <div><h2><?php echo 'Personal Mentor: '.$user->fname; ?> <?php echo $user->lname; ?></h2></div>
     <br>
 
 
@@ -69,7 +69,6 @@
 <!-- Modals -->
 
 <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'myModalNewMeeting')); ?>
-
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title" id="myModalNewMeeting">New Meeting</h4>

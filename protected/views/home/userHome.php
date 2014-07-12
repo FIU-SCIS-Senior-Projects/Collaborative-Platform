@@ -15,7 +15,60 @@ if(User::isCurrentUserAdmin())
 
 <div><h2><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h2></div>
 <br>
+    <table style="width:auto;">
+        <tr>
+            <th>Project Mentor</th>
+            <th>Domain Mentor</th>
+            <th>Personal Mentor</th>
+            <th>Mentee</th>
 
+        </tr>
+        <tr>
+            <?php
+            $gray1 = 'style="opacity: 0.4;filter: alpha(opacity=40);" ';
+            $gray2 = 'style="opacity: 0.4;filter: alpha(opacity=40);" ';
+            $gray3 = 'style="opacity: 0.4;filter: alpha(opacity=40);" ';
+            $gray4 = 'style="opacity: 0.4;filter: alpha(opacity=40);" ';
+
+            $linkpjm = '';
+            $linkdmm = '';
+            $linkperm = '';
+            $linkmen = '';
+
+            if ($user->isProMentor())
+            {
+                $gray1 = '';
+                $linkpjm='/coplat/index.php/projectMeeting/pMentorViewMeetings';
+            }
+            if($user->isDomMentor())
+            {
+                $gray2 = '';
+                $linkdmm ='/coplat/index.php/projectMeeting/domainMentorViewMeetings';
+
+            }
+            if($user->isPerMentor())
+            {
+                $gray3 = '';
+                $linkperm = '/coplat/index.php/projectMeeting/personalMentorViewMeetings';
+
+            }
+            if($user->isMentee())
+            {
+                $gray4 = '';
+                $linkmen ='/coplat/index.php/projectMeeting/pMenteeViewMeetings';
+
+            }
+
+
+            ?>
+
+            <td style="padding:20px;"><a href="<?php echo $linkpjm; ?>"><img  <?php echo $gray1 ?> border="0" src="/coplat/images/roles/project.png" id="pjm" width="200" height="200"></a></td>
+            <td style="padding:20px;"><a href="<?php echo $linkdmm; ?>"><img <?php echo $gray2 ?> border="0" src="/coplat/images/roles/domain.png" id="dmm" width="200" height="200"></a></td>
+            <td style="padding:20px;"><a href="<?php echo $linkperm; ?>"><img <?php echo $gray3 ?>  border="0" src="/coplat/images/roles/personal.png" id="pm" width="200" height="200"></a></td>
+            <td style="padding:20px;"><a href="<?php echo $linkmen; ?>"><img <?php echo $gray4 ?>  border="0" src="/coplat/images/roles/mentee.png" id="men" width="200" height="200"></a></td>
+
+        </tr>
+    </table>
 <div><h3>My To Do</h3></div>
 
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
@@ -113,30 +166,7 @@ if(User::isCurrentUserAdmin())
             <!-- Cancel Button -->
             <table>
                 <tr>
-                    <td>
-                        <!-- Manage Domain Button -->
-                        <?php if ($user->isProMentor()) {
-                            $this->widget('bootstrap.widgets.TbButton', array(
-                                'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMentorViewMeetings', 'type' => 'primary',
-                                'label' => 'Project Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
-                        } elseif ($user->isMentee()) {
-                            $this->widget('bootstrap.widgets.TbButton', array(
-                                'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/pMenteeViewMeetings', 'type' => 'primary',
-                                'label' => 'Project', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
-                        }
-                        //Tito:
-                        ?>
-                        <br/>
-                        <br/>
-                        <?php
-                        if ($user->isPerMentor()) {
-                            $this->widget('bootstrap.widgets.TbButton', array(
-                                'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/personalMentorViewMeetings', 'type' => 'primary',
-                                'label' => 'Personal Mentor', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
-                        }
-                        ?>
 
-                    </td>
                 </tr>
                 <tr>
                     <td>

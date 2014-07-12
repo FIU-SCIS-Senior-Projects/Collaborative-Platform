@@ -9,7 +9,7 @@
 ?>
 
 <div id="fullcontent">
-    <div><h2><?php echo $user->fname; ?> <?php echo $user->lname; ?></h2></div>
+    <div><h2><?php echo 'Mentee: '.$user->fname; ?> <?php echo $user->lname; ?></h2></div>
     <br>
 
     <div class="row row-fluid">

@@ -15,7 +15,7 @@
 
 <div id="fullcontent">
 
-    <div><h2><?php echo $user->fname; ?> <?php echo $user->lname; ?></h2></div>
+    <div><h2><?php echo 'Project Mentor: '.$user->fname; ?> <?php echo $user->lname; ?></h2></div>
     <br>
 
     <div class="row row-fluid" style="margin-left: 3px">
