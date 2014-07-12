@@ -113,8 +113,11 @@ if($model->isProMentor==1)
                         $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$project->id ");
                         $res ='No mentees for this project';
                         $customer = User::model()->findBySql("select * from user where id = $project->propose_by_user_id");
+                        $CUSName='No customer';
+                        if($customer!=null)
+                        {
                         $CUSName = $customer->fname.' '.$customer->lname;
-
+                        }
 
                         if($mymenids!=null)
                         {
@@ -575,6 +578,12 @@ if($model->isPerMentor==1)
                                 $title = $menteeProj->title;
                                 $projectdesc = $menteeProj->description;
                                 $mycustomer = User::model()->findBySql("select * from user where id = $menteeProj->propose_by_user_id");
+
+                                $CUSName = 'No customer';
+                                if($mycustomer!=null)
+                                {
+                                $CUSName = $mycustomer->fname.' '.$mycustomer->lname;
+                                }
                                 $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
                                 $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$menteeProj->id ");
