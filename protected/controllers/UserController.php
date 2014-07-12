@@ -369,20 +369,51 @@ class UserController extends Controller
             $error = $this->verifyRegistration();
             if($error==null)
             {
+
                 $model->save(false);
+                if($model->isProMentor)
+                {
+                    $proMentor = new ProjectMentor;
+                    $proMentor->user_id = $model->id;
+                    $proMentor->max_hours = 0;
+                    $proMentor->max_projects = 0;
+                    $proMentor->save(false);
+
+                }
+                if($model->isDomMentor)
+                {
+                    $domMentor = new DomainMentor();
+                    $domMentor->user_id = $model->id;
+                    $domMentor->max_tickets = 0;
+                    $domMentor->save();
+                }
+
+                if($model->isPerMentor)
+                {
+                    $perMentor = new PersonalMentor();
+                    $perMentor->user_id = $model->id;
+                    $perMentor->max_hours =0 ;
+                    $perMentor->max_mentees = 0;
+                    $perMentor->save();
+
+
+                }
             }
 
 
         }
         if(isset($_POST['Roles']))
         {
+            $proMentor = ProjectMentor::model()->getProMentor($_COOKIE['UserID']);
+            $perMentor = PersonalMentor::model()->getPerMentor($_COOKIE['UserID']);
+            $domMentor = DomainMentor::model()->getDomMentor($_COOKIE['UserID']);
 
             //$model->save(false);
             $user = User::model()->findByPk($_COOKIE['UserID']);
 
             if($user->isProMentor ==1)
             {
-                $proMentor = new ProjectMentor;
+                //$proMentor = new ProjectMentor;
                 $proMentor->user_id = $user->id;
                 $proMentor->max_hours =$_POST['pjmhours'] ;
                 $all = Project::model()->findAll();
@@ -409,7 +440,7 @@ class UserController extends Controller
 
             if($user->isDomMentor ==1)
             {
-                $domMentor = new DomainMentor();
+                //$domMentor = new DomainMentor();
                 $domMentor->user_id = $_COOKIE['UserID'];
                 $domMentor->max_tickets = $_POST['dmmaxtickets'];
                 $domMentor->save();
@@ -459,7 +490,7 @@ class UserController extends Controller
             }
             if($user->isPerMentor)
             {
-                $perMentor = new PersonalMentor();
+                //$perMentor = new PersonalMentor();
                 $perMentor->user_id = $user->id;
                 $perMentor->max_hours =$_POST['pmhours'] ;
                 $all = Mentee::model()->findAll();

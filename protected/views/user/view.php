@@ -241,18 +241,27 @@ if(User::isCurrentUserAdmin())
                     <thead>
                     <tr>
                         <th width="50%">Domain Name</th>
-                        <th width="50%">Expertise Level</th>
+                        <th width="50%">Subdomain/Rating/Tier</th>
                     </tr>
                     </thead>
                     <?php foreach($userdoms as $userdom)
                     {
                         $domain = Domain::model()->find("id=:id", array(":id"=>$userdom->domain_id));
-                        $userdom = UserDomain::model()->findBySql("SELECT rate FROM user_domain WHERE domain_id=$domain->id AND user_id=$model->id");
+                        $userdom = UserDomain::model()->findAllBySql("SELECT  subdomain_id,rate,tier_team FROM user_domain WHERE domain_id=$domain->id AND user_id=$model->id");
                         ?>
                         <tbody>
                         <tr>
                             <td><?php echo $domain->name; ?></td>
-                            <td><?php echo $userdom->rate;?></td>
+                            <td>
+                                <?php
+                                foreach($userdom as $udom )
+                                {
+                                    $subdm = Subdomain::model()->findBySql("select * from subdomain where id = $udom->subdomain_id");
+                                    echo $subdm->name.' / '.$udom->rate.' / '.$udom->tier_team.'<br>';
+                                }
+
+                                ?>
+                            </td>
                         </tr>
                         </tbody>
                     <?php

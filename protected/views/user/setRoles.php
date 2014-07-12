@@ -124,16 +124,33 @@ if($model->isProMentor==1)
                     {
                         $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$project->id ");
                         $res ='No mentees for this project';
+                        $customer = User::model()->findBySql("select * from user where id = $project->propose_by_user_id");
+                        $CUSName='No customer';
+                        if($customer!=null)
+                        {
+                            $CUSName = $customer->fname.' '.$customer->lname;
+                        }
                         if($mymenids!=null)
                         {
                             $res = '';
 
                             foreach($mymenids as $m)
                             {
+
                                 $pid = $m->user_id;
 
                                 $t = User::model()->findBySql("select * from user where id = $pid");
-                                $res .=$t->fname.' '.$t->lname.'<br>';
+                                $pjm = User::model()->findBySql("select * from user where id = $project->project_mentor_user_id");
+                                $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
+
+
+                                $PJMname = $pjm->fname.' '.$pjm->lname;
+
+
+                                $PERMname = $perm->fname.' '.$perm->lname;
+
+
+                                $res .=$t->fname.' '.$t->lname.'/'.$PJMname. '/'.$PERMname.'<br>';
 
 
                             }
@@ -141,10 +158,11 @@ if($model->isProMentor==1)
                         /*popover div*/
                         echo '<div id="content-myPopOver-'. $project->id.'" style="display: none;">
                            <p>
-                           <h4>
-                           '.$project->title.'
-                           </h4>'.'<h5>Hours Req: X</h5>'.$project->description.'
-                            <h5>Mentees:</h5>'.
+                           <h4>'.$project->title.'</h4>'.'
+                           <h5>Hours Req: X</h5>'.
+                            '<h5>Customer Name:'.$CUSName.'</h5>'.
+                            $project->description.
+                            '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
                             $res.'
                            </p></div>';
 
@@ -414,27 +432,74 @@ if($model->isPerMentor==1)
 
 
 
+                        $projectdesc = 'No Project selected';
+                        $projMentor='';
+                        $title = 'No project chosen';
+                        $pmName='No mentor assigned';
+                        $res ='No mentees for this project';
+                        $menteeUser = User::model()->findByPk($mentee->user_id);
+                        if( $mentee->project_id!=null)
+                        {
 
-                            $menteeProj='';
-                            $projMentor='';
-                            $title = 'No project chosen';
-                            $pmName='No mentor assigned';
-                            if( $mentee->project_id!=null)
+                            $menteeProj = Project::model()->findBySql("select * from project where id = $mentee->project_id");
+                            $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
+                            $title = $menteeProj->title;
+                            $projectdesc = $menteeProj->description;
+                            $mycustomer = User::model()->findBySql("select * from user where id = $menteeProj->propose_by_user_id");
+
+                            $CUSName = 'No customer';
+                            if($mycustomer!=null)
                             {
-
-                                $menteeProj = Project::model()->findBySql("select * from project where id = $mentee->project_id");
-                                $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
-                                $title = $menteeProj->title;
-                                $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
-
+                                $CUSName = $mycustomer->fname.' '.$mycustomer->lname;
                             }
-                            $menteeUser = User::model()->findByPk($mentee->user_id);
+                            $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
-                            echo '<div id="inside-mpop-'. $mentee->user_id.'" style="display: none;">
+                            $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$menteeProj->id ");
+                            if($mymenids!=null)
+                            {
+                                $res = '';
+
+                                foreach($mymenids as $m)
+                                {
+
+                                    $pid = $m->user_id;
+
+                                    $t = User::model()->findBySql("select * from user where id = $pid");
+                                    $pjm = User::model()->findBySql("select * from user where id = $project->project_mentor_user_id");
+                                    $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
+
+                                    $PJMname = $pjm->fname.' '.$pjm->lname;
+
+
+                                    $PERMname = $perm->fname.' '.$perm->lname;
+
+
+                                    $res .=$t->fname.' '.$t->lname.'/'.$PJMname. '/'.$PERMname.'<br>';
+
+
+                                }
+                            }
+
+
+
+                        }
+
+
+
+                        echo '<div id="inside-mpop-'. $mentee->user_id.'" style="display: none;">
                            <p>
-                           <h4>Project: </h4>'.$title.'
-                            <h4>Project Mentor:</h4>'. $pmName.'
+                           <h4>'.$title.'</h4>'.'
+                           <h5>Hours Req: X</h5>'.
+                            '<h5>Customer Name: '.$CUSName.'</h5>'.
+                            $projectdesc.
+                            '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
+                            $res.'
                            </p></div>';
+
+
+
+
+
 
                             $color = '';
                             if ($i++ % 2)
