@@ -112,6 +112,10 @@ if($model->isProMentor==1)
                     {
                         $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$project->id ");
                         $res ='No mentees for this project';
+                        $customer = User::model()->findBySql("select * from user where id = $project->propose_by_user_id");
+                        $CUSName = $customer->fname.' '.$customer->lname;
+
+
                         if($mymenids!=null)
                         {
                             $res = '';
@@ -124,7 +128,6 @@ if($model->isProMentor==1)
                                 $t = User::model()->findBySql("select * from user where id = $pid");
                                 $pjm = User::model()->findBySql("select * from user where id = $project->project_mentor_user_id");
                                 $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
-                                $customer = User::model()->findBySql("select * from user where id = $project->propose_by_user_id");
 
 
                                $PJMname = $pjm->fname.' '.$pjm->lname;
@@ -132,7 +135,6 @@ if($model->isProMentor==1)
 
                                $PERMname = $perm->fname.' '.$perm->lname;
 
-                                $CUSName = $customer->fname.' '.$customer->lname;
 
                                 $res .=$t->fname.' '.$t->lname.'/'.$PJMname. '/'.$PERMname.'<br>';
 
@@ -144,7 +146,7 @@ if($model->isProMentor==1)
                            <p>
                            <h4>'.$project->title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
-                            '<h5>Customer Name:'.$customer.'</h5>'.
+                            '<h5>Customer Name:'.$CUSName.'</h5>'.
                             $project->description.
                             '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
                             $res.'
@@ -594,7 +596,6 @@ if($model->isPerMentor==1)
 
                                         $PERMname = $perm->fname.' '.$perm->lname;
 
-                                        $CUSName = $customer->fname.' '.$customer->lname;
 
                                         $res .=$t->fname.' '.$t->lname.'/'.$PJMname. '/'.$PERMname.'<br>';
 
