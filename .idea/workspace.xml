@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/admin.php" afterPath="$PROJECT_DIR$/protected/views/user/admin.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/config/main.php" afterPath="$PROJECT_DIR$/protected/config/main.php" />
     </list>
     <ignored path="coplat.iws" />
@@ -25,215 +27,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="update.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/user/update.php">
+      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="270">
+            <state line="72" column="32" selection-start="2041" selection-end="2041" vertical-scroll-proportion="-5.2083335" vertical-offset="955" max-vertical-offset="1725">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/user/view.php">
+      <file leaf-file-name="admin.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/protected/views/user/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="243" column="58" selection-start="9137" selection-end="9137" vertical-scroll-proportion="-64.2" vertical-offset="435" max-vertical-offset="4890">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <marker date="1405181858000" expanded="true" signature="2877:2939" placeholder="SELECT max_t..domain_mentor..." />
-                <marker date="1405181858000" expanded="true" signature="3002:3060" placeholder="SELECT tier_..user_domain..." />
-                <marker date="1405181858000" expanded="true" signature="3852:3906" placeholder="SELECT * FRO..personal_mentor..." />
-                <marker date="1405181858000" expanded="true" signature="4266:4319" placeholder="SELECT * FRO..project_mentor..." />
-                <marker date="1405181858000" expanded="true" signature="5216:5261" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1405181858000" expanded="true" signature="5412:5490" placeholder="SELECT * FRO..personal_mentor..." />
-                <marker date="1405181858000" expanded="true" signature="5553:5607" placeholder="SELECT proje..mentee..." />
-                <marker date="1405181858000" expanded="true" signature="5704:5757" placeholder="SELECT * FRO..project..." />
-                <marker date="1405181858000" expanded="true" signature="6640:6687" placeholder="SELECT * FRO..user..." />
-                <marker date="1405181858000" expanded="true" signature="9452:9555" placeholder="SELECT subdo..user_domain..." />
-                <marker date="1405181858000" expanded="true" signature="9954:10008" placeholder="select * fro..subdomain..." />
-                <marker date="1405181858000" expanded="true" signature="11556:11600" placeholder="SELECT * FRO..user..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setRoles.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/user/setRoles.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="513" column="164" selection-start="17433" selection-end="17444" vertical-scroll-proportion="-23.92" vertical-offset="6499" max-vertical-offset="9510">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#body#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <marker date="1405184400000" expanded="true" signature="94:139" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="3131:3184" placeholder="select * fro..project..." />
-                <marker date="1405184400000" expanded="true" signature="3131:3192" placeholder="select * fro..project..." />
-                <marker date="1405184400000" expanded="true" signature="3588:3639" placeholder="select * fro..mentee..." />
-                <marker date="1405184400000" expanded="true" signature="3767:3825" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="4361:4395" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="4464:4526" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="4596:4653" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="10128:10181" placeholder="select * fro..subdomain..." />
-                <marker date="1405184400000" expanded="true" signature="11146:11209" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="12500:12824" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="12644:12656" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="12644:12656" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="12735:12824" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="13044:13855" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="13207:13855" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="13430:13525" placeholder="select * fro..mentee..." />
-                <marker date="1405184400000" expanded="true" signature="13676:13855" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="13676:13855" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="13723:13855" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="13723:13855" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="14360:14412" placeholder="select * fro..project..." />
-                <marker date="1405184400000" expanded="true" signature="14714:14775" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="15199:15253" placeholder="select * fro..mentee..." />
-                <marker date="1405184400000" expanded="true" signature="15596:15630" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="15703:15765" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="15839:15896" placeholder="select * fro..user..." />
-                <marker date="1405184400000" expanded="true" signature="20039:20257" placeholder="..." />
-                <marker date="1405184400000" expanded="true" signature="20060:20257" placeholder="{...}" />
-                <marker date="1405184400000" expanded="true" signature="20096:20257" placeholder="{&quot;validationEnabled&quot;: true...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="change.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/user/change.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="566" column="24" selection-start="19172" selection-end="22107" vertical-scroll-proportion="-6.3" vertical-offset="8175" max-vertical-offset="18765">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#body#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#1;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#2;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#3;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#4;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#5;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#h8#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#h6#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#1;n#h6#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#h6#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#1;n#h6#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <marker date="1405180348000" expanded="true" signature="39:79" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="130:175" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="2699:2775" placeholder="select * fro..project..." />
-                <marker date="1405180348000" expanded="true" signature="2837:2900" placeholder="select * fro..project..." />
-                <marker date="1405180348000" expanded="true" signature="3297:3348" placeholder="select * fro..mentee..." />
-                <marker date="1405180348000" expanded="true" signature="3476:3534" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="4067:4101" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="4170:4232" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="4302:4359" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="9311:9380" placeholder="select disti..user_domain..." />
-                <marker date="1405180348000" expanded="true" signature="11258:11311" placeholder="select * fro..subdomain..." />
-                <marker date="1405180348000" expanded="true" signature="11390:11443" placeholder="select * fro..user_domain..." />
-                <marker date="1405180348000" expanded="true" signature="18440:18552" placeholder="select * fro..mentee..." />
-                <marker date="1405180348000" expanded="true" signature="18686:18749" placeholder="select * fro..mentee..." />
-                <marker date="1405180348000" expanded="true" signature="19593:19645" placeholder="select * fro..project..." />
-                <marker date="1405180348000" expanded="true" signature="19963:20024" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="20472:20526" placeholder="select * fro..mentee..." />
-                <marker date="1405180348000" expanded="true" signature="20897:20931" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="21008:21070" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="21148:21205" placeholder="select * fro..user..." />
-                <marker date="1405180348000" expanded="true" signature="27233:27295" placeholder="SELECT title..project..." />
-                <marker date="1405180348000" expanded="true" signature="27350:27408" placeholder="SELECT domai..user_domain..." />
-                <marker date="1405180348000" expanded="true" signature="27458:27522" placeholder="SELECT user_..mentee..." />
-                <marker date="1405180348000" expanded="true" signature="28659:28712" placeholder="SELECT * FRO..project_mentor..." />
-                <marker date="1405180348000" expanded="true" signature="28762:28823" placeholder="SELECT * FRO..project..." />
-                <marker date="1405180348000" expanded="true" signature="32670:32735" placeholder="SELECT title..project..." />
-                <marker date="1405180348000" expanded="true" signature="33730:33792" placeholder="SELECT max_t..domain_mentor..." />
-                <marker date="1405180348000" expanded="true" signature="33855:33913" placeholder="SELECT tier_..user_domain..." />
-                <marker date="1405180348000" expanded="true" signature="35515:35569" placeholder="SELECT * FRO..personal_mentor..." />
-                <marker date="1405180348000" expanded="true" signature="38933:39030" placeholder="SELECT * FRO..domain..." />
-                <marker date="1405180348000" expanded="true" signature="38971:39029" placeholder="SELECT domai..user_domain..." />
-                <marker date="1405180348000" expanded="true" signature="40512:40591" placeholder="SELECT rate ..user_domain..." />
-                <marker date="1405180348000" expanded="true" signature="42038:42135" placeholder="SELECT * FRO..domain..." />
-                <marker date="1405180348000" expanded="true" signature="42076:42134" placeholder="SELECT domai..user_domain..." />
-                <marker date="1405180348000" expanded="true" signature="42943:42997" placeholder="SELECT * FRO..personal_mentor..." />
-                <marker date="1405180348000" expanded="true" signature="43049:43110" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1405180348000" expanded="true" signature="44572:44616" placeholder="SELECT * FRO..user..." />
-                <marker date="1405180348000" expanded="true" signature="45748:45792" placeholder="SELECT * FRO..user..." />
-                <marker date="1405180348000" expanded="true" signature="46913:46974" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1405180348000" expanded="true" signature="47102:47146" placeholder="SELECT * FRO..user..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/bootstrap/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2098" column="0" selection-start="39339" selection-end="39339" vertical-scroll-proportion="0.0" vertical-offset="31064" max-vertical-offset="31665">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Wizard.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/Wizard.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="1" selection-start="861" selection-end="861" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
+            <state line="58" column="0" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.68189234" vertical-offset="452" max-vertical-offset="1065">
               <folding />
             </state>
           </provider>
@@ -242,16 +48,10 @@
       <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="492" column="18" selection-start="16871" selection-end="16871" vertical-scroll-proportion="-20.0" vertical-offset="6900" max-vertical-offset="12015">
+            <state line="627" column="22" selection-start="21127" selection-end="21127" vertical-scroll-proportion="39.98" vertical-offset="11404" max-vertical-offset="12015">
               <folding>
                 <marker date="1405185227000" expanded="true" signature="2264:2309" placeholder="select * fro..user..." />
                 <marker date="1405185227000" expanded="true" signature="3705:3756" placeholder="select * fro..subdomain..." />
-                <marker date="1405185227000" expanded="true" signature="7015:7076" placeholder="SELECT * FRO..project..." />
-                <marker date="1405185227000" expanded="true" signature="7259:7303" placeholder="SELECT * FRO..project..." />
-                <marker date="1405185227000" expanded="true" signature="8058:8119" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1405185227000" expanded="true" signature="8288:8331" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1405185227000" expanded="true" signature="9674:9718" placeholder="SELECT id FR..domain..." />
-                <marker date="1405185227000" expanded="true" signature="10168:10235" placeholder="SELECT * FRO..user_domain..." />
                 <marker date="1405185227000" expanded="true" signature="10651:10709" placeholder="SELECT title..project..." />
                 <marker date="1405185227000" expanded="true" signature="10772:10832" placeholder="SELECT disti..user_domain..." />
                 <marker date="1405185227000" expanded="true" signature="10890:10950" placeholder="SELECT user_..mentee..." />
@@ -261,17 +61,7 @@
                 <marker date="1405185227000" expanded="true" signature="11669:11729" placeholder="SELECT user_..mentee..." />
                 <marker date="1405185227000" expanded="true" signature="11786:11831" placeholder="SELECT * FRO..ticket..." />
                 <marker date="1405185227000" expanded="true" signature="15714:15765" placeholder="select * fro..subdomain..." />
-                <marker date="1405185227000" expanded="true" signature="22901:23043" placeholder="SELECT fname..user..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/protected/config/main.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.66101694" vertical-offset="690" max-vertical-offset="1725">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -289,7 +79,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/protected/views/project/admin.php" />
         <option value="$PROJECT_DIR$/protected/views/ticket/create.php" />
         <option value="$PROJECT_DIR$/protected/views/message/view.php" />
         <option value="$PROJECT_DIR$/protected/views/project/change.php" />
@@ -340,12 +129,13 @@
         <option value="$PROJECT_DIR$/protected/views/user/setRoles.php" />
         <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/protected/config/main.php" />
+        <option value="$PROJECT_DIR$/protected/views/user/admin.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Unnamed" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="11" />
+    <option name="x" value="-29" />
     <option name="y" value="22" />
     <option name="width" value="1236" />
     <option name="height" value="734" />
@@ -748,7 +538,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="11" y="22" width="1236" height="734" extended-state="6" />
+    <frame x="-29" y="22" width="1236" height="734" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -812,11 +602,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bootstrap/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="473" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/roles.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="39" selection-start="187" selection-end="187" vertical-scroll-proportion="0.3416149" vertical-offset="0" max-vertical-offset="483" />
@@ -1126,13 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/bootstrap/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2098" column="0" selection-start="39339" selection-end="39339" vertical-scroll-proportion="0.0" vertical-offset="31064" max-vertical-offset="31665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/Wizard.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="1" selection-start="861" selection-end="861" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
@@ -1155,18 +933,18 @@
             <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <marker date="1405181858000" expanded="true" signature="2877:2939" placeholder="SELECT max_t..domain_mentor..." />
-            <marker date="1405181858000" expanded="true" signature="3002:3060" placeholder="SELECT tier_..user_domain..." />
-            <marker date="1405181858000" expanded="true" signature="3852:3906" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405181858000" expanded="true" signature="4266:4319" placeholder="SELECT * FRO..project_mentor..." />
-            <marker date="1405181858000" expanded="true" signature="5216:5261" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405181858000" expanded="true" signature="5412:5490" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405181858000" expanded="true" signature="5553:5607" placeholder="SELECT proje..mentee..." />
-            <marker date="1405181858000" expanded="true" signature="5704:5757" placeholder="SELECT * FRO..project..." />
-            <marker date="1405181858000" expanded="true" signature="6640:6687" placeholder="SELECT * FRO..user..." />
-            <marker date="1405181858000" expanded="true" signature="9452:9555" placeholder="SELECT subdo..user_domain..." />
-            <marker date="1405181858000" expanded="true" signature="9954:10008" placeholder="select * fro..subdomain..." />
-            <marker date="1405181858000" expanded="true" signature="11556:11600" placeholder="SELECT * FRO..user..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT max_t..domain_mentor..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT tier_..user_domain..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project_mentor..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT proje..mentee..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT subdo..user_domain..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="select * fro..subdomain..." />
+            <marker date="1405181858000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
@@ -1219,53 +997,60 @@
             <element signature="n#style#0;n#select#1;n#h6#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <marker date="1405180348000" expanded="true" signature="39:79" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="130:175" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="2699:2775" placeholder="select * fro..project..." />
-            <marker date="1405180348000" expanded="true" signature="2837:2900" placeholder="select * fro..project..." />
-            <marker date="1405180348000" expanded="true" signature="3297:3348" placeholder="select * fro..mentee..." />
-            <marker date="1405180348000" expanded="true" signature="3476:3534" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="4067:4101" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="4170:4232" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="4302:4359" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="9311:9380" placeholder="select disti..user_domain..." />
-            <marker date="1405180348000" expanded="true" signature="11258:11311" placeholder="select * fro..subdomain..." />
-            <marker date="1405180348000" expanded="true" signature="11390:11443" placeholder="select * fro..user_domain..." />
-            <marker date="1405180348000" expanded="true" signature="18440:18552" placeholder="select * fro..mentee..." />
-            <marker date="1405180348000" expanded="true" signature="18686:18749" placeholder="select * fro..mentee..." />
-            <marker date="1405180348000" expanded="true" signature="19593:19645" placeholder="select * fro..project..." />
-            <marker date="1405180348000" expanded="true" signature="19963:20024" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="20472:20526" placeholder="select * fro..mentee..." />
-            <marker date="1405180348000" expanded="true" signature="20897:20931" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="21008:21070" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="21148:21205" placeholder="select * fro..user..." />
-            <marker date="1405180348000" expanded="true" signature="27233:27295" placeholder="SELECT title..project..." />
-            <marker date="1405180348000" expanded="true" signature="27350:27408" placeholder="SELECT domai..user_domain..." />
-            <marker date="1405180348000" expanded="true" signature="27458:27522" placeholder="SELECT user_..mentee..." />
-            <marker date="1405180348000" expanded="true" signature="28659:28712" placeholder="SELECT * FRO..project_mentor..." />
-            <marker date="1405180348000" expanded="true" signature="28762:28823" placeholder="SELECT * FRO..project..." />
-            <marker date="1405180348000" expanded="true" signature="32670:32735" placeholder="SELECT title..project..." />
-            <marker date="1405180348000" expanded="true" signature="33730:33792" placeholder="SELECT max_t..domain_mentor..." />
-            <marker date="1405180348000" expanded="true" signature="33855:33913" placeholder="SELECT tier_..user_domain..." />
-            <marker date="1405180348000" expanded="true" signature="35515:35569" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405180348000" expanded="true" signature="38933:39030" placeholder="SELECT * FRO..domain..." />
-            <marker date="1405180348000" expanded="true" signature="38971:39029" placeholder="SELECT domai..user_domain..." />
-            <marker date="1405180348000" expanded="true" signature="40512:40591" placeholder="SELECT rate ..user_domain..." />
-            <marker date="1405180348000" expanded="true" signature="42038:42135" placeholder="SELECT * FRO..domain..." />
-            <marker date="1405180348000" expanded="true" signature="42076:42134" placeholder="SELECT domai..user_domain..." />
-            <marker date="1405180348000" expanded="true" signature="42943:42997" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405180348000" expanded="true" signature="43049:43110" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405180348000" expanded="true" signature="44572:44616" placeholder="SELECT * FRO..user..." />
-            <marker date="1405180348000" expanded="true" signature="45748:45792" placeholder="SELECT * FRO..user..." />
-            <marker date="1405180348000" expanded="true" signature="46913:46974" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405180348000" expanded="true" signature="47102:47146" placeholder="SELECT * FRO..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..project..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..project..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..mentee..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select disti..user_domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..subdomain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user_domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..mentee..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..mentee..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..project..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..mentee..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT title..project..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT domai..user_domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT user_..mentee..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project_mentor..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..project..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT title..project..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT max_t..domain_mentor..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT tier_..user_domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT domai..user_domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT rate ..user_domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT domai..user_domain..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405180348000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/setRoles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="513" column="164" selection-start="17433" selection-end="17444" vertical-scroll-proportion="-23.92" vertical-offset="6499" max-vertical-offset="9510">
+        <state line="513" column="164" selection-start="17433" selection-end="17444" vertical-scroll-proportion="-35.92" vertical-offset="5899" max-vertical-offset="9510">
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -1287,59 +1072,60 @@
             <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <marker date="1405184400000" expanded="true" signature="94:139" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="3131:3184" placeholder="select * fro..project..." />
-            <marker date="1405184400000" expanded="true" signature="3131:3192" placeholder="select * fro..project..." />
-            <marker date="1405184400000" expanded="true" signature="3588:3639" placeholder="select * fro..mentee..." />
-            <marker date="1405184400000" expanded="true" signature="3767:3825" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="4361:4395" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="4464:4526" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="4596:4653" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="10128:10181" placeholder="select * fro..subdomain..." />
-            <marker date="1405184400000" expanded="true" signature="11146:11209" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="12500:12824" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="12644:12656" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="12644:12656" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="12735:12824" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="13044:13855" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="13207:13855" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="13430:13525" placeholder="select * fro..mentee..." />
-            <marker date="1405184400000" expanded="true" signature="13676:13855" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="13676:13855" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="13723:13855" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="13723:13855" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="14360:14412" placeholder="select * fro..project..." />
-            <marker date="1405184400000" expanded="true" signature="14714:14775" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="15199:15253" placeholder="select * fro..mentee..." />
-            <marker date="1405184400000" expanded="true" signature="15596:15630" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="15703:15765" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="15839:15896" placeholder="select * fro..user..." />
-            <marker date="1405184400000" expanded="true" signature="20039:20257" placeholder="..." />
-            <marker date="1405184400000" expanded="true" signature="20060:20257" placeholder="{...}" />
-            <marker date="1405184400000" expanded="true" signature="20096:20257" placeholder="{&quot;validationEnabled&quot;: true...}" />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..project..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..project..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..mentee..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..subdomain..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..mentee..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..project..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..mentee..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="select * fro..user..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1405184400000" expanded="true" signature="-1:-1" placeholder="{&quot;validationEnabled&quot;: true...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/user/update.php">
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+        <state line="2098" column="0" selection-start="39339" selection-end="39339" vertical-scroll-proportion="0.0" vertical-offset="31064" max-vertical-offset="31665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="32" selection-start="2041" selection-end="2041" vertical-scroll-proportion="-5.2083335" vertical-offset="955" max-vertical-offset="1725">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="492" column="18" selection-start="16871" selection-end="16871" vertical-scroll-proportion="-20.0" vertical-offset="6900" max-vertical-offset="12015">
+        <state line="627" column="22" selection-start="21127" selection-end="21127" vertical-scroll-proportion="39.98" vertical-offset="11404" max-vertical-offset="12015">
           <folding>
             <marker date="1405185227000" expanded="true" signature="2264:2309" placeholder="select * fro..user..." />
             <marker date="1405185227000" expanded="true" signature="3705:3756" placeholder="select * fro..subdomain..." />
-            <marker date="1405185227000" expanded="true" signature="7015:7076" placeholder="SELECT * FRO..project..." />
-            <marker date="1405185227000" expanded="true" signature="7259:7303" placeholder="SELECT * FRO..project..." />
-            <marker date="1405185227000" expanded="true" signature="8058:8119" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405185227000" expanded="true" signature="8288:8331" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405185227000" expanded="true" signature="9674:9718" placeholder="SELECT id FR..domain..." />
-            <marker date="1405185227000" expanded="true" signature="10168:10235" placeholder="SELECT * FRO..user_domain..." />
             <marker date="1405185227000" expanded="true" signature="10651:10709" placeholder="SELECT title..project..." />
             <marker date="1405185227000" expanded="true" signature="10772:10832" placeholder="SELECT disti..user_domain..." />
             <marker date="1405185227000" expanded="true" signature="10890:10950" placeholder="SELECT user_..mentee..." />
@@ -1349,14 +1135,13 @@
             <marker date="1405185227000" expanded="true" signature="11669:11729" placeholder="SELECT user_..mentee..." />
             <marker date="1405185227000" expanded="true" signature="11786:11831" placeholder="SELECT * FRO..ticket..." />
             <marker date="1405185227000" expanded="true" signature="15714:15765" placeholder="select * fro..subdomain..." />
-            <marker date="1405185227000" expanded="true" signature="22901:23043" placeholder="SELECT fname..user..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+    <entry file="file://$PROJECT_DIR$/protected/views/user/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.66101694" vertical-offset="690" max-vertical-offset="1725">
+        <state line="58" column="0" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.68189234" vertical-offset="452" max-vertical-offset="1065">
           <folding />
         </state>
       </provider>

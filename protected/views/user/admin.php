@@ -39,17 +39,27 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
 		'username',
 		'email',
 		'fname',
         'mname',
         'lname',
-		'activated',
-		'disable',
-		
-		array(
+        array(
+            'name'=>'activated',
+            'header'=>'Activated',
+            'type'=>'raw',
+            'htmlOptions'=>array('width'=>'10'),
+        ),
+        array(
+            'name'=>'disable',
+            'header'=>'Disable',
+            'type'=>'raw',
+            'htmlOptions'=>array('width'=>'10'),
+        ),
+
+
+        array(
 			'class'=>'CButtonColumn',
-		),
+
 	),
-)); ?>
+))); ?>
