@@ -215,6 +215,7 @@ class User extends CActiveRecord
     public static function getCurrentUserId()
     {
         $username = Yii::app()->user->name;
+	if ($username == null) { Yii::app()->getController()->redirect('/coplat/index.php/site/login');  }
         $user = User::model()->find("username=:username", array(':username' => $username));
         return $user->id;
     }
