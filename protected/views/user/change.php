@@ -622,7 +622,7 @@ if($model->isPerMentor==1)
                            <p>
                            <h4>'.$title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
-                                '<h5>Customer Name: '.$mycustomer.'</h5>'.
+                                '<h5>Customer Name: '.$CUSName.'</h5>'.
                                 $projectdesc.
                                 '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
                                 $res.'
