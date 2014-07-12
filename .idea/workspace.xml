@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/change.php" afterPath="$PROJECT_DIR$/protected/views/user/change.php" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -160,7 +159,7 @@
       <file leaf-file-name="change.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/user/change.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="598" column="0" selection-start="20966" selection-end="20966" vertical-scroll-proportion="0.94555354" vertical-offset="8449" max-vertical-offset="18630">
+            <state line="115" column="65" selection-start="3594" selection-end="3603" vertical-scroll-proportion="0.3321234" vertical-offset="1542" max-vertical-offset="18630">
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -211,6 +210,7 @@
                 <marker date="1405179775000" expanded="true" signature="2699:2775" placeholder="select * fro..project..." />
                 <marker date="1405179775000" expanded="true" signature="2837:2900" placeholder="select * fro..project..." />
                 <marker date="1405179775000" expanded="true" signature="3297:3348" placeholder="select * fro..mentee..." />
+                <marker date="1405179775000" expanded="true" signature="3476:3534" placeholder="select * fro..user..." />
                 <marker date="1405179775000" expanded="true" signature="3924:3958" placeholder="select * fro..user..." />
                 <marker date="1405179775000" expanded="true" signature="4027:4089" placeholder="select * fro..user..." />
                 <marker date="1405179775000" expanded="true" signature="4159:4216" placeholder="select * fro..user..." />
@@ -1329,7 +1329,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/change.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="598" column="0" selection-start="20966" selection-end="20966" vertical-scroll-proportion="0.94555354" vertical-offset="8449" max-vertical-offset="18630">
+        <state line="115" column="65" selection-start="3594" selection-end="3603" vertical-scroll-proportion="0.3321234" vertical-offset="1542" max-vertical-offset="18630">
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -1380,6 +1380,7 @@
             <marker date="1405179775000" expanded="true" signature="2699:2775" placeholder="select * fro..project..." />
             <marker date="1405179775000" expanded="true" signature="2837:2900" placeholder="select * fro..project..." />
             <marker date="1405179775000" expanded="true" signature="3297:3348" placeholder="select * fro..mentee..." />
+            <marker date="1405179775000" expanded="true" signature="3476:3534" placeholder="select * fro..user..." />
             <marker date="1405179775000" expanded="true" signature="3924:3958" placeholder="select * fro..user..." />
             <marker date="1405179775000" expanded="true" signature="4027:4089" placeholder="select * fro..user..." />
             <marker date="1405179775000" expanded="true" signature="4159:4216" placeholder="select * fro..user..." />
