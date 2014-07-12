@@ -71,21 +71,140 @@ class UserController extends Controller
         $promentor = ProjectMentor::model()->getProMentor($id);
         $permentor = PersonalMentor::model()->getPerMentor($id);
         $dommentor = DomainMentor::model()->getDomMentor($id);
+        $def = User::model()->findBySql("select * from user where username = 'DEFAULT'");
 
-        $isactive = $model->activated;
+        //$isactive = $model->activated;
 
-        if(isset($_POST['submit']))
+        if(isset($_POST['updateRoles']))
         {
+            if($model->isProMentor == 1)
+            {
+
+                Project::model()->updateAll(array( 'project_mentor_user_id'=>$def->id),'project_mentor_user_id = '.$model->id);
+
+
+
+                $promentor->max_hours =$_POST['pjmhours'] ;
+                $all = Project::model()->findAll();
+
+                $count =0;
+                foreach ($all as $each)
+                {
+                    if(isset($_POST[$each->id.'pjm']))
+                    {
+                        $p = Project::model()->findByPk($each->id);
+                        $p->project_mentor_user_id =$model->id;
+                        $p->save(false);
+                        $count++;
+                    }
+
+                }
+
+                $promentor->max_projects = $count;
+                $promentor->save();
+
+
+
+            }
+
+            if($model->isDomMentor)
+            {
+
+                UserDomain::model()->deleteAll("user_id = ".$model->id);
+
+
+                $dommentor->max_tickets = $_POST['dmmaxtickets'];
+                $dommentor->save();
+
+
+                $all = Domain::model()->findAll();
+                foreach ($all as $each)
+                {
+
+
+                    if(isset($_POST[$each->id]))
+                    {
+
+                        $allsubs = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $each->id");
+                        if($allsubs!=null)
+                        {
+                        foreach( $allsubs as $onesub)
+                        {
+                            $temp = $onesub->id.'ddmsub';
+                            if(isset($_POST[$temp]))
+                            {
+
+
+                                $rate = $each->id.'-'.$onesub->id.'dmrate';
+                                $tier = $each->id.'-'.$onesub->id.'dmtier';
+
+                                $user_domain = new UserDomain();
+                                $user_domain->user_id = $dommentor->user_id;
+                                $user_domain->domain_id= $each->id;
+                                $user_domain->active=1;
+                                $user_domain->rate = $_POST[$rate];
+                                $user_domain->tier_team = $_POST[$tier];
+                                $user_domain->subdomain_id = $onesub->id;
+                                $user_domain->save(false);
+
+
+
+                            }
+                        }
+                        } else
+                        {
+                            $user_domain = new UserDomain();
+                            $user_domain->user_id = $dommentor->user_id;
+                            $user_domain->domain_id= $each->id;
+                            $user_domain->active=1;
+                            $user_domain->save(false);
+
+
+                        }
+
+
+
+                    }
+
+                }
+
+            }
+
+            if($model->isPerMentor)
+            {
+
+                Mentee::model()->updateAll(array( 'personal_mentor_user_id'=>$def->id),'personal_mentor_user_id = '.$model->id);
+
+                $all = Mentee::model()->findAll();
+
+                $count =0;
+                foreach ($all as $each)
+                {
+                    if(isset($_POST[$each->user_id.'pm']))
+                    {
+                        //$p = Mentee::model()->findByPk($each->user_id);
+                        $each->personal_mentor_user_id =$model->id;
+                        $each->save(false);
+                        $count++;
+                    }
+
+                }
+                $permentor->max_hours =$_POST['pmhours'] ;
+                $permentor->max_mentees = $count;
+                $permentor->save();
+            }
+            /*
             $model->biography = $_POST['biography'];
             if(!$isactive){
                 $model->activated = 1;
                 User::sendAccountValidatedEmailNotification($model->id, User::model()->getCurrentUserId());
             }
             $model->save(false);
+            */
 
 
 
-
+            /*
             if($model->isProMentor == 1)
             {
                 $promentor->max_hours = $_POST['proHours'];
@@ -196,7 +315,7 @@ class UserController extends Controller
                         }
                     }
                 }
-            }
+            }*/
 
             /** @var User $username */
             $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
@@ -254,60 +373,6 @@ class UserController extends Controller
             }
 
 
-
-
-
-            //$model->activated == 0;
-
-            //Hash the password before storing it into the database
-            //$hasher = new PasswordHash(8, false);
-            //$model->password = $hasher->HashPassword($model->password);
-
-            /*
-			if($model->save(false)){
-
-                if($model->isAdmin == 1)
-                {
-                    $admin = new Administrator;
-                    $admin->user_id = $model->id;
-                    $admin->save();
-                }
-
-                if($model->isPerMentor == 1)
-                {
-                    $perMentor = new PersonalMentor;
-                    $perMentor->user_id = $model->id;
-                    $perMentor->max_hours = 0; $perMentor->max_mentees = 0;
-                    $perMentor->save();
-                }
-
-                if($model->isProMentor == 1)
-                {
-                    $proMentor = new ProjectMentor;
-                    $proMentor->user_id = $model->id;
-                    $proMentor->max_hours = 0; $proMentor->max_projects = 0;
-                    $proMentor->save();
-                }
-
-                if($model->isDomMentor == 1)
-                {
-                    $domainMentor = new DomainMentor;
-                    $domainMentor->user_id = $model->id;
-                    $domainMentor->max_tickets = 0;
-                    $domainMentor->save();
-                }
-
-                if($model->isMentee == 1)
-                {
-                    $mentee = new Mentee();
-                    $mentee->user_id = $model->id;
-                    $mentee->save();
-                }
-
-                $userfullName = $model->fname.' '.$model->lname;
-
-                //s$this->actionSendVerificationEmail($userfullName, $model->email);
-            }*/
         }
         if(isset($_POST['Roles']))
         {
@@ -359,11 +424,6 @@ class UserController extends Controller
                     {
 
 
-
-                        $rate = $each->id.'dmrate';
-                        $tier = $each->id.'dmtier';
-
-
                         $allsubs = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $each->id");
 
                         foreach( $allsubs as $onesub)
@@ -371,6 +431,10 @@ class UserController extends Controller
                             $temp = $onesub->id.'ddmsub';
                             if(isset($_POST[$temp]))
                             {
+
+                                $rate = $each->id.'-'.$onesub->id.'dmrate';
+                                $tier = $each->id.'-'.$onesub->id.'dmtier';
+
                                 $user_domain = new UserDomain();
                                 $user_domain->user_id = $domMentor->user_id;
                                 $user_domain->domain_id= $each->id;
@@ -570,7 +634,7 @@ class UserController extends Controller
         }
     }
 
-
+/*
     public function actionSendVerificationEmail($userfullName, $user_email){
 
         $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user inner join administrator on user.id = administrator.user_id WHERE user.disable = 0 and user.activated = 1");
@@ -583,7 +647,7 @@ class UserController extends Controller
 
         //$this->redirect('/coplat/index.php/site/page?view=verification');
 
-    }
+    }*/
 
     public function actionVerifyEmail($username, $activation_chain)
     {

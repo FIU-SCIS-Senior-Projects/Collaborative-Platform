@@ -1,6 +1,7 @@
 <?php
 /* @var $this UserController */
 /* @var $model User */
+
 if(User::isCurrentUserAdmin())
 {
     $this->breadcrumbs=array(

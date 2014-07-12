@@ -1,4 +1,11 @@
+<?php
+//global variables
 
+$all = Domain::model()->findAll();
+$def = User::model()->findBySql("select * from user where username = 'DEFAULT'");//default user
+
+
+?>
 <head>
 
     <script>
@@ -6,8 +13,7 @@
         function load()
         {
             <?php
-              $alldm = Domain::model()->findAll();
-              foreach($alldm as $one)
+              foreach($all as $one)
               {
               print('document.getElementById("'.$one->id.'dmrate").disabled=true;');
               print('document.getElementById("'.$one->id.'dmtier").disabled=true;');
@@ -25,7 +31,6 @@
 
         }
         <?php
-        $all = Domain::model()->findAll();
         foreach($all as $dm)
         {
              print('
@@ -76,88 +81,8 @@
     </script>
 
     <link rel="stylesheet" type="text/css" href="/coplat/css/ui-lightness/jquery-ui-1.8.2.custom.css" />
-    <style type="text/css">
-        #demoWrapper {
-            padding : 1em;
-            width : auto;
-            border-style: solid;
-            height: auto;
-            overflow:hidden;
+    <link rel="stylesheet" type="text/css" href="/coplat/css/Wizard.css" />
 
-        }
-
-        #fieldWrapper
-        {
-            height: auto;
-            width: auto;
-            overflow:hidden;
-
-        }
-
-        #demoNavigation {
-            margin-top : 0.5em;
-            margin-right : 1em;
-            text-align: right;
-        }
-
-        #data {
-            font-size : 0.7em;
-        }
-
-        input {
-            margin-right: 0.1em;
-            margin-bottom: 0.5em;
-        }
-
-        .input_field_25em {
-            width: 2.5em;
-        }
-
-        .input_field_3em {
-            width: 3em;
-        }
-
-        .input_field_35em {
-            width: 3.5em;
-        }
-
-        .input_field_12em {
-            width: 12em;
-        }
-
-        label {
-            margin-bottom: 0.2em;
-            font-weight: bold;
-            font-size: 0.8em;
-        }
-
-        label.error {
-            color: red;
-            font-size: 0.8em;
-            margin-left : 0.5em;
-        }
-
-        .step span {
-            float: right;
-            font-weight: bold;
-            padding-right: 0.8em;
-        }
-
-        .navigation_button {
-            width : 70px;
-        }
-
-        #data {
-            overflow : auto;
-        }
-
-        };
-
-
-
-
-
-    </style>
 
 </head>
 <body >
@@ -186,7 +111,7 @@ if($model->isProMentor==1)
 
             <?php
 
-            $projects = Project::model()->findAllBySql("select * from project where project_mentor_user_id = 999");
+            $projects = Project::model()->findAllBySql("select * from project where project_mentor_user_id = $def->id");
 
             ?>
             <div  name ="pjmprojects" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;background-color:white">
@@ -308,7 +233,7 @@ if($model->isDomMentor==1)
 
 
 
-    <div id="finland" class="step">
+    <div id="second" class="step">
 
         <?php //stop here?>
         <h3><span class="font_normal_07em_black">Role: Domain Mentor</span></h3><br />
@@ -327,12 +252,9 @@ if($model->isDomMentor==1)
                 <table  style="width:auto;">
                     <tr>
                         <th>Domain</th>
-                        <th>Rate</th>
-                        <th>Tier</th>
-                        <th>Subdomain</th>
+                        <th>Subdomain (Rating / Tier)</th>
                     </tr>
                     <?php
-                    $domains = Domain::model()->findAll();
 
 
 
@@ -355,7 +277,7 @@ if($model->isDomMentor==1)
 
 
                     $i=0;
-                    foreach ($domains as $domain)
+                    foreach ($all as $domain)
                     {
                         /*row color */
 
@@ -373,10 +295,7 @@ if($model->isDomMentor==1)
                         }
 
 
-                        $selectR ='<select  id = "'.$domain->id.'dmrate" name="'.$domain->id.'dmrate" style="width: 50px";>';
 
-
-                        $selectT = '<select id = "'.$domain->id.'dmtier" name="'.$domain->id.'dmtier" style="width: 50px;" >';
 
                         $selectS ='<div border:1px id = "'.$domain->id.'dmsub" name="'.$domain->id.'dmsub" style="width: 150px;height:100px;overflow-y: scroll;'.$sdcolor.'">';
 
@@ -385,16 +304,24 @@ if($model->isDomMentor==1)
                         $optionS='';
                         foreach($curPSubdomains as $subdomain)
                         {
-                            $optionS.='<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name .'<br>';
+                            $optionS.='<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name .'';
+                            $selectR ='<select  id = "'.$subdomain->id.'dmrate" name="'.$domain->id.'-'.$subdomain->id.'dmrate" style="width: 50px";>';
+                            $selectR.=$optionR;
+                            $optionS.= '  '.$selectR;
+
+                            $selectT = '<select id = "'.$subdomain->id.'dmtier" name="'.$domain->id.'-'.$subdomain->id.'dmtier" style="width: 50px;" >';
+                            $selectT.=$optionT;
+                            $optionS.='  '.$selectT.'<br>';
+
                         }
                         $optionS.='</div>';
 
 
                         echo'<tr>';
                         echo '<td '.$color.'>'.'<input type="checkbox" id= "'.$domain->id .'"  name ="'.$domain->id .'"/>  '. $domain->name .'</td>';
-                        echo '<td '.$color.'>'.$selectR.$optionR.'</td>';
-                        echo '<td '.$color.'>'.$selectT.$optionT.'</td>';
-                        echo '<td>'.$selectS.$optionS.'</td>';
+                        //echo '<td '.$color.'>'.$selectR.$optionR.'</td>';
+                        //echo '<td '.$color.'>'.$selectT.$optionT.'</td>';
+                        echo '<td '.$color.'style="white-space:nowrap;>'.$selectS.$optionS.'</td>';
                         echo '</tr>';
                     }
                     ?>
@@ -463,14 +390,18 @@ if($model->isPerMentor==1)
 {
 
     ?>
-    <div id="confirmation" class="step">
+    <div id="third" class="step">
         <h3><span class="font_normal_07em_black">Role: Personal Mentor</span></h3><br />
         <div  class="my-box-container7" style="width: auto; float:left;">
             <h3>Current Senior Project Mentees</h3>
             <br>
             <h4>Select mentees for this personal mentor:</h4>
             <br>
-            <?php  $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id =999 or personal_mentor_user_id is null ");?>
+            <?php
+
+            $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id =$def->id or personal_mentor_user_id is null ");
+
+            ?>
             <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
 
 

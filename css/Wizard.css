@@ -1,0 +1,73 @@
+#demoWrapper {
+    padding : 1em;
+    width : auto;
+    border-style: solid;
+    height: auto;
+    overflow:hidden;
+
+}
+
+#fieldWrapper
+{
+    height: auto;
+    width: auto;
+    overflow:hidden;
+
+}
+
+#demoNavigation {
+    margin-top : 0.5em;
+    margin-right : 1em;
+    text-align: right;
+}
+
+#data {
+    font-size : 0.7em;
+}
+
+input {
+    margin-right: 0.1em;
+    margin-bottom: 0.5em;
+}
+
+.input_field_25em {
+    width: 2.5em;
+}
+
+.input_field_3em {
+    width: 3em;
+}
+
+.input_field_35em {
+    width: 3.5em;
+}
+
+.input_field_12em {
+    width: 12em;
+}
+
+label {
+    margin-bottom: 0.2em;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+label.error {
+    color: red;
+    font-size: 0.8em;
+    margin-left : 0.5em;
+}
+
+.step span {
+    float: right;
+    font-weight: bold;
+    padding-right: 0.8em;
+}
+
+.navigation_button {
+    width : 70px;
+}
+
+#data {
+    overflow : auto;
+}
