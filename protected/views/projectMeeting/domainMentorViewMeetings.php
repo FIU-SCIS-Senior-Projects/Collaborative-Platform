@@ -32,7 +32,9 @@
             <th width="13%">Domain</th>
             <th width="42%">Subject</th>
             <th width="15%">Created Date</th>
-            <th width="10%">Status</th>
+            <th width="15%">Subdomain</th>
+            <th width="15%">Status</th>
+
         </tr>
         </thead>
         <?php if ($tickets == null) {
