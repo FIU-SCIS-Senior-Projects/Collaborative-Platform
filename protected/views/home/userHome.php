@@ -38,34 +38,34 @@ if(User::isCurrentUserAdmin())
             if ($user->isProMentor())
             {
                 $gray1 = '';
-                $linkpjm='/coplat/index.php/projectMeeting/pMentorViewMeetings';
+                $linkpjm='href="/coplat/index.php/projectMeeting/pMentorViewMeetings"';
             }
             if($user->isDomMentor())
             {
                 $gray2 = '';
-                $linkdmm ='/coplat/index.php/projectMeeting/domainMentorViewMeetings';
+                $linkdmm ='href="/coplat/index.php/projectMeeting/domainMentorViewMeetings"';
 
             }
             if($user->isPerMentor())
             {
                 $gray3 = '';
-                $linkperm = '/coplat/index.php/projectMeeting/personalMentorViewMeetings';
+                $linkperm = 'href="/coplat/index.php/projectMeeting/personalMentorViewMeetings"';
 
             }
             if($user->isMentee())
             {
                 $gray4 = '';
-                $linkmen ='/coplat/index.php/projectMeeting/pMenteeViewMeetings';
+                $linkmen ='href="/coplat/index.php/projectMeeting/pMenteeViewMeetings"';
 
             }
 
 
             ?>
 
-            <td style="padding:20px;"><a href="<?php echo $linkpjm; ?>"><img  <?php echo $gray1 ?> border="0" src="/coplat/images/roles/project.png" id="pjm" width="200" height="200"></a></td>
-            <td style="padding:20px;"><a href="<?php echo $linkdmm; ?>"><img <?php echo $gray2 ?> border="0" src="/coplat/images/roles/domain.png" id="dmm" width="200" height="200"></a></td>
-            <td style="padding:20px;"><a href="<?php echo $linkperm; ?>"><img <?php echo $gray3 ?>  border="0" src="/coplat/images/roles/personal.png" id="pm" width="200" height="200"></a></td>
-            <td style="padding:20px;"><a href="<?php echo $linkmen; ?>"><img <?php echo $gray4 ?>  border="0" src="/coplat/images/roles/mentee.png" id="men" width="200" height="200"></a></td>
+            <td style="padding:20px;"><a <?php echo $linkpjm; ?>><img  <?php echo $gray1 ?> border="0" src="/coplat/images/roles/project.png" id="pjm" width="200" height="200"></a></td>
+            <td style="padding:20px;"><a <?php echo $linkdmm; ?>><img <?php echo $gray2 ?> border="0" src="/coplat/images/roles/domain.png" id="dmm" width="200" height="200"></a></td>
+            <td style="padding:20px;"><a <?php echo $linkperm; ?>><img <?php echo $gray3 ?>  border="0" src="/coplat/images/roles/personal.png" id="pm" width="200" height="200"></a></td>
+            <td style="padding:20px;"><a <?php echo $linkmen; ?>><img <?php echo $gray4 ?>  border="0" src="/coplat/images/roles/mentee.png" id="men" width="200" height="200"></a></td>
 
         </tr>
     </table>
