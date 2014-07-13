@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/home/adminHome.php" afterPath="$PROJECT_DIR$/protected/views/home/adminHome.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/home/userHome.php" afterPath="$PROJECT_DIR$/protected/views/home/userHome.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/config/main.php" afterPath="$PROJECT_DIR$/protected/config/main.php" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,19 +26,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-15.666667" vertical-offset="704" max-vertical-offset="1725">
+            <state line="58" column="23" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.2804054" vertical-offset="704" max-vertical-offset="1725">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userHome.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="userHome.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/home/userHome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="41" selection-start="2282" selection-end="2282" vertical-scroll-proportion="0.8549223" vertical-offset="510" max-vertical-offset="2955">
+            <state line="67" column="41" selection-start="2282" selection-end="2282" vertical-scroll-proportion="-20.0" vertical-offset="525" max-vertical-offset="2955">
               <folding>
                 <element signature="e#301#320#0" expanded="true" />
                 <element signature="e#1700#1721#0" expanded="true" />
@@ -205,9 +204,9 @@
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/pMenteeViewMeetings.php" />
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/personalMentorViewMeetings.php" />
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/pMentorViewMeetings.php" />
-        <option value="$PROJECT_DIR$/protected/config/main.php" />
         <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
         <option value="$PROJECT_DIR$/protected/views/home/userHome.php" />
+        <option value="$PROJECT_DIR$/protected/config/main.php" />
       </list>
     </option>
   </component>
@@ -1009,13 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-15.666667" vertical-offset="704" max-vertical-offset="1725">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="27" selection-start="120" selection-end="120" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="1335">
@@ -1043,7 +1035,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/home/userHome.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="41" selection-start="2282" selection-end="2282" vertical-scroll-proportion="0.8549223" vertical-offset="510" max-vertical-offset="2955">
+        <state line="67" column="41" selection-start="2282" selection-end="2282" vertical-scroll-proportion="-20.0" vertical-offset="525" max-vertical-offset="2955">
           <folding>
             <element signature="e#301#320#0" expanded="true" />
             <element signature="e#1700#1721#0" expanded="true" />
@@ -1053,6 +1045,13 @@
             <marker date="1405209858000" expanded="true" signature="4038:4071" placeholder="SELECT * FRO..domain..." />
             <marker date="1405209858000" expanded="true" signature="6295:6328" placeholder="SELECT * FRO..domain..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="23" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.2804054" vertical-offset="704" max-vertical-offset="1725">
+          <folding />
         </state>
       </provider>
     </entry>
