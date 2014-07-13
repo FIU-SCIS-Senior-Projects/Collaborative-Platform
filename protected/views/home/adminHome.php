@@ -188,7 +188,7 @@ if(User::isCurrentUserAdmin()==false)
                         <!-- Manage Domain Button -->
                         <?php $this->widget('bootstrap.widgets.TbButton', array(
                             'buttonType' => 'link', 'id' => 'new-box', 'url' => '/coplat/index.php/projectMeeting/adminViewMeetings', 'type' => 'primary',
-                            'label' => 'All Project Mentors', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
+                            'label' => 'All Project Meetings', 'size' => 'medium', 'htmlOptions' => array('style' => 'width: 120px')));
                         ?>
 
                     </td>

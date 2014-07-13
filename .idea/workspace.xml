@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/config/main.php" afterPath="$PROJECT_DIR$/protected/config/main.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/home/adminHome.php" afterPath="$PROJECT_DIR$/protected/views/home/adminHome.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.7123519" vertical-offset="659" max-vertical-offset="1725">
+            <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-17.541666" vertical-offset="659" max-vertical-offset="1725">
               <folding />
             </state>
           </provider>
@@ -46,15 +47,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminHome.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="adminHome.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/home/adminHome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="62" selection-start="5414" selection-end="5414" vertical-scroll-proportion="-78.125" vertical-offset="0" max-vertical-offset="3810">
+            <state line="190" column="60" selection-start="8562" selection-end="8562" vertical-scroll-proportion="0.15570934" vertical-offset="2760" max-vertical-offset="3810">
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <marker date="1405211380000" expanded="true" signature="3990:4023" placeholder="SELECT * FRO..domain..." />
-                <marker date="1405211380000" expanded="true" signature="6185:6218" placeholder="SELECT * FRO..domain..." />
+                <marker date="1405213151000" expanded="true" signature="3990:4023" placeholder="SELECT * FRO..domain..." />
+                <marker date="1405213151000" expanded="true" signature="6185:6218" placeholder="SELECT * FRO..domain..." />
               </folding>
             </state>
           </provider>
@@ -204,11 +205,11 @@
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/pMentorViewMeetings.php" />
         <option value="$PROJECT_DIR$/protected/views/home/userHome.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" />
-        <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/css/styles.css" />
         <option value="$PROJECT_DIR$/protected/config/main.php" />
+        <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
       </list>
     </option>
   </component>
@@ -971,18 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/home/adminHome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="62" selection-start="5414" selection-end="5414" vertical-scroll-proportion="-78.125" vertical-offset="0" max-vertical-offset="3810">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <marker date="1405211380000" expanded="true" signature="3990:4023" placeholder="SELECT * FRO..domain..." />
-            <marker date="1405211380000" expanded="true" signature="6185:6218" placeholder="SELECT * FRO..domain..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/bootstrap/views/site/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="63" selection-start="2203" selection-end="2203" vertical-scroll-proportion="-13.75" vertical-offset="600" max-vertical-offset="1485">
@@ -1033,8 +1022,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/config/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.7123519" vertical-offset="659" max-vertical-offset="1725">
+        <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-17.541666" vertical-offset="659" max-vertical-offset="1725">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/home/adminHome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="190" column="60" selection-start="8562" selection-end="8562" vertical-scroll-proportion="0.15570934" vertical-offset="2760" max-vertical-offset="3810">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <marker date="1405213151000" expanded="true" signature="3990:4023" placeholder="SELECT * FRO..domain..." />
+            <marker date="1405213151000" expanded="true" signature="6185:6218" placeholder="SELECT * FRO..domain..." />
+          </folding>
         </state>
       </provider>
     </entry>
