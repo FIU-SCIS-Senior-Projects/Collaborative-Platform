@@ -474,7 +474,7 @@ class ProjectMeetingController extends Controller
         $username = Yii::app()->user->name;
         $user = User::model()->find("username=:username", array(':username' => $username));
 
-        $tickets = Ticket::model()->findBySql("select * from ticket where assign_user_id = $user->id");
+        $tickets = Ticket::model()->findAllBySql("select * from ticket where assign_user_id = $user->id");
 
 
         $this->render('domainMentorViewMeetings', array( /*'menteeName' => $menteeName,*/
