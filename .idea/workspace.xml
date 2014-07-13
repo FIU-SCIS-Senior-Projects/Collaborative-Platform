@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" afterPath="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/home/adminHome.php" afterPath="$PROJECT_DIR$/protected/views/home/adminHome.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php" afterPath="$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,21 +59,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="domainMentorViewMeetings.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="domainMentorViewMeetings.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="27" selection-start="120" selection-end="120" vertical-scroll-proportion="3.125" vertical-offset="120" max-vertical-offset="1335">
+            <state line="42" column="42" selection-start="1069" selection-end="1078" vertical-scroll-proportion="0.20304568" vertical-offset="435" max-vertical-offset="1335">
               <folding>
-                <marker date="1405210528000" expanded="true" signature="1227:1260" placeholder="SELECT * FRO..domain..." />
+                <marker date="1405211151000" expanded="true" signature="1225:1258" placeholder="SELECT * FRO..domain..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectMeetingController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ProjectMeetingController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="0.5865052" vertical-offset="6801" max-vertical-offset="7395">
+            <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="-14.125" vertical-offset="6801" max-vertical-offset="7395">
               <folding>
                 <marker date="1405210661000" expanded="true" signature="6204:6236" placeholder="SELECT * FRO..user..." />
                 <marker date="1405210661000" expanded="true" signature="6757:6798" placeholder="SELECT * FRO..mentee..." />
@@ -143,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/protected/views/message/view.php" />
         <option value="$PROJECT_DIR$/protected/views/project/change.php" />
         <option value="$PROJECT_DIR$/protected/views/project/add.php" />
         <option value="$PROJECT_DIR$/protected/models/Project.php" />
@@ -194,6 +192,7 @@
         <option value="$PROJECT_DIR$/protected/config/main.php" />
         <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" />
+        <option value="$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php" />
       </list>
     </option>
   </component>
@@ -974,18 +973,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="27" selection-start="120" selection-end="120" vertical-scroll-proportion="3.125" vertical-offset="120" max-vertical-offset="1335">
-          <folding>
-            <marker date="1405210528000" expanded="true" signature="1227:1260" placeholder="SELECT * FRO..domain..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="0.5865052" vertical-offset="6801" max-vertical-offset="7395">
+        <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="-14.125" vertical-offset="6801" max-vertical-offset="7395">
           <folding>
             <marker date="1405210661000" expanded="true" signature="6204:6236" placeholder="SELECT * FRO..user..." />
             <marker date="1405210661000" expanded="true" signature="6757:6798" placeholder="SELECT * FRO..mentee..." />
@@ -1007,6 +997,15 @@
             <marker date="1405210661000" expanded="true" signature="15476:15507" placeholder="SELECT * FRO..user..." />
             <marker date="1405210661000" expanded="true" signature="15746:15817" placeholder="SELECT * FRO..ticket..." />
             <marker date="1405210661000" expanded="true" signature="16625:16678" placeholder="select * fro..ticket..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="42" selection-start="1069" selection-end="1078" vertical-scroll-proportion="0.20304568" vertical-offset="435" max-vertical-offset="1335">
+          <folding>
+            <marker date="1405211151000" expanded="true" signature="1225:1258" placeholder="SELECT * FRO..domain..." />
           </folding>
         </state>
       </provider>
