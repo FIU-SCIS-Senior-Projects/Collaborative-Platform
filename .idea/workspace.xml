@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/home/adminHome.php" afterPath="$PROJECT_DIR$/protected/views/home/adminHome.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php" afterPath="$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php" />
     </list>
@@ -47,24 +48,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminHome.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="adminHome.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/home/adminHome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="180" column="44" selection-start="7996" selection-end="7996" vertical-scroll-proportion="-87.5" vertical-offset="600" max-vertical-offset="3810">
+            <state line="125" column="62" selection-start="5414" selection-end="5414" vertical-scroll-proportion="0.44117647" vertical-offset="1620" max-vertical-offset="3810">
               <folding>
-                <marker date="1405210649000" expanded="true" signature="3990:4023" placeholder="SELECT * FRO..domain..." />
-                <marker date="1405210649000" expanded="true" signature="6185:6218" placeholder="SELECT * FRO..domain..." />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <marker date="1405211380000" expanded="true" signature="3990:4023" placeholder="SELECT * FRO..domain..." />
+                <marker date="1405211380000" expanded="true" signature="6185:6218" placeholder="SELECT * FRO..domain..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="domainMentorViewMeetings.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="domainMentorViewMeetings.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="42" selection-start="1069" selection-end="1078" vertical-scroll-proportion="0.20304568" vertical-offset="435" max-vertical-offset="1335">
+            <state line="22" column="23" selection-start="373" selection-end="373" vertical-scroll-proportion="-4.375" vertical-offset="150" max-vertical-offset="1335">
               <folding>
-                <marker date="1405211151000" expanded="true" signature="1225:1258" placeholder="SELECT * FRO..domain..." />
+                <marker date="1405211325000" expanded="true" signature="1225:1258" placeholder="SELECT * FRO..domain..." />
               </folding>
             </state>
           </provider>
@@ -73,7 +76,7 @@
       <file leaf-file-name="ProjectMeetingController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="-14.125" vertical-offset="6801" max-vertical-offset="7395">
+            <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="-45.375" vertical-offset="6051" max-vertical-offset="7395">
               <folding>
                 <marker date="1405210661000" expanded="true" signature="6204:6236" placeholder="SELECT * FRO..user..." />
                 <marker date="1405210661000" expanded="true" signature="6757:6798" placeholder="SELECT * FRO..mentee..." />
@@ -190,9 +193,9 @@
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/pMentorViewMeetings.php" />
         <option value="$PROJECT_DIR$/protected/views/home/userHome.php" />
         <option value="$PROJECT_DIR$/protected/config/main.php" />
-        <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" />
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php" />
+        <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
       </list>
     </option>
   </component>
@@ -963,19 +966,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/home/adminHome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="44" selection-start="7996" selection-end="7996" vertical-scroll-proportion="-87.5" vertical-offset="600" max-vertical-offset="3810">
-          <folding>
-            <marker date="1405210649000" expanded="true" signature="3990:4023" placeholder="SELECT * FRO..domain..." />
-            <marker date="1405210649000" expanded="true" signature="6185:6218" placeholder="SELECT * FRO..domain..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="-14.125" vertical-offset="6801" max-vertical-offset="7395">
+        <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="-45.375" vertical-offset="6051" max-vertical-offset="7395">
           <folding>
             <marker date="1405210661000" expanded="true" signature="6204:6236" placeholder="SELECT * FRO..user..." />
             <marker date="1405210661000" expanded="true" signature="6757:6798" placeholder="SELECT * FRO..mentee..." />
@@ -1003,9 +996,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="42" selection-start="1069" selection-end="1078" vertical-scroll-proportion="0.20304568" vertical-offset="435" max-vertical-offset="1335">
+        <state line="22" column="23" selection-start="373" selection-end="373" vertical-scroll-proportion="-4.375" vertical-offset="150" max-vertical-offset="1335">
           <folding>
-            <marker date="1405211151000" expanded="true" signature="1225:1258" placeholder="SELECT * FRO..domain..." />
+            <marker date="1405211325000" expanded="true" signature="1225:1258" placeholder="SELECT * FRO..domain..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/home/adminHome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="62" selection-start="5414" selection-end="5414" vertical-scroll-proportion="0.44117647" vertical-offset="1620" max-vertical-offset="3810">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <marker date="1405211380000" expanded="true" signature="3990:4023" placeholder="SELECT * FRO..domain..." />
+            <marker date="1405211380000" expanded="true" signature="6185:6218" placeholder="SELECT * FRO..domain..." />
           </folding>
         </state>
       </provider>

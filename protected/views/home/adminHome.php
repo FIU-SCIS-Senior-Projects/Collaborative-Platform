@@ -169,7 +169,7 @@ if(User::isCurrentUserAdmin()==false)
             <table>
                 <tr>
                     <td>
-                        <h4>Manage</h4>
+                        <h4>Admin Manage</h4>
 
                     </td>
                 </tr>

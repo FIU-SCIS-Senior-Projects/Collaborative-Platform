@@ -57,7 +57,7 @@
                     <td width="42%"><?php echo $myTicket->subject; ?></td>
                     <td width="15%"><?php echo date("M d, Y", strtotime($myTicket->created_date)); ?></td>
                     <td width="15%"><?php echo $sub->name; ?></td>
-                    <td width="10%"><?php echo $myTicket->status; ?></td>
+                    <td width="15%"><?php echo $myTicket->status; ?></td>
                 </tr>
                 </tbody>
             <?php
