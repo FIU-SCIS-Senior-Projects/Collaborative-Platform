@@ -60,7 +60,7 @@ $this->breadcrumbs=array(
 		?>
 
 		<?php echo $form->textField($model,'username',array('placeholder'=>'User Name')); ?>
-        <?php echo $form->error($model,'username'); ?></br>
+        <?php echo $form->error($model,'username'); ?></br><br>
 
         <?php echo $form->passwordField($model,'password',array('placeholder'=>'Password')); ?>
         <?php echo $form->error($model,'password'); ?></br>
