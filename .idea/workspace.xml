@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" afterPath="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/config/main.php" afterPath="$PROJECT_DIR$/protected/config/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/bootstrap/css/styles.css" afterPath="$PROJECT_DIR$/themes/bootstrap/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="32" selection-start="2041" selection-end="2041" vertical-scroll-proportion="-17.541666" vertical-offset="659" max-vertical-offset="1725">
+            <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.7123519" vertical-offset="659" max-vertical-offset="1725">
               <folding />
             </state>
           </provider>
@@ -101,15 +97,6 @@
                 <marker date="1405210661000" expanded="true" signature="15746:15817" placeholder="SELECT * FRO..ticket..." />
                 <marker date="1405210661000" expanded="true" signature="16625:16678" placeholder="select * fro..ticket..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/themes/bootstrap/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2005" column="0" selection-start="37184" selection-end="37184" vertical-scroll-proportion="0.10299003" vertical-offset="30013" max-vertical-offset="31470">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -219,9 +206,9 @@
         <option value="$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php" />
         <option value="$PROJECT_DIR$/protected/views/home/adminHome.php" />
         <option value="$PROJECT_DIR$/protected/views/projectMeeting/domainMentorViewMeetings.php" />
-        <option value="$PROJECT_DIR$/protected/config/main.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/site/login.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/css/styles.css" />
+        <option value="$PROJECT_DIR$/protected/config/main.php" />
       </list>
     </option>
   </component>
@@ -974,41 +961,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="-45.375" vertical-offset="6051" max-vertical-offset="7395">
-          <folding>
-            <marker date="1405210661000" expanded="true" signature="6204:6236" placeholder="SELECT * FRO..user..." />
-            <marker date="1405210661000" expanded="true" signature="6757:6798" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405210661000" expanded="true" signature="7127:7158" placeholder="SELECT * FRO..user..." />
-            <marker date="1405210661000" expanded="true" signature="7600:7644" placeholder="select * fro..mentee..." />
-            <marker date="1405210661000" expanded="true" signature="7849:7883" placeholder="select * fro..user..." />
-            <marker date="1405210661000" expanded="true" signature="8896:8979" placeholder="SELECT * FRO..project_meeting..." />
-            <marker date="1405210661000" expanded="true" signature="9199:9231" placeholder="SELECT * FRO..user..." />
-            <marker date="1405210661000" expanded="true" signature="9894:9935" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405210661000" expanded="true" signature="10264:10295" placeholder="SELECT * FRO..user..." />
-            <marker date="1405210661000" expanded="true" signature="10534:10605" placeholder="SELECT * FRO..ticket..." />
-            <marker date="1405210661000" expanded="true" signature="11176:11220" placeholder="select * fro..mentee..." />
-            <marker date="1405210661000" expanded="true" signature="11425:11459" placeholder="select * fro..user..." />
-            <marker date="1405210661000" expanded="true" signature="12508:12583" placeholder="SELECT * FRO..project_meeting..." />
-            <marker date="1405210661000" expanded="true" signature="12804:12848" placeholder="SELECT * FRO..user..." />
-            <marker date="1405210661000" expanded="true" signature="13450:13491" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405210661000" expanded="true" signature="13820:13851" placeholder="SELECT * FRO..user..." />
-            <marker date="1405210661000" expanded="true" signature="15059:15113" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405210661000" expanded="true" signature="15476:15507" placeholder="SELECT * FRO..user..." />
-            <marker date="1405210661000" expanded="true" signature="15746:15817" placeholder="SELECT * FRO..ticket..." />
-            <marker date="1405210661000" expanded="true" signature="16625:16678" placeholder="select * fro..ticket..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="32" selection-start="2041" selection-end="2041" vertical-scroll-proportion="-17.541666" vertical-offset="659" max-vertical-offset="1725">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/home/userHome.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="67" column="41" selection-start="2282" selection-end="2282" vertical-scroll-proportion="-30.625" vertical-offset="270" max-vertical-offset="2955">
@@ -1047,6 +999,41 @@
     <entry file="file://$PROJECT_DIR$/themes/bootstrap/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2005" column="0" selection-start="37184" selection-end="37184" vertical-scroll-proportion="0.10299003" vertical-offset="30013" max-vertical-offset="31470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/ProjectMeetingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="476" column="55" selection-start="16630" selection-end="16630" vertical-scroll-proportion="-45.375" vertical-offset="6051" max-vertical-offset="7395">
+          <folding>
+            <marker date="1405210661000" expanded="true" signature="6204:6236" placeholder="SELECT * FRO..user..." />
+            <marker date="1405210661000" expanded="true" signature="6757:6798" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405210661000" expanded="true" signature="7127:7158" placeholder="SELECT * FRO..user..." />
+            <marker date="1405210661000" expanded="true" signature="7600:7644" placeholder="select * fro..mentee..." />
+            <marker date="1405210661000" expanded="true" signature="7849:7883" placeholder="select * fro..user..." />
+            <marker date="1405210661000" expanded="true" signature="8896:8979" placeholder="SELECT * FRO..project_meeting..." />
+            <marker date="1405210661000" expanded="true" signature="9199:9231" placeholder="SELECT * FRO..user..." />
+            <marker date="1405210661000" expanded="true" signature="9894:9935" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405210661000" expanded="true" signature="10264:10295" placeholder="SELECT * FRO..user..." />
+            <marker date="1405210661000" expanded="true" signature="10534:10605" placeholder="SELECT * FRO..ticket..." />
+            <marker date="1405210661000" expanded="true" signature="11176:11220" placeholder="select * fro..mentee..." />
+            <marker date="1405210661000" expanded="true" signature="11425:11459" placeholder="select * fro..user..." />
+            <marker date="1405210661000" expanded="true" signature="12508:12583" placeholder="SELECT * FRO..project_meeting..." />
+            <marker date="1405210661000" expanded="true" signature="12804:12848" placeholder="SELECT * FRO..user..." />
+            <marker date="1405210661000" expanded="true" signature="13450:13491" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405210661000" expanded="true" signature="13820:13851" placeholder="SELECT * FRO..user..." />
+            <marker date="1405210661000" expanded="true" signature="15059:15113" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405210661000" expanded="true" signature="15476:15507" placeholder="SELECT * FRO..user..." />
+            <marker date="1405210661000" expanded="true" signature="15746:15817" placeholder="SELECT * FRO..ticket..." />
+            <marker date="1405210661000" expanded="true" signature="16625:16678" placeholder="select * fro..ticket..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="31" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.7123519" vertical-offset="659" max-vertical-offset="1725">
           <folding />
         </state>
       </provider>
