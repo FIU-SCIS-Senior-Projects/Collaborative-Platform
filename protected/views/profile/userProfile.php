@@ -301,6 +301,8 @@
                     ?>
                     <tbody>
                     <tr>
+                        <td><?php echo $domain->name; ?></td>
+
                         <td>
                            <?php
 
