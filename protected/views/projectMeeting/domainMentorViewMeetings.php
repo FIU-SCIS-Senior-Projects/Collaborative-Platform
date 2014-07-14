@@ -49,6 +49,13 @@
                 $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $myTicket->domain_id));
                 $creator = User::model()->find("id=:id", array(":id" => $myTicket->creator_user_id));
                 $sub = Subdomain::model()->findByPk($myTicket->subdomain_id);
+                $s ='N/A';
+                if($sub == null)
+                {
+                    $s = $sub->name;
+
+                }
+
                 ?>
 
                 <tbody>
@@ -58,7 +65,7 @@
                     <td width="13%"><?php echo $domain->name; ?></td>
                     <td width="42%"><?php echo $myTicket->subject; ?></td>
                     <td width="15%"><?php echo date("M d, Y", strtotime($myTicket->created_date)); ?></td>
-                    <td width="15%"><?php echo $sub->name; ?></td>
+                    <td width="15%"><?php echo $s; ?></td>
                     <td width="15%"><?php echo $myTicket->status; ?></td>
                 </tr>
                 </tbody>
