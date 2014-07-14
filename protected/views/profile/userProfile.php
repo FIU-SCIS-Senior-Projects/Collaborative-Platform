@@ -297,7 +297,7 @@
                 <?php foreach($userdoms as $userdom)
                 {
                     $domain = Domain::model()->find("id=:id", array(":id"=>$userdom->domain_id));
-                    $userdom = UserDomain::model()->findAllBySql("SELECT  subdomain_id,rate,tier_team FROM user_domain WHERE domain_id=$domain->id AND user_id=$model->id");
+                    $userdom = UserDomain::model()->findAllBySql("SELECT  subdomain_id,rate,tier_team FROM user_domain WHERE domain_id=$domain->id AND user_id=$user->id");
                     ?>
                     <tbody>
                     <tr>
