@@ -125,7 +125,7 @@ class LoginController extends Controller
         $model = User::model()->find("email = '".$email."'");
         if (!empty($model))
         {
-            $pw = User::model()->findBySql("select password from user where email = :email",array(":email"=>$email));
+            $pw = User::model()->findBySql("select tpassword from user where email = :email",array(":email"=>$email));
             $identity=new UserIdentity($parts[0],$pw);
             $identity->authenticate();
             $duration= 3600*24*30; // 30 days
