@@ -251,7 +251,7 @@ class ProjectMeetingController extends Controller
         /** @var User $usermentee */
 
         /* End Return all the mentees for the project mentor */
-
+        if ($user == null) { Yii::app()->getController()->redirect('/coplat/index.php/site/login');  }
         $this->render('adminViewMeetings', array( /*'menteeName' => $menteeName,*/
             'user' => $user,
             'meetings' => $meetings,
