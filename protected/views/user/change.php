@@ -392,7 +392,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                                 $optionS.=
                                      '<a href="#test" id="mppover-'.$subdomain->id.'" class="mppover" >'.
 
-                                    '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub" checked/>  '. $subdomain->name ;
+                                    '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub" checked/>  '. $subdomain->name .'</a>';
 
                                 $selectR ='<select  id = "'.$domain->id.'dmrate" name="'.$domain->id.'-'.$subdomain->id.'dmrate" style="width: 50px"; >';
                                 for ($i=1;$i<=8;$i++)
@@ -446,7 +446,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                             $optionS.=
                                 '<a href="#test" id="mppover-'.$subdomain->id.'" class="mppover" >'.
 
-                                '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name;
+                                '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name.'</a>';
                             $selectR.=$optionR;
                             $optionS.= '   '.$selectR.'   ';
                             $selectT.=$optionT;
