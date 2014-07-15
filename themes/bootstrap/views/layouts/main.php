@@ -36,6 +36,12 @@
     else
         $userinfo = "(Guest)";
 
+$cp=true;
+if(!Yii::app()->user->isGuest || !User::isCurrentUserMentee())
+{
+    $cp = false;
+}
+
 ?>
 <?php 
 	$this->widget('bootstrap.widgets.TbNavbar',array(
@@ -107,7 +113,7 @@
                             array('label'=>'New Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
                             array('label'=>  $userinfo, 'url'=>'#', 'items'=>array(
 							array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Change Password','visible'=> !Yii::app()->user->isGuest || !User::isCurrentUserMentee(), 'url'=>'/coplat/index.php/user/ChangePassword'),
+							array('label'=>'Change Password','visible'=>  $cp, 'url'=>'/coplat/index.php/user/ChangePassword'),
 						
 			
 							'----',
