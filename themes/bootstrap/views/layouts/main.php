@@ -107,7 +107,7 @@
                             array('label'=>'New Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
                             array('label'=>  $userinfo, 'url'=>'#', 'items'=>array(
 							array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Change Password','visible'=> !User::isCurrentUserMentee(), 'url'=>'/coplat/index.php/user/ChangePassword'),
+							array('label'=>'Change Password','visible'=> !Yii::app()->user->isGuest || !User::isCurrentUserMentee(), 'url'=>'/coplat/index.php/user/ChangePassword'),
 						
 			
 							'----',
