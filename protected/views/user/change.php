@@ -6,184 +6,184 @@ $all = Domain::model()->findAll(); //all domains
 
 if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 {
-?>
-
-<head>
-
-    <script>
-
-        function load()
-        {
-        }
-        <?php
-                foreach($all as $dm)
-                {
-                     print('
-                     $(function(){
-                    $(\'#'.$dm->id.'\').click(function()
-                    {
-                        if(document.getElementById("'.$dm->id.'").checked == true)
-                        {
-
-                            var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
-                            for(var i = 0; i < nodes.length; i++)
-                            {
-                            nodes[i].disabled = false;
-                            }
-
-
-                        } else
-                        {
-
-                            var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
-                            for(var i = 0; i < nodes.length; i++)
-                            {
-                            nodes[i].disabled = true;
-                            nodes[i].checked = false;
-                            }
-
-
-
-                                        }
-
-                        //alert(\'clicked\');
-                    });
-                });
-
-
-
-                     ');
-
-                }
-
-        ?>
-
-
-
-
-
-    </script>
-
-    <link rel="stylesheet" type="text/css" href="/coplat/css/ui-lightness/jquery-ui-1.8.2.custom.css" />
-    <link rel="stylesheet" type="text/css" href="/coplat/css/Wizard.css" />
-
-
-
-</head>
-<body >
-<div id="demoWrapper"  class="my-box-container7" style="background-color: #ffffff">
-<h2>User: <?php echo $model->fname.' '.$model->lname ?></h2>
-<ul>
-</ul>
-<hr />
-<h5 id="status"></h5>
-<form id="demoForm"   name ="demoForm" method="post" action="/coplat/index.php/user/<?php echo $model->id; ?>" class="bbq">
-<div id="fieldWrapper">
-
-<?php
-
-if($model->isProMentor==1)
-{
-
     ?>
-    <div class="step" id="first">
-        <h3><span class="font_normal_07em_black">Role: Project Mentor</span></h3>.<br />
-        <div  class="my-box-container7" style="width: auto; float:left;">
-            <h3>Current Senior Projects</h3>
-            <br>
-            <h4>Select the projects for this project mentor:</h4>
-            <br>
 
+    <head>
+
+        <script>
+
+            function load()
+            {
+            }
             <?php
+                    foreach($all as $dm)
+                    {
+                         print('
+                         $(function(){
+                        $(\'#'.$dm->id.'\').click(function()
+                        {
+                            if(document.getElementById("'.$dm->id.'").checked == true)
+                            {
 
-            $myProjmentor= ProjectMentor::model()->findByPk($model->id);
-            $projects = Project::model()->findAllBySql("select * from project where  project_mentor_user_id in ($def->id,$model->id)");
-            $myProjects = Project::model()->findAllBySql("select * from project where project_mentor_user_id = $model->id");
+                                var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
+                                for(var i = 0; i < nodes.length; i++)
+                                {
+                                nodes[i].disabled = false;
+                                }
+
+
+                            } else
+                            {
+
+                                var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
+                                for(var i = 0; i < nodes.length; i++)
+                                {
+                                nodes[i].disabled = true;
+                                nodes[i].checked = false;
+                                }
+
+
+
+                                            }
+
+                            //alert(\'clicked\');
+                        });
+                    });
+
+
+
+                         ');
+
+                    }
 
             ?>
-            <div  name ="pjmprojects" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;background-color:white">
 
-                <table>
 
-                    <?php
-                    $i=0;
 
-                    foreach ($projects as $project)
-                    {
-                        $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$project->id ");
-                        $res ='No mentees for this project';
-                        $customer = User::model()->findBySql("select * from user where id = $project->propose_by_user_id");
-                        $CUSName='No customer';
-                        if($customer!=null)
+
+
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="/coplat/css/ui-lightness/jquery-ui-1.8.2.custom.css" />
+        <link rel="stylesheet" type="text/css" href="/coplat/css/Wizard.css" />
+
+
+
+    </head>
+    <body >
+    <div id="demoWrapper"  class="my-box-container7" style="background-color: #ffffff">
+    <h2>User: <?php echo $model->fname.' '.$model->lname ?></h2>
+    <ul>
+    </ul>
+    <hr />
+    <h5 id="status"></h5>
+    <form id="demoForm"   name ="demoForm" method="post" action="/coplat/index.php/user/<?php echo $model->id; ?>" class="bbq">
+    <div id="fieldWrapper">
+
+    <?php
+
+    if($model->isProMentor==1)
+    {
+
+        ?>
+        <div class="step" id="first">
+            <h3><span class="font_normal_07em_black">Role: Project Mentor</span></h3>.<br />
+            <div  class="my-box-container7" style="width: auto; float:left;">
+                <h3>Current Senior Projects</h3>
+                <br>
+                <h4>Select the projects for this project mentor:</h4>
+                <br>
+
+                <?php
+
+                $myProjmentor= ProjectMentor::model()->findByPk($model->id);
+                $projects = Project::model()->findAllBySql("select * from project where  project_mentor_user_id in ($def->id,$model->id)");
+                $myProjects = Project::model()->findAllBySql("select * from project where project_mentor_user_id = $model->id");
+
+                ?>
+                <div  name ="pjmprojects" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;background-color:white">
+
+                    <table>
+
+                        <?php
+                        $i=0;
+
+                        foreach ($projects as $project)
                         {
-                        $CUSName = $customer->fname.' '.$customer->lname;
-                        }
-
-                        if($mymenids!=null)
-                        {
-                            $res = '';
-
-                            foreach($mymenids as $m)
+                            $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$project->id ");
+                            $res ='No mentees for this project';
+                            $customer = User::model()->findBySql("select * from user where id = $project->propose_by_user_id");
+                            $CUSName='No customer';
+                            if($customer!=null)
                             {
-
-                                $pid = $m->user_id;
-
-                                $t = User::model()->findBySql("select * from user where id = $pid");
-                                $pjm = User::model()->findBySql("select * from user where id = $project->project_mentor_user_id");
-                                $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
-
-
-                               $PJMname = $pjm->fname.' '.$pjm->lname;
-
-
-                               $PERMname = $perm->fname.' '.$perm->lname;
-
-
-                                $res .=$t->fname.' '.$t->lname.'/'.$PJMname. '/'.$PERMname.'<br>';
-
-
+                                $CUSName = $customer->fname.' '.$customer->lname;
                             }
-                        }
-                        /*popover div*/
-                        echo '<div id="content-myPopOver-'. $project->id.'" style="display: none;">
+
+                            if($mymenids!=null)
+                            {
+                                $res = '';
+
+                                foreach($mymenids as $m)
+                                {
+
+                                    $pid = $m->user_id;
+
+                                    $t = User::model()->findBySql("select * from user where id = $pid");
+                                    $pjm = User::model()->findBySql("select * from user where id = $project->project_mentor_user_id");
+                                    $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
+
+
+                                    $PJMname = $pjm->fname.' '.$pjm->lname;
+
+
+                                    $PERMname = $perm->fname.' '.$perm->lname;
+
+
+                                    $res .=$t->fname.' '.$t->lname.'/'.$PJMname. '/'.$PERMname.'<br>';
+
+
+                                }
+                            }
+                            /*popover div*/
+                            echo '<div id="content-myPopOver-'. $project->id.'" style="display: none;">
                            <p>
                            <h4>'.$project->title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
-                            '<h5>Customer Name:'.$CUSName.'</h5>'.
-                            $project->description.
-                            '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
-                            $res.'
+                                '<h5>Customer Name:'.$CUSName.'</h5>'.
+                                $project->description.
+                                '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
+                                $res.'
                            </p></div>';
 
 
 
 
 
-                        $color = '';
+                            $color = '';
 
-                        if ($i++ % 2)
-                        {
-                            $color = 'style="background: #e8edff;padding: 15px;"';
-                        } else
-                        {
-                            $color = 'style="padding: 15px;"';
-                        }
-                        echo'<tr><td   '.$color.'  >';
-
-
-                        echo '<a href="#test" id="myPopOver-'.$project->id.'" class="mypopover" >';
-
-                        $flag=0;
-                        foreach($myProjects as $myProject)
-                        {
-                            if($myProject->id == $project->id)
+                            if ($i++ % 2)
                             {
-                                echo '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$project->id .'pjm" checked/>  '. $project->title .'<br>';
-                                $flag=1;
-                                break;
+                                $color = 'style="background: #e8edff;padding: 15px;"';
+                            } else
+                            {
+                                $color = 'style="padding: 15px;"';
                             }
+                            echo'<tr><td   '.$color.'  >';
 
-                        }
+
+                            echo '<a href="#test" id="myPopOver-'.$project->id.'" class="mypopover" >';
+
+                            $flag=0;
+                            foreach($myProjects as $myProject)
+                            {
+                                if($myProject->id == $project->id)
+                                {
+                                    echo '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$project->id .'pjm" checked/>  '. $project->title .'<br>';
+                                    $flag=1;
+                                    break;
+                                }
+
+                            }
                             if($flag==0)
                             {
                                 echo '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$project->id .'pjm"/>  '. $project->title .'<br>';
@@ -191,70 +191,70 @@ if($model->isProMentor==1)
                             }
 
 
-                        echo '</td></a></tr>';
+                            echo '</td></a></tr>';
 
-                    }
-
-
-                    ?>
+                        }
 
 
-                </table>
+                        ?>
+
+
+                    </table>
+
+                </div>
 
             </div>
+            <script>
+                $('.mypopover').popover({
+                    placement: 'right',
+                    trigger: 'hover',
+                    html: true,
+                    content: function () {
+                        return $("#content-" + $(this).attr('id')).html();
+                    }
+                });
+            </script>
 
-        </div>
-        <script>
-            $('.mypopover').popover({
-                placement: 'right',
-                trigger: 'hover',
-                html: true,
-                content: function () {
-                    return $("#content-" + $(this).attr('id')).html();
-                }
-            });
-        </script>
+            <div class="my-box-container7" style="width: auto; float:right">
 
-        <div class="my-box-container7" style="width: auto; float:right">
-
-            <h3>Availability</h3>
-            <br>
-            <h4>Select how many hours are required:</h4>
-            <br>
-
-            <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;padding:0 3cm;background: #e8edff">
+                <h3>Availability</h3>
                 <br>
-                <h5 style="text-align:center" >Max hours</h5>
-                <select  name="pjmhours" style="width: 100px;">
-                    <?php for ($i=0;$i<=24;$i++)
-                    {
+                <h4>Select how many hours are required:</h4>
+                <br>
 
-                        if($myProjmentor!=null)
+                <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;padding:0 3cm;background: #e8edff">
+                    <br>
+                    <h5 style="text-align:center" >Max hours</h5>
+                    <select  name="pjmhours" style="width: 100px;">
+                        <?php for ($i=0;$i<=24;$i++)
                         {
-                            if($myProjmentor->max_hours == $i)
+
+                            if($myProjmentor!=null)
                             {
-                                echo '<option name="'.$i.'" selected>'.$i.'</option>';
+                                if($myProjmentor->max_hours == $i)
+                                {
+                                    echo '<option name="'.$i.'" selected>'.$i.'</option>';
+                                } else
+                                {
+                                    echo '<option name="'.$i.'">'.$i.'</option>';
+
+                                }
                             } else
                             {
                                 echo '<option name="'.$i.'">'.$i.'</option>';
-
                             }
-                        } else
-                        {
-                                echo '<option name="'.$i.'">'.$i.'</option>';
                         }
-                    }
 
-                    ?>
-                </select>
+                        ?>
+                    </select>
+
+
+                </div>
+
 
 
             </div>
-
-
-
-        </div>
-        <?php /*
+            <?php /*
                 <span class="font_normal_07em_black">First step - Name</span>
                 <br />
                 <label for="firstname">First name</label>
@@ -265,233 +265,246 @@ if($model->isProMentor==1)
                 <input class="input_field_12em" name="surname" id="surname" />
                 <br />
                 */
+            ?>
+
+        </div>
+    <?php }?>
+
+
+    <?php
+    if($model->isDomMentor==1)
+    {
         ?>
 
-    </div>
-<?php }?>
 
 
-<?php
-if($model->isDomMentor==1)
-{
-    ?>
-
-
-
-    <div id="finland" class="step">
+        <div id="finland" class="step">
 
         <?php //stop here?>
         <h3><span class="font_normal_07em_black">Role: Domain Mentor</span></h3><br />
         <div  class="my-box-container7" style="width: auto; float:left;">
-            <h3>Current Domains</h3>
-            <br>
-            <h4>Select domains:</h4>
-            <br>
+        <h3>Current Domains</h3>
+        <br>
+        <h4>Select domains:</h4>
+        <br>
 
+        <?php
+        $myDomainMentor = DomainMentor::model()->findByPk($model->id);
+        $myUserDomains = UserDomain::model()->findAllBySql("select distinct domain_id from user_domain where user_id = $model->id");
+        ?>
+
+        <div name ="domain" class="container" style="border:2px solid #ccc; width:auto; height: 400px;margin: auto;overflow-y: scroll">
+
+            <body onload="load()">
+
+            <table  style="width:auto;">
+                <tr>
+                    <th>Domain</th>
+                    <th>Subdomain (Rating/Tier)</th>
+                </tr>
                 <?php
-                $myDomainMentor = DomainMentor::model()->findByPk($model->id);
-                $myUserDomains = UserDomain::model()->findAllBySql("select distinct domain_id from user_domain where user_id = $model->id");
-                ?>
-
-            <div name ="domain" class="container" style="border:2px solid #ccc; width:auto; height: 400px;margin: auto;overflow-y: scroll">
-
-                <body onload="load()">
-
-                <table  style="width:auto;">
-                    <tr>
-                        <th>Domain</th>
-                        <th>Subdomain (Rating/Tier)</th>
-                    </tr>
-                    <?php
 
 
 
-                    $optionR='';
-                    $optionT='';
-                    /*rate numbers*/
-                    for ($i=1;$i<=8;$i++)
+                $optionR='';
+                $optionT='';
+                /*rate numbers*/
+                for ($i=1;$i<=10;$i++)
+                {
+                    $optionR.= '<option value="'.$i.'">'.$i.'</option>';
+                }
+                $optionR .='</select>';
+
+                /*tier numbers*/
+                for ($i=1;$i<=2;$i++)
+                {
+                    $optionT .='<option value="'.$i.'">'.$i.'</option>';
+                }
+                $optionT .= '</select>';
+
+
+                $i=0;
+
+                foreach ($all as $domain)
+                {
+
+                    /*row color */
+
+                    $color = '';
+                    $sdcolor ='';
+                    if ($i++ % 2)
                     {
-                        $optionR.= '<option value="'.$i.'">'.$i.'</option>';
+                        $color = 'style="background: #e8edff;padding: 15px;"';
+                        $sdcolor = 'background: #e8edff;padding: 10px';
+
+                    } else
+                    {
+                        $color = 'style="padding: 15px;"';
+                        $sdcolor = 'padding: 10px';
                     }
-                    $optionR .='</select>';
 
-                    /*tier numbers*/
-                    for ($i=1;$i<=2;$i++)
+
+
+
+                    $selectS ='<div border:1px id = "'.$domain->id.'dmsub" name="'.$domain->id.'dmsub" style="width: 150px;height:50px;overflow-y: scroll;'.$sdcolor.'">';
+
+                    $curPSubdomains = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $domain->id");
+                    $mySubdomains = UserDomain::model()->findAllBySql("select  * from user_domain where user_id = $model->id");
+                    $optionS='';
+
+
+
+                    foreach($curPSubdomains as $subdomain)
                     {
-                        $optionT .='<option value="'.$i.'">'.$i.'</option>';
-                    }
-                    $optionT .= '</select>';
+                        $selectR ='<select  id = "'.$domain->id.'dmrate" name="'.$domain->id.'-'.$subdomain->id.'dmrate" style="width: 50px";>';
 
 
-                    $i=0;
+                        $selectT = '<select id = "'.$domain->id.'dmtier" name="'.$domain->id.'-'.$subdomain->id.'dmtier" style="width: 50px;" >';
+                        $allsubs = UserDomain::model()->findAllBySql("select * from user_domain where subdomain_id = $subdomain->id");
 
-                    foreach ($all as $domain)
-                    {
-
-                        /*row color */
-
-                        $color = '';
-                        $sdcolor ='';
-                        if ($i++ % 2)
+                        $allsubMentors = 'No mentor for this sub-domain';
+                        if($allsubs!=null)
                         {
-                            $color = 'style="background: #e8edff;padding: 15px;"';
-                            $sdcolor = 'background: #e8edff;padding: 10px';
-
-                        } else
-                        {
-                            $color = 'style="padding: 15px;"';
-                            $sdcolor = 'padding: 10px';
-                        }
-
-
-
-
-                        $selectS ='<div border:1px id = "'.$domain->id.'dmsub" name="'.$domain->id.'dmsub" style="width: 150px;height:50px;overflow-y: scroll;'.$sdcolor.'">';
-
-                        $curPSubdomains = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $domain->id");
-                        $mySubdomains = UserDomain::model()->findAllBySql("select  * from user_domain where user_id = $model->id");
-                        $optionS='';
-
-
-
-                        foreach($curPSubdomains as $subdomain)
-                        {
-                            $selectR ='<select  id = "'.$domain->id.'dmrate" name="'.$domain->id.'-'.$subdomain->id.'dmrate" style="width: 50px";>';
-
-
-                            $selectT = '<select id = "'.$domain->id.'dmtier" name="'.$domain->id.'-'.$subdomain->id.'dmtier" style="width: 50px;" >';
-
-                            $flag =0;
-                          foreach($mySubdomains as $mySubdomain)
-                          {
-                              if($mySubdomain->subdomain_id==$subdomain->id)
-                              {
-                                  $optionRSelected='';
-                                  $optionTSelected='';
-                                  $flag=1;
-                                  $optionS.='<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub" checked/>  '. $subdomain->name ;
-
-                                  $selectR ='<select  id = "'.$domain->id.'dmrate" name="'.$domain->id.'-'.$subdomain->id.'dmrate" style="width: 50px"; >';
-                                  for ($i=1;$i<=8;$i++)
-                                  {
-
-                                          if($mySubdomain->rate == $i)
-                                          {
-                                              $optionRSelected.= '<option name="'.$i.'" selected>'.$i.'</option>';
-                                          } else
-                                          {
-                                              $optionRSelected.= '<option name="'.$i.'">'.$i.'</option>';
-
-                                          }
-
-                                  }
-                                  $optionRSelected .='</select>';
-
-
-                                  for ($i=1;$i<=2;$i++)
-                                  {
-
-                                      if($mySubdomain->tier_team == $i)
-                                      {
-                                          $optionTSelected.= '<option name="'.$i.'" selected>'.$i.'</option>';
-                                      } else
-                                      {
-                                          $optionTSelected.= '<option name="'.$i.'">'.$i.'</option>';
-
-                                      }
-
-                                  }
-                                  $optionTSelected .='</select>';
-
-
-                                  $selectR.=$optionRSelected;
-                                  $optionS.= '   '.$selectR.'   ';
-
-                                  $selectT = '<select id = "'.$domain->id.'dmtier" name="'.$domain->id.'-'.$subdomain->id.'dmtier" style="width: 50px;" >';
-                                  $selectT.=$optionTSelected;
-                                  $optionS.='  '.$selectT.'<br>';
-                                  BREAK;
-
-                              }
-
-
-
-                          }
-                            if($flag==0)
+                            $allsubMentors='';
+                            foreach($allsubs as $sub)
                             {
+                                $us = User::model()->findByPk($sub->user_id);
+                                $allsubMentors.= $us->fname.' '.$us->lname.'<br>' ;
+                            }
+                        }
+                        $popdiv= '<div id="test-mppover-'. $subdomain->id.'" style="display: none;">
+                                <h3>Current Sub-Domain Mentors</h3>
+                                <p>
+                                '.$allsubMentors.'
+                                </p>
+                                </div>';
 
-                               $optionS.='<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name;
-                                $selectR.=$optionR;
+                        $optionS.=$popdiv;
+
+                        $flag =0;
+                        foreach($mySubdomains as $mySubdomain)
+                        {
+                            if($mySubdomain->subdomain_id==$subdomain->id)
+                            {
+                                $optionRSelected='';
+                                $optionTSelected='';
+                                $flag=1;
+                                $optionS.=
+                                     '<a href="#test" id="mppover-'.$subdomain->id.'" class="mppover" >'.
+
+                                    '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub" checked/>  '. $subdomain->name ;
+
+                                $selectR ='<select  id = "'.$domain->id.'dmrate" name="'.$domain->id.'-'.$subdomain->id.'dmrate" style="width: 50px"; >';
+                                for ($i=1;$i<=8;$i++)
+                                {
+
+                                    if($mySubdomain->rate == $i)
+                                    {
+                                        $optionRSelected.= '<option name="'.$i.'" selected>'.$i.'</option>';
+                                    } else
+                                    {
+                                        $optionRSelected.= '<option name="'.$i.'">'.$i.'</option>';
+
+                                    }
+
+                                }
+                                $optionRSelected .='</select>';
+
+
+                                for ($i=1;$i<=2;$i++)
+                                {
+
+                                    if($mySubdomain->tier_team == $i)
+                                    {
+                                        $optionTSelected.= '<option name="'.$i.'" selected>'.$i.'</option>';
+                                    } else
+                                    {
+                                        $optionTSelected.= '<option name="'.$i.'">'.$i.'</option>';
+
+                                    }
+
+                                }
+                                $optionTSelected .='</select>';
+
+
+                                $selectR.=$optionRSelected;
                                 $optionS.= '   '.$selectR.'   ';
-                                $selectT.=$optionT;
+
+                                $selectT = '<select id = "'.$domain->id.'dmtier" name="'.$domain->id.'-'.$subdomain->id.'dmtier" style="width: 50px;" >';
+                                $selectT.=$optionTSelected;
                                 $optionS.='  '.$selectT.'<br>';
+                                BREAK;
+
                             }
 
 
+
+                        }
+                        if($flag==0)
+                        {
+
+                            $optionS.=
+                                '<a href="#test" id="mppover-'.$subdomain->id.'" class="mppover" >'.
+
+                                '<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name;
+                            $selectR.=$optionR;
+                            $optionS.= '   '.$selectR.'   ';
+                            $selectT.=$optionT;
+                            $optionS.='  '.$selectT.'<br>';
                         }
 
-                        $optionS.='</div>';
+
+                    }
+
+                    $optionS.='</div>';
 
 
-                        echo'<tr>';
-                        $flag2=0;
+                    echo'<tr>';
+                    $flag2=0;
                     foreach($myUserDomains as $myUserDomain)
                     {
                         if($myUserDomain->domain_id == $domain->id)
                         {
                             echo '<td '.$color.'>'.'<input type="checkbox" id= "'.$domain->id .'"  name ="'.$domain->id .'" checked/>  '. $domain->name .'</td>';
-                        $flag2=1;
+                            $flag2=1;
                             break;
                         }
 
                     }
-                            if($flag2==0)
-                            {
-                            echo '<td '.$color.'>'.'<input type="checkbox" id= "'.$domain->id .'"  name ="'.$domain->id .'"/>  '. $domain->name .'</td>';
-                            }
-
-                        //echo '<td '.$color.'>'.$selectR.$optionR.'</td>';
-                        //echo '<td '.$color.'>'.$selectT.$optionT.'</td>';
-                        echo '<td '.$color.'style="white-space:nowrap;>'.$selectS.$optionS.'<div></td>';
-                        echo '</tr>';
-                    }
-
-                    ?>
-
-
-                </table>
-                </body>
-
-
-
-            </div>
-            <?php /*
-            <select  name="subdomain" multiple="multiple" size="5" style="width: auto">
-
-
-
-                <?php
-                foreach ($domains as $domain)
-                {
-
-                    echo '<optgroup type ="checkbox "label="'.$domain->name.'">';
-
-                    $sdnames = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $domain->id");
-                    foreach($sdnames as $sub)
+                    if($flag2==0)
                     {
-
-                        echo '<option name=" '.$sub->id .'">'.$sub->name.'</option>';
+                        echo '<td '.$color.'>'.'<input type="checkbox" id= "'.$domain->id .'"  name ="'.$domain->id .'"/>  '. $domain->name .'</td>';
                     }
-                    echo '</optgroup>';
 
+
+                    echo '<td '.$color.'style="white-space:nowrap;>'.$selectS.$optionS.'<div></td>';
+                    echo '</tr>';
                 }
-
 
                 ?>
 
-            </select> */?>
+
+            </table>
+            </body>
+
+
 
         </div>
+
+
+        </div>
+        <script>
+
+            $('.mppover').popover({
+                placement: 'right',
+                trigger: 'hover',
+                html: true,
+                content: function () {
+                    return $("#test-" + $(this).attr('id')).html();
+                }
+            });
+        </script>
+
 
         <div  class="my-box-container7" style="width: 200px;height: auto; float:right">
             <h3>Max Tickets</h3>
@@ -529,48 +542,49 @@ if($model->isDomMentor==1)
 
 
 
-    </div>
-
-<?php }?>
-
-<?php
-if($model->isPerMentor==1)
-{
-
-    ?>
-    <div id="confirmation" class="step">
-        <h3><span class="font_normal_07em_black">Role: Personal Mentor</span></h3><br />
-        <div  class="my-box-container7" style="width: auto; float:left;">
-            <h3>Current Senior Project Mentees</h3>
-            <br>
-            <h4>Select mentees for this personal mentor:</h4>
-            <br>
-            <?php
-            $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id in ($def->id, $model->id) or  personal_mentor_user_id is null");
-            $myPerMentor = PersonalMentor::model()->findByPk($model->id);
-            $myMentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id = $model->id");
-            ?>
-            <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
+        </div>
 
 
-                <table style="width: 330px">
+    <?php }?>
 
-                    <?php
-                    $i = 0;
-                    foreach ($mentees as $mentee)
-                    {
+    <?php
+    if($model->isPerMentor==1)
+    {
 
-                        //if($aMentee->personal_mentor_user_id!=null)
+        ?>
+        <div id="confirmation" class="step">
+            <h3><span class="font_normal_07em_black">Role: Personal Mentor</span></h3><br />
+            <div  class="my-box-container7" style="width: auto; float:left;">
+                <h3>Current Senior Project Mentees</h3>
+                <br>
+                <h4>Select mentees for this personal mentor:</h4>
+                <br>
+                <?php
+                $mentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id in ($def->id, $model->id) or  personal_mentor_user_id is null");
+                $myPerMentor = PersonalMentor::model()->findByPk($model->id);
+                $myMentees = Mentee::model()->findAllBySql("select * from mentee where personal_mentor_user_id = $model->id");
+                ?>
+                <div name ="pmmentees" class="container" style="border:2px solid #ccc; width:auto; height: 300px; overflow-y: scroll;">
+
+
+                    <table style="width: 330px">
+
+                        <?php
+                        $i = 0;
+                        foreach ($mentees as $mentee)
+                        {
+
+                            //if($aMentee->personal_mentor_user_id!=null)
 
 
 
-                        $projectdesc = 'No Project selected';
+                            $projectdesc = 'No Project selected';
                             $projMentor='';
                             $title = 'No project chosen';
                             $pmName='No mentor assigned';
-                        $res ='No mentees for this project';
+                            $res ='No mentees for this project';
 
-                        if( $mentee->project_id!=null)
+                            if( $mentee->project_id!=null)
                             {
 
                                 $menteeProj = Project::model()->findBySql("select * from project where id = $mentee->project_id");
@@ -582,7 +596,7 @@ if($model->isPerMentor==1)
                                 $CUSName = 'No customer';
                                 if($mycustomer!=null)
                                 {
-                                $CUSName = $mycustomer->fname.' '.$mycustomer->lname;
+                                    $CUSName = $mycustomer->fname.' '.$mycustomer->lname;
                                 }
                                 $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
@@ -638,150 +652,139 @@ if($model->isPerMentor==1)
                             }
                             echo'<tr><td   '.$color.'  >';
                             echo '<a href="#test" id="mpop-'.$mentee->user_id.'" class="mpop" >';
-                        $menteeUser = User::model()->findByPk($mentee->user_id);
-                        $flag =0;
+                            $menteeUser = User::model()->findByPk($mentee->user_id);
+                            $flag =0;
                             foreach($myMentees as $myMentee)
                             {
                                 if($myMentee->user_id == $mentee->user_id)
                                 {
                                     $flag=1;
-                                echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->user_id.'pm" checked/>  '. ucfirst($menteeUser->fname) ." " . ucfirst($menteeUser->lname).'<br /><br>';
-                                break;
+                                    echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->user_id.'pm" checked/>  '. ucfirst($menteeUser->fname) ." " . ucfirst($menteeUser->lname).'<br /><br>';
+                                    break;
                                 }
                             }
-                        if($flag==0)
-                        {
+                            if($flag==0)
+                            {
 
-                            echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->user_id.'pm"/>  '. ucfirst($menteeUser->fname) ." " . ucfirst($menteeUser->lname).'<br /><br>';
+                                echo '<input style="vertical-align: middle; margin-top: -1px;" type="checkbox" name = "'.$mentee->user_id.'pm"/>  '. ucfirst($menteeUser->fname) ." " . ucfirst($menteeUser->lname).'<br /><br>';
+                            }
+                            echo '</td></a></tr>';
                         }
-                        echo '</td></a></tr>';
-                        }
 
 
-                    ?>
+                        ?>
 
-                </table>
+                    </table>
+                </div>
+
             </div>
-
-        </div>
-        <script>
-            $('.mpop').popover({
-                placement: 'right',
-                trigger: 'hover',
-                html: true,
-                content: function () {
-                    return $("#inside-" + $(this).attr('id')).html();
-                }
-            });
-        </script>
-
-        <div class="my-box-container7" style="width: auto; float:right">
-
-            <h3>Availability</h3>
-            <br>
-            <h4>Select how many hours are required:</h4>
-            <br>
-            <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;padding:0 3cm;background: #e8edff">
-
-                <br>
-                <h5 style="text-align:center">Max hours</h5>
-                <select name="pmhours" style="width: 100px">
-                    <?php for ($i=0;$i<=24;$i++)
-                    {
-
-                        if($myPerMentor!=null)
-                        {
-                            if($myPerMentor->max_hours == $i)
-                            {
-                                echo '<option value="'.$i.'" selected>'.$i.'</option>';
-                            }
-                            else
-                            {
-                                echo '<option name="'.$i.'">'.$i.'</option>';
-
-                            }
-                        } else
-                        {
-
-                        echo '<option value="'.$i.'">'.$i.'</option>';
-                        }
+            <script>
+                $('.mpop').popover({
+                    placement: 'right',
+                    trigger: 'hover',
+                    html: true,
+                    content: function () {
+                        return $("#inside-" + $(this).attr('id')).html();
                     }
+                });
+            </script>
 
-                    ?>
-                </select>
+            <div class="my-box-container7" style="width: auto; float:right">
+
+                <h3>Availability</h3>
+                <br>
+                <h4>Select how many hours are required:</h4>
+                <br>
+                <div class="container" style="border:2px solid #ccc; width:auto; height: 300px;padding:0 3cm;background: #e8edff">
+
+                    <br>
+                    <h5 style="text-align:center">Max hours</h5>
+                    <select name="pmhours" style="width: 100px">
+                        <?php for ($i=0;$i<=24;$i++)
+                        {
+
+                            if($myPerMentor!=null)
+                            {
+                                if($myPerMentor->max_hours == $i)
+                                {
+                                    echo '<option value="'.$i.'" selected>'.$i.'</option>';
+                                }
+                                else
+                                {
+                                    echo '<option name="'.$i.'">'.$i.'</option>';
+
+                                }
+                            } else
+                            {
+
+                                echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
+                        }
+
+                        ?>
+                    </select>
+
+
+
+                </div>
 
 
 
             </div>
 
 
-
         </div>
-        <?php
-        /*
-        ?>
-        <span class="font_normal_07em_black">Last step - Username</span><br />
-        <label for="username">User name</label><br />
-        <input class="input_field_12em" name="username" id="username" /><br />
-        <label for="password">Password</label><br />
-        <input class="input_field_12em" name="password" id="password" type="password" /><br />
-        <label for="retypePassword">Retype password</label><br />
-        <input class="input_field_12em" name="retypePassword" id="retypePassword" type="password" /><br />
-        */
-        ?>
+    <?php }?>
+
+
 
     </div>
-<?php }?>
+
+    <div id="demoNavigation">
+        <input class="btn btn-primary" id="back" value="Back" type="reset" />
+        <input class="btn btn-primary" name="updateRoles" id="next" value="Next" type="submit" />
+    </div>
 
 
+    </form>
+    <hr />
 
-</div>
+    </div>
 
-<div id="demoNavigation">
-    <input class="btn btn-primary" id="back" value="Back" type="reset" />
-    <input class="btn btn-primary" name="updateRoles" id="next" value="Next" type="submit" />
-</div>
-
-
-</form>
-<hr />
-
-</div>
-
-<script type="text/javascript" src="/coplat/js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="/coplat/js/jquery.form.js"></script>
-<script type="text/javascript" src="/coplat/js/jquery.validate.js"></script>
-<script type="text/javascript" src="/coplat/js/bbq.js"></script>
-<script type="text/javascript" src="/coplat/js/jquery-ui-1.8.5.custom.min.js"></script>
-<script type="text/javascript" src="/coplat/js/jquery.form.wizard.js"></script>
+    <script type="text/javascript" src="/coplat/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/coplat/js/jquery.form.js"></script>
+    <script type="text/javascript" src="/coplat/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="/coplat/js/bbq.js"></script>
+    <script type="text/javascript" src="/coplat/js/jquery-ui-1.8.5.custom.min.js"></script>
+    <script type="text/javascript" src="/coplat/js/jquery.form.wizard.js"></script>
 
 
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
 
 
-    $(function(){
-        $("#demoForm").formwizard({
-                validationEnabled: true,
-                focusFirstInput : true,
-                disableUIStyles : true,
-                inAnimation : {height: 'show'},
-                outAnimation: {height: 'hide'},
-                inDuration : 700,
-                outDuration: 700,
-                easing: 'easeInOutQuint'
+        $(function(){
+            $("#demoForm").formwizard({
+                    validationEnabled: true,
+                    focusFirstInput : true,
+                    disableUIStyles : true,
+                    inAnimation : {height: 'show'},
+                    outAnimation: {height: 'hide'},
+                    inDuration : 700,
+                    outDuration: 700,
+                    easing: 'easeInOutQuint'
 
 
 
-            }
-        );
-    });
+                }
+            );
+        });
 
 
-</script>
-</body>
+    </script>
+    </body>
 <?php } else { ?>
     <?php
     $projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id IS NULL");
@@ -1233,13 +1236,3 @@ if($model->isPerMentor==1)
 
 
 <?php }?>
-
-
-
-
-
-
-
-
-
-

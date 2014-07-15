@@ -227,18 +227,7 @@ if($model->isProMentor==1)
 
 
         </div>
-        <?php /*
-                <span class="font_normal_07em_black">First step - Name</span>
-                <br />
-                <label for="firstname">First name</label>
-                <br />
-                <input class="input_field_12em" name="firstname" id="firstname" />
-                <br />
-                <label for="surname">Surname</label><br />
-                <input class="input_field_12em" name="surname" id="surname" />
-                <br />
-                */
-        ?>
+
 
     </div>
 <?php }?>
@@ -279,7 +268,7 @@ if($model->isDomMentor==1)
                     $optionR='';
                     $optionT='';
                     /*rate numbers*/
-                    for ($i=1;$i<=8;$i++)
+                    for ($i=1;$i<=10;$i++)
                     {
                         $optionR.= '<option value="'.$i.'">'.$i.'</option>';
                     }
@@ -320,9 +309,30 @@ if($model->isDomMentor==1)
                         $curPSubdomains = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $domain->id");
                         /*subdomains*/
                         $optionS='';
+
                         foreach($curPSubdomains as $subdomain)
                         {
-                            $optionS.='<input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name .'';
+                            $allsubs = UserDomain::model()->findAllBySql("select * from user_domain where subdomain_id = $subdomain->id");
+
+                            $allsubMentors = 'No mentor for this sub-domain';
+                            if($allsubs!=null)
+                            {
+                                $allsubMentors='';
+                                foreach($allsubs as $sub)
+                                {
+                                    $us = User::model()->findByPk($sub->user_id);
+                                    $allsubMentors.= $us->fname.' '.$us->lname.'<br>' ;
+                                }
+                            }
+                            echo '<div id="subs-mpppover-'. $subdomain->id.'" style="display: none;">
+                                <h3>Current Sub-Domain Mentors</h3>
+                                <p>
+                                '.$allsubMentors.'
+                                </p>
+                                </div>';
+
+                            //$optionS.='<a href="#test" id="mpppover-'.$subdomain->id.'" class="mpppover" >'.
+                                $optionS.='<a href="#test" id="mpppover-'.$subdomain->id.'" class="mpppover" ><input style="vertical-align: middle; margin-top: -1px;"  type="checkbox" name ="'.$subdomain->id .'ddmsub"/>  '. $subdomain->name .'</a>';
                             $selectR ='<select  id = "'.$subdomain->id.'dmrate" name="'.$domain->id.'-'.$subdomain->id.'dmrate" style="width: 50px";>';
                             $selectR.=$optionR;
                             $optionS.= '  '.$selectR;
@@ -337,8 +347,7 @@ if($model->isDomMentor==1)
 
                         echo'<tr>';
                         echo '<td '.$color.'>'.'<input type="checkbox" id= "'.$domain->id .'"  name ="'.$domain->id .'"/>  '. $domain->name .'</td>';
-                        //echo '<td '.$color.'>'.$selectR.$optionR.'</td>';
-                        //echo '<td '.$color.'>'.$selectT.$optionT.'</td>';
+
                         echo '<td '.$color.'style="white-space:nowrap;>'.$selectS.$optionS.'</td>';
                         echo '</tr>';
                     }
@@ -351,33 +360,20 @@ if($model->isDomMentor==1)
 
 
             </div>
-            <?php /*
-            <select  name="subdomain" multiple="multiple" size="5" style="width: auto">
 
-
-
-                <?php
-                foreach ($domains as $domain)
-                {
-
-                    echo '<optgroup type ="checkbox "label="'.$domain->name.'">';
-
-                    $sdnames = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $domain->id");
-                    foreach($sdnames as $sub)
-                    {
-
-                        echo '<option name=" '.$sub->id .'">'.$sub->name.'</option>';
-                    }
-                    echo '</optgroup>';
-
-                }
-
-
-                ?>
-
-            </select> */?>
 
         </div>
+        <script>
+
+            $('.mpppover').popover({
+                placement: 'right',
+                trigger: 'hover',
+                html: true,
+                content: function () {
+                    return $("#subs-" + $(this).attr('id')).html();
+                }
+            });
+        </script>
 
         <div  class="my-box-container7" style="width: 200px;height: auto; float:right">
             <h3>Max Tickets</h3>
@@ -438,6 +434,8 @@ if($model->isPerMentor==1)
                         $pmName='No mentor assigned';
                         $res ='No mentees for this project';
                         $menteeUser = User::model()->findByPk($mentee->user_id);
+                        $CUSName = 'No customer';
+
                         if( $mentee->project_id!=null)
                         {
 
@@ -447,7 +445,6 @@ if($model->isPerMentor==1)
                             $projectdesc = $menteeProj->description;
                             $mycustomer = User::model()->findBySql("select * from user where id = $menteeProj->propose_by_user_id");
 
-                            $CUSName = 'No customer';
                             if($mycustomer!=null)
                             {
                                 $CUSName = $mycustomer->fname.' '.$mycustomer->lname;
@@ -465,7 +462,8 @@ if($model->isPerMentor==1)
                                     $pid = $m->user_id;
 
                                     $t = User::model()->findBySql("select * from user where id = $pid");
-                                    $pjm = User::model()->findBySql("select * from user where id = $project->project_mentor_user_id");
+                                    $projmid = Project::model()->findBySql("select * from project where id = $m->project_id");
+                                    $pjm = User::model()->findBySql("select * from user where id = $projmid->project_mentor_user_id");
                                     $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
 
                                     $PJMname = $pjm->fname.' '.$pjm->lname;
@@ -559,18 +557,7 @@ if($model->isPerMentor==1)
 
 
         </div>
-        <?php
-        /*
-        ?>
-        <span class="font_normal_07em_black">Last step - Username</span><br />
-        <label for="username">User name</label><br />
-        <input class="input_field_12em" name="username" id="username" /><br />
-        <label for="password">Password</label><br />
-        <input class="input_field_12em" name="password" id="password" type="password" /><br />
-        <label for="retypePassword">Retype password</label><br />
-        <input class="input_field_12em" name="retypePassword" id="retypePassword" type="password" /><br />
-        */
-        ?>
+
 
     </div>
 <?php }?>
