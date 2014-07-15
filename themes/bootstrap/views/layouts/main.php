@@ -37,10 +37,18 @@
         $userinfo = "(Guest)";
 
 $cp=true;
-if(!Yii::app()->user->isGuest || !User::isCurrentUserMentee())
+if(Yii::app()->user->isGuest)
+{
+    $cp = false;
+
+}
+
+if( User::isCurrentUserMentee())
 {
     $cp = false;
 }
+
+
 
 ?>
 <?php 
