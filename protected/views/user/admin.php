@@ -56,7 +56,24 @@ $('.search-form form').submit(function(){
             'type'=>'raw',
             'htmlOptions'=>array('width'=>'10'),
         ),
-
+        array(
+            'name'=>'isProMentor',
+            'header'=>'Project M.',
+            'type'=>'raw',
+            'htmlOptions'=>array('width'=>'10'),
+        ),
+        array(
+            'name'=>'isDomMentor',
+            'header'=>'Domain M.',
+            'type'=>'raw',
+            'htmlOptions'=>array('width'=>'10'),
+        ),
+        array(
+            'name'=>'isPerMentor',
+            'header'=>'Personal M.',
+            'type'=>'raw',
+            'htmlOptions'=>array('width'=>'10'),
+        ),
 
         array(
 			'class'=>'CButtonColumn',
