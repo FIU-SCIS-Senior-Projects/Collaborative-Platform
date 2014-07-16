@@ -3,7 +3,7 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Manage Users',
+    'Manage Users',
 );
 
 /*$this->menu=array(
@@ -23,25 +23,34 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");*/
+
 ?>
 
 <h2>Manage Users</h2>
-
 <?php //echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <!--<div class="search-form" style="display:none">
 <?php $this->renderPartial('search',array(
-	'model'=>$model,
+    'model'=>$model,
 )); ?>
 </div><!-- search-form -->
 
+<?php $linkfind ='href="/coplat/index.php/user/findMentors"'; ?>
+<div style="float: left">
+    <a <?php echo $linkfind; ?>><img style="display: block;" border="0" src="/coplat/images/find.png" id="find" width="50" height="50">
+        <p stlye="width: 200px; position: relative; top: -200px;">Find Domain Mentors</p>
+    </a>
+</div>
+
+
+
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
-	'id'=>'user-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'username',
-		'email',
-		'fname',
+    'id'=>'user-grid',
+    'dataProvider'=>$model->search(),
+    'filter'=>$model,
+    'columns'=>array(
+        'username',
+        'email',
+        'fname',
         'mname',
         'lname',
         array(
@@ -60,23 +69,20 @@ $('.search-form form').submit(function(){
             'name'=>'isProMentor',
             'header'=>'Project M.',
             'type'=>'raw',
-            'htmlOptions'=>array('width'=>'10'),
         ),
         array(
             'name'=>'isDomMentor',
             'header'=>'Domain M.',
             'type'=>'raw',
-            'htmlOptions'=>array('width'=>'10'),
         ),
         array(
             'name'=>'isPerMentor',
             'header'=>'Personal M.',
             'type'=>'raw',
-            'htmlOptions'=>array('width'=>'10'),
         ),
 
         array(
-			'class'=>'CButtonColumn',
+            'class'=>'CButtonColumn',
 
-	),
-))); ?>
+        ),
+    ))); ?>

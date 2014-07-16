@@ -38,7 +38,7 @@ class UserController extends Controller
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin'),
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -128,29 +128,29 @@ class UserController extends Controller
                         $allsubs = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $each->id");
                         if($allsubs!=null)
                         {
-                        foreach( $allsubs as $onesub)
-                        {
-                            $temp = $onesub->id.'ddmsub';
-                            if(isset($_POST[$temp]))
+                            foreach( $allsubs as $onesub)
                             {
+                                $temp = $onesub->id.'ddmsub';
+                                if(isset($_POST[$temp]))
+                                {
 
 
-                                $rate = $each->id.'-'.$onesub->id.'dmrate';
-                                $tier = $each->id.'-'.$onesub->id.'dmtier';
+                                    $rate = $each->id.'-'.$onesub->id.'dmrate';
+                                    $tier = $each->id.'-'.$onesub->id.'dmtier';
 
-                                $user_domain = new UserDomain();
-                                $user_domain->user_id = $dommentor->user_id;
-                                $user_domain->domain_id= $each->id;
-                                $user_domain->active=1;
-                                $user_domain->rate = $_POST[$rate];
-                                $user_domain->tier_team = $_POST[$tier];
-                                $user_domain->subdomain_id = $onesub->id;
-                                $user_domain->save(false);
+                                    $user_domain = new UserDomain();
+                                    $user_domain->user_id = $dommentor->user_id;
+                                    $user_domain->domain_id= $each->id;
+                                    $user_domain->active=1;
+                                    $user_domain->rate = $_POST[$rate];
+                                    $user_domain->tier_team = $_POST[$tier];
+                                    $user_domain->subdomain_id = $onesub->id;
+                                    $user_domain->save(false);
 
 
 
+                                }
                             }
-                        }
                         } else
                         {
                             $user_domain = new UserDomain();
@@ -665,20 +665,20 @@ class UserController extends Controller
         }
     }
 
-/*
-    public function actionSendVerificationEmail($userfullName, $user_email){
+    /*
+        public function actionSendVerificationEmail($userfullName, $user_email){
 
-        $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user inner join administrator on user.id = administrator.user_id WHERE user.disable = 0 and user.activated = 1");
+            $admins = User::model()->findAllBySql("SELECT fname, lname, email FROM user inner join administrator on user.id = administrator.user_id WHERE user.disable = 0 and user.activated = 1");
 
-        foreach($admins as $ad)
-        {
-            $adminfullName = $ad->fname.' '.$ad->lname;
-            User::sendVerificationEmail($userfullName, $user_email, $adminfullName, $ad->email);
-        }
+            foreach($admins as $ad)
+            {
+                $adminfullName = $ad->fname.' '.$ad->lname;
+                User::sendVerificationEmail($userfullName, $user_email, $adminfullName, $ad->email);
+            }
 
-        //$this->redirect('/coplat/index.php/site/page?view=verification');
+            //$this->redirect('/coplat/index.php/site/page?view=verification');
 
-    }*/
+        }*/
 
     public function actionVerifyEmail($username, $activation_chain)
     {
@@ -780,6 +780,40 @@ class UserController extends Controller
         return $string;
     }
 
+
+
+    public  function actionFindMentors()
+    {
+        $error = '';
+        $domMentors= Yii::app()->db->createCommand("select u.id,sb.name as \"sname\", d.name as \"dname\",username  ,fname,lname,email,activated,disable
+
+
+          from domain_mentor dm, user_domain ud, user u, subdomain sb, domain d
+
+          where  dm.user_id=u.id and ud.user_id = u.id and ud.user_id = dm.user_id
+
+		and sb.id = ud.subdomain_id and
+
+		sb.domain_id = ud.domain_id and d.id = ud.domain_id")->queryAll();
+
+        //$domMentors = User::model()->findAll();
+
+
+        $filtersForm=new FiltersForm;
+        if (isset($_GET['FiltersForm']))
+            $filtersForm->filters=$_GET['FiltersForm'];
+
+// Get rawData and create dataProvider
+        $filteredData=$filtersForm->filter($domMentors);
+        $dataProviderCompined = new CArrayDataProvider($filteredData, array(
+            'pagination' => array(
+                'pageSize' => 10,
+            ),
+        ));
+        $this->render('findMentors',array('domMentors'=>$domMentors,'dataProviderCompined'=>$dataProviderCompined,'filtersForm'=>$filtersForm,'error' => $error));
+
+    }
+
     /**
      * Performs the AJAX validation.
      * @param User $model the model to be validated
@@ -792,4 +826,7 @@ class UserController extends Controller
             Yii::app()->end();
         }
     }*/
+
 }
+
+
