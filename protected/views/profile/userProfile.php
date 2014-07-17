@@ -150,17 +150,10 @@
     <br>
     <br>
 
-<?php } else
+<?php }
 
 {?>
-    <div id="container" style="width: auto"
-    <img  border="0" src="/coplat/images/bulb.png" id="pjm" width="150" height="150">
 
-         </div>
-
-
-<?php }
-    ?>
 
 <?php if(User::isCurrentUserPerMentor())
 {?>
