@@ -73,8 +73,11 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
     <body >
     <div id="demoWrapper"  class="my-box-container7" style="background-color: #ffffff">
     <h2>User: <?php echo $model->fname.' '.$model->lname ?></h2>
-    <ul>
-    </ul>
+    <div style="float: left">
+        <a href="/coplat/index.php/user/admin" ><img style="display: block;" border="0" src="/coplat/images/goback.png" id="find" width="50" height="50">
+            <p stlye="width: 200px; position: relative; top: -200px;">Return</p>
+        </a>
+    </div>
     <hr />
     <h5 id="status"></h5>
     <form id="demoForm"   name ="demoForm" method="post" action="/coplat/index.php/user/<?php echo $model->id; ?>" class="bbq">
