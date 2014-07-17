@@ -152,7 +152,8 @@ if(User::isCurrentUserAdmin())
             $pmentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$pmentors->personal_mentor_user_id");
         }
         $myproject = Mentee::model()->findBySql("SELECT project_id FROM mentee WHERE user_id=$model->id");
-        if($myproject->project_id)
+        $proj='';
+        if($myproject->project_id!=null)
         {
             $proj= Project::model()->findBySql("SELECT * FROM project WHERE id=$myproject->project_id");
         }
