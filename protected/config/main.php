@@ -70,7 +70,7 @@ return array(
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=coplat',
 			'emulatePrepare' => true,
-			'username' => 'root',
+			'username' => 'root=',
 			'password' => '9Qst32+',
 			'charset' => 'utf8',
 		),

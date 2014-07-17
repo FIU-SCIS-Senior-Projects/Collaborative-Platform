@@ -257,8 +257,13 @@ if(User::isCurrentUserAdmin())
                                 <?php
                                 foreach($userdom as $udom )
                                 {
+                                    $res=' N/A';
+                                    if($udom->subdomain_id!=null)
+                                    {
                                     $subdm = Subdomain::model()->findBySql("select * from subdomain where id = $udom->subdomain_id");
-                                    echo $subdm->name.' / '.$udom->rate.' / '.$udom->tier_team.'<br>';
+                                        $res = $subdm->name.' / '.$udom->rate.' / '.$udom->tier_team.'<br>';
+                                    }
+                                    echo $res;
                                 }
 
                                 ?>
