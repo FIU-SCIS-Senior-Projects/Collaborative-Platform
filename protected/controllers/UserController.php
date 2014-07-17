@@ -124,6 +124,12 @@ class UserController extends Controller
 
                     if(isset($_POST[$each->id]))
                     {
+                        $user_domain = new UserDomain();
+                        $user_domain->user_id = $dommentor->user_id;
+                        $user_domain->domain_id= $each->id;
+                        $user_domain->active=1;
+                        $user_domain->save(false);
+
 
                         $allsubs = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $each->id");
                         if($allsubs!=null)
@@ -137,11 +143,6 @@ class UserController extends Controller
 
                                     $rate = $each->id.'-'.$onesub->id.'dmrate';
                                     $tier = $each->id.'-'.$onesub->id.'dmtier';
-
-                                    $user_domain = new UserDomain();
-                                    $user_domain->user_id = $dommentor->user_id;
-                                    $user_domain->domain_id= $each->id;
-                                    $user_domain->active=1;
                                     $user_domain->rate = $_POST[$rate];
                                     $user_domain->tier_team = $_POST[$tier];
                                     $user_domain->subdomain_id = $onesub->id;
@@ -454,6 +455,12 @@ class UserController extends Controller
                     if(isset($_POST[$each->id]))
                     {
 
+                        $user_domain = new UserDomain();
+                        $user_domain->user_id = $domMentor->user_id;
+                        $user_domain->domain_id= $each->id;
+                        $user_domain->active=1;
+                        $user_domain->save(false);
+
 
                         $allsubs = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $each->id");
 
@@ -466,12 +473,10 @@ class UserController extends Controller
                                 $rate = $each->id.'-'.$onesub->id.'dmrate';
                                 $tier = $each->id.'-'.$onesub->id.'dmtier';
 
-                                $user_domain = new UserDomain();
-                                $user_domain->user_id = $domMentor->user_id;
-                                $user_domain->domain_id= $each->id;
+
                                 $user_domain->rate = $_POST[$rate];
                                 $user_domain->tier_team = $_POST[$tier];
-                                $user_domain->active=1;
+
                                 $user_domain->subdomain_id = $onesub->id;
                                 $user_domain->save(false);
 
