@@ -85,8 +85,8 @@
     <br>
     <br>
 <?php
-}?>
-<?php if(User::isCurrentUserProMentor())
+} else?>
+<?php  if(User::isCurrentUserProMentor())
 {?>
     <div class="titlebox" style="width: auto" align="center"><h3>Project Mentor</h3></div>
     <br>
@@ -150,7 +150,17 @@
     <br>
     <br>
 
-<?php }?>
+<?php } else
+
+{?>
+    <div id="container" style="width: auto"
+    <img  border="0" src="/coplat/images/bulb.png" id="pjm" width="150" height="150">
+
+         </div>
+
+
+<?php }
+    ?>
 
 <?php if(User::isCurrentUserPerMentor())
 {?>
