@@ -63,7 +63,7 @@ class ProfileController extends Controller
             {
                 echo $_POST['proHours'];
                 $promentor->max_hours = $_POST['proHours'];
-                $promentor->max_projects = $_POST['numProjects'];
+                //$promentor->max_projects = $_POST['numProjects'];
                 $promentor->save();
 
                 if(isset($_POST['proj']))
@@ -92,7 +92,7 @@ class ProfileController extends Controller
             if($model->isPerMentor == 1)
             {
                 $permentor->max_hours = $_POST['pmenHours'];
-                $permentor->max_mentees = $_POST['numMentees'];
+               // $permentor->max_mentees = $_POST['numMentees'];
                 $permentor->save();
 
                 if(isset($_POST['mentees']))
