@@ -6,7 +6,7 @@
 <div id="container" class="my-box-container3" style="width:350px; height: 325px;" >
     <div class="titlebox"><h3><?php echo ucfirst($user->fname) ." " . ucfirst($user->lname)?></h3></div>
     <div id="profileImage">
-        <br><img style="width:150px; height:205px;" src="<?php echo $user->pic_url ?>" />
+        <br><br><img style="width:150px; height:205px;" src="<?php echo $user->pic_url ?>" />
 
         <?php echo CHtml::activeFileField($user, 'pic_url');  ?>
         <br>Role Type(s): <?php if(User::isCurrentUserAdmin()) {?> <b> Administrator </b> <?php }?>
@@ -106,7 +106,6 @@ else
 elseif(User::isCurrentUserProMentor())
 {?>
     <h4>My Current Assigned Senior Projects</h4>
-    <h5>***Max Projects Already Assigned***</h5>
     <div id="container" class="my-box-container2"
          style="<?php if(User::isCurrentUserProMentor())
          {     echo 'display:block; '; }
@@ -187,16 +186,8 @@ elseif(User::isCurrentUserProMentor())
         <?php
         if(User::isCurrentUserPerMentor())
         {
-            ?><h6>Personal Mentor Availability</h6> <?php
-            $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
-            echo "Max Mentees: " ?>
-            <select name="numMentees" style="width:60px;">
-                <option selected value="<?php echo $permentor->max_mentees;?>"><?php echo $permentor->max_mentees;?></option>
-                <?php for ($i = 1; $i <= 3; $i++)
-                {?>
-                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                <?php }?>
-            </select><br>
+            ?><h6>Personal Mentor Availability</h6>
+
             <?php  echo "Max hours: " ?>
             <select name="pmenHours" style="width:60px;">
                 <option selected value="<?php echo $permentor->max_hours;?>"><?php echo $permentor->max_hours;?></option>
@@ -209,24 +200,8 @@ elseif(User::isCurrentUserProMentor())
         <?php }
         if(User::isCurrentUserProMentor())
         {
-        ?><h6>Project Mentor Availability</h6><?php
-        //$promentor = ProjectMentor::model()->findBySql("SELECT * FROM project_mentor WHERE user_id=$user->id");
-        echo "Max Projects: " ?>
-        <select name="numProjects" style="width:60px;">
-            <?php
-            $maxP =null;
-            if($promentor!=null)
-            {
-                $maxP = $promentor->max_projects;
-            }
+        ?><h6>Project Mentor Availability</h6>
 
-            ?>
-            <option selected value="<?php ;echo $maxP;?>"><?php echo $maxP;?></option>
-            <?php for ($i = 0; $i <= 3; $i++)
-            {?>
-                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-            <?php }?>
-        </select><br>
         <?php  echo "Max Hours: " ?>
         <select name="proHours" style="width:60px;">
             <?php
@@ -421,7 +396,6 @@ elseif(User::isCurrentUserProMentor())
     <?php } elseif(User::isCurrentUserPerMentor())
     {?>
         <h4>My Current Assigned Mentees</h4>
-        <h5>***Max Mentees Already Assigned***</h5>
         <div id="container" class="my-box-container2" style="height: 200px; overflow-y: scroll ">
             <?php
             {?>
