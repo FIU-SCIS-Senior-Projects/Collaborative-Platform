@@ -186,7 +186,9 @@ elseif(User::isCurrentUserProMentor())
         <?php
         if(User::isCurrentUserPerMentor())
         {
-            ?><h6>Personal Mentor Availability</h6>
+            ?><h6>Personal Mentor Availability</h6> <?php
+            $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
+           ?>
 
             <?php  echo "Max hours: " ?>
             <select name="pmenHours" style="width:60px;">
