@@ -45,6 +45,18 @@ class ProfileController extends Controller
         if(isset($_POST['submit']))
         {
             $model->biography = $_POST['biography'];
+
+
+            $uploadedFile = CUploadedFile::getInstance($model, 'pic_url'); /*Attach file */
+            $fileName = "{$uploadedFile}";
+            if ($fileName != null) {
+                /*Save file uploaded in the Uploads folder */
+                $model->pic_url = '/coplat/images/profileimages/' . $fileName;
+                $uploadedFile->saveAs(Yii::getPathOfAlias('webroot') . '/images/profileimages/' . $fileName);
+
+            }
+
+
             $model->save(false);
 
             if($model->isProMentor == 1)

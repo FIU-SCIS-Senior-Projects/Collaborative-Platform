@@ -3,12 +3,12 @@
 <div id="left">
 <form method="POST" enctype="multipart/form-data" action="userProfile">
 
-<div id="container" class="my-box-container3" style="height: 325px;" >
+<div id="container" class="my-box-container3" style="width:350px; height: 325px;" >
     <div class="titlebox"><h3><?php echo ucfirst($user->fname) ." " . ucfirst($user->lname)?></h3></div>
     <div id="profileImage">
         <br><img style="width:150px; height:205px;" src="<?php echo $user->pic_url ?>" />
 
-        <input type="file" name="photo" style="width:95px;" class="btn btn-primary">
+        <?php echo CHtml::activeFileField($user, 'pic_url');  ?>
         <br>Role Type(s): <?php if(User::isCurrentUserAdmin()) {?> <b> Administrator </b> <?php }?>
         <?php if(User::isCurrentUserDomMentor()) {?> <b>Domain Mentor </b> <?php }?>
         <?php if(User::isCurrentUserPerMentor()) {?> <b>Personal Mentor </b> <?php }?>
