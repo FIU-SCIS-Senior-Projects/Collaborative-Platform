@@ -5,7 +5,7 @@
 
 <div id="container" class="my-box-container3" style="width:350px; height: 325px;" >
     <div class="titlebox"><h3><?php echo ucfirst($user->fname) ." " . ucfirst($user->lname)?></h3></div>
-    <div id="profileImage">
+    <div style="float: left" id="profileImage">
         <br><br><img style="width:150px; height:205px;" src="<?php echo $user->pic_url ?>" />
 
         <?php echo CHtml::activeFileField($user, 'pic_url');  ?>
@@ -326,7 +326,7 @@ elseif(User::isCurrentUserProMentor())
     {
         $permentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$user->id");
         $m = Mentee::model()->findAllBySql("SELECT * FROM mentee WHERE personal_mentor_user_id=$user->id");?>
-        <?php if((User::isCurrentUserPerMentor() && ((count($m) < $permentor->max_mentees) || count($m) == 0)))
+        <?php if((User::isCurrentUserPerMentor() && ((count($m) < $permentor->max_mentees) )))
     {?>
 
         <h4>Current Senior Project Students<br><br>
