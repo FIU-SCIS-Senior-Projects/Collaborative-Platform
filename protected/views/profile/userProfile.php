@@ -152,7 +152,7 @@
 
 <?php }
 
-{?>
+?>
 
 
 <?php if(User::isCurrentUserPerMentor())

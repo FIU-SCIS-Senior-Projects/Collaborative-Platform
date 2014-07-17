@@ -20,10 +20,10 @@ if(User::isCurrentUserAdmin())
         <div  id="profileImage">
             <br><img style="width:150px; height:205px;" src="<?php echo $model->pic_url ?>" />
             <br>Role Type(s): <?php if($model->isAdmin) {?> <b> Administrator </b> <?php } ?>
-            <?php if($model->isDomMentor) {?> <b>Domain Mentor </b> <?php }?>
-            <?php if($model->isPerMentor) {?> <b>Personal Mentor </b> <?php }?>
-            <?php if($model->isProMentor) {?> <b>Project Mentor </b> <?php }?>
-            <?php if($model->isMentee) {?> <b>Mentee</b> <?php }?>
+            <?php if($model->isDomMentor) {?> <b>Domain Mentor </b><br> <?php }?>
+            <?php if($model->isPerMentor) {?> <b>Personal Mentor </b><br> <?php }?>
+            <?php if($model->isProMentor) {?> <b>Project Mentor </b><br> <?php }?>
+            <?php if($model->isMentee) {?> <b>Mentee</b><br> <?php }?>
         </div>
     </div>
 
