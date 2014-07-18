@@ -153,9 +153,9 @@ if(User::isCurrentUserAdmin())
         }
         $myproject = Mentee::model()->findBySql("SELECT project_id FROM mentee WHERE user_id=$model->id");
         $proj='';
-        if($myproject!=null)
+        if($myproject->project_id!=null)
         {
-            $proj= Project::model()->findBySql("SELECT * FROM project WHERE id=$myproject->project_id");
+            $proj= Project::model()->findBySql("SELECT * FROM project WHERE id= $myproject->project_id");
         }
         ?>     <h6> My Personal Mentee </h6>
         <div id="container" class="my-box-container6"
