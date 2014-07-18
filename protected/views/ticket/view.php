@@ -102,7 +102,7 @@
         <br/>
         <!-- Button trigger modal Reassign -->
         <?php
-        if ( (User::isCurrentUserAdmin() && $model->status == 'Pending') || (User::isCurrentUserDomMentor() && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId() != $model->creator_user_id ))
+        if ( (User::isCurrentUserAdmin() && $model->status == 'Pending') || (User::isCurrentUserDomMentor() && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId()== $model->assign_user_id  && User::getCurrentUserId() != $model->creator_user_id ))
         {
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Re Assign',
@@ -118,7 +118,7 @@
         <br/>
         <!-- Button trigger escalate -->
         <?php
-        if ( (User::isCurrentUserAdmin() && $model->status == 'Pending') || (User::isCurrentUserDomMentor() && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId() != $model->creator_user_id ))
+        if ( (User::isCurrentUserAdmin() && $model->status == 'Pending') || (User::isCurrentUserDomMentor() && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId()== $model->assign_user_id  && User::getCurrentUserId() != $model->creator_user_id ))
         {
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Escalate',
