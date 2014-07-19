@@ -139,8 +139,10 @@ class UserController extends Controller
                                 $temp = $onesub->id.'ddmsub';
                                 if(isset($_POST[$temp]))
                                 {
-
-
+                                    $user_domain = new UserDomain();
+                                    $user_domain->user_id = $dommentor->user_id;
+                                    $user_domain->domain_id= $each->id;
+                                    $user_domain->active=1;
                                     $rate = $each->id.'-'.$onesub->id.'dmrate';
                                     $tier = $each->id.'-'.$onesub->id.'dmtier';
                                     $user_domain->rate = $_POST[$rate];

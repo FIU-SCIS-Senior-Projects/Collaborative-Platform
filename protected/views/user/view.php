@@ -157,7 +157,7 @@ if(User::isCurrentUserAdmin())
         {
             if($myproject->project_id!=null)
             {
-            $proj= Project::model()->findBySql("SELECT * FROM project WHERE id= $myproject->project_id");
+             $proj= Project::model()->findBySql("SELECT * FROM project WHERE id= $myproject->project_id");
             }
         }
         ?>     <h6> My Personal Mentee </h6>
