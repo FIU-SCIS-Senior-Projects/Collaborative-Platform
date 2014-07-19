@@ -573,6 +573,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                             $title = 'No project chosen';
                             $pmName='No mentor assigned';
                             $res ='No mentees for this project';
+                            $CUSNam = 'No customer';
 
                             if( $mentee->project_id!=null)
                             {
@@ -588,7 +589,6 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
                                 }
 
-                                $CUSNam = 'No customer';
                                 if($mycustomer!=null)
                                 {
                                     $CUSNam = $mycustomer->customer_fname.' '.$mycustomer->customer_lname;
