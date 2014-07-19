@@ -434,7 +434,7 @@ if($model->isPerMentor==1)
                         $pmName='No mentor assigned';
                         $res ='No mentees for this project';
                         $menteeUser = User::model()->findByPk($mentee->user_id);
-                        $CUSName = 'No customer';
+                        $CUSNamee = 'No customer';
 
                         if( $mentee->project_id!=null)
                         {
@@ -494,7 +494,7 @@ if($model->isPerMentor==1)
                            <p>
                            <h4>'.$title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
-                            '<h5>Customer Name: '.$CUSName.'</h5>'.
+                            '<h5>Customer Name: '.$CUSNamee.'</h5>'.
                             $projectdesc.
                             '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
                             $res.'

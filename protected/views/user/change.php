@@ -588,10 +588,10 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
                                 }
 
-                                $CUSName = 'No customer';
+                                $CUSNam = 'No customer';
                                 if($mycustomer!=null)
                                 {
-                                    $CUSName = $mycustomer->customer_fname.' '.$mycustomer->customer_lname;
+                                    $CUSNam = $mycustomer->customer_fname.' '.$mycustomer->customer_lname;
                                 }
                                 $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
@@ -631,7 +631,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                            <p>
                            <h4>'.$title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
-                                '<h5>Customer Name: '.$CUSName.'</h5>'.
+                                '<h5>Customer Name: '.$CUSNam.'</h5>'.
                                 $projectdesc.
                                 '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
                                 $res.'
