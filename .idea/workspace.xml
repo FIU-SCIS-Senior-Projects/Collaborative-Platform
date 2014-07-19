@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/profile/userProfile.php" afterPath="$PROJECT_DIR$/protected/views/profile/userProfile.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/view.php" afterPath="$PROJECT_DIR$/protected/views/user/view.php" />
     </list>
     <ignored path="coplat.iws" />
@@ -38,20 +39,21 @@
       <file leaf-file-name="view.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/user/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="249" column="28" selection-start="9311" selection-end="9311" vertical-scroll-proportion="-0.98" vertical-offset="3461" max-vertical-offset="4800">
+            <state line="263" column="42" selection-start="10113" selection-end="10113" vertical-scroll-proportion="-3.98" vertical-offset="3521" max-vertical-offset="4845">
               <folding>
-                <marker date="1405778456000" expanded="true" signature="2901:2963" placeholder="SELECT max_t..domain_mentor..." />
-                <marker date="1405778456000" expanded="true" signature="3026:3084" placeholder="SELECT tier_..user_domain..." />
-                <marker date="1405778456000" expanded="true" signature="3876:3930" placeholder="SELECT * FRO..personal_mentor..." />
-                <marker date="1405778456000" expanded="true" signature="4290:4343" placeholder="SELECT * FRO..project_mentor..." />
-                <marker date="1405778456000" expanded="true" signature="5240:5285" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1405778456000" expanded="true" signature="5436:5514" placeholder="SELECT * FRO..personal_mentor..." />
-                <marker date="1405778456000" expanded="true" signature="5577:5631" placeholder="SELECT proje..mentee..." />
-                <marker date="1405778456000" expanded="true" signature="5800:5854" placeholder="SELECT * FRO..project..." />
-                <marker date="1405778456000" expanded="true" signature="6751:6798" placeholder="SELECT * FRO..user..." />
-                <marker date="1405778456000" expanded="true" signature="9563:9666" placeholder="SELECT subdo..user_domain..." />
-                <marker date="1405778456000" expanded="true" signature="10218:10272" placeholder="select * fro..subdomain..." />
-                <marker date="1405778456000" expanded="true" signature="12066:12110" placeholder="SELECT * FRO..user..." />
+                <element signature="n#style#0;n#div#2;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <marker date="1405778808000" expanded="true" signature="2901:2963" placeholder="SELECT max_t..domain_mentor..." />
+                <marker date="1405778808000" expanded="true" signature="3026:3084" placeholder="SELECT tier_..user_domain..." />
+                <marker date="1405778808000" expanded="true" signature="3876:3930" placeholder="SELECT * FRO..personal_mentor..." />
+                <marker date="1405778808000" expanded="true" signature="4290:4343" placeholder="SELECT * FRO..project_mentor..." />
+                <marker date="1405778808000" expanded="true" signature="5240:5285" placeholder="SELECT * FRO..mentee..." />
+                <marker date="1405778808000" expanded="true" signature="5436:5514" placeholder="SELECT * FRO..personal_mentor..." />
+                <marker date="1405778808000" expanded="true" signature="5577:5631" placeholder="SELECT proje..mentee..." />
+                <marker date="1405778808000" expanded="true" signature="5800:5854" placeholder="SELECT * FRO..project..." />
+                <marker date="1405778808000" expanded="true" signature="6751:6798" placeholder="SELECT * FRO..user..." />
+                <marker date="1405778808000" expanded="true" signature="9563:9666" placeholder="SELECT subdo..user_domain..." />
+                <marker date="1405778808000" expanded="true" signature="10300:10354" placeholder="select * fro..subdomain..." />
+                <marker date="1405778808000" expanded="true" signature="11995:12039" placeholder="SELECT * FRO..user..." />
               </folding>
             </state>
           </provider>
@@ -168,23 +170,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userProfile.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="userProfile.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/profile/userProfile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="0" selection-start="5034" selection-end="5034" vertical-scroll-proportion="5.625" vertical-offset="2295" max-vertical-offset="5145">
+            <state line="310" column="36" selection-start="10121" selection-end="10121" vertical-scroll-proportion="0.69138753" vertical-offset="4136" max-vertical-offset="5145">
               <folding>
-                <marker date="1405726516000" expanded="true" signature="139:183" placeholder="SELECT * FRO..mentee..." />
-                <marker date="1405726516000" expanded="true" signature="336:414" placeholder="SELECT * FRO..personal_mentor..." />
-                <marker date="1405726516000" expanded="true" signature="471:524" placeholder="SELECT proje..mentee..." />
-                <marker date="1405726516000" expanded="true" signature="615:668" placeholder="SELECT * FRO..project..." />
-                <marker date="1405726516000" expanded="true" signature="1721:1768" placeholder="SELECT * FRO..user..." />
-                <marker date="1405726516000" expanded="true" signature="4500:4552" placeholder="SELECT * FRO..project_mentor..." />
-                <marker date="1405726516000" expanded="true" signature="5984:6028" placeholder="SELECT * FRO..user..." />
-                <marker date="1405726516000" expanded="true" signature="6398:6451" placeholder="SELECT * FRO..personal_mentor..." />
-                <marker date="1405726516000" expanded="true" signature="9778:9880" placeholder="SELECT subdo..user_domain..." />
-                <marker date="1405726516000" expanded="true" signature="10375:10429" placeholder="select * fro..subdomain..." />
-                <marker date="1405726516000" expanded="true" signature="10959:11020" placeholder="SELECT max_t..domain_mentor..." />
-                <marker date="1405726516000" expanded="true" signature="11079:11136" placeholder="SELECT tier_..user_domain..." />
+                <marker date="1405778825000" expanded="true" signature="139:183" placeholder="SELECT * FRO..mentee..." />
+                <marker date="1405778825000" expanded="true" signature="336:414" placeholder="SELECT * FRO..personal_mentor..." />
+                <marker date="1405778825000" expanded="true" signature="471:524" placeholder="SELECT proje..mentee..." />
+                <marker date="1405778825000" expanded="true" signature="615:668" placeholder="SELECT * FRO..project..." />
+                <marker date="1405778825000" expanded="true" signature="1721:1768" placeholder="SELECT * FRO..user..." />
+                <marker date="1405778825000" expanded="true" signature="4500:4552" placeholder="SELECT * FRO..project_mentor..." />
+                <marker date="1405778825000" expanded="true" signature="5984:6028" placeholder="SELECT * FRO..user..." />
+                <marker date="1405778825000" expanded="true" signature="6398:6451" placeholder="SELECT * FRO..personal_mentor..." />
+                <marker date="1405778825000" expanded="true" signature="9778:9880" placeholder="SELECT subdo..user_domain..." />
+                <marker date="1405778825000" expanded="true" signature="10372:10426" placeholder="select * fro..subdomain..." />
+                <marker date="1405778825000" expanded="true" signature="10956:11017" placeholder="SELECT max_t..domain_mentor..." />
+                <marker date="1405778825000" expanded="true" signature="11076:11133" placeholder="SELECT tier_..user_domain..." />
               </folding>
             </state>
           </provider>
@@ -241,10 +243,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="36" selection-start="4688" selection-end="4688" vertical-scroll-proportion="-7.68018" vertical-offset="5585" max-vertical-offset="12675">
+            <state line="145" column="36" selection-start="4688" selection-end="4688" vertical-scroll-proportion="137.70833" vertical-offset="5480" max-vertical-offset="12675">
               <folding>
                 <marker date="1405778186000" expanded="true" signature="2278:2323" placeholder="select * fro..user..." />
                 <marker date="1405778186000" expanded="true" signature="4005:4056" placeholder="select * fro..subdomain..." />
@@ -320,13 +322,13 @@
         <option value="$PROJECT_DIR$/protected/config/main.php" />
         <option value="$PROJECT_DIR$/protected/views/profile/editProfile.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ProfileController.php" />
-        <option value="$PROJECT_DIR$/protected/views/profile/userProfile.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ImportController.php" />
         <option value="$PROJECT_DIR$/protected/views/user/setRoles.php" />
         <option value="$PROJECT_DIR$/protected/views/user/change.php" />
         <option value="$PROJECT_DIR$/protected/controllers/LoginController.php" />
         <option value="$PROJECT_DIR$/protected/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/protected/views/user/view.php" />
+        <option value="$PROJECT_DIR$/protected/views/profile/userProfile.php" />
       </list>
     </option>
   </component>
@@ -851,18 +853,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="265" column="45" selection-start="10369" selection-end="10369" vertical-scroll-proportion="0.0" vertical-offset="3975" max-vertical-offset="4980">
           <folding>
-            <marker date="1405778456000" expanded="true" signature="2901:2963" placeholder="SELECT max_t..domain_mentor..." />
-            <marker date="1405778456000" expanded="true" signature="3026:3084" placeholder="SELECT tier_..user_domain..." />
-            <marker date="1405778456000" expanded="true" signature="3876:3930" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405778456000" expanded="true" signature="4290:4343" placeholder="SELECT * FRO..project_mentor..." />
-            <marker date="1405778456000" expanded="true" signature="5240:5285" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405778456000" expanded="true" signature="5436:5514" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405778456000" expanded="true" signature="5577:5631" placeholder="SELECT proje..mentee..." />
-            <marker date="1405778456000" expanded="true" signature="5800:5854" placeholder="SELECT * FRO..project..." />
-            <marker date="1405778456000" expanded="true" signature="6751:6798" placeholder="SELECT * FRO..user..." />
-            <marker date="1405778456000" expanded="true" signature="9563:9666" placeholder="SELECT subdo..user_domain..." />
-            <marker date="1405778456000" expanded="true" signature="10218:10272" placeholder="select * fro..subdomain..." />
-            <marker date="1405778456000" expanded="true" signature="12066:12110" placeholder="SELECT * FRO..user..." />
+            <element signature="n#style#0;n#div#2;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1405778808000" expanded="true" signature="2901:2963" placeholder="SELECT max_t..domain_mentor..." />
+            <marker date="1405778808000" expanded="true" signature="3026:3084" placeholder="SELECT tier_..user_domain..." />
+            <marker date="1405778808000" expanded="true" signature="3876:3930" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405778808000" expanded="true" signature="4290:4343" placeholder="SELECT * FRO..project_mentor..." />
+            <marker date="1405778808000" expanded="true" signature="5240:5285" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405778808000" expanded="true" signature="5436:5514" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405778808000" expanded="true" signature="5577:5631" placeholder="SELECT proje..mentee..." />
+            <marker date="1405778808000" expanded="true" signature="5800:5854" placeholder="SELECT * FRO..project..." />
+            <marker date="1405778808000" expanded="true" signature="6751:6798" placeholder="SELECT * FRO..user..." />
+            <marker date="1405778808000" expanded="true" signature="9563:9666" placeholder="SELECT subdo..user_domain..." />
+            <marker date="1405778808000" expanded="true" signature="10300:10354" placeholder="select * fro..subdomain..." />
+            <marker date="1405778808000" expanded="true" signature="11995:12039" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
@@ -1337,26 +1340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/profile/userProfile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="0" selection-start="5034" selection-end="5034" vertical-scroll-proportion="5.625" vertical-offset="2295" max-vertical-offset="5145">
-          <folding>
-            <marker date="1405726516000" expanded="true" signature="139:183" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405726516000" expanded="true" signature="336:414" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405726516000" expanded="true" signature="471:524" placeholder="SELECT proje..mentee..." />
-            <marker date="1405726516000" expanded="true" signature="615:668" placeholder="SELECT * FRO..project..." />
-            <marker date="1405726516000" expanded="true" signature="1721:1768" placeholder="SELECT * FRO..user..." />
-            <marker date="1405726516000" expanded="true" signature="4500:4552" placeholder="SELECT * FRO..project_mentor..." />
-            <marker date="1405726516000" expanded="true" signature="5984:6028" placeholder="SELECT * FRO..user..." />
-            <marker date="1405726516000" expanded="true" signature="6398:6451" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405726516000" expanded="true" signature="9778:9880" placeholder="SELECT subdo..user_domain..." />
-            <marker date="1405726516000" expanded="true" signature="10375:10429" placeholder="select * fro..subdomain..." />
-            <marker date="1405726516000" expanded="true" signature="10959:11020" placeholder="SELECT max_t..domain_mentor..." />
-            <marker date="1405726516000" expanded="true" signature="11079:11136" placeholder="SELECT tier_..user_domain..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/home/adminHome.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="172" selection-start="1687" selection-end="1798" vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="3810">
@@ -1509,29 +1492,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/user/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="28" selection-start="9311" selection-end="9311" vertical-scroll-proportion="-0.98" vertical-offset="3461" max-vertical-offset="4800">
-          <folding>
-            <marker date="1405778456000" expanded="true" signature="2901:2963" placeholder="SELECT max_t..domain_mentor..." />
-            <marker date="1405778456000" expanded="true" signature="3026:3084" placeholder="SELECT tier_..user_domain..." />
-            <marker date="1405778456000" expanded="true" signature="3876:3930" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405778456000" expanded="true" signature="4290:4343" placeholder="SELECT * FRO..project_mentor..." />
-            <marker date="1405778456000" expanded="true" signature="5240:5285" placeholder="SELECT * FRO..mentee..." />
-            <marker date="1405778456000" expanded="true" signature="5436:5514" placeholder="SELECT * FRO..personal_mentor..." />
-            <marker date="1405778456000" expanded="true" signature="5577:5631" placeholder="SELECT proje..mentee..." />
-            <marker date="1405778456000" expanded="true" signature="5800:5854" placeholder="SELECT * FRO..project..." />
-            <marker date="1405778456000" expanded="true" signature="6751:6798" placeholder="SELECT * FRO..user..." />
-            <marker date="1405778456000" expanded="true" signature="9563:9666" placeholder="SELECT subdo..user_domain..." />
-            <marker date="1405778456000" expanded="true" signature="10218:10272" placeholder="select * fro..subdomain..." />
-            <marker date="1405778456000" expanded="true" signature="12066:12110" placeholder="SELECT * FRO..user..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="36" selection-start="4688" selection-end="4688" vertical-scroll-proportion="-7.68018" vertical-offset="5585" max-vertical-offset="12675">
+        <state line="145" column="36" selection-start="4688" selection-end="4688" vertical-scroll-proportion="137.70833" vertical-offset="5480" max-vertical-offset="12675">
           <folding>
             <marker date="1405778186000" expanded="true" signature="2278:2323" placeholder="select * fro..user..." />
             <marker date="1405778186000" expanded="true" signature="4005:4056" placeholder="select * fro..subdomain..." />
@@ -1545,6 +1508,47 @@
             <marker date="1405778186000" expanded="true" signature="12151:12196" placeholder="SELECT * FRO..ticket..." />
             <marker date="1405778186000" expanded="true" signature="16365:16416" placeholder="select * fro..subdomain..." />
             <marker date="1405778186000" expanded="true" signature="27637:27993" placeholder="select u.id,..domain_mentor..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/user/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="263" column="42" selection-start="10113" selection-end="10113" vertical-scroll-proportion="-3.98" vertical-offset="3521" max-vertical-offset="4845">
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#3;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1405778808000" expanded="true" signature="2901:2963" placeholder="SELECT max_t..domain_mentor..." />
+            <marker date="1405778808000" expanded="true" signature="3026:3084" placeholder="SELECT tier_..user_domain..." />
+            <marker date="1405778808000" expanded="true" signature="3876:3930" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405778808000" expanded="true" signature="4290:4343" placeholder="SELECT * FRO..project_mentor..." />
+            <marker date="1405778808000" expanded="true" signature="5240:5285" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405778808000" expanded="true" signature="5436:5514" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405778808000" expanded="true" signature="5577:5631" placeholder="SELECT proje..mentee..." />
+            <marker date="1405778808000" expanded="true" signature="5800:5854" placeholder="SELECT * FRO..project..." />
+            <marker date="1405778808000" expanded="true" signature="6751:6798" placeholder="SELECT * FRO..user..." />
+            <marker date="1405778808000" expanded="true" signature="9563:9666" placeholder="SELECT subdo..user_domain..." />
+            <marker date="1405778808000" expanded="true" signature="10300:10354" placeholder="select * fro..subdomain..." />
+            <marker date="1405778808000" expanded="true" signature="11995:12039" placeholder="SELECT * FRO..user..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/profile/userProfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="310" column="36" selection-start="10121" selection-end="10121" vertical-scroll-proportion="0.69138753" vertical-offset="4136" max-vertical-offset="5145">
+          <folding>
+            <marker date="1405778825000" expanded="true" signature="139:183" placeholder="SELECT * FRO..mentee..." />
+            <marker date="1405778825000" expanded="true" signature="336:414" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405778825000" expanded="true" signature="471:524" placeholder="SELECT proje..mentee..." />
+            <marker date="1405778825000" expanded="true" signature="615:668" placeholder="SELECT * FRO..project..." />
+            <marker date="1405778825000" expanded="true" signature="1721:1768" placeholder="SELECT * FRO..user..." />
+            <marker date="1405778825000" expanded="true" signature="4500:4552" placeholder="SELECT * FRO..project_mentor..." />
+            <marker date="1405778825000" expanded="true" signature="5984:6028" placeholder="SELECT * FRO..user..." />
+            <marker date="1405778825000" expanded="true" signature="6398:6451" placeholder="SELECT * FRO..personal_mentor..." />
+            <marker date="1405778825000" expanded="true" signature="9778:9880" placeholder="SELECT subdo..user_domain..." />
+            <marker date="1405778825000" expanded="true" signature="10372:10426" placeholder="select * fro..subdomain..." />
+            <marker date="1405778825000" expanded="true" signature="10956:11017" placeholder="SELECT max_t..domain_mentor..." />
+            <marker date="1405778825000" expanded="true" signature="11076:11133" placeholder="SELECT tier_..user_domain..." />
           </folding>
         </state>
       </provider>

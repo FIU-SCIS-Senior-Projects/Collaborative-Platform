@@ -308,7 +308,7 @@
 
                         <td>
                            <?php
-                            $res = 'N/A';
+                            $res = '';
                            foreach($userdom as $udom )
                            {
                                if($udom->subdomain_id!=null)
