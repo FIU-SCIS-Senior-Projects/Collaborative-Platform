@@ -264,7 +264,10 @@ if(User::isCurrentUserAdmin())
                                     if($udom->subdomain_id!=null)
                                     {
                                     $subdm = Subdomain::model()->findBySql("select * from subdomain where id = $udom->subdomain_id");
+                                        if($subdm->subdomain_id!=null)
+                                        {
                                         $res = $subdm->name.' / '.$udom->rate.' / '.$udom->tier_team.'<br>';
+                                        }
                                     }
                                     echo $res;
                                 }
