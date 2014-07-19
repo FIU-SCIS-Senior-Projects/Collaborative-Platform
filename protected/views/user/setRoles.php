@@ -443,14 +443,12 @@ if($model->isPerMentor==1)
                             $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
                             $title = $menteeProj->title;
                             $projectdesc = $menteeProj->description;
+                            $mycustomer=null;
 
                             if($projMentor->username == 'DEFAULT')
                             {
                                 $mycustomer = Project::model()->findBySql("select * from project where id = $menteeProj->id");
 
-                            } else
-                            {
-                                $mycustomer=null;
                             }
 
                             if($mycustomer!=null)

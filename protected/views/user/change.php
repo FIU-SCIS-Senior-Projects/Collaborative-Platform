@@ -152,7 +152,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                            <p>
                            <h4>'.$project->title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
-                                '<h5>Customer Name:'.$CUSName.'</h5>'.
+                                '<h5>Customer Name: '.$CUSName.'</h5>'.
                                 $project->description.
                                 '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
                                 $res.'
@@ -257,18 +257,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
 
             </div>
-            <?php /*
-                <span class="font_normal_07em_black">First step - Name</span>
-                <br />
-                <label for="firstname">First name</label>
-                <br />
-                <input class="input_field_12em" name="firstname" id="firstname" />
-                <br />
-                <label for="surname">Surname</label><br />
-                <input class="input_field_12em" name="surname" id="surname" />
-                <br />
-                */
-            ?>
+
 
         </div>
     <?php }?>
@@ -592,13 +581,11 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                                 $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
                                 $title = $menteeProj->title;
                                 $projectdesc = $menteeProj->description;
+                                $mycustomer=null;
                                 if(!$projMentor->username == 'DEFAULT')
                                 {
                                     $mycustomer = Project::model()->findBySql("select * from project where id = $menteeProj->id");
 
-                                } else
-                                {
-                                    $mycustomer=null;
                                 }
 
                                 $CUSName = 'No customer';
