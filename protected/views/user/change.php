@@ -577,8 +577,6 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                         foreach ($mentees as $mentee)
                         {
 
-                            //if($aMentee->personal_mentor_user_id!=null)
-
 
 
                             $projectdesc = 'No Project selected';
@@ -594,7 +592,14 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                                 $projMentor = User::model()->findByPk($menteeProj->project_mentor_user_id);
                                 $title = $menteeProj->title;
                                 $projectdesc = $menteeProj->description;
-                                $mycustomer = Project::model()->findBySql("select * from project where id = $menteeProj->id");
+                                if(!$projMentor->username == 'DEFAULT')
+                                {
+                                    $mycustomer = Project::model()->findBySql("select * from project where id = $menteeProj->id");
+
+                                } else
+                                {
+                                    $mycustomer=null;
+                                }
 
                                 $CUSName = 'No customer';
                                 if($mycustomer!=null)
