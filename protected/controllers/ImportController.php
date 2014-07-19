@@ -30,8 +30,7 @@ class ImportController extends Controller
     public function actionImport()
     {
 
-        //if(User::isCurrentUserAdmin())
-        {
+
             //  $projectURL = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getProjects/123FIUspw/";
             $projectURL = "http://spws-dev.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getProjects/123FIUspw/";
 
@@ -40,7 +39,7 @@ class ImportController extends Controller
 
             foreach ($projects as $project)
             {
-                $this->importProject($project['title'],$project['description'],$project['proposed_by_id'],$project['project_id']);
+                $this->importProject($project['title'],$project['description'],$project['proposed_by_id'],$project['project_id'],$project['mentor_firstname'], $project['mentor_lastname']);
 
 
             }
@@ -62,12 +61,10 @@ class ImportController extends Controller
             echo "<script> window.alert('Data has been imported from SPW');window.location = 'adminHome'</script>";
 
 
-            //s$this->refresh(false,'#');
-        } //else
-        {
-            //echo "<script> window.location ='userHome' </script>";
 
-        }
+
+
+
     }
 
 
@@ -131,13 +128,9 @@ class ImportController extends Controller
                 $us->lname = ucfirst($lastname);
 
                 $us->username = $email;
-                //$us->activation_chain = $this->genRandomString(10);
-
                 $us->isMentee =1;
-                //$us->isStudent=1;
 
                 $randPassword = $this->passwordGenerator();
-                //$us->tpassword =  $randPassword;
                 $hasher = new PasswordHash(8, false);
                 $us->password = $hasher->HashPassword($randPassword);
 
@@ -169,7 +162,7 @@ class ImportController extends Controller
     }
 
 
-    public function importProject($title,$description,$proposed_by, $spw_project_legacy_id)
+    public function importProject($title,$description,$proposed_by, $spw_project_legacy_id, $customer_fname,$customer_lname)
     {
 
         $exists = Project::model()->find("id = '".$spw_project_legacy_id."'");
@@ -184,32 +177,25 @@ class ImportController extends Controller
             $mentorid = User::model()->findBySql("select * from user where username = 'DEFAULT' ");
             $project->propose_by_user_id = $mentorid->id;
             $project->project_mentor_user_id = $mentorid->id;
-            //$list= Yii::app()->db->createCommand('select user_id from project_mentor where spw_legacy_id=:idd')->bindValue('idd',$proposed_by)->queryAll();
-            //$project->propose_by = $proposed_by;//$list[0]['user_id'];
+            $project->customer_fname = $customer_fname;
+            $project->customer_lname = $customer_lname;
             $project->save(false);
 
 
 
-        }
-
-
-    }
-    /*
-
-    public function disableOldMentees()
-    {
-        $studentsURL = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
-        // $url = "http://spws-dev.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
-        $jsonStudents = file_get_contents($studentsURL);
-        $students = json_decode($jsonStudents, true);
-        foreach ($students as $student )
+        } else
         {
+            $project = Project::model()->findBySql("select * from project where id = $spw_project_legacy_id");
+            $project->customer_fname = $customer_fname;
+            $project->customer_lname = $customer_lname;
+            $project->save(false);
+
 
         }
 
 
     }
-  */
+
 
 
 
