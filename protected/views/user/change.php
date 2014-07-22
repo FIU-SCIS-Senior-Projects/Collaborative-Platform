@@ -643,7 +643,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
                             echo '<div id="inside-mpop-'. $mentee->user_id.'" style="display: none;">
                            <p><h4>Personal Mentor: </h3>'.
-                                $PERMname.'
+                                $PRName.'
                            <h4>'.$title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
                                 '<h5>Customer Name: '.$CUSNam.'</h5>'.
