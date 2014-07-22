@@ -487,6 +487,15 @@ if($model->isPerMentor==1)
 
 
                         }
+                        $PRName ='No Personal mentor assigned';
+
+                        $myperM = User::model()->findBySql("select * from user where id = $mentee->personal_mentor_user_id");
+
+                        if($myperM!=null)
+                        {
+                            $PRName = $myperM->fname.' '.$myperM->lname;
+
+                        }
 
 
 
@@ -494,7 +503,8 @@ if($model->isPerMentor==1)
 
 
                         echo '<div id="inside-mpop-'. $mentee->user_id.'" style="display: none;">
-                           <p>
+                           <p><h4>Personal Mentor: </h3>'.
+                            $PRName.'
                            <h4>'.$title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
                             '<h5>Customer Name: '.$CUSNamee.'</h5>'.
