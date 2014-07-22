@@ -575,14 +575,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                             $res ='No mentees for this project';
 
                             $CUSNam = 'No customer';
-                            $PRName ='No Personal mentor assigned';
-                            
-                                $myperM = User::model()->findBySql("select * from user where id = $mentee->personal_mentor_user_id");
 
-                            if($myperM!=null)
-                            {
-                                $PRName = $myperM->fname.' '.$myperM->lname;
-                            }
 
 
                             if( $mentee->project_id!=null)
@@ -637,7 +630,15 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
                             }
 
+                            $PRName ='No Personal mentor assigned';
 
+                            $myperM = User::model()->findBySql("select * from user where id = $mentee->personal_mentor_user_id");
+
+                            if($myperM!=null)
+                            {
+                                $PRName = $myperM->fname.' '.$myperM->lname;
+
+                            }
 
                             echo '<div id="inside-mpop-'. $mentee->user_id.'" style="display: none;">
                            <p><h4>Personal Mentor: </h3>'.
