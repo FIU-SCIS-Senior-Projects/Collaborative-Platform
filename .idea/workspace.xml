@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="efceb480-624c-4ac7-a82e-5ccf56d05044" name="Default" comment="&lt;script type=&quot;text/javascript&quot;&gt;&#10;&#9;&#9;&#9;$(function(){&#10;&#9;&#9;&#9;&#9;$(&quot;#demoForm&quot;).formwizard({ &#10;&#9;&#9;&#9;&#9; &#9;validationEnabled: true,&#10;&#9;&#9;&#9;&#9; &#9;focusFirstInput : true,&#10;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;);&#10;  &#9;&#9;});&#10;    &lt;/script&gt;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/runtime/application.log" afterPath="$PROJECT_DIR$/protected/runtime/application.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/user/setRoles.php" afterPath="$PROJECT_DIR$/protected/views/user/setRoles.php" />
     </list>
     <ignored path="coplat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -194,7 +193,7 @@
       <file leaf-file-name="setRoles.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/user/setRoles.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="506" column="37" selection-start="17312" selection-end="17312" vertical-scroll-proportion="0.6411483" vertical-offset="7322" max-vertical-offset="9600">
+            <state line="506" column="37" selection-start="17312" selection-end="17312" vertical-scroll-proportion="0.569378" vertical-offset="7352" max-vertical-offset="9600">
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -217,6 +216,7 @@
                 <marker date="1406051956000" expanded="true" signature="16077:16124" placeholder="select * fro..project..." />
                 <marker date="1406051956000" expanded="true" signature="16197:16259" placeholder="select * fro..user..." />
                 <marker date="1406051956000" expanded="true" signature="16333:16390" placeholder="select * fro..user..." />
+                <marker date="1406051956000" expanded="true" signature="16877:16939" placeholder="select * fro..user..." />
               </folding>
             </state>
           </provider>
@@ -897,6 +897,7 @@
             <marker date="1406051956000" expanded="true" signature="16077:16124" placeholder="select * fro..project..." />
             <marker date="1406051956000" expanded="true" signature="16197:16259" placeholder="select * fro..user..." />
             <marker date="1406051956000" expanded="true" signature="16333:16390" placeholder="select * fro..user..." />
+            <marker date="1406051956000" expanded="true" signature="16877:16939" placeholder="select * fro..user..." />
           </folding>
         </state>
       </provider>
@@ -1054,6 +1055,7 @@
             <marker date="1406051956000" expanded="true" signature="16077:16124" placeholder="select * fro..project..." />
             <marker date="1406051956000" expanded="true" signature="16197:16259" placeholder="select * fro..user..." />
             <marker date="1406051956000" expanded="true" signature="16333:16390" placeholder="select * fro..user..." />
+            <marker date="1406051956000" expanded="true" signature="16877:16939" placeholder="select * fro..user..." />
           </folding>
         </state>
       </provider>
@@ -1186,6 +1188,7 @@
             <marker date="1406051956000" expanded="true" signature="16077:16124" placeholder="select * fro..project..." />
             <marker date="1406051956000" expanded="true" signature="16197:16259" placeholder="select * fro..user..." />
             <marker date="1406051956000" expanded="true" signature="16333:16390" placeholder="select * fro..user..." />
+            <marker date="1406051956000" expanded="true" signature="16877:16939" placeholder="select * fro..user..." />
           </folding>
         </state>
       </provider>
@@ -1548,7 +1551,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/user/setRoles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="506" column="37" selection-start="17312" selection-end="17312" vertical-scroll-proportion="0.6411483" vertical-offset="7322" max-vertical-offset="9600">
+        <state line="506" column="37" selection-start="17312" selection-end="17312" vertical-scroll-proportion="0.569378" vertical-offset="7352" max-vertical-offset="9600">
           <folding>
             <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -1571,6 +1574,7 @@
             <marker date="1406051956000" expanded="true" signature="16077:16124" placeholder="select * fro..project..." />
             <marker date="1406051956000" expanded="true" signature="16197:16259" placeholder="select * fro..user..." />
             <marker date="1406051956000" expanded="true" signature="16333:16390" placeholder="select * fro..user..." />
+            <marker date="1406051956000" expanded="true" signature="16877:16939" placeholder="select * fro..user..." />
           </folding>
         </state>
       </provider>
