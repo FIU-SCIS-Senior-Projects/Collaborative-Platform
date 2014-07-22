@@ -573,7 +573,19 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                             $title = 'No project chosen';
                             $pmName='No mentor assigned';
                             $res ='No mentees for this project';
+
                             $CUSNam = 'No customer';
+                            $PRName='No Personal mentor assigned';
+                            $myperM=null;
+                            if($mentee->personal_mentor_user_id!=null)
+                            {
+                                $myperM = User::model()->findBySql("select * from user where id = $mentee->personal_mentor_user_id");
+                            }
+                            if($myperM!=null)
+                            {
+                                $PRName = $myperM->fname.' '.$myperM->lname;
+                            }
+
 
                             if( $mentee->project_id!=null)
                             {
@@ -607,15 +619,17 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
                                         $t = User::model()->findBySql("select * from user where id = $pid");
                                         $pjm = User::model()->findBySql("select * from user where id = $project->project_mentor_user_id");
-                                        $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
+                                        //$perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
 
                                         $PJMname = $pjm->fname.' '.$pjm->lname;
 
 
-                                        $PERMname = $perm->fname.' '.$perm->lname;
+                                       //$PERMname = $perm->fname.' '.$perm->lname;
 
 
-                                        $res .=$t->fname.' '.$t->lname.'/'.$PJMname. '/'.$PERMname.'<br>';
+                                        $res .=$t->fname.' '.$t->lname.'/'.$PJMname.'<br>';
+
+
 
 
                                     }
@@ -628,12 +642,13 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
 
                             echo '<div id="inside-mpop-'. $mentee->user_id.'" style="display: none;">
-                           <p>
+                           <p><h4>Personal Mentor: </h3>'.
+                                $PERMname.'
                            <h4>'.$title.'</h4>'.'
                            <h5>Hours Req: X</h5>'.
                                 '<h5>Customer Name: '.$CUSNam.'</h5>'.
                                 $projectdesc.
-                                '<h5>Member/Project Mentor/Personal Mentor:</h5>'.
+                                '<h5>Member/Project Mentor:</h5>'.
                                 $res.'
                            </p></div>';
 
