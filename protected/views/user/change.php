@@ -568,19 +568,17 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
 
 
-                            $projectdesc = 'No Project selected';
+                            $projectdesc = 'No Project description';
                             $projMentor='';
                             $title = 'No project chosen';
                             $pmName='No mentor assigned';
                             $res ='No mentees for this project';
 
                             $CUSNam = 'No customer';
-                            $PRName='No Personal mentor assigned';
-                            $myperM=null;
-                            if($mentee->personal_mentor_user_id!=null)
-                            {
+                            $PRName ='No Personal mentor assigned';
+                            
                                 $myperM = User::model()->findBySql("select * from user where id = $mentee->personal_mentor_user_id");
-                            }
+
                             if($myperM!=null)
                             {
                                 $PRName = $myperM->fname.' '.$myperM->lname;
