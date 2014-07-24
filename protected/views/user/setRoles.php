@@ -12,66 +12,11 @@ $def = User::model()->findBySql("select * from user where username = 'DEFAULT'")
 
         function load()
         {
-            <?php
-              foreach($all as $one)
-              {
-              print('document.getElementById("'.$one->id.'dmrate").disabled=true;');
-              print('document.getElementById("'.$one->id.'dmtier").disabled=true;');
-               //print( '$("#'.$one->id.'dmsub").find("*").prop("disabled", true);');
-              print('
-              var nodes = document.getElementById("'.$one->id.'dmsub").getElementsByTagName(\'*\');
-            for(var i = 0; i < nodes.length; i++)
-            {
-            nodes[i].disabled = true;
-            }');
-
-              }
-
-            ?>
+           /*abandoned javascript function to grayou elements*/
 
         }
         <?php
-        foreach($all as $dm)
-        {
-             print('
-             $(function(){
-            $(\'#'.$dm->id.'\').click(function()
-            {
-                if(document.getElementById("'.$dm->id.'").checked == true)
-                {
-                    document.getElementById("'.$dm->id.'dmrate").disabled=false;
-                    document.getElementById("'.$dm->id.'dmtier").disabled=false;
-                    var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
-                    for(var i = 0; i < nodes.length; i++)
-                    {
-                    nodes[i].disabled = false;
-                    }
 
-
-                } else
-                {
-                    document.getElementById("'.$dm->id.'dmrate").disabled=true;
-                    document.getElementById("'.$dm->id.'dmtier").disabled=true;
-                    var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
-                    for(var i = 0; i < nodes.length; i++)
-                    {
-                    nodes[i].disabled = true;
-                    nodes[i].checked = false;
-                    }
-
-
-
-                                }
-
-                //alert(\'clicked\');
-            });
-        });
-
-
-
-             ');
-
-        }
 
 
 

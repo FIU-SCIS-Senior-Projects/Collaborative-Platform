@@ -14,47 +14,10 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
             function load()
             {
+                /*abandoned javascript to gray out elements*/
             }
             <?php
-                    foreach($all as $dm)
-                    {
-                         print('
-                         $(function(){
-                        $(\'#'.$dm->id.'\').click(function()
-                        {
-                            if(document.getElementById("'.$dm->id.'").checked == true)
-                            {
 
-                                var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
-                                for(var i = 0; i < nodes.length; i++)
-                                {
-                                nodes[i].disabled = false;
-                                }
-
-
-                            } else
-                            {
-
-                                var nodes = document.getElementById("'.$dm->id.'dmsub").getElementsByTagName(\'*\');
-                                for(var i = 0; i < nodes.length; i++)
-                                {
-                                nodes[i].disabled = true;
-                                nodes[i].checked = false;
-                                }
-
-
-
-                                            }
-
-                            //alert(\'clicked\');
-                        });
-                    });
-
-
-
-                         ');
-
-                    }
 
             ?>
 
