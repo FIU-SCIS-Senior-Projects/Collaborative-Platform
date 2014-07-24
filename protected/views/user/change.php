@@ -586,17 +586,21 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                                 $title = $menteeProj->title;
                                 $projectdesc = $menteeProj->description;
                                 $mycustomer=null;
-                                if(!$projMentor->username == 'DEFAULT')
+                                if($projMentor!=null)
                                 {
-                                    $mycustomer = Project::model()->findBySql("select * from project where id = $menteeProj->id");
+                                    if($projMentor->username != 'DEFAULT')
+                                    {
+                                        $mycustomer = Project::model()->findBySql("select * from project where id = $menteeProj->id");
+                                        $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
+                                    }
                                 }
+
 
                                 if($mycustomer!=null)
                                 {
                                     $CUSNam = $mycustomer->customer_fname.' '.$mycustomer->customer_lname;
                                 }
-                                $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
                                 $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$menteeProj->id ");
                                 if($mymenids!=null)
@@ -632,7 +636,12 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 
                             $PRName ='No Personal mentor assigned';
 
-                            $myperM = User::model()->findBySql("select * from user where id = $mentee->personal_mentor_user_id");
+                            $myperM=null;
+                            if($mentee->personal_mentor_user_id!=null)
+                            {
+                                $myperM = User::model()->findBySql("select * from user where id = $mentee->personal_mentor_user_id");
+
+                            }
 
                             if($myperM!=null)
                             {

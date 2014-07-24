@@ -147,7 +147,7 @@ if(User::isCurrentUserAdmin())
     {
         $pmentors = Mentee::model()->findBySql("SELECT * FROM mentee WHERE user_id=$model->id");
         $pmentor = null;
-        if($pmentors->personal_mentor_user_id=!null)
+        if($pmentors->personal_mentor_user_id!=null)
         {
             $pmentor = PersonalMentor::model()->findBySql("SELECT * FROM personal_mentor WHERE user_id=$pmentors->personal_mentor_user_id");
         }
@@ -160,7 +160,7 @@ if(User::isCurrentUserAdmin())
              $proj= Project::model()->findBySql("SELECT * FROM project WHERE id= $myproject->project_id");
             }
         }
-        ?>     <h6> My Personal Mentee </h6>
+        ?>     <h6> My Personal Mentor </h6>
         <div id="container" class="my-box-container6"
              style="<?php if($model->isMentee)
              { echo 'display:block;'; }
@@ -181,7 +181,7 @@ if(User::isCurrentUserAdmin())
                         </tr>
                     </thread>
                     <?php
-                    $usr = User::model()->findBySql("SELECT * FROM user WHERE id='$pmentor->user_id'");?>
+                    $usr = User::model()->findBySql("SELECT * FROM user WHERE id= $pmentor->user_id");?>
                     <tbody>
                     <tr>
                         <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
@@ -210,7 +210,7 @@ if(User::isCurrentUserAdmin())
                             <th width="100%">Senior Project</th>
                         </tr>
                     </thread>
-                    <?php?>
+                    <?php ?>
                     <tbody>
                     <tr>
                         <td><?php echo $proj->title;?></td>
