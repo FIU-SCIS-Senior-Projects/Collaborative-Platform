@@ -443,6 +443,70 @@ class UserController extends Controller
 
             if($user->isDomMentor ==1)
             {
+                UserDomain::model()->deleteAll("user_id = ".$model->id);
+
+
+                $domMentor->max_tickets = $_POST['dmmaxtickets'];
+                $domMentor->save();
+
+
+                $all = Domain::model()->findAll();
+                foreach ($all as $each)
+                {
+
+
+                    if(isset($_POST[$each->id]))
+                    {
+                        $user_domain = new UserDomain();
+                        $user_domain->user_id = $domMentor->user_id;
+                        $user_domain->domain_id= $each->id;
+                        $user_domain->active=1;
+                        $user_domain->save(false);
+
+
+                        $allsubs = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $each->id");
+                        if($allsubs!=null)
+                        {
+                            foreach( $allsubs as $onesub)
+                            {
+                                $temp = $onesub->id.'ddmsub';
+                                if(isset($_POST[$temp]))
+                                {
+                                    $user_domain = new UserDomain();
+                                    $user_domain->user_id = $domMentor->user_id;
+                                    $user_domain->domain_id= $each->id;
+                                    $user_domain->active=1;
+                                    $rate = $each->id.'-'.$onesub->id.'dmrate';
+                                    $tier = $each->id.'-'.$onesub->id.'dmtier';
+                                    $user_domain->rate = $_POST[$rate];
+                                    $user_domain->tier_team = $_POST[$tier];
+                                    $user_domain->subdomain_id = $onesub->id;
+                                    $user_domain->save(false);
+
+
+
+                                }
+                            }
+                        } else
+                        {
+                            $user_domain = new UserDomain();
+                            $user_domain->user_id = $domMentor->user_id;
+                            $user_domain->domain_id= $each->id;
+                            $user_domain->active=1;
+                            $user_domain->save(false);
+
+
+                        }
+
+
+
+                    }
+
+                }
+
+
+                ////
+                /*
                 //$domMentor = new DomainMentor();
                 $domMentor->user_id = $_COOKIE['UserID'];
                 $domMentor->max_tickets = $_POST['dmmaxtickets'];
@@ -491,7 +555,7 @@ class UserController extends Controller
 
                     }
 
-                }
+                }*/
 
 
             }

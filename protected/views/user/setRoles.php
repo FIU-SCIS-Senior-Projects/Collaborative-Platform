@@ -445,17 +445,20 @@ if($model->isPerMentor==1)
                             $projectdesc = $menteeProj->description;
                             $mycustomer=null;
 
+                            if($projMentor!=null)
+                            {
                             if($projMentor->username == 'DEFAULT')
                             {
                                 $mycustomer = Project::model()->findBySql("select * from project where id = $menteeProj->id");
+                                $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
+                            }
                             }
 
                             if($mycustomer!=null)
                             {
                                 $CUSName = $mycustomer->customer_fname.' '.$mycustomer->customer_lname;
                             }
-                            $pmName=ucfirst($projMentor->fname).' '.ucfirst($projMentor->fname);
 
                             $mymenids = Mentee::model()->findAllBySql("select * from mentee where project_id =$menteeProj->id ");
                             if($mymenids!=null)
@@ -469,10 +472,21 @@ if($model->isPerMentor==1)
 
                                     $t = User::model()->findBySql("select * from user where id = $pid");
                                     $projmid = Project::model()->findBySql("select * from project where id = $m->project_id");
-                                    $pjm = User::model()->findBySql("select * from user where id = $projmid->project_mentor_user_id");
+
+                                    $pjm = null;
+                                    if($projmid!=null)
+                                    {
+                                        if($projmid->project_mentor_user_id!=null)
+                                        {
+                                        $pjm = User::model()->findBySql("select * from user where id = $projmid->project_mentor_user_id");
+                                        }
+                                    }
                                     $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
 
-                                    $PJMname = $pjm->fname.' '.$pjm->lname;
+
+                                        $PJMname = $pjm->fname.' '.$pjm->lname;
+
+
 
 
                                     $PERMname = $perm->fname.' '.$perm->lname;
