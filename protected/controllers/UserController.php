@@ -443,7 +443,7 @@ class UserController extends Controller
 
             if($user->isDomMentor ==1)
             {
-                UserDomain::model()->deleteAll("user_id = ".$model->id);
+                //UserDomain::model()->deleteAll("user_id = ".$user->id);
 
 
                 $domMentor->max_tickets = $_POST['dmmaxtickets'];
