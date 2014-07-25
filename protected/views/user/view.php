@@ -78,9 +78,15 @@ if(User::isCurrentUserAdmin())
                 ?><h6>Domain Mentor Availability</h6><?php
                 $dommentor = DomainMentor::model()->findBySql("SELECT max_tickets FROM domain_mentor WHERE user_id=$model->id");
                 $userdom = UserDomain::model()->findBySql("SELECT tier_team FROM user_domain WHERE user_id=$model->id");
+                if($dommentor!=null)
+                {
                 if($dommentor->max_tickets == null)
                 {
                     echo "Max tickets: N/A";
+                }else
+                {
+                    echo "Max tickets: " .$dommentor->max_tickets;
+                }
                 }
                 else
                 {
