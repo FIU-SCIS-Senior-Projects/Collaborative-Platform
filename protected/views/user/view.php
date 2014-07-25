@@ -90,7 +90,7 @@ if(User::isCurrentUserAdmin())
                 }
                 else
                 {
-                    echo "Max tickets: " .$dommentor->max_tickets;
+                    echo "Max tickets: N/A";
                 }
                 ?><br>
                 <!--<?php
