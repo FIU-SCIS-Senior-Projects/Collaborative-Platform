@@ -236,8 +236,8 @@ class User extends CActiveRecord
 
     public static function replaceMessage($to, $message)
     {
-        $file = fopen("/var/www/html/coplat/email/index1.html", "r");
-        //$file = fopen("C:/xampp/htdocs/coplat/email/index1.html", "r");
+        //$file = fopen("/var/www/html/coplat/email/index1.html", "r");
+        $file = fopen("C:/xampp/htdocs/coplat/email/index1.html", "r");
         $html = "";
         while (!feof($file)) {
             $html .= fgets($file);

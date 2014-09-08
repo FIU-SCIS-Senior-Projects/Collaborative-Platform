@@ -1,4 +1,6 @@
 <?php
+
+/*This part and 'change' view was assinged to me in the last few weeks so I apologize for the mess*/
 //global variables
 
 $all = Domain::model()->findAll();
