@@ -66,24 +66,43 @@ if( User::isCurrentUserMentee())
 					'class'=>'bootstrap.widgets.TbMenu',
 					'htmlOptions'=>array('class'=>'pull-left'),
 					'items'=>array('-',
-									array('label'=>'User','visible'=>!Yii::app()->user->isGuest,
+									array('label'=>'Users','visible'=>!Yii::app()->user->isGuest,
 									'class'=>'bootstrap.widgets.TbMenu',
 									'htmlOptions'=>array('class'=>'pull-left'),
-									'items'=>array(array('label'=>'Manage', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest),
+									'url'=>array('user/admin'),
+											
+									/*'items'=>array(array('label'=>'Manage', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest),
 													array('label'=>'Add Administrator', 'url'=>array('user/create_admin'), 'visible'=>!Yii::app()->user->isGuest),
                                               array('label'=>'Add User', 'url'=>array('user/create'), 'visible'=>!Yii::app()->user->isGuest),
 
 
-                                    ),
+                                    ),*/
 									),
-									array('label'=>'Domain','visible'=>!Yii::app()->user->isGuest,
+									array('label'=>'Projects','visible'=>!Yii::app()->user->isGuest,
 									'class'=>'bootstrap.widgets.TbMenu',
 									'htmlOptions'=>array('class'=>'pull-left'),
-									'items'=>array(array('label'=>'Manage', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest),
+									'url'=>array('project/admin')
+									/*'items'=>array(array('label'=>'Manage', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest),
+									 array('label'=>'Create', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),
+							
+									),
+									*/
+									),
+									array('label'=>'Domains','visible'=>!Yii::app()->user->isGuest,
+									'class'=>'bootstrap.widgets.TbMenu',
+									'htmlOptions'=>array('class'=>'pull-left'),
+									'url'=>array('domain/admin'),
+											
+											
+									/*'items'=>array(array('label'=>'Manage', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest),
 													array('label'=>'Create', 'url'=>array('domain/create'), 'visible'=>!Yii::app()->user->isGuest),
 													
 											),
+									*/
+											
 									),
+							
+									/*
                                     array('label'=>'Sub-Domain','visible'=>!Yii::app()->user->isGuest,
                                         'class'=>'bootstrap.widgets.TbMenu',
                                         'htmlOptions'=>array('class'=>'pull-left'),
@@ -92,22 +111,20 @@ if( User::isCurrentUserMentee())
 
                                         ),
                                     ),
-                                    array('label'=>'Invitation','visible'=>!Yii::app()->user->isGuest,
+                                    */
+                                    array('label'=>'Applications','visible'=>!Yii::app()->user->isGuest,
                                         'class'=>'bootstrap.widgets.TbMenu',
                                         'htmlOptions'=>array('class'=>'pull-left'),
-                                        'items'=>array(array('label'=>'Manage', 'url'=>array('invitation/admin'), 'visible'=>!Yii::app()->user->isGuest),
+                                    		'url'=>array('invitation/create')
+                                    		
+                                    /*'items'=>array(array('label'=>'Manage', 'url'=>array('invitation/admin'), 'visible'=>!Yii::app()->user->isGuest),
                                             array('label'=>'Send', 'url'=>array('invitation/create'), 'visible'=>!Yii::app()->user->isGuest),
 
                                         ),
+                                        */
+                                    		
                                     ),
-                                    array('label'=>'Project','visible'=>!Yii::app()->user->isGuest,
-                                        'class'=>'bootstrap.widgets.TbMenu',
-                                        'htmlOptions'=>array('class'=>'pull-left'),
-                                        'items'=>array(array('label'=>'Manage', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest),
-                                            array('label'=>'Create', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),
-
-                                        ),
-                                    ),
+                               
 							),
 					),
 
