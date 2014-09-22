@@ -13,7 +13,7 @@
 <?php
 
 if($model->username == null || $error!=null)
-    echo $this->renderPartial('add', array('model'=>$model, 'error'=>$error));
+    echo $this->renderPartial('register', array('model'=>$model, 'error'=>$error));
 else
     echo $this->renderPartial('roles', array('model'=>$model));
 

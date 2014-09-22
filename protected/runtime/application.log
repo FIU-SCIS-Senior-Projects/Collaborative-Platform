@@ -7762,3 +7762,746 @@ Stack trace:
 #18 {main}
 REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
 ---
+2014/09/09 23:01:04 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\UserController.php:423)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\xampp\htdocs\coplat\protected\controllers\UserController.php (423)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/09 23:04:30 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\UserController.php:423)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\xampp\htdocs\coplat\protected\controllers\UserController.php (423)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/09 23:08:37 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\UserController.php:423)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/create
+in C:\xampp\htdocs\coplat\protected\controllers\UserController.php (423)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:41:27 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:41:30 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:42:12 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:42:48 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:42:49 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:43:01 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:43:06 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\layouts\main.php(34): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#5 C:\xampp\htdocs\coplat\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(206): CContentDecorator->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(300): SiteController->endWidget()
+#8 C:\xampp\htdocs\coplat\themes\bootstrap\views\layouts\column1.php(6): SiteController->endContent()
+#9 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#10 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(784): SiteController->renderFile()
+#12 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(134): SiteController->render()
+#13 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#14 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#15 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#16 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#17 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#18 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/site/login
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\layouts\main.php (34)
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\layouts\column1.php (6)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (134)
+2014/09/21 20:43:25 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:43:31 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:43:59 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:44:00 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:44:00 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:44:19 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:44:20 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 20:44:27 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php(5): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(869): SiteController->renderFile()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(782): SiteController->renderPartial()
+#5 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(32): SiteController->render()
+#6 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(286): SiteController->runAction()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): SiteController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/
+in C:\xampp\htdocs\coplat\themes\bootstrap\views\site\index.php (5)
+in C:\xampp\htdocs\coplat\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/21 21:00:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('home/user/creat...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/home/user/create
+---
+2014/09/22 12:06:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:36:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:36:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:37:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:37:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:38:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:47:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:48:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:48:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 12:56:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+---
+2014/09/22 13:03:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "landing".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('landing')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 13:28:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "coplat".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('coplat')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('coplat')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/coplat/ima...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/coplat/images/landing/mentor.jpg
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/landing
+---
+2014/09/22 13:37:54 [error] [exception.CException] exception 'CException' with message 'Property "TbButton.align" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CWidgetFactory.php(161): CComponent->__set('align', 'center')
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 C:\xampp\htdocs\coplat\protected\views\site\landing.php(63): CBaseController->widget('bootstrap.widge...', Array)
+#4 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('landing', Array, true)
+#8 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(175): CController->render('landing', Array)
+#9 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionLanding()
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#14 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#15 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 13:44:58 [error] [exception.CException] exception 'CException' with message 'Property "TbButton.class" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CWidgetFactory.php(161): CComponent->__set('class', 'btn-block')
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 C:\xampp\htdocs\coplat\protected\views\site\landing.php(63): CBaseController->widget('bootstrap.widge...', Array)
+#4 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('landing', Array, true)
+#8 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(175): CController->render('landing', Array)
+#9 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionLanding()
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#14 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#15 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 13:59:14 [error] [exception.CException] exception 'CException' with message 'Property "TbButton.href" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CWidgetFactory.php(161): CComponent->__set('href', '/coplat/index.p...')
+#1 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'bootstrap.widge...', Array)
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 C:\xampp\htdocs\coplat\protected\views\site\landing.php(66): CBaseController->widget('bootstrap.widge...', Array)
+#4 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('landing', Array, true)
+#8 C:\xampp\htdocs\coplat\protected\controllers\SiteController.php(175): CController->render('landing', Array)
+#9 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): SiteController->actionLanding()
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('landing')
+#14 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/landing')
+#15 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/site/landing
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 14:02:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+---
+2014/09/22 14:02:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/landing
+---
+2014/09/22 14:06:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/landing
+---
+2014/09/22 14:06:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+---
+2014/09/22 14:14:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/landing
+---
+2014/09/22 14:27:42 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 14:27:57 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 14:28:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 14:28:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 14:30:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 14:30:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 14:32:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "register".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('register')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/landing
+---
+2014/09/22 14:32:58 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('register')
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/register')
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/register
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/login
+---
+2014/09/22 14:52:24 [error] [php] Creating default object from empty value (C:\xampp\htdocs\coplat\protected\controllers\ImportController.php:105)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ImportController->runAction()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ImportController->runActionWithFilters()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ImportController->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+in C:\xampp\htdocs\coplat\protected\controllers\ImportController.php (105)
+in C:\xampp\htdocs\coplat\protected\controllers\ImportController.php (58)
+in C:\xampp\htdocs\coplat\index.php (14)

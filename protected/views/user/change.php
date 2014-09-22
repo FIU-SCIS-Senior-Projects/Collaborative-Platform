@@ -1142,7 +1142,7 @@ if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
                             ?>
                             <tbody>
                             <tr>
-                                <td><input type="checkbox" name="mentees[]" value="<?php echo $mentee->user_id; ?>"</td>
+                                <td><input type="checkbox" name="mentees[]" value="<?php echo $mentee->user_id; ?>"></td>
                                 <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
                             </tr>
                             </tbody>

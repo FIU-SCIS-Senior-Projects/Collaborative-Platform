@@ -30,11 +30,19 @@ $this->breadcrumbs=array(
     <tr><td style="font-size: 14px; font-weight: bold">Registration and Access Point</td><td>Steven Santiago Sanabria</td></tr>
 </table>
 </br>
-<h5>Version 2.0 - Soon</h5>
+<h5>Version 2.0 - 08/08/2014</h5>
 
 <table style="margin-left: 20px">
     <tr><td style="font-size: 14px; font-weight: bold">Integration with SPW and Registration Improvement</td><td> Jonathan Santiago</td></tr>
     <tr><td style="font-size: 14px; font-weight: bold">Ticket Workflow &nbsp;&nbsp;&nbsp;&nbsp;</td><td> Ramon Gomez</td></tr>
+</table>
+</br>
+
+<h5>Version 3.0 - In Progress</h5>
+
+<table style="margin-left: 20px">
+    <tr><td style="font-size: 14px; font-weight: bold">Admin Dashboard &nbsp;</td><td> Jonathan Sanchez</td></tr>
+    <tr><td style="font-size: 14px; font-weight: bold">Mentor Self Registration</td><td> Nicholas Madariaga</td></tr>
 </table>
 </br>
 

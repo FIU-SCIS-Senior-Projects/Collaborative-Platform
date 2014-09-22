@@ -433,6 +433,15 @@ class UserController extends Controller
         //$this->render('add',array('model'=>$model, 'error' => $error));
 
     }
+    
+    /*
+     * initiate self serve registration for new users
+     */
+    public function actionRegister(){
+    	$error = '';
+    	$this->render('register', array('error'=>$error));
+    }
+    
     public function actionCreate_Admin()
     {
         $model=new User;
