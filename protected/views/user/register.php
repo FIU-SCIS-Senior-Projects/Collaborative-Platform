@@ -3,7 +3,6 @@
 /* @var $model User */
 /* @var $form CActiveForm */
 ?>
-<h2>Register New User</h2>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -51,58 +50,3 @@
 
 		<?php $this->endWidget(); ?>
 	</div>
-
-    <p class="note" style="margin-top:248px; margin-left:300px;">Register with:</p>
-
-
-</div><!-- form -->
-
-<!--
-<div class="row">
-            <?php echo $form->labelEx($model,'isAdmin'); ?>
-            <?php echo $form->textField($model,'isAdmin'); ?>
-            <?php echo $form->error($model,'isAdmin'); ?>
-        </div>
-    
-        <div class="row">
-            <?php echo $form->labelEx($model,'isProMentor'); ?>
-            <?php echo $form->textField($model,'isProMentor'); ?>
-            <?php echo $form->error($model,'isProMentor'); ?>
-        </div>
-    
-        <div class="row">
-            <?php echo $form->labelEx($model,'isPerMentor'); ?>
-            <?php echo $form->textField($model,'isPerMentor'); ?>
-            <?php echo $form->error($model,'isPerMentor'); ?>
-        </div>
-    
-        <div class="row">
-            <?php echo $form->labelEx($model,'isDomMentor'); ?>
-            <?php echo $form->textField($model,'isDomMentor'); ?>
-            <?php echo $form->error($model,'isDomMentor'); ?>
-        </div>
-    
-        <div class="row">
-            <?php echo $form->labelEx($model,'isStudent'); ?>
-            <?php echo $form->textField($model,'isStudent'); ?>
-            <?php echo $form->error($model,'isStudent'); ?>
-        </div>
-    
-        <div class="row">
-            <?php echo $form->labelEx($model,'isMentee'); ?>
-            <?php echo $form->textField($model,'isMentee'); ?>
-            <?php echo $form->error($model,'isMentee'); ?>
-        </div>
-    
-        <div class="row">
-            <?php echo $form->labelEx($model,'isJudge'); ?>
-            <?php echo $form->textField($model,'isJudge'); ?>
-            <?php echo $form->error($model,'isJudge'); ?>
-        </div>
-    
-        <div class="row">
-            <?php echo $form->labelEx($model,'isEmployer'); ?>
-            <?php echo $form->textField($model,'isEmployer'); ?>
-            <?php echo $form->error($model,'isEmployer'); ?>
-        </div>
--->

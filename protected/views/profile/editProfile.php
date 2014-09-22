@@ -365,7 +365,7 @@ elseif(User::isCurrentUserProMentor())
                         ?>
                         <tbody>
                         <tr>
-                            <td><input type="checkbox" name="mentees[]" value="<?php echo $mentee->user_id; ?>"</td>
+                            <td><input type="checkbox" name="mentees[]" value="<?php echo $mentee->user_id; ?>"></td>
                             <td><?php echo ucfirst($usr->fname) ." ". ucfirst($usr->lname);?></td>
                         </tr>
                         </tbody>

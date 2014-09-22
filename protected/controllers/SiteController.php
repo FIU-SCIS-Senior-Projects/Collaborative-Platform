@@ -168,4 +168,13 @@ class SiteController extends Controller
 	$this->render('forgotPassword', array('error'=>$error));
 	
 	}
+	
+	/*
+	 * Displays the landing page for new users
+	 */
+	public function actionLanding()
+	{
+		$error = '';
+		$this->render('landing', array('error'=>$error));
+	}
 }

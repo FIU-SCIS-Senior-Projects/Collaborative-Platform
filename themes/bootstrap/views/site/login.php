@@ -81,9 +81,9 @@ $this->breadcrumbs=array(
 		<div style="float:left; margin-left: 10px;margin-top: -5px;">
 			<a style="float:left;" href= "/coplat/index.php/site/forgotPassword" >  Forgot Password? </a>
 			<div style="clear:both"></div>
-			<?php //<a style="float:left;" href= "/coplat/index.php/user/create" > Register  </a>	?>
+			<?php /*<a style="float:left;" href= "/coplat/index.php/user/create" > Register  </a> */?>
+			<a style="float:left;" href= "/coplat/index.php/site/landing" > Register  </a>
 		</div>
-
 
    </div>
 
