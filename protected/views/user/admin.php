@@ -27,6 +27,21 @@ $('.search-form form').submit(function(){
 ?>
 
 <h2>Manage Users</h2>
+
+<a href=../user/create>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Add New User',
+		'icon'=>'plus white',
+		'size'=>'small',
+		'type'=> 'success',
+		//'url'=>'user/create',
+		// button for ADD NEW USER
+		// FIX HREF
+));?>
+</a>
+
+
 <?php //echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <!--<div class="search-form" style="display:none">
 <?php $this->renderPartial('search',array(
@@ -34,12 +49,15 @@ $('.search-form form').submit(function(){
 )); ?>
 </div><!-- search-form -->
 
+
 <?php $linkfind ='href="/coplat/index.php/user/findMentors"'; ?>
 <div style="float: left">
     <a <?php echo $linkfind; ?>><img style="display: block;" border="0" src="/coplat/images/find.png" id="find" width="50" height="50">
         <p stlye="width: 200px; position: relative; top: -200px;">Find Domain Mentors</p>
     </a>
 </div>
+
+
 
 
 

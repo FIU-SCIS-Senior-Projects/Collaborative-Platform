@@ -78,13 +78,19 @@ if( User::isCurrentUserMentee())
 
                                     ),*/
 									),
+
+									array('label'=>'Tickets','visible'=>!Yii::app()->user->isGuest,
+									'class'=>'bootstrap.widgets.TbMenu',
+									'htmlOptions'=>array('class'=>'pull-left'),
+									'url'=>array('ticket/admin'),
+									),
+							
 									array('label'=>'Projects','visible'=>!Yii::app()->user->isGuest,
 									'class'=>'bootstrap.widgets.TbMenu',
 									'htmlOptions'=>array('class'=>'pull-left'),
 									'url'=>array('project/admin')
 									/*'items'=>array(array('label'=>'Manage', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest),
-									 array('label'=>'Create', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),
-							
+									 array('label'=>'Create', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),			
 									),
 									*/
 									),
@@ -102,6 +108,12 @@ if( User::isCurrentUserMentee())
 											
 									),
 							
+									array('label'=>'Invites','visible'=>!Yii::app()->user->isGuest,
+									'class'=>'bootstrap.widgets.TbMenu',
+									'htmlOptions'=>array('class'=>'pull-left'),
+									'url'=>array('invitation/admin'),
+											),
+							
 									/*
                                     array('label'=>'Sub-Domain','visible'=>!Yii::app()->user->isGuest,
                                         'class'=>'bootstrap.widgets.TbMenu',
@@ -115,7 +127,7 @@ if( User::isCurrentUserMentee())
                                     array('label'=>'Applications','visible'=>!Yii::app()->user->isGuest,
                                         'class'=>'bootstrap.widgets.TbMenu',
                                         'htmlOptions'=>array('class'=>'pull-left'),
-                                    		'url'=>array('invitation/create')
+                                    	'url'=>array('')
                                     		
                                     /*'items'=>array(array('label'=>'Manage', 'url'=>array('invitation/admin'), 'visible'=>!Yii::app()->user->isGuest),
                                             array('label'=>'Send', 'url'=>array('invitation/create'), 'visible'=>!Yii::app()->user->isGuest),

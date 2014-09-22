@@ -31,6 +31,7 @@ $('.search-form form').submit(function(){
 )); ?>
 </div><!-- search-form -->
 
+
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'project-grid',
 	'dataProvider'=>$model->search(),
