@@ -8505,3 +8505,83 @@ REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
 in C:\xampp\htdocs\coplat\protected\controllers\ImportController.php (105)
 in C:\xampp\htdocs\coplat\protected\controllers\ImportController.php (58)
 in C:\xampp\htdocs\coplat\index.php (14)
+2014/09/28 22:05:05 [error] [exception.CException] exception 'CException' with message 'Alias "application.models" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/YiiBase.php:316
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/generators/crud/CrudCode.php(59): YiiBase::import('application.mod...', true)
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/CCodeGenerator.php(159): CModel->validate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('')
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/coplat/index.php/gii/crud
+HTTP_REFERER=http://localhost/coplat/index.php/gii/crud
+---
+2014/09/28 22:05:27 [error] [exception.CException] exception 'CException' with message 'Alias "Application.models" is invalid. Make sure it points to an existing directory or file.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/YiiBase.php:341
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/generators/crud/CrudCode.php(59): YiiBase::import('Application.mod...', true)
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/CCodeGenerator.php(159): CModel->validate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('')
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/coplat/index.php/gii/crud
+HTTP_REFERER=http://localhost/coplat/index.php/gii/crud
+---
+2014/09/28 22:05:48 [error] [exception.CException] exception 'CException' with message 'Alias "coplat.protected.models.application" is invalid. Make sure it points to an existing directory or file.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/YiiBase.php:341
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/generators/crud/CrudCode.php(59): YiiBase::import('coplat.protecte...', true)
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/CCodeGenerator.php(159): CModel->validate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('')
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/coplat/index.php/gii/crud
+HTTP_REFERER=http://localhost/coplat/index.php/gii/crud
+---
+2014/09/28 22:06:19 [error] [exception.CException] exception 'CException' with message 'Alias "coplat.protected.models.Application" is invalid. Make sure it points to an existing directory or file.' in /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/YiiBase.php:341
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/generators/crud/CrudCode.php(59): YiiBase::import('coplat.protecte...', true)
+#1 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#3 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#4 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/CCodeGenerator.php(159): CModel->validate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#6 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#7 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(282): CController->run('')
+#11 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud')
+#12 /Applications/XAMPP/xamppfiles/htdocs/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/coplat/index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/coplat/index.php/gii/crud
+HTTP_REFERER=http://localhost/coplat/index.php/gii/crud
+---
