@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3519830810">
-    <data-source source="LOCAL" name="MySQL - coplat@localhost" uuid="b5209ba7-258e-4caa-aa6e-49593f7642b5">
+  <component name="DataSourceManagerImpl" format="xml" hash="3836681629">
+    <data-source source="LOCAL" name="MySQL - coplat@localhost" uuid="a618667d-ddd2-4dcf-8166-c461bec4c0f7">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:8888/coplat</jdbc-url>
-      <user-name>root</user-name>
-      <user-password>df93dffbdfd9dfdedf99df98df81</user-password>
+      <jdbc-url>jdbc:mysql://localhost:3306/coplat</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

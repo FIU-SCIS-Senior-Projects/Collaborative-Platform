@@ -54,7 +54,7 @@ if( User::isCurrentUserMentee())
 <?php 
 	$this->widget('bootstrap.widgets.TbNavbar',array(
         'htmlOptions'=>array('class'=>'myNavbar','style'=>''),
-        'type'=>'inverse',
+        'type'=>'null',
         'items'=>array(
 			array(
 				'class'=>'bootstrap.widgets.TbMenu',
@@ -88,6 +88,8 @@ if( User::isCurrentUserMentee())
 									),
 									*/
 									),
+							
+							
 									array('label'=>'Domains','visible'=>!Yii::app()->user->isGuest,
 									'class'=>'bootstrap.widgets.TbMenu',
 									'htmlOptions'=>array('class'=>'pull-left'),
@@ -102,6 +104,13 @@ if( User::isCurrentUserMentee())
 											
 									),
 							
+									array('label'=>'Tickets','visible'=>!Yii::app()->user->isGuest,
+									'class'=>'bootstrap.widgets.TbMenu',
+									'htmlOptions'=>array('class'=>'pull-left'),
+									'url'=>array('')
+										
+									),
+							
 									/*
                                     array('label'=>'Sub-Domain','visible'=>!Yii::app()->user->isGuest,
                                         'class'=>'bootstrap.widgets.TbMenu',
@@ -112,6 +121,13 @@ if( User::isCurrentUserMentee())
                                         ),
                                     ),
                                     */
+									array('label'=>'Invites','visible'=>!Yii::app()->user->isGuest,
+									'class'=>'bootstrap.widgets.TbMenu',
+									'htmlOptions'=>array('class'=>'pull-left'),
+									'url'=>array('invitation/admin')
+							
+									),
+							
                                     array('label'=>'Applications','visible'=>!Yii::app()->user->isGuest,
                                         'class'=>'bootstrap.widgets.TbMenu',
                                         'htmlOptions'=>array('class'=>'pull-left'),

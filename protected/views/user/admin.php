@@ -27,32 +27,42 @@ $('.search-form form').submit(function(){
 ?>
 
 <h2>Manage Users</h2>
-<?php //echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <!--<div class="search-form" style="display:none">
 <?php $this->renderPartial('search',array(
     'model'=>$model,
 )); ?>
 </div><!-- search-form -->
 
-<?php $linkfind ='href="/coplat/index.php/user/findMentors"'; ?>
+
+<?php //$linkfind ='href="/coplat/index.php/user/findMentors"'; ?>
+<!--
 <div style="float: left">
-    <a <?php echo $linkfind; ?>><img style="display: block;" border="0" src="/coplat/images/find.png" id="find" width="50" height="50">
+    <a <?php //echo $linkfind; ?>><img style="display: block;" border="0" src="/coplat/images/find.png" id="find" width="50" height="50">
         <p stlye="width: 200px; position: relative; top: -200px;">Find Domain Mentors</p>
     </a>
 </div>
-
-
+//-->
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
-    'id'=>'user-grid',
+    'type'=>'striped condensed hover',
+    //'id'=>'user-grid',
+    'selectableRows'=>1,
+    'selectionChanged'=>
+        'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
+    //'selectionChanged'=>
+     //   'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }',
+
     'dataProvider'=>$model->search(),
     'filter'=>$model,
     'columns'=>array(
         'username',
         'email',
         'fname',
-        'mname',
+        //'mname',
         'lname',
+
+        /**
         array(
             'name'=>'activated',
             'header'=>'Activated',
@@ -85,4 +95,34 @@ $('.search-form form').submit(function(){
             'class'=>'CButtonColumn',
 
         ),
+         **/
     ))); ?>
+
+
+
+<!-- View Popup  -->
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal')); ?>
+<!-- Popup Header -->
+
+<div class="modal-header">
+    <h4>View Employee Details</h4>
+</div>
+
+<!-- Popup Content -->
+<div class="modal-body">
+    <p>Employee Details</p>
+
+</div>
+<!-- Popup Footer -->
+<div class="modal-footer">
+
+    <!-- close button -->
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label'=>'Close',
+        'url'=>'#',
+        'htmlOptions'=>array('data-dismiss'=>'modal'),
+    )); ?>
+    <!-- close button ends-->
+</div>
+<?php $this->endWidget(); ?>
+<!-- View Popup ends -->
