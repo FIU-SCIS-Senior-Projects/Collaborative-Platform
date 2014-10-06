@@ -229,23 +229,27 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model=new User;
+        $model->username = "";
+        $model->password = "";
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
         $error='';
 
-
+        //If a new User has been successfully created e.g. the user has created an account from the register.php page
         if(isset($_POST['User']))
         {
             /*if ($this->actionVerifyRegistration() != "") {
                 $this->render('create', array('model'=>$model));
             }*/
 
-
+        	echo("<script>console.log('New User Registered');</script>");
             $model->attributes=$_POST['User'];
             $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
             $model->biography = "Tell us something about yourself...";
             $model->activation_chain = $this->genRandomString(10);
             $model->activated = 1;
+            $hasher = new PasswordHash(8, false);
+            $model->password = $hasher->HashPassword($model->password);
 
             $error = $this->verifyRegistration();
             if($error==null)
@@ -719,6 +723,19 @@ class UserController extends Controller
         ));
         $this->render('findMentors',array('domMentors'=>$domMentors,'dataProviderCompined'=>$dataProviderCompined,'filtersForm'=>$filtersForm,'error' => $error));
 
+    }
+    
+    public function getTabs($form, $model){
+    	$tabs = array(
+					array(
+					'active'=>true,
+					'label'=>"Account",
+					'content'=>$this->renderPartial('accountInfoForm', array('form'=>$form, 'model'=>$model), true)),
+					array(
+					'label'=>"Personal Info",
+					'content'=>$this->renderPartial('personalInfoForm', array('form'=>$form, 'model'=>$model), true)),
+				);
+		return $tabs;
     }
 
     /**

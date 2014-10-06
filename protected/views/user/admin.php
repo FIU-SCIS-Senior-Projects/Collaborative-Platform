@@ -28,11 +28,11 @@ $('.search-form form').submit(function(){
 
 <h2>Manage Users</h2>
 <?php //echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<!--<div class="search-form" style="display:none">
+<div class="search-form" >
 <?php $this->renderPartial('search',array(
     'model'=>$model,
 )); ?>
-</div><!-- search-form -->
+</div>
 
 <?php $linkfind ='href="/coplat/index.php/user/findMentors"'; ?>
 <div style="float: left">
@@ -65,21 +65,7 @@ $('.search-form form').submit(function(){
             'type'=>'raw',
             'htmlOptions'=>array('width'=>'10'),
         ),
-        array(
-            'name'=>'isProMentor',
-            'header'=>'Project M.',
-            'type'=>'raw',
-        ),
-        array(
-            'name'=>'isDomMentor',
-            'header'=>'Domain M.',
-            'type'=>'raw',
-        ),
-        array(
-            'name'=>'isPerMentor',
-            'header'=>'Personal M.',
-            'type'=>'raw',
-        ),
+        
 
         array(
             'class'=>'CButtonColumn',

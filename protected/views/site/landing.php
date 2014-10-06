@@ -56,7 +56,7 @@ $this->breadcrumbs=array(
 		interdum sodales. In hac habitasse platea dictumst. </p>
 		<br></br>
 		<div class="offset1 span6">
-			<a style="text-decoration:none" href="">
+			<a style="text-decoration:none" href="/coplat/index.php/user/create">
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
 	                'buttonType'=>'button',
 	                'type'=>'primary',
