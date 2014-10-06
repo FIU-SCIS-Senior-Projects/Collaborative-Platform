@@ -46,6 +46,10 @@ class User extends CActiveRecord
     public $vjf_role;
     public $men_role;
     public $rmj_role;
+    /* advanced search variables */
+    public $firstField;
+    public $quantity;
+    public $criteria;
     /*assign variables */
     public $userDomain;
     public $userId;
@@ -145,7 +149,7 @@ class User extends CActiveRecord
             'pic_url' => 'Pic Url',
             'activated' => 'Activated',
             'activation_chain' => 'Activation Chain',
-            'disable' => 'Disable',
+            'disable' => 'Disabled',
             'biography' => 'Biography',
             'linkedin_id' => 'Linkedin',
             'fiucs_id' => 'Fiucs',
@@ -168,6 +172,12 @@ class User extends CActiveRecord
         	'field_of_study' => 'Field of Study',
         	'school' => 'University',
         	'graduation_year' => 'Graduation Year',
+            'rmj_role' => 'Remote Mobil Judge Roles:',
+            'firstField' => 'Type: ',
+        		'criteria' => 'Assigned to: ',
+        		'quantity' => 'projects, mentors, or mentees',
+   
+        		
         );
     }
 
@@ -251,8 +261,8 @@ class User extends CActiveRecord
 
     public static function replaceMessage($to, $message)
     {
-        //$file = fopen("/var/www/html/coplat/email/index1.html", "r");
-        $file = fopen("C:/xampp/htdocs/coplat/email/index1.html", "r");
+        $file = fopen("/var/www/html/coplat/email/index1.html", "r");
+        //$file = fopen("C:/xampp/htdocs/coplat/email/index1.html", "r");
         $html = "";
         while (!feof($file)) {
             $html .= fgets($file);
