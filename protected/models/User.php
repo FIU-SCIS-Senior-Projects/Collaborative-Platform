@@ -46,6 +46,10 @@ class User extends CActiveRecord
     public $vjf_role;
     public $men_role;
     public $rmj_role;
+    /* advanced search variables */
+    public $firstField;
+    public $quantity;
+    public $criteria;
     /*assign variables */
     public $userDomain;
     public $userId;
@@ -152,7 +156,12 @@ class User extends CActiveRecord
             'isEmployer' => 'Employer',
             'vjf_role' => 'Virtual Job Fair Roles:',
             'men_role' => 'Mentoring Platform Roles:',
-            'rmj_role' => 'Remote Mobil Judge Roles:'
+            'rmj_role' => 'Remote Mobil Judge Roles:',
+            'firstField' => 'Type: ',
+        		'criteria' => 'Assigned to: ',
+        		'quantity' => 'projects, mentors, or mentees',
+   
+        		
         );
     }
 

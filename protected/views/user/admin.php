@@ -24,7 +24,7 @@ $('.bsearch-button').click(function(){
 	return false;
 });
 
-$('.search-form form').submit(function(){
+$('.asearch-form form').submit(function(){
 	$('#user-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
@@ -40,10 +40,8 @@ $('.search-form form').submit(function(){
 <?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?>
 <br/>
 
-
+<!-- basic search-form -->
 <div class="bsearch-form" style="display:">
-
-
     <?php $this->renderPartial('search',array(
         'model'=>$model,
     )); ?>
@@ -52,11 +50,11 @@ $('.search-form form').submit(function(){
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'asearch-button')); ?>
 
-<!-- search-form -->
+<!-- advanced search-form -->
 <div class="asearch-form" style="display:none">
-
-
-
+    <?php $this->renderPartial('advanced_search',array(
+        'model'=>$model,
+    )); ?>
 </div>
 
 
