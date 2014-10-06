@@ -137,7 +137,7 @@ class User extends CActiveRecord
             'pic_url' => 'Pic Url',
             'activated' => 'Activated',
             'activation_chain' => 'Activation Chain',
-            'disable' => 'Disable',
+            'disable' => 'Disabled',
             'biography' => 'Biography',
             'linkedin_id' => 'Linkedin',
             'fiucs_id' => 'Fiucs',

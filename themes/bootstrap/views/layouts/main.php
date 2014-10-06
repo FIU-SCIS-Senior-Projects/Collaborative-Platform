@@ -107,7 +107,7 @@ if( User::isCurrentUserMentee())
 									array('label'=>'Tickets','visible'=>!Yii::app()->user->isGuest,
 									'class'=>'bootstrap.widgets.TbMenu',
 									'htmlOptions'=>array('class'=>'pull-left'),
-									'url'=>array('')
+									'url'=>array('ticket/admin')
 										
 									),
 							

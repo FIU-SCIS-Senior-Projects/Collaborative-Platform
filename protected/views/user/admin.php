@@ -9,30 +9,55 @@ $this->breadcrumbs=array(
 /*$this->menu=array(
 	array('label'=>'List User', 'url'=>array('index')),
 	array('label'=>'Create User', 'url'=>array('create')),
-);*/
-
-/*Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
+);
+*/
+Yii::app()->clientScript->registerScript('search', "
+$('.asearch-button').click(function(){
+	$('.asearch-form').toggle();+
+	$('.bsearch-form').toggle();
 	return false;
 });
+
+$('.bsearch-button').click(function(){
+	$('.bsearch-form').toggle();
+	$('.asearch-form').toggle();
+	return false;
+});
+
 $('.search-form form').submit(function(){
 	$('#user-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
 });
-");*/
+");
 
 ?>
 
 <h2>Manage Users</h2>
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<!--<div class="search-form" style="display:none">
-<?php $this->renderPartial('search',array(
-    'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+
+
+<?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?>
+<br/>
+
+
+<div class="bsearch-form" style="display:">
+
+
+    <?php $this->renderPartial('search',array(
+        'model'=>$model,
+    )); ?>
+</div>
+
+
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'asearch-button')); ?>
+
+<!-- search-form -->
+<div class="asearch-form" style="display:none">
+
+
+
+</div>
 
 
 <?php //$linkfind ='href="/coplat/index.php/user/findMentors"'; ?>
@@ -46,12 +71,12 @@ $('.search-form form').submit(function(){
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped condensed hover',
-    //'id'=>'user-grid',
+    'id'=>'user-grid',
     'selectableRows'=>1,
     'selectionChanged'=>
         'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
     //'selectionChanged'=>
-     //   'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }',
+    //   'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }',
 
     'dataProvider'=>$model->search(),
     'filter'=>$model,
@@ -61,7 +86,6 @@ $('.search-form form').submit(function(){
         'fname',
         //'mname',
         'lname',
-
         /**
         array(
             'name'=>'activated',
@@ -74,7 +98,9 @@ $('.search-form form').submit(function(){
             'header'=>'Disable',
             'type'=>'raw',
             'htmlOptions'=>array('width'=>'10'),
-        ),
+
+             ),
+
         array(
             'name'=>'isProMentor',
             'header'=>'Project M.',
