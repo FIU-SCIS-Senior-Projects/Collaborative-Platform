@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 */
 Yii::app()->clientScript->registerScript('search', "
 $('.asearch-button').click(function(){
-	$('.asearch-form').toggle();+
+	$('.asearch-form').toggle();
 	$('.bsearch-form').toggle();
 	return false;
 });
@@ -24,12 +24,21 @@ $('.bsearch-button').click(function(){
 	return false;
 });
 
+$('.bsearch-form form').submit(function(){
+	$('#user-grid').yiiGridView('update', {
+
+		data: $(this).serialize()
+	});
+	return false;
+});
+
 $('.asearch-form form').submit(function(){
 	$('#user-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
 });
+
 ");
 
 ?>
@@ -42,9 +51,7 @@ $('.asearch-form form').submit(function(){
 
 <!-- basic search-form -->
 <div class="bsearch-form" style="display:">
-    <?php $this->renderPartial('search',array(
-        'model'=>$model,
-    )); ?>
+    <?php $this->renderPartial('search',array('model'=>$model)); ?>
 </div>
 
 
@@ -120,7 +127,11 @@ $('.asearch-form form').submit(function(){
 
         ),
          **/
-    ))); ?>
+    )));
+
+?>
+
+
 
 
 

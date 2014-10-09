@@ -38,7 +38,7 @@ class UserController extends Controller
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors'),
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -67,6 +67,8 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        echo("<script>console.log('View message!');</script>");
+
         $model = $this->loadModel($id);
         $promentor = ProjectMentor::model()->getProMentor($id);
         $permentor = PersonalMentor::model()->getPerMentor($id);
@@ -488,6 +490,9 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+        echo("<script>console.log('Update message!');</script>");
+
+
         $model = $this->loadModel($id);
 
         $this->renderPartial('update', array('model'=> $model));
@@ -520,9 +525,11 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
+
+        echo("<script>console.log('Index message!');</script>");
+
         $dataProvider=new CActiveDataProvider('User');
-        $this->render('index',array(
-            'dataProvider'=>$dataProvider,
+        $this->render('index',array('dataProvider'=>$dataProvider,
         ));
     }
 
@@ -531,12 +538,29 @@ class UserController extends Controller
      */
     public function actionAdmin()
     {
+
+        echo("<script>console.log('Admin message!');</script>");
+
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values
         if(isset($_GET['User']))
             $model->attributes=$_GET['User'];
 
         $this->render('admin',array(
+            'model'=>$model,
+        ));
+    }
+
+    public function actionSearch()
+    {
+        echo("<script>console.log('Search message!');</script>");
+
+        $model=new User('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['User']))
+            $model->attributes=$_GET['User'];
+
+        $this->render('search',array(
             'model'=>$model,
         ));
     }
@@ -675,6 +699,10 @@ class UserController extends Controller
      */
     public function loadModel($id)
     {
+
+        echo("<script>console.log('loadModel message!');</script>");
+
+
         $model=User::model()->findByPk($id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
@@ -721,7 +749,8 @@ class UserController extends Controller
                 'pageSize' => 10,
             ),
         ));
-        $this->render('findMentors',array('domMentors'=>$domMentors,'dataProviderCompined'=>$dataProviderCompined,'filtersForm'=>$filtersForm,'error' => $error));
+        $this->render('findMentors',array('domMentors'=>$domMentors,'dataProviderCompined'=>$dataProviderCompined,
+        		'filtersForm'=>$filtersForm,'error' => $error));
 
     }
     
