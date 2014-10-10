@@ -67,7 +67,7 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
-        echo("<script>console.log('View message!');</script>");
+        echo("<script>console.log('actionView!');</script>");
 
         $model = $this->loadModel($id);
         $promentor = ProjectMentor::model()->getProMentor($id);
@@ -233,6 +233,10 @@ class UserController extends Controller
         $model=new User;
         $model->username = "";
         $model->password = "";
+
+        echo ("<script>console.log('actionCreate');</script>");
+
+
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
         $error='';
@@ -444,12 +448,20 @@ class UserController extends Controller
      * initiate self serve registration for new users
      */
     public function actionRegister(){
-    	$error = '';
+
+        echo ("<script>console.log('actionRegister');</script>");
+
+
+        $error = '';
     	$this->render('register', array('error'=>$error));
     }
     
     public function actionCreate_Admin()
     {
+
+        echo ("<script>console.log('actionCreate_Admin');</script>");
+
+
         $model=new User;
 
         // Uncomment the following line if AJAX validation is needed
@@ -490,7 +502,7 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        echo("<script>console.log('Update message!');</script>");
+        echo("<script>console.log('actionUpdate');</script>");
 
 
         $model = $this->loadModel($id);
@@ -506,6 +518,10 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
+
+        echo ("<script>console.log('actionDelete');</script>");
+
+
         //Soft delete (Disable the User)
         $model=$this->loadModel($id);
         $model->disable = 1;
@@ -526,7 +542,7 @@ class UserController extends Controller
     public function actionIndex()
     {
 
-        echo("<script>console.log('Index message!');</script>");
+        echo("<script>console.log('actionIndex');</script>");
 
         $dataProvider=new CActiveDataProvider('User');
         $this->render('index',array('dataProvider'=>$dataProvider,
@@ -539,7 +555,7 @@ class UserController extends Controller
     public function actionAdmin()
     {
 
-        echo("<script>console.log('Admin message!');</script>");
+        echo("<script>console.log('actionAdmin');</script>");
 
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values
@@ -553,7 +569,7 @@ class UserController extends Controller
 
     public function actionSearch()
     {
-        echo("<script>console.log('Search message!');</script>");
+        echo("<script>console.log('actionSearch');</script>");
 
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values

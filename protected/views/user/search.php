@@ -13,47 +13,43 @@
     <div >
 
         <?php
+        //echo $form->labelEx($model, 'men_role', array('style' => 'font-weight: bold; margin-bottom:.5cm'));
 
-        echo $form->dropDownList($model, 'firstField', array('Project Mentor', 'Personal Mentor',
-        'Domain Mentor', 'Mentee'), array('style' => 'float:left'));
+        echo $form->checkBox($model, 'isProMentor', array('style' => 'float:left'));
+        echo $form->label($model, 'isProMentor', array('style' => 'margin-left:.5cm'));
 
+        echo $form->checkBox($model, 'isPerMentor', array('style' => 'float:left'));
+        echo $form->label($model, 'isPerMentor', array('style' => 'margin-left:.5cm'));
 
+        echo $form->checkBox($model, 'isDomMentor', array('style' => 'float:left'));
+        echo $form->label($model, 'isDomMentor', array('style' => 'margin-left:.5cm'));
 
-            //echo $form->labelEx($model, 'men_role', array('style' => 'font-weight: bold; margin-bottom:.5cm'));
-
-            echo $form->checkBox($model, 'isProMentor', array('style' => 'float:left'));
-            echo $form->label($model, 'isProMentor', array('style' => 'margin-left:.5cm'));
-
-            echo $form->checkBox($model, 'isPerMentor', array('style' => 'float:left'));
-            echo $form->label($model, 'isPerMentor', array('style' => 'margin-left:.5cm'));
-
-            echo $form->checkBox($model, 'isDomMentor', array('style' => 'float:left'));
-            echo $form->label($model, 'isDomMentor', array('style' => 'margin-left:.5cm'));
-
-            echo $form->checkBox($model, 'isMentee', array('style' => 'float:left'));
-            echo $form->label($model, 'isMentee', array('style' => 'margin-left:.5cm'));
+        echo $form->checkBox($model, 'isMentee', array('style' => 'float:left'));
+        echo $form->label($model, 'isMentee', array('style' => 'margin-left:.5cm'));
 
 
-            echo $form->checkBox($model, 'disable', array('style' => 'float:left'));
-            echo $form->label($model, 'disable', array('style' => 'margin-left:.5cm'));
+        echo $form->checkBox($model, 'disable', array('style' => 'float:left'));
+        echo $form->label($model, 'disable', array('style' => 'margin-left:.5cm'));
 
-            if ($model->isMentee === '0')
-                    $model->isMentee = '';
+        if ($model->isMentee === '0') {
+            $model->isMentee = '';
+        }
 
-                    if ($model->isDomMentor === '0')
-        $model->isDomMentor = '';
+        if ($model->isDomMentor === '0')
+            $model->isDomMentor = '';--
 
-                    if ($model->isPerMentor === '0')
-        $model->isPerMentor = '';
+        if ($model->isPerMentor === '0')
+            $model->isPerMentor = '';
 
-
-                            if ($model->isProMentor === '0')
-        $model->isProMentor = '';
+        if ($model->isProMentor === '0')
+            $model->isProMentor = '';
 
         if ($model->disable === '0')
-        $model->disable = '';
+            $model->disable = '';
 
-        echo ("<script>console.log($model->firstField);</script>");
+        echo $form->dropDownList($model, 'firstField', array('Project Mentor', 'Personal Mentor',
+            'Domain Mentor', 'Mentee'), array('style' => 'float:left'));
+
 
             //echo $form->checkBox($model, 'activated', array('style' => 'float:left'));
             //echo $form->label($model, 'activated', array('style' => 'margin-left:.5cm'));

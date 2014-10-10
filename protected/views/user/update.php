@@ -9,5 +9,6 @@ if(User::isCurrentUserAdmin())
         );
     }
 ?>
+    echo ("<script>console.log('update.php');</script>");
 
 <?php echo $this->render('change', array('model'=>$model)); ?>

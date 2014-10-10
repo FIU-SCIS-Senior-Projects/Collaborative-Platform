@@ -26,7 +26,6 @@ $('.bsearch-button').click(function(){
 
 $('.bsearch-form form').submit(function(){
 	$('#user-grid').yiiGridView('update', {
-
 		data: $(this).serialize()
 	});
 	return false;
@@ -59,9 +58,7 @@ $('.asearch-form form').submit(function(){
 
 <!-- advanced search-form -->
 <div class="asearch-form" style="display:none">
-    <?php $this->renderPartial('advanced_search',array(
-        'model'=>$model,
-    )); ?>
+    <?php $this->renderPartial('advanced_search',array('model'=>$model)); ?>
 </div>
 
 
