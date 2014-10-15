@@ -78,11 +78,11 @@ class Domain extends CActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description',
-            'validator' => 'Validator',
+            'validator' => 'Profficiency Cutoff',
             'need' => 'Need',
             'need_amount' => 'Need Amount',
-        ); 
-    } 
+        );
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -126,4 +126,5 @@ class Domain extends CActiveRecord
                 }
             }*/
         }
+       
 }

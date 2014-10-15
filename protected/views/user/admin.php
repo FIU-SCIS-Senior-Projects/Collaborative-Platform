@@ -50,7 +50,7 @@ $('.asearch-form form').submit(function(){
 <!-- basic search-form -->
 <div class="bsearch-form" style="display:">
     <?php $this->renderPartial('search',array('model'=>$model)); ?>
-</div>-->
+</div>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'asearch-button')); ?>
 

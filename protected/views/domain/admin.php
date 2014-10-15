@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
 		//'id',
 		'name',
 		'description',
-		//'validator',
+		'validator',
 		'need',
 		'need_amount',
 		array(

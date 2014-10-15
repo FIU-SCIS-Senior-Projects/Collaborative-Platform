@@ -34,6 +34,9 @@ class Ticket extends CActiveRecord
 
     public $creatorName;
     public $assignedName;
+    public $domainName;
+    public $subDomainName;
+    
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -69,7 +72,7 @@ class Ticket extends CActiveRecord
             array('assigned_date, closed_date', 'safe'),
             // The following rule is used by search(). 
             // Please remove those attributes that should not be searched. 
-            array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id, assigned_date, closed_date, isEscalated, Mentor1, Mentor2, creatorName, assignedName', 'safe', 'on'=>'search'),
+            array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id, assigned_date, closed_date, isEscalated, Mentor1, Mentor2, creatorName, assignedName, domainName, subDomainName', 'safe', 'on'=>'search'),
         ); 
     } 
 
@@ -126,7 +129,17 @@ class Ticket extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 		
+		$criteria->with = array( 'creatorUser', 'assignUser', 'domain', 'subdomain' );
 		
+		$criteria->compare('creatorUser.fname', $this->creatorName, true, 'OR');
+		$criteria->compare('creatorUser.lname', $this->creatorName, true, 'OR');
+		
+		$criteria->compare('assignUser.fname', $this->assignedName, true, 'OR');
+		$criteria->compare('assignUser.lname', $this->assignedName, true, 'OR');
+		
+		$criteria->compare('domain.name', $this->domainName, true);
+		
+		$criteria->compare('subdomain.name', $this->subDomainName, true);
 				
         $criteria->compare('id',$this->id,true);
         $criteria->compare('creator_user_id',$this->creator_user_id,true);
@@ -163,6 +176,17 @@ class Ticket extends CActiveRecord
 		return (/*$this->assign_user_id . ' ' .*/
 				$this->assignUser->fname . ' ' .
 				$this->assignUser->lname);
+	}
+	
+	public function getDomainID(){
+		return ($this->domain->name);
+	}
+	
+	public function getSubDomainID(){
+		$valsd = $this->subdomain_id;
+		if ($valsd != null) {
+			return ($this->subdomain->name);
+		} else return '';
 	}
 
 }

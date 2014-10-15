@@ -2,6 +2,10 @@
 /* @var $this TicketController */
 /* @var $model Ticket */
 /* @var $form CActiveForm */
+/* @var $data1 creatorUser */
+/* @var $data2 assignedUser */
+/* @var $data3 domainName */
+/* @var $data4 subDomainName */
 ?>
 
 <div class="wide form">
@@ -16,17 +20,6 @@
 		<?php //echo $form->textField($model,'id',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 		-->
-	
-	<div class="row">
-		<?php echo $form->label($model,'creator_user_id'); ?>
-		<?php echo $form->textField($model,'creatorName',array('size'=>11,'maxlength'=>11)); ?>
-	</div>
-
-	<div class="row">
-		<?php $status = array(''=>'Show All', 'Pending'=>'Pending', 'Close'=>'Closed', 'Reject'=>'Rejected')?>
-		<?php echo $form->label($model,'status'); ?>
-		<?php echo $form->dropDownList($model,'status', $status, array()); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'created_date'); ?>
@@ -38,7 +31,18 @@
             ),
         )); ?>	
         (yyyy-mm-dd)
-        </div>
+    </div>
+		
+	<div class="row">
+		<?php echo $form->label($model,'creator_user_id'); ?>
+		<?php echo $form->dropDownList($model,'creator_user_id', array(''=>'Show All') + $data1, array()); ?>
+	</div>
+
+	<div class="row">
+		<?php $status = array(''=>'Show All', 'Pending'=>'Pending', 'Close'=>'Closed', 'Reject'=>'Rejected')?>
+		<?php echo $form->label($model,'status'); ?>
+		<?php echo $form->dropDownList($model,'status', $status, array()); ?>
+	</div>
 	
 	<div class="row">
 		<?php echo $form->label($model,'assigned_date'); ?>
@@ -64,17 +68,17 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'assign_user_id'); ?>
-		<?php echo $form->textField($model,'assign_user_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->dropDownList($model,'assign_user_id', array(''=>'Show All') + $data2, array()); ?>
 	</div>
 	
 	<div class="row">
 		<?php echo $form->label($model,'domain_id'); ?>
-		<?php echo $form->textField($model,'domain_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->dropDownList($model,'domain_id', array(''=>'Show All') + $data3, array()); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'subdomain_id'); ?>
-		<?php echo $form->textField($model,'subdomain_id',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->dropDownList($model,'subdomain_id', array(''=>'Show All') + $data4, array()); ?>
 	</div>
 
 	<!--  
@@ -87,6 +91,18 @@
         <?php echo $form->label($model,'priority_id'); ?>
         <?php echo $form->textField($model,'priority_id',array('size'=>11,'maxlength'=>11)); ?>
     </div>
+    
+    	<div class="row">
+		<?php echo $form->label($model,'closed_date'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+            'name' => 'Ticket[closed_date]',
+            'options' => array(
+                'showAnim' => 'fold',
+                'dateFormat' => 'yy-mm-dd',
+            ),
+        )); ?>	
+        (yyyy-mm-dd)
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
