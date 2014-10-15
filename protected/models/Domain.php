@@ -8,6 +8,8 @@
  * @property string $name
  * @property string $description
  * @property integer $validator
+ * @property string $need
+ * @property integer $need_amount
  *
  * The followings are the available model relations:
  * @property Subdomain[] $subdomains
@@ -37,20 +39,21 @@ class Domain extends CActiveRecord
 	/**
 	 * @return array validation rules for model attributes.
 	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('name', 'required'),
-			array('validator', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>45),
-			array('description', 'length', 'max'=>500),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, name, description, validator', 'safe', 'on'=>'search'),
-		);
-	}
+	public function rules() 
+    { 
+        // NOTE: you should only define rules for those attributes that 
+        // will receive user inputs. 
+        return array( 
+            array('name', 'required'),
+            array('validator, need_amount', 'numerical', 'integerOnly'=>true),
+            array('name', 'length', 'max'=>45),
+            array('description', 'length', 'max'=>500),
+            array('need', 'length', 'max'=>7),
+            // The following rule is used by search(). 
+            // Please remove those attributes that should not be searched. 
+            array('id, name, description, validator, need, need_amount', 'safe', 'on'=>'search'), 
+        ); 
+    } 
 
 	/**
 	 * @return array relational rules.
@@ -69,38 +72,43 @@ class Domain extends CActiveRecord
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => 'ID',
-			'name' => 'Domain',
-			'description' => 'Description',
-			'validator' => 'Validator',
-		);
-	}
+   public function attributeLabels() 
+    { 
+        return array( 
+            'id' => 'ID',
+            'name' => 'Name',
+            'description' => 'Description',
+            'validator' => 'Validator',
+            'need' => 'Need',
+            'need_amount' => 'Need Amount',
+        ); 
+    } 
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+	public function search() 
+    { 
+        // Warning: Please modify the following code to remove attributes that 
+        // should not be searched. 
 
-		$criteria=new CDbCriteria;
+        $criteria=new CDbCriteria; 
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('validator',$this->validator);
+        $criteria->compare('id',$this->id,true);
+        $criteria->compare('name',$this->name,true);
+        $criteria->compare('description',$this->description,true);
+        $criteria->compare('validator',$this->validator);
+        $criteria->compare('need',$this->need,true);
+        $criteria->compare('need_amount',$this->need_amount);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        return new CActiveDataProvider($this, array( 
+            'criteria'=>$criteria, 
+        )); 
+    }
+
         
-        public function domainExists($domain)
+	public function domainExists($domain)
         {
             $d = Domain::model()->findAllBySql("SELECT name FROM domain WHERE name='$domain'");
             

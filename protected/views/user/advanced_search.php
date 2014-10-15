@@ -11,22 +11,24 @@
     )); ?>
 
         <?php
+        	//$dataRoleVal = array(0,1,2,3);
+        
+            $dataRole = array('Project Mentor', 'Personal Mentor', 'Domain Mentor', 'Mentee');
+            echo $form->dropDownList($model, 'firstField', array(0=>'Project Mentor', 1=>'Personal Mentor',
+                2=>'Domain Mentor', 3=>'Mentee'), array('style' => ''));
 
-            echo $form->dropDownList($model, 'firstField', array('Project Mentor', 'Personal Mentor',
-            		'Domain Mentor', 'Mentee'), array('style' => 'float:left'));
+            $crit = array('Exactly'=>'Exactly', 'Greater'=>'Greater Than','Less'=>'Less Than');
+            echo $form->dropDownList($model, 'criteria', $crit, array('style' => ''));
 
-            echo $form->dropDownList($model, 'criteria', array('Exactly', 'Greater Than',
-            		'Less Than'), array('style' => 'float:left'));
+			echo $form->textField($model, 'quantity', array('size'=>'5', 'hint'=>'', 'style' => ''));
 
-			echo $form->textField($model, 'quantity', array('hint'=>'', 'style' => 'float:left'));
-
-            echo $form->dropDownList($model, 'disable', array('Enabled', 'Disabled'), array('style' => 'float:left'));
-
+            $data = array('Enabled', 'Disabled');
+            echo $form->dropDownList($model, 'disable', $data, array('style' => ''));
 
         ?>
 
         <?php echo CHtml::submitButton('Search', array("class" => "btn btn-primary")); ?>
 
     <?php $this->endWidget(); ?>
-
-</div><!-- search-form -->
+    <!-- search-form -->
+</div>

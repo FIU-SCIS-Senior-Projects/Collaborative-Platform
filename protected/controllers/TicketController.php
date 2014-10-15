@@ -401,6 +401,7 @@ class TicketController extends Controller
             //$model->attributes = $_POST['Ticket'];
             if ($newStatus == 0) {
                 $model->status = 'Close';
+                $model->closed_date = new CDbExpression('NOW()');
                 if ($model->save()) {
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";

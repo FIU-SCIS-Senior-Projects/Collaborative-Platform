@@ -16,6 +16,7 @@
  * @property string $file
  * @property integer $priority_id
  * @property string $assigned_date
+ * @property string $closed_date
  * @property integer $isEscalated
  * @property integer $Mentor1
  * @property integer $Mentor2
@@ -30,6 +31,9 @@
  */
 class Ticket extends CActiveRecord
 {
+
+    public $creatorName;
+    public $assignedName;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -51,23 +55,23 @@ class Ticket extends CActiveRecord
 	/**
 	 * @return array validation rules for model attributes.
 	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('creator_user_id, status, created_date, subject, description, domain_id, priority_id', 'required'),
-			array('priority_id, isEscalated, Mentor1, Mentor2', 'numerical', 'integerOnly'=>true),
-			array('creator_user_id, assign_user_id, domain_id, subdomain_id', 'length', 'max'=>11),
-			array('status, subject', 'length', 'max'=>45),
-			array('description', 'length', 'max'=>500),
-			array('file', 'length', 'max'=>255),
-			array('assigned_date', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id, assigned_date, isEscalated, Mentor1, Mentor2', 'safe', 'on'=>'search'),
-		);
-	}
+	public function rules() 
+    { 
+        // NOTE: you should only define rules for those attributes that 
+        // will receive user inputs. 
+        return array( 
+            array('creator_user_id, status, created_date, subject, description, domain_id, priority_id', 'required'),
+            array('priority_id, isEscalated, Mentor1, Mentor2', 'numerical', 'integerOnly'=>true),
+            array('creator_user_id, assign_user_id, domain_id, subdomain_id', 'length', 'max'=>11),
+            array('status, subject', 'length', 'max'=>45),
+            array('description', 'length', 'max'=>500),
+            array('file', 'length', 'max'=>255),
+            array('assigned_date, closed_date', 'safe'),
+            // The following rule is used by search(). 
+            // Please remove those attributes that should not be searched. 
+            array('id, creator_user_id, status, created_date, subject, description, assign_user_id, domain_id, subdomain_id, file, priority_id, assigned_date, closed_date, isEscalated, Mentor1, Mentor2, creatorName, assignedName', 'safe', 'on'=>'search'),
+        ); 
+    } 
 
 	/**
 	 * @return array relational rules.
@@ -98,12 +102,13 @@ class Ticket extends CActiveRecord
 			'created_date' => 'Created Date',
 			'subject' => 'Subject',
 			'description' => 'Description',
-			'assign_user_id' => 'Assign User',
+			'assign_user_id' => 'Assigned User',
 			'domain_id' => 'Domain',
 			'subdomain_id' => 'Subdomain',
 			'file' => 'File',
 			'priority_id' => 'Priority',
 			'assigned_date' => 'Assigned Date',
+			'closed_date' => 'Closed Date',	
 			'isEscalated' => 'Is Escalated',
 			'Mentor1' => 'Mentor1',
 			'Mentor2' => 'Mentor2',
@@ -114,33 +119,50 @@ class Ticket extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+	public function search() 
+    { 
+        // Warning: Please modify the following code to remove attributes that 
+        // should not be searched. 
 
 		$criteria=new CDbCriteria;
+		
+		
+				
+        $criteria->compare('id',$this->id,true);
+        $criteria->compare('creator_user_id',$this->creator_user_id,true);
+        $criteria->compare('status',$this->status,true);
+        $criteria->compare('created_date',$this->created_date,true);
+        $criteria->compare('subject',$this->subject,true);
+        $criteria->compare('description',$this->description,true);
+        $criteria->compare('assign_user_id',$this->assign_user_id,true);
+        $criteria->compare('domain_id',$this->domain_id,true);
+        $criteria->compare('subdomain_id',$this->subdomain_id,true);
+        $criteria->compare('file',$this->file,true);
+        $criteria->compare('priority_id',$this->priority_id);
+        $criteria->compare('assigned_date',$this->assigned_date,true);
+        $criteria->compare('closed_date',$this->closed_date,true);
+        $criteria->compare('isEscalated',$this->isEscalated);
+        //$criteria->compare('Mentor1',$this->Mentor1);
+        //$criteria->compare('Mentor2',$this->Mentor2);
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('creator_user_id',$this->creator_user_id,true);
-		$criteria->compare('status',$this->status,true);
-		$criteria->compare('created_date',$this->created_date,true);
-		$criteria->compare('subject',$this->subject,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('assign_user_id',$this->assign_user_id,true);
-		$criteria->compare('domain_id',$this->domain_id,true);
-		$criteria->compare('subdomain_id',$this->subdomain_id,true);
-		$criteria->compare('file',$this->file,true);
-		$criteria->compare('priority_id',$this->priority_id);
-		$criteria->compare('assigned_date',$this->assigned_date,true);
-		$criteria->compare('isEscalated',$this->isEscalated);
-		$criteria->compare('Mentor1',$this->Mentor1);
-		$criteria->compare('Mentor2',$this->Mentor2);
-
-
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+        return new CActiveDataProvider($this, array( 
+            'criteria'=>$criteria, 
+        )); 
+    } 
+	
+	public function getCompiledCreatorID()
+	{
+		
+		return (/*$this->creator_user_id . ' ' .*/
+				$this->creatorUser->fname . ' ' .
+				$this->creatorUser->lname);
 	}
+	
+	public function getCompiledAssignedID()
+	{
+		return (/*$this->assign_user_id . ' ' .*/
+				$this->assignUser->fname . ' ' .
+				$this->assignUser->lname);
+	}
+
 }

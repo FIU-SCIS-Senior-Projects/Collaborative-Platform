@@ -9,6 +9,8 @@
  * @property string $description
  * @property integer $validator
  * @property string $domain_id
+ * @property string $need
+ * @property integer $need_amount
  *
  * The followings are the available model relations:
  * @property Domain $domain
@@ -40,19 +42,20 @@ class Subdomain extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('domain_id, name', 'required'),
-			array('validator', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>45),
-			array('description', 'length', 'max'=>5000),
-			array('domain_id', 'length', 'max'=>11),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, name, description, validator, domain_id', 'safe', 'on'=>'search'),
-		);
-	}
+        // NOTE: you should only define rules for those attributes that 
+        // will receive user inputs. 
+        return array( 
+            array('domain_id', 'required'),
+            array('validator, need_amount', 'numerical', 'integerOnly'=>true),
+            array('name', 'length', 'max'=>45),
+            array('description', 'length', 'max'=>5000),
+            array('domain_id', 'length', 'max'=>11),
+            array('need', 'length', 'max'=>7),
+            // The following rule is used by search(). 
+            // Please remove those attributes that should not be searched. 
+            array('id, name, description, validator, domain_id, need, need_amount', 'safe', 'on'=>'search'), 
+        ); 
+    } 
 
 	/**
 	 * @return array relational rules.
@@ -79,6 +82,8 @@ class Subdomain extends CActiveRecord
 			'description' => 'Description',
 			'validator' => 'Proficiency Cutoff',
 			'domain_id' => 'Domain',
+            'need' => 'Need',
+            'need_amount' => 'Need Amount',
 		);
 	}
 
@@ -86,21 +91,23 @@ class Subdomain extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+	public function search() 
+    { 
+        // Warning: Please modify the following code to remove attributes that 
+        // should not be searched. 
 
-		$criteria=new CDbCriteria;
+        $criteria=new CDbCriteria; 
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('validator',$this->validator);
-		$criteria->compare('domain_id',$this->domain_id,true);
+        $criteria->compare('id',$this->id,true);
+        $criteria->compare('name',$this->name,true);
+        $criteria->compare('description',$this->description,true);
+        $criteria->compare('validator',$this->validator);
+        $criteria->compare('domain_id',$this->domain_id,true);
+        $criteria->compare('need',$this->need,true);
+        $criteria->compare('need_amount',$this->need_amount);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        return new CActiveDataProvider($this, array( 
+            'criteria'=>$criteria, 
+        )); 
+    } 
 }

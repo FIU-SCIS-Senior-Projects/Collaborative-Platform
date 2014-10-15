@@ -61,6 +61,7 @@ class User extends CActiveRecord
     public $field_of_study;
     public $school;
     public $graduation_year;
+    public $combineRoles;
     /*Change the value when the system is deploy */
     public static $admin = 5;
     /* The most expert in the Domain */
@@ -174,9 +175,9 @@ class User extends CActiveRecord
         	'graduation_year' => 'Graduation Year',
             'rmj_role' => 'Remote Mobil Judge Roles:',
             'firstField' => 'Type: ',
-        		'criteria' => 'Assigned to: ',
-        		'quantity' => 'projects, mentors, or mentees',
-   
+        	'criteria' => 'Assigned to: ',
+        	'quantity' => 'projects, mentors, or mentees',
+            'combineRoles' => 'Roles',
         		
         );
     }
@@ -190,14 +191,42 @@ class User extends CActiveRecord
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
 
+
+        $firstField= Yii::app()->session['search'];
+
+        if ($this->firstField === 0) {
+            $this->isProMentor = 1;
+            $this->isPerMentor = 0;
+            $this->isDomMentor = 0;
+            $this->isMentee = 0;
+        } else if ($this->firstField === 1) {
+            $this->isPerMentor = 1;
+            $this->isProMentor = 0;
+            $this->isDomMentor = 0;
+            $this->isMentee = 0;
+        } else if ($this->firstField === 2) {
+            $this->isDomMentor = 1;
+            $this->isProMentor = 0;
+            $this->isPerMentor = 0;
+            $this->isMentee = 0;
+        } else if ($this->firstField === 3) {
+            $this->isMentee = 1;
+            $this->isProMentor = 0;
+            $this->isPerMentor = 0;
+            $this->isDomMentor = 0;
+        }
+
         $criteria = new CDbCriteria;
 
-        $criteria->compare('id', $this->id, true);
+
+        echo("<script>console.log('actionView!');</script>");
+
+        //$criteria->compare('id', $this->id, true);
         $criteria->compare('username', $this->username, true);
         //$criteria->compare('password',$this->password,true);
         $criteria->compare('email', $this->email, true);
         $criteria->compare('fname', $this->fname, true);
-        $criteria->compare('mname', $this->mname, true);
+        //$criteria->compare('mname', $this->mname, true);
         $criteria->compare('lname', $this->lname, true);
         //$criteria->compare('pic_url',$this->pic_url,true);
         $criteria->compare('activated', $this->activated);
@@ -207,18 +236,33 @@ class User extends CActiveRecord
         //$criteria->compare('linkedin_id',$this->linkedin_id,true);
         //$criteria->compare('fiucs_id',$this->fiucs_id,true);
         //$criteria->compare('google_id',$this->google_id,true);
-        $criteria->compare('isAdmin', $this->isAdmin);
+        //$criteria->compare('isAdmin', $this->isAdmin);
         $criteria->compare('isProMentor', $this->isProMentor);
         $criteria->compare('isPerMentor', $this->isPerMentor);
         $criteria->compare('isDomMentor', $this->isDomMentor);
         $criteria->compare('isStudent', $this->isStudent);
         $criteria->compare('isMentee', $this->isMentee);
-        $criteria->compare('isJudge', $this->isJudge);
-        $criteria->compare('isEmployer', $this->isEmployer);
+        //$criteria->compare('isJudge', $this->isJudge);
+        //$criteria->compare('isEmployer', $this->isEmployer);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));
+    }
+
+    public function getCombineRoles(){
+        $st = '';
+
+        if ($this->isProMentor)
+            $st .= 'Project ';
+        if ($this->isPerMentor)
+            $st .= 'Personal ';
+        if ($this->isDomMentor)
+            $st .= 'Domain ';
+        if ($this->isMentee)
+            $st .= 'Mentee';
+
+        return $st;
     }
 
     /* retrieve all user ids in the system */
@@ -261,7 +305,7 @@ class User extends CActiveRecord
 
     public static function replaceMessage($to, $message)
     {
-        $file = fopen("/var/www/html/coplat/email/index1.html", "r");
+        $file = fopen("/Applications/XAMPP/htdocs/coplat/email/index1.html", "r");
         //$file = fopen("C:/xampp/htdocs/coplat/email/index1.html", "r");
         $html = "";
         while (!feof($file)) {

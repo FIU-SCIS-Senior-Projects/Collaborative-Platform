@@ -3,8 +3,7 @@
 /* @var $model Ticket */
 
 $this->breadcrumbs=array(
-	'Tickets'=>array('index'),
-	'Manage',
+    'Manage Tickets',
 );
 
 $this->menu=array(
@@ -45,18 +44,33 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'creator_user_id',
-		'status',
 		'created_date',
+				
+		//'id',
+		//'creator_user_id',
+        array(
+            'name'  => 'creatorName',
+            'value' => '($data->getCompiledCreatorID())',
+            'header'=> CHtml::encode($model->getAttributeLabel('creator_user_id')),
+            'filter'=> CHtml::activeTextField($model, 'creatorName'),
+        ),
+        array(
+            'name'  => 'assignName',
+            'value' => '($data->getCompiledAssignedID())',
+            'header'=> CHtml::encode($model->getAttributeLabel('assign_user_id')),
+            'filter'=> CHtml::activeTextField($model, 'assignedName'),
+        ),
+			'assigned_date',
+				
 		'subject',
 		'description',
-		/*
-		'assign_user_id',
+		//'assign_user_id',
 		'domain_id',
 		'subdomain_id',
-		'file',
-		*/
+		//'file',
+		'closed_date',
+			'status',
+				
 		array(
 			'class'=>'CButtonColumn',
 		),

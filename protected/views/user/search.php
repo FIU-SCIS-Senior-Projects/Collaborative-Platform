@@ -36,7 +36,7 @@
         }
 
         if ($model->isDomMentor === '0')
-            $model->isDomMentor = '';--
+            $model->isDomMentor = '';
 
         if ($model->isPerMentor === '0')
             $model->isPerMentor = '';
@@ -46,15 +46,6 @@
 
         if ($model->disable === '0')
             $model->disable = '';
-
-        echo $form->dropDownList($model, 'firstField', array('Project Mentor', 'Personal Mentor',
-            'Domain Mentor', 'Mentee'), array('style' => 'float:left'));
-
-
-            //echo $form->checkBox($model, 'activated', array('style' => 'float:left'));
-            //echo $form->label($model, 'activated', array('style' => 'margin-left:.5cm'));
-
-            //echo $form->dropDownList($model, 'disable', array('Enabled', 'Disabled'), array('style' => 'float:left'));
 
         ?>
 

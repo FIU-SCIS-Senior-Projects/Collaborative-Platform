@@ -44,15 +44,13 @@ $('.asearch-form form').submit(function(){
 
 <h2>Manage Users</h2>
 
-
-<?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?>
+<?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?><!--
 <br/>
 
 <!-- basic search-form -->
 <div class="bsearch-form" style="display:">
     <?php $this->renderPartial('search',array('model'=>$model)); ?>
-</div>
-
+</div>-->
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'asearch-button')); ?>
 
@@ -75,10 +73,14 @@ $('.asearch-form form').submit(function(){
     'type'=>'striped condensed hover',
     'id'=>'user-grid',
     'selectableRows'=>1,
-    'selectionChanged'=>
-        'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
     //'selectionChanged'=>
-    //   'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }',
+    //    'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
+    'selectionChanged'=>
+        'function(data) {
+            $.model.firstField = 1;
+            $("#viewModal .modal-body p").html(data);
+            $("#viewModal").modal();
+       }',
 
     'dataProvider'=>$model->search(),
     'filter'=>$model,
@@ -88,6 +90,12 @@ $('.asearch-form form').submit(function(){
         'fname',
         //'mname',
         'lname',
+        array(
+            'name'  => 'combineRoles',
+            'value' => '($data->getCombineRoles())',
+            'header'=> CHtml::encode($model->getAttributeLabel('combineRoles')),
+            //'filter'=> CHtml::activeTextField($model, 'combineRoles'),
+        ),
         /**
         array(
             'name'=>'activated',
@@ -138,11 +146,13 @@ $('.asearch-form form').submit(function(){
 
 <div class="modal-header">
     <h4>View Employee Details</h4>
+
 </div>
 
 <!-- Popup Content -->
 <div class="modal-body">
     <p>Employee Details</p>
+    <?php echo $model->firstField; ?>
 
 </div>
 <!-- Popup Footer -->

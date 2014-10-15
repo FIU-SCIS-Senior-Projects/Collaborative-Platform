@@ -19,6 +19,8 @@ $this->breadcrumbs=array(
 		'name',
 		'description',
 		//'validator',
+		'need',
+		'need_amount',
 		array(
 			'class'=>'CButtonColumn',
 		),
