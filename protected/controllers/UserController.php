@@ -60,7 +60,24 @@ class UserController extends Controller
 
         $this->render('roles', array('model'=> $model));
     }
-
+    
+    
+    public function actionView1($id)
+    {
+    	if( Yii::app()->request->isAjaxRequest )
+    	{
+    		$this->renderPartial('view',array(
+    				'model'=>$this->loadModel($id),
+    		), false, true);
+    	}
+    	else
+    	{
+    		$this->render('view',array(
+    				'model'=>$this->loadModel($id),
+    		));
+    	}
+    } 
+    
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
@@ -573,13 +590,15 @@ class UserController extends Controller
 
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values
+        
         if(isset($_GET['User']))
-            $model->attributes=$_GET['User'];
-
+        	$model->attributes=$_GET['User'];
+        	
         $this->render('search',array(
             'model'=>$model,
         ));
     }
+    
 
     public function actionChangePassword() {
         $model = User::getCurrentUser();

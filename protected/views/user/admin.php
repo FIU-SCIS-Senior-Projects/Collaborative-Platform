@@ -75,13 +75,11 @@ $('.asearch-form form').submit(function(){
     'selectableRows'=>1,
     //'selectionChanged'=>
     //    'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
-    'selectionChanged'=>
-        'function(data) {
-            $.model.firstField = 1;
-            $("#viewModal .modal-body p").html(data);
-            $("#viewModal").modal();
-       }',
-
+    //'selectionChanged'=>
+    //    'function(data) {
+    //        $("#viewModal .modal-body p").html(data);
+    //        $("#viewModal").modal();
+    //   }',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
     'columns'=>array(
@@ -132,7 +130,25 @@ $('.asearch-form form').submit(function(){
 
         ),
          **/
-    )));
+    		array(
+    				'header'=>'Options',
+    				'class'=>'bootstrap.widgets.TbButtonColumn',
+    				'buttons'=>array(
+    						'view'=>
+    						array(
+    								'url'=>'Yii::app()->createUrl("user/view1", array("id"=>$data->id))',
+    								'options'=>array(
+    										'ajax'=>array(
+    												'type'=>'POST',
+    												'url'=>"js:$(this).attr('href')",
+    												'success'=>'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }'
+    										),
+    								),
+    						),
+    				),
+    		) 
+    		
+)));
 
 ?>
 

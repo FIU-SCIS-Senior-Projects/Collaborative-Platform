@@ -191,31 +191,6 @@ class User extends CActiveRecord
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
 
-
-        $firstField= Yii::app()->session['search'];
-
-        if ($this->firstField === 0) {
-            $this->isProMentor = 1;
-            $this->isPerMentor = 0;
-            $this->isDomMentor = 0;
-            $this->isMentee = 0;
-        } else if ($this->firstField === 1) {
-            $this->isPerMentor = 1;
-            $this->isProMentor = 0;
-            $this->isDomMentor = 0;
-            $this->isMentee = 0;
-        } else if ($this->firstField === 2) {
-            $this->isDomMentor = 1;
-            $this->isProMentor = 0;
-            $this->isPerMentor = 0;
-            $this->isMentee = 0;
-        } else if ($this->firstField === 3) {
-            $this->isMentee = 1;
-            $this->isProMentor = 0;
-            $this->isPerMentor = 0;
-            $this->isDomMentor = 0;
-        }
-
         $criteria = new CDbCriteria;
 
 
