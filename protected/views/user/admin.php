@@ -136,7 +136,7 @@ $('.asearch-form form').submit(function(){
     				'buttons'=>array(
     						'view'=>
     						array(
-    								'url'=>'Yii::app()->createUrl("user/view1", array("id"=>$data->id))',
+    								'url'=>'Yii::app()->createUrl("user/view", array("id"=>$data->id))',
     								'options'=>array(
     										'ajax'=>array(
     												'type'=>'POST',
@@ -168,7 +168,7 @@ $('.asearch-form form').submit(function(){
 <!-- Popup Content -->
 <div class="modal-body">
     <p>Employee Details</p>
-    <?php echo $model->firstField; ?>
+    <?php echo $model->id; ?>
 
 </div>
 <!-- Popup Footer -->
