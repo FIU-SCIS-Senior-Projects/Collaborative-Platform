@@ -87,7 +87,9 @@ $('.search-form form').submit(function(){
 		'status',
 				
 		array(
-			'class'=>'CButtonColumn',
+			'header'=>'Options',
+			'class'=>'bootstrap.widgets.TbButtonColumn',
+				'template'=>'{view} {delete}',
 		),
 	),
 )); ?>

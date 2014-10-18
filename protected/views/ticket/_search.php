@@ -89,7 +89,9 @@
 	-->
     <div class="row">
         <?php echo $form->label($model,'priority_id'); ?>
-        <?php echo $form->textField($model,'priority_id',array('size'=>11,'maxlength'=>11)); ?>
+        <?php 
+        	$prio = array('' => 'Show All', 1=>'High', 2=>'Medium', 3=>'Low');
+        	echo $form->dropDownList($model,'priority_id', $prio, array()); ?>
     </div>
     
     	<div class="row">

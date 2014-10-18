@@ -43,9 +43,10 @@ $('.search-form form').submit(function(){
 		//'project_mentor_user_id',
 		'start_date',
 		'due_date',
-
 		array(
-			'class'=>'CButtonColumn',
+			'header'=>'Options',
+			'class'=>'bootstrap.widgets.TbButtonColumn',
+				'template'=>'{view}'
 		),
 	),
 )); ?>

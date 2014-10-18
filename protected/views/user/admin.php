@@ -133,6 +133,7 @@ $('.asearch-form form').submit(function(){
     		array(
     				'header'=>'Options',
     				'class'=>'bootstrap.widgets.TbButtonColumn',
+    				'template'=> '{view} {delete}',
     				'buttons'=>array(
     						'view'=>
     						array(
