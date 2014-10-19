@@ -39,6 +39,7 @@
  * @property Ticket[] $tickets
  * @property Ticket[] $tickets1
  * @property Domain[] $domains
+ * @property UserInfo $user_info
  */
 class User extends CActiveRecord
 {
@@ -53,14 +54,8 @@ class User extends CActiveRecord
     /*assign variables */
     public $userDomain;
     public $userId;
-    /*temporary variables currently not stored in db*/
-    public $employer;
-    public $position;
-    public $start_year;
-    public $degree;
-    public $field_of_study;
-    public $school;
-    public $graduation_year;
+    
+    public $skills;
     /*Change the value when the system is deploy */
     public static $admin = 5;
     /* The most expert in the Domain */
@@ -129,6 +124,7 @@ class User extends CActiveRecord
             'tickets' => array(self::HAS_MANY, 'Ticket', 'assign_user_id'),
             'tickets1' => array(self::HAS_MANY, 'Ticket', 'creator_user_id'),
             'domains' => array(self::MANY_MANY, 'Domain', 'user_domain(user_id, domain_id)'),
+        	'user_info' => array(self::HAS_ONE, 'UserInfo', 'user_id'),
         );
     }
 
@@ -165,17 +161,10 @@ class User extends CActiveRecord
             'vjf_role' => 'Virtual Job Fair Roles:',
             'men_role' => 'Mentoring Platform Roles:',
             'rmj_role' => 'Remote Mobil Judge Roles:',
-        	'employer' => 'Current Employer',
-       		'position' => 'Position',
-        	'start_year' => 'Start Year',
-        	'degree' => 'Highest Degree',
-        	'field_of_study' => 'Field of Study',
-        	'school' => 'University',
-        	'graduation_year' => 'Graduation Year',
             'rmj_role' => 'Remote Mobil Judge Roles:',
             'firstField' => 'Type: ',
-        		'criteria' => 'Assigned to: ',
-        		'quantity' => 'projects, mentors, or mentees',
+        	'criteria' => 'Assigned to: ',
+        	'quantity' => 'projects, mentors, or mentees',
    
         		
         );

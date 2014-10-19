@@ -231,31 +231,63 @@ class UserController extends Controller
         $model=new User;
         $model->username = "";
         $model->password = "";
+        
+        $infoModel = new UserInfo;
+        $infoModel->user_id = $model->id;
+        
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
         $error='';
-
-        //If a new User has been successfully created e.g. the user has created an account from the register.php page
-        if(isset($_POST['User']))
+        $form = 'user-Register-form';
+        //If a new User has been successfully created e.g. the user has created an account from the register.php page        
+        
+        if(isset($_POST['User']) && isset($_POST['UserInfo']))
         {
             /*if ($this->actionVerifyRegistration() != "") {
                 $this->render('create', array('model'=>$model));
             }*/
-
+			
         	echo("<script>console.log('New User Registered');</script>");
+        	// auto-fill biography information
             $model->attributes=$_POST['User'];
             $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
             $model->biography = "Tell us something about yourself...";
             $model->activation_chain = $this->genRandomString(10);
             $model->activated = 1;
+            
+            
+            
+            // hash entered password
+            $pw = $model->password;
             $hasher = new PasswordHash(8, false);
             $model->password = $hasher->HashPassword($model->password);
 
-            $error = $this->verifyRegistration();
-            if($error==null)
+            $error1 = $this->verifyRegistration();
+            if($error1==null)
             {
 
                 $model->save(false);
+                
+                if(isset($_POST['UserInfo'])){
+                	// get entered personal info
+                	$infoModel->attributes=$_POST['UserInfo'];
+                	$infoModel->user_id = $model->id;
+                	$infoModel->save(false);
+                }
+                
+                
+                //newUserLogin($model, $pw);
+                $login = new LoginForm;
+                $login->username = $model->username;
+                $login->password = $pw;
+                $login->login();
+                $this->redirect("/coplat/index.php/home/userHome");
+                
+                // Confirmation email for registration
+                //$userfullName = $model->fname.' '.$model->lname;
+                //$adminName = User::getCurrentUser();
+                //User::sendConfirmationEmail($userfullName, $model->email,$model->username,$pw,$adminName->fname.' '.$adminName->lname);
+                
                 if($model->isProMentor)
                 {
                     $proMentor = new ProjectMentor;
@@ -284,9 +316,10 @@ class UserController extends Controller
 
                 }
             }
-
-
         }
+        
+        
+        
         if(isset($_POST['Roles']))
         {
             $proMentor = ProjectMentor::model()->getProMentor($_COOKIE['UserID']);
@@ -417,7 +450,8 @@ class UserController extends Controller
 
 
             }
-
+			/* This is set up for a user being added by an admin
+			 * 
             $hasher = new PasswordHash(8, false);
             $pw = $this->genRandomString(8);
             $user->password = $hasher->HashPassword($pw);
@@ -425,25 +459,17 @@ class UserController extends Controller
             $userfullName = $user->fname.' '.$user->lname;
             $adminName = User::getCurrentUser();
             User::sendConfirmationEmail($userfullName, $user->email,$user->username,$pw,$adminName->fname.' '.$adminName->lname);
-
+			*/
 
         }
         //$error = '';
         $this->render('create',array(
-            'model'=>$model,'error' => $error
+            'model'=>$model,'infoModel'=> $infoModel, 'error' => $error,
         ));
         return;
 
         //$this->render('add',array('model'=>$model, 'error' => $error));
 
-    }
-    
-    /*
-     * initiate self serve registration for new users
-     */
-    public function actionRegister(){
-    	$error = '';
-    	$this->render('register', array('error'=>$error));
     }
     
     public function actionCreate_Admin()
@@ -635,11 +661,12 @@ class UserController extends Controller
 
     public function verifyRegistration(){
         $user = $_POST['User'];
+        $info = $_POST['UserInfo'];
         $error = "";
 
         $username = $user['username'];
-        //$password = $user['password'];
-        //$password2 = $user['password2'];
+        $password = $user['password'];
+        $password2 = $user['password2'];
         $email = $user['email'];
 
 
@@ -652,16 +679,15 @@ class UserController extends Controller
         if (User::model()->find("email=:email",array(':email'=>$email))) {
             $error .= "Email is taken<br />";
         }
-        //if ($password != $password2) {
-        //   $error .= "Passwords do not match<br />";
-        //}
-        //if (strlen($password) < 6) {
-        //   $error .= "Password must be more than 5 characters<br />";
-        // }
+        if ($password != $password2) {
+           $error .= "Passwords do not match<br />";
+        }
+        if (strlen($password) < 6) {
+           $error .= "Password must be more than 5 characters<br />";
+         }
         if (!$this->check_email_address($email)){
             $error .= "Email is not correct format<br />";
         }
-
         print $error;
         return $error;
     }
@@ -737,7 +763,7 @@ class UserController extends Controller
 				);
 		return $tabs;
     }
-
+    
     /**
      * Performs the AJAX validation.
      * @param User $model the model to be validated
