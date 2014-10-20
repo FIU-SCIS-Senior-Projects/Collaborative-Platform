@@ -66,7 +66,7 @@ class TicketController extends Controller
             $tier = UserDomain::model()->findBySql("SELECT * from user_domain WHERE user_id =:id and domain_id =:id2 and subdomain_id =:id3", array(":id" => $ticket->assign_user_id, ":id2" => $ticket->domain_id, ":id3" => $ticket->subdomain_id));
 
         }
-        $this->render('view', array(
+        $this->renderPartial('view', array(
             'model' => $this->loadModel($id), /*Return all the ticket details */
             'userCreator' => $userCreator, 'userAssign' => $userAssign, 'domainName' => $domainName, 'subdomainName' => $subdomainName, 'priority' => $priority, 'tier' =>$tier
         ));

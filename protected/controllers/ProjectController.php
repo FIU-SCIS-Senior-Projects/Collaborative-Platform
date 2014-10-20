@@ -55,7 +55,7 @@ class ProjectController extends Controller
         $propose_by = User::model()->findByPk($model->propose_by_user_id);
         $promentor = User::model()->findByPk($model->project_mentor_user_id);
 
-        $this->render('view',array(
+        $this->renderPartial('view',array(
 			'model'=>$this->loadModel($id),
             'promentor' => $promentor,
             'propose_by' => $propose_by,

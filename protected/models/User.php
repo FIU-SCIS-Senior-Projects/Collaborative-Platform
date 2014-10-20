@@ -62,6 +62,7 @@ class User extends CActiveRecord
     public $school;
     public $graduation_year;
     public $combineRoles;
+    public $fullName;
     /*Change the value when the system is deploy */
     public static $admin = 5;
     /* The most expert in the Domain */
@@ -101,7 +102,9 @@ class User extends CActiveRecord
             array('biography', 'length', 'max' => 500),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'safe', 'on' => 'search'),
+            array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, 
+            		disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, 
+            		isDomMentor, isStudent, isMentee, isJudge, isEmployer, combineRoles, fullName', 'safe', 'on' => 'search'),
         );
     }
 
@@ -143,7 +146,7 @@ class User extends CActiveRecord
             'username' => 'User Name',
             'password' => 'Password',
             'password2' => 'Re-type Password',
-            'email' => 'e-mail',
+            'email' => 'Email',
             'fname' => 'First Name',
             'mname' => 'Middle Name',
             'lname' => 'Last Name',
@@ -178,6 +181,7 @@ class User extends CActiveRecord
         	'criteria' => 'Assigned to: ',
         	'quantity' => 'projects, mentors, or mentees',
             'combineRoles' => 'Roles',
+        		'fullName' => 'Name',
         		
         );
     }
@@ -192,17 +196,16 @@ class User extends CActiveRecord
         // should not be searched.
 
         $criteria = new CDbCriteria;
-
-
-        echo("<script>console.log('actionView!');</script>");
+        
+        $criteria->compare('fname', $this->fullName, true, 'OR');
+        $criteria->compare('lname', $this->fullName, true, 'OR');
+        
 
         //$criteria->compare('id', $this->id, true);
         $criteria->compare('username', $this->username, true);
         //$criteria->compare('password',$this->password,true);
         $criteria->compare('email', $this->email, true);
-        $criteria->compare('fname', $this->fname, true);
         //$criteria->compare('mname', $this->mname, true);
-        $criteria->compare('lname', $this->lname, true);
         //$criteria->compare('pic_url',$this->pic_url,true);
         $criteria->compare('activated', $this->activated);
         //$criteria->compare('activation_chain',$this->activation_chain,true);
@@ -224,19 +227,38 @@ class User extends CActiveRecord
             'criteria' => $criteria,
         ));
     }
+    
+    public function getFullName(){
+    	return $this->fname . ' ' . $this->lname;
+    }
 
     public function getCombineRoles(){
+    	$count = 0;
         $st = '';
 
-        if ($this->isProMentor)
+        if ($this->isProMentor){
+        	$count = $count + 1;
             $st .= 'Project ';
-        if ($this->isPerMentor)
+        }
+        if ($this->isPerMentor){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
             $st .= 'Personal ';
-        if ($this->isDomMentor)
+        }
+        if ($this->isDomMentor){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
+     
             $st .= 'Domain ';
-        if ($this->isMentee)
+        }
+        if ($this->isMentee){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
             $st .= 'Mentee';
-
+        }
         return $st;
     }
 

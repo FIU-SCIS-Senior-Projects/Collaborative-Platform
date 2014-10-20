@@ -38,7 +38,7 @@ class UserController extends Controller
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search'),
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search', 'viewmodal'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -61,26 +61,20 @@ class UserController extends Controller
         $this->render('roles', array('model'=> $model));
     }
     
-    
-    public function actionView1($id)
+    public function actionViewmodal($id)
     {
+    	//$model = $this->loadModel($id);
+    	$projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
+    	$UserDomain = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$id");
+    	$Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
+    	 
     	if( Yii::app()->request->isAjaxRequest )
-    	{
-    		$this->renderPartial('view',array(
-    				'model'=>$this->loadModel($id),
-    		), false, true);
-    	}
-    	else
-    	{
-    		$this->render('view',array(
-    				'model'=>$this->loadModel($id),
-    		));
-    	}
-    } 
-    
-    public function asdf() {
-    	echo("<script>console.log('asdf!');</script>");
+			$this->renderPartial('viewmodal',array('model'=>$this->loadModel($id), 'Mentees'=>$Mentees, 'UserDomain'=>$UserDomain));
+    	else 
+    		$this->renderPartial('viewmodal',array('model'=>$this->loadModel($id),'Mentees'=>$Mentees, 'UserDomain'=>$UserDomain));
+    	
     }
+    
     
     /**
      * Displays a particular model.
@@ -228,7 +222,7 @@ class UserController extends Controller
             $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
 
             $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects));
-
+            
             /*$this->render('view',array(
                 'model'=>$this->loadModel($id),
             ));*/
@@ -239,7 +233,7 @@ class UserController extends Controller
             $userdoms = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$id");
             $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
             $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
-
+            
             $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects,
                 'model'=>$this->loadModel($id)));
         }
@@ -580,9 +574,10 @@ class UserController extends Controller
 
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values
-        if(isset($_GET['User']))
+        if(isset($_GET['User'])) {
             $model->attributes=$_GET['User'];
-
+        	
+        }
         $this->render('admin',array(
             'model'=>$model,
         ));

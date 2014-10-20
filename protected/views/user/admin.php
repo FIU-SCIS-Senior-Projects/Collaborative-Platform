@@ -85,14 +85,19 @@ $('.asearch-form form').submit(function(){
     'columns'=>array(
         'username',
         'email',
-        'fname',
-        //'mname',
-        'lname',
+                array(
+            'name'  => 'fullName',
+            'value' => '($data->getFullName())',
+            'header'=> CHtml::encode($model->getAttributeLabel('fullName')),
+            'filter'=> CHtml::activeTextField($model, 'fullName'),
+        ),
         array(
             'name'  => 'combineRoles',
             'value' => '($data->getCombineRoles())',
             'header'=> CHtml::encode($model->getAttributeLabel('combineRoles')),
-            //'filter'=> CHtml::activeTextField($model, 'combineRoles'),
+        	'htmlOptions'=>array('width'=>'225px'),
+        		'filter'=>'',
+        	//'filter'=> CHtml::activeTextField($model, 'combineRoles'),
         ),
         /**
         array(
@@ -137,12 +142,15 @@ $('.asearch-form form').submit(function(){
     				'buttons'=>array(
     						'view'=>
     						array(
-    								'url'=>'Yii::app()->createUrl("user/view", array("id"=>$data->id))',
+    								'url'=>'Yii::app()->createUrl("user/viewmodal", array("id"=>$data->id))',
     								'options'=>array(
     										'ajax'=>array(
     												'type'=>'POST',
     												'url'=>"js:$(this).attr('href')",
-    												'success'=>'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }'
+    												'success'=>'function(data) { 
+    																$("#viewModal .modal-body p").html(data); 
+    																$("#viewModal").modal(); 
+																}'
     										),
     								),
     						),
@@ -150,11 +158,7 @@ $('.asearch-form form').submit(function(){
     		) 
     		
 )));
-
 ?>
-
-
-
 
 
 <!-- View Popup  -->
@@ -162,15 +166,14 @@ $('.asearch-form form').submit(function(){
 <!-- Popup Header -->
 
 <div class="modal-header">
-    <h4>View Employee Details</h4>
+    <h4><?php echo ''?></h4>
 
 </div>
 
 <!-- Popup Content -->
 <div class="modal-body">
-    <p>Employee Details</p>
-    <?php echo $model->id; ?>
-
+<!--     <p>Employee Details</p> -->
+	<p></p>
 </div>
 <!-- Popup Footer -->
 <div class="modal-footer">
