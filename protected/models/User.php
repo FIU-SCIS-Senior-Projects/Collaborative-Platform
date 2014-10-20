@@ -54,16 +54,12 @@ class User extends CActiveRecord
     /*assign variables */
     public $userDomain;
     public $userId;
-    /*temporary variables currently not stored in db*/
-    public $employer;
-    public $position;
-    public $start_year;
-    public $degree;
-    public $field_of_study;
-    public $school;
-    public $graduation_year;
+    
+    public $skills;
+    
     public $combineRoles;
     public $fullName;
+    
     /*Change the value when the system is deploy */
     public static $admin = 5;
     /* The most expert in the Domain */
