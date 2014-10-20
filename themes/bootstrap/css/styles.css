@@ -2085,7 +2085,17 @@ body {
 
 }
 
+.centerImg
+{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.centerTxt
+{
+	text-align: center;
+}
 
 
 

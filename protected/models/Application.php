@@ -7,15 +7,15 @@
  * @property string $id
  * @property string $user_id
  * @property string $type
- * @property string $my_picks
  * @property string $status
  * @property string $date
  * @property string $max_amount
  * @property string $max_hours
+ * @property string $system_pick_amount
  *
  * The followings are the available model relations:
  * @property ApplicationDomain $applicationDomain
- * @property ApplicationSystemCriteria $applicationSystemCriteria
+ * @property ApplicationPicks $applicationPicks
  */
 class Application extends CActiveRecord
 {
@@ -48,11 +48,10 @@ class Application extends CActiveRecord
 			array('user_id, type, status, date, max_amount', 'required'),
 			array('user_id', 'length', 'max'=>3),
 			array('type, status', 'length', 'max'=>1),
-			array('my_picks', 'length', 'max'=>20),
-			array('max_amount, max_hours', 'length', 'max'=>2),
+			array('max_amount, max_hours, system_pick_amount', 'length', 'max'=>2),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, type, my_picks, status, date, max_amount, max_hours', 'safe', 'on'=>'search'),
+			array('id, user_id, type, status, date, max_amount, max_hours', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,7 +64,7 @@ class Application extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'applicationDomain' => array(self::HAS_ONE, 'ApplicationDomain', 'application_id'),
-			'applicationSystemCriteria' => array(self::HAS_ONE, 'ApplicationSystemCriteria', 'application_id'),
+			'applicationPicks' => array(self::HAS_MANY, 'ApplicationPicks', 'application_id'),
 		);
 	}
 
@@ -78,11 +77,11 @@ class Application extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'type' => 'Type',
-			'my_picks' => 'My Picks',
 			'status' => 'Status',
 			'date' => 'Date',
 			'max_amount' => 'Max Amount',
 			'max_hours' => 'Max Hours',
+			'system_pick_amount' => 'System Picks',
 		);
 	}
 
@@ -100,11 +99,11 @@ class Application extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('user_id',$this->user_id,true);
 		$criteria->compare('type',$this->type,true);
-		$criteria->compare('my_picks',$this->my_picks,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('max_amount',$this->max_amount,true);
 		$criteria->compare('max_hours',$this->max_hours,true);
+		$criteria->compare('system_pick_amount',$this->system_pick_amount,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

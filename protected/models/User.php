@@ -54,6 +54,7 @@ class User extends CActiveRecord
     /*assign variables */
     public $userDomain;
     public $userId;
+    public $fullName;
     
     public $skills;
     /*Change the value when the system is deploy */
@@ -95,7 +96,7 @@ class User extends CActiveRecord
             array('biography', 'length', 'max' => 500),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'safe', 'on' => 'search'),
+            array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer, fullName', 'safe', 'on' => 'search'),
         );
     }
 
@@ -165,6 +166,7 @@ class User extends CActiveRecord
             'firstField' => 'Type: ',
         	'criteria' => 'Assigned to: ',
         	'quantity' => 'projects, mentors, or mentees',
+        	'fullName'=>'Name',
    
         		
         );
@@ -180,14 +182,17 @@ class User extends CActiveRecord
         // should not be searched.
 
         $criteria = new CDbCriteria;
+        
+        $criteria->compare('fname', $this->fullName, true, 'OR');
+        $criteria->compare('lname', $this->fullName, true, 'OR');
 
         $criteria->compare('id', $this->id, true);
         $criteria->compare('username', $this->username, true);
         //$criteria->compare('password',$this->password,true);
         $criteria->compare('email', $this->email, true);
-        $criteria->compare('fname', $this->fname, true);
-        $criteria->compare('mname', $this->mname, true);
-        $criteria->compare('lname', $this->lname, true);
+        //$criteria->compare('fname', $this->fname, true);
+        //$criteria->compare('mname', $this->mname, true);
+        //$criteria->compare('lname', $this->lname, true);
         //$criteria->compare('pic_url',$this->pic_url,true);
         $criteria->compare('activated', $this->activated);
         //$criteria->compare('activation_chain',$this->activation_chain,true);
@@ -204,6 +209,8 @@ class User extends CActiveRecord
         $criteria->compare('isMentee', $this->isMentee);
         $criteria->compare('isJudge', $this->isJudge);
         $criteria->compare('isEmployer', $this->isEmployer);
+        
+        
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -247,7 +254,6 @@ class User extends CActiveRecord
         return $user->username;
     }
 
-
     public static function replaceMessage($to, $message)
     {
         $file = fopen("/var/www/html/coplat/email/index1.html", "r");
@@ -259,6 +265,16 @@ class User extends CActiveRecord
         $html = str_replace("%USER%", $to, $html);
         $html = str_replace("%MESSAGE%", $message, $html);
         return $html;
+    }
+    
+    public function getFullName(){
+    	$name = $this->fname . ' ' . $this->lname;
+    	return $name;
+    }
+    
+    public function getPic(){
+    	$pic = '<img src="' . $this->pic_url . '" height="20" width="20"></img>';
+    	return $pic;
     }
 
     public function isAdmin()

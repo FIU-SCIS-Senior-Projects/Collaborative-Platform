@@ -26,6 +26,33 @@ class ApplicationController extends Controller
 	{
 		$this->render('view');
 	}
+	
+	/*
+	 * Renders the mentor application portal
+	 */
+	public function actionPortal(){
+		$this->render('portal');
+	}
+	
+	/*
+	 *  Personal Mentor Application
+	 */
+	public function actionPersonal(){
+		$model = new Application;
+		$user = User::model()->getCurrentUser();
+		$mentees = new User('search');
+		$mentees->unsetAttributes();
+		$mentees->isMentee = 1;
+		
+		
+		$model->type = 1;
+		$model->user_id = $user->id;
+		$error='';
+		
+		$this->render('personal', array(
+            'model'=>$model, 'search'=>$mentees, 'error' => $error,
+        ));
+	}
 
 	// Uncomment the following methods and override them if needed
 	/*

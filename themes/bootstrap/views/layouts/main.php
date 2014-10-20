@@ -151,6 +151,7 @@ if( User::isCurrentUserMentee())
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array('-',
+							array('label'=>'Mentor', 'url'=>array('application/portal'),'visible'=>!Yii::app()->user->isGuest),
                             array('label'=>'New Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
                             array('label'=>  $userinfo, 'url'=>'#', 'items'=>array(
 							array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!Yii::app()->user->isGuest),

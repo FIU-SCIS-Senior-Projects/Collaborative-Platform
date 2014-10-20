@@ -1081,3 +1081,730 @@ HTTP_REFERER=http://localhost:3838/coplat/index.php/user/create
 2014/10/19 19:53:28 [warning] [application] Failed to set unsafe attribute "skills" of "User".
 in C:\xampp\htdocs\coplat\protected\controllers\UserController.php (252)
 in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 20:05:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/create
+---
+2014/10/19 20:09:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('home/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/home/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/home/userHome
+---
+2014/10/19 20:09:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/home/application
+---
+2014/10/19 20:10:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/home/application
+---
+2014/10/19 20:10:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:10:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:10:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:10:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:10:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:10:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:10:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:11:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:20:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "application".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('application')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('application')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('site/applicatio...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/site/application
+HTTP_REFERER=http://localhost:3838/coplat/index.php/site/application
+---
+2014/10/19 20:49:43 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\HomeController.php:55)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): HomeController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): HomeController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): HomeController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): HomeController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/userHome
+in C:\xampp\htdocs\coplat\protected\controllers\HomeController.php (55)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 20:49:47 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\HomeController.php:55)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): HomeController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): HomeController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): HomeController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): HomeController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/userHome
+in C:\xampp\htdocs\coplat\protected\controllers\HomeController.php (55)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 20:49:54 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\HomeController.php:55)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): HomeController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): HomeController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): HomeController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): HomeController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/userHome
+in C:\xampp\htdocs\coplat\protected\controllers\HomeController.php (55)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 20:50:00 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\HomeController.php:55)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): HomeController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): HomeController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): HomeController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): HomeController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/userHome
+in C:\xampp\htdocs\coplat\protected\controllers\HomeController.php (55)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 20:50:02 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\HomeController.php:55)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): HomeController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): HomeController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): HomeController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): HomeController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/userHome
+in C:\xampp\htdocs\coplat\protected\controllers\HomeController.php (55)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 20:50:06 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\HomeController.php:55)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): HomeController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): HomeController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): HomeController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): HomeController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/userHome
+in C:\xampp\htdocs\coplat\protected\controllers\HomeController.php (55)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 20:50:15 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\HomeController.php:55)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): HomeController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): HomeController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): HomeController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): HomeController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/userHome
+in C:\xampp\htdocs\coplat\protected\controllers\HomeController.php (55)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 20:50:21 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\controllers\HomeController.php:55)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): HomeController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): HomeController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): HomeController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): HomeController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/userHome
+in C:\xampp\htdocs\coplat\protected\controllers\HomeController.php (55)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 21:13:03 [warning] [application] Failed to set unsafe attribute "skills" of "User".
+in C:\xampp\htdocs\coplat\protected\controllers\UserController.php (252)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/19 22:32:44 [error] [exception.CException] exception 'CException' with message 'Property "Application.userId" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(159): CComponent->__set('userId', '1012')
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(39): CActiveRecord->__set('userId', '1012')
+#2 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#8 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#10 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/10/19 22:33:13 [error] [exception.CException] exception 'CException' with message 'ApplicationController contains improperly nested widget tags in its view "C:\xampp\htdocs\coplat\protected\views\application\personal.php". A TbActiveForm widget does not have an endWidget() call.' in C:\xampp\htdocs\coplat\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('personal', Array, true)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(43): CController->render('personal', Array)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/10/19 23:42:42 [error] [exception.CException] exception 'CException' with message 'CArrayDataProvider and its behaviors do not have a method or closure named "search".' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\xampp\htdocs\coplat\protected\views\application\personal.php(30): CComponent->__call('search', Array)
+#1 C:\xampp\htdocs\coplat\protected\views\application\personal.php(30): CArrayDataProvider->search()
+#2 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('personal', Array, true)
+#6 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(58): CController->render('personal', Array)
+#7 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#13 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/10/19 23:44:33 [error] [exception.CException] exception 'CException' with message 'The column must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' in C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbGridView.php:103
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(358): TbGridView->createDataColumn('')
+#1 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbGridView.php(91): CGridView->initColumns()
+#2 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(334): TbGridView->initColumns()
+#3 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbGridView.php(49): CGridView->init()
+#4 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(147): TbGridView->init()
+#5 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(189): CBaseController->createWidget('bootstrap.widge...', Array)
+#6 C:\xampp\htdocs\coplat\protected\views\application\personal.php(35): CBaseController->beginWidget('bootstrap.widge...', Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('personal', Array, true)
+#11 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(58): CController->render('personal', Array)
+#12 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#17 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#18 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#19 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#20 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/10/19 23:52:09 [error] [php] get_class() expects parameter 1 to be object, array given (C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php:2220)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(1255): resolveNameID()
+#1 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CDataColumn.php(97): activeTextField()
+#2 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbDataColumn.php(53): TbDataColumn->renderFilterCellContent()
+#3 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(505): TbDataColumn->renderFilterCell()
+#4 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(483): TbGridView->renderFilter()
+#5 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(453): TbGridView->renderTableHeader()
+#6 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#7 unknown(0): TbGridView->renderSection()
+#8 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#9 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#10 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(206): TbGridView->run()
+#11 C:\xampp\htdocs\coplat\protected\views\application\personal.php(45): ApplicationController->endWidget()
+#12 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#13 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): ApplicationController->renderInternal()
+#14 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#15 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#16 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(58): ApplicationController->render()
+#17 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#18 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#19 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#20 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#21 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#22 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbDataColumn.php (53)
+in C:\xampp\htdocs\coplat\protected\views\application\personal.php (45)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (58)
+2014/10/20 00:24:17 [error] [exception.CException] exception 'CException' with message 'Property "Application.fullName" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(143): CComponent->__get('fullName')
+#1 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(2255): CActiveRecord->__get('fullName')
+#2 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(1980): CHtml::resolveValue(Object(Application), 'fullName')
+#3 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(1257): CHtml::activeInputField('text', Object(Application), 'fullName', Array)
+#4 C:\xampp\htdocs\coplat\protected\views\application\personal.php(39): CHtml::activeTextField(Object(Application), 'fullName')
+#5 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('personal', Array, true)
+#9 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(58): CController->render('personal', Array)
+#10 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#15 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#16 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/10/20 00:24:45 [error] [php] Undefined variable: fname (C:\xampp\htdocs\coplat\protected\models\User.php:383)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CDataColumn.php(131): TbDataColumn->evaluateExpression()
+#1 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridColumn.php(144): TbDataColumn->renderDataCellContent()
+#2 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(589): TbDataColumn->renderDataCell()
+#3 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(545): TbGridView->renderTableRow()
+#4 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(455): TbGridView->renderTableBody()
+#5 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#6 unknown(0): TbGridView->renderSection()
+#7 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#8 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#9 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(206): TbGridView->run()
+#10 C:\xampp\htdocs\coplat\protected\views\application\personal.php(43): ApplicationController->endWidget()
+#11 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#12 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): ApplicationController->renderInternal()
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#14 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#15 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(58): ApplicationController->render()
+#16 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#17 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#18 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#19 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#20 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#21 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#22 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\models\User.php (383)
+in C:\xampp\htdocs\coplat\protected\views\application\personal.php (43)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (58)
+2014/10/20 00:27:01 [error] [php] Undefined variable: search (C:\xampp\htdocs\coplat\framework\base\CComponent.php(606) : eval()'d code:1)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridColumn.php(144): TbDataColumn->renderDataCellContent()
+#1 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(589): TbDataColumn->renderDataCell()
+#2 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(545): TbGridView->renderTableRow()
+#3 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(455): TbGridView->renderTableBody()
+#4 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#5 unknown(0): TbGridView->renderSection()
+#6 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#7 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#8 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(206): TbGridView->run()
+#9 C:\xampp\htdocs\coplat\protected\views\application\personal.php(43): ApplicationController->endWidget()
+#10 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#11 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): ApplicationController->renderInternal()
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#14 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(58): ApplicationController->render()
+#15 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#16 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#17 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#18 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#19 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#20 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\views\application\personal.php (43)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (58)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/20 00:28:37 [error] [php] Undefined variable: search (C:\xampp\htdocs\coplat\framework\base\CComponent.php(606) : eval()'d code:1)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridColumn.php(144): TbDataColumn->renderDataCellContent()
+#1 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(589): TbDataColumn->renderDataCell()
+#2 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(545): TbGridView->renderTableRow()
+#3 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(455): TbGridView->renderTableBody()
+#4 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#5 unknown(0): TbGridView->renderSection()
+#6 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#7 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#8 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(206): TbGridView->run()
+#9 C:\xampp\htdocs\coplat\protected\views\application\personal.php(43): ApplicationController->endWidget()
+#10 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#11 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): ApplicationController->renderInternal()
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#14 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(58): ApplicationController->render()
+#15 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#16 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#17 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#18 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#19 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#20 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\views\application\personal.php (43)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (58)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/20 16:33:22 [error] [exception.CException] exception 'CException' with message 'Property "User.pagination" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(143): CComponent->__get('pagination')
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(46): CActiveRecord->__get('pagination')
+#2 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#8 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#10 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 16:33:25 [error] [exception.CException] exception 'CException' with message 'Property "User.pagination" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(143): CComponent->__get('pagination')
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(46): CActiveRecord->__get('pagination')
+#2 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#8 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#10 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/10/20 17:20:15 [error] [exception.CException] exception 'CException' with message 'The asset "/coplat/images/profileimages/avatarsmall.gif" to be published does not exist.' in C:\xampp\htdocs\coplat\framework\web\CAssetManager.php:257
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\base\CComponent.php(606) : eval()'d code(1): CAssetManager->publish('/coplat/images/...')
+#1 C:\xampp\htdocs\coplat\framework\base\CComponent.php(606): eval()
+#2 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CDataColumn.php(131): CComponent->evaluateExpression('(!empty($data->...', Array)
+#3 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridColumn.php(144): CDataColumn->renderDataCellContent(0, Object(User))
+#4 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(589): CGridColumn->renderDataCell(0)
+#5 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(545): CGridView->renderTableRow(0)
+#6 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(455): CGridView->renderTableBody()
+#7 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(160): CGridView->renderItems()
+#8 [internal function]: CBaseListView->renderSection(Array)
+#9 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{item...')
+#10 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(128): CBaseListView->renderContent()
+#11 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(206): CBaseListView->run()
+#12 C:\xampp\htdocs\coplat\protected\views\application\personal.php(46): CBaseController->endWidget()
+#13 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#14 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#15 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#16 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('personal', Array, true)
+#17 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(54): CController->render('personal', Array)
+#18 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#19 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#21 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#23 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#24 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#25 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#26 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:30:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<a class="highslide" href="".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('<a class="highs...')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('<a class="highs...')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/<a ...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/%3Ca%20class=%22highslide%22%20href=%22/picture/noimage.jpg%22%3E%3Cimg%20width=%2230%22%20src=%22/coplat/images/profileimages/avatarsmall.gif%22%20alt=%22image%22%20/%3E%3C/a%3E
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:30:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<a class="highslide" href="".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('<a class="highs...')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('<a class="highs...')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/<a ...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/%3Ca%20class=%22highslide%22%20href=%22/picture/noimage.jpg%22%3E%3Cimg%20width=%2230%22%20alt=%22image%22%20/%3E%3C/a%3E
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:30:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<a class="highslide" href="".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('<a class="highs...')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('<a class="highs...')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/<a ...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/%3Ca%20class=%22highslide%22%20href=%22/picture/noimage.jpg%22%3E%3Cimg%20width=%2230%22%20src=%22/coplat/images/profileimages/default_pic.jpg%22%20alt=%22image%22%20/%3E%3C/a%3E
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:30:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<a href="".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('<a href="')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('<a href="')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/<a ...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/%3Ca%20href=%22/coplat/index.php/application/personal%22%3E%3Cimg%20width=%2230%22%20src=%22/coplat/images/profileimages/avatarsmall.gif%22%20alt=%22image%22%20/%3E%3C/a%3E
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:30:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<a href="".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('<a href="')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('<a href="')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/<a ...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/%3Ca%20href=%22/coplat/index.php/application/personal%22%3E%3Cimg%20width=%2230%22%20alt=%22image%22%20/%3E%3C/a%3E
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:30:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<a href="".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('<a href="')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('<a href="')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/<a ...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/%3Ca%20href=%22/coplat/index.php/application/personal%22%3E%3Cimg%20width=%2230%22%20src=%22/coplat/images/profileimages/default_pic.jpg%22%20alt=%22image%22%20/%3E%3C/a%3E
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:30:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<a href="".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('<a href="')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('<a href="')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/<a ...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/%3Ca%20href=%22/coplat/index.php/application/personal%22%3E%3Cimg%20width=%2230%22%20src=%22/coplat/images/profileimages/avatarsmall.gif%22%20alt=%22image%22%20/%3E%3C/a%3E
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:37:19 [error] [php] call_user_func_array() expects parameter 1 to be a valid callback, array must have exactly two members (C:\xampp\htdocs\coplat\framework\base\CComponent.php:611)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridColumn.php(144): TbDataColumn->renderDataCellContent()
+#1 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(589): TbDataColumn->renderDataCell()
+#2 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(545): TbGridView->renderTableRow()
+#3 C:\xampp\htdocs\coplat\framework\zii\widgets\grid\CGridView.php(455): TbGridView->renderTableBody()
+#4 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#5 unknown(0): TbGridView->renderSection()
+#6 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#7 C:\xampp\htdocs\coplat\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#8 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(206): TbGridView->run()
+#9 C:\xampp\htdocs\coplat\protected\views\application\personal.php(52): ApplicationController->endWidget()
+#10 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require()
+#11 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): ApplicationController->renderInternal()
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#14 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(54): ApplicationController->render()
+#15 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#16 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#17 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#18 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#19 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#20 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\views\application\personal.php (52)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (54)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/10/20 17:41:27 [error] [exception.CException] exception 'CException' with message 'Property "Application.fname" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(143): CComponent->__get('fname')
+#1 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(2255): CActiveRecord->__get('fname')
+#2 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(1980): CHtml::resolveValue(Object(Application), 'fname')
+#3 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(1257): CHtml::activeInputField('text', Object(Application), 'fname', Array)
+#4 C:\xampp\htdocs\coplat\framework\web\widgets\CActiveForm.php(657): CHtml::activeTextField(Object(Application), 'fname', Array)
+#5 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\input\TbInputInline.php(58): CActiveForm->textField(Object(Application), 'fname', Array)
+#6 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\input\TbInput.php(230): TbInputInline->textField()
+#7 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(173): TbInput->run()
+#8 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbActiveForm.php(497): CBaseController->widget('bootstrap.widge...', Array)
+#9 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbActiveForm.php(186): TbActiveForm->inputRow('text', Object(Application), 'fname', NULL, Array)
+#10 C:\xampp\htdocs\coplat\protected\views\application\personal.php(33): TbActiveForm->textFieldRow(Object(Application), 'fname', Array)
+#11 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('personal', Array, true)
+#15 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(54): CController->render('personal', Array)
+#16 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#17 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#19 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#21 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#22 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#24 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/10/20 17:41:36 [error] [exception.CException] exception 'CException' with message 'Property "Application.textField" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(143): CComponent->__get('textField')
+#1 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(2255): CActiveRecord->__get('textField')
+#2 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(1980): CHtml::resolveValue(Object(Application), 'textField')
+#3 C:\xampp\htdocs\coplat\framework\web\helpers\CHtml.php(1257): CHtml::activeInputField('text', Object(Application), 'textField', Array)
+#4 C:\xampp\htdocs\coplat\framework\web\widgets\CActiveForm.php(657): CHtml::activeTextField(Object(Application), 'textField', Array)
+#5 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\input\TbInputInline.php(58): CActiveForm->textField(Object(Application), 'textField', Array)
+#6 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\input\TbInput.php(230): TbInputInline->textField()
+#7 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(173): TbInput->run()
+#8 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbActiveForm.php(497): CBaseController->widget('bootstrap.widge...', Array)
+#9 C:\xampp\htdocs\coplat\protected\extensions\bootstrap\widgets\TbActiveForm.php(186): TbActiveForm->inputRow('text', Object(Application), 'textField', NULL, Array)
+#10 C:\xampp\htdocs\coplat\protected\views\application\personal.php(33): TbActiveForm->textFieldRow(Object(Application), 'textField', Array)
+#11 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\coplat\framework\web\CController.php(782): CController->renderPartial('personal', Array, true)
+#15 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(54): CController->render('personal', Array)
+#16 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#17 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#19 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#21 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#22 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#24 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---

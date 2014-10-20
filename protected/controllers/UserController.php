@@ -281,7 +281,7 @@ class UserController extends Controller
                 $login->username = $model->username;
                 $login->password = $pw;
                 $login->login();
-                $this->redirect("/coplat/index.php/home/userHome");
+                $this->redirect("/coplat/index.php/application/portal");
                 
                 // Confirmation email for registration
                 //$userfullName = $model->fname.' '.$model->lname;
