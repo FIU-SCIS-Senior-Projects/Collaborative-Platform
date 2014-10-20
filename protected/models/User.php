@@ -54,9 +54,16 @@ class User extends CActiveRecord
     /*assign variables */
     public $userDomain;
     public $userId;
+    /*temporary variables currently not stored in db*/
+    public $employer;
+    public $position;
+    public $start_year;
+    public $degree;
+    public $field_of_study;
+    public $school;
+    public $graduation_year;
+    public $combineRoles;
     public $fullName;
-    
-    public $skills;
     /*Change the value when the system is deploy */
     public static $admin = 5;
     /* The most expert in the Domain */
@@ -96,7 +103,9 @@ class User extends CActiveRecord
             array('biography', 'length', 'max' => 500),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer, fullName', 'safe', 'on' => 'search'),
+            array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, 
+            		disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, 
+            		isDomMentor, isStudent, isMentee, isJudge, isEmployer, combineRoles, fullName', 'safe', 'on' => 'search'),
         );
     }
 
@@ -139,7 +148,7 @@ class User extends CActiveRecord
             'username' => 'User Name',
             'password' => 'Password',
             'password2' => 'Re-type Password',
-            'email' => 'e-mail',
+            'email' => 'Email',
             'fname' => 'First Name',
             'mname' => 'Middle Name',
             'lname' => 'Last Name',
@@ -166,8 +175,8 @@ class User extends CActiveRecord
             'firstField' => 'Type: ',
         	'criteria' => 'Assigned to: ',
         	'quantity' => 'projects, mentors, or mentees',
-        	'fullName'=>'Name',
-   
+            'combineRoles' => 'Roles',
+        		'fullName' => 'Name',
         		
         );
     }
@@ -185,8 +194,9 @@ class User extends CActiveRecord
         
         $criteria->compare('fname', $this->fullName, true, 'OR');
         $criteria->compare('lname', $this->fullName, true, 'OR');
+        
 
-        $criteria->compare('id', $this->id, true);
+        //$criteria->compare('id', $this->id, true);
         $criteria->compare('username', $this->username, true);
         //$criteria->compare('password',$this->password,true);
         $criteria->compare('email', $this->email, true);
@@ -201,20 +211,48 @@ class User extends CActiveRecord
         //$criteria->compare('linkedin_id',$this->linkedin_id,true);
         //$criteria->compare('fiucs_id',$this->fiucs_id,true);
         //$criteria->compare('google_id',$this->google_id,true);
-        $criteria->compare('isAdmin', $this->isAdmin);
+        //$criteria->compare('isAdmin', $this->isAdmin);
         $criteria->compare('isProMentor', $this->isProMentor);
         $criteria->compare('isPerMentor', $this->isPerMentor);
         $criteria->compare('isDomMentor', $this->isDomMentor);
         $criteria->compare('isStudent', $this->isStudent);
         $criteria->compare('isMentee', $this->isMentee);
-        $criteria->compare('isJudge', $this->isJudge);
-        $criteria->compare('isEmployer', $this->isEmployer);
-        
-        
+        //$criteria->compare('isJudge', $this->isJudge);
+        //$criteria->compare('isEmployer', $this->isEmployer);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));
+    }
+
+    public function getCombineRoles(){
+    	$count = 0;
+        $st = '';
+
+        if ($this->isProMentor){
+        	$count = $count + 1;
+            $st .= 'Project ';
+        }
+        if ($this->isPerMentor){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
+            $st .= 'Personal ';
+        }
+        if ($this->isDomMentor){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
+     
+            $st .= 'Domain ';
+        }
+        if ($this->isMentee){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
+            $st .= 'Mentee';
+        }
+        return $st;
     }
 
     /* retrieve all user ids in the system */

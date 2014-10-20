@@ -231,8 +231,6 @@
     })
 </script>
 <!-- End Comment Modal
-
-
 <!-- Modal RE-ASSIGN-->
 
 <div class="modal fade" id="myModalReAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

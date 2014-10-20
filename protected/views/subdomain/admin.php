@@ -40,6 +40,8 @@ $('.search-form form').submit(function(){
 		'description',
 		//'validator',
 		//'domain_id',
+		'need',
+			'need_amount',
 		array(
 			'class'=>'CButtonColumn',
 		),

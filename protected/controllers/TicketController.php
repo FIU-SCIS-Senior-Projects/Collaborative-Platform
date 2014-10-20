@@ -66,7 +66,7 @@ class TicketController extends Controller
             $tier = UserDomain::model()->findBySql("SELECT * from user_domain WHERE user_id =:id and domain_id =:id2 and subdomain_id =:id3", array(":id" => $ticket->assign_user_id, ":id2" => $ticket->domain_id, ":id3" => $ticket->subdomain_id));
 
         }
-        $this->render('view', array(
+        $this->renderPartial('view', array(
             'model' => $this->loadModel($id), /*Return all the ticket details */
             'userCreator' => $userCreator, 'userAssign' => $userAssign, 'domainName' => $domainName, 'subdomainName' => $subdomainName, 'priority' => $priority, 'tier' =>$tier
         ));
@@ -401,6 +401,7 @@ class TicketController extends Controller
             //$model->attributes = $_POST['Ticket'];
             if ($newStatus == 0) {
                 $model->status = 'Close';
+                $model->closed_date = new CDbExpression('NOW()');
                 if ($model->save()) {
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
@@ -480,12 +481,41 @@ class TicketController extends Controller
     public function actionAdmin()
     {
         $model = new Ticket('search');
+        
+        $cUser = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0 order by lname");
+        $data1 = array();
+        
+        foreach($cUser as $u){
+        	$data1[$u->id] = $u->fname.' '.$u->lname;
+        }
+
+        $aUser = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0 order by lname");
+        $data2 = array();
+        
+        foreach($aUser as $u){
+        	$data2[$u->id] = $u->fname.' '.$u->lname;
+        }
+        
+        $dom = Domain::model()->findAllBySql("select id, name from domain order by name");
+        $data3 = array();
+        
+        foreach($dom as $u){
+        	$data3[$u->id] = $u->name;
+        }
+        
+        $subdom = Subdomain::model()->findAllBySql("select id, name from subdomain order by name");
+        $data4 = array();
+        
+        foreach($subdom as $u){
+        	$data4[$u->id] = $u->name;
+        }
+        
         $model->unsetAttributes(); // clear any default values
         if (isset($_GET['Ticket']))
             $model->attributes = $_GET['Ticket'];
 
         $this->render('admin', array(
-            'model' => $model,
+            'model' => $model, 'data1' => $data1, 'data2'=>$data2,'data3'=>$data3,'data4'=>$data4,
         ));
     }
 

@@ -38,7 +38,7 @@ class UserController extends Controller
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors'),
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search', 'viewmodal'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -60,13 +60,30 @@ class UserController extends Controller
 
         $this->render('roles', array('model'=> $model));
     }
-
+    
+    public function actionViewmodal($id)
+    {
+    	//$model = $this->loadModel($id);
+    	$projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
+    	$UserDomain = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$id");
+    	$Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
+    	 
+    	if( Yii::app()->request->isAjaxRequest )
+			$this->renderPartial('viewmodal',array('model'=>$this->loadModel($id), 'Mentees'=>$Mentees, 'UserDomain'=>$UserDomain));
+    	else 
+    		$this->renderPartial('viewmodal',array('model'=>$this->loadModel($id),'Mentees'=>$Mentees, 'UserDomain'=>$UserDomain));
+    	
+    }
+    
+    
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
     public function actionView($id)
     {
+        echo("<script>console.log('actionView!');</script>");
+
         $model = $this->loadModel($id);
         $promentor = ProjectMentor::model()->getProMentor($id);
         $permentor = PersonalMentor::model()->getPerMentor($id);
@@ -205,7 +222,7 @@ class UserController extends Controller
             $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
 
             $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects));
-
+            
             /*$this->render('view',array(
                 'model'=>$this->loadModel($id),
             ));*/
@@ -216,7 +233,7 @@ class UserController extends Controller
             $userdoms = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$id");
             $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
             $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
-
+            
             $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects,
                 'model'=>$this->loadModel($id)));
         }
@@ -474,6 +491,10 @@ class UserController extends Controller
     
     public function actionCreate_Admin()
     {
+
+        echo ("<script>console.log('actionCreate_Admin');</script>");
+
+
         $model=new User;
 
         // Uncomment the following line if AJAX validation is needed
@@ -514,6 +535,9 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+        echo("<script>console.log('actionUpdate');</script>");
+
+
         $model = $this->loadModel($id);
 
         $this->renderPartial('update', array('model'=> $model));
@@ -527,6 +551,10 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
+
+        echo ("<script>console.log('actionDelete');</script>");
+
+
         //Soft delete (Disable the User)
         $model=$this->loadModel($id);
         $model->disable = 1;
@@ -546,9 +574,11 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
+
+        echo("<script>console.log('actionIndex');</script>");
+
         $dataProvider=new CActiveDataProvider('User');
-        $this->render('index',array(
-            'dataProvider'=>$dataProvider,
+        $this->render('index',array('dataProvider'=>$dataProvider,
         ));
     }
 
@@ -557,15 +587,35 @@ class UserController extends Controller
      */
     public function actionAdmin()
     {
+
+        echo("<script>console.log('actionAdmin');</script>");
+
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values
-        if(isset($_GET['User']))
+        if(isset($_GET['User'])) {
             $model->attributes=$_GET['User'];
-
+        	
+        }
         $this->render('admin',array(
             'model'=>$model,
         ));
     }
+
+    public function actionSearch()
+    {
+        echo("<script>console.log('actionSearch');</script>");
+
+        $model=new User('search');
+        $model->unsetAttributes();  // clear any default values
+        
+        if(isset($_GET['User']))
+        	$model->attributes=$_GET['User'];
+        	
+        $this->render('search',array(
+            'model'=>$model,
+        ));
+    }
+    
 
     public function actionChangePassword() {
         $model = User::getCurrentUser();
@@ -701,6 +751,10 @@ class UserController extends Controller
      */
     public function loadModel($id)
     {
+
+        echo("<script>console.log('loadModel message!');</script>");
+
+
         $model=User::model()->findByPk($id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
@@ -747,7 +801,8 @@ class UserController extends Controller
                 'pageSize' => 10,
             ),
         ));
-        $this->render('findMentors',array('domMentors'=>$domMentors,'dataProviderCompined'=>$dataProviderCompined,'filtersForm'=>$filtersForm,'error' => $error));
+        $this->render('findMentors',array('domMentors'=>$domMentors,'dataProviderCompined'=>$dataProviderCompined,
+        		'filtersForm'=>$filtersForm,'error' => $error));
 
     }
     

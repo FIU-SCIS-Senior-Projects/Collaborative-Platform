@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 */
 Yii::app()->clientScript->registerScript('search', "
 $('.asearch-button').click(function(){
-	$('.asearch-form').toggle();+
+	$('.asearch-form').toggle();
 	$('.bsearch-form').toggle();
 	return false;
 });
@@ -24,37 +24,39 @@ $('.bsearch-button').click(function(){
 	return false;
 });
 
+$('.bsearch-form form').submit(function(){
+	$('#user-grid').yiiGridView('update', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+
 $('.asearch-form form').submit(function(){
 	$('#user-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
 });
+
 ");
 
 ?>
 
 <h2>Manage Users</h2>
 
-
-<?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?>
+<?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?><!--
 <br/>
 
 <!-- basic search-form -->
 <div class="bsearch-form" style="display:">
-    <?php $this->renderPartial('search',array(
-        'model'=>$model,
-    )); ?>
+    <?php $this->renderPartial('search',array('model'=>$model)); ?>
 </div>
-
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'asearch-button')); ?>
 
 <!-- advanced search-form -->
 <div class="asearch-form" style="display:none">
-    <?php $this->renderPartial('advanced_search',array(
-        'model'=>$model,
-    )); ?>
+    <?php $this->renderPartial('advanced_search',array('model'=>$model)); ?>
 </div>
 
 
@@ -71,19 +73,32 @@ $('.asearch-form form').submit(function(){
     'type'=>'striped condensed hover',
     'id'=>'user-grid',
     'selectableRows'=>1,
-    'selectionChanged'=>
-        'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
     //'selectionChanged'=>
-    //   'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }',
-
+    //    'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
+    //'selectionChanged'=>
+    //    'function(data) {
+    //        $("#viewModal .modal-body p").html(data);
+    //        $("#viewModal").modal();
+    //   }',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
     'columns'=>array(
         'username',
         'email',
-        'fname',
-        //'mname',
-        'lname',
+                array(
+            'name'  => 'fullName',
+            'value' => '($data->getFullName())',
+            'header'=> CHtml::encode($model->getAttributeLabel('fullName')),
+            'filter'=> CHtml::activeTextField($model, 'fullName'),
+        ),
+        array(
+            'name'  => 'combineRoles',
+            'value' => '($data->getCombineRoles())',
+            'header'=> CHtml::encode($model->getAttributeLabel('combineRoles')),
+        	'htmlOptions'=>array('width'=>'225px'),
+        		'filter'=>'',
+        	//'filter'=> CHtml::activeTextField($model, 'combineRoles'),
+        ),
         /**
         array(
             'name'=>'activated',
@@ -120,8 +135,30 @@ $('.asearch-form form').submit(function(){
 
         ),
          **/
-    ))); ?>
-
+    		array(
+    				'header'=>'Options',
+    				'class'=>'bootstrap.widgets.TbButtonColumn',
+    				'template'=> '{view} {delete}',
+    				'buttons'=>array(
+    						'view'=>
+    						array(
+    								'url'=>'Yii::app()->createUrl("user/viewmodal", array("id"=>$data->id))',
+    								'options'=>array(
+    										'ajax'=>array(
+    												'type'=>'POST',
+    												'url'=>"js:$(this).attr('href')",
+    												'success'=>'function(data) { 
+    																$("#viewModal .modal-body p").html(data); 
+    																$("#viewModal").modal(); 
+																}'
+    										),
+    								),
+    						),
+    				),
+    		) 
+    		
+)));
+?>
 
 
 <!-- View Popup  -->
@@ -129,13 +166,14 @@ $('.asearch-form form').submit(function(){
 <!-- Popup Header -->
 
 <div class="modal-header">
-    <h4>View Employee Details</h4>
+    <h4><?php echo ''?></h4>
+
 </div>
 
 <!-- Popup Content -->
 <div class="modal-body">
-    <p>Employee Details</p>
-
+<!--     <p>Employee Details</p> -->
+	<p></p>
 </div>
 <!-- Popup Footer -->
 <div class="modal-footer">

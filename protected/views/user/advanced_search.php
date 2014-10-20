@@ -5,32 +5,30 @@
 ?>
 
 <div class="wide form">
-    <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-        //'action' => Yii::app()->createUrl($this->route),
+    <?php $form = $this->beginWidget('CActiveForm', array(
+        'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
-    	'type' => 'horizontal',
     )); ?>
 
         <?php
+        	//$dataRoleVal = array(0,1,2,3);
         
-            echo $form->dropDownListRow($model, 'firstField', array('Project Mentor', 'Personal Mentor', 
-            		'Domain Mentor', 'Mentee'), array('style' => 'float:left'));
-                        
-            echo $form->dropDownListRow($model, 'criteria', array('Exactly', 'Greater Than',
-            		'Less Than'), array('style' => 'float:left'));
-            
-			echo $form->textFieldRow($model, 'quantity', array('hint'=>''));
-			
-            echo $form->dropDownListRow($model, 'disable', array('Enabled', 'Disabled'), array('style' => 'float:left'));
+            $dataRole = array('Project Mentor', 'Personal Mentor', 'Domain Mentor', 'Mentee');
+            echo $form->dropDownList($model, 'firstField', array(0=>'Project Mentor', 1=>'Personal Mentor',
+                2=>'Domain Mentor', 3=>'Mentee'), array('style' => ''));
 
-        
+            $crit = array('Exactly'=>'Exactly', 'Greater'=>'Greater Than','Less'=>'Less Than');
+            echo $form->dropDownList($model, 'criteria', $crit, array('style' => ''));
+
+			echo $form->textField($model, 'quantity', array('size'=>'5', 'hint'=>'', 'style' => ''));
+
+            $data = array('Enabled', 'Disabled');
+            echo $form->dropDownList($model, 'disable', $data, array('style' => ''));
+
         ?>
 
-        <?php echo CHtml::submitButton('Search', array("class" => "btn btn-primary")); ?>
-    <!-- regbox -->
+        <?php echo CHtml::submitButton('Search', array("class" => "btn btn-primary", 'submit' => 'asdf')); ?>
 
     <?php $this->endWidget(); ?>
-    <div style="clear:both"></div>
-    </br>
-
-</div><!-- search-form -->
+    <!-- search-form -->
+</div>
