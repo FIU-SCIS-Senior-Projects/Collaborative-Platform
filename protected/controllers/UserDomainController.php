@@ -36,7 +36,7 @@ class UserDomainController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'UpdateUser'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -103,6 +103,12 @@ class UserDomainController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+	
+	public function actionUpdateUser()
+	{
+		$es = new EditableSaver('userdomain');  //'User' is name of model to be updated
+		$es->update();
 	}
 
 	/**

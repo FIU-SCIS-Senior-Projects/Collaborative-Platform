@@ -16,7 +16,8 @@ $this->breadcrumbs=array(
 	'filter'=>$model,
 	'columns'=>array(
 		//'id',
-		'name',
+		'domain_name',
+		'subdomain_name',
 		'description',
 		'validator',
 		'need',
@@ -28,7 +29,7 @@ $this->breadcrumbs=array(
     				'buttons'=>array(
     						'view'=>
     						array(
-    								'url'=>'Yii::app()->createUrl("domain/view", array("id"=>$data->id))',
+    								'url'=>'Yii::app()->createUrl("domain/viewmodal", array("id"=>$data->id))',
     								'options'=>array(
     										'ajax'=>array(
     												'type'=>'POST',
@@ -44,7 +45,7 @@ $this->breadcrumbs=array(
 
 
 <!-- View Popup  -->
-<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal')); ?>
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal', 'htmlOptions' => ['style' => 'width: 800px; margin-left: -400px'])); ?>
 <!-- Popup Header -->
 
 <div class="modal-header">

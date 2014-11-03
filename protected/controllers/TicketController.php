@@ -36,13 +36,29 @@ class TicketController extends Controller
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
+                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem', 'viewModal'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
             ),
         );
+    }
+    
+    public function actionViewmodal($id)
+    {
+    	$model = $this->loadModel($id);
+
+    	if( Yii::app()->request->isAjaxRequest )
+    		$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
+    	else
+    		$this->renderPartial('viewmodal',array('model'=>$model,));
+    	 
+    }
+    
+    public function actionUpdateStatus(){
+    	$es = new EditableSaver('Ticket');  //'User' is name of model to be updated
+    	$es->update();
     }
 
     /**
@@ -66,7 +82,7 @@ class TicketController extends Controller
             $tier = UserDomain::model()->findBySql("SELECT * from user_domain WHERE user_id =:id and domain_id =:id2 and subdomain_id =:id3", array(":id" => $ticket->assign_user_id, ":id2" => $ticket->domain_id, ":id3" => $ticket->subdomain_id));
 
         }
-        $this->renderPartial('view', array(
+        $this->render('view', array(
             'model' => $this->loadModel($id), /*Return all the ticket details */
             'userCreator' => $userCreator, 'userAssign' => $userAssign, 'domainName' => $domainName, 'subdomainName' => $subdomainName, 'priority' => $priority, 'tier' =>$tier
         ));

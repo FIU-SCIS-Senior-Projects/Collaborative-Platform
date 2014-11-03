@@ -36,7 +36,7 @@ class SubdomainController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'viewmodal'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -58,6 +58,17 @@ class SubdomainController extends Controller
 			'model'=>$this->loadModel($id),
             'domainName' => $domainName
 		));
+	}
+	
+	public function actionViewmodal($id)
+	{
+			$model = $this->loadModel($id);
+	
+			if( Yii::app()->request->isAjaxRequest )
+				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
+			else
+				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
+		
 	}
 
 	/**

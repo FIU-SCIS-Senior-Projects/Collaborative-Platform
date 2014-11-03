@@ -27,7 +27,7 @@
 
         ?>
 
-        <?php echo CHtml::submitButton('Search', array("class" => "btn btn-primary", 'submit' => 'asdf')); ?>
+        <?php echo CHtml::submitButton('Search', array("class" => "btn btn-primary")); ?>
 
     <?php $this->endWidget(); ?>
     <!-- search-form -->
