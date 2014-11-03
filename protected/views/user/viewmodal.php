@@ -35,6 +35,12 @@ $('.tickets-button').click(function(){
 	$('.tickets-form').toggle();
 	return false;
 });
+		
+$('.meetings-button').click(function(){
+$('.meetings-form').toggle();
+return false;
+		
+});	
 
 ");
 ?>
@@ -109,7 +115,7 @@ $('.tickets-button').click(function(){
     			
 </div>
 
-	<!--  PENDING!! MENTEE SECTION -->
+	<!--  MENTEE START -->
 	<?php if($model->isMentee) {?>
 	<div class='well mentor-form' style="display:">	
 	
@@ -127,35 +133,40 @@ $('.tickets-button').click(function(){
 				array(
 						'label'=>'Personal Mentor',
 						'type'=>'raw',
-						'value'=> CHtml::value($model, 'mentee.personalMentorUser.user.fname'),
+						'value'=> CHtml::value($model, 'mentee.personalMentorUser.user.fname') . " " . CHtml::value($model, 'mentee.personalMentorUser.user.lname'),
 				),
 				
 		),
 )); 
 ?>
 </div>
-	<?php }?>
+<?php }?>
+<!--  MENTEE END -->
 	
-	<!-- PROJECT MENTOR SECTION -->
-	<?php if($model->isProMentor) {?>
-	<div class='well project-form' style="display:">
 	
-	<h3><?php echo CHtml::link('Project Mentor','#',array('class'=>'project-button')); ?></h3>
-	<hr>
-	    <?php 
-				$maxProjectHours = Yii::app()->db->createCommand()->select('max_hours')->
-																from('project_mentor')->
-         														 where('user_id=:id', array(':id'=>$model->id))->queryScalar();
+	
+<!-- PROJECT MENTOR START -->
+<?php if($model->isProMentor) {?>
+<div class='well project-form' style="display:">
 
-				$maxProjects = Yii::app()->db->createCommand()->select('max_projects')->
-				from('project_mentor')->
-				where('user_id=:id', array(':id'=>$model->id))->queryScalar();
+<h3><?php echo CHtml::link('Project Mentor','#',array('class'=>'project-button')); ?></h3>
+<hr>
+<?php 
+				$maxProjectHours = Yii::app()->db->createCommand()->
+												select('max_hours')->
+												from('project_mentor')->
+         										where('user_id=:id', array(':id'=>$model->id))->
+												queryScalar();
+
+	$maxProjects = Yii::app()->db->createCommand()->select('max_projects')->
+	from('project_mentor')->
+	where('user_id=:id', array(':id'=>$model->id))->queryScalar();
 				
-				if ($maxProjectHours === null || $maxProjectHours === false|| $maxProjectHours === '') $maxProjectHours = 'Not Set';
-				if (is_null($maxProjects) || $maxProjects === false|| $maxProjects === '') $maxProjects = 'Not Set';
+	if ($maxProjectHours === null || $maxProjectHours === false|| $maxProjectHours === '') $maxProjectHours = 'Not Set';
+	if (is_null($maxProjects) || $maxProjects === false|| $maxProjects === '') $maxProjects = 'Not Set';
 								
-			 	echo 'Maximum Hours: ' . $maxProjectHours;?><br/><?php 
-			 	echo 'Maximum Projects: ' . $maxProjects;
+ 	echo 'Maximum Hours: ' . $maxProjectHours;?><br/><?php 
+ 	echo 'Maximum Projects: ' . $maxProjects;
 			 
 	    
 	    
@@ -178,26 +189,28 @@ $('.tickets-button').click(function(){
                     		),
                     )); ?>
 </div>
-	<?php }?>
+<?php }?>
 	
-		<!-- PERSONAL MENTOR SECTION -->
-	<?php if($model->isPerMentor) {?>
-	<div class='well personal-form' style="display:">
-	
-		<h3><?php echo CHtml::link('Personal Mentor','#',array('class'=>'personal-button')); ?></h3>
-	<hr>
+<!-- PERSONAL MENTOR START -->
+<?php if($model->isPerMentor) {?>
+<div class='well personal-form' style="display:">
+
+<h3><?php echo CHtml::link('Personal Mentor','#',array('class'=>'personal-button')); ?></h3>
+<hr>
 	<?php
 	
-	$maxMenteeHours = Yii::app()->db->createCommand()->select('max_hours')->
-													from('personal_mentor')->
-													where('user_id=:id', array(':id'=>$model->id))->
-													queryScalar();
+	$maxMenteeHours = Yii::app()->db->createCommand()->
+								select('max_hours')->
+								from('personal_mentor')->
+								where('user_id=:id', array(':id'=>$model->id))->
+								queryScalar();
 	
-	$maxMentees = Yii::app()->db->createCommand()->select('max_mentees')->
-													from('personal_mentor')->
-													where('user_id=:id', array(':id'=>$model->id))->
-													queryScalar();
-	
+	$maxMentees = Yii::app()->db->createCommand()->
+								select('max_mentees')->
+								from('personal_mentor')->
+								where('user_id=:id', array(':id'=>$model->id))->
+								queryScalar();
+
 	if ($maxMenteeHours === null || $maxMenteeHours === false || $maxMenteeHours === '') 
 			$maxMenteeHours = 'Not Set';
 	if ($maxMentees === null || $maxMentees === false || $maxMentees === '')
@@ -228,17 +241,17 @@ $('.tickets-button').click(function(){
 	
 	
 </div>
-	<?php }?>
+<?php }?>
+<!-- PERSONAL MENTOR END -->
 	
 	
-	
-	<!-- PENDING!! DOMAIN MENTOR SECTION -->
-	<?php if($model->isDomMentor) {?>	
-	<div class='well domain-form' style="display:">	
-	
-	<h3><?php echo CHtml::link('Domain Mentor','#',array('class'=>'domain-button')); ?></h3>
-	<hr>
-	<?php
+<!-- DOMAIN MENTOR START -->
+<?php if($model->isDomMentor) {?>	
+<div class='well domain-form' style="display:">	
+
+<h3><?php echo CHtml::link('Domain Mentor','#',array('class'=>'domain-button')); ?></h3>
+<hr>
+<?php
 	$maxTickets = Yii::app()->db->createCommand()->select('max_tickets')->
 	from('domain_mentor')->
 	where('user_id=:id', array(':id'=>$model->id))->queryScalar();
@@ -246,11 +259,11 @@ $('.tickets-button').click(function(){
 	if ($maxTickets === null || $maxTickets === false) $maxTickets = 'Not Set';
 		
 	echo 'Maximum Tickets: ' . $maxTickets;
-	?><br/>
-	
-	<?php 
+?>
+<br/>
+<?php 
 	$ratings = array(1,2,3,4,5,6,7,8,9,10);
-
+	
 	$this->widget('bootstrap.widgets.TbGridView', array(
 			'type'=>'striped condensed hover',
 			'id'=>'id',
@@ -299,10 +312,13 @@ $('.tickets-button').click(function(){
           				),  		
 					),
 	));?>
-</div>	<?php }?>
+</div>	
+<?php }?>
+<!-- DOMAIN MENTOR END -->
 
 
-<!-- PENDING!! TICKETS SECTION -->
+
+<!-- TICKETS START -->
 <div class='well tickets-form' style="display:">
 
 	<h3><?php echo CHtml::link('Tickets','#',array('class'=>'tickets-button')); ?></h3>
@@ -354,3 +370,145 @@ $('.tickets-button').click(function(){
 	));
 	?>
 </div>
+<!-- TICKETS END -->
+
+<!-- MEETINGS START -->
+<?php if($model->isProMentor || $model->isPerMentor || $model->isMentee) {?>	
+<div class='well meetings-form' style="display:">
+
+	<h3><?php echo CHtml::link('Meetings','#',array('class'=>'meetings-button')); ?></h3>
+	<hr>
+	<?php	 
+	
+	
+	if ($model->isProMentor) {
+	?><h4>Project Meetings</h4><?php
+	$this->widget('bootstrap.widgets.TbGridView', array(
+			'type'=>'striped condensed hover',
+			'id'=>'id',
+			'dataProvider'=>  new CArrayDataProvider($model->projectMentor->projectMeetings, array('keyField'=>false)),
+						'summaryText'=>'',
+			'columns'=>array(
+							array(
+									'name'=>'id',
+									'value'=>'$data->id',
+									'header'=>'ID',
+							),  
+							array(
+									'name'=>'date',
+									'value'=>'$data->date',
+									'header'=>'Date',
+							),  				
+							array(
+									'name'=>'time',
+									'value'=>'$data->time',
+									'header'=>'Time',
+							),  				
+							array(
+									'name'=>'menteeUser.user.fname',										
+									'value'=>'$data->menteeUser->user->fname . " " . $data->menteeUser->user->lname',
+									'header'=>'Mentee Name',
+							),
+			),
+	));
+	}
+	if ($model->isPerMentor) {
+		?><hr><h4>Personal Meetings</h4><?php
+		$this->widget('bootstrap.widgets.TbGridView', array(
+				'type'=>'striped condensed hover',
+				'id'=>'id',
+				'dataProvider'=>  new CArrayDataProvider($model->personalMentor->personalMeetings, array('keyField'=>false)),
+				'summaryText'=>'',
+				'columns'=>array(
+						array(
+								'name'=>'id',
+								'value'=>'$data->id',
+								'header'=>'ID',
+						),
+						array(
+								'name'=>'date',
+								'value'=>'$data->date',
+								'header'=>'Date',
+						),
+						array(
+								'name'=>'time',
+								'value'=>'$data->time',
+								'header'=>'Time',
+						),
+						array(
+								'name'=>'menteefullname',
+								'value'=>'$data->menteeUser->user->fname . " " . $data->menteeUser->user->lname',
+								'header'=>'Mentee Name',
+						),
+				),
+		));
+	}
+	
+	$exists = Chtml::value($model, 'mentee');
+	
+	if ($model->isMentee && $exists !== null) {
+		?><h4>Personal Mentor Meetings</h4><?php
+				$this->widget('bootstrap.widgets.TbGridView', array(
+						'type'=>'striped condensed hover',
+						'id'=>'id',
+						'dataProvider'=>  new CArrayDataProvider($model->mentee->personalMeetings, array('keyField'=>false)),
+						'summaryText'=>'',
+						'columns'=>array(
+								array(
+										'name'=>'id',
+										'value'=>'$data->id',
+										'header'=>'ID',
+								),
+								array(
+										'name'=>'date',
+										'value'=>'$data->date',
+										'header'=>'Date',
+								),
+								array(
+										'name'=>'time',
+										'value'=>'$data->time',
+										'header'=>'Time',
+								),
+								array(
+										'name'=>'permentorfullname',
+										'value'=>'$data->personalMentorUser->user->fname . " " . $data->personalMentorUser->user->lname',
+										'header'=>'Personal Mentor Name',
+								),
+						),
+				));
+			
+			?><h4>Project Mentor Meetings</h4><?php
+							$this->widget('bootstrap.widgets.TbGridView', array(
+									'type'=>'striped condensed hover',
+									'id'=>'id',
+									'dataProvider'=>  new CArrayDataProvider($model->mentee->projectMeetings, array('keyField'=>false)),
+									'summaryText'=>'',
+									'columns'=>array(
+											array(
+													'name'=>'id',
+													'value'=>'$data->id',
+													'header'=>'ID',
+											),
+											array(
+													'name'=>'date',
+													'value'=>'$data->date',
+													'header'=>'Date',
+											),
+											array(
+													'name'=>'time',
+													'value'=>'$data->time',
+													'header'=>'Time',
+											),
+											array(
+													'name'=>'projmentorfullname',
+													'value'=>'$data->projectMentorUser->user->fname . " " . $data->projectMentorUser->user->lname',
+													'header'=>'Project Mentor Name',
+											),
+									),
+							));
+	} else echo 'No meetings'
+	?>
+</div>
+<?php }?>
+<!-- MEETINGS END -->
+

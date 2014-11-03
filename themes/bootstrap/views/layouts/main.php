@@ -131,7 +131,7 @@ if( User::isCurrentUserMentee())
                                     array('label'=>'Applications','visible'=>!Yii::app()->user->isGuest,
                                         'class'=>'bootstrap.widgets.TbMenu',
                                         'htmlOptions'=>array('class'=>'pull-left'),
-                                    		'url'=>array('invitation/create')
+                                    		'url'=>array('application/admin')
                                     		
                                     /*'items'=>array(array('label'=>'Manage', 'url'=>array('invitation/admin'), 'visible'=>!Yii::app()->user->isGuest),
                                             array('label'=>'Send', 'url'=>array('invitation/create'), 'visible'=>!Yii::app()->user->isGuest),
