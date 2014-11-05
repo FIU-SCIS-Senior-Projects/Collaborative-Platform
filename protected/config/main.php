@@ -18,7 +18,7 @@ return array(
 		),
 	),
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'editable'),
 
 	// autoloading model and component classes
 	'import'=>array(
