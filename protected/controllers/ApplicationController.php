@@ -2,131 +2,29 @@
 
 class ApplicationController extends Controller
 {
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-				'model'=>$this->loadModel($id),
-		));
-	}
-	
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
 	public function actionCreate()
 	{
-		$model=new Application;
-	
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-	
-		if(isset($_POST['Application']))
-		{
-			$model->attributes=$_POST['Application'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-	
-		$this->render('create',array(
-				'model'=>$model,
-		));
+		$this->render('create');
 	}
-	
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
+
+	public function actionDelete()
 	{
-		$model=$this->loadModel($id);
-	
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-	
-		if(isset($_POST['Application']))
-		{
-			$model->attributes=$_POST['Application'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-	
-		$this->render('update',array(
-				'model'=>$model,
-		));
+		$this->render('delete');
 	}
-	
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
+
+	public function actionImport()
 	{
-		$this->loadModel($id)->delete();
-	
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$this->render('import');
 	}
-	
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
+
+	public function actionUpdate()
 	{
-		$dataProvider=new CActiveDataProvider('Application');
-		$this->render('index',array(
-				'dataProvider'=>$dataProvider,
-		));
+		$this->render('update');
 	}
-	
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
+
+	public function actionView()
 	{
-		$model=new Application('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Application']))
-			$model->attributes=$_GET['Application'];
-	
-		$this->render('admin',array(
-				'model'=>$model,
-		));
-	}
-	
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return Application the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model=Application::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
-	
-	/**
-	 * Performs the AJAX validation.
-	 * @param Application $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='application-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
+		$this->render('view');
 	}
 	
 	/*
