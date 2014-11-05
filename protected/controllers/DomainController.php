@@ -36,7 +36,7 @@ class DomainController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'viewmodal'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -44,7 +44,28 @@ class DomainController extends Controller
 			),
 		);
 	}
-
+	
+	public function actionViewmodal($id)
+	{
+		if (strpos($id, 'sub') === false) {
+			$model = $this->loadModel($id);
+				
+			if( Yii::app()->request->isAjaxRequest )
+				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
+			else
+				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
+		} else {
+			$model2 = new SubdomainController();
+			$thisid = substr($id, 3);
+			$model2 = $model2->loadModel($thisid);
+			//Yii::app()->createUrl("subdomain/viewmodal", array("id"=>$thisid));
+			$this->renderPartial('protected.views.subdomain.viewmodal',array('model'=>$model2,), false, true);
+				
+				
+		}
+	
+	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -133,7 +154,8 @@ class DomainController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Domain('search');
+		//$model=new Domain('search');
+		$model=new DomainCombined('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Domain']))
 			$model->attributes=$_GET['Domain'];

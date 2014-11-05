@@ -39,7 +39,6 @@ $('.asearch-form form').submit(function(){
 });
 
 ");
-
 ?>
 
 <h2>Manage Users</h2>
@@ -72,9 +71,9 @@ $('.asearch-form form').submit(function(){
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped condensed hover',
     'id'=>'user-grid',
-    'selectableRows'=>1,
-    //'selectionChanged'=>
-    //    'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
+    'selectableRows'=>1,		
+    'selectionChanged'=>
+        'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
     //'selectionChanged'=>
     //    'function(data) {
     //        $("#viewModal .modal-body p").html(data);
@@ -96,7 +95,7 @@ $('.asearch-form form').submit(function(){
             'value' => '($data->getCombineRoles())',
             'header'=> CHtml::encode($model->getAttributeLabel('combineRoles')),
         	'htmlOptions'=>array('width'=>'225px'),
-        		'filter'=>'',
+        	'filter'=>'',
         	//'filter'=> CHtml::activeTextField($model, 'combineRoles'),
         ),
         /**
@@ -138,7 +137,7 @@ $('.asearch-form form').submit(function(){
     		array(
     				'header'=>'Options',
     				'class'=>'bootstrap.widgets.TbButtonColumn',
-    				'template'=> '{view} {delete}',
+    				'template'=> '{view} {update} {delete}',
     				'buttons'=>array(
     						'view'=>
     						array(
@@ -147,10 +146,8 @@ $('.asearch-form form').submit(function(){
     										'ajax'=>array(
     												'type'=>'POST',
     												'url'=>"js:$(this).attr('href')",
-    												'success'=>'function(data) { 
-    																$("#viewModal .modal-body p").html(data); 
-    																$("#viewModal").modal(); 
-																}'
+    												'success'=>'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }'
+    												
     										),
     								),
     						),
@@ -162,18 +159,17 @@ $('.asearch-form form').submit(function(){
 
 
 <!-- View Popup  -->
-<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal')); ?>
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal', 'htmlOptions' => ['style' => 'width: 800px; margin-left: -400px'])); ?>
 <!-- Popup Header -->
 
 <div class="modal-header">
-    <h4><?php echo ''?></h4>
-
+    <h4>Profile Details</h4>
 </div>
 
 <!-- Popup Content -->
 <div class="modal-body">
-<!--     <p>Employee Details</p> -->
-	<p></p>
+    <p></p>
+    
 </div>
 <!-- Popup Footer -->
 <div class="modal-footer">

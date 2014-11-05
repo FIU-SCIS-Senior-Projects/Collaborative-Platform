@@ -1,14 +1,18 @@
 <?php
 /* @var $this ApplicationController */
+/* @var $model Application */
 
 $this->breadcrumbs=array(
-	'Application'=>array('/application'),
+	'Applications'=>array('index'),
 	'Create',
 );
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+$this->menu=array(
+	array('label'=>'List Application', 'url'=>array('index')),
+	array('label'=>'Manage Application', 'url'=>array('admin')),
+);
+?>
+
+<h1>Create Application</h1>
+
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

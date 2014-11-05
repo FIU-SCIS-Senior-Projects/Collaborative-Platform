@@ -45,6 +45,7 @@ $('.search-form form').submit(function(){
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'ticket-grid',
+	'type'=>'striped condensed hover',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
@@ -89,11 +90,10 @@ $('.search-form form').submit(function(){
 		array(
     				'header'=>'Options',
     				'class'=>'bootstrap.widgets.TbButtonColumn',
-    				'template'=> '{view} {delete}',
+    				'template'=> '{view} {update} {delete}',
     				'buttons'=>array(
-    						'view'=>
-    						array(
-    								'url'=>'Yii::app()->createUrl("ticket/view", array("id"=>$data->id))',
+    						'view'=>array(
+    								'url'=>'Yii::app()->createUrl("ticket/viewmodal", array("id"=>$data->id))',
     								'options'=>array(
     										'ajax'=>array(
     												'type'=>'POST',
@@ -102,22 +102,25 @@ $('.search-form form').submit(function(){
     										),
     								),
     						),
+    						'update'=>array(
+    								'url'=> 'Yii::app()->createUrl("ticket/view", array("id"=>$data->id))',
+							),
     				),
     		) 
 	),
 )); ?>
 
 <!-- View Popup  -->
-<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal')); ?>
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal', 'htmlOptions' => ['style' => 'width: 800px; margin-left: -400px'])); ?>
 <!-- Popup Header -->
 
 <div class="modal-header">
-    <h4>View Employee Details</h4>
+    <h4><?php echo 'Ticket Details'?></h4>
 </div>
 
 <!-- Popup Content -->
 <div class="modal-body">
-    <p>Employee Details</p>
+    <p></p>
 
 </div>
 <!-- Popup Footer -->

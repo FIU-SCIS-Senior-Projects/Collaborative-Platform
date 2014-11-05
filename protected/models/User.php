@@ -38,6 +38,7 @@
  * @property ProjectMentor $projectMentor
  * @property Ticket[] $tickets
  * @property Ticket[] $tickets1
+ * @property UserDomain[] $userDomains
  * @property Domain[] $domains
  * @property UserInfo $user_info
  */
@@ -54,10 +55,19 @@ class User extends CActiveRecord
     /*assign variables */
     public $userDomain;
     public $userId;
+<<<<<<< HEAD
     /*temporary variables currently not stored in db*/
     public $combineRoles;
     public $fullName;
     public $skills;
+=======
+    
+    public $skills;
+    
+    public $combineRoles;
+    public $fullName;
+    
+>>>>>>> 042e55681599cb2a790934d93e562e872cc0d5db
     /*Change the value when the system is deploy */
     public static $admin = 5;
     /* The most expert in the Domain */
@@ -121,6 +131,7 @@ class User extends CActiveRecord
             'administrator' => array(self::HAS_ONE, 'Administrator', 'user_id'),
             'domainMentor' => array(self::HAS_ONE, 'DomainMentor', 'user_id'),
             'mentee' => array(self::HAS_ONE, 'Mentee', 'user_id'),
+        	//'mentees' => array(self::HAS_MANY, 'Mentee', 'personal_mentor_user_id', 'index'=>'personal_mentor_user_id'),
             'messages' => array(self::HAS_MANY, 'Message', 'receiver'),
             'messages1' => array(self::HAS_MANY, 'Message', 'sender'),
             'personalMentor' => array(self::HAS_ONE, 'PersonalMentor', 'user_id'),
@@ -128,6 +139,7 @@ class User extends CActiveRecord
             'tickets' => array(self::HAS_MANY, 'Ticket', 'assign_user_id'),
             'tickets1' => array(self::HAS_MANY, 'Ticket', 'creator_user_id'),
             'domains' => array(self::MANY_MANY, 'Domain', 'user_domain(user_id, domain_id)'),
+        	'userDomains' => array(self::HAS_MANY, 'UserDomain', 'user_id'),	
         	'user_info' => array(self::HAS_ONE, 'UserInfo', 'user_id'),
         );
     }
@@ -188,7 +200,6 @@ class User extends CActiveRecord
         
         $criteria->compare('fname', $this->fullName, true, 'OR');
         $criteria->compare('lname', $this->fullName, true, 'OR');
-        
 
         //$criteria->compare('id', $this->id, true);
         $criteria->compare('username', $this->username, true);
@@ -216,6 +227,15 @@ class User extends CActiveRecord
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+        		'sort'=>array(
+        				'attributes'=>array(
+        						'fullName'=>array(
+        								'asc'=>'lname',
+        								'desc'=>'lname DESC',
+        						),
+        						'*',
+        				),
+        		),
         ));
     }
 
@@ -297,6 +317,14 @@ class User extends CActiveRecord
         $html = str_replace("%USER%", $to, $html);
         $html = str_replace("%MESSAGE%", $message, $html);
         return $html;
+    }
+    
+    public function getMenteeProject(){
+    	//$ret = $this->mentee->
+    }
+    
+    public function getMenteePersonalMentor(){
+    	
     }
     
     public function getFullName(){
@@ -435,6 +463,7 @@ class User extends CActiveRecord
         $email->message = $html;
         $email->send();
     }
+    
     
     /*Assign Domain Mentor to a Ticket */
     public static function assignTicket($domain_id, $sub)

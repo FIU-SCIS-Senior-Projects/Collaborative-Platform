@@ -11,6 +11,8 @@
  * @property string $project_mentor_user_id
  * @property string $start_date
  * @property string $due_date
+ * @property string $customer_fname
+ * @property string $customer_lname
  *
  * The followings are the available model relations:
  * @property Mentee[] $mentees
@@ -49,10 +51,11 @@ class Project extends CActiveRecord
 			array('id, propose_by_user_id, project_mentor_user_id', 'length', 'max'=>11),
 			array('title', 'length', 'max'=>45),
 			array('description', 'length', 'max'=>1024),
+			array('customer_fname, customer_lname', 'length', 'max'=>20),
 			array('start_date, due_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, description, propose_by_user_id, project_mentor_user_id, start_date, due_date', 'safe', 'on'=>'search'),
+			array('id, title, description, propose_by_user_id, project_mentor_user_id, start_date, due_date, customer_fname, customer_lname', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -104,9 +107,24 @@ class Project extends CActiveRecord
 		$criteria->compare('project_mentor_user_id',$this->project_mentor_user_id,true);
 		$criteria->compare('start_date',$this->start_date,true);
 		$criteria->compare('due_date',$this->due_date,true);
+		$criteria->compare('customer_fname',$this->customer_fname,true);
+		$criteria->compare('customer_lname',$this->customer_lname,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	public function getProjectMentor(){
+		if ($this->project_mentor_user_id === null)
+			return 'No Mentor Assigned';
+		else return ($this->projectMentorUser->user->fname . ' ' . $this->projectMentorUser->user->lname);
+	}
+	
+	public function getShortDescription(){
+		$max = 120;
+		if (strlen($this->description) > $max)
+				return (substr($this->description, 0, $max) . '...');
+		else return $this->description;
 	}
 }

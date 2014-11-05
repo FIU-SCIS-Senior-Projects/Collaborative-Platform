@@ -33,12 +33,18 @@ $('.search-form form').submit(function(){
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'project-grid',
+	'type'=>'striped condensed hover',	
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		//'id',
 		'title',
-		'description',
+			array(
+					'name'=>'description',
+            		'header'=> CHtml::encode($model->getAttributeLabel('description')),
+					'value' => '($data->getShortDescription())',					
+),
+		//'description',
 		//'propose_by_user_id',
 		//'project_mentor_user_id',
 		'start_date',
@@ -50,7 +56,7 @@ $('.search-form form').submit(function(){
     				'buttons'=>array(
     						'view'=>
     						array(
-    								'url'=>'Yii::app()->createUrl("project/view", array("id"=>$data->id))',
+    								'url'=>'Yii::app()->createUrl("project/viewmodal", array("id"=>$data->id))',
     								'options'=>array(
     										'ajax'=>array(
     												'type'=>'POST',
@@ -66,17 +72,15 @@ $('.search-form form').submit(function(){
 
 
 <!-- View Popup  -->
-<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal')); ?>
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal', 'htmlOptions' => ['style' => 'width: 800px; margin-left: -400px'])); ?>
 <!-- Popup Header -->
 
 <div class="modal-header">
-    <h4>View Employee Details</h4>
-
 </div>
 
 <!-- Popup Content -->
 <div class="modal-body">
-    <p>Employee Details</p>
+    <p></p>
 
 </div>
 <!-- Popup Footer -->
@@ -92,4 +96,3 @@ $('.search-form form').submit(function(){
 </div>
 <?php $this->endWidget(); ?>
 <!-- View Popup ends -->
-

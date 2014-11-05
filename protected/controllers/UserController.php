@@ -38,7 +38,7 @@ class UserController extends Controller
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search', 'viewmodal'),
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search', 'viewmodal', 'UpdateUser'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -63,15 +63,13 @@ class UserController extends Controller
     
     public function actionViewmodal($id)
     {
-    	//$model = $this->loadModel($id);
-    	$projects = Project::model()->findAllBySql("SELECT title FROM project WHERE project_mentor_user_id=$id");
-    	$UserDomain = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$id");
-    	$Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
+    	$model = $this->loadModel($id);
+    	
     	 
     	if( Yii::app()->request->isAjaxRequest )
-			$this->renderPartial('viewmodal',array('model'=>$this->loadModel($id), 'Mentees'=>$Mentees, 'UserDomain'=>$UserDomain));
+			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
     	else 
-    		$this->renderPartial('viewmodal',array('model'=>$this->loadModel($id),'Mentees'=>$Mentees, 'UserDomain'=>$UserDomain));
+    		$this->render('viewmodal',array('model'=>$model));
     	
     }
     
@@ -552,9 +550,6 @@ class UserController extends Controller
     public function actionDelete($id)
     {
 
-        echo ("<script>console.log('actionDelete');</script>");
-
-
         //Soft delete (Disable the User)
         $model=$this->loadModel($id);
         $model->disable = 1;
@@ -594,7 +589,6 @@ class UserController extends Controller
         $model->unsetAttributes();  // clear any default values
         if(isset($_GET['User'])) {
             $model->attributes=$_GET['User'];
-        	
         }
         $this->render('admin',array(
             'model'=>$model,
@@ -608,8 +602,9 @@ class UserController extends Controller
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values
         
-        if(isset($_GET['User']))
+        if(isset($_GET['User'])) {
         	$model->attributes=$_GET['User'];
+        }
         	
         $this->render('search',array(
             'model'=>$model,
@@ -818,6 +813,12 @@ class UserController extends Controller
 				);
 		return $tabs;
     }
+    
+public function actionUpdateUser()
+{
+   			$es = new EditableSaver('user');  //'User' is name of model to be updated
+		    $es->update();
+}
     
     /**
      * Performs the AJAX validation.

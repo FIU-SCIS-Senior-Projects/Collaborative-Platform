@@ -107,6 +107,9 @@ class Domain extends CActiveRecord
         )); 
     }
 
+    public function getSubDomain(){
+    	return 'n/a';
+    }
         
 	public function domainExists($domain)
         {

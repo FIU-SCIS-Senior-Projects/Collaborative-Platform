@@ -1,24 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "comment".
+ * This is the model class for table "domain_combined".
  *
- * The followings are the available columns in table 'comment':
+ * The followings are the available columns in table 'domain_combined':
  * @property string $id
+ * @property string $domain_name
+ * @property string $subdomain_name
  * @property string $description
- * @property string $added_date
- * @property string $ticket_id
- * @property string $user_added
- *
- * The followings are the available model relations:
- * @property Ticket $ticket
+ * @property integer $validator
+ * @property string $need
+ * @property integer $need_amount
  */
-class Comment extends CActiveRecord
+class DomainCombined extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Comment the static model class
+	 * @return DomainCombined the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -30,7 +29,7 @@ class Comment extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'comment';
+		return 'domain_combined';
 	}
 
 	/**
@@ -41,15 +40,14 @@ class Comment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			//array('comment, added_date, ticket_id', 'required'),
-			array('description', 'required'),
-				
-			array('decription', 'length', 'max'=>500),
-			array('ticket_id', 'length', 'max'=>10),
-            array('user_added', 'length', 'max'=>45),
+			array('validator, need_amount', 'numerical', 'integerOnly'=>true),
+			array('id', 'length', 'max'=>11),
+			array('domain_name, subdomain_name', 'length', 'max'=>45),
+			array('need', 'length', 'max'=>7),
+			array('description', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, description, added_date, ticket_id, user_added', 'safe', 'on'=>'search'),
+			array('id, domain_name, subdomain_name, description, validator, need, need_amount', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +59,6 @@ class Comment extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ticket' => array(self::BELONGS_TO, 'Ticket', 'ticket_id'),
 		);
 	}
 
@@ -72,10 +69,12 @@ class Comment extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'domain_name' => 'Domain Name',
+			'subdomain_name' => 'Subdomain Name',
 			'description' => 'Description',
-			'added_date' => 'Added Date',
-			'ticket_id' => 'Ticket',
-            'user_added'=> 'User Added',
+			'validator' => 'Validator',
+			'need' => 'Need',
+			'need_amount' => 'Need Amount',
 		);
 	}
 
@@ -90,13 +89,13 @@ class Comment extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		//$criteria->compare('id',$this->id,true);
-		//$criteria->compare('description',$this->description,true);
-		//$criteria->compare('added_date',$this->added_date,true);
-		$criteria->compare('ticket_id',$this->ticket_id,true);
-		$criteria->compare('user_added',$this->user_added,true);
-		
-
+		$criteria->compare('id',$this->id,true);
+		$criteria->compare('domain_name',$this->domain_name,true);
+		$criteria->compare('subdomain_name',$this->subdomain_name,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('validator',$this->validator);
+		$criteria->compare('need',$this->need,true);
+		$criteria->compare('need_amount',$this->need_amount);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

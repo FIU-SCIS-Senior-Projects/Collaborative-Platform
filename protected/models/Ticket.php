@@ -159,7 +159,29 @@ class Ticket extends CActiveRecord
         //$criteria->compare('Mentor2',$this->Mentor2);
 
         return new CActiveDataProvider($this, array( 
-            'criteria'=>$criteria, 
+            'criteria'=>$criteria,
+        		'sort'=>array(
+        				'attributes'=>array(
+        						'creatorName'=>array(
+        								'asc'=>'creatorUser.lname',
+        								'desc'=>'creatorUser.lname DESC',
+        						),
+        						'assignedName'=>array(
+        								'asc'=>'assignUser.lname',
+        								'desc'=>'assignUser.lname DESC',
+        						),
+        						'domainName'=>array(
+        								'asc'=>'domain.name',
+        								'desc'=>'domain.name DESC',
+        						),
+        						'subDomainName'=>array(
+        								'asc'=>'subdomain.name',
+        								'desc'=>'subdomain.name DESC',
+        						),
+        						'*',
+        						
+        				),
+        		),
         )); 
     } 
 	
@@ -185,8 +207,12 @@ class Ticket extends CActiveRecord
 	public function getSubDomainID(){
 		$valsd = $this->subdomain_id;
 		if ($valsd != null) {
-			return ($this->subdomain->name);
-		} else return '';
+			$subDomainName = $this->subdomain->name;
+		} else {
+			$subDomainName = '-';
+		}
+		
+		return $subDomainName;
 	}
 
 }
