@@ -43,6 +43,7 @@ class ApplicationController extends Controller
 		$mentees = new User('search');
 		$mentees->unsetAttributes();
 		$mentees->isMentee = 1;
+		$mypicks = new User;
 		
 		
 		$model->type = 1;
@@ -50,7 +51,7 @@ class ApplicationController extends Controller
 		$error='';
 		
 		$this->render('personal', array(
-            'model'=>$model, 'search'=>$mentees, 'error' => $error,
+            'model'=>$model, 'search'=>$mentees, 'mypicks'=>$mypicks, 'error' => $error,
         ));
 	}
 

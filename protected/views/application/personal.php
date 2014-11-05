@@ -23,7 +23,7 @@
 		<h3 class="centerTxt">You Pick</h3>
 		<p class="centerTxt">Add students you wish to mentor to Your Picks using the + button.</p>
 		<div class="row">
-			<div class="span4">
+			<div class="span3">
 			
 				<?php $this->beginWidget('bootstrap.widgets.TbGridView', array(
 					'id'=>'student-list',
@@ -42,15 +42,35 @@
 							array(
 								'name'  => 'fullName',
 								'value' => '($data->getFullName())',
-								'header'=> 'Mentee',
+								'header'=> 'Available Mentees',
 								'filter'=> CHtml::activeTextField($search, 'fullName'),
 						),
 				))); ?>
 				
 				<?php $this->endWidget(); ?>
 			</div>
-			<div class="offset1 span4">
+			<div class="offset1 span3">
+				<?php $this->beginWidget('bootstrap.widgets.TbGridView', array(
+					'id'=>'my-picks',
+					'summaryText'=>'',
+					'type'=>'striped condensed hover',
+					'dataProvider'=>$search->search(),
+					'columns'=>array(
+							array(
+								'name'  => 'pic_url',
+								'type' => 'image',
+								'header'=> '',
+								'htmlOptions'=>array('width'=>'50px'),
+						),
+							array(
+								'name'  => 'fullName',
+								'value' => '($data->getFullName())',
+								'header'=> 'Your Picks',
+								'filter'=> CHtml::activeTextField($search, 'fullName'),
+						),
+				))); ?>
 				
+				<?php $this->endWidget(); ?>
 			</div>
 		</div>
 		

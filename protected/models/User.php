@@ -55,15 +55,9 @@ class User extends CActiveRecord
     public $userDomain;
     public $userId;
     /*temporary variables currently not stored in db*/
-    public $employer;
-    public $position;
-    public $start_year;
-    public $degree;
-    public $field_of_study;
-    public $school;
-    public $graduation_year;
     public $combineRoles;
     public $fullName;
+    public $skills;
     /*Change the value when the system is deploy */
     public static $admin = 5;
     /* The most expert in the Domain */
@@ -176,8 +170,8 @@ class User extends CActiveRecord
         	'criteria' => 'Assigned to: ',
         	'quantity' => 'projects, mentors, or mentees',
             'combineRoles' => 'Roles',
-        		'fullName' => 'Name',
-        		
+        	'fullName' => 'Name',
+        	'skills' => 'Skills',	
         );
     }
 
