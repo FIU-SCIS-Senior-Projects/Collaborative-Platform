@@ -3,6 +3,7 @@
 // uncomment the following to define a path alias Yii::setPathOfAlias('local','path/to/local-folder');
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 Yii::setPathOfAlias('editable', dirname(__FILE__).'/../extensions/x-editable');
+Yii::setPathOfAlias('booster', dirname(__FILE__).'/../extensions/booster');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
@@ -18,13 +19,13 @@ return array(
 		),
 	),
 	// preloading 'log' component
-	'preload'=>array('log', 'editable'),
+	'preload'=>array('log', 'editable', ),
 
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-		'editable.*'
+		'editable.*',
 	),
 
 	'modules'=>array(
@@ -112,6 +113,9 @@ return array(
 		'bootstrap'=>array(
 			'class'=>'bootstrap.components.Bootstrap'
 		),
+		'booster'=>array(
+				'class'=>'booster.components.Booster'
+			),
 		'multicomplete'=>array(
 				'class'=>'multicomplete.MultiComplete.php')		
 	),

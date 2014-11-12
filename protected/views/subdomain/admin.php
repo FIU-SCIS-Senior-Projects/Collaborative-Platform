@@ -1,34 +1,19 @@
 <?php
 /* @var $this SubdomainController */
 /* @var $model Subdomain */
-
-$this->breadcrumbs=array(
-	'Manage Sub-Domains',
-);
-
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#subdomain-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
 
-<h2>Manage Sub-Domains</h2>
+<h2>Sub-Domains</h2>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+<a href=../subdomain/create>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Add New Sub-Domain',
+		'icon'=>'plus white',
+		'size'=>'small',
+		'type'=> 'success',
+		));?>
+</a>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'subdomain-grid',
@@ -37,13 +22,65 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		//'id',
 		'name',
+ 		 array(
+        	'name'  => 'domainName',
+			'value'=>'$data->getDomainName()',
+ 			'header'=> 'Domain',
+            'filter'=> CHtml::activeTextField($model, 'domainName'),
+ 		),		
 		'description',
-		//'validator',
-		//'domain_id',
+		'validator',
 		'need',
-			'need_amount',
+		'need_amount',
 		array(
-			'class'=>'CButtonColumn',
-		),
+    				'header'=>'Options',
+    				'class'=>'bootstrap.widgets.TbButtonColumn',
+    				'template'=> '{view} {delete}',
+    				'buttons'=>array(
+    						'view'=>
+    						array(
+    								'url'=>'Yii::app()->createUrl("subdomain/viewmodal", array("id"=>$data->id))',
+    								'options'=>array(
+    										'ajax'=>array(
+    												'type'=>'POST',
+    												'url'=>"js:$(this).attr('href')",
+    												'success'=>'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }'
+    										),
+    								),
+    						),
+    				),
+    		) 
 	),
 )); ?>
+
+
+
+<!-- View Popup  -->
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal', 'htmlOptions' => ['style' => 'width: 800px; margin-left: -400px'])); ?>
+<!-- Popup Header -->
+
+<div class="modal-header">
+    <h4>View Employee Details</h4>
+
+</div>
+
+<!-- Popup Content -->
+<div class="modal-body">
+    <p>Employee Details</p>
+
+</div>
+<!-- Popup Footer -->
+<div class="modal-footer">
+
+    <!-- close button -->
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label'=>'Close',
+        'url'=>'#',
+        'htmlOptions'=>array('data-dismiss'=>'modal'),
+    )); ?>
+    <!-- close button ends-->
+</div>
+<?php $this->endWidget(); ?>
+<!-- View Popup ends -->
+
+

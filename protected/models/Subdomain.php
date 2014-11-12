@@ -19,6 +19,8 @@
  */
 class Subdomain extends CActiveRecord
 {
+	
+	public $domainName;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -53,7 +55,7 @@ class Subdomain extends CActiveRecord
             array('need', 'length', 'max'=>7),
             // The following rule is used by search(). 
             // Please remove those attributes that should not be searched. 
-            array('id, name, description, validator, domain_id, need, need_amount', 'safe', 'on'=>'search'), 
+            array('id, name, description, validator, domain_id, need, need_amount, domainName', 'safe', 'on'=>'search'), 
         ); 
     } 
 
@@ -96,18 +98,37 @@ class Subdomain extends CActiveRecord
         // Warning: Please modify the following code to remove attributes that 
         // should not be searched. 
 
-        $criteria=new CDbCriteria; 
-
-        $criteria->compare('id',$this->id,true);
-        $criteria->compare('name',$this->name,true);
-        $criteria->compare('description',$this->description,true);
-        $criteria->compare('validator',$this->validator);
-        $criteria->compare('domain_id',$this->domain_id,true);
-        $criteria->compare('need',$this->need,true);
-        $criteria->compare('need_amount',$this->need_amount);
+        $criteria=new CDbCriteria;
+        
+       	$criteria->with = array( 'domain',);
+       	
+       	$criteria->compare('domain.name', $this->domainName, true);
+        
+       	$criteria->compare('t.id',$this->id,true);
+        $criteria->compare('t.name',$this->name,true);
+        $criteria->compare('t.description',$this->description,true);
+        $criteria->compare('t.validator',$this->validator);
+        $criteria->compare('t.domain_id',$this->domain_id,true);
+        $criteria->compare('t.need',$this->need,true);
+        $criteria->compare('t.need_amount',$this->need_amount);
 
         return new CActiveDataProvider($this, array( 
-            'criteria'=>$criteria, 
+            'criteria'=>$criteria,
+        		'sort'=>array(
+        				'attributes'=>array(
+        						'domainName'=>array(
+        								'asc'=>'domain.name',
+        								'desc'=>'domain.name DESC',
+        						),
+        						'*',
+        				),
+        		),
         )); 
     } 
+    
+    public function getDomainName() {
+    	return $this->domain->name;
+    }
+    
+    
 }

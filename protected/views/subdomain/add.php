@@ -32,6 +32,14 @@
 		<?php echo $form->labelEx($model,'validator'); ?>
         <?php echo $form->numberField($model, 'validator', array('max'=> 10, 'min' => 1)); ?>
         <?php echo $form->error($model,'validator'); ?>
+        
+        		<?php echo $form->labelEx($model,'need'); ?>
+		<?php echo $form->textField($model,'need',array('size'=>7,'maxlength'=>7)); ?>
+		<?php echo $form->error($model,'need'); ?>
+
+		<?php echo $form->labelEx($model,'need_amount'); ?>
+		<?php echo $form->textField($model,'need_amount'); ?>
+		<?php echo $form->error($model,'need_amount'); ?>
         <br/>
 
 		<?php echo CHtml::submitButton('Create',  array("class"=>"btn btn-primary")); ?>

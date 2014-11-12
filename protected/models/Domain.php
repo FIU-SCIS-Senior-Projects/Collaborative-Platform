@@ -12,6 +12,7 @@
  * @property integer $need_amount
  *
  * The followings are the available model relations:
+ * @property ApplicationDomainMentorPick[] $applicationDomainMentorPicks
  * @property Subdomain[] $subdomains
  * @property Ticket[] $tickets
  * @property UserDomain[] $userDomains
@@ -63,6 +64,7 @@ class Domain extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'applicationDomainMentorPicks' => array(self::HAS_MANY, 'ApplicationDomainMentorPick', 'domain_id'),	
 			'subdomains' => array(self::HAS_MANY, 'Subdomain', 'domain_id'),
 			'tickets' => array(self::HAS_MANY, 'Ticket', 'domain_id'),
 			'userDomains' => array(self::HAS_MANY, 'UserDomain', 'domain_id'),

@@ -47,22 +47,13 @@ class DomainController extends Controller
 	
 	public function actionViewmodal($id)
 	{
-		if (strpos($id, 'sub') === false) {
 			$model = $this->loadModel($id);
 				
 			if( Yii::app()->request->isAjaxRequest )
 				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
 			else
-				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
-		} else {
-			$model2 = new SubdomainController();
-			$thisid = substr($id, 3);
-			$model2 = $model2->loadModel($thisid);
-			//Yii::app()->createUrl("subdomain/viewmodal", array("id"=>$thisid));
-			$this->renderPartial('protected.views.subdomain.viewmodal',array('model'=>$model2,), false, true);
-				
-				
-		}
+				$this->render('viewmodal',array('model'=>$model,));
+		
 	
 	}
 	
@@ -154,8 +145,8 @@ class DomainController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		//$model=new Domain('search');
-		$model=new DomainCombined('search');
+		$model=new Domain('search');
+		
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Domain']))
 			$model->attributes=$_GET['Domain'];

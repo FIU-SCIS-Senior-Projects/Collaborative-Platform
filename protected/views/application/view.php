@@ -1,33 +1,58 @@
 <?php
 /* @var $this ApplicationController */
-/* @var $model Application */
+/* @var $user_id UserID */
 
 $this->breadcrumbs=array(
-	'Applications'=>array('index'),
-	$model->id,
-);
-
-$this->menu=array(
-	array('label'=>'List Application', 'url'=>array('index')),
-	array('label'=>'Create Application', 'url'=>array('create')),
-	array('label'=>'Update Application', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Application', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Application', 'url'=>array('admin')),
+	'Applications'=>array('admin'),
+	$user_id,
 );
 ?>
 
-<h1>View Application #<?php echo $model->id; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'user_id',
-		'type',
-		'status',
-		'date',
-		'max_amount',
-		'max_hours',
-		'system_pick_amount',
-	),
-)); ?>
+<!-- PERSONAL MENTOR SECTION (ROUTE TO CONTROLLER) -->
+<?php 	$persCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
+												from('application_personal_mentor')->
+												where('status="Admin"')->
+         										andWhere('user_id=:id', array(':id'=>$user_id))->
+												queryScalar();
+
+		if ($persCount == 1) {?>
+
+<div class='well'>
+	<?php Yii::app()->runController('/applicationpersonalmentor/view/'); ?>
+</div>
+	<?php } else if ($persCount > 1) echo 'Too many entries';?>
+<!-- PERSONAL MENTOR SECTION END -->
+
+
+<!-- PROJECT MENTOR SECTION (ROUTE TO CONTROLLER) -->
+<?php 	$projCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
+												from('application_project_mentor')->
+												where('status="Admin"')->
+         										andWhere('user_id=:id', array(':id'=>$user_id))->
+												queryScalar();
+
+		if ($projCount == 1) {?>
+<div class='well'>
+	<?php Yii::app()->runController('/applicationprojectmentor/view/'); ?>
+</div>
+	<?php } else if ($projCount > 1) echo 'Too many entries';?>
+
+<!-- PROJECT MENTOR SECTION END -->
+
+
+<!-- DOMAIN MENTOR SECTION (ROUTE TO CONTROLLER) -->
+<?php 	$domCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
+												from('application_domain_mentor')->
+												where('status="Admin"')->
+         										andWhere('user_id=:id', array(':id'=>$user_id))->
+												queryScalar();
+
+		if ($domCount == 1) {?>
+<div class='well'>
+	<?php Yii::app()->runController('/applicationdomainmentor/view'); ?>
+</div>
+	<?php } else if ($domCount > 1) echo 'Too many entries';?>
+
+<!-- DOMAIN MENTOR SECTION END -->
+

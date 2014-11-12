@@ -67,7 +67,7 @@ class SubdomainController extends Controller
 			if( Yii::app()->request->isAjaxRequest )
 				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
 			else
-				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
+				$this->render('viewmodal',array('model'=>$model,));
 		
 	}
 
@@ -147,13 +147,14 @@ class SubdomainController extends Controller
 	 * Manages all models.
 	 */
 	public function actionAdmin()
-	{
+	{		
+		
 		$model=new Subdomain('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Subdomain']))
 			$model->attributes=$_GET['Subdomain'];
 
-		$this->render('admin',array(
+		$this->renderPartial('admin',array(
 			'model'=>$model,
 		));
 	}

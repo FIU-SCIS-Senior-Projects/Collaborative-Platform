@@ -8,7 +8,17 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h2>Manage Domains</h2>
+<h2>Domains</h2>
+
+<a href=../domain/create>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Add New Domain',
+		'icon'=>'plus white',
+		'size'=>'small',
+		'type'=> 'success',
+		));?>
+</a>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'domain-grid',
@@ -16,8 +26,7 @@ $this->breadcrumbs=array(
 	'filter'=>$model,
 	'columns'=>array(
 		//'id',
-		'domain_name',
-		'subdomain_name',
+		'name',
 		'description',
 		'validator',
 		'need',
@@ -41,7 +50,10 @@ $this->breadcrumbs=array(
     				),
     		) 
 	),
-)); ?>
+)); ?><hr>
+	
+<!-- SUBDOMAIN SECTION (ROUTE TO CONTROLLER) -->
+<?php Yii::app()->runController('/subdomain/admin'); ?>
 
 
 <!-- View Popup  -->

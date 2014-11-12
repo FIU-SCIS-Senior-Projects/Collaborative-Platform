@@ -66,8 +66,20 @@
                     				array(
                     						'name'=>'user.fname',
         									'value'=>'$data->user->fname . " " . $data->user->lname',
+                    						'header'=>'Name',
+                    				),
+                    				array(
                     						'header'=>'',
-                    						                    ),
+                    						'class'=>'bootstrap.widgets.TbButtonColumn',
+                    						'template'=> '{view}',
+                    						'buttons'=>array(
+                    								'view'=>
+                    								array(
+                    										'url'=>'Yii::app()->createUrl("user/viewmodal", array("id"=>$data->user->id))',
+                    										 
+                    								),
+                    						),
+                    				),
                     		),
                     ));
 ?>
@@ -108,7 +120,7 @@
 							'value'=>'$data["status"]',
 							'header'=>'Status',
 						),array(
-						'header'=>'Options',
+						'header'=>'',
 						'class'=>'bootstrap.widgets.TbButtonColumn',
 						'template'=> '{view}',
 						'buttons'=>array(
