@@ -19,6 +19,8 @@
  */
 class ApplicationPersonalMentor extends CActiveRecord
 {
+	public $tempPicks;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -82,8 +84,8 @@ class ApplicationPersonalMentor extends CActiveRecord
 			'date_created' => 'Date Created',
 			'max_amount' => 'Max Amount',
 			'max_hours' => 'Max Hours',
-			'system_pick_amount' => 'System Pick Amount',
-			'university_id' => 'University',
+			'system_pick_amount' => 'How many students?',
+			'university_id' => 'Preferred University',
 		);
 	}
 

@@ -27,7 +27,7 @@ $this->breadcrumbs=array(
 </br>
 
 <div class="row">
-	<div class="span3">
+	<div class="span3 lightMarginL">
 		<img src="../../images/landing/mentor.jpg"></img>
 	</div>
 	<div class="span9">

@@ -2,6 +2,7 @@
 
 class ApplicationController extends Controller
 {
+
 	public function actionCreate()
 	{
 		$this->render('create');
@@ -38,22 +39,68 @@ class ApplicationController extends Controller
 	 *  Personal Mentor Application
 	 */
 	public function actionPersonal(){
-		$model = new Application;
-		$user = User::model()->getCurrentUser();
-		$mentees = new User('search');
-		$mentees->unsetAttributes();
-		$mentees->isMentee = 1;
-		$mypicks = new User;
+		$model = new ApplicationPersonalMentor;
+		$mentees = new User;
+		$unis = array();
 		
+		if (Yii::app()->getRequest()->isPostRequest) {
+			print("POSTED THIS SHIT: " . $_POST['picks']);
+			$user = User::model()->getCurrentUser();		
+			$model->attributes = $_POST['ApplicationPersonalMentor'];
+			$model->status = 'Admin';
+			$model->user_id = $user->id;
+			$model->date_created = new CDbExpression('NOW()');
+			if($model->university_id === 0) $model->university_id = NULL;
+			$model->save(false);
+			
+			$mypicks = $_POST['picks'];
+			$mypicks = explode(',', $mypicks);
+			foreach($mypicks as $pick){
+				$dbpick = new ApplicationPersonalMentorPick;
+				$dbpick->app_id = $model->id;
+				$dbpick->user_id = $pick;
+				$dbpick->approval_status = 'Pending';
+				$dbpick->save(false);
+			}	
+			$this->redirect("/coplat/index.php/application/portal");
+		} else { // on initial load
+			$mentees->unsetAttributes();
+			$mentees->isMentee = 1;
+			$universities = University::model()->getUniversities();
+			$unis[0] = 'Any';
+			foreach ($universities as $uni) $unis[$uni->id] = $uni->name;
+			$model->system_pick_amount = 0;
+		}
 		
-		$model->type = 1;
-		$model->user_id = $user->id;
 		$error='';
 		
 		$this->render('personal', array(
-            'model'=>$model, 'search'=>$mentees, 'mypicks'=>$mypicks, 'error' => $error,
+            'model'=>$model, 'user'=>$mentees, 'universities'=>$unis, 'error' => $error,
         ));
 	}
+	
+	public function actionMenteeSelect(){
+		$pk = Yii::app()->request->getParam('pk');
+		$mypicks = Yii::app()->request->getParam('picks');
+		$key = array_keys($this->selected, $pk);
+		if(count($key) > 0){// this mentee was selected
+			unset($selected[$key[0]]);
+		} else {// this mentee was not selected
+			$selected[] = $pk;
+		}
+	}
+	
+	
+	// Toggle catch
+	public function actions()
+	{	
+		return array(
+				'toggle' => array(
+						'class'=>'booster.actions.TbToggleAction',
+						'modelName' => 'User',
+				),
+		);
+	}	
 
 	// Uncomment the following methods and override them if needed
 	/*

@@ -16,6 +16,7 @@
  * @property string $activation_chain
  * @property integer $disable
  * @property string $biography
+ * @property int $university_id
  * @property string $linkedin_id
  * @property string $fiucs_id
  * @property string $google_id
@@ -59,12 +60,7 @@ class User extends CActiveRecord
     public $combineRoles;
     public $fullName;
     public $skills;
-
-    
-    public $skills;
-    
-    public $combineRoles;
-    public $fullName;
+    public $toggleUser = 0;
     
     /*Change the value when the system is deploy */
     public static $admin = 5;
@@ -161,6 +157,7 @@ class User extends CActiveRecord
             'activation_chain' => 'Activation Chain',
             'disable' => 'Disabled',
             'biography' => 'Biography',
+        	'university_id' => 'University',
             'linkedin_id' => 'Linkedin',
             'fiucs_id' => 'Fiucs',
             'google_id' => 'Google',
@@ -193,36 +190,7 @@ class User extends CActiveRecord
     {
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
-
-        $criteria = new CDbCriteria;
-        
-        $criteria->compare('fname', $this->fullName, true, 'OR');
-        $criteria->compare('lname', $this->fullName, true, 'OR');
-
-        //$criteria->compare('id', $this->id, true);
-        $criteria->compare('username', $this->username, true);
-        //$criteria->compare('password',$this->password,true);
-        $criteria->compare('email', $this->email, true);
-        //$criteria->compare('fname', $this->fname, true);
-        //$criteria->compare('mname', $this->mname, true);
-        //$criteria->compare('lname', $this->lname, true);
-        //$criteria->compare('pic_url',$this->pic_url,true);
-        $criteria->compare('activated', $this->activated);
-        //$criteria->compare('activation_chain',$this->activation_chain,true);
-        $criteria->compare('disable', $this->disable);
-        //$criteria->compare('biography',$this->biography,true);
-        //$criteria->compare('linkedin_id',$this->linkedin_id,true);
-        //$criteria->compare('fiucs_id',$this->fiucs_id,true);
-        //$criteria->compare('google_id',$this->google_id,true);
-        //$criteria->compare('isAdmin', $this->isAdmin);
-        $criteria->compare('isProMentor', $this->isProMentor);
-        $criteria->compare('isPerMentor', $this->isPerMentor);
-        $criteria->compare('isDomMentor', $this->isDomMentor);
-        $criteria->compare('isStudent', $this->isStudent);
-        $criteria->compare('isMentee', $this->isMentee);
-        //$criteria->compare('isJudge', $this->isJudge);
-        //$criteria->compare('isEmployer', $this->isEmployer);
-
+        $criteria = $this->setCriteria();
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         		'sort'=>array(
@@ -235,6 +203,56 @@ class User extends CActiveRecord
         				),
         		),
         ));
+    }
+    
+    public function searchNoPagination() {
+    	$criteria = $this->setCriteria();
+    	return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        		'sort'=>array(
+        				'attributes'=>array(
+        						'fullName'=>array(
+        								'asc'=>'lname',
+        								'desc'=>'lname DESC',
+        						),
+        						'*',
+        				),
+        		),
+        		'pagination'=>false,
+        ));
+    }
+    
+    public function setCriteria(){
+    	$criteria = new CDbCriteria;
+    	
+    	$criteria->compare('fname', $this->fullName, true, 'OR');
+    	$criteria->compare('lname', $this->fullName, true, 'OR');
+    	
+    	//$criteria->compare('id', $this->id, true);
+    	$criteria->compare('username', $this->username, true);
+    	//$criteria->compare('password',$this->password,true);
+    	$criteria->compare('email', $this->email, true);
+    	//$criteria->compare('fname', $this->fname, true);
+    	//$criteria->compare('mname', $this->mname, true);
+    	//$criteria->compare('lname', $this->lname, true);
+    	//$criteria->compare('pic_url',$this->pic_url,true);
+    	$criteria->compare('activated', $this->activated);
+    	//$criteria->compare('activation_chain',$this->activation_chain,true);
+    	$criteria->compare('disable', $this->disable);
+    	//$criteria->compare('biography',$this->biography,true);
+    	//$criteria->compare('linkedin_id',$this->linkedin_id,true);
+    	//$criteria->compare('fiucs_id',$this->fiucs_id,true);
+    	//$criteria->compare('google_id',$this->google_id,true);
+    	//$criteria->compare('isAdmin', $this->isAdmin);
+    	$criteria->compare('isProMentor', $this->isProMentor);
+    	$criteria->compare('isPerMentor', $this->isPerMentor);
+    	$criteria->compare('isDomMentor', $this->isDomMentor);
+    	$criteria->compare('isStudent', $this->isStudent);
+    	$criteria->compare('isMentee', $this->isMentee);
+    	//$criteria->compare('isJudge', $this->isJudge);
+    	//$criteria->compare('isEmployer', $this->isEmployer);
+    	
+    	return $criteria;
     }
 
     public function getCombineRoles(){
@@ -328,6 +346,12 @@ class User extends CActiveRecord
     public function getFullName(){
     	$name = $this->fname . ' ' . $this->lname;
     	return $name;
+    }
+    
+    public function getUniversityName(){
+    	$uni = University::model()->findByPk($this->university_id);
+    	if($uni == NULL) return "FIU";
+    	return $uni->name;
     }
     
     public function getPic(){
