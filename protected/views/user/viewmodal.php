@@ -5,7 +5,7 @@
 /* @var $Mentees Mentee */
 /* @var $UserDomain UserDomain */
 
-Yii::app()->clientScript->registerScript('modal', "
+Yii::app()->clientScript->registerScript('usermodal', "
 $('.mentee-button').click(function(){
 	$('.mentee-form').toggle();
 	return false;
@@ -115,10 +115,15 @@ return false;
     			
 </div>
 
+
 	<!--  MENTEE START -->
+	
 	<?php if($model->isMentee) {?>
 	<div class='well mentor-form' style="display:">	
+	<h3><?php echo CHtml::link('Mentee','#',array('class'=>'mentor-button')); ?></h3>
+	</div>
 	
+	<div class='well mentor-form' style="display:none">	
 	<h3><?php echo CHtml::link('Mentee','#',array('class'=>'mentor-button')); ?></h3>
 	<hr>
 
@@ -148,6 +153,10 @@ return false;
 <!-- PROJECT MENTOR START -->
 <?php if($model->isProMentor) {?>
 <div class='well project-form' style="display:">
+<h3><?php echo CHtml::link('Project Mentor','#',array('class'=>'project-button')); ?></h3>
+</div>
+
+<div class='well project-form' style="display:none">
 
 <h3><?php echo CHtml::link('Project Mentor','#',array('class'=>'project-button')); ?></h3>
 <hr>
@@ -194,7 +203,10 @@ return false;
 <!-- PERSONAL MENTOR START -->
 <?php if($model->isPerMentor) {?>
 <div class='well personal-form' style="display:">
+<h3><?php echo CHtml::link('Personal Mentor','#',array('class'=>'personal-button')); ?></h3>
+</div>
 
+<div class='well personal-form' style="display:none">
 <h3><?php echo CHtml::link('Personal Mentor','#',array('class'=>'personal-button')); ?></h3>
 <hr>
 	<?php
@@ -248,6 +260,9 @@ return false;
 <!-- DOMAIN MENTOR START -->
 <?php if($model->isDomMentor) {?>	
 <div class='well domain-form' style="display:">	
+<h3><?php echo CHtml::link('Domain Mentor','#',array('class'=>'domain-button')); ?></h3>
+</div>
+<div class='well domain-form' style="display:none">	
 
 <h3><?php echo CHtml::link('Domain Mentor','#',array('class'=>'domain-button')); ?></h3>
 <hr>
@@ -320,6 +335,12 @@ return false;
 
 <!-- TICKETS START -->
 <div class='well tickets-form' style="display:">
+	<h3><?php echo CHtml::link('Tickets','#',array('class'=>'tickets-button')); ?></h3>
+
+</div>
+
+<div class='well tickets-form' style="display:none">
+
 
 	<h3><?php echo CHtml::link('Tickets','#',array('class'=>'tickets-button')); ?></h3>
 	<hr>
@@ -373,8 +394,13 @@ return false;
 <!-- TICKETS END -->
 
 <!-- MEETINGS START -->
-<?php if($model->isProMentor || $model->isPerMentor || $model->isMentee) {?>	
+<?php if($model->isProMentor || $model->isPerMentor || $model->isMentee) {?>
 <div class='well meetings-form' style="display:">
+	<h3><?php echo CHtml::link('Meetings','#',array('class'=>'meetings-button')); ?></h3>
+
+</div>
+
+<div class='well meetings-form' style="display:none">
 
 	<h3><?php echo CHtml::link('Meetings','#',array('class'=>'meetings-button')); ?></h3>
 	<hr>
@@ -446,9 +472,9 @@ return false;
 	
 	$exists = Chtml::value($model, 'mentee');
 	
-	if ($model->isMentee && $exists !== null) {
-		?><h4>Personal Mentor Meetings</h4><?php
-				$this->widget('bootstrap.widgets.TbGridView', array(
+	if ($model->isMentee && $exists !== null) {?>
+	<h4>Personal Mentor Meetings</h4>
+	<?php	$this->widget('bootstrap.widgets.TbGridView', array(
 						'type'=>'striped condensed hover',
 						'id'=>'id',
 						'dataProvider'=>  new CArrayDataProvider($model->mentee->personalMeetings, array('keyField'=>false)),
@@ -506,7 +532,7 @@ return false;
 											),
 									),
 							));
-	} else echo 'No meetings'
+	} else if ($model->isMentee) echo 'No meetings as mentee';
 	?>
 </div>
 <?php }?>

@@ -86,7 +86,7 @@ class SubdomainController extends Controller
 		{
 			$model->attributes=$_POST['Subdomain'];
 			if($model->save())
-				$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('domain/admin'));
 		}
 
 		$this->render('create',array(

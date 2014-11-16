@@ -583,8 +583,6 @@ class UserController extends Controller
     public function actionAdmin()
     {
 
-        echo("<script>console.log('actionAdmin');</script>");
-
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values
         if(isset($_GET['User'])) {

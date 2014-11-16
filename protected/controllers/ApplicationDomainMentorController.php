@@ -36,7 +36,7 @@ class ApplicationDomainMentorController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete', 'view'),
+				'actions'=>array('admin','delete', 'view', 'updatedomainpick', 'updatesubdomainpick'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -51,9 +51,37 @@ class ApplicationDomainMentorController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModelByUser($id),
+		
+		$model = $this->loadModelByUser($id);
+
+		$domainHistory = new CSqlDataProvider('SELECT * FROM application_domain_mentor_pick t 
+				WHERE t.approval_status != "Proposed by Mentor" AND t.app_id = '.$model->id.'');
+	
+	
+		$domainChanges = new CSqlDataProvider('SELECT * FROM application_domain_mentor_pick t 
+				WHERE t.approval_status = "Proposed by Mentor" AND t.app_id = '.$model->id.'');
+	
+		$subdomainHistory = new CSqlDataProvider('SELECT * FROM application_subdomain_mentor_pick t 
+				WHERE t.approval_status != "Proposed by Mentor" AND t.app_id = '.$model->id.'');
+		
+		$subdomainChanges = new CSqlDataProvider('SELECT * FROM application_subdomain_mentor_pick t 
+				WHERE t.approval_status = "Proposed by Mentor" AND t.app_id = '.$model->id.'');
+		
+		
+		$this->renderPartial('view',array(
+				'model'=>$model,'domainHistory'=>$domainHistory,'domainChanges'=>$domainChanges,
+				'subdomainHistory'=>$subdomainHistory,'subdomainChanges'=>$subdomainChanges,
 		));
+	}
+	
+	public function actionUpdateDomainPick(){
+		$es = new EditableSaver('ApplicationDomainMentorPick');  //'User' is name of model to be updated
+		$es->update();
+	}
+	
+	public function actionUpdateSubdomainPick(){
+		$es = new EditableSaver('ApplicationSubdomainMentorPick');  //'User' is name of model to be updated
+		$es->update();
 	}
 
 	/**

@@ -12,19 +12,9 @@ $this->breadcrumbs=array(
 
 <?php 
 
-	$rawData = new CSqlDataProvider('Select id , a.date_created, fname, lname from (SELECT * FROM                                      
-			( 
-			    (SELECT user_id, date_created FROM application_domain_mentor WHERE status="Admin")
-			    UNION
-			    (SELECT user_id, date_created FROM application_personal_mentor WHERE status="Admin")
-			    UNION 
-			    (SELECT user_id, date_created FROM application_project_mentor WHERE status="Admin")
-			) as c GROUP BY c.user_id) 
-											a, user u WHERE a.user_id = u.id ORDER BY a.date_created DESC');
-
 	$this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'application-grid',
-	'dataProvider'=>$rawData,
+	'dataProvider'=>$dataprovider,
 	'summaryText'=>'',
 	'columns'=>array(
 				array(

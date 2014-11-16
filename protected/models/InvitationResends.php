@@ -1,25 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "application_personal_mentor_pick".
+ * This is the model class for table "invitation_resends".
  *
- * The followings are the available columns in table 'application_personal_mentor_pick':
+ * The followings are the available columns in table 'invitation_resends':
  * @property string $id
- * @property string $app_id
- * @property string $user_id
- * @property string $approval_status
+ * @property string $invitation_id
+ * @property string $send_date
  *
  * The followings are the available model relations:
- * @property ApplicationPersonalMentor $app
- * @property User $user
+ * @property Invitation $invitation
  */
-class ApplicationPersonalMentorPick extends CActiveRecord
+class InvitationResends extends CActiveRecord
 {
-	public $approval_status2;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return ApplicationPersonalMentorPick the static model class
+	 * @return InvitationResends the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -31,7 +28,7 @@ class ApplicationPersonalMentorPick extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'application_personal_mentor_pick';
+		return 'invitation_resends';
 	}
 
 	/**
@@ -42,12 +39,12 @@ class ApplicationPersonalMentorPick extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('app_id, user_id, approval_status', 'required'),
-			array('app_id, user_id', 'length', 'max'=>11),
-			array('approval_status', 'length', 'max'=>18),
+			array('invitation_id', 'required'),
+			array('invitation_id', 'length', 'max'=>11),
+			array('send_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, app_id, user_id, approval_status', 'safe', 'on'=>'search'),
+			array('id, invitation_id, send_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,8 +56,7 @@ class ApplicationPersonalMentorPick extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'app' => array(self::BELONGS_TO, 'ApplicationPersonalMentor', 'app_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'invitation' => array(self::BELONGS_TO, 'Invitation', 'invitation_id'),
 		);
 	}
 
@@ -71,9 +67,8 @@ class ApplicationPersonalMentorPick extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'app_id' => 'App',
-			'user_id' => 'User',
-			'approval_status' => 'Approval Status',
+			'invitation_id' => 'Invitation',
+			'send_date' => 'Send Date',
 		);
 	}
 
@@ -89,9 +84,8 @@ class ApplicationPersonalMentorPick extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('app_id',$this->app_id,true);
-		$criteria->compare('user_id',$this->user_id,true);
-		$criteria->compare('approval_status',$this->approval_status,true);		
+		$criteria->compare('invitation_id',$this->invitation_id,true);
+		$criteria->compare('send_date',$this->send_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -1,11 +1,38 @@
 <?php
-/* @var $this UserController */
+/* @var $this ProjectController */
 /* @var $model Project */
+
+Yii::app()->clientScript->registerScript('usermodal', "
+$('.details-button').click(function(){
+	$('.details-form').toggle();
+	return false;
+});
+		
+$('.mentee-button').click(function(){
+	$('.mentee-form').toggle();
+	return false;
+});
+		
+$('.tickets-button').click(function(){
+	$('.tickets-form').toggle();
+	return false;
+});
+		
+$('.meetings-button').click(function(){
+	$('.meetings-form').toggle();
+	return false;
+});
+
+");
 ?>
 
 <!-- PROJECT DETAILS START-->
-<div class='well'>
-<h3>Project Details</h3>
+<div class='well details-form' style="display:none">
+<h3><?php echo CHtml::link('Project Details - ' . $model->title,'#',array('class'=>'details-button')); ?></h3>
+</div>
+
+<div class='well details-form' style="display:">
+<h3><?php echo CHtml::link('Project Details - ' . $model->title,'#',array('class'=>'details-button')); ?></h3>
 <hr>
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 		'data'=>$model,
@@ -52,8 +79,13 @@
 <!-- PROJECT DETAILS END -->
 
 <!-- MENTEES START -->
-<div class='well'>
-<h3>Mentees</h3>
+<div class='well mentee-form' style="display:">
+<h3><?php echo CHtml::link('Mentees','#',array('class'=>'mentee-button')); ?></h3>
+</div>
+
+<div class='well mentee-form' style="display:none">
+<h3><?php echo CHtml::link('Mentees','#',array('class'=>'mentee-button')); ?></h3>
+<hr>
 <?php 				
                                         
                     $this->widget('bootstrap.widgets.TbGridView', array(
@@ -89,8 +121,13 @@
 
 
 <!-- TICKETS -->
-<div class='well'>
-<h3>Tickets</h3>
+<div class='well tickets-form' style="display:">
+<h3><?php echo CHtml::link('Tickets','#',array('class'=>'tickets-button')); ?></h3>
+</div>
+
+<div class='well tickets-form' style="display:none">
+<h3><?php echo CHtml::link('Tickets','#',array('class'=>'tickets-button')); ?></h3>
+<hr>
 <?php 
 	$thisID = $model->id;
 	$rawData = new CSqlDataProvider
@@ -139,8 +176,13 @@
 
 
 <!-- MEETINGS -->
-<div class='well'>
-<h3>Meetings</h3>
+<div class='well meetings-form' style="display:">
+<h3><?php echo CHtml::link('Meetings','#',array('class'=>'meetings-button')); ?></h3>
+</div>
+
+<div class='well meetings-form' style="display:none">
+<h3><?php echo CHtml::link('Meetings','#',array('class'=>'meetings-button')); ?></h3>
+<hr>
 <?php 
 
 		$thisID = $model->id;

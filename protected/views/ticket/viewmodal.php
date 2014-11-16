@@ -15,9 +15,14 @@ $('.comments-button').click(function(){
 ");
 ?>
 
-<h3><?php echo CHtml::link('#' . $model->id,'#',array('class'=>'details-button')); ?></h3>
-<hr>
+<!-- DETAILS END -->
+<div class='well details-form' style="display:none">
+<h3><?php echo CHtml::link('Ticket Details - ' . $model->id,'#',array('class'=>'details-button')); ?></h3>
+</div>
+
 <div class='well details-form' style="display:">
+<h3><?php echo CHtml::link('Ticket Details - ' . $model->id,'#',array('class'=>'details-button')); ?></h3>
+<hr>
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 		'data'=>$model,
 		'attributes'=>array(
@@ -70,10 +75,16 @@ $('.comments-button').click(function(){
 )); 
 ?>
 </div>
+<!-- DETAILS START -->
 
+<!-- COMMENTS START -->
+<div class='well comments-form' style="display:none">
+<h3><?php echo CHtml::link('Comments','#',array('class'=>'comments-button')); ?></h3>
+</div>
+
+<div class='well comments-form' style="display:">
 <h3><?php echo CHtml::link('Comments','#',array('class'=>'comments-button')); ?></h3>
 <hr>
-<div class='well comments-form' style="display:">
 <?php 				
                                         
                     $this->widget('bootstrap.widgets.TbGridView', array(
@@ -90,3 +101,4 @@ $('.comments-button').click(function(){
                     ));
 ?>
 </div>
+<!-- COMMENTS END -->

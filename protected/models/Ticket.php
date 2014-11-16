@@ -148,8 +148,8 @@ class Ticket extends CActiveRecord
         $criteria->compare('subject',$this->subject,true);
         $criteria->compare('description',$this->description,true);
         $criteria->compare('assign_user_id',$this->assign_user_id,true);
-        $criteria->compare('domain_id',$this->domain_id,true);
-        $criteria->compare('subdomain_id',$this->subdomain_id,true);
+        $criteria->compare('t.domain_id',$this->domain_id,true);
+        $criteria->compare('t.subdomain_id',$this->subdomain_id,true);
         $criteria->compare('file',$this->file,true);
         $criteria->compare('priority_id',$this->priority_id);
         $criteria->compare('assigned_date',$this->assigned_date,true);

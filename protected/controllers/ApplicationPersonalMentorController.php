@@ -36,7 +36,7 @@ class ApplicationPersonalMentorController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete', 'view'),
+				'actions'=>array('admin','delete', 'view', 'updatepick'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -51,9 +51,33 @@ class ApplicationPersonalMentorController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModelByUser($id),
+		$model = $this->loadModelByUser($id);
+		
+		//$model2=new ApplicationPersonalMentorPick('search');
+		//$model2->unsetAttributes();
+		//$model2->app_id = $model->id;
+		$model2 = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname 
+							FROM application_personal_mentor_pick t, user u 
+							WHERE t.user_id = u.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$model->id.'');
+
+		
+		//$model3=new ApplicationPersonalMentorPick('search');
+		//$model3->unsetAttributes();
+		//$model3->app_id = $model->id;
+		$model3 = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname 
+							FROM application_personal_mentor_pick t, user u 
+							WHERE t.user_id = u.id AND t.approval_status = "Proposed by Mentor" AND t.app_id = '.$model->id.'');
+		
+		
+		$this->renderPartial('view',array(
+			'model'=>$model,'model2'=>$model2,'model3'=>$model3,
 		));
+	}
+	
+	public function actionUpdatePick()
+	{
+		$es = new EditableSaver('ApplicationPersonalMentorPick');  //'User' is name of model to be updated
+		$es->update();
 	}
 
 	/**

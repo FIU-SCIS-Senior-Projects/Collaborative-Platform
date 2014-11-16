@@ -83,7 +83,7 @@ class DomainController extends Controller
 		{
 			$model->attributes=$_POST['Domain'];
             if($model->save())
-				$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(

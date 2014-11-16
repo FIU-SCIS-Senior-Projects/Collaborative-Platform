@@ -36,7 +36,7 @@ class ApplicationProjectMentorController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete', 'view'),
+				'actions'=>array('admin','delete', 'view', 'updatepick'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -44,16 +44,31 @@ class ApplicationProjectMentorController extends Controller
 			),
 		);
 	}
-
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
+	
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModelByUser($id),
+		$model = $this->loadModelByUser($id);
+
+		$model2 = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title 
+										FROM application_project_mentor_pick t, project p 
+										WHERE t.project_id = p.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$model->id.'');
+	
+
+		//$model3->app_id = $model->id;
+		$model3 = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title 
+										FROM application_project_mentor_pick t, project p 
+										WHERE t.project_id = p.id AND t.approval_status = "Proposed by Mentor" AND t.app_id = '.$model->id.'');
+	
+	
+		$this->renderPartial('view',array(
+				'model'=>$model,'model2'=>$model2,'model3'=>$model3,
 		));
+	}
+	
+	public function actionUpdatePick()
+	{
+		$es = new EditableSaver('ApplicationProjectMentorPick');  //'User' is name of model to be updated
+		$es->update();
 	}
 	/**
 	 * Creates a new model.

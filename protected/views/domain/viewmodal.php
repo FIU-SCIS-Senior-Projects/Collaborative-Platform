@@ -1,5 +1,5 @@
 <?php
-/* @var $this UserController */
+/* @var $this DomainController */
 /* @var $model Domains */
 
 Yii::app()->clientScript->registerScript('modal', "
@@ -7,12 +7,26 @@ $('.details-button').click(function(){
 	$('.details-form').toggle();
 	return false;
 });
+		
+		$('.tickets-button').click(function(){
+	$('.tickets-form').toggle();
+	return false;
+});
+		
+		$('.mentors-button').click(function(){
+	$('.mentors-form').toggle();
+	return false;
+});
 ");
 ?>
 
-<h3><?php echo CHtml::link('#' . $model->id,'#',array('class'=>'details-button')); ?></h3>
-<hr>
+<div class='well details-form' style="display:none">
+<h3><?php echo CHtml::link('Domain - ' . $model->name,'#',array('class'=>'details-button')); ?></h3>
+</div>
+
 <div class='well details-form' style="display:">
+<h3><?php echo CHtml::link('Domain - ' . $model->name,'#',array('class'=>'details-button')); ?></h3>
+<hr>
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 		'data'=>$model,
 		'attributes'=>array(
@@ -46,9 +60,14 @@ $('.details-button').click(function(){
 ?>
 </div>
 
+<!-- TICKETS START -->
 <div class='well tickets-form' style="display:">
-<h3>Tickets</h3>
+<h3><?php echo CHtml::link('Tickets','#',array('class'=>'tickets-button')); ?></h3>
+</div>
 
+<div class='well tickets-form' style="display:none">
+<h3><?php echo CHtml::link('Tickets','#',array('class'=>'tickets-button')); ?></h3>
+<hr>
 <?php 	    
 	    			$thisID = $model->id;
                     $rawData = new CSqlDataProvider('SELECT id, subject, assigned_date, t.status FROM ticket t WHERE t.subdomain_id IS NULL && t.domain_id = '.$thisID.'');
@@ -96,3 +115,44 @@ $('.details-button').click(function(){
                     		),
                     )); ?>
 </div>
+<!-- TICKETS END -->
+
+<!-- MENTORS START -->
+<div class='well mentors-form' style="display:">
+<h3><?php echo CHtml::link('Mentors','#',array('class'=>'mentors-button')); ?></h3>
+</div>
+
+<div class='well mentors-form' style="display:none">
+<h3><?php echo CHtml::link('Mentors','#',array('class'=>'mentors-button')); ?></h3>
+<hr>
+<?php
+                    $this->widget('bootstrap.widgets.TbGridView', array(
+                    		'type'=>'striped condensed hover',
+                    		'id'=>'id',
+                    		'dataProvider'=>new CArrayDataProvider($model->userDomains, array('keyField'=>'id')),
+                    		'summaryText'=>'',
+                    		//'filter'=>$model,
+                    		'columns'=>array(
+                    				'id',
+                    				'user_id',
+                    				'domain_id',
+                    				'subdomain_id',
+                    				'rate',
+                    				'active',
+                    				'tier_team',
+                    				array(
+                    						'header'=>'Options',
+                    						'class'=>'bootstrap.widgets.TbButtonColumn',
+                    						'template'=> '{view}',
+                    						'buttons'=>array(
+                    								'view'=>
+                    								array(
+                    										'url'=>'Yii::app()->createUrl("user/viewmodal", array("id"=>$data->user_id))',
+                    											
+                    								),
+                    						),
+                    				),
+                    		),
+                    )); ?>
+</div>
+<!-- MENTORS END -->

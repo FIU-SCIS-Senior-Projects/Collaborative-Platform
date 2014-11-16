@@ -17,7 +17,7 @@
 
 	<div id="regbox">
         <?php echo $form->labelEx($model,'domain_id'); ?>
-        <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?>
+        <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(array('order'=>'name')), 'id', 'name')); ?>
         <?php echo $form->error($model,'domain_id'); ?>
 
 		<?php echo $form->labelEx($model,'name'); ?>

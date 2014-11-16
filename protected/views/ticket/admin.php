@@ -115,7 +115,7 @@ $('.search-form form').submit(function(){
 <!-- Popup Header -->
 
 <div class="modal-header">
-    <h4><?php echo 'Ticket Details'?></h4>
+    <h4></h4>
 </div>
 
 <!-- Popup Content -->

@@ -60,13 +60,13 @@
 <!-- Popup Header -->
 
 <div class="modal-header">
-    <h4>View Employee Details</h4>
+    <h4></h4>
 
 </div>
 
 <!-- Popup Content -->
 <div class="modal-body">
-    <p>Employee Details</p>
+    <p></p>
 
 </div>
 <!-- Popup Footer -->

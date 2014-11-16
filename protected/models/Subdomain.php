@@ -47,7 +47,7 @@ class Subdomain extends CActiveRecord
         // NOTE: you should only define rules for those attributes that 
         // will receive user inputs. 
         return array( 
-            array('domain_id', 'required'),
+            array('domain_id, name', 'required'),
             array('validator, need_amount', 'numerical', 'integerOnly'=>true),
             array('name', 'length', 'max'=>45),
             array('description', 'length', 'max'=>5000),
