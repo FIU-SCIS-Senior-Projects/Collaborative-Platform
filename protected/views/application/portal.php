@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="span4">
-		<div style="padding:20px;"><a><img border="0" src="/coplat/images/roles/domain.png" id="dmm" width="150" height="150" class="centerImg"></a></div>
+		<div style="padding:20px;"><a href="/coplat/index.php/application/project"><img border="0" src="/coplat/images/roles/domain.png" id="dmm" width="150" height="150" class="centerImg"></a></div>
 		<h3 class="centerTxt">Project Mentor</h3>	
 		</br>
 			<p class="centerTxt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -43,7 +43,7 @@
 			pellentesque. </p>
 		</br>
 		<div class="centerTxt">
-			<a style="text-decoration:none" href="">
+			<a style="text-decoration:none" href="/coplat/index.php/application/project">
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
 	                'buttonType'=>'button',
 	                'type'=>'primary',
@@ -54,7 +54,7 @@
 		</div>
 	</div>
 	<div class="span4">
-		<div style="padding:20px;"><a><img border="0" src="/coplat/images/roles/personal.png" id="pm" width="150" height="150" class="centerImg"></a></div>
+		<div style="padding:20px;"><a href="/coplat/index.php/application/domain"><img border="0" src="/coplat/images/roles/personal.png" id="pm" width="150" height="150" class="centerImg"></a></div>
 		<h3 class="centerTxt">Domain Mentor</h3>
 		</br>
 			<p class="centerTxt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -67,7 +67,7 @@
 			pellentesque. </p>
 		</br>
 		<div class="centerTxt">
-			<a style="text-decoration:none" href="">
+			<a style="text-decoration:none" href="/coplat/index.php/application/domain">
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
 	                'buttonType'=>'button',
 	                'type'=>'primary',

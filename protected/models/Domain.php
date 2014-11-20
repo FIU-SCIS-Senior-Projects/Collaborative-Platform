@@ -93,6 +93,22 @@ class Domain extends CActiveRecord
         // Warning: Please modify the following code to remove attributes that 
         // should not be searched. 
 
+        $criteria=setCriteria();
+        
+        return new CActiveDataProvider($this, array( 
+            'criteria'=>$criteria, 
+        )); 
+    }
+    
+    public function searchNoPagination() {
+    	$criteria = $this->setCriteria();
+    	return new CActiveDataProvider($this, array(
+    			'criteria' => $criteria,
+    			'pagination'=>false,
+    	));
+    }
+    
+    public function setCriteria(){
         $criteria=new CDbCriteria; 
 
         $criteria->compare('id',$this->id,true);
@@ -101,14 +117,30 @@ class Domain extends CActiveRecord
         $criteria->compare('validator',$this->validator);
         $criteria->compare('need',$this->need,true);
         $criteria->compare('need_amount',$this->need_amount);
-
-        return new CActiveDataProvider($this, array( 
-            'criteria'=>$criteria, 
-        )); 
+    
+    	return $criteria;
     }
 
     public function getSubDomain(){
     	return 'n/a';
+    }
+    
+    public function getDomainsForApp($dataprovider){
+    	$domains = array();
+    	foreach($dataprovider->getData() as $domain){
+    		$temp = array();
+    		$temp["id"] = $domain->id;
+    		$temp["name"] = $domain->name;
+    		$temp["description"] = $domain->description;
+    		$temp["need"] = $domain->need;
+    		
+    		$subs = new Subdomain();
+    		$subs->domain_id = $domain->id;
+    		$temp["subdomains"] = Subdomain::model()->getSubdomainsForApp($subs->searchNoPagination());
+    		
+    		$domains[] = $temp;
+    	}
+    	return $domains;
     }
         
 	public function domainExists($domain)

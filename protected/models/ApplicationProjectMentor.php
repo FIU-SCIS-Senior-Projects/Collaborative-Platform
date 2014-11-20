@@ -81,7 +81,7 @@ class ApplicationProjectMentor extends CActiveRecord
 			'date_created' => 'Date Created',
 			'max_amount' => 'Max Amount',
 			'max_hours' => 'Max Hours',
-			'system_pick_amount' => 'System Pick Amount',
+			'system_pick_amount' => 'How many projects?',
 		);
 	}
 

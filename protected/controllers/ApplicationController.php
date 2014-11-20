@@ -40,11 +40,10 @@ class ApplicationController extends Controller
 	 */
 	public function actionPersonal(){
 		$model = new ApplicationPersonalMentor;
-		$mentees = new User;
+		$students = new User;
 		$unis = array();
 		
 		if (Yii::app()->getRequest()->isPostRequest) {
-			print("POSTED THIS SHIT: " . $_POST['picks']);
 			$user = User::model()->getCurrentUser();		
 			$model->attributes = $_POST['ApplicationPersonalMentor'];
 			$model->status = 'Admin';
@@ -64,8 +63,9 @@ class ApplicationController extends Controller
 			}	
 			$this->redirect("/coplat/index.php/application/portal");
 		} else { // on initial load
-			$mentees->unsetAttributes();
-			$mentees->isMentee = 1;
+			$students->unsetAttributes();
+			$students->isMentee = 1;
+			$student = User::model()->returnUsersForApp($students->searchNoPagination());
 			$universities = University::model()->getUniversities();
 			$unis[0] = 'Any';
 			foreach ($universities as $uni) $unis[$uni->id] = $uni->name;
@@ -75,21 +75,68 @@ class ApplicationController extends Controller
 		$error='';
 		
 		$this->render('personal', array(
-            'model'=>$model, 'user'=>$mentees, 'universities'=>$unis, 'error' => $error,
+            'model'=>$model, 'user'=>$students, 'universities'=>$unis, 'students'=>$student, 'error' => $error,
         ));
 	}
 	
-	public function actionMenteeSelect(){
-		$pk = Yii::app()->request->getParam('pk');
-		$mypicks = Yii::app()->request->getParam('picks');
-		$key = array_keys($this->selected, $pk);
-		if(count($key) > 0){// this mentee was selected
-			unset($selected[$key[0]]);
-		} else {// this mentee was not selected
-			$selected[] = $pk;
+	/*
+	 *  Project Mentor Application
+	*/
+	public function actionProject(){
+		$application = new ApplicationProjectMentor;
+		$projects = new Project;
+		
+		if (Yii::app()->getRequest()->isPostRequest) {
+			$user = User::model()->getCurrentUser();
+			$application->attributes = $_POST['ApplicationProjectMentor'];
+			$application->status = 'Admin';
+			$application->user_id = $user->id;
+			$application->date_created = new CDbExpression('NOW()');
+			$application->save(false);
+			
+			$mypicks = $_POST['picks'];
+			$mypicks = explode(',', $mypicks);
+			foreach($mypicks as $pick){
+				$dbpick = new ApplicationProjectMentorPick;
+				$dbpick->app_id = $application->id;
+				$dbpick->project_id = $pick;
+				$dbpick->approval_status = 'Pending';
+				$dbpick->save(false);
+			}
+			$this->redirect("/coplat/index.php/application/portal");
+		} else { // on initial load
+			$projects->unsetAttributes();
+			$projects->project_mentor_user_id = 999;
+			$project = Project::model()->getProjectsForApp($projects->searchNoPagination());
+			$application->system_pick_amount = 0;
 		}
+		
+		$error='';
+		
+		$this->render('project', array(
+				'application'=>$application, 'data'=>$project, 'error' => $error,
+		));
 	}
 	
+	public function actionDomain(){
+		$application = new ApplicationDomainMentor;
+		$domains = new Domain;
+		$subdomains = new Subdomain;
+		
+		if (Yii::app()->getRequest()->isPostRequest) {
+
+			$this->redirect("/coplat/index.php/application/portal");
+		} else { // on initial load
+			$domains->unsetAttributes();
+			$domain = Domain::model()->getDomainsForApp($domains->searchNoPagination());
+		}
+		
+		$error='';
+		
+		$this->render('domain', array(
+				'application'=>$application, 'domain'=>$domain, 'error' => $error,
+		));
+	}
 	
 	// Toggle catch
 	public function actions()

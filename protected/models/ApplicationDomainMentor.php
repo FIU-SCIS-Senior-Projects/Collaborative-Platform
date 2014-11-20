@@ -81,7 +81,7 @@ class ApplicationDomainMentor extends CActiveRecord
 			'user_id' => 'User',
 			'status' => 'Status',
 			'date_created' => 'Date Created',
-			'max_amount' => 'Max Amount',
+			'max_amount' => 'How many tickets would you like to answer per month?',
 			'max_hours' => 'Max Hours',
 		);
 	}

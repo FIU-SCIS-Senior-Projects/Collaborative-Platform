@@ -348,6 +348,52 @@ class User extends CActiveRecord
     	return $name;
     }
     
+    // returns a list of users
+    public function returnUsersForApp($dataProvider){
+    	$users = array();
+    	foreach($dataProvider->getData() as $user){
+    		$temp = array();
+    		
+    		$temp["id"] = $user->id;
+    		$temp["name"] = $user->getFullName();
+    		$temp["university"] = University::model()->universityById($user->university_id);
+    		$temp["avatar"] = $user->pic_url;
+    		$temp["email"] = $user->email;
+    		
+    		$mentee = Mentee::model()->findByPk($user->id);
+    		$mentorTrim = array();
+    		$mentorTrim["name"] = "None";
+    		$mentorTrim["avatar"] = "";
+    		
+    		if(count($mentee) == 0){
+    			$temp["project"] = "None";
+    			$temp["description"] = "";
+    			$temp["mentor"] = $mentorTrim;
+    		} else {
+    			$project = Project::model()->findByPk($mentee->project_id);
+    			if(count($project) > 0){
+    				$temp["project"] = $project->title;
+    				$temp["description"] = $project->getDescriptionOfSize(200);
+    			} else{
+    				$temp["project"] = "None";
+    				$temp["description"] = "";
+    			}
+    			
+    			$personalMentor = User::model()->findByPk($mentee->personal_mentor_user_id);
+    			if(count($personalMentor) > 0 && $mentee->personal_mentor_user_id != 999){
+    				$mentorTrim = array();
+    				$mentorTrim["name"] = $personalMentor->getFullName();
+    				$mentorTrim["avatar"] = $personalMentor->pic_url;
+    			} 
+    			$temp["mentor"] = $mentorTrim;
+    		}
+    		
+    		
+    		$users[] = $temp;
+    	}
+    	return $users;
+    }
+    
     public function getUniversityName(){
     	$uni = University::model()->findByPk($this->university_id);
     	if($uni == NULL) return "FIU";

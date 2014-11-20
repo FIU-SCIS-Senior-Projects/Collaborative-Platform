@@ -4769,3 +4769,539 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/application/personal
 in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (71)
 in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/16 01:12:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/projects".' in C:\xampp\htdocs\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('manage/projects')
+#1 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/manage/projects
+---
+2014/11/16 01:12:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/project".' in C:\xampp\htdocs\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('manage/project')
+#1 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/manage/project
+---
+2014/11/16 01:12:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/projects".' in C:\xampp\htdocs\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/projects')
+#1 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/admin/projects
+---
+2014/11/16 01:12:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/project".' in C:\xampp\htdocs\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/project')
+#1 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/admin/project
+---
+2014/11/16 01:14:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/project".' in C:\xampp\htdocs\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/project')
+#1 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/admin/project
+---
+2014/11/16 20:41:09 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "returnUsers".' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(225): CComponent->__call('returnUsers', Array)
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(69): CActiveRecord->__call('returnUsers', Array)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(69): User->returnUsers(Object(CActiveDataProvider))
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/11/16 20:41:24 [error] [php] Array to string conversion (C:\xampp\htdocs\coplat\protected\views\application\personal.php:58)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(80): ApplicationController->render()
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\views\application\personal.php (58)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (80)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/16 20:46:55 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "returnUsers".' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(225): CComponent->__call('returnUsers', Array)
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(69): CActiveRecord->__call('returnUsers', Array)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(69): User->returnUsers(Object(CActiveDataProvider))
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/11/16 21:27:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:27:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+---
+2014/11/16 21:28:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:29:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:29:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:29:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:29:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:30:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:30:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:31:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName.desc
+---
+2014/11/16 21:31:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "bg.gif".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('bg.gif')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('bg.gif')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/bg....')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/bg.gif
+---
+2014/11/16 21:49:46 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1' at line 1. The SQL statement executed was: 1.
+in C:\xampp\htdocs\coplat\protected\models\University.php (100)
+in C:\xampp\htdocs\coplat\protected\models\User.php (358)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (69)
+2014/11/16 21:49:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1' at line 1. The SQL statement executed was: 1' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\CDbCommand.php(414): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1504): CDbCommand->queryRow()
+#2 C:\xampp\htdocs\coplat\protected\models\University.php(100): CActiveRecord->findBySql(1)
+#3 C:\xampp\htdocs\coplat\protected\models\User.php(358): University::universityById('1')
+#4 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(69): User->returnUsersForApp(Object(CActiveDataProvider))
+#5 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#11 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/coplat/index.php/application/personal?User_sort=fullName.desc
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal?User_sort=fullName
+---
+2014/11/16 23:44:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "asdasdasd".' in C:\xampp\htdocs\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(270): CController->missingAction('asdasdasd')
+#1 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('asdasdasd')
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/asd...')
+#3 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/asdasdasd
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/11/17 14:33:47 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\models\User.php:364)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\models\User.php (364)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (69)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 14:33:58 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\coplat\protected\models\User.php:364)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\models\User.php (364)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (69)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 14:35:55 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "pic_url".' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(225): CComponent->__call('pic_url', Array)
+#1 C:\xampp\htdocs\coplat\protected\models\User.php(374): CActiveRecord->__call('pic_url', Array)
+#2 C:\xampp\htdocs\coplat\protected\models\User.php(374): User->pic_url()
+#3 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(69): User->returnUsersForApp(Object(CActiveDataProvider))
+#4 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#9 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#10 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/11/17 14:54:16 [error] [php] Use of undefined constant projectTrim - assumed 'projectTrim' (C:\xampp\htdocs\coplat\protected\models\User.php:372)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/personal
+in C:\xampp\htdocs\coplat\protected\models\User.php (372)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (69)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 16:40:22 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * from university WHERE id = .
+in C:\xampp\htdocs\coplat\protected\models\University.php (100)
+in C:\xampp\htdocs\coplat\protected\models\User.php (359)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (67)
+2014/11/17 16:40:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * from university WHERE id = ' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\CDbCommand.php(414): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1504): CDbCommand->queryRow()
+#2 C:\xampp\htdocs\coplat\protected\models\University.php(100): CActiveRecord->findBySql('SELECT * from u...')
+#3 C:\xampp\htdocs\coplat\protected\models\User.php(359): University::universityById(NULL)
+#4 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(67): User->returnUsersForApp(Object(CActiveDataProvider))
+#5 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#11 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/11/17 17:17:36 [error] [exception.CException] exception 'CException' with message 'Project and its behaviors do not have a method or closure named "searchNoPagination".' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(225): CComponent->__call('searchNoPaginat...', Array)
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(92): CActiveRecord->__call('searchNoPaginat...', Array)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(92): Project->searchNoPagination()
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/11/17 17:23:18 [error] [exception.CException] exception 'CException' with message 'Project and its behaviors do not have a method or closure named "setCriteria".' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(225): CComponent->__call('setCriteria', Array)
+#1 C:\xampp\htdocs\coplat\protected\models\Project.php(119): CActiveRecord->__call('setCriteria', Array)
+#2 C:\xampp\htdocs\coplat\protected\models\Project.php(119): Project->setCriteria()
+#3 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(92): Project->searchNoPagination()
+#4 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#9 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#10 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/11/17 17:24:46 [error] [php] Undefined variable: error (C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php:97)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/project
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (97)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 17:25:09 [error] [php] Array to string conversion (C:\xampp\htdocs\coplat\protected\views\application\project.php:12)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(100): ApplicationController->render()
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/project
+in C:\xampp\htdocs\coplat\protected\views\application\project.php (12)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (100)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 17:29:52 [error] [php] Array to string conversion (C:\xampp\htdocs\coplat\protected\views\application\project.php:12)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(100): ApplicationController->render()
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/project
+in C:\xampp\htdocs\coplat\protected\views\application\project.php (12)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (100)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 17:32:22 [error] [php] Array to string conversion (C:\xampp\htdocs\coplat\protected\views\application\project.php:12)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(100): ApplicationController->render()
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/project
+in C:\xampp\htdocs\coplat\protected\views\application\project.php (12)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (100)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 18:52:50 [error] [php] Undefined index: ApplicationPersonalMentor (C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php:88)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#2 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/project
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (88)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 18:53:09 [error] [exception.CException] exception 'CException' with message 'Property "ApplicationProjectMentorPick.user_id" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(159): CComponent->__set('user_id', '125')
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(99): CActiveRecord->__set('user_id', '125')
+#2 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#8 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#10 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/project
+---
+2014/11/17 19:39:06 [error] [php] Use of undefined constant description - assumed 'description' (C:\xampp\htdocs\coplat\protected\models\Project.php:156)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/project
+in C:\xampp\htdocs\coplat\protected\models\Project.php (156)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (107)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/17 22:35:51 [error] [exception.CException] exception 'CException' with message 'Project and its behaviors do not have a method or closure named "getMediumDescription".' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(225): CComponent->__call('getMediumDescri...', Array)
+#1 C:\xampp\htdocs\coplat\protected\models\Project.php(164): CActiveRecord->__call('getMediumDescri...', Array)
+#2 C:\xampp\htdocs\coplat\protected\models\Project.php(164): Project->getMediumDescription()
+#3 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(107): Project->getProjectsForApp(Object(CActiveDataProvider))
+#4 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#9 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#10 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#12 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/11/18 00:20:18 [error] [php] Creating default object from empty value (C:\xampp\htdocs\coplat\protected\controllers\ImportController.php:105)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ImportController->runAction()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ImportController->runActionWithFilters()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ImportController->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+in C:\xampp\htdocs\coplat\protected\controllers\ImportController.php (105)
+in C:\xampp\htdocs\coplat\protected\controllers\ImportController.php (58)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/20 17:45:26 [error] [php] Undefined variable: dataProvider (C:\xampp\htdocs\coplat\protected\models\Subdomain.php:130)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#4 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#5 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/domain
+in C:\xampp\htdocs\coplat\protected\models\Subdomain.php (130)
+in C:\xampp\htdocs\coplat\protected\models\Domain.php (139)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (131)
+2014/11/20 17:47:02 [error] [php] Undefined variable: dataprovider (C:\xampp\htdocs\coplat\protected\models\Domain.php:130)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#3 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/domain
+in C:\xampp\htdocs\coplat\protected\models\Domain.php (130)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (131)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/20 17:47:19 [error] [php] Undefined variable: domain (C:\xampp\htdocs\coplat\protected\views\application\domain.php:7)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\CController.php(869): ApplicationController->renderFile()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(782): ApplicationController->renderPartial()
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(138): ApplicationController->render()
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(286): ApplicationController->runAction()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/domain
+in C:\xampp\htdocs\coplat\protected\views\application\domain.php (7)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (138)
+in C:\xampp\htdocs\coplat\index.php (14)

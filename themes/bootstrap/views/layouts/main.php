@@ -137,13 +137,10 @@ if( User::isCurrentUserMentee())
                                             array('label'=>'Send', 'url'=>array('invitation/create'), 'visible'=>!Yii::app()->user->isGuest),
 
                                         ),
-                                        */
-                                    		
-                                    ),
-                               
+                                        */              		
+                                    ),            
 							),
 					),
-
                 )
 			),
 
@@ -154,19 +151,17 @@ if( User::isCurrentUserMentee())
 							array('label'=>'Mentor', 'url'=>array('application/portal'),'visible'=>!Yii::app()->user->isGuest),
                             array('label'=>'New Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
                             array('label'=>  $userinfo, 'url'=>'#', 'items'=>array(
-							array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Change Password','visible'=>  $cp, 'url'=>'/coplat/index.php/user/ChangePassword'),
-						
-			
-							'----',
-							array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),						    )),
+								array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!Yii::app()->user->isGuest),
+								array('label'=>'Change Password','visible'=>  $cp, 'url'=>'/coplat/index.php/user/ChangePassword'),
+				
+								'----',
+								array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+								array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),)),
                             array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
                             //array('label'=>'Contact', 'url'=>array('site/contact')),
 
-            ),
+            	),
 			),
-			
 		)
 	)); 
 	?>

@@ -96,8 +96,24 @@ class Subdomain extends CActiveRecord
         // Warning: Please modify the following code to remove attributes that 
         // should not be searched. 
 
-        $criteria=new CDbCriteria; 
+        $criteria=$this->setCriteria();
 
+        return new CActiveDataProvider($this, array( 
+            'criteria'=>$criteria, 
+        )); 
+    } 
+    
+    public function searchNoPagination() {
+    	$criteria = $this->setCriteria();
+    	return new CActiveDataProvider($this, array(
+    			'criteria' => $criteria,
+    			'pagination'=>false,
+    	));
+    }
+    
+    public function setCriteria(){
+    	$criteria=new CDbCriteria;
+    
         $criteria->compare('id',$this->id,true);
         $criteria->compare('name',$this->name,true);
         $criteria->compare('description',$this->description,true);
@@ -105,9 +121,21 @@ class Subdomain extends CActiveRecord
         $criteria->compare('domain_id',$this->domain_id,true);
         $criteria->compare('need',$this->need,true);
         $criteria->compare('need_amount',$this->need_amount);
-
-        return new CActiveDataProvider($this, array( 
-            'criteria'=>$criteria, 
-        )); 
-    } 
+    
+    	return $criteria;
+    }
+    
+    public function getSubdomainsForApp($dataprovider){
+    	$subs = array();
+    	foreach($dataprovider->getData() as $sub){
+    		$temp = array();
+    		$temp["id"] = $sub->id;
+    		$temp["name"] = $sub->name;
+    		$temp["description"] = $sub->description;
+    		$temp["need"] = $sub->need;
+    	
+    		$domains[] = $temp;
+    	}
+    	return $subs;
+    }
 }

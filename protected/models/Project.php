@@ -98,8 +98,24 @@ class Project extends CActiveRecord
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
 
+        $criteria = $this->setCriteria();
+		
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	
+	public function searchNoPagination() {
+		$criteria = $this->setCriteria();
+		return new CActiveDataProvider($this, array(
+				'criteria' => $criteria,
+				'pagination'=>false,
+		));
+	}
+	
+	public function setCriteria(){
 		$criteria=new CDbCriteria;
-
+		
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
@@ -109,10 +125,8 @@ class Project extends CActiveRecord
 		$criteria->compare('due_date',$this->due_date,true);
 		$criteria->compare('customer_fname',$this->customer_fname,true);
 		$criteria->compare('customer_lname',$this->customer_lname,true);
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+		
+		return $criteria;
 	}
 	
 	public function getProjectMentor(){
@@ -126,5 +140,30 @@ class Project extends CActiveRecord
 		if (strlen($this->description) > $max)
 				return (substr($this->description, 0, $max) . '...');
 		else return $this->description;
+	}
+	
+	public function getDescriptionOfSize($size){
+		$max = $size;
+		if (strlen($this->description) > $max)
+			return (substr($this->description, 0, $max) . '...');
+		else return $this->description;
+		
+	}
+	
+	public function getCustomerFullName(){
+		return $this->customer_fname . ' ' .$this->customer_lname;
+	}
+	
+	public function getProjectsForApp($dataProvider){
+		$projects = array();
+		foreach($dataProvider->getData() as $project){
+			$temp = array();
+			$temp["id"] = $project->id;
+			$temp["title"] = $project->title;
+			$temp["customer"] = $project->getCustomerFullName();
+			$temp["description"] = $project->getDescriptionOfSize(750);
+			$projects[] = $temp;
+		}
+		return $projects;
 	}
 }

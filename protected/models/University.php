@@ -96,4 +96,9 @@ class University extends CActiveRecord
 		return $uni->id;
 	}
 	
+	public static function universityById($id){
+		$uni = University::model()->findBySql("SELECT * from university WHERE id = " . $id);
+		return $uni->name;
+	}
+	
 }
