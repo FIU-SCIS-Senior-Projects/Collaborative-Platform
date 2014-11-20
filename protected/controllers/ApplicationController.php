@@ -212,7 +212,7 @@ class ApplicationController extends Controller
 				$dbpick = new ApplicationPersonalMentorPick;
 				$dbpick->app_id = $model->id;
 				$dbpick->user_id = $pick;
-				$dbpick->approval_status = 'Pending';
+				$dbpick->approval_status = 'Proposed By Mentor';
 				$dbpick->save(false);
 			}	
 			$this->redirect("/coplat/index.php/application/portal");
@@ -254,7 +254,7 @@ class ApplicationController extends Controller
 				$dbpick = new ApplicationProjectMentorPick;
 				$dbpick->app_id = $application->id;
 				$dbpick->project_id = $pick;
-				$dbpick->approval_status = 'Pending';
+				$dbpick->approval_status = 'Proposed by Mentor';
 				$dbpick->save(false);
 			}
 			$this->redirect("/coplat/index.php/application/portal");
