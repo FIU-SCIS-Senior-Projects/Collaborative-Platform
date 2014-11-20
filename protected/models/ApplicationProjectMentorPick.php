@@ -43,7 +43,7 @@ class ApplicationProjectMentorPick extends CActiveRecord
 		return array(
 			array('app_id, project_id, approval_status', 'required'),
 			array('app_id, project_id', 'length', 'max'=>11),
-			array('approval_status', 'length', 'max'=>8),
+			array('approval_status', 'length', 'max'=>18),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, app_id, project_id, approval_status', 'safe', 'on'=>'search'),

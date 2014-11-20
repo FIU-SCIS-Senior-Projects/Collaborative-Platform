@@ -496,6 +496,7 @@ class TicketController extends Controller
      */
     public function actionAdmin()
     {
+    	$this->layout='';
         $model = new Ticket('search');
         
         $cUser = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0 order by lname");

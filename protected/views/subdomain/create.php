@@ -3,8 +3,8 @@
 /* @var $model Subdomain */
 
 $this->breadcrumbs=array(
-	'Manage Sub-Domains'=>array('admin'),
-	'Create',
+	'Manage Domains'=>array('/domain/admin'),
+	'Create Subdomain',
 );
 
 

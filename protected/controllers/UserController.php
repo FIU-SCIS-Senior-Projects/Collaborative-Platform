@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         return array(
             'accessControl', // perform access control for CRUD operations
-            'postOnly + delete', // we only allow deletion via POST request
+            'postOnly + delete', // we only allow deletion via POST request        		
         );
     }
 
@@ -582,8 +582,6 @@ class UserController extends Controller
      */
     public function actionAdmin()
     {
-
-        echo("<script>console.log('actionAdmin');</script>");
 
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values

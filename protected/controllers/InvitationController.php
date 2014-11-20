@@ -13,9 +13,11 @@ class InvitationController extends Controller
 	 */
 	public function filters()
 	{
+		
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
+			//array('booster.filters.BoosterFilter - create')
 		);
 	}
 
@@ -36,7 +38,7 @@ class InvitationController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'viewmodal'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -55,6 +57,18 @@ class InvitationController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+	
+	public function actionViewmodal($id)
+	{
+		$model = $this->loadModel($id);
+		 
+	
+		if( Yii::app()->request->isAjaxRequest )
+			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
+		else
+			$this->render('viewmodal',array('model'=>$model));
+		 
+	}
 
 	/**
 	 * Creates a new model.
@@ -65,7 +79,7 @@ class InvitationController extends Controller
 		$model=new Invitation;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Invitation']))
 		{

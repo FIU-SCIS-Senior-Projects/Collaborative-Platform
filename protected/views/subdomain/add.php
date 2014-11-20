@@ -17,7 +17,7 @@
 
 	<div id="regbox">
         <?php echo $form->labelEx($model,'domain_id'); ?>
-        <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(), 'id', 'name')); ?>
+        <?php echo $form->dropDownList($model, 'domain_id', CHtml::listData(Domain::model()->findAll(array('order'=>'name')), 'id', 'name')); ?>
         <?php echo $form->error($model,'domain_id'); ?>
 
 		<?php echo $form->labelEx($model,'name'); ?>
@@ -32,6 +32,14 @@
 		<?php echo $form->labelEx($model,'validator'); ?>
         <?php echo $form->numberField($model, 'validator', array('max'=> 10, 'min' => 1)); ?>
         <?php echo $form->error($model,'validator'); ?>
+        
+        		<?php echo $form->labelEx($model,'need'); ?>
+		<?php echo $form->textField($model,'need',array('size'=>7,'maxlength'=>7)); ?>
+		<?php echo $form->error($model,'need'); ?>
+
+		<?php echo $form->labelEx($model,'need_amount'); ?>
+		<?php echo $form->textField($model,'need_amount'); ?>
+		<?php echo $form->error($model,'need_amount'); ?>
         <br/>
 
 		<?php echo CHtml::submitButton('Create',  array("class"=>"btn btn-primary")); ?>

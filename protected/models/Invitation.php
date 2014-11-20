@@ -9,13 +9,17 @@
  * @property string $administrator_user_id
  * @property string $date
  * @property integer $administrator
- * @property integer $mentor
+ * @property integer $personal_mentor
+ * @property integer $project_mentor
+ * @property integer $domain_mentor
  * @property integer $mentee
  * @property integer $employer
  * @property integer $judge
+ * @property string $name
  *
  * The followings are the available model relations:
  * @property Administrator $administratorUser
+ * @property InvitationResends[] $invitationResends
  */
 class Invitation extends CActiveRecord
 {
@@ -45,15 +49,15 @@ class Invitation extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, email, administrator_user_id', 'required'),
-			array('administrator, mentor, mentee, employer, judge', 'numerical', 'integerOnly'=>true),
+			array('email, administrator_user_id, personal_mentor, project_mentor, domain_mentor, name', 'required'),
+			array('administrator, personal_mentor, project_mentor, domain_mentor, mentee, employer, judge', 'numerical', 'integerOnly'=>true),
 			array('email', 'length', 'max'=>100),
-            array('name', 'length', 'max'=>256),
 			array('administrator_user_id', 'length', 'max'=>11),
+			array('name', 'length', 'max'=>20),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, email, administrator_user_id, date, administrator, mentor, mentee, employer, judge', 'safe', 'on'=>'search'),
+			array('id, email, administrator_user_id, date, administrator, personal_mentor, project_mentor, domain_mentor, mentee, employer, judge, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +70,7 @@ class Invitation extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'administratorUser' => array(self::BELONGS_TO, 'Administrator', 'administrator_user_id'),
+			'invitationResends' => array(self::HAS_MANY, 'InvitationResends', 'invitation_id'),
 		);
 	}
 
@@ -76,15 +81,17 @@ class Invitation extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-            'name' => 'Name',
 			'email' => 'Email',
 			'administrator_user_id' => 'Administrator User',
 			'date' => 'Date',
 			'administrator' => 'Administrator',
-			'mentor' => 'Mentor',
+			'personal_mentor' => 'Personal Mentor',
+			'project_mentor' => 'Project Mentor',
+			'domain_mentor' => 'Domain Mentor',
 			'mentee' => 'Mentee',
 			'employer' => 'Employer',
 			'judge' => 'Judge',
+			'name' => 'Name',
 		);
 	}
 
@@ -100,15 +107,17 @@ class Invitation extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-        $criteria->compare('name',$this->name,true);
-        $criteria->compare('email',$this->email,true);
+		$criteria->compare('email',$this->email,true);
 		$criteria->compare('administrator_user_id',$this->administrator_user_id,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('administrator',$this->administrator);
-		$criteria->compare('mentor',$this->mentor);
+		$criteria->compare('personal_mentor',$this->personal_mentor);
+		$criteria->compare('project_mentor',$this->project_mentor);
+		$criteria->compare('domain_mentor',$this->domain_mentor);
 		$criteria->compare('mentee',$this->mentee);
 		$criteria->compare('employer',$this->employer);
 		$criteria->compare('judge',$this->judge);
+		$criteria->compare('name',$this->name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

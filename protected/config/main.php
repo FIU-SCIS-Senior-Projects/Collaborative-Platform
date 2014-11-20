@@ -20,13 +20,13 @@ return array(
 		),
 	),
 	// preloading 'log' component
-	'preload'=>array('log', 'editable', 'booster'),
+	'preload'=>array('log', 'editable', ),
 
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-		'editable.*'
+		'editable.*',
 	),
 
 	'modules'=>array(

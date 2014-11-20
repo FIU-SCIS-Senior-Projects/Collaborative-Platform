@@ -50,7 +50,7 @@ class ProjectController extends Controller
 		$model = $this->loadModel($id);
 	
 		if( Yii::app()->request->isAjaxRequest )
-			$this->renderPartial('viewmodal',array('model'=>$model,false, true));
+			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
 		else
 			$this->render('viewmodal',array('model'=>$model));
 	

@@ -163,7 +163,6 @@ $('.asearch-form form').submit(function(){
 <!-- Popup Header -->
 
 <div class="modal-header">
-    <h4>Profile Details</h4>
 </div>
 
 <!-- Popup Content -->

@@ -15,6 +15,7 @@
  */
 class ApplicationPersonalMentorPick extends CActiveRecord
 {
+	public $approval_status2;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -43,7 +44,7 @@ class ApplicationPersonalMentorPick extends CActiveRecord
 		return array(
 			array('app_id, user_id, approval_status', 'required'),
 			array('app_id, user_id', 'length', 'max'=>11),
-			array('approval_status', 'length', 'max'=>8),
+			array('approval_status', 'length', 'max'=>18),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, app_id, user_id, approval_status', 'safe', 'on'=>'search'),
@@ -90,7 +91,7 @@ class ApplicationPersonalMentorPick extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('app_id',$this->app_id,true);
 		$criteria->compare('user_id',$this->user_id,true);
-		$criteria->compare('approval_status',$this->approval_status,true);
+		$criteria->compare('approval_status',$this->approval_status,true);		
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
