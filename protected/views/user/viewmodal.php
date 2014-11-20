@@ -161,15 +161,17 @@ return false;
 <h3><?php echo CHtml::link('Project Mentor','#',array('class'=>'project-button')); ?></h3>
 <hr>
 <?php 
-				$maxProjectHours = Yii::app()->db->createCommand()->
-												select('max_hours')->
-												from('project_mentor')->
-         										where('user_id=:id', array(':id'=>$model->id))->
-												queryScalar();
+	$maxProjectHours = Yii::app()->db->createCommand()->
+								select('max_hours')->
+								from('project_mentor')->
+         						where('user_id=:id', array(':id'=>$model->id))->
+								queryScalar();
 
-	$maxProjects = Yii::app()->db->createCommand()->select('max_projects')->
-	from('project_mentor')->
-	where('user_id=:id', array(':id'=>$model->id))->queryScalar();
+	$maxProjects = Yii::app()->db->createCommand()->
+								select('max_projects')->
+								from('project_mentor')->
+								where('user_id=:id', array(':id'=>$model->id))->
+								queryScalar();
 				
 	if ($maxProjectHours === null || $maxProjectHours === false|| $maxProjectHours === '') $maxProjectHours = 'Not Set';
 	if (is_null($maxProjects) || $maxProjects === false|| $maxProjects === '') $maxProjects = 'Not Set';
@@ -324,8 +326,21 @@ return false;
 						            	'inputclass' => 'input-mini',	
 						                'placement' => 'left',
             							)
-          				),  		
-					),
+          				),
+				/** TO DO: FIX DELETE **/
+				array(
+    				'header'=>'Options',
+    				'class'=>'bootstrap.widgets.TbButtonColumn',
+    				'template'=> '{delete}',
+					'buttons'=>array(
+						
+					'delete' => array(
+								'url'=>'Yii::app()->createUrl("/domainMentor/delete/", array("id"=>$data->id))'
+    						),
+					), 
+					),	
+					
+	),
 	));?>
 </div>	
 <?php }?>

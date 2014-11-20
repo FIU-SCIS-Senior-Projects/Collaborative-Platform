@@ -74,51 +74,89 @@ class ApplicationController extends Controller
 		$personalMentor = $this->loadPersonalMentorByUser($user_id);
 		$personalMentorHistory = null;
 		$personalMentorChanges = null;
+		$personalCount = 0;
 		if ($personalMentor != null){
-		$personalMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
-							FROM application_personal_mentor_pick t, user u
-							WHERE t.user_id = u.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$personalMentor->id.'');
-		
-		$personalMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
-							FROM application_personal_mentor_pick t, user u
-							WHERE t.user_id = u.id AND t.approval_status = "Proposed by Mentor" AND t.app_id = '.$personalMentor->id.'');
+					
+				$personalMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
+						FROM application_personal_mentor_pick t, user u
+						WHERE t.user_id = u.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$personalMentor->id.'');
+				
+				$personalMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
+						FROM application_personal_mentor_pick t, user u
+						WHERE t.user_id = u.id AND t.approval_status = "Proposed by Mentor" AND t.app_id = '.$personalMentor->id.'');
+				
+				$personalCount = Yii::app()->db->createCommand()->
+						select('count(*)')->
+						from('application_personal_mentor_pick')->
+						where('app_id =:id', array(':id'=>$personalMentor->id))->
+						andWhere('approval_status = "Proposed by Mentor"')->
+						queryScalar();
+				
 		}
 		
 		// application project mentor
 		$projectMentor = $this->loadProjectMentorByUser($user_id);
 		$projectMentorHistory = null;
 		$projectMentorChanges = null;
+		$projectCount = 0;
 		if ($projectMentor != null){
-		$projectMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
-										FROM application_project_mentor_pick t, project p
-										WHERE t.project_id = p.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$projectMentor->id.'');
+				$projectMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
+						FROM application_project_mentor_pick t, project p
+						WHERE t.project_id = p.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$projectMentor->id.'');
+				
+				
+				$projectMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
+						FROM application_project_mentor_pick t, project p
+						WHERE t.project_id = p.id AND t.approval_status = "Proposed by Mentor" AND t.app_id = '.$projectMentor->id.'');
+				
+				$projectCount = Yii::app()->db->createCommand()->
+						select('count(*)')->
+						from('application_project_mentor_pick')->
+						where('app_id =:id', array(':id'=>$projectMentor->id))->
+						andWhere('approval_status = "Proposed by Mentor"')->
+						queryScalar();
 		
-		
-		$projectMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
-										FROM application_project_mentor_pick t, project p
-										WHERE t.project_id = p.id AND t.approval_status = "Proposed by Mentor" AND t.app_id = '.$projectMentor->id.'');
 		}
 		
 		// application domain mentor
 		$domainMentor = $this->loadDomainMentorByUser($id);
 		$domainHistory = null;
 		$domainChanges= null;
+		$domainCount = 0;
 		$subdomainHistory = null;
 		$subdomainChanges = null;
+		$subdomainCount = 0;
 		if ($projectMentor != null){
-		$domainHistory = new CSqlDataProvider('SELECT * FROM application_domain_mentor_pick t
-				WHERE t.approval_status != "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
-		
-		
-		$domainChanges = new CSqlDataProvider('SELECT * FROM application_domain_mentor_pick t
-				WHERE t.approval_status = "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
-		
-		$subdomainHistory = new CSqlDataProvider('SELECT * FROM application_subdomain_mentor_pick t
-				WHERE t.approval_status != "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
-		
-		$subdomainChanges = new CSqlDataProvider('SELECT * FROM application_subdomain_mentor_pick t
-				WHERE t.approval_status = "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+			
+				$domainHistory = new CSqlDataProvider('SELECT * FROM application_domain_mentor_pick t
+						WHERE t.approval_status != "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+				
+				
+				$domainChanges = new CSqlDataProvider('SELECT * FROM application_domain_mentor_pick t
+						WHERE t.approval_status = "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+				
+				$domainCount = Yii::app()->db->createCommand()->
+						select('count(*)')->
+						from('application_domain_mentor_pick')->
+						where('app_id =:id', array(':id'=>$domainMentor->id))->
+						andWhere('approval_status = "Proposed by Mentor"')->
+						queryScalar();
+						
+				$subdomainHistory = new CSqlDataProvider('SELECT * FROM application_subdomain_mentor_pick t
+						WHERE t.approval_status != "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+				
+				$subdomainChanges = new CSqlDataProvider('SELECT * FROM application_subdomain_mentor_pick t
+						WHERE t.approval_status = "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+				
+				$subdomainCount = Yii::app()->db->createCommand()->
+						select('count(*)')->
+						from('application_subdomain_mentor_pick')->
+						where('app_id =:id', array(':id'=>$domainMentor->id))->
+						andWhere('approval_status = "Proposed by Mentor"')->
+						queryScalar();
 		}
+		
+		$newCount = $personalCount + $projectCount + $domainCount + $subdomainCount;
 		
 		// render view
 		$this->render('view', array('user_id'=>$user_id, 
@@ -126,6 +164,7 @@ class ApplicationController extends Controller
 				'projectMentor'=>$projectMentor,'projectMentorHistory'=>$projectMentorHistory,'projectMentorChanges'=>$projectMentorChanges,
 				'domainMentor'=>$domainMentor, 'domainHistory'=>$domainHistory,'domainChanges'=>$domainChanges,
 				'subdomainHistory'=>$subdomainHistory,'subdomainChanges'=>$subdomainChanges,
+				'newCount'=>$newCount,
 				
 		));
 	}

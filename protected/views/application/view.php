@@ -7,23 +7,132 @@ $this->breadcrumbs=array(
 	$user_id,
 );
 
+$myVarList = array(
+		'myCount'=>$newCount,
+);
+
+$json = CJSON::encode($myVarList);
+
 Yii::app()->clientScript->registerScript('application', "
+
+var myCount = " . $newCount . ";
+var count = 0;
+		
+		
 $('.personal-button').click(function(){
 	$('.personal-form').toggle();
+	$('.personal-button').toggle();
 	return false;
 });
 
 $('.project-button').click(function(){
 	$('.project-form').toggle();
+	$('.project-button').toggle();
 	return false;
 });
 
 $('.domain-button').click(function(){
 	$('.domain-form').toggle();
+	$('.domain-button').toggle();
 	return false;
-});
+});	
 		
+$('#personal_changes .btn-success').click(function(){
+		personalChangesApprove($(this));
+	});
+		
+$('#personal_changes .btn-danger').click(function(){
+		personalChangesReject($(this));
+	});
+		
+$('#project_changes .btn-success').click(function(){
+		projectChangesApprove($(this));
+	});
+				
+$('#project_changes .btn-danger').click(function(){
+		projectChangesReject($(this));
+	});
+		
+$('#domain_changes .btn-success').click(function(){
+		domainChangesApprove($(this));
+	});
 
+$('#domain_changes .btn-danger').click(function(){
+		domainChangesReject($(this));
+	});
+		
+$('#subdomain_changes .btn-success').click(function(){
+		subDomainChangesApprove($(this));
+	});
+
+$('#subdomain_changes .btn-danger').click(function(){
+		subDomainChangesReject($(this));
+	});
+		
+		function submitCheck(obj) {
+			if (count == myCount) {
+				var submit = obj.parent('td').parent().parent().parent().parent().parent().parent().children('.form').children('#submit');
+				submit.removeAttr('disabled');
+			}
+			console.log(count);
+		}
+		
+		function setButtonStatus(parent, child) {
+			if(parent.attr('disabled')){
+				// do nothing when disabled
+  			}else{
+				if(child.attr('disabled')){
+					child.removeAttr('disabled');
+					parent.attr('disabled', 'true');
+  				}else{
+					parent.attr('disabled', 'true');
+					count++;
+					submitCheck(parent);
+				 }
+			}
+		}
+		
+		function personalChangesApprove(obj) {		
+			var child = obj.parent('td').children('#personal_changes_reject');
+			setButtonStatus(obj, child);	
+		}	
+		
+		function personalChangesReject(obj) {
+			var child = obj.parent('td').children('#personal_changes_accept');	
+			setButtonStatus(obj,child);
+		}
+		
+		function projectChangesApprove(obj) {			
+			var child = obj.parent('td').children('#project_changes_reject');
+			setButtonStatus(obj,child);
+		}	
+		
+		function projectChangesReject(obj) {
+			var child = obj.parent('td').children('#project_changes_accept');
+			setButtonStatus(obj,child);
+		}
+		
+		function domainChangesApprove(obj) {
+			var child = obj.parent('td').children('#domain_changes_reject');
+			setButtonStatus(obj,child);
+		}	
+		
+		function domainChangesReject(obj) {
+			var child = obj.parent('td').children('#domain_changes_accept');
+			setButtonStatus(obj,child);
+		}	
+		
+		function subDomainChangesApprove(obj) {
+			var child = obj.parent('td').children('#subdomain_changes_reject');
+			setButtonStatus(obj,child);
+		}	
+		
+		function subDomainChangesReject(obj) {
+			var child = obj.parent('td').children('#subdomain_changes_accept');
+			setButtonStatus(obj,child);
+		}		
+
+		
 ");
 
 // $('#personal_history').on('mouseover mouseout', 'table tr', function(event) {
@@ -38,7 +147,6 @@ $('.domain-button').click(function(){
 
 ?>
 
-
 <!-- PERSONAL MENTOR SECTION (ROUTE TO CONTROLLER) -->
 <?php 	$persCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
 												from('application_personal_mentor')->
@@ -47,17 +155,33 @@ $('.domain-button').click(function(){
 												queryScalar();
 
 		if ($persCount == 1) {?>
-
+		
 <div class='well personal-form' style="display:none">
-<h3><?php echo CHtml::link('Personal Application','#',array('class'=>'personal-button')); ?></h3>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'button',
+                'type'=>'default',
+				'icon'=>'plus',
+				'size'=>'large',
+                'label'=>'Personal Mentor Application',
+				'htmlOptions'=>array(
+						'class'=>'personal-button',
+						'style'=>'display:none'
+						),
+)); ?>
 </div>
 
 <div class='well personal-form' style="display:">
-<h3><?php echo CHtml::link('Personal Application','#',array('class'=>'personal-button')); ?></h3>
-<hr>	
-<?php
-
-?>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'button',
+                'type'=>'default',
+				'icon'=>'minus',
+				'size'=>'large',
+                'label'=>'Personal Mentor Application',
+				'htmlOptions'=>array(
+						'class'=>'personal-button',
+						'style'=>'display:'
+						),
+)); ?><br/><br/>
 
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 	'data'=>$personalMentor,
@@ -77,8 +201,9 @@ $('.domain-button').click(function(){
 <?php 
 		$this->widget('bootstrap.widgets.TbGridView', array(
 	    'id' => 'personal_changes',
+		'type'=>'striped condensed hover',	
 		'summaryText'=>'',
-	    //'itemsCssClass' => 'table-bordered items',
+	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $personalMentorChanges,
 		'columns'=>array(
 						'id',
@@ -99,6 +224,7 @@ $('.domain-button').click(function(){
 										//'icon'=>'ok',
 										'url'=>'',
 										'options'=>array(
+												'id'=>'personal_changes_accept',
 												'class'=>'btn btn-small btn-success',
 										),
 								),
@@ -108,25 +234,36 @@ $('.domain-button').click(function(){
 										//'icon'=>'list white',
 										'url'=>'',
 										'options'=>array(
+												'id'=>'personal_changes_reject',
 												'class'=>'btn btn-small btn-danger',
 										),
 								),
 						),
 						'htmlOptions'=>array(
-								'style'=>'width: 140px',
+								'style'=>'width: 120px',
 						),
 				)
 				
 				),
 		));
 ?>
+<a href=../application/create>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Propose New Mentee',
+		'icon'=>'plus white',
+		'size'=>'medium',
+		'type'=> 'primary',
+		));?>
+</a>
 <hr>
 <h4>History</h4>
 <?php 
 		$this->widget('bootstrap.widgets.TbGridView', array(
+		'type'=>'striped condensed hover',	
 	    'id' => 'personal_history',
 		'summaryText'=>'',
-	    //'itemsCssClass' => 'table-bordered items',
+	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $personalMentorHistory,
 		'columns'=>array(
 						'id',
@@ -154,12 +291,31 @@ $('.domain-button').click(function(){
 
 		if ($projCount == 1) {?>
 <div class='well project-form' style="display:none">
-<h3><?php echo CHtml::link('Project Application','#',array('class'=>'project-button')); ?></h3>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'button',
+                'type'=>'default',
+				'icon'=>'plus',
+				'size'=>'large',
+                'label'=>'Project Mentor Application',
+				'htmlOptions'=>array(
+						'class'=>'project-button',
+						'style'=>'display:none'
+						),
+)); ?>
 </div>
 
 <div class='well project-form' style="display:">
-<h3><?php echo CHtml::link('Project Application','#',array('class'=>'project-button')); ?></h3>
-<hr>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'button',
+                'type'=>'default',
+				'icon'=>'minus',
+				'size'=>'large',
+                'label'=>'Project Mentor Application',
+				'htmlOptions'=>array(
+						'class'=>'project-button',
+						'style'=>'display:'
+						),
+)); ?><br/><br/>
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 	'data'=>$projectMentor,
 	'attributes'=>array(
@@ -178,8 +334,10 @@ $('.domain-button').click(function(){
 <?php 
 		$this->widget('bootstrap.widgets.TbGridView', array(
 	    'id' => 'project_changes',
+				'type'=>'striped condensed hover',
+				
 		'summaryText'=>'',
-	    //'itemsCssClass' => 'table-bordered items',
+	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $projectMentorChanges,
 		'columns'=>array(
 						'id',
@@ -199,6 +357,7 @@ $('.domain-button').click(function(){
 										//'icon'=>'ok',
 										'url'=>'',
 										'options'=>array(
+												'id'=>'project_changes_accept',
 												'class'=>'btn btn-small btn-success',
 										),
 								),
@@ -208,24 +367,35 @@ $('.domain-button').click(function(){
 										//'icon'=>'list white',
 										'url'=>'',
 										'options'=>array(
+												'id'=>'project_changes_reject',
 												'class'=>'btn btn-small btn-danger',
 										),
 								),
 						),
 						'htmlOptions'=>array(
-								'style'=>'width: 140px',
+								'style'=>'width: 120px',
 						),
 				)
 				),
 		));
 ?>
+<a href=../application/create>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Propose New Project',
+		'icon'=>'plus white',
+		'size'=>'medium',
+		'type'=> 'primary',
+		));?>
+</a>
 <hr>
 <h4>History</h4>
 <?php 
 		$this->widget('bootstrap.widgets.TbGridView', array(
 	    'id' => 'project_history',
+		'type'=>'striped condensed hover',
 		'summaryText'=>'',
-	    //'itemsCssClass' => 'table-bordered items',
+	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $projectMentorHistory,
 		'columns'=>array(
 						'id',
@@ -252,12 +422,31 @@ $('.domain-button').click(function(){
 
 		if ($domCount == 1) {?>
 <div class='well domain-form' style="display:none">
-<h3><?php echo CHtml::link('Domain Application','#',array('class'=>'domain-button')); ?></h3>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'button',
+                'type'=>'default',
+				'icon'=>'plus',
+				'size'=>'large',
+                'label'=>'Domain Mentor Application',
+				'htmlOptions'=>array(
+						'class'=>'domain-button',
+						'style'=>'display:none'
+						),
+)); ?>
 </div>
 
 <div class='well domain-form' style="display:">
-<h3><?php echo CHtml::link('Domain Application','#',array('class'=>'domain-button')); ?></h3>
-<hr>	
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'button',
+                'type'=>'default',
+				'icon'=>'minus',
+				'size'=>'large',
+                'label'=>'Domain Mentor Application',
+				'htmlOptions'=>array(
+						'class'=>'domain-button',
+						'style'=>'display:'
+						),
+)); ?><br/><br/>	
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 	'data'=>$domainMentor,
 	'attributes'=>array(
@@ -273,8 +462,9 @@ $('.domain-button').click(function(){
 <h4>Domain Picks</h4>
 <?php	$this->widget('bootstrap.widgets.TbGridView', array(
 	    'id' => 'domain_changes',
+		'type'=>'striped condensed hover',
 		'summaryText'=>'',
-	    //'itemsCssClass' => 'table-bordered items',
+	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $domainChanges,
 		'columns'=>array(
 						'id',
@@ -294,6 +484,8 @@ $('.domain-button').click(function(){
 										//'icon'=>'ok',
 										'url'=>'',
 										'options'=>array(
+												'id'=>'domain_changes_accept',
+												
 												'class'=>'btn btn-small btn-success',
 										),
 								),
@@ -303,23 +495,35 @@ $('.domain-button').click(function(){
 										//'icon'=>'list white',
 										'url'=>'',
 										'options'=>array(
+												'id'=>'domain_changes_reject',
+												
 												'class'=>'btn btn-small btn-danger',
 										),
 								),
 						),
 						'htmlOptions'=>array(
-								'style'=>'width: 140px',
+								'style'=>'width: 120px',
 						),
 				)
 			),
 )); 
 ?>
+<a href=../application/create>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Propose New Domain',
+		'icon'=>'plus white',
+		'size'=>'medium',
+		'type'=> 'primary',
+		));?>
+</a>
 <hr>
 <h5>History</h5>
 <?php	$this->widget('bootstrap.widgets.TbGridView', array(
-	    'id' => 'domain_history',
+	    'id' => 'domain_history',    
+		'type'=>'striped condensed hover',
 		'summaryText'=>'',
-	    //'itemsCssClass' => 'table-bordered items',
+	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $domainHistory,
 		'columns'=>array(
 						'id',
@@ -332,9 +536,10 @@ $('.domain-button').click(function(){
 ?>
 <h4>Sub-Domain Picks</h4>
 <?php	$this->widget('bootstrap.widgets.TbGridView', array(
-	    'id' => 'subdomain_picks',
+	    'id' => 'subdomain_changes',
+		'type'=>'striped condensed hover',
 		'summaryText'=>'',
-	    //'itemsCssClass' => 'table-bordered items',
+	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $subdomainChanges,
 		'columns'=>array(
 						'id',
@@ -353,9 +558,13 @@ $('.domain-button').click(function(){
 										'label'=>'Accept',
 										//'icon'=>'ok',
 										'url'=>'',
+										'visible'=>'true',
 										'options'=>array(
-												'class'=>'btn btn-small btn-success',
+												'id'=>'subdomain_changes_accept',
+												
+												'class'=>'btn btn-small btn-success',												
 										),
+										
 								),
 								'reject' => array
 								(
@@ -363,23 +572,37 @@ $('.domain-button').click(function(){
 										//'icon'=>'list white',
 										'url'=>'',
 										'options'=>array(
+												'id'=>'subdomain_changes_reject',
+												
 												'class'=>'btn btn-small btn-danger',
 										),
 								),
 						),
 						'htmlOptions'=>array(
-								'style'=>'width: 140px',
+								'style'=>'width: 120px',
 						),
 				)
 						
 			),
 )); 
 ?>
+<a href=../application/create>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Propose New Subdomain',
+		'icon'=>'plus white',
+		'size'=>'medium',
+		'type'=> 'primary',
+		));?>
+</a>
+<hr>
 <h5>History</h5>
 <?php	$this->widget('bootstrap.widgets.TbGridView', array(
 	    'id' => 'subdomain_history',
+		'type'=>'striped condensed hover',
+		
 		'summaryText'=>'',
-	    //'itemsCssClass' => 'table-bordered items',
+	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $subdomainHistory,
 		'columns'=>array(
 						'id',
@@ -392,5 +615,26 @@ $('.domain-button').click(function(){
 ?>
 </div>
 	<?php } else if ($domCount > 1) echo 'Too many entries';?>
+	
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
+	'id'=>'mentor_app',
+	'enableAjaxValidation'=>false,
+)); ?>
+		        <?php echo CHtml::hiddenField('personal_picks', '', array('id'=>'hiddeninput'));?>	
+		        <?php echo CHtml::hiddenField('project_picks', '', array('id'=>'hiddeninput'));?>	
+		       	<?php echo CHtml::hiddenField('domain_picks', '', array('id'=>'hiddeninput'));?>	
+		       	<?php echo CHtml::hiddenField('subdomain_picks', '', array('id'=>'hiddeninput'));?>	
+		       	
+<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary",'id'=>'submit', "disabled"=>"disabled")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
+
+<a style="text-decoration:none" href="/coplat/index.php/application/admin">
+	<?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'button',
+                'type'=>'danger',
+				'size'=>'large',
+                'label'=>'Cancel',
+            )); ?>
+</a>
+<?php $this->endWidget();?>
 
 <!-- DOMAIN MENTOR SECTION END -->

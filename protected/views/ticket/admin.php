@@ -106,7 +106,7 @@ $('.search-form form').submit(function(){
     								'url'=> 'Yii::app()->createUrl("ticket/view", array("id"=>$data->id))',
 							),
     				),
-    		) 
+    		), 
 	),
 )); ?>
 
