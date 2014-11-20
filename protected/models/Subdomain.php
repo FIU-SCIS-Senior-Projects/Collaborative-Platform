@@ -99,22 +99,18 @@ class Subdomain extends CActiveRecord
         // should not be searched. 
 
         $criteria=$this->setCriteria();
-        $criteria=new CDbCriteria;
-        
-       	$criteria->with = array( 'domain',);
-       	
-       	$criteria->compare('domain.name', $this->domainName, true);
-        
-       	$criteria->compare('t.id',$this->id,true);
-        $criteria->compare('t.name',$this->name,true);
-        $criteria->compare('t.description',$this->description,true);
-        $criteria->compare('t.validator',$this->validator);
-        $criteria->compare('t.domain_id',$this->domain_id,true);
-        $criteria->compare('t.need',$this->need,true);
-        $criteria->compare('t.need_amount',$this->need_amount);
 
-        return new CActiveDataProvider($this, array( 
-            'criteria'=>$criteria, 
+   		 return new CActiveDataProvider($this, array( 
+            'criteria'=>$criteria,
+        		'sort'=>array(
+        				'attributes'=>array(
+        						'domainName'=>array(
+        								'asc'=>'domain.name',
+        								'desc'=>'domain.name DESC',
+        						),
+        						'*',
+        				),
+        		),
         )); 
     } 
     
@@ -129,15 +125,20 @@ class Subdomain extends CActiveRecord
     public function setCriteria(){
     	$criteria=new CDbCriteria;
     
-        $criteria->compare('id',$this->id,true);
-        $criteria->compare('name',$this->name,true);
-        $criteria->compare('description',$this->description,true);
-        $criteria->compare('validator',$this->validator);
-        $criteria->compare('domain_id',$this->domain_id,true);
-        $criteria->compare('need',$this->need,true);
-        $criteria->compare('need_amount',$this->need_amount);
+        $criteria->with = array( 'domain',);
+       	
+       	$criteria->compare('domain.name', $this->domainName, true);
+        
+       	$criteria->compare('t.id',$this->id,true);
+        $criteria->compare('t.name',$this->name,true);
+        $criteria->compare('t.description',$this->description,true);
+        $criteria->compare('t.validator',$this->validator);
+        $criteria->compare('t.domain_id',$this->domain_id,true);
+        $criteria->compare('t.need',$this->need,true);
+        $criteria->compare('t.need_amount',$this->need_amount);
     
     	return $criteria;
+    	
     }
     
     public function getSubdomainsForApp($dataprovider){
@@ -153,23 +154,8 @@ class Subdomain extends CActiveRecord
     	}
     	return $subs;
     }
-        return new CActiveDataProvider($this, array( 
-            'criteria'=>$criteria,
-        		'sort'=>array(
-        				'attributes'=>array(
-        						'domainName'=>array(
-        								'asc'=>'domain.name',
-        								'desc'=>'domain.name DESC',
-        						),
-        						'*',
-        				),
-        		),
-        )); 
-    } 
     
     public function getDomainName() {
     	return $this->domain->name;
     }
-    
-    
 }

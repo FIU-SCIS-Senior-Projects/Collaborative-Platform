@@ -94,8 +94,7 @@ class Domain extends CActiveRecord
     { 
         // Warning: Please modify the following code to remove attributes that 
         // should not be searched. 
-
-        $criteria=setCriteria();
+        $criteria=$this->setCriteria();
         
         return new CActiveDataProvider($this, array( 
             'criteria'=>$criteria, 
