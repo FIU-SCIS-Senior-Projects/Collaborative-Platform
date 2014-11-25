@@ -185,9 +185,18 @@ class ApplicationController extends Controller
 					$project->save();
 					
 					// add entry to project_mentor
-					$pmentor = new ProjectMentor('add_new');
-					$pmentor->user_id = $user_id;
-					$pmentor->save();
+					$projectEntry = Yii::app()->db->createCommand()->
+								select('count(*)')->
+								from('project_mentor')->
+								where('user_id =:id', array(':id'=>$user_id))->
+								queryScalar();
+					
+					if (projectEntry < 1){
+					
+							$pmentor = new ProjectMentor('add_new');
+							$pmentor->user_id = $user_id;
+							$pmentor->save();
+					}
 				}
 				
 				$projectFlag = true;
@@ -307,7 +316,7 @@ class ApplicationController extends Controller
 				if ($domcount > 0){
 					$this->updateAppStatus($domApp, 'Mentor');
 				} else {
-					$this->updateAppStatus($domApp, 'Admin');
+					$this->updateAppStatus($domApp, 'Closed');
 				}
 			}
 			
@@ -324,7 +333,7 @@ class ApplicationController extends Controller
 				if ($percount > 0){
 					$this->updateAppStatus($persApp, 'Mentor');						
 				} else {
-					$this->updateAppStatus($persApp, 'Admin');
+					$this->updateAppStatus($persApp, 'Closed');
 				}
 			}
 			
@@ -338,7 +347,7 @@ class ApplicationController extends Controller
 				if ($procount > 0){
 					$this->updateAppStatus($projApp, 'Mentor');
 				} else {
-					$this->updateAppStatus($projApp, 'Admin');
+					$this->updateAppStatus($projApp, 'Closed');
 				}
 			}
 
