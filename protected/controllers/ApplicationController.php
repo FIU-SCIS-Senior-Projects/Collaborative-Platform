@@ -191,7 +191,7 @@ class ApplicationController extends Controller
 								where('user_id =:id', array(':id'=>$user_id))->
 								queryScalar();
 					
-					if (projectEntry < 1){
+					if ($projectEntry < 1){
 					
 							$pmentor = new ProjectMentor('add_new');
 							$pmentor->user_id = $user_id;
