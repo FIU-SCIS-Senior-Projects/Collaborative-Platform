@@ -159,7 +159,7 @@ $('.asearch-form form').submit(function(){
 
 
 <!-- View Popup  -->
-<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal', 'htmlOptions' => ['style' => 'width: 800px; margin-left: -400px'])); ?>
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal', 'htmlOptions' => array('style' => 'width: 800px; margin-left: -400px'))); ?>
 <!-- Popup Header -->
 
 <div class="modal-header">
