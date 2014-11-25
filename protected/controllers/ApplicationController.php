@@ -185,18 +185,18 @@ class ApplicationController extends Controller
 					$project->save();
 					
 					// add entry to project_mentor
-					$projectEntry = Yii::app()->db->createCommand()->
-								select('count(*)')->
-								from('project_mentor')->
-								where('user_id =:id', array(':id'=>$user_id))->
-								queryScalar();
+// 					$projectEntry = Yii::app()->db->createCommand()->
+// 								select('count(*)')->
+// 								from('project_mentor')->
+// 								where('user_id =:id', array(':id'=>$user_id))->
+// 								queryScalar();
 					
-					if ($projectEntry < 1){
+// 					if ($projectEntry < 1){
 					
-							$pmentor = new ProjectMentor('add_new');
-							$pmentor->user_id = $user_id;
-							$pmentor->save();
-					}
+// 							$pmentor = new ProjectMentor('add_new');
+// 							$pmentor->user_id = $user_id;
+// 							$pmentor->save();
+// 					}
 				}
 				
 				$projectFlag = true;
