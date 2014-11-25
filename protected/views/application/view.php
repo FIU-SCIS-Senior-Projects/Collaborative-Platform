@@ -71,66 +71,94 @@ $('#subdomain_changes .btn-danger').click(function(){
 		
 		function submitCheck(obj) {
 			if (count == myCount) {
-				var submit = obj.parent('td').parent().parent().parent().parent().parent().parent().children('.form').children('#submit');
+				var submit = $('#submit');
 				submit.removeAttr('disabled');
 			}
-			console.log(count);
+			console.log(count + '/' + myCount);
 		}
 		
-		function setButtonStatus(parent, child) {
+		function setButtonStatus(parent, child, parenthiddenfield, childhiddenfield) {
+			
+			var value = parent.parent().parent().children('td').contents().text()[0];
+			console.log(value);
+		
 			if(parent.attr('disabled')){
 				// do nothing when disabled
   			}else{
 				if(child.attr('disabled')){
 					child.removeAttr('disabled');
 					parent.attr('disabled', 'true');
+		
+					
+					removeId(value, childhiddenfield);
+					addId(value, parenthiddenfield);
   				}else{
 					parent.attr('disabled', 'true');
 					count++;
 					submitCheck(parent);
+		
+					addId(value, parenthiddenfield);
 				 }
 			}
 		}
 		
+		function addId(currentvalue, hiddenfield){
+			var currentIds = $(hiddenfield).val();
+			var separator = (currentIds === '') ? '' : ',';
+			$(hiddenfield).val(currentIds + separator + currentvalue);
+		}
+		
+		function removeId(currentvalue, hiddenfield){
+			var currentIds = $(hiddenfield).val().split(',');
+			for(var i = 0; i < currentIds.length; i++){
+			 	if(currentIds[i] === currentvalue){
+					currentIds.splice(i, 1);
+				}
+			}
+			var result = currentIds.join(',');
+			console.log(result);
+			$(hiddenfield).val(result);
+		}
+		
 		function personalChangesApprove(obj) {		
 			var child = obj.parent('td').children('#personal_changes_reject');
-			setButtonStatus(obj, child);	
+			setButtonStatus(obj, child, '#personalhiddeninputaccept', '#personalhiddeninputreject');	
 		}	
 		
 		function personalChangesReject(obj) {
 			var child = obj.parent('td').children('#personal_changes_accept');	
-			setButtonStatus(obj,child);
-		}
+			setButtonStatus(obj, child, '#personalhiddeninputreject', '#personalhiddeninputaccept');	
+				}
 		
 		function projectChangesApprove(obj) {			
 			var child = obj.parent('td').children('#project_changes_reject');
-			setButtonStatus(obj,child);
+			setButtonStatus(obj,child, '#projecthiddeninputaccept', '#projecthiddeninputreject');
 		}	
 		
 		function projectChangesReject(obj) {
 			var child = obj.parent('td').children('#project_changes_accept');
-			setButtonStatus(obj,child);
-		}
+			setButtonStatus(obj,child, '#projecthiddeninputreject', '#projecthiddeninputaccept');
+				}
 		
 		function domainChangesApprove(obj) {
 			var child = obj.parent('td').children('#domain_changes_reject');
-			setButtonStatus(obj,child);
-		}	
+			setButtonStatus(obj,child, '#domainhiddeninputaccept', '#domainhiddeninputreject');
+				}	
 		
 		function domainChangesReject(obj) {
 			var child = obj.parent('td').children('#domain_changes_accept');
-			setButtonStatus(obj,child);
-		}	
+			setButtonStatus(obj,child, '#domainhiddeninputreject', '#domainhiddeninputaccept');
+				}	
 		
 		function subDomainChangesApprove(obj) {
 			var child = obj.parent('td').children('#subdomain_changes_reject');
-			setButtonStatus(obj,child);
-		}	
+			setButtonStatus(obj,child, '#subdomainhiddeninputaccept', '#subdomainhiddeninputreject');
+				}	
 		
 		function subDomainChangesReject(obj) {
 			var child = obj.parent('td').children('#subdomain_changes_accept');
-			setButtonStatus(obj,child);
-		}		
+			setButtonStatus(obj,child, '#subdomainhiddeninputreject', '#subdomainhiddeninputaccept');
+				}		
 
 		
 ");
@@ -147,15 +175,25 @@ $('#subdomain_changes .btn-danger').click(function(){
 
 ?>
 
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
+	'id'=>'mentor_app',
+	'enableAjaxValidation'=>false,
+)); ?>
+
 <!-- PERSONAL MENTOR SECTION (ROUTE TO CONTROLLER) -->
+
+<!-- Hidden field for personal picks -->
+<?php echo CHtml::hiddenField('personal_picks_accept', '', array('id'=>'personalhiddeninputaccept'));?>
+<?php echo CHtml::hiddenField('personal_picks_reject', '', array('id'=>'personalhiddeninputreject'));?>
+
 <?php 	$persCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
 												from('application_personal_mentor')->
 												where('status="Admin"')->
          										andWhere('user_id=:id', array(':id'=>$user_id))->
 												queryScalar();
 
-		if ($persCount == 1) {?>
-		
+		if ($persCount == 1) {?>		
+
 <div class='well personal-form' style="display:none">
 <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'button',
@@ -283,6 +321,11 @@ $('#subdomain_changes .btn-danger').click(function(){
 
 
 <!-- PROJECT MENTOR SECTION (ROUTE TO CONTROLLER) -->
+	
+<!-- Hidden field for project picks -->
+<?php echo CHtml::hiddenField('project_picks_accept', '', array('id'=>'projecthiddeninputaccept'));?>	
+<?php echo CHtml::hiddenField('project_picks_reject', '', array('id'=>'projecthiddeninputreject'));?>	
+	
 <?php 	$projCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
 												from('application_project_mentor')->
 												where('status="Admin"')->
@@ -290,6 +333,8 @@ $('#subdomain_changes .btn-danger').click(function(){
 												queryScalar();
 
 		if ($projCount == 1) {?>
+		
+
 <div class='well project-form' style="display:none">
 <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'button',
@@ -414,13 +459,20 @@ $('#subdomain_changes .btn-danger').click(function(){
 
 
 <!-- DOMAIN MENTOR SECTION (ROUTE TO CONTROLLER) -->
+<!-- Hidden field for domain picks -->
+<?php echo CHtml::hiddenField('domain_picks_accept', '', array('id'=>'domainhiddeninputaccept'));?>
+<?php echo CHtml::hiddenField('domain_picks_reject', '', array('id'=>'domainhiddeninputreject'));?>	
+<?php echo CHtml::hiddenField('subdomain_picks_accept', '', array('id'=>'subdomainhiddeninputaccept'));?>
+<?php echo CHtml::hiddenField('subdomain_picks_reject', '', array('id'=>'subdomainhiddeninputreject'));?>
+	
 <?php 	$domCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
 												from('application_domain_mentor')->
 												where('status="Admin"')->
          										andWhere('user_id=:id', array(':id'=>$user_id))->
 												queryScalar();
-
 		if ($domCount == 1) {?>
+		
+	
 <div class='well domain-form' style="display:none">
 <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'button',
@@ -615,15 +667,6 @@ $('#subdomain_changes .btn-danger').click(function(){
 ?>
 </div>
 	<?php } else if ($domCount > 1) echo 'Too many entries';?>
-	
-<?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
-	'id'=>'mentor_app',
-	'enableAjaxValidation'=>false,
-)); ?>
-		        <?php echo CHtml::hiddenField('personal_picks', '', array('id'=>'hiddeninput'));?>	
-		        <?php echo CHtml::hiddenField('project_picks', '', array('id'=>'hiddeninput'));?>	
-		       	<?php echo CHtml::hiddenField('domain_picks', '', array('id'=>'hiddeninput'));?>	
-		       	<?php echo CHtml::hiddenField('subdomain_picks', '', array('id'=>'hiddeninput'));?>	
 		       	
 <?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary",'id'=>'submit', "disabled"=>"disabled")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
 

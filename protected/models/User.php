@@ -36,6 +36,8 @@
  * @property Message[] $messages
  * @property Message[] $messages1
  * @property PersonalMentor $personalMentor
+ * @property PersonalMentorMentees[] $personalMentorMentees
+ * @property PersonalMentorMentees[] $personalMentorMentees1
  * @property ProjectMentor $projectMentor
  * @property Ticket[] $tickets
  * @property Ticket[] $tickets1
@@ -129,6 +131,8 @@ class User extends CActiveRecord
             'messages' => array(self::HAS_MANY, 'Message', 'receiver'),
             'messages1' => array(self::HAS_MANY, 'Message', 'sender'),
             'personalMentor' => array(self::HAS_ONE, 'PersonalMentor', 'user_id'),
+        		'personalMentorMentees' => array(self::HAS_MANY, 'PersonalMentorMentees', 'user_id'),
+        		'personalMentorMentees1' => array(self::HAS_MANY, 'PersonalMentorMentees', 'personal_mentor_id'),
             'projectMentor' => array(self::HAS_ONE, 'ProjectMentor', 'user_id'),
             'tickets' => array(self::HAS_MANY, 'Ticket', 'assign_user_id'),
             'tickets1' => array(self::HAS_MANY, 'Ticket', 'creator_user_id'),
