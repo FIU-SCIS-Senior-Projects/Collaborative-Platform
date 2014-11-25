@@ -108,7 +108,7 @@ class ApplicationController extends Controller
 		$model=Project::model()->findByPk($id);
 		return $model;
 	}
-	function loadSubDomainPick($id){
+	function loadUser($id){
 		$model=User::model()->findByPk($id);
 		return $model;
 	}
