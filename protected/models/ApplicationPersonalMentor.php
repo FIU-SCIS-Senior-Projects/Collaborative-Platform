@@ -47,7 +47,7 @@ class ApplicationPersonalMentor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, status, max_amount, max_hours, university_id', 'required'),
+			array('user_id, status, max_amount, max_hours', 'required'),
 			array('user_id, university_id', 'length', 'max'=>11),
 			array('status', 'length', 'max'=>6),
 			array('max_amount, max_hours', 'length', 'max'=>2),

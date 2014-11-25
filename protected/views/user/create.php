@@ -10,15 +10,7 @@
 */
 ?>
 
-<h2>Collaborative Platform Registration</h2>
+<h2 id="register-title">Collaborative Platform Registration</h2>
 <?php
 	    echo $this->renderPartial('register', array('model'=>$model, 'infoModel'=>$infoModel, 'error'=>$error));
 ?>
-<?php //print_r($_POST); ?>
-
-
-
-
-
-
-

@@ -5,17 +5,135 @@
 /* @var $form CActiveForm */
 
 Yii::app()->clientScript->registerScript('register', "
+		
+	function setInvalid(id, errId){
+		$(errId).removeClass('hidden');
+		$(id).addClass('txt_error');
+	}
+		
+	function setValid(id, errId){
+		$(errId).addClass('hidden');
+		$(id).removeClass('txt_error');
+	}
+
+	function validateAccountInfo(){
+		var valid = true;
+		var alphaNum = /^[a-z0-9]+$/i;
+		var emailReg = /^[^@]{1,64}@[^@]{1,255}$/;
+		
+		if($('#fname').val().length < 1){
+			setInvalid($('#fname'), $('#fname-error'));
+			valid = false;
+		} else setValid($('#fname'), $('#fname-error'));
+		
+		if($('#lname').val().length < 1){
+			setInvalid($('#lname'), $('#lname-error'));
+			valid = false;
+		} else setValid($('#lname'), $('#lname-error'));
+		
+		if($('#uname').val().length < 4 || !alphaNum.test($('#uname').val())){
+			setInvalid($('#uname'), $('#uname-error'));
+			valid = false;
+		} else setValid($('#uname'), $('#uname-error'));
+
+		if(!emailReg.test($('#email').val())){
+			setInvalid($('#email'), $('#email-error'));
+			valid = false;
+		} else setValid($('#email'), $('#email-error'));
+
+		if($('#pass1').val().length < 5) {
+			setInvalid($('#pass1'), $('#pass1-error'));
+			valid = false;
+        } else 	setValid($('#pass1'), $('#pass1-error'));
+		
+		if($('#pass1').val() != $('#pass2').val()) {
+			setInvalid($('#pass2'), $('#pass2-error'));
+			valid = false;
+        } else 	setValid($('#pass2'), $('#pass2-error'));
+
+		return valid;
+	}
+		
+	function validatePersonalInfo(){
+		var valid = true;
+		var alphaNum = /^[a-z0-9]+$/i;
+		var emailReg = /^[^@]{1,64}@[^@]{1,255}$/;
+		var numReg = /^\d+$/;
+		
+		if($('#emp').val().length < 1){
+			setInvalid($('#emp'), $('#emp-error'));
+			valid = false;
+		} else setValid($('#emp'), $('#emp-error'));
+		
+		if($('#pos').val().length < 1){
+			setInvalid($('#pos'), $('#pos-error'));
+			valid = false;
+		} else setValid($('#pos'), $('#pos-error'));
+		
+		if($('#start').val().length != 4 || !numReg.test($('#start').val())){
+			setInvalid($('#start'), $('#start-error'));
+			valid = false;
+		} else setValid($('#start'), $('#start-error'));
+		
+		if($('#grad').val().length != 4 || !numReg.test($('#grad').val())){
+			setInvalid($('#grad'), $('#grad-error'));
+			valid = false;
+		} else setValid($('#grad'), $('#grad-error'));
+		
+		if($('#uni').val().length < 1){
+			setInvalid($('#uni'), $('#uni-error'));
+			valid = false;
+		} else setValid($('#uni'), $('#uni-error'));
+		
+		if($('#fos').val().length < 1){
+			setInvalid($('#fos'), $('#fos-error'));
+			valid = false;
+		} else setValid($('#fos'), $('#fos-error'));
+		
+		if($('#deg').val() == 'Select'){
+			setInvalid($('#deg'), $('#deg-error'));
+			valid = false;
+		} else setValid($('#deg'), $('#deg-error'));
+		
+		return valid;
+	}
+		
 	$('.next').click(function(){
-		$('.personal-info').toggle();
-		$('.next').attr('disabled', 'disabled');
+		if(validateAccountInfo()){
+			$('.personal-info').collapse('toggle')
+			$('.next').addClass('hidden');
+			$('.next2').removeClass('hidden')
+		}
 		return false;
 	});
-	
+		
 	$('.next2').click(function(){
-		$('.skills-info').toggle();
-		$('.next2').attr('disabled', 'disabled');
+		if(validateAccountInfo() && validatePersonalInfo()){
+			$('#fname-verify').text('Name: ' + $('#fname').val() + ' ' + $('#mname').val() + ' ' + $('#lname').val());
+			$('#uname-verify').text('Userame: ' + $('#uname').val());
+			$('#email-verify').text('Email: ' + $('#email').val());
+			$('#emp-verify').text('Employer: ' + $('#emp').val());
+			$('#pos-verify').text('Position: ' + $('#pos').val());
+			$('#start-verify').text('Start Year: ' + $('#start').val());
+			$('#deg-verify').text('Degree: ' + $('#deg').val());
+			$('#uni-verify').text('University: ' + $('#uni').val());
+			$('#fos-verify').text('Field of Study: ' + $('#fos').val());
+			$('#grad-verify').text('Graduation Year: ' + $('#grad').val());
+			$('#verify').modal('toggle');
+		}
+
 		return false;
 	});
+
+	$(document).ready(function() {
+	  $(window).keydown(function(event){
+	    if(event.keyCode == 13) {
+	      event.preventDefault();
+	      return false;
+	    }
+	  });
+	});
+
 ");
 ?>
 <div class="form">
@@ -23,101 +141,143 @@ Yii::app()->clientScript->registerScript('register', "
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'user-Register-form',
 	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>true,
 )); ?>
-
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
-	
-
 	<?php echo $form->errorSummary($model); ?>
-    
-	<div id="regbox" class="account-info">
-        <?php /* $this->widget('bootstrap.widgets.TbTabs', array(
-		    'tabs'=> $this->getTabs($form, $model)
-		)); */?>
-		<h4>Account Info</h4>
-		<?php echo $form->labelEx($model,'fname'); ?>
-        <?php echo $form->textField($model,'fname',array('size'=>45,'maxlength'=>45)); ?>
-        <?php echo $form->error($model,'fname'); ?>
-    
-        <?php echo $form->labelEx($model,'mname'); ?>
-        <?php echo $form->textField($model,'mname',array('size'=>45,'maxlength'=>45)); ?>
-        <?php echo $form->error($model,'mname'); ?>
-    
-        <?php echo $form->labelEx($model,'lname'); ?>
-        <?php echo $form->textField($model,'lname',array('size'=>60,'maxlength'=>100)); ?>
-        <?php echo $form->error($model,'lname'); ?>
-		
-		<?php echo $form->labelEx($model,'email'); ?>
-        <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'email'); ?>
-        
-		<?php echo $form->labelEx($model,'username'); ?>
-        <?php echo $form->textField($model,'username',array('size'=>45,'maxlength'=>45)); ?>
-        <?php echo $form->error($model,'username'); ?>
-    
-        <?php echo $form->labelEx($model,'password'); ?>
-        <?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'password'); ?>
-    
-    	<?php echo $form->labelEx($model,'password2'); ?>
-        <?php echo $form->passwordField($model,'password2',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'password2'); ?>
-        
-        <?php $this->widget('bootstrap.widgets.TbButton', array(
+    <div class="rowfluid">
+    	<div class="span12 lightMarginL">
+	    	<div class="account-info">
+				<div class="row-fluid">
+					<h4>Account Info</h4>
+					<div class="span3 lightMarginL">
+						<?php echo $form->labelEx($model,'fname'); ?>
+				        <?php echo $form->textField($model,'fname',array('size'=>45,'maxlength'=>45, 'width'=>'50px', 'id'=>'fname')); ?>
+				        <p id='fname-error' class="note errMsg hidden">This field is required.</p>
+				    </div>
+					<div class="span3 lightMarginL">
+						<?php echo $form->labelEx($model,'mname'); ?>
+			        	<?php echo $form->textField($model,'mname',array('size'=>45,'maxlength'=>45, 'id'=>'mname')); ?>
+			        	<?php echo $form->error($model,'mname'); ?>
+				    </div>
+				    <div class="span3 lightMarginL">
+						<?php echo $form->labelEx($model,'lname'); ?>
+				        <?php echo $form->textField($model,'lname',array('size'=>60,'maxlength'=>100, 'id'=>'lname')); ?>
+				        <p id='lname-error' class="note errMsg hidden">This field is required.</p>
+				    </div>
+				</div>
+				<div class="row-fluid">
+					<div class="span3 lightMarginL">
+						<?php echo $form->labelEx($model,'email'); ?>
+				        <?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255, 'id'=>'email')); ?>
+				        <p id='email-error' class="note errMsg hidden">Email is not formatted correctly.</p>
+					</div>
+					<div class="span3 lightMarginL">
+						<?php echo $form->labelEx($model,'username'); ?>
+				        <?php echo $form->textField($model,'username',array('size'=>45,'maxlength'=>45, 'id'=>'uname')); ?>
+						<p id='uname-error' class="note errMsg hidden">Username must be alphanumeric and have at least 4 characters.</p>
+				    </div>
+				</div>
+				<div class="row-fluid">
+					<div class="span3 lightMarginL">
+						<?php echo $form->labelEx($model,'password'); ?>
+				        <?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>255, 'id'=>'pass1')); ?>
+						<p id='pass1-error' class="note errMsg hidden">Password must be more than 5 characters.</p>
+				    </div>
+					<div class="span3 lightMarginL">
+						<?php echo $form->labelEx($model,'password2'); ?>
+				        <?php echo $form->passwordField($model,'password2',array('size'=>60,'maxlength'=>255, 'id'=>'pass2')); ?>
+						<p id='pass2-error' class="note errMsg hidden">Passwords do not match.</p>
+					</div>
+				</div>
+			</div>
+	    	<div class="personal-info collapse">
+	    		<div class="rowfluid">
+	    			<div class="span3 lightMarginL">
+	    				<h4>Work Experience</h4>
+	    				<?php echo $form->labelEx($infoModel,'employer'); ?>
+				        <?php echo $form->textField($infoModel,'employer',array('size'=>60,'maxlength'=>255, 'id'=>'emp')); ?>
+						<p id='emp-error' class="note errMsg hidden">This field is required.</p>
+				        				        
+				        <?php echo $form->labelEx($infoModel,'position'); ?>
+				        <?php echo $form->textField($infoModel,'position',array('size'=>60,'maxlength'=>255, 'id'=>'pos')); ?>
+						<p id='pos-error' class="note errMsg hidden">This field is required.</p>
+				        				         
+				        <?php echo $form->labelEx($infoModel,'job_start'); ?>
+				        <?php echo $form->textField($infoModel,'job_start',array('size'=>60,'maxlength'=>255, 'id'=>'start')); ?>
+						<p id='start-error' class="note errMsg hidden">Year entered is invalid.</p>
+				    </div>
+	    			<div class="span3 lightMarginL">
+	    				<h4>Education</h4>
+						<?php $data = array('Select', 'Bachelors', 'Masters', 'PhD')?>
+				        <?php echo $form->dropDownListRow($infoModel,'degree',array_combine($data, $data), array('id'=>'deg')); ?>
+						<p id='deg-error' class="note errMsg hidden">A degree must be selected.</p>
+				        						
+						<?php echo $form->labelEx($infoModel,'field_of_study'); ?>
+				        <?php echo $form->textField($infoModel,'field_of_study',array('size'=>60,'maxlength'=>255, 'id'=>'fos')); ?>
+						<p id='fos-error' class="note errMsg hidden">This field is required.</p>
+				        
+	    			</div>
+	    			<div class="span3 lightMarginL">
+	    			<br/><br/>
+						<?php echo $form->labelEx($infoModel,'university'); ?>
+				        <?php echo $form->textField($infoModel,'university',array('size'=>60,'maxlength'=>255, 'id'=>'uni')); ?>
+						<p id='uni-error' class="note errMsg hidden">This field is required.</p>
+				        						
+						<?php echo $form->labelEx($infoModel,'grad_year'); ?>
+				        <?php echo $form->textField($infoModel,'grad_year',array('size'=>60,'maxlength'=>255, 'id'=>'grad')); ?>
+						<p id='grad-error' class="note errMsg hidden">Year entered is invalid.</p>
+					</div>
+	    		</div>
+			</div>
+			<div class="span9 centerTxt">
+		        <?php $this->widget('bootstrap.widgets.TbButton', array(
 	                'buttonType'=>'button',
 	                'type'=>'primary',
 					'size'=>'large',
-					'block'=>'true',
 	                'label'=>'Next',
         			'htmlOptions'=>array('class'=>'next'),
 	            )); ?>
-    </div>
-    <div id="regbox" class="personal-info" style="display:none">
-    	<h4>Work Experience</h4>
-        <?php echo $form->labelEx($infoModel,'employer'); ?>
-        <?php echo $form->textField($infoModel,'employer',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($infoModel, 'employer'); ?>
-        
-        <?php echo $form->labelEx($infoModel,'position'); ?>
-        <?php echo $form->textField($infoModel,'position',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($infoModel,'position'); ?>
-         
-        <?php echo $form->labelEx($infoModel,'job_start'); ?>
-        <?php echo $form->textField($infoModel,'job_start',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($infoModel,'job_start'); ?>
-		
-		<h4>Education</h4>
-		<?php $data = array('Select', 'Bachelors', 'Masters', 'PhD')?>
-        <?php echo $form->dropDownListRow($infoModel,'degree',array_combine($data, $data)); ?>
-		<?php echo $form->error($infoModel,'degree'); ?>
-		
-		<?php echo $form->labelEx($infoModel,'field_of_study'); ?>
-        <?php echo $form->textField($infoModel,'field_of_study',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($infoModel, 'field_of_study'); ?>
-		
-		<?php echo $form->labelEx($infoModel,'university'); ?>
-        <?php echo $form->textField($infoModel,'university',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($infoModel,'university'); ?>
-		
-		<?php echo $form->labelEx($infoModel,'grad_year'); ?>
-        <?php echo $form->textField($infoModel,'grad_year',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($infoModel,'grad_year'); ?>
-		
-		<?php $this->widget('bootstrap.widgets.TbButton', array(
-	                'buttonType'=>'button',
-	                'type'=>'primary',
-					'size'=>'large',
-					'block'=>'true',
-	                'label'=>'Next',
-        			'htmlOptions'=>array('class'=>'next2'),
-	            )); ?>
+	            <a href="#verify" role="button" class="btn btn-large btn-primary next2 hidden" data-toggle="modal">Next</a>
+	          	<a style="text-decoration:none" href="/coplat/index.php/site/login">
+					<?php $this->widget('bootstrap.widgets.TbButton', array(
+		                'buttonType'=>'button',
+		                'type'=>'danger',
+						'size'=>'large',
+		                'label'=>'Cancel',
+		            )); ?>
+          		</a>
+			</div>
+		</div>
+    </div>	
+    <div id="verify" class="modal hide fade text-center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<br/>
+			<h3 id="myModalLabel">Summary</h3>
+			<br/>
+			<p>Please verify that the entered information is correct</p>
+		</div>
+		<div class="modal-body text-center">
+			<h4>Account Info</h4>
+			<p id='fname-verify'></p>
+			<p id='mname-verify'></p>
+			<p id='lname-verify'></p>
+			<p id='uname-verify'></p>
+			<p id='email-verify'></p>
+			<h4>Work Experience</h4>
+			<p id='emp-verify'></p>
+			<p id='pos-verify'></p>
+			<p id='start-verify'></p>
+			<h4>Education</h4>
+			<p id='deg-verify'></p>
+			<p id='uni-verify'></p>
+			<p id='fos-verify'></p>
+			<p id='grad-verify'></p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+			<?php echo CHtml::submitButton('Submit', array('class'=>'btn btn-large btn-primary', 'id'=>'regsubmit')); ?>
+		</div>
 	</div>
-	<div id="regbox" class="skills-info" style="display:none">
-		<h4>Skills</h4>
-        <?php echo $form->textField($model,'skills',array('size'=>60,'maxlength'=>255)); ?>
-        <?php echo $form->error($model,'skills'); ?>
-		<br></br>
-		<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-primary btn-block")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
-	</div>
-        
-	<?php $this->endWidget(); ?>
+</div>  
+<?php $this->endWidget(); ?>

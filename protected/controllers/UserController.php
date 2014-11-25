@@ -487,6 +487,72 @@ class UserController extends Controller
 
     }
     
+
+    public function actionRegister(){
+    	$model=new User;
+    	$model->username = "";
+    	$model->password = "";
+    	
+    	$infoModel = new UserInfo;
+    	$infoModel->user_id = $model->id;
+    	
+    	// Uncomment the following line if AJAX validation is needed
+    	// $this->performAjaxValidation($model);
+    	$error='';
+    	$form = 'user-Register-form';
+    	//If a new User has been successfully created e.g. the user has created an account from the register.php page
+    	
+    	if(isset($_POST['User']) && isset($_POST['UserInfo']))
+    	{
+    		/*if ($this->actionVerifyRegistration() != "") {
+    		 $this->render('create', array('model'=>$model));
+    		}*/
+    			
+    		echo("<script>console.log('New User Registered');</script>");
+    		// auto-fill biography information
+    		$model->attributes=$_POST['User'];
+    		$model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
+    		$model->biography = "Tell us something about yourself...";
+    		$model->activation_chain = $this->genRandomString(10);
+    		$model->activated = 1;
+    	
+    	
+    	
+    		// hash entered password
+    		$pw = $model->password;
+    		$hasher = new PasswordHash(8, false);
+    		$model->password = $hasher->HashPassword($model->password);
+    	
+    		$error1 = $this->verifyRegistration();
+    		if($error1==null)
+    		{
+    	
+    			$model->save(false);
+    	
+    			if(isset($_POST['UserInfo'])){
+    				// get entered personal info
+    				$infoModel->attributes=$_POST['UserInfo'];
+    				$infoModel->user_id = $model->id;
+    				$infoModel->save(false);
+    			}
+    	
+    	
+    			//newUserLogin($model, $pw);
+    			$login = new LoginForm;
+    			$login->username = $model->username;
+    			$login->password = $pw;
+    			$login->login();
+    			$this->redirect("/coplat/index.php/application/portal");
+    		}
+    	}
+    	
+    	$this->render('register',array(
+    			'model'=>$model,'infoModel'=> $infoModel, 'error' => $error,
+    	));
+    	return;
+    }
+    
+    
     public function actionCreate_Admin()
     {
 

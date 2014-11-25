@@ -159,6 +159,8 @@ Yii::app()->clientScript->registerScript('register', "
 		
 		// move the DOM object over to the other table
 		var selector = $('#mygrid .items-body');
+		var verifier = $('#verifygrid .items-verify');
+			
 		if (selector.children('.item').length === 0) {
 			selector.html(obj);	
 		} else {
@@ -198,10 +200,15 @@ Yii::app()->clientScript->registerScript('register', "
 		
 		// move the DOM object over to the other table
 		var selector = $('#selectedgrid .items-body');
+		var verifier = $('#verifygrid .items-verify');
+		var copy = obj.clone();
+
 		if (selector.children('.item').length === 0) {
-			selector.html(obj);	
+			selector.html(obj);
+			verifier.html(copy);	
 		} else {
 			selector.find('.item:last').after(obj);
+			verifier.find('.item:last').after(copy);
 		}
 		
 		// reassign the proper click handler
@@ -225,6 +232,75 @@ Yii::app()->clientScript->registerScript('register', "
 		var separator = (currentIds === '') ? '' : ',';
 		$('#hiddeninput').val(currentIds + separator + newId);
 	};
+			
+	function setInvalid(id, errId){
+		$(errId).removeClass('hidden');
+		$(id).addClass('txt_error');
+	}
+		
+	function setValid(id, errId){
+		$(errId).addClass('hidden');
+		$(id).removeClass('txt_error');
+	}
+			
+	function validateApp(){
+		var valid = true;
+		var numReg = /^\d+$/;
+
+		if(!numReg.test($('#sys').val())){
+			setInvalid($('#sys'), $('#sys-error'));
+			return false;
+		} else setValid($('#sys'), $('#sys-error'));
+		
+		if(window.selectedStudents.length === 0 && $('#sys').val() == 0){
+			$('#main-error').removeClass('hidden');
+			return false;
+		} else $('#main-error').addClass('hidden');
+				
+		return valid;	
+	}
+			
+	$('.next').click(function(){
+		if(validateApp()){
+			var grid = $('#verifygrid');
+
+			// clear the table
+			grid.find('.items-verify').children().remove();
+			
+			// get a list of current selections
+			var currentIds = $('#hiddeninput').val().split(',');
+			
+			if(currentIds.length === 0){
+				$('#your_picks_message').text('You have selected NO mentees.');
+			} else {
+				$('#your_picks_message').text('You have selected these mentees.');
+				for(var i = 0; i < currentIds.length; i++){
+					for(var j = 0; j < window.selectedStudents.length; j++){
+						var student = window.selectedStudents[j];
+						if(student.id === currentIds[i]){
+							// make a row and add it to the verify grid
+							var row = template.clone();
+							row.children('.student-id').text(student.id);
+							row.children('.student-avatar').find('img').attr('src', student.avatar);
+							row.children('.student-name').text(student.name);
+							row.children('.student-university').text(student.university);
+							if(i === 0) grid.find('.items-verify').html(row);
+							else grid.find('.items-verify .item:last').after(row);
+							break;
+						}
+					}
+				}
+			}
+			
+			if($('#sys').val() == 0) $('#system_picks_message').text('The system will pick NO mentees for you.');
+			else {
+				$('#system_picks_message').text('The system will pick ' + $('#sys').val() +' mentees for you from ' + $('#ApplicationPersonalMentor_university_id :selected').text() + '.');			
+			}
+			
+			$('#verify').modal('toggle');
+		}
+		return false;
+	});
 	
 	(function($) {
 	
@@ -322,16 +398,14 @@ Yii::app()->clientScript->registerScript('register', "
 		<h3 class="centerTxt">System Pick Criteria</h3>
 			    <p>How many students would you like to have assigned? If you would prefer to work with students from a specific university just add them to your preffered universities</p>
 			    <br>
-		        <?php echo $form->textFieldGroup($model,'system_pick_amount',array('size'=>2,'maxlength'=>2)); ?>
-		        <?php echo $form->error($model,'system_pick_amount'); ?>
+		        <?php echo $form->textField($model,'system_pick_amount',array('size'=>2,'maxlength'=>2, 'id'=>'sys')); ?>
+				<p id='sys-error' class="note errMsg hidden">The amount entered is invalid.</p>
 		    	<br>
-		    	<style>
-				#ApplicationPersonalMentor_system_pick_amount {height: 34px;}
-				</style>
 		        <?php echo $form->dropDownListGroup($model, 'university_id', array('wrapperHtmlOptions'=>array('class'=>'col-sm-5'),
 		         																'widgetOptions'=>array(
 																		        	'data' => $universities,
 																					'htmlOptions' => array(),
+																				'id'=>'uni',
 		        )));?>
 		        <?php echo $form->error($model,'university_id'); ?>
 		        
@@ -339,14 +413,46 @@ Yii::app()->clientScript->registerScript('register', "
 	</div>
 </div>
 <div class="text-center">
-<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
-<a style="text-decoration:none" href="/coplat/index.php/application/portal">
-	<?php $this->widget('bootstrap.widgets.TbButton', array(
-                'buttonType'=>'button',
-                'type'=>'danger',
-				'size'=>'large',
-                'label'=>'Cancel',
-            )); ?>
-</a>
+	<a href="#verify" role="button" class="btn btn-large btn-primary next" data-toggle="modal">Next</a>
+	<a style="text-decoration:none" href="/coplat/index.php/application/portal">
+		<?php $this->widget('bootstrap.widgets.TbButton', array(
+	                'buttonType'=>'button',
+	                'type'=>'danger',
+					'size'=>'large',
+	                'label'=>'Cancel',
+	            )); ?>
+	</a>
+	<h4 id='main-error' class="note errMsg hidden">Must select a mentee for the list or have the system pick one for you.</h4>
+	
+</div>
+<div id="verify" class="modal hide fade text-center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<br/>
+		<h3 id="myModalLabel">Summary</h3>
+		<br/>
+		<p>Please verify that the entered information is correct</p>
+	</div>
+	<div class="modal-body">
+		<div class="row-fluid">
+			<div class="span7">
+				<h4>Your Picks</h4>
+				<p id="your_picks_message"></p>
+				<div id="verifygrid" class="grid-view">
+					<div class="items">
+						<div class="items-verify row-fluid">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="span5 lightMarginL">
+				<h4>System Picks</h4>
+				<p id="system_picks_message"></p>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+		<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary")); ?>
+	</div>
 </div>
 <?php $this->endWidget();?>
