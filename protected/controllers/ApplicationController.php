@@ -298,6 +298,13 @@ class ApplicationController extends Controller
 			}
 			
 			if ($personalFlag){
+				
+				$percount = Yii::app()->db->createCommand()->
+								select('count(*)')->
+								from('application_personal_mentor_pick')->
+								where('app_id =:id', array(':id'=>$persApp->id))->
+								andWhere('approval_status = "Proposed by Admin"')->
+								queryScalar();
 				if ($percount > 0){
 					$this->updateAppStatus($persApp, 'Mentor');						
 				} else {
@@ -306,6 +313,12 @@ class ApplicationController extends Controller
 			}
 			
 			if ($projectFlag){
+				$procount = Yii::app()->db->createCommand()->
+								select('count(*)')->
+								from('application_project_mentor_pick')->
+								where('app_id =:id', array(':id'=>$projApp->id))->
+								andWhere('approval_status = "Proposed by Admin"')->
+								queryScalar();
 				if ($procount > 0){
 					$this->updateAppStatus($projApp, 'Mentor');
 				} else {
