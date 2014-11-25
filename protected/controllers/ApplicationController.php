@@ -108,6 +108,10 @@ class ApplicationController extends Controller
 		$model=Project::model()->findByPk($id);
 		return $model;
 	}
+	function loadSubDomainPick($id){
+		$model=User::model()->findByPk($id);
+		return $model;
+	}
 
 	public function actionView($id)
 	{	
@@ -122,6 +126,7 @@ class ApplicationController extends Controller
 			$domApp = $this->loadDomainMentorByUser($user_id);
 			$persApp = $this->loadPersonalMentorByUser($user_id);
 			$projApp = $this->loadProjectMentorByUser($user_id);
+			$loaduser = $this->loadUser($user_id);
 
 // PERSONAL PICKS ACCEPT
 			$mypicks = $_POST['personal_picks_accept'];
@@ -143,6 +148,7 @@ class ApplicationController extends Controller
 				}
 				
 				$personalFlag = true;
+				$loaduser->isPerMentor = 1;
 				
 			}
 			
@@ -177,10 +183,15 @@ class ApplicationController extends Controller
 					$project = $this->loadProject($actualPick->project_id);
 					$project->project_mentor_user_id = $user_id;
 					$project->save();
+					
+					// add entry to project_mentor
+					$pmentor = new ProjectMentor('add_new');
+					$pmentor->user_id = $user_id;
+					$pmentor->save();
 				}
 				
 				$projectFlag = true;
-				
+				$loaduser->isProMentor = 1;
 			}
 			
 // PROJECT PICKS REJECT			
@@ -219,6 +230,7 @@ class ApplicationController extends Controller
 				}
 				
 				$domainFlag = true;
+				$loaduser->isDomMentor = 1;
 			}
 			
 // DOMAIN PICKS REJECT			
@@ -259,6 +271,8 @@ class ApplicationController extends Controller
 				}
 				
 				$domainFlag = true;
+				$loaduser->isDomMentor = 1;
+				
 			}
 			
 // SUBDOMAIN PICKS REJECT	
@@ -296,6 +310,8 @@ class ApplicationController extends Controller
 					$this->updateAppStatus($domApp, 'Admin');
 				}
 			}
+			
+			$loaduser->save();
 			
 			if ($personalFlag){
 				
