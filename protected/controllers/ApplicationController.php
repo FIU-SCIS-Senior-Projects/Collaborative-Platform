@@ -80,12 +80,12 @@ class ApplicationController extends Controller
 	
 	function updateAppStatus($model, $status){
 		$model->status = $status;
-		$model->save();
+		$model->save(false);
 	}
 	
 	function updatePickStatus($model, $status){
 		$model->approval_status = $status;
-		$model->save();
+		$model->save(false);
 	}
 	
 	function loadPersonalPick($id){
