@@ -184,6 +184,19 @@ class ApplicationController extends Controller
 					$project->project_mentor_user_id = $user_id;
 					$project->save();
 					
+					// add entry to project_mentor
+// 					$projectEntry = Yii::app()->db->createCommand()->
+// 								select('count(*)')->
+// 								from('project_mentor')->
+// 								where('user_id =:id', array(':id'=>$user_id))->
+// 								queryScalar();
+					
+// 					if ($projectEntry < 1){
+					
+// 							$pmentor = new ProjectMentor('add_new');
+// 							$pmentor->user_id = $user_id;
+// 							$pmentor->save();
+// 					}
 				}
 				
 				// add entry to project_mentor
