@@ -47,6 +47,9 @@ class ProjectController extends Controller
 	
 	public function actionViewmodal($id)
 	{
+		$this->layout = '//layouts/column1';
+		
+		
 		$model = $this->loadModel($id);
 	
 		if( Yii::app()->request->isAjaxRequest )
@@ -158,6 +161,9 @@ class ProjectController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		$this->layout = '//layouts/column1';
+		
+		
 		$model=new Project('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Project']))

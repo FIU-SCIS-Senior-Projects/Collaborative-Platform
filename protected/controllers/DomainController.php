@@ -47,12 +47,15 @@ class DomainController extends Controller
 	
 	public function actionViewmodal($id)
 	{
-			$model = $this->loadModel($id);
-				
-			if( Yii::app()->request->isAjaxRequest )
-				$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
-			else
-				$this->render('viewmodal',array('model'=>$model,));
+		
+		$this->layout = '//layouts/column1';
+	
+		$model = $this->loadModel($id);
+			
+		if( Yii::app()->request->isAjaxRequest )
+			$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
+		else
+			$this->render('viewmodal',array('model'=>$model,));
 		
 	
 	}
@@ -145,6 +148,8 @@ class DomainController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		$this->layout = '//layouts/column1';
+		
 		$model=new Domain('search');
 		
 		$model->unsetAttributes();  // clear any default values

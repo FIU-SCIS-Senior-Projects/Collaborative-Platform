@@ -81,7 +81,7 @@ $('.details-button').click(function(){
                                         
                     $this->widget('bootstrap.widgets.TbGridView', array(
                     		'type'=>'striped condensed hover',
-                    		'id'=>'id',
+                    		'id'=>'tickets',
                     		'dataProvider'=>$rawData,
                     		'summaryText'=>'',
                     		//'filter'=>$model,
@@ -134,7 +134,7 @@ $('.details-button').click(function(){
 <?php
                     $this->widget('bootstrap.widgets.TbGridView', array(
                     		'type'=>'striped condensed hover',
-                    		'id'=>'id',
+                    		'id'=>'mentors',
                     		'dataProvider'=>new CArrayDataProvider($model->userDomains, array('keyField'=>'id')),
                     		'summaryText'=>'',
                     		//'filter'=>$model,

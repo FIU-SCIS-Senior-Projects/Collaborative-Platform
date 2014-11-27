@@ -184,11 +184,12 @@ class ApplicationController extends Controller
 					$project->project_mentor_user_id = $user_id;
 					$project->save();
 					
-					// add entry to project_mentor
-					$pmentor = new ProjectMentor('add_new');
-					$pmentor->user_id = $user_id;
-					$pmentor->save();
 				}
+				
+				// add entry to project_mentor
+				$pmentor = new ProjectMentor('add_new');
+				$pmentor->user_id = $user_id;
+				$pmentor->save();
 				
 				$projectFlag = true;
 				$loaduser->isProMentor = 1;
@@ -307,7 +308,7 @@ class ApplicationController extends Controller
 				if ($domcount > 0){
 					$this->updateAppStatus($domApp, 'Mentor');
 				} else {
-					$this->updateAppStatus($domApp, 'Admin');
+					$this->updateAppStatus($domApp, 'Closed');
 				}
 			}
 			
@@ -324,7 +325,7 @@ class ApplicationController extends Controller
 				if ($percount > 0){
 					$this->updateAppStatus($persApp, 'Mentor');						
 				} else {
-					$this->updateAppStatus($persApp, 'Admin');
+					$this->updateAppStatus($persApp, 'Closed');
 				}
 			}
 			
@@ -338,7 +339,7 @@ class ApplicationController extends Controller
 				if ($procount > 0){
 					$this->updateAppStatus($projApp, 'Mentor');
 				} else {
-					$this->updateAppStatus($projApp, 'Admin');
+					$this->updateAppStatus($projApp, 'Closed');
 				}
 			}
 

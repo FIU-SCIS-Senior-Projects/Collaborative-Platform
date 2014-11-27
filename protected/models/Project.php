@@ -136,7 +136,7 @@ class Project extends CActiveRecord
 	}
 	
 	public function getShortDescription(){
-		$max = 120;
+		$max = 200;
 		if (strlen($this->description) > $max)
 				return (substr($this->description, 0, $max) . '...');
 		else return $this->description;
