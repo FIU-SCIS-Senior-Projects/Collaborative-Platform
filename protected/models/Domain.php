@@ -137,7 +137,7 @@ class Domain extends CActiveRecord
     		
     		$subs = new Subdomain();
     		$subs->domain_id = $domain->id;
-    		$temp["subdomains"] = Subdomain::model()->getSubdomainsForApp($subs->searchNoPagination());
+    		$temp["subdomains"] = Subdomain::model()->getSubdomainsForApp($subs->setCriteriaForApp(), $domain->id);
     		
     		$domains[] = $temp;
     	}

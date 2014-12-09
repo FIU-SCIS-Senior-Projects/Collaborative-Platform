@@ -70,11 +70,6 @@ Yii::app()->clientScript->registerScript('register', "
 			valid = false;
 		} else setValid($('#pos'), $('#pos-error'));
 		
-		if($('#start').val().length != 4 || !numReg.test($('#start').val())){
-			setInvalid($('#start'), $('#start-error'));
-			valid = false;
-		} else setValid($('#start'), $('#start-error'));
-		
 		if($('#grad').val().length != 4 || !numReg.test($('#grad').val())){
 			setInvalid($('#grad'), $('#grad-error'));
 			valid = false;
@@ -114,7 +109,6 @@ Yii::app()->clientScript->registerScript('register', "
 			$('#email-verify').text('Email: ' + $('#email').val());
 			$('#emp-verify').text('Employer: ' + $('#emp').val());
 			$('#pos-verify').text('Position: ' + $('#pos').val());
-			$('#start-verify').text('Start Year: ' + $('#start').val());
 			$('#deg-verify').text('Degree: ' + $('#deg').val());
 			$('#uni-verify').text('University: ' + $('#uni').val());
 			$('#fos-verify').text('Field of Study: ' + $('#fos').val());
@@ -202,10 +196,6 @@ Yii::app()->clientScript->registerScript('register', "
 				        <?php echo $form->labelEx($infoModel,'position'); ?>
 				        <?php echo $form->textField($infoModel,'position',array('size'=>60,'maxlength'=>255, 'id'=>'pos')); ?>
 						<p id='pos-error' class="note errMsg hidden">This field is required.</p>
-				        				         
-				        <?php echo $form->labelEx($infoModel,'job_start'); ?>
-				        <?php echo $form->textField($infoModel,'job_start',array('size'=>60,'maxlength'=>255, 'id'=>'start')); ?>
-						<p id='start-error' class="note errMsg hidden">Year entered is invalid.</p>
 				    </div>
 	    			<div class="span3 lightMarginL">
 	    				<h4>Education</h4>
@@ -250,14 +240,14 @@ Yii::app()->clientScript->registerScript('register', "
 			</div>
 		</div>
     </div>	
-    <div id="verify" class="modal hide fade text-center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="verify" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
 			<br/>
 			<h3 id="myModalLabel">Summary</h3>
 			<br/>
 			<p>Please verify that the entered information is correct</p>
 		</div>
-		<div class="modal-body text-center">
+		<div class="modal-body">
 			<h4>Account Info</h4>
 			<p id='fname-verify'></p>
 			<p id='mname-verify'></p>
@@ -267,7 +257,6 @@ Yii::app()->clientScript->registerScript('register', "
 			<h4>Work Experience</h4>
 			<p id='emp-verify'></p>
 			<p id='pos-verify'></p>
-			<p id='start-verify'></p>
 			<h4>Education</h4>
 			<p id='deg-verify'></p>
 			<p id='uni-verify'></p>

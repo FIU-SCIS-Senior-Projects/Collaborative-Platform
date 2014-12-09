@@ -348,9 +348,9 @@ Yii::app()->clientScript->registerScript('register', "
 				.items-body {height: 400px; overflow-y: scroll; background: #F8F8F8;}
 				.header-pad {padding-left: 5px}
 				.student-id {display: none !important;}
-				.student-avatar {width: 20%; padding: 0; border-left: 1px solid white}
-				.student-name {width: 40%; border-left: 1px solid white}
-				.student-university {width: 40%;  border-left: 1px solid white}
+				.student-avatar {width: 20%; padding: 0}
+				.student-name {width: 40%}
+				.student-university {width: 40%}
 				</style>
 				<div id="mygrid" class="grid-view">
 					<div class="items">
@@ -360,11 +360,11 @@ Yii::app()->clientScript->registerScript('register', "
 							<div class="student-university span5 header-pad">University</div>
 						</div>
 						<div class="items-body row-fluid">
-							<div class="item row-fluid" id="rowtemplate" data-trigger="hover" data-delay="500">
+							<div class="item row-fluid tbl-row" id="rowtemplate" data-trigger="hover" data-delay="500">
 								<div class="student-id"></div>
 								<div class="student-avatar span2"><img src="/coplat/images/profileimages/avatarsmall.gif" alt=""></div>
-								<div class="student-name span4">Ingrid Troche</div>
-								<div class="student-university span5">Florida International University</div>
+								<div class="student-name span4 selector-center">Ingrid Troche</div>
+								<div class="student-university span5 selector-center">Florida International University</div>
 							</div>
 						</div>
 					</div>
@@ -381,11 +381,11 @@ Yii::app()->clientScript->registerScript('register', "
 							<div class="student-university span5 header-pad">University</div>
 						</div>
 						<div class="items-body row-fluid">
-							<div class="item row-fluid" id="rowtemplate" data-trigger="hover" data-delay="500">
+							<div class="item row-fluid tbl-row" id="rowtemplate" data-trigger="hover" data-delay="500">
 								<div class="student-id"></div>
 								<div class="student-avatar span2"><img src="/coplat/images/profileimages/avatarsmall.gif" alt=""></div>
-								<div class="student-name span4">Ingrid Troche</div>
-								<div class="student-university span5">Florida International University</div>
+								<div class="student-name span4 selector-center">Ingrid Troche</div>
+								<div class="student-university span5 selector-center">Florida International University</div>
 							</div>
 						</div>
 					</div>

@@ -451,7 +451,36 @@ class ApplicationController extends Controller
 	 * Renders the mentor application portal
 	 */
 	public function actionPortal(){
-		$this->render('portal');
+		$user = User::model()->getCurrentUser();
+		$buttons = array();
+		$count = Yii::app()->db->createCommand()->
+						select('count(*)')->
+						from('application_personal_mentor')->
+						where('user_id =:id', array(':id'=>$user->id))->
+						andWhere('status != "Closed"')->
+						queryScalar();
+		if($count > 0) $buttons[] = 0;
+		else $buttons[] = 1;
+		
+		$count = Yii::app()->db->createCommand()->
+			select('count(*)')->
+			from('application_project_mentor')->
+			where('user_id =:id', array(':id'=>$user->id))->
+			andWhere('status != "Closed"')->
+			queryScalar();
+		if($count > 0) $buttons[] = 0;
+		else $buttons[] = 1;
+		
+		$count = Yii::app()->db->createCommand()->
+			select('count(*)')->
+			from('application_domain_mentor')->
+			where('user_id =:id', array(':id'=>$user->id))->
+			andWhere('status != "Closed"')->
+			queryScalar();
+		if($count > 0) $buttons[] = 0;
+		else $buttons[] = 1;
+		
+		$this->render('portal', array('buttons'=>$buttons));
 	}
 	
 	/*
@@ -540,9 +569,37 @@ class ApplicationController extends Controller
 	public function actionDomain(){
 		$application = new ApplicationDomainMentor;
 		$domains = new Domain;
-		$subdomains = new Subdomain;
-		
 		if (Yii::app()->getRequest()->isPostRequest) {
+			$user = User::model()->getCurrentUser();
+			$application->attributes = $_POST['ApplicationDomainMentor'];
+			$application->status = 'Admin';
+			$application->user_id = $user->id;
+			$application->date_created = new CDbExpression('NOW()');
+			$application->save(false);
+				
+			$picks = $_POST['domPicks'];
+			$picks = explode(',', $picks);
+			foreach($picks as $pick){
+				$dbpick = new ApplicationDomainMentorPick;
+				$dbpick->app_id = $application->id;
+				$temp = explode(':', $pick);
+				$dbpick->domain_id = $temp[0];
+				$dbpick->proficiency = $temp[1];
+				$dbpick->approval_status = 'Proposed by Mentor';
+				$dbpick->save(false);
+			}
+			
+			$picks = $_POST['subPicks'];
+			$picks = explode(',', $picks);
+			foreach($picks as $pick){
+				$dbpick = new ApplicationSubdomainMentorPick;
+				$dbpick->app_id = $application->id;
+				$temp = explode(':', $pick);
+				$dbpick->subdomain_id = $temp[0];
+				$dbpick->proficiency = $temp[1];
+				$dbpick->approval_status = 'Proposed by Mentor';
+				$dbpick->save(false);
+			}
 
 			$this->redirect("/coplat/index.php/application/portal");
 		} else { // on initial load

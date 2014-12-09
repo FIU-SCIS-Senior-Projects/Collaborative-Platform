@@ -141,6 +141,15 @@ class Subdomain extends CActiveRecord
     	
     }
     
+    public function setCriteriaForApp(){
+    	$criteria=new CDbCriteria;
+    	$criteria->compare('domain_id',$this->domain_id,true);
+    	return new CActiveDataProvider($this, array(
+    			'criteria' => $criteria,
+    			'pagination'=>false,
+    	));
+    }
+    
     public function getSubdomainsForApp($dataprovider){
     	$subs = array();
     	foreach($dataprovider->getData() as $sub){
@@ -149,8 +158,7 @@ class Subdomain extends CActiveRecord
     		$temp["name"] = $sub->name;
     		$temp["description"] = $sub->description;
     		$temp["need"] = $sub->need;
-    	
-    		$domains[] = $temp;
+    		$subs[] = $temp;
     	}
     	return $subs;
     }

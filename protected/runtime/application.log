@@ -5619,3 +5619,226 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/application/null
 HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
 ---
+2014/11/25 21:13:08 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'approval_status' in 'where clause'. The SQL statement executed was: SELECT count(*)
+FROM `application_personal_mentor`
+WHERE (user_id =:id) AND (approval_status != "Closed").
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (461)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/11/25 21:13:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'approval_status' in 'where clause'. The SQL statement executed was: SELECT count(*)
+FROM `application_personal_mentor`
+WHERE (user_id =:id) AND (approval_status != "Closed")' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\CDbCommand.php(432): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(461): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPortal()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('portal')
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/por...')
+#13 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/application/portal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/project
+---
+2014/12/09 03:52:53 [error] [exception.CException] exception 'CException' with message 'Property "CActiveDataProvider.domainId" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\coplat\protected\models\Subdomain.php(145): CComponent->__set('domainId', '8')
+#1 C:\xampp\htdocs\coplat\protected\models\Domain.php(139): Subdomain->getSubdomainsForApp(Object(CActiveDataProvider), '8')
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(578): Domain->getDomainsForApp(Object(CActiveDataProvider))
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('domain')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/dom...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/domain
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/12/09 03:53:18 [error] [exception.CException] exception 'CException' with message 'Property "CActiveDataProvider.domain_id" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\coplat\protected\models\Subdomain.php(145): CComponent->__set('domain_id', '8')
+#1 C:\xampp\htdocs\coplat\protected\models\Domain.php(139): Subdomain->getSubdomainsForApp(Object(CActiveDataProvider), '8')
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(578): Domain->getDomainsForApp(Object(CActiveDataProvider))
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('domain')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/dom...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/domain
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/12/09 03:59:52 [error] [php] Array to string conversion (C:\xampp\htdocs\coplat\protected\models\Subdomain.php:155)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): ApplicationController->runAction()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): ApplicationController->filterAccessControl()
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#9 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/domain
+in C:\xampp\htdocs\coplat\protected\models\Subdomain.php (155)
+in C:\xampp\htdocs\coplat\protected\models\Domain.php (140)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (578)
+2014/12/09 04:00:23 [error] [php] Array to string conversion (C:\xampp\htdocs\coplat\protected\models\Subdomain.php:155)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#1 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): ApplicationController->runAction()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): ApplicationController->filterAccessControl()
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#9 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/domain
+in C:\xampp\htdocs\coplat\protected\models\Subdomain.php (155)
+in C:\xampp\htdocs\coplat\protected\models\Domain.php (140)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (578)
+2014/12/09 04:13:01 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'validator' in where clause is ambiguous. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`description` AS `t0_c2`, `t`.`validator` AS `t0_c3`, `t`.`domain_id` AS `t0_c4`, `t`.`need` AS `t0_c5`, `t`.`need_amount` AS `t0_c6`, `domain`.`id` AS `t1_c0`, `domain`.`name` AS `t1_c1`, `domain`.`description` AS `t1_c2`, `domain`.`validator` AS `t1_c3`, `domain`.`need` AS `t1_c4`, `domain`.`need_amount` AS `t1_c5` FROM `subdomain` `t`  LEFT OUTER JOIN `domain` `domain` ON (`t`.`domain_id`=`domain`.`id`)  WHERE ((((validator=:ycp0) AND (domain_id LIKE :ycp1)) AND (need LIKE :ycp2)) AND (need_amount=:ycp3)).
+in C:\xampp\htdocs\coplat\protected\models\Subdomain.php (146)
+in C:\xampp\htdocs\coplat\protected\models\Domain.php (140)
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (578)
+2014/12/09 04:13:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'validator' in where clause is ambiguous. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`description` AS `t0_c2`, `t`.`validator` AS `t0_c3`, `t`.`domain_id` AS `t0_c4`, `t`.`need` AS `t0_c5`, `t`.`need_amount` AS `t0_c6`, `domain`.`id` AS `t1_c0`, `domain`.`name` AS `t1_c1`, `domain`.`description` AS `t1_c2`, `domain`.`validator` AS `t1_c3`, `domain`.`need` AS `t1_c4`, `domain`.`need_amount` AS `t1_c5` FROM `subdomain` `t`  LEFT OUTER JOIN `domain` `domain` ON (`t`.`domain_id`=`domain`.`id`)  WHERE ((((validator=:ycp0) AND (domain_id LIKE :ycp1)) AND (need LIKE :ycp2)) AND (need_amount=:ycp3))' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveFinder.php(761): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\coplat\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\xampp\htdocs\coplat\framework\db\ar\CActiveFinder.php(68): CJoinElement->find(Object(CDbCriteria))
+#4 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1302): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1416): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\xampp\htdocs\coplat\framework\web\CActiveDataProvider.php(150): CActiveRecord->findAll(Object(CDbCriteria))
+#7 C:\xampp\htdocs\coplat\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\coplat\protected\models\Subdomain.php(146): CDataProvider->getData()
+#9 C:\xampp\htdocs\coplat\protected\models\Domain.php(140): Subdomain->getSubdomainsForApp(Object(CActiveDataProvider), '8')
+#10 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(578): Domain->getDomainsForApp(Object(CActiveDataProvider))
+#11 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('domain')
+#21 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/dom...')
+#22 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#24 {main}
+REQUEST_URI=/coplat/index.php/application/domain
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/12/09 04:15:04 [error] [exception.CException] exception 'CException' with message 'Subdomain and its behaviors do not have a method or closure named "getCriteriaForApp".' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(225): CComponent->__call('getCriteriaForA...', Array)
+#1 C:\xampp\htdocs\coplat\protected\models\Domain.php(140): CActiveRecord->__call('getCriteriaForA...', Array)
+#2 C:\xampp\htdocs\coplat\protected\models\Domain.php(140): Subdomain->getCriteriaForApp()
+#3 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(578): Domain->getDomainsForApp(Object(CActiveDataProvider))
+#4 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('domain')
+#14 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/dom...')
+#15 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/application/domain
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
+---
+2014/12/09 14:34:22 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php:594)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): ApplicationController->runAction()
+#1 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): ApplicationController->filterAccessControl()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#7 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#8 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/domain
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (594)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/09 14:36:37 [error] [php] include(ApplicationSubomainMentorPick.php): failed to open stream: No such file or directory (C:\xampp\htdocs\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(595): spl_autoload_call()
+#1 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#2 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): ApplicationController->runAction()
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): ApplicationController->filterAccessControl()
+#7 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#10 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/domain
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (595)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/09 14:38:00 [error] [exception.CException] exception 'CException' with message 'Property "ApplicationSubdomainMentorPick.domain_id" is not defined.' in C:\xampp\htdocs\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(159): CComponent->__set('domain_id', '2')
+#1 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(598): CActiveRecord->__set('domain_id', '2')
+#2 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionDomain()
+#3 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('domain')
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/dom...')
+#13 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/application/domain
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/domain
+---
