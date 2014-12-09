@@ -5,6 +5,14 @@
 /* @var $Mentees Mentee */
 /* @var $UserDomain UserDomain */
 
+if(User::isCurrentUserAdmin())
+{
+	$this->breadcrumbs=array(
+			'Manage Users'=>array('admin'),
+			($model->fname . ' ' . $model->lname),
+	);
+}
+
 Yii::app()->clientScript->registerScript('usermodal', "
 $('.mentee-button').click(function(){
 	$('.mentee-form').toggle();
@@ -126,24 +134,38 @@ return false;
 	<div class='well mentor-form' style="display:none">	
 	<h3><?php echo CHtml::link('Mentee','#',array('class'=>'mentor-button')); ?></h3>
 	<hr>
+	
+	<?php echo 'Project: ' . CHtml::value($model, 'mentee.project.title', 'Not assigned to a project'); ?>
 
-	<?php $this->widget('bootstrap.widgets.TbDetailView', array(
-		'data'=>$model,
-		'attributes'=>array(
-				array(
-						'label'=>'Project',
-						'type'=>'raw',
-						'value'=> CHtml::value($model, 'mentee.project.title'),
-				),
-				array(
-						'label'=>'Personal Mentor',
-						'type'=>'raw',
-						'value'=> CHtml::value($model, 'mentee.personalMentorUser.user.fname') . " " . CHtml::value($model, 'mentee.personalMentorUser.user.lname'),
-				),
-				
-		),
-)); 
-?>
+
+<?php              $this->widget('bootstrap.widgets.TbGridView', array(
+                    		'type'=>'striped condensed hover',
+                    		'id'=>'id',
+							'dataProvider'=>  new CArrayDataProvider($model->personalMentorMentees, array('keyField'=>'id')),
+		                    'summaryText'=>'',
+                    		'columns'=>array(
+                    				array(
+                    						'name'=>'Personal Mentors',
+                    						'type'=>'raw',
+											'value'=> '$data->personalMentor->fname . " " . $data->personalMentor->lname',                    						
+                    				),
+                    				array(
+                    						'header'=>'Options',
+                    						'class'=>'bootstrap.widgets.TbButtonColumn',
+                    						'template'=> '{view}',
+                    						'buttons'=>array(
+                    								'view'=>
+                    								array(
+                    										'url'=>'Yii::app()->createUrl("user/viewmodal", array("id"=>$data->personal_mentor_id))',
+                    											
+                    								),
+                    						),
+                    				),
+                    				
+                    		),
+                    ));?>
+
+
 </div>
 <?php }?>
 <!--  MENTEE END -->
@@ -195,7 +217,19 @@ return false;
                     				array(
                     						'name'=>'',
 											'value'=>'$data["title"]',                    						
-                    )
+                    				),
+                    				array(
+                    						'header'=>'Options',
+                    						'class'=>'bootstrap.widgets.TbButtonColumn',
+                    						'template'=> '{view}',
+                    						'buttons'=>array(
+                    								'view'=>
+                    								array(
+                    										'url'=>'Yii::app()->createUrl("project/viewmodal", array("id"=>$data["id"]))',
+                    				
+                    								),
+                    						),
+                    				),
                     				
                     		),
                     )); ?>
@@ -248,7 +282,19 @@ return false;
 									'name'=>'fullname',
 									'value'=>'$data["fullname"]',
 									'header'=>'Name',
-								),          
+								),
+                				array(
+                				'header'=>'Options',
+                				'class'=>'bootstrap.widgets.TbButtonColumn',
+                				'template'=> '{view}',
+                				'buttons'=>array(
+                						'view'=>
+                						array(
+                								'url'=>'Yii::app()->createUrl("user/viewmodal", array("id"=>$data["id"]))',
+                								 
+                							),
+                						),
+                				),
             				),
              	)); 
 	?>
@@ -300,7 +346,7 @@ return false;
 					),
 					array(
 							'name'=>'subdomain.name',
-							'value'=>'$data->subdomain->name',
+							'value'=>'$data->getSubdomain()',
 							'header'=>'Sub-Domain',
 					),
 					array(
@@ -328,17 +374,17 @@ return false;
             							)
           				),
 				/** TO DO: FIX DELETE **/
-				array(
-    				'header'=>'Options',
-    				'class'=>'bootstrap.widgets.TbButtonColumn',
-    				'template'=> '{delete}',
-					'buttons'=>array(
+// 				array(
+//     				'header'=>'Options',
+//     				'class'=>'bootstrap.widgets.TbButtonColumn',
+//     				'template'=> '{delete}',
+// 					'buttons'=>array(
 						
-					'delete' => array(
-								'url'=>'Yii::app()->createUrl("/domainMentor/delete/", array("id"=>$data->id))'
-    						),
-					), 
-					),	
+// 					'delete' => array(
+// 								'url'=>'Yii::app()->createUrl("/domainmentor/delete/", array("id"=>$data->id))'
+//     						),
+// 					), 
+// 					),	
 					
 	),
 	));?>
@@ -450,9 +496,11 @@ return false;
 									'value'=>'$data->menteeUser->user->fname . " " . $data->menteeUser->user->lname',
 									'header'=>'Mentee Name',
 							),
+					
 			),
 	));
-	}
+	} else if ($model->isProMentor) echo 'No meetings as project mentor.';
+	
 	if ($model->isPerMentor) {
 		?><hr><h4>Personal Meetings</h4><?php
 		$this->widget('bootstrap.widgets.TbGridView', array(
@@ -483,7 +531,7 @@ return false;
 						),
 				),
 		));
-	}
+	}  else if ($model->isPerMentor) echo 'No meetings as a personal mentor.';
 	
 	$exists = Chtml::value($model, 'mentee');
 	
@@ -547,7 +595,8 @@ return false;
 											),
 									),
 							));
-	} else if ($model->isMentee) echo 'No meetings as mentee';
+	} else if ($model->isMentee) echo 'No meetings as mentee.';
+
 	?>
 </div>
 <?php }?>

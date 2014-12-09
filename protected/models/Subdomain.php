@@ -48,8 +48,9 @@ class Subdomain extends CActiveRecord
         // will receive user inputs. 
         return array( 
             array('domain_id, name', 'required'),
-            array('validator, need_amount', 'numerical', 'integerOnly'=>true),
-            array('name', 'length', 'max'=>45),
+            //array('validator, need_amount', 'numerical', 'integerOnly'=>true),
+        	array('need_amount', 'numerical', 'integerOnly'=>true, 'min'=>1, 'max'=>100),
+        	array('name', 'length', 'max'=>45),
             array('description', 'length', 'max'=>5000),
             array('domain_id', 'length', 'max'=>11),
             array('need', 'length', 'max'=>7),

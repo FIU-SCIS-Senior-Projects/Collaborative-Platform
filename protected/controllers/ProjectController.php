@@ -49,9 +49,9 @@ class ProjectController extends Controller
 	{
 		$this->layout = '//layouts/column1';
 		
-		
 		$model = $this->loadModel($id);
 	
+		// modal is disabled which is the ajax part so will always just 'render'
 		if( Yii::app()->request->isAjaxRequest )
 			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
 		else

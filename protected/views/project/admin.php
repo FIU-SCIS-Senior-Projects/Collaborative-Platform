@@ -58,6 +58,7 @@ $('.search-form form').submit(function(){
     						array(
     								'url'=>'Yii::app()->createUrl("project/viewmodal", array("id"=>$data->id))',
     								'options'=>array(
+    										// disabled modal for better viewing in a whole page
     										'ajax'=>array(
     												'type'=>'POST',
     												'url'=>"js:$(this).attr('href')",

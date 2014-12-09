@@ -47,12 +47,13 @@ class TicketController extends Controller
     
     public function actionViewmodal($id)
     {
+    	$this->layout = '';
     	$model = $this->loadModel($id);
 
     	if( Yii::app()->request->isAjaxRequest )
     		$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
     	else
-    		$this->renderPartial('viewmodal',array('model'=>$model,));
+    		$this->render('viewmodal',array('model'=>$model,));
     	 
     }
     

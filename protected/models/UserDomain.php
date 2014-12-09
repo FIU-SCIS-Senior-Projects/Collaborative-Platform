@@ -107,4 +107,11 @@ class UserDomain extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function getSubdomain(){
+		$subdomain = '';
+		if (is_null($this->subdomain_id))
+			return $subdomain;
+		else return $this->subdomain->name;
+	}
 }

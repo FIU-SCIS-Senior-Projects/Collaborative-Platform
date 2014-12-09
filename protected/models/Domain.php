@@ -46,7 +46,8 @@ class Domain extends CActiveRecord
         // will receive user inputs. 
         return array( 
             array('name', 'required'),
-            array('validator, need_amount', 'numerical', 'integerOnly'=>true),
+            //array('validator', 'numerical', 'integerOnly'=>true),
+        	array('need_amount', 'numerical', 'integerOnly'=>true, 'min'=>1, 'max'=>100),
             array('name', 'length', 'max'=>45),
             array('description', 'length', 'max'=>500),
             array('need', 'length', 'max'=>7),

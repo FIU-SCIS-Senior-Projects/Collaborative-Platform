@@ -72,8 +72,6 @@ $('.asearch-form form').submit(function(){
     'type'=>'striped condensed hover',
     'id'=>'user-grid',
     'selectableRows'=>1,		
-    'selectionChanged'=>
-        'function(id){ location.href = $.fn.yiiGridView.getSelection(id);}',
     //'selectionChanged'=>
     //    'function(data) {
     //        $("#viewModal .modal-body p").html(data);
@@ -143,6 +141,7 @@ $('.asearch-form form').submit(function(){
     						array(
     								'url'=>'Yii::app()->createUrl("user/viewmodal", array("id"=>$data->id))',
     								'options'=>array(
+    										// disabled for better viewing of page
     										'ajax'=>array(
     												'type'=>'POST',
     												'url'=>"js:$(this).attr('href')",

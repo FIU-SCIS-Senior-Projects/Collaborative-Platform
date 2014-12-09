@@ -77,6 +77,21 @@ class InvitationController extends Controller
 	public function actionCreate()
 	{
 		$model=new Invitation;
+		
+		/**
+		 * todo:
+		 * 
+		 * create the ability to select the different roles
+		 * personal mentor
+		 * project mentor
+		 * domain mentor
+		 * 
+		 * click generate and then the text box is updated to display template data.
+		 * 
+		 * the admin can then make changes to the textbox and when submit occurs
+		 * the data from the textbox is captured and sent to the email function
+		 * with email and message as parameters.
+		 */
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);

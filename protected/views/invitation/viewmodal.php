@@ -17,7 +17,7 @@ $('.details-button').click(function(){
 
 <!-- INVITE DETAILS START -->
 <div class='well details-form' style="display:none">
-<h3><?php echo CHtml::link('Invite Details - ' . $model->id,'#',array('class'=>'details-button')); ?></h3>
+<h3><?php echo CHtml::link('Invite Details','#',array('class'=>'details-button')); ?></h3>
 </div>
 
 <div class='well details-form' style="display:">

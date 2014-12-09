@@ -2,6 +2,14 @@
 /* @var $this ProjectController */
 /* @var $model Project */
 
+if(User::isCurrentUserAdmin())
+{
+	$this->breadcrumbs=array(
+			'Manage Projects'=>array('admin'),
+			$model->title,
+	);
+}
+
 Yii::app()->clientScript->registerScript('usermodal', "
 $('.details-button').click(function(){
 	$('.details-form').toggle();
@@ -28,14 +36,15 @@ $('.meetings-button').click(function(){
 
 <!-- PROJECT DETAILS START-->
 <div class='well details-form' style="display:none">
-<h3><?php echo CHtml::link('Project Details - ' . $model->title,'#',array('class'=>'details-button')); ?></h3>
+<h3><?php echo CHtml::link('Project - ' . $model->title,'#',array('class'=>'details-button')); ?></h3>
 </div>
 
 <div class='well details-form' style="display:">
-<h3><?php echo CHtml::link('Project Details - ' . $model->title,'#',array('class'=>'details-button')); ?></h3>
+<h3><?php echo CHtml::link('Project - ' . $model->title,'#',array('class'=>'details-button')); ?></h3>
 <hr>
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 		'data'=>$model,
+		'type'=>'striped',
 		'attributes'=>array(
 			array(
 					'label'=>'Title',

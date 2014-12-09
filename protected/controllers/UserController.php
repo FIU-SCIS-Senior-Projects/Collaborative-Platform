@@ -64,11 +64,17 @@ class UserController extends Controller
     public function actionViewmodal($id)
     {
     	
+    	/**
+    	 * todo:
+    	 * 
+    	 * add ability to delete roles for mentors
+    	 */
+    	
     	$this->layout = '//layouts/column1';
     	 
     	$model = $this->loadModel($id);
-    	
     	 
+    	// ajax for modal. disabled in admin.php
     	if( Yii::app()->request->isAjaxRequest )
 			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
     	else 
