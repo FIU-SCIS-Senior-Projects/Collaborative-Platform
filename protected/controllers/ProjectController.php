@@ -47,8 +47,11 @@ class ProjectController extends Controller
 	
 	public function actionViewmodal($id)
 	{
+		$this->layout = '//layouts/column1';
+		
 		$model = $this->loadModel($id);
 	
+		// modal is disabled which is the ajax part so will always just 'render'
 		if( Yii::app()->request->isAjaxRequest )
 			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
 		else
@@ -158,6 +161,9 @@ class ProjectController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		$this->layout = '//layouts/column1';
+		
+		
 		$model=new Project('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Project']))

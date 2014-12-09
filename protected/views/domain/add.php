@@ -28,11 +28,11 @@
 		<?php echo $form->error($model,'description'); ?>
         
 		<?php echo $form->labelEx($model,'validator'); ?>
-		<?php echo $form->textField($model,'validator'); ?>
+		<?php echo $form->dropDownList($model,'validator', array(1,2,3,4,5,6,7,8,9,10), array()); ?>
 		<?php echo $form->error($model,'validator'); ?>
 
 		<?php echo $form->labelEx($model,'need'); ?>
-		<?php echo $form->textField($model,'need',array('size'=>7,'maxlength'=>7)); ?>
+		<?php echo $form->dropDownList($model,'validator', array("High", "Medium", "Low"), array()); ?>
 		<?php echo $form->error($model,'need'); ?>
 
 		<?php echo $form->labelEx($model,'need_amount'); ?>

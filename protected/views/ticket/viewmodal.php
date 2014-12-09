@@ -2,6 +2,14 @@
 /* @var $this UserController */
 /* @var $model Ticket */
 
+if(User::isCurrentUserAdmin())
+{
+	$this->breadcrumbs=array(
+			'Manage Tickets'=>array('admin'),
+			$model->id,
+	);
+}
+
 Yii::app()->clientScript->registerScript('modal', "
 $('.details-button').click(function(){
 	$('.details-form').toggle();
@@ -17,11 +25,11 @@ $('.comments-button').click(function(){
 
 <!-- DETAILS END -->
 <div class='well details-form' style="display:none">
-<h3><?php echo CHtml::link('Ticket Details - ' . $model->id,'#',array('class'=>'details-button')); ?></h3>
+<h3><?php echo CHtml::link('Ticket Number ' . $model->id,'#',array('class'=>'details-button')); ?></h3>
 </div>
 
 <div class='well details-form' style="display:">
-<h3><?php echo CHtml::link('Ticket Details - ' . $model->id,'#',array('class'=>'details-button')); ?></h3>
+<h3><?php echo CHtml::link('Ticket Number ' . $model->id,'#',array('class'=>'details-button')); ?></h3>
 <hr>
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 		'data'=>$model,
@@ -94,9 +102,16 @@ $('.comments-button').click(function(){
                     		'summaryText'=>'',
                     		//'filter'=>$model,
                     		'columns'=>array(
-                    				'added_date',
-                    				'description',
-                    				'user_added',
+                    				array(
+                    					'header'=>'Date Added',
+                    					'value'=>'$data->added_date',
+                    				),array(
+                    					'header'=>'Description',
+                    					'value'=>'$data->description',
+                    				),array(
+                    					'header'=>'Name',
+                    					'value'=>'$data->user_added',
+                    				),
                     		),
                     ));
 ?>

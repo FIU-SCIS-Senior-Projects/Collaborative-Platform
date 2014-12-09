@@ -98,7 +98,7 @@ class ApplicationDomainMentorController extends Controller
 		if(isset($_POST['ApplicationDomainMentor']))
 		{
 			$model->attributes=$_POST['ApplicationDomainMentor'];
-			if($model->save())
+			if($model->save()){}
 				$this->redirect(array('view','id'=>$model->id));
 		}
 

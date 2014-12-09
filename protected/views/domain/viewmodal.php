@@ -2,6 +2,14 @@
 /* @var $this DomainController */
 /* @var $model Domains */
 
+if(User::isCurrentUserAdmin())
+{
+	$this->breadcrumbs=array(
+			'Manage Domains'=>array('admin'),
+			$model->name,
+	);
+}
+
 Yii::app()->clientScript->registerScript('modal', "
 $('.details-button').click(function(){
 	$('.details-form').toggle();
@@ -75,7 +83,7 @@ $('.details-button').click(function(){
                                         
                     $this->widget('bootstrap.widgets.TbGridView', array(
                     		'type'=>'striped condensed hover',
-                    		'id'=>'id',
+                    		'id'=>'tickets',
                     		'dataProvider'=>$rawData,
                     		'summaryText'=>'',
                     		//'filter'=>$model,
@@ -128,19 +136,29 @@ $('.details-button').click(function(){
 <?php
                     $this->widget('bootstrap.widgets.TbGridView', array(
                     		'type'=>'striped condensed hover',
-                    		'id'=>'id',
+                    		'id'=>'mentors',
                     		'dataProvider'=>new CArrayDataProvider($model->userDomains, array('keyField'=>'id')),
                     		'summaryText'=>'',
                     		//'filter'=>$model,
                     		'columns'=>array(
-                    				'id',
-                    				'user_id',
-                    				'domain_id',
-                    				'subdomain_id',
-                    				'rate',
-                    				'active',
-                    				'tier_team',
                     				array(
+                    					'header'=>'ID',
+                    					'value'=>'$data->id',
+                    				),array(
+                    					'header'=>'Mentor Name',
+                    					'value'=>'$data->user->fname . " " . $data->user->lname',
+                    				),array(
+                    					'header'=>'Rate',
+                    					'value'=>'$data->rate',
+                    				),
+//                     				array(
+//                     					'header'=>'Active',
+//                     					'value'=>'$data->active',
+//                     				),
+                    				array(
+                    					'header'=>'Tier',
+                    					'value'=>'$data->tier_team',
+                    				),array(
                     						'header'=>'Options',
                     						'class'=>'bootstrap.widgets.TbButtonColumn',
                     						'template'=> '{view}',

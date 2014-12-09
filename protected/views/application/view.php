@@ -99,8 +99,8 @@ $('#subdomain_changes .btn-danger').click(function(){
 		
 					addId(value, parenthiddenfield);
 				 }
-			}
-		}
+				}
+	}
 		
 		function addId(currentvalue, hiddenfield){
 			var currentIds = $(hiddenfield).val();
@@ -160,6 +160,17 @@ $('#subdomain_changes .btn-danger').click(function(){
 			setButtonStatus(obj,child, '#subdomainhiddeninputreject', '#subdomainhiddeninputaccept');
 				}		
 
+// 		$('#personal_propose').click(function(){
+// 			$('.personal-form').toggle();
+// 			$('#personal-button').toggle();
+// 			return false;
+// 		});
+		
+// 		$('.personal-form submit').click(function(){
+// 			$('.personal-form').toggle();
+// 			$('#personal-button').toggle();
+// 			return false;
+// 		});
 		
 ");
 
@@ -175,16 +186,8 @@ $('#subdomain_changes .btn-danger').click(function(){
 
 ?>
 
-<?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
-	'id'=>'mentor_app',
-	'enableAjaxValidation'=>false,
-)); ?>
 
 <!-- PERSONAL MENTOR SECTION (ROUTE TO CONTROLLER) -->
-
-<!-- Hidden field for personal picks -->
-<?php echo CHtml::hiddenField('personal_picks_accept', '', array('id'=>'personalhiddeninputaccept'));?>
-<?php echo CHtml::hiddenField('personal_picks_reject', '', array('id'=>'personalhiddeninputreject'));?>
 
 <?php 	$persCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
 												from('application_personal_mentor')->
@@ -292,8 +295,14 @@ $('#subdomain_changes .btn-danger').click(function(){
 		'icon'=>'plus white',
 		'size'=>'medium',
 		'type'=> 'primary',
+		'htmlOptions'=>array(
+					'id'=>'personal_propose',	
+			),
 		));?>
 </a>
+
+<?php $this->renderPartial('app_personalpick_form', array('model'=>$perModel))?>
+
 <hr>
 <h4>History</h4>
 <?php 
@@ -321,11 +330,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 
 
 <!-- PROJECT MENTOR SECTION (ROUTE TO CONTROLLER) -->
-	
-<!-- Hidden field for project picks -->
-<?php echo CHtml::hiddenField('project_picks_accept', '', array('id'=>'projecthiddeninputaccept'));?>	
-<?php echo CHtml::hiddenField('project_picks_reject', '', array('id'=>'projecthiddeninputreject'));?>	
-	
+
 <?php 	$projCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
 												from('application_project_mentor')->
 												where('status="Admin"')->
@@ -433,6 +438,9 @@ $('#subdomain_changes .btn-danger').click(function(){
 		'type'=> 'primary',
 		));?>
 </a>
+
+<?php $this->renderPartial('app_projectpick_form', array('model'=>$proModel))?>
+
 <hr>
 <h4>History</h4>
 <?php 
@@ -459,12 +467,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 
 
 <!-- DOMAIN MENTOR SECTION (ROUTE TO CONTROLLER) -->
-<!-- Hidden field for domain picks -->
-<?php echo CHtml::hiddenField('domain_picks_accept', '', array('id'=>'domainhiddeninputaccept'));?>
-<?php echo CHtml::hiddenField('domain_picks_reject', '', array('id'=>'domainhiddeninputreject'));?>	
-<?php echo CHtml::hiddenField('subdomain_picks_accept', '', array('id'=>'subdomainhiddeninputaccept'));?>
-<?php echo CHtml::hiddenField('subdomain_picks_reject', '', array('id'=>'subdomainhiddeninputreject'));?>
-	
+
 <?php 	$domCount = Yii::app()->db->createCommand()->select('COUNT(*)')->
 												from('application_domain_mentor')->
 												where('status="Admin"')->
@@ -569,6 +572,9 @@ $('#subdomain_changes .btn-danger').click(function(){
 		'type'=> 'primary',
 		));?>
 </a>
+
+<?php $this->renderPartial('app_domainpick_form', array('model'=>$domModel))?>
+
 <hr>
 <h5>History</h5>
 <?php	$this->widget('bootstrap.widgets.TbGridView', array(
@@ -647,6 +653,9 @@ $('#subdomain_changes .btn-danger').click(function(){
 		'type'=> 'primary',
 		));?>
 </a>
+
+<?php $this->renderPartial('app_subdomainpick_form', array('model'=>$subModel))?>
+
 <hr>
 <h5>History</h5>
 <?php	$this->widget('bootstrap.widgets.TbGridView', array(
@@ -667,7 +676,24 @@ $('#subdomain_changes .btn-danger').click(function(){
 ?>
 </div>
 	<?php } else if ($domCount > 1) echo 'Too many entries';?>
-		       	
+
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
+	'id'=>'mentor_app',
+	'enableAjaxValidation'=>false,
+)); ?>
+<!-- Hidden field for personal picks -->
+<?php echo CHtml::hiddenField('personal_picks_accept', '', array('id'=>'personalhiddeninputaccept'));?>
+<?php echo CHtml::hiddenField('personal_picks_reject', '', array('id'=>'personalhiddeninputreject'));?>
+	
+<!-- Hidden field for project picks -->
+<?php echo CHtml::hiddenField('project_picks_accept', '', array('id'=>'projecthiddeninputaccept'));?>	
+<?php echo CHtml::hiddenField('project_picks_reject', '', array('id'=>'projecthiddeninputreject'));?>	
+<!-- Hidden field for domain picks -->
+<?php echo CHtml::hiddenField('domain_picks_accept', '', array('id'=>'domainhiddeninputaccept'));?>
+<?php echo CHtml::hiddenField('domain_picks_reject', '', array('id'=>'domainhiddeninputreject'));?>	
+<?php echo CHtml::hiddenField('subdomain_picks_accept', '', array('id'=>'subdomainhiddeninputaccept'));?>
+<?php echo CHtml::hiddenField('subdomain_picks_reject', '', array('id'=>'subdomainhiddeninputreject'));?>
+			
 <?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary",'id'=>'submit', "disabled"=>"disabled")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
 
 <a style="text-decoration:none" href="/coplat/index.php/application/admin">
