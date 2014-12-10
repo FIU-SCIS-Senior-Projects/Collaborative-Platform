@@ -846,7 +846,8 @@ class User extends CActiveRecord
     
     public static function sendInviteByMessage($invitation){
     	$to = "";
-    	$html = User::replaceMessage($to, $invitation);
+    	$message = $invitation->message;
+    	$html = User::replaceMessage($to, $message);
     	$email = Yii::app()->email;
     	$email->to = $invitation->email;
     	$email->from = 'Collaborative Platform';
