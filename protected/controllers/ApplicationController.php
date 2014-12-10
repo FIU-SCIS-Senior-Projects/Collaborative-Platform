@@ -664,9 +664,9 @@ class ApplicationController extends Controller
 	public function actionProject(){
 		$application = new ApplicationProjectMentor;
 		$projects = new Project;
+		$user = User::model()->getCurrentUser();
 		
 		if (Yii::app()->getRequest()->isPostRequest) {
-			$user = User::model()->getCurrentUser();
 			$application->attributes = $_POST['ApplicationProjectMentor'];
 			$application->status = 'Admin';
 			$application->user_id = $user->id;
@@ -698,8 +698,7 @@ class ApplicationController extends Controller
 			$this->redirect("/coplat/index.php/application/portal");
 		} else { // on initial load
 			$projects->unsetAttributes();
-			$projects->project_mentor_user_id = 999;
-			$project = Project::model()->getProjectsForApp($projects->searchNoPagination());
+			$project = Project::model()->getProjectsForApp($projects->searchNoPagination(), $user->id);
 			$application->system_pick_amount = 0;
 		}
 		

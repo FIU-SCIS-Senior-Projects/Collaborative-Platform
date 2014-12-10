@@ -56,100 +56,86 @@ if( User::isCurrentUserMentee())
         'htmlOptions'=>array('class'=>'myNavbar','style'=>''),
         'type'=>'null',
         'items'=>array(
-			array(
-				'class'=>'bootstrap.widgets.TbMenu',
-                'items'=>array(
-
-                    array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
-
-					array('label'=>'Manage','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserAdmin(Yii::app()->user->name),
-					'class'=>'bootstrap.widgets.TbMenu',
-					'htmlOptions'=>array('class'=>'pull-left'),
-					'items'=>array('-',
-									array('label'=>'Users','visible'=>!Yii::app()->user->isGuest,
-									'class'=>'bootstrap.widgets.TbMenu',
-									'htmlOptions'=>array('class'=>'pull-left'),
-									'url'=>array('user/admin'),
-											
-									/*'items'=>array(array('label'=>'Manage', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest),
-													array('label'=>'Add Administrator', 'url'=>array('user/create_admin'), 'visible'=>!Yii::app()->user->isGuest),
-                                              array('label'=>'Add User', 'url'=>array('user/create'), 'visible'=>!Yii::app()->user->isGuest),
-
-
-                                    ),*/
-									),
-									array('label'=>'Projects','visible'=>!Yii::app()->user->isGuest,
-									'class'=>'bootstrap.widgets.TbMenu',
-									'htmlOptions'=>array('class'=>'pull-left'),
-									'url'=>array('project/admin')
-									/*'items'=>array(array('label'=>'Manage', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest),
-									 array('label'=>'Create', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),
-							
-									),
-									*/
-									),
-							
-							
-									array('label'=>'Domains','visible'=>!Yii::app()->user->isGuest,
-									'class'=>'bootstrap.widgets.TbMenu',
-									'htmlOptions'=>array('class'=>'pull-left'),
-									'url'=>array('domain/admin'),
-											
-											
-									/*'items'=>array(array('label'=>'Manage', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest),
-													array('label'=>'Create', 'url'=>array('domain/create'), 'visible'=>!Yii::app()->user->isGuest),
-													
-											),
-									*/
-											
-									),
-							
-									array('label'=>'Tickets','visible'=>!Yii::app()->user->isGuest,
-									'class'=>'bootstrap.widgets.TbMenu',
-									'htmlOptions'=>array('class'=>'pull-left'),
-									'url'=>array('ticket/admin')
-										
-									),
-							
-									/*
-                                    array('label'=>'Sub-Domain','visible'=>!Yii::app()->user->isGuest,
-                                        'class'=>'bootstrap.widgets.TbMenu',
-                                        'htmlOptions'=>array('class'=>'pull-left'),
-                                        'items'=>array(array('label'=>'Manage', 'url'=>array('subdomain/admin'), 'visible'=>!Yii::app()->user->isGuest),
-                                            array('label'=>'Create', 'url'=>array('subdomain/create'), 'visible'=>!Yii::app()->user->isGuest),
-
-                                        ),
-                                    ),
-                                    */
-									array('label'=>'Invites','visible'=>!Yii::app()->user->isGuest,
-									'class'=>'bootstrap.widgets.TbMenu',
-									'htmlOptions'=>array('class'=>'pull-left'),
-									'url'=>array('invitation/admin')
-							
-									),
-							
-                                    array('label'=>'Applications','visible'=>!Yii::app()->user->isGuest,
-                                        'class'=>'bootstrap.widgets.TbMenu',
-                                        'htmlOptions'=>array('class'=>'pull-left'),
-                                    		'url'=>array('application/admin')
-                                    		
-                                    /*'items'=>array(array('label'=>'Manage', 'url'=>array('invitation/admin'), 'visible'=>!Yii::app()->user->isGuest),
-                                            array('label'=>'Send', 'url'=>array('invitation/create'), 'visible'=>!Yii::app()->user->isGuest),
-
-                                        ),
-                                        */              		
-                                    ),            
-							),
-					),
-                )
-			),
-
             array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array('-',
-							array('label'=>'Mentor', 'url'=>array('application/portal'),'visible'=>!Yii::app()->user->isGuest),
-                            array('label'=>'New Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
+            				array('label'=>'Home', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest ),
+							array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
+							array('label'=>'Manage','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserAdmin(Yii::app()->user->name),
+									'class'=>'bootstrap.widgets.TbMenu',
+									'items'=>array('-',
+											array('label'=>'Users','visible'=>!Yii::app()->user->isGuest,
+													'class'=>'bootstrap.widgets.TbMenu',
+													'url'=>array('user/admin'),
+														
+													/*'items'=>array(array('label'=>'Manage', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Add Administrator', 'url'=>array('user/create_admin'), 'visible'=>!Yii::app()->user->isGuest),
+															array('label'=>'Add User', 'url'=>array('user/create'), 'visible'=>!Yii::app()->user->isGuest),
+							
+							
+													),*/
+											),
+											array('label'=>'Projects','visible'=>!Yii::app()->user->isGuest,
+													'class'=>'bootstrap.widgets.TbMenu',
+													'url'=>array('project/admin')
+													/*'items'=>array(array('label'=>'Manage', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Create', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),
+																
+													),
+							*/
+											),
+												
+												
+											array('label'=>'Domains','visible'=>!Yii::app()->user->isGuest,
+													'class'=>'bootstrap.widgets.TbMenu',
+													'url'=>array('domain/admin'),
+														
+														
+													/*'items'=>array(array('label'=>'Manage', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Create', 'url'=>array('domain/create'), 'visible'=>!Yii::app()->user->isGuest),
+																
+													),
+							*/
+														
+											),
+												
+											array('label'=>'Tickets','visible'=>!Yii::app()->user->isGuest,
+													'class'=>'bootstrap.widgets.TbMenu',
+													'url'=>array('ticket/admin')
+							
+											),
+												
+											/*
+											 array('label'=>'Sub-Domain','visible'=>!Yii::app()->user->isGuest,
+											 		'class'=>'bootstrap.widgets.TbMenu',
+											 		'htmlOptions'=>array('class'=>'pull-left'),
+											 		'items'=>array(array('label'=>'Manage', 'url'=>array('subdomain/admin'), 'visible'=>!Yii::app()->user->isGuest),
+											 				array('label'=>'Create', 'url'=>array('subdomain/create'), 'visible'=>!Yii::app()->user->isGuest),
+							
+											 		),
+											 ),
+							*/
+											array('label'=>'Invites','visible'=>!Yii::app()->user->isGuest,
+													'class'=>'bootstrap.widgets.TbMenu',
+													'url'=>array('invitation/admin')
+														
+											),
+												
+											array('label'=>'Applications','visible'=>!Yii::app()->user->isGuest,
+													'class'=>'bootstrap.widgets.TbMenu',
+													'url'=>array('application/admin')
+							
+													/*'items'=>array(array('label'=>'Manage', 'url'=>array('invitation/admin'), 'visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Send', 'url'=>array('invitation/create'), 'visible'=>!Yii::app()->user->isGuest),
+							
+													),
+							*/
+											),
+									),
+							),
+							array('label'=>'Mentor Apply', 'url'=>array('application/portal'),'visible'=>!Yii::app()->user->isGuest),
+                            array('label'=>'Create Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
                             array('label'=>  $userinfo, 'url'=>'#', 'items'=>array(
 								array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!Yii::app()->user->isGuest),
 								array('label'=>'Change Password','visible'=>  $cp, 'url'=>'/coplat/index.php/user/ChangePassword'),

@@ -98,4 +98,16 @@ class Mentee extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function getMenteesOnProject($dataProvider){
+		$mentees = array();
+		foreach($dataProvider->getData() as $mentee){
+			$user = User::model()->getUser($mentee->user_id);
+			$temp = array();
+			$temp["name"] = $user->getFullName();
+			$temp["pic"] = $user->pic_url;
+			$mentees[] = $temp;
+		}
+		return $mentees;
+	}
 }

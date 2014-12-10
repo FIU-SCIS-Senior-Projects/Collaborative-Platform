@@ -15,7 +15,17 @@ Yii::app()->clientScript->registerScript('register', "
 		$(errId).addClass('hidden');
 		$(id).removeClass('txt_error');
 	}
-
+		
+	window.error = '" . $error . "';
+			
+	function takenCheck(){
+		if(window.error === 'username or email taken'){
+			setInvalid('#uname', '#taken-error');	
+			$('#email').addClass('txt_error');
+		}		
+	}
+	takenCheck();
+	
 	function validateAccountInfo(){
 		var valid = true;
 		var alphaNum = /^[a-z0-9]+$/i;
@@ -118,7 +128,6 @@ Yii::app()->clientScript->registerScript('register', "
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'user-Register-form',
 	'enableAjaxValidation'=>false,
-	'enableClientValidation'=>true,
 )); ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 	<?php echo $form->errorSummary($model); ?>
@@ -154,6 +163,7 @@ Yii::app()->clientScript->registerScript('register', "
 				        <?php echo $form->textField($model,'username',array('size'=>45,'maxlength'=>45, 'id'=>'uname')); ?>
 						<p id='uname-error' class="note errMsg hidden">Username must be alphanumeric and have at least 4 characters.</p>
 				    </div>
+				    <p id='taken-error' class="note errMsg hidden centerTxt">Username or email taken.</p>
 				</div>
 				<div class="row-fluid">
 					<div class="span3 lightMarginL">

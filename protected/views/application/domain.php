@@ -36,7 +36,7 @@ Yii::app()->clientScript->registerScript('register', "
 		var result = searchPicks.join(',');
 		$(hidden).val(result);		
 			
-		if(prof !== '0' && flag){
+		if(prof !== '--' && flag){
 			id = id + ':' + prof;
 			var currentPicks = $(hidden).val();
 			var separator = (currentPicks === '') ? '' : ',';
@@ -248,7 +248,7 @@ Yii::app()->clientScript->registerScript('register', "
 				<div class="need tbl-center">5</div>
 				<div class="proficiency">
 					<select class="selectwidthauto">
-						<option>0</option>
+						<option>--</option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -270,7 +270,7 @@ Yii::app()->clientScript->registerScript('register', "
 				<div class="need tbl-center">5</div>
 				<div class="proficiency">
 					<select class="selectwidthauto">
-						<option>0</option>
+						<option>--</option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>

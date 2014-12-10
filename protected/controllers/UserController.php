@@ -279,7 +279,25 @@ class UserController extends Controller
             $model->activation_chain = $this->genRandomString(10);
             $model->activated = 1;
             
+            $emailCheck=User::model()->find(array(
+		      'select'=>'email',
+		      'condition'=>'email=:email',
+		      'params'=>array(':email'=>$model->email))
+		    );
             
+            $unameCheck=User::model()->find(array(
+		      'select'=>'username',
+		      'condition'=>'username=:username',
+		      'params'=>array(':username'=>$model->username))
+		    );
+            
+            if($emailCheck === null or $unameCheck === null){
+            	$error = "username or email taken";
+            	$this->render('create',array(
+            			'model'=>$model,'infoModel'=> $infoModel, 'error' => $error,
+            	));
+            	return;
+            }
             
             // hash entered password
             $pw = $model->password;
