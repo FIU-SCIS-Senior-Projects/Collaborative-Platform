@@ -80,7 +80,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 		function setButtonStatus(parent, child, parenthiddenfield, childhiddenfield) {
 			
 			var value = '';
-			value = String(parent.parent().parent().children('td').contents()[0]);
+			value = parent.parent().parent().children('td:first').text();
 			console.log(value);
 		
 			if(parent.attr('disabled')){
