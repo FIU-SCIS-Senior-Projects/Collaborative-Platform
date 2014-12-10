@@ -79,7 +79,8 @@ $('#subdomain_changes .btn-danger').click(function(){
 		
 		function setButtonStatus(parent, child, parenthiddenfield, childhiddenfield) {
 			
-			var value = parent.parent().parent().children('td').contents().text()[0];
+			var value = '';
+			value = parent.parent().parent().children('td:first').text();
 			console.log(value);
 		
 			if(parent.attr('disabled')){
@@ -265,7 +266,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $personalMentorChanges,
 		'columns'=>array(
-						//'id',
+						'id',
 						//'app_id',
 						array(
 								'value'=>'$data["fname"] . " " . $data["lname"]', 
@@ -311,10 +312,10 @@ $('#subdomain_changes .btn-danger').click(function(){
 				),
 		));
 ?>
-<?php echo CHtml::link('Link Text',
-                       Yii::app()->createUrl('application/adminpersonal',array(
-                                                         'id'=>'1012',
-                                                         'appid'=>'1',))); ?>>
+<?php //echo CHtml::link('Link Text',
+                       //Yii::app()->createUrl('application/adminpersonal',array(
+                                                        // 'id'=>'1012',
+                                                        // 'appid'=>'1',))); ?>>
 <?php $this->widget('bootstrap.widgets.TbButton', array(
 		'buttonType'=>'button',
 		'label'=>'Propose New Mentee',
@@ -421,7 +422,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $projectMentorChanges,
 		'columns'=>array(
-						//'id',
+						'id',
 						//'app_id',
 						//'project_id',
 						array(
@@ -630,7 +631,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $domainHistory,
 		'columns'=>array(
-						//'id',
+						'id',
 						//'app_id',
 						array(
 								'value'=>'$data["name"]',
@@ -653,7 +654,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $subdomainChanges,
 		'columns'=>array(
-						//'id',
+						'id',
 						//'app_id',
 						array(
 								'value'=>'$data["dname"]', 
