@@ -154,7 +154,7 @@ class Project extends CActiveRecord
 		return $this->customer_fname . ' ' .$this->customer_lname;
 	}
 	
-	public function getProjectsForApp($dataProvider){
+	public function getProjectsForApp($dataProvider, $currentUser){
 		$projects = array();
 		foreach($dataProvider->getData() as $project){
 			$temp = array();
@@ -162,6 +162,18 @@ class Project extends CActiveRecord
 			$temp["title"] = $project->title;
 			$temp["customer"] = $project->getCustomerFullName();
 			$temp["description"] = $project->getDescriptionOfSize(750);
+			
+			// get project mentors for this project
+			$pmToP = new ProjectMentorProjects;
+			$pmToP->project_id = $project->id;
+			$temp["mentors"] = $pmToP->getProjectMentors($pmToP->search(), $currentUser);
+			
+			// get mentees for this project
+			$mentees = new Mentee;
+			$mentees->project_id = $project->id;
+			$temp["mentees"] = $mentees->getMenteesOnProject($mentees->search());
+			
+			// Only add if user is not on this project
 			$projects[] = $temp;
 		}
 		return $projects;

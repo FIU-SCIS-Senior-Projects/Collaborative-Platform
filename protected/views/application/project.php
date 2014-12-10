@@ -15,6 +15,16 @@ Yii::app()->clientScript->registerScript('register', "
 	window.selectedGridLastSort = 'title';
 			
 	var template = $('#rowtemplate').clone();
+			
+	function generateHTML(list){
+		var html = '';
+		if(list.length == 0) html = 'None';
+		for(var i = 0; i < list.length; i++){
+			html += '<br /><div><img src=\"' + list[i].pic + '\" width=\"20px\">' + list[i].name +'</div>';	
+		}
+		html += '<br/>';
+		return html;
+	}
 	
 	function generateProjectsGrid(sortByField) {
 		var grid = $('#mygrid');
@@ -47,6 +57,9 @@ Yii::app()->clientScript->registerScript('register', "
 				moveToSelectedGrid($(this));
 			});
 			
+			var mentors = generateHTML(project.mentors);
+			var mentees = generateHTML(project.mentees);
+			
 			row.popover({
 				html: true,
 				content: '<div class=\"row-fluid\" style=\"width: 500px\"> \
@@ -54,6 +67,10 @@ Yii::app()->clientScript->registerScript('register', "
 								<strong style=\"font-size: 1.5em\">' + project.title + '</strong> \
 								<br /><br />  Proposed By: ' + project.customer + ' \
 							</div> \
+						  </div> \
+						<div class=\"row-fluid\" style=\"width: 500px\"> \
+							<div class=\"span6\"> Mentees: ' + mentees + '</div> \
+							<div class=\"span6\"> Mentors: ' + mentors + '</div> \
 						  </div> \
 						<div class=\"row-fluid\" style=\"width: 500px\"> \
 							<div class=\"span11\"> \
@@ -66,7 +83,7 @@ Yii::app()->clientScript->registerScript('register', "
 			grid.find('.items-body').append(row);
 		}
 	}
-	
+			
 	function generateSelectedGrid(sortByField) {
 		var grid = $('#selectedgrid');
 		
@@ -97,14 +114,21 @@ Yii::app()->clientScript->registerScript('register', "
 			row.click(function(){
 				moveToProjectsGrid($(this));
 			});
+						
+			var mentors = generateHTML(project.mentors);
+			var mentees = generateHTML(project.mentees);
 			
 			row.popover({
 				html: true,
 				content: '<div class=\"row-fluid\" style=\"width: 500px\"> \
 							<div class=\"span12\"> \
 								<strong style=\"font-size: 1.5em\">' + project.title + '</strong> \
-								<br /><br />  Proposed By: ' + project.customer + ' \
+								<br />  Proposed By: ' + project.customer + ' \
 							</div> \
+						  </div> \
+						<div class=\"row-fluid\" style=\"width: 500px\"> \
+							<div class=\"span6\"> Mentees: ' + mentees + ' </div> \
+							<div class=\"span6\"> Mentors: ' + mentors + '</div> \
 						  </div> \
 						<div class=\"row-fluid\" style=\"width: 500px\"> \
 							<div class=\"span11\"> \
@@ -354,7 +378,7 @@ Yii::app()->clientScript->registerScript('register', "
 				.items-body {height: 400px; overflow-y: scroll; background: #F8F8F8;}
 				.header-pad {padding-left: 5px}			
 				.project-id {display: none !important;}
-				.project-title {width: 100%; border-left: 1px solid white; }
+				.project-title {width: 100%; }
 				</style>
 				<div id="mygrid" class="grid-view">
 					<div class="items">
