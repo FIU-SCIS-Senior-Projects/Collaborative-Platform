@@ -15,7 +15,7 @@
 
     <div class="row"> 
         <?php echo $form->labelEx($model,'user_id'); ?>
-        <?php echo $form->textField($model,'user_id',array('size'=>11,'maxlength'=>11)); ?>
+        <?php echo $form->dropDownList($model,'user_id', array("1002"=>"Jonathan Sanchez", "1003"=>"Nicholas Madariaga", "1004"=>"Masoud Sadjadi"), array('prompt'=>'Select location')); ?>
         <?php echo $form->error($model,'user_id'); ?>
     </div>  
 
