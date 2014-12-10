@@ -124,17 +124,29 @@ Yii::app()->clientScript->registerScript('register', "
 			// get a list of current domain selections
 			var currentIds = $('#hiddendom').val().split(',');
 			
-			if(currentIds.length === 0){
+			if(currentIds[0] === ''){
 				$('#dom_picks_message').text('You have selected NO Domains.');
 			} else {
 				$('#dom_picks_message').text('You have selected these Domains.');
+				var row = domainTemplate.clone();
+				row.children('.domain-name').text('Domain');
+				row.children('.domain-name').removeClass('tbl-center');
+				row.children('.description').text('Description');
+				row.children('.description').addClass('width-override');
+				row.children('.proficiency').children().remove();
+				row.children('.proficiency').text('Prof.');
+				row.children('.subdomain-name').remove();
+				row.children('.need').remove();
+				row.removeClass('superRow');
+				grid.find('.items-verify').html(row);
+			
 				for(var i = 0; i < currentIds.length; i++){
 					for(var j = 0; j < window.domains.length; j++){
 						var dom = window.domains[j];
 						var domsplit = currentIds[i].split(':');
 						if(dom.id === domsplit[0]){
 							// make a row and add it to the verify grid
-							var row = domainTemplate.clone();
+							row = domainTemplate.clone();
 			
 							// fill in all the data here
 							row.children('.domain-name').text(dom.name);
@@ -146,8 +158,7 @@ Yii::app()->clientScript->registerScript('register', "
 							row.children('.subdomain-name').remove();
 							row.children('.need').remove();
 			
-							if(i === 0) grid.find('.items-verify').html(row);
-							else grid.find('.items-verify .item:last').after(row);
+							grid.find('.items-verify .item:last').after(row);
 							break;
 						}
 					}
@@ -159,10 +170,22 @@ Yii::app()->clientScript->registerScript('register', "
 			// get a list of current subdomain selections
 			var currentIds = $('#hiddensub').val().split(',');
 			var found = false;
-			if(currentIds.length === 0){
+			if(currentIds[0] === ''){
 				$('#sub_picks_message').text('You have selected NO Subdomains.');
 			} else {
 				$('#sub_picks_message').text('You have selected these Subdomains.');
+				var row = subTemplate.clone();
+				row.children('.domain-name').text('Subomain');
+				row.removeClass('collapse out');
+				row.children('.domain-name').removeClass('tbl-center');
+				row.children('.description').text('Description');
+				row.children('.description').addClass('width-override');
+				row.children('.proficiency').children().remove();
+				row.children('.proficiency').text('Prof.');
+				row.children('.subdomain-name').remove();
+				row.children('.need').remove();
+				grid.find('.items-verify').html(row);
+			
 				for(var i = 0; i < currentIds.length; i++){
 					for(var j = 0; j < window.domains.length; j++){
 						var dom = window.domains[j];
@@ -171,8 +194,9 @@ Yii::app()->clientScript->registerScript('register', "
 							var subsplit = currentIds[i].split(':');
 							if(sub.id === subsplit[0]){
 								// make a row and add it to the verify grid
-								var row = subTemplate.clone();
+								row = subTemplate.clone();
 								row.removeClass('collapse out');
+								row.addClass('superRow');
 				
 								// fill in all the data here
 								row.children('.domain-name').text(sub.name);
@@ -184,8 +208,7 @@ Yii::app()->clientScript->registerScript('register', "
 								row.children('.subdomain-name').remove();
 								row.children('.need').remove();
 							
-								if(i === 0) grid.find('.items-verify').html(row);
-								else grid.find('.items-verify .item:last').after(row);
+								grid.find('.items-verify .item:last').after(row);
 								found = true;
 								break;
 							}
@@ -203,12 +226,16 @@ Yii::app()->clientScript->registerScript('register', "
 	});
 			
 	generateGrid();
+	
+	$(function (){
+         $('.infopop').popover();
+      });
 ");
 ?>
 
 <h1 class="centerTxt">Domain Mentor</h1>
 <br>
-<p class="centerTxt">From here you may select which domains you wish to mentor. For any domain you wish to mentor assign it a proficiency based on your knowledge of that domain. Click on a domain to view subdomains. Hover over a domain to learn more.</p>
+<p class="centerTxt">From here you may select which domains you wish to mentor.  <a class="btn btn-mini btn-info infopop" data-content="Click on a domain to view its subdomains. Hover over a domain to learn more. For any domain you wish to mentor assign it a proficiency based on your knowledge of that domain." data-placement="bottom" data-toggle="popover" data-trigger="hover"><i class="icon-info-sign icon-white"></i></a></p>
 <br>
 
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
@@ -218,6 +245,7 @@ Yii::app()->clientScript->registerScript('register', "
 <style>
 .item div {display: inline-block; float: left; padding: 0.3em; font-size: 0.9em; line-height: 1em; cursor: pointer}
 .items-header {background: url("/coplat/assets/f769f9db/gridview/bg.gif") repeat-x scroll left top white; padding-top: 5px; color:white; min-height: 30px}
+.verify-header {background: url("/coplat/assets/f769f9db/gridview/bg.gif") repeat-x; color:white;}
 .items-body {height: 400px; overflow-y: scroll; background: #F8F8F8;}
 .header-pad {padding-left: 5px}
 .domain-name {width: 20%}

@@ -302,7 +302,7 @@ Yii::app()->clientScript->registerScript('register', "
 			// get a list of current selections
 			var currentIds = $('#hiddeninput').val().split(',');
 			
-			if(currentIds.length === 0){
+			if(currentIds[0] === ''){
 				$('#your_picks_message').text('You have selected NO projects.');
 			} else {
 				$('#your_picks_message').text('You have selected these projects.');
@@ -350,6 +350,9 @@ Yii::app()->clientScript->registerScript('register', "
 	
 	})(jQuery);
 			
+	$(function (){
+         $('.infopop').popover();
+      });
 ");
 ?>
 
@@ -368,7 +371,7 @@ Yii::app()->clientScript->registerScript('register', "
 <div class="row">
 	<div class="lightMarginL span8 right-border">
 		<h3 class="centerTxt">You Pick</h3>
-		<p class="centerTxt">Add projects you wish to mentor to Your Picks by clicking on them.</p>
+		<p class="centerTxt">Just click to add projects to Your Picks.  <a class="btn btn-mini btn-info infopop" data-content="Hover over a project for more info." data-placement="right" data-toggle="popover" data-trigger="hover"><i class="icon-info-sign icon-white"></i></a></p>
 		<div class="row">
 			<div class="span4 lightMarginL">
 				<style>

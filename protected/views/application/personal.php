@@ -318,7 +318,7 @@ Yii::app()->clientScript->registerScript('register', "
 			// get a list of current selections
 			var currentIds = $('#hiddeninput').val().split(',');
 			
-			if(currentIds.length === 0){
+			if(currentIds[i] === ''){
 				$('#your_picks_message').text('You have selected NO mentees.');
 			} else {
 				$('#your_picks_message').text('You have selected these mentees.');
@@ -367,7 +367,10 @@ Yii::app()->clientScript->registerScript('register', "
 	    };
 	
 	})(jQuery);
-
+	
+	$(function (){
+         $('.infopop').popover();
+      });
 ");
 ?>
 
@@ -386,7 +389,7 @@ Yii::app()->clientScript->registerScript('register', "
 <div class="row">
 	<div class="lightMarginL span8 right-border">
 		<h3 class="centerTxt">You Pick</h3>
-		<p class="centerTxt">Add students you wish to mentor to Your Picks by clicking on them.</p>
+		<p class="centerTxt">Just click to add students to Your Picks.  <a class="btn btn-mini btn-info infopop" data-content="Hover over a student for more info. Click on column header to filter by Mentee or University." data-placement="right" data-toggle="popover" data-trigger="hover"><i class="icon-info-sign icon-white"></i></a></p>
 		<div class="row">
 			<div class="span4 lightMarginL">
 				<style>
