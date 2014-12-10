@@ -45,7 +45,7 @@ class ApplicationSubdomainMentorPick extends CActiveRecord
 			array('app_id, subdomain_id, proficiency, approval_status', 'required'),
 			array('proficiency', 'numerical', 'integerOnly'=>true),
 			array('app_id, subdomain_id', 'length', 'max'=>11),
-			array('approval_status', 'length', 'max'=>8),
+			array('approval_status', 'length', 'max'=>18),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, app_id, subdomain_id, proficiency, approval_status', 'safe', 'on'=>'search'),

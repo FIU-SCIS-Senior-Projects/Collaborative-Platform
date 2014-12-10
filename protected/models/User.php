@@ -63,6 +63,7 @@ class User extends CActiveRecord
     public $fullName;
     public $skills;
     public $toggleUser = 0;
+    public $invitemessage = '';
     
     /*Change the value when the system is deploy */
     public static $admin = 5;
@@ -841,6 +842,29 @@ class User extends CActiveRecord
         $email->message = $html;
         $email->send();
 
+    }
+    
+    public static function setInvitationEmail($invitation)
+    {
+    	$link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+    	$admin = User::model()->findByPk($invitation->administrator_user_id);
+    	$to = "";
+    	$message = "The Collaborative Platform system administrator, " . $admin->fname . " " . $admin->lname . ", through this email would like to invite you to participate on it as: <br/>";
+    	if ($invitation->administrator == 1)
+    		$message = $message . "<b><u>System Administrator</u>: Responsible, for users, invitations, projects, domains and sub-domains management.</b><br/>";
+    	if ($invitation->mentor == 1)
+    		$message = $message . "<b><u>Mentor</u></b><br/>&nbsp;&nbsp;<i>Domain Mentor: Provide solutions using his/her expertise in specific domains to questions within the platform.</i><br/>&nbsp;&nbsp;<i>Project Mentor: Guide the project development through the semester.</i><br/>&nbsp;&nbsp;<i>Personal Mentor: Provide assistance and guidance to his/her mentees.</i><br/>";
+    	if ($invitation->employer == 1)
+    		$message = $message . "<b><u>Employer</u>: Publish Job offers, and get to interview potential employees through the Virtual Job Fair Module.</b><br/>";
+    	if ($invitation->judge == 1)
+    		$message = $message . "<b><u>Judge</u>: Judge Senior Projects presentations through the Remote Judge Module.</b><br/>";
+    	if ($invitation->mentee == 1)
+    		$message = $message . "<b><u>Mentee</u>: Platform general user that will interact will the all the users of the platform trough the Mentoring Module..</b><br/>";
+    
+    	$message = $message . "</h2><br/>" . $link . " to access the platform.";
+    
+    	$invitemessage = $message;
+    	return $message;
     }
 
     public static function addNewMessageNotification($sender, $receiver, $link, $level)

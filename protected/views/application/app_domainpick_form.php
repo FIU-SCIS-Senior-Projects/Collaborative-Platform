@@ -13,12 +13,6 @@
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row"> 
-        <?php echo $form->labelEx($model,'app_id'); ?>
-        <?php echo $form->textField($model,'app_id',array('size'=>11,'maxlength'=>11)); ?>
-        <?php echo $form->error($model,'app_id'); ?>
-    </div> 
-
-    <div class="row"> 
         <?php echo $form->labelEx($model,'domain_id'); ?>
         <?php echo $form->textField($model,'domain_id',array('size'=>11,'maxlength'=>11)); ?>
         <?php echo $form->error($model,'domain_id'); ?>
@@ -28,12 +22,6 @@
         <?php echo $form->labelEx($model,'proficiency'); ?>
         <?php echo $form->textField($model,'proficiency',array('size'=>2,'maxlength'=>2)); ?>
         <?php echo $form->error($model,'proficiency'); ?>
-    </div> 
-
-    <div class="row"> 
-        <?php echo $form->labelEx($model,'approval_status'); ?>
-        <?php echo $form->textField($model,'approval_status',array('size'=>18,'maxlength'=>18)); ?>
-        <?php echo $form->error($model,'approval_status'); ?>
     </div> 
 
     <div class="row buttons"> 

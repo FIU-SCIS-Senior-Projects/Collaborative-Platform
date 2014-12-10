@@ -59,31 +59,21 @@
         <p style="float:left; margin-left:5px">Domain Mentor</p></br></br>
 
 
-        <?php
-        echo $form->labelEx($model,'vjf_role');?>
-        <?php
-        echo $form->checkBox($model,'isEmployer',array('style'=>'float:left','DISABLED'=>true));
-        ?>
-        <p style="float:left; margin-left:5px">Employer</p></br></br>
-        <?php
-        echo $form->checkBox($model,'isStudent',array('style'=>'float:left','DISABLED'=>true));
-        ?>
-        <p style="float:left; margin-left:5px">Student</p></br></br>
-        <?php
-        echo $form->labelEx($model,'rmj_role');
-        echo $form->checkBox($model,'isJudge',array('style'=>'float:left','DISABLED'=>true));
-        ?>
-        <p style="float:left; margin-left:5px">Judge</p></br></br>
-        <?php
-        echo $form->checkBox($model,'isStudent',array('style'=>'float:left','DISABLED'=>true));
-
-        ?>
-        <p style="float:left; margin-left:5px">Student</p>
     </div>
     <div style="margin-top:470px;margin-left:275px">
         <?php echo CHtml::submitButton('Next', array("class"=>"btn btn-primary")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
+    
+    <a href=../user/admin>
+		<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Cancel',
+		'size'=>'medium',
+		'type'=> 'danger',
+		));?>
+	</a>
     </div>
     <?php $this->endWidget(); ?>
+    
     <div style="clear:both"></div>
     </br>
 

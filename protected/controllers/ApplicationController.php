@@ -33,7 +33,7 @@ class ApplicationController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','view'),
+				'actions'=>array('admin','view', 'adminpersonal'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -137,26 +137,38 @@ class ApplicationController extends Controller
 		
 			if(isset($_POST['ApplicationPersonalMentorPick']))
 			{
+				$temp = $this->loadPersonalMentorByUser($user_id);
 				$perModel->attributes=$_POST['ApplicationPersonalMentorPick'];
+				$perModel->app_id = $temp->id;
+				$perModel->approval_status = "Proposed by Admin";
 				$perModel->save();
 				$perModel->unsetAttributes();
 				$newPick = true;
 				// render new form after post
 			}else if(isset($_POST['ApplicationProjectMentorPick']))
 			{
+				$temp = $this->loadProjectMentorByUser($user_id);
 				$proModel->attributes=$_POST['ApplicationProjectMentorPick'];
+				$proModel->app_id = $temp->id;
+				$proModel->approval_status = "Proposed by Admin";
 				$proModel->save();
 				$proModel->unsetAttributes();
 				$newPick = true;
 			} else if(isset($_POST['ApplicationDomainMentorPick']))
 			{
+				$temp = $this->loadDomainMentorByUser($user_id);
 				$domModel->attributes=$_POST['ApplicationDomainMentorPick'];
+				$domModel->app_id = $temp->id;
+				$domModel->approval_status = "Proposed by Admin";
 				$domModel->save();
 				$domModel->unsetAttributes();
 				$newPick = true;
 			} else if(isset($_POST['ApplicationSubdomainMentorPick']))
 			{
+				$temp = $this->loadDomainMentorByUser($user_id);
 				$subModel->attributes=$_POST['ApplicationSubdomainMentorPick'];
+				$subModel->app_id = $temp->id;
+				$subModel->approval_status = "Proposed by Admin";
 				$subModel->save();
 				$subModel->unsetAttributes();
 				$newPick = true;
@@ -468,7 +480,8 @@ class ApplicationController extends Controller
 						
 						$personalMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
 								FROM application_personal_mentor_pick t, user u
-								WHERE t.user_id = u.id AND t.approval_status = "Proposed by Mentor" AND t.app_id = '.$personalMentor->id.'');
+								WHERE t.user_id = u.id AND (t.approval_status = "Proposed by Mentor" OR t.approval_status = "Proposed by System")
+								AND t.app_id = '.$personalMentor->id.'');
 						
 						$personalCount = Yii::app()->db->createCommand()->
 								select('count(*)')->
@@ -492,7 +505,8 @@ class ApplicationController extends Controller
 						
 						$projectMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
 								FROM application_project_mentor_pick t, project p
-								WHERE t.project_id = p.id AND t.approval_status = "Proposed by Mentor" AND t.app_id = '.$projectMentor->id.'');
+								WHERE t.project_id = p.id AND (t.approval_status = "Proposed by Mentor" OR t.approval_status = "Proposed by System")
+								AND t.app_id = '.$projectMentor->id.'');
 						
 						$projectCount = Yii::app()->db->createCommand()->
 								select('count(*)')->
@@ -504,7 +518,7 @@ class ApplicationController extends Controller
 				}
 				
 				// application domain mentor
-				$domainMentor = $this->loadDomainMentorByUser($id);
+				$domainMentor = $this->loadDomainMentorByUser($user_id);
 				$domainHistory = null;
 				$domainChanges= null;
 				$domainCount = 0;
@@ -513,12 +527,15 @@ class ApplicationController extends Controller
 				$subdomainCount = 0;
 				if ($domainMentor != null){
 					
-						$domainHistory = new CSqlDataProvider('SELECT * FROM application_domain_mentor_pick t
-								WHERE t.approval_status != "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+						$domainHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.domain_id, t.proficiency, t.approval_status, d.name
+								FROM application_domain_mentor_pick t, domain d 
+								WHERE t.approval_status != "Proposed by Mentor" AND t.domain_id = d.id AND t.app_id = '.$domainMentor->id.'');
 						
 						
-						$domainChanges = new CSqlDataProvider('SELECT * FROM application_domain_mentor_pick t
-								WHERE t.approval_status = "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+						$domainChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.domain_id, t.proficiency, t.approval_status, d.name
+								FROM application_domain_mentor_pick t, domain d 
+								WHERE (t.approval_status = "Proposed by Mentor" OR t.approval_status = "Proposed by System") 
+								AND t.domain_id = d.id AND t.app_id= '.$domainMentor->id.'');
 						
 						$domainCount = Yii::app()->db->createCommand()->
 								select('count(*)')->
@@ -527,11 +544,14 @@ class ApplicationController extends Controller
 								andWhere('approval_status = "Proposed by Mentor"')->
 								queryScalar();
 								
-						$subdomainHistory = new CSqlDataProvider('SELECT * FROM application_subdomain_mentor_pick t
-								WHERE t.approval_status != "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+						$subdomainHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.subdomain_id, t.proficiency, t.approval_status, d.name as "dname", s.name as "sname" 
+								FROM application_subdomain_mentor_pick t, subdomain s, domain d 
+								WHERE t.approval_status != "Proposed by Mentor" AND s.domain_id = d.id AND s.id = t.subdomain_id AND t.app_id = '.$domainMentor->id.'');
 						
-						$subdomainChanges = new CSqlDataProvider('SELECT * FROM application_subdomain_mentor_pick t
-								WHERE t.approval_status = "Proposed by Mentor" AND t.app_id = '.$domainMentor->id.'');
+						$subdomainChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.subdomain_id, t.proficiency, t.approval_status, d.name as "dname", s.name as "sname" 
+								FROM application_subdomain_mentor_pick t, subdomain s, domain d 
+								WHERE (t.approval_status = "Proposed by Mentor" OR t.approval_status = "Proposed by System")
+								AND s.domain_id = d.id AND s.id = t.subdomain_id AND t.app_id = '.$domainMentor->id.'');
 						
 						$subdomainCount = Yii::app()->db->createCommand()->
 								select('count(*)')->
@@ -540,6 +560,8 @@ class ApplicationController extends Controller
 								andWhere('approval_status = "Proposed by Mentor"')->
 								queryScalar();
 				}
+				
+				$userInfo = $this->loadUserInfoByUser($user_id);
 				
 				$newCount = $personalCount + $projectCount + $domainCount + $subdomainCount;
 				
@@ -556,6 +578,7 @@ class ApplicationController extends Controller
 				'proModel'=>$proModel,
 				'domModel'=>$domModel,
 				'subModel'=>$subModel,
+				'userInfo'=>$userInfo,
 				
 		));
 	}
@@ -594,6 +617,47 @@ class ApplicationController extends Controller
 		else $buttons[] = 1;
 		
 		$this->render('portal', array('buttons'=>$buttons));
+	}
+	
+	public function actionAdminPersonal($id, $appid ){
+		$model = new ApplicationPersonalMentor;
+		$students = new User;
+		$unis = array();
+	
+		if (Yii::app()->getRequest()->isPostRequest) {
+			// on application submit
+			$user = User::model()->findAllByPk($id);
+
+				
+			// save user picks
+			$mypicks = $_POST['picks'];
+			$mypicks = explode(',', $mypicks);
+			foreach($mypicks as $pick){
+				$dbpick = new ApplicationPersonalMentorPick;
+				$dbpick->app_id = $model->id;
+				$dbpick->user_id = $pick;
+				$dbpick->approval_status = 'Proposed by Admin';
+				$dbpick->save(false);
+			}
+				
+			// redirect to application portal
+			$this->redirect("/coplat/index.php/application/" . $id);
+		} else {
+			// on initial load
+			$students->unsetAttributes();
+			$students->isMentee = 1;
+			$student = User::model()->returnUsersForApp($students->searchNoPagination());
+			$universities = University::model()->getUniversities();
+			$unis[0] = 'Any';
+			foreach ($universities as $uni) $unis[$uni->id] = $uni->name;
+			$model->system_pick_amount = 0;
+		}
+	
+		$error='';
+	
+		$this->render('adminpersonal', array(
+				'model'=>$model, 'user'=>$students, 'universities'=>$unis, 'students'=>$student, 'error' => $error,
+		));
 	}
 	
 	/*
@@ -777,6 +841,13 @@ class ApplicationController extends Controller
 	{
 		$params = array('user_id'=>$id, 'status'=>'Admin');
 		$model=ApplicationDomainMentor::model()->findByAttributes($params);
+		return $model;
+	}
+	
+	public function loadUserInfoByUser($id) {
+		//$params = array('user_id'=>$id);
+		//$model=UserInfo::model()->findByAttributes($params);
+		$model = UserInfo::model()->findByPk($id);
 		return $model;
 	}
 	

@@ -43,6 +43,17 @@ $('.asearch-form form').submit(function(){
 
 <h2>Manage Users</h2>
 
+<a href=../user/admin_create_user>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'Add a Mentor',
+		'icon'=>'plus white',
+		'size'=>'medium',
+		'type'=> 'success',
+
+		));?>
+</a><br/><br/>
+
 <?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?><!--
 <br/>
 

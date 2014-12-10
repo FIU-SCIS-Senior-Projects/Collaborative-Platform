@@ -18,6 +18,7 @@ class InvitationController extends Controller
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 			//array('booster.filters.BoosterFilter - create')
+
 		);
 	}
 
@@ -38,7 +39,7 @@ class InvitationController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete', 'viewmodal'),
+				'actions'=>array('admin','delete', 'viewmodal', 'confirm'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -69,6 +70,16 @@ class InvitationController extends Controller
 			$this->render('viewmodal',array('model'=>$model));
 		 
 	}
+	
+	public function actionConfirm($id){
+		
+		$model=$this->loadModel($id);
+
+		$this->render('confirm',array(
+				'model'=>$model,'id'=>$id,
+		));
+		
+	}
 
 	/**
 	 * Creates a new model.
@@ -77,6 +88,7 @@ class InvitationController extends Controller
 	public function actionCreate()
 	{
 		$model=new Invitation;
+		$this->layout = '';
 		
 		/**
 		 * todo:
@@ -98,13 +110,20 @@ class InvitationController extends Controller
 
 		if(isset($_POST['Invitation']))
 		{
+			$user = new User();
+				
 			$model->attributes=$_POST['Invitation'];
             $model->administrator_user_id = (int)User::getCurrentUserId();
             $model->date = date('Y-m-d H:i:s');
+            $model->employer = 0;
+            $model->judge = 0;
+            $model->message = $user->setInvitationEmail($model);
+            
 			if($model->save())
             {
-			    User::sendInvitationEmail($model);
-				$this->redirect(array('admin','id'=>$model->id));
+			    //User::sendInvitationEmail($model);
+				//$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('confirm', 'id'=>$model->id));
             }
 		}
 

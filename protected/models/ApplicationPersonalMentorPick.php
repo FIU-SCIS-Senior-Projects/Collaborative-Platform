@@ -16,6 +16,7 @@
 class ApplicationPersonalMentorPick extends CActiveRecord
 {
 	public $approval_status2;
+	public $tempSelections;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
