@@ -74,6 +74,14 @@ class InvitationController extends Controller
 	public function actionConfirm($id){
 		
 		$model=$this->loadModel($id);
+		
+		if(isset($_POST['Invitation']))
+		{
+			$model->attributes=$_POST['Invitation'];
+			$model->save();
+			User::sendInviteByMessage($model);
+			$this->redirect(array('admin'));
+		}
 
 		$this->render('confirm',array(
 				'model'=>$model,'id'=>$id,
