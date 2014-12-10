@@ -183,21 +183,7 @@ class ApplicationController extends Controller
 				$domApp = $this->loadDomainMentorByUser($user_id);
 				$persApp = $this->loadPersonalMentorByUser($user_id);
 				$projApp = $this->loadProjectMentorByUser($user_id);
-				$loaduser = $this->loadUser($user_id);
 				
-				/**
-				 * todo:
-				 * 
-				 * add the check when entering mentor data into personal_mentor, 
-				 * project_mentor, and domain_mentor table. so that no new entries
-				 * are made.
-				 * 
-				 * populate the dropdown boxes for the propose buttons with
-				 * data that includes u - [mentor_live_data + mentor_pending_data(admin&&mentor) ] 
-				 * so that no new entries can ever be made
-				 * 
-				 * allow admin ability to add a new application for a given mentor.
-				 */
 	
 // PERSONAL PICKS ACCEPT
 				$mypicks = $_POST['personal_picks_accept'];
@@ -232,7 +218,7 @@ class ApplicationController extends Controller
 					} // else UPDATE
 					
 					$personalFlag = true;
-					$loaduser->isPerMentor = 1;
+					//$loaduser->isPerMentor = 1;
 					
 				}
 				
@@ -284,7 +270,7 @@ class ApplicationController extends Controller
 					} // else UPDATE
 					
 					$projectFlag = true;
-					$loaduser->isProMentor = 1;
+					//$loaduser->isProMentor = 1;
 				}
 				
 	// PROJECT PICKS REJECT			
@@ -323,7 +309,7 @@ class ApplicationController extends Controller
 					}
 					
 					$domainFlag = true;
-					$loaduser->isDomMentor = 1;
+					//$loaduser->isDomMentor = 1;
 				}
 				
 	// DOMAIN PICKS REJECT			
@@ -365,7 +351,7 @@ class ApplicationController extends Controller
 					
 					
 					$domainFlag = true;
-					$loaduser->isDomMentor = 1;
+					//$loaduser->isDomMentor = 1;
 					
 				}
 				
@@ -385,11 +371,14 @@ class ApplicationController extends Controller
 				}
 				
 				$closed = new ApplicationClosed();
-				$closeOne = false;
+				$closedOne = false;
+				$loaduser = $this->loadUser($user_id);
+				
 				
 				if ($domainFlag){
 					// add entry to domain_mentor
 					$domEntry = $this->isNewEntry($user_id, 'domain_mentor');
+					$loaduser->isDomMentor = 1;
 						
 					// add entry to domain_mentor
 					// if it already exists do NOTHING . change here with else statement to perform update
@@ -421,10 +410,10 @@ class ApplicationController extends Controller
 						$closedOne = true;
 					}
 				}
-				
-				$loaduser->save();
-			
+							
 				if ($personalFlag){
+					
+					$loaduser->isPerMentor = 1;
 					
 					$percount = Yii::app()->db->createCommand()->
 									select('count(*)')->
@@ -442,6 +431,9 @@ class ApplicationController extends Controller
 				}
 				
 				if ($projectFlag){
+					
+					$loaduser->isProMentor = 1;
+					
 					$procount = Yii::app()->db->createCommand()->
 									select('count(*)')->
 									from('application_project_mentor_pick')->
@@ -456,6 +448,9 @@ class ApplicationController extends Controller
 						$closedOne = true;
 					}	
 				}
+				
+				$loaduser->save();
+				
 				
 				if ($closedOne) {
 					$closed->date = new CDbExpression('NOW()');	
@@ -476,7 +471,8 @@ class ApplicationController extends Controller
 							
 						$personalMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
 								FROM application_personal_mentor_pick t, user u
-								WHERE t.user_id = u.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$personalMentor->id.'');
+								WHERE t.user_id = u.id AND (t.approval_status != "Proposed by Mentor" AND t.approval_status != "Proposed by System") 
+								AND t.app_id = '.$personalMentor->id.'');
 						
 						$personalMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
 								FROM application_personal_mentor_pick t, user u
@@ -490,6 +486,13 @@ class ApplicationController extends Controller
 								andWhere('approval_status = "Proposed by Mentor"')->
 								queryScalar();
 						
+						$personalCount += Yii::app()->db->createCommand()->
+								select('count(*)')->
+								from('application_personal_mentor_pick')->
+								where('app_id =:id', array(':id'=>$personalMentor->id))->
+								andWhere('approval_status = "Proposed by System"')->
+								queryScalar();
+						
 				}
 				
 				// application project mentor
@@ -500,7 +503,8 @@ class ApplicationController extends Controller
 				if ($projectMentor != null){
 						$projectMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
 								FROM application_project_mentor_pick t, project p
-								WHERE t.project_id = p.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$projectMentor->id.'');
+								WHERE t.project_id = p.id AND (t.approval_status != "Proposed by Mentor" AND t.approval_status != "Proposed by System")
+								AND t.app_id = '.$projectMentor->id.'');
 						
 						
 						$projectMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
@@ -514,6 +518,13 @@ class ApplicationController extends Controller
 								where('app_id =:id', array(':id'=>$projectMentor->id))->
 								andWhere('approval_status = "Proposed by Mentor"')->
 								queryScalar();
+						
+						$projectCount += Yii::app()->db->createCommand()->
+						select('count(*)')->
+						from('application_project_mentor_pick')->
+						where('app_id =:id', array(':id'=>$projectMentor->id))->
+						andWhere('approval_status = "Proposed by System"')->
+						queryScalar();
 				
 				}
 				
@@ -534,7 +545,7 @@ class ApplicationController extends Controller
 						
 						$domainChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.domain_id, t.proficiency, t.approval_status, d.name
 								FROM application_domain_mentor_pick t, domain d 
-								WHERE (t.approval_status = "Proposed by Mentor" OR t.approval_status = "Proposed by System") 
+								WHERE (t.approval_status = "Proposed by Mentor") 
 								AND t.domain_id = d.id AND t.app_id= '.$domainMentor->id.'');
 						
 						$domainCount = Yii::app()->db->createCommand()->
@@ -550,7 +561,7 @@ class ApplicationController extends Controller
 						
 						$subdomainChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.subdomain_id, t.proficiency, t.approval_status, d.name as "dname", s.name as "sname" 
 								FROM application_subdomain_mentor_pick t, subdomain s, domain d 
-								WHERE (t.approval_status = "Proposed by Mentor" OR t.approval_status = "Proposed by System")
+								WHERE (t.approval_status = "Proposed by Mentor")
 								AND s.domain_id = d.id AND s.id = t.subdomain_id AND t.app_id = '.$domainMentor->id.'');
 						
 						$subdomainCount = Yii::app()->db->createCommand()->
