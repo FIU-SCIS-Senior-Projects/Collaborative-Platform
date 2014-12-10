@@ -228,9 +228,48 @@ Yii::app()->clientScript->registerScript('register', "
 				
 		return valid;	
 	}
+
+	function generateSystemPicks(){
+		var notselected = [];
+		var picked = $('#hiddeninput').val().split(',');
+		var selected = false;
+			
+		for(var i = 0; i < window.projects.length; i++){
+			var project = window.projects[i];
+			
+			// check if this project was selected
+			for(var j = 0; j < picked.length; j++){
+				if(project.id == picked[j]){
+					// this project has been selected set flag
+					selected = true;
+					break;
+				}
+			}
+			
+			// if project was selected
+			if(!selected){
+				notselected.push(project);
+				var sysPicks = $('#hiddensystem').val();
+				var separator = (sysPicks === '') ? '' : ',';
+				$('#hiddensystem').val(sysPicks + separator + project.id);
+			} 
+			
+			// If there were sufficient project
+			if(notselected.length >= $('#sys').val()) return;
+			
+			// reset flag
+			selected = false;
+		}
+	}
 			
 	$('.next').click(function(){
 		if(validateApp()){
+			// reset system picks
+			$('#hiddensystem').val('');
+			
+			// generate system picks
+			if($('#sys').val() > 0) generateSystemPicks();
+			
 			var grid = $('#verifygrid');
 
 			// clear the table
@@ -359,6 +398,7 @@ Yii::app()->clientScript->registerScript('register', "
 				<p id='sys-error' class="note errMsg hidden">The amount entered is invalid.</p>
 		    	<br>
 		        <?php echo CHtml::hiddenField('picks', '', array('id'=>'hiddeninput'));?>	
+		        <?php echo CHtml::hiddenField('systempicks', '', array('id'=>'hiddensystem'));?>
 	</div>
 </div>
 <div class="text-center">
@@ -400,7 +440,7 @@ Yii::app()->clientScript->registerScript('register', "
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+		<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Back</button>
 		<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary")); ?>
 	</div>
 </div>

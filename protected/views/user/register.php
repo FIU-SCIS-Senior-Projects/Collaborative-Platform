@@ -20,6 +20,7 @@ Yii::app()->clientScript->registerScript('register', "
 		var valid = true;
 		var alphaNum = /^[a-z0-9]+$/i;
 		var emailReg = /^[^@]{1,64}@[^@]{1,255}$/;
+		var numReg = /^\d+$/;
 		
 		if($('#fname').val().length < 1){
 			setInvalid($('#fname'), $('#fname-error'));
@@ -50,15 +51,6 @@ Yii::app()->clientScript->registerScript('register', "
 			setInvalid($('#pass2'), $('#pass2-error'));
 			valid = false;
         } else 	setValid($('#pass2'), $('#pass2-error'));
-
-		return valid;
-	}
-		
-	function validatePersonalInfo(){
-		var valid = true;
-		var alphaNum = /^[a-z0-9]+$/i;
-		var emailReg = /^[^@]{1,64}@[^@]{1,255}$/;
-		var numReg = /^\d+$/;
 		
 		if($('#emp').val().length < 1){
 			setInvalid($('#emp'), $('#emp-error'));
@@ -89,21 +81,12 @@ Yii::app()->clientScript->registerScript('register', "
 			setInvalid($('#deg'), $('#deg-error'));
 			valid = false;
 		} else setValid($('#deg'), $('#deg-error'));
-		
+
 		return valid;
 	}
 		
-	$('.next').click(function(){
-		if(validateAccountInfo()){
-			$('.personal-info').collapse('toggle')
-			$('.next').addClass('hidden');
-			$('.next2').removeClass('hidden')
-		}
-		return false;
-	});
-		
 	$('.next2').click(function(){
-		if(validateAccountInfo() && validatePersonalInfo()){
+		if(validateAccountInfo()){
 			$('#fname-verify').text('Name: ' + $('#fname').val() + ' ' + $('#mname').val() + ' ' + $('#lname').val());
 			$('#uname-verify').text('Userame: ' + $('#uname').val());
 			$('#email-verify').text('Email: ' + $('#email').val());
@@ -185,7 +168,7 @@ Yii::app()->clientScript->registerScript('register', "
 					</div>
 				</div>
 			</div>
-	    	<div class="personal-info collapse">
+	    	<div class="personal-info">
 	    		<div class="rowfluid">
 	    			<div class="span3 lightMarginL">
 	    				<h4>Work Experience</h4>
@@ -221,14 +204,7 @@ Yii::app()->clientScript->registerScript('register', "
 	    		</div>
 			</div>
 			<div class="span9 centerTxt">
-		        <?php $this->widget('bootstrap.widgets.TbButton', array(
-	                'buttonType'=>'button',
-	                'type'=>'primary',
-					'size'=>'large',
-	                'label'=>'Next',
-        			'htmlOptions'=>array('class'=>'next'),
-	            )); ?>
-	            <a href="#verify" role="button" class="btn btn-large btn-primary next2 hidden" data-toggle="modal">Next</a>
+	            <a href="#verify" role="button" class="btn btn-large btn-primary next2" data-toggle="modal">Next</a>
 	          	<a style="text-decoration:none" href="/coplat/index.php/site/login">
 					<?php $this->widget('bootstrap.widgets.TbButton', array(
 		                'buttonType'=>'button',
@@ -264,7 +240,7 @@ Yii::app()->clientScript->registerScript('register', "
 			<p id='grad-verify'></p>
 		</div>
 		<div class="modal-footer">
-			<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+			<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Back</button>
 			<?php echo CHtml::submitButton('Submit', array('class'=>'btn btn-large btn-primary', 'id'=>'regsubmit')); ?>
 		</div>
 	</div>

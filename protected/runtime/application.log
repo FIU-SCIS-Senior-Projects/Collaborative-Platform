@@ -5842,3 +5842,128 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/application/domain
 HTTP_REFERER=http://localhost:3838/coplat/index.php/application/domain
 ---
+2014/12/10 00:50:13 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '121' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (683)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/10 00:50:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '121' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(683): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/project
+---
+2014/12/10 00:50:34 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '114' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (683)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/10 00:50:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '114' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(683): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/project
+---
+2014/12/10 00:51:33 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '133' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (683)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/10 00:51:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '133' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(683): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/project
+---
+2014/12/10 00:53:57 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '133' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (683)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/10 00:53:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '133' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(683): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/project
+---
+2014/12/10 01:31:13 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '133' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (683)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/10 01:31:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '133' for key 'project_id'. The SQL statement executed was: INSERT INTO `application_project_mentor_pick` (`app_id`, `project_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(683): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionProject()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('project')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/pro...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/project
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/project
+---

@@ -347,7 +347,7 @@ Yii::app()->clientScript->registerScript('register', "
 		<p id="max_amount_message"></p>
 	</div>
 	<div class="modal-footer">
-		<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+		<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Back</button>
 		<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary")); ?>
 	</div>
 </div>

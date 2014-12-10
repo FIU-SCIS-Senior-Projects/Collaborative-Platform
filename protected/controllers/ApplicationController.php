@@ -605,7 +605,10 @@ class ApplicationController extends Controller
 		$unis = array();
 		
 		if (Yii::app()->getRequest()->isPostRequest) {
+			// on application submit
 			$user = User::model()->getCurrentUser();		
+			
+			// pull application data and save
 			$model->attributes = $_POST['ApplicationPersonalMentor'];
 			$model->status = 'Admin';
 			$model->user_id = $user->id;
@@ -613,6 +616,7 @@ class ApplicationController extends Controller
 			if($model->university_id === 0) $model->university_id = NULL;
 			$model->save(false);
 			
+			// save user picks
 			$mypicks = $_POST['picks'];
 			$mypicks = explode(',', $mypicks);
 			foreach($mypicks as $pick){
@@ -622,8 +626,22 @@ class ApplicationController extends Controller
 				$dbpick->approval_status = 'Proposed by Mentor';
 				$dbpick->save(false);
 			}	
+			
+			// save system picks
+			$systempicks = $_POST['systempicks'];
+			$systempicks = explode(',', $systempicks);
+			foreach($systempicks as $pick){
+				$dbpick = new ApplicationPersonalMentorPick;
+				$dbpick->app_id = $model->id;
+				$dbpick->user_id = $pick;
+				$dbpick->approval_status = 'Proposed by System';
+				$dbpick->save(false);
+			}
+			
+			// redirect to application portal
 			$this->redirect("/coplat/index.php/application/portal");
-		} else { // on initial load
+		} else { 
+			// on initial load
 			$students->unsetAttributes();
 			$students->isMentee = 1;
 			$student = User::model()->returnUsersForApp($students->searchNoPagination());
@@ -664,6 +682,19 @@ class ApplicationController extends Controller
 				$dbpick->approval_status = 'Proposed by Mentor';
 				$dbpick->save(false);
 			}
+			
+			// save system picks
+			$systempicks = $_POST['systempicks'];
+			$systempicks = explode(',', $systempicks);
+			foreach($systempicks as $pick){
+				$dbpick = new ApplicationProjectMentorPick;
+				$dbpick->app_id = $application->id;
+				$dbpick->project_id = $pick;
+				$dbpick->approval_status = 'Proposed by System';
+				$dbpick->save(false);
+			}
+			
+			// redirect to application portal
 			$this->redirect("/coplat/index.php/application/portal");
 		} else { // on initial load
 			$projects->unsetAttributes();

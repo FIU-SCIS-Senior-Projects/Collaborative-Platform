@@ -260,8 +260,56 @@ Yii::app()->clientScript->registerScript('register', "
 		return valid;	
 	}
 			
+	function generateSystemPicks(){
+		var preferred = [];
+		var notselected = [];
+		var picked = $('#hiddeninput').val().split(',');
+		var selected = false;
+			
+		for(var i = 0; i < window.students.length; i++){
+			var student = window.students[i];
+			
+			// check if this student was selected
+			for(var j = 0; j < picked.length; j++){
+				if(student.id == picked[j]){
+					// this student has been selected set flag
+					selected = true;
+					break;
+				}
+			}
+			
+			// check if student is from the preferred university
+			if(!selected && student.university == $('#ApplicationPersonalMentor_university_id option:selected').text()){
+				preferred.push(student);
+				var sysPicks = $('#hiddensystem').val();
+				var separator = (sysPicks === '') ? '' : ',';
+				$('#hiddensystem').val(sysPicks + separator + student.id);
+			} else if(!selected) notselected.push(student);
+			
+			
+			// If there were sufficient students from the preferred school, stop
+			if(preferred.length >= $('#sys').val()) return;
+			
+			// reset flag
+			selected = false;
+		}
+		
+		// if there were insufficient students from the preferred school, then fill with whats left
+		for(var i = 0; i < notselected.length && $('#sys').val() > preferred.length + i; i++) {
+			var sysPicks = $('#hiddensystem').val();
+			var separator = (sysPicks === '') ? '' : ',';
+			$('#hiddensystem').val(sysPicks + separator + notselected[i].id);
+		}
+	}
+			
 	$('.next').click(function(){
 		if(validateApp()){
+			// reset system picks
+			$('#hiddensystem').val('');
+			
+			// generate system picks
+			if($('#sys').val() > 0) generateSystemPicks();
+			
 			var grid = $('#verifygrid');
 
 			// clear the table
@@ -410,6 +458,7 @@ Yii::app()->clientScript->registerScript('register', "
 		        <?php echo $form->error($model,'university_id'); ?>
 		        
 		        <?php echo CHtml::hiddenField('picks', '', array('id'=>'hiddeninput'));?>	
+		        <?php echo CHtml::hiddenField('systempicks', '', array('id'=>'hiddensystem'));?>
 	</div>
 </div>
 <div class="text-center">
@@ -451,7 +500,7 @@ Yii::app()->clientScript->registerScript('register', "
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+		<button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Back</button>
 		<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary")); ?>
 	</div>
 </div>

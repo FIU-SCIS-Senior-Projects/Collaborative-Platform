@@ -75,6 +75,18 @@ Yii::app()->clientScript->registerScript('register', "
 	                'label'=>'Apply',
 	            )); ?>
             </a>
+            </br>
+            </br>
+            </br>
+            <a style="text-decoration:none" href="/coplat/index.php/">
+				<?php $this->widget('bootstrap.widgets.TbButton', array(
+	                'buttonType'=>'button',
+	                'type'=>'primary',
+					'block'=>'true',
+					'size'=>'large',
+	                'label'=>'Done',
+	            )); ?>
+			</a>
 		</div>
 	</div>
 	<div class="span4">
