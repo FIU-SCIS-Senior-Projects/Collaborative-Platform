@@ -860,7 +860,7 @@ class User extends CActiveRecord
     
     public static function setInvitationEmail($invitation)
     {
-    	$link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+    	$link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/site/landing');
     	$admin = User::model()->findByPk($invitation->administrator_user_id);
     	$to = "";
     	$message = "The Collaborative Platform system administrator, " . $admin->fname . " " . $admin->lname . ", through this email would like to invite you to participate on it as: <br/>";
