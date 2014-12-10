@@ -14,28 +14,16 @@
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row"> 
-        <?php echo $form->labelEx($model,'app_id'); ?>
-        <?php echo $form->textField($model,'app_id',array('size'=>11,'maxlength'=>11)); ?>
-        <?php echo $form->error($model,'app_id'); ?>
-    </div> 
-
-    <div class="row"> 
         <?php echo $form->labelEx($model,'subdomain_id'); ?>
         <?php echo $form->textField($model,'subdomain_id',array('size'=>11,'maxlength'=>11)); ?>
         <?php echo $form->error($model,'subdomain_id'); ?>
-    </div> 
+    </div>
 
     <div class="row"> 
         <?php echo $form->labelEx($model,'proficiency'); ?>
         <?php echo $form->textField($model,'proficiency'); ?>
         <?php echo $form->error($model,'proficiency'); ?>
-    </div> 
-
-    <div class="row"> 
-        <?php echo $form->labelEx($model,'approval_status'); ?>
-        <?php echo $form->textField($model,'approval_status',array('size'=>18,'maxlength'=>18)); ?>
-        <?php echo $form->error($model,'approval_status'); ?>
-    </div> 
+    </div>
 
     <div class="row buttons"> 
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

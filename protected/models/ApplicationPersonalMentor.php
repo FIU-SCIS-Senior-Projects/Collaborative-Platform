@@ -14,7 +14,9 @@
  * @property string $university_id
  *
  * The followings are the available model relations:
+ * @property ApplicationClosed[] $applicationCloseds
  * @property User $user
+ * @property University $university
  * @property ApplicationPersonalMentorPick[] $applicationPersonalMentorPicks
  */
 class ApplicationPersonalMentor extends CActiveRecord
@@ -48,6 +50,7 @@ class ApplicationPersonalMentor extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id, status, max_amount, max_hours', 'required'),
+			array('university_id', 'numerical', 'integerOnly'=>true),
 			array('user_id, university_id', 'length', 'max'=>11),
 			array('status', 'length', 'max'=>6),
 			array('max_amount, max_hours', 'length', 'max'=>2),
@@ -67,7 +70,9 @@ class ApplicationPersonalMentor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'applicationCloseds' => array(self::HAS_MANY, 'ApplicationClosed', 'app_personal_mentor_id'),	
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'university' => array(self::BELONGS_TO, 'University', 'university_id'),
 			'applicationPersonalMentorPicks' => array(self::HAS_MANY, 'ApplicationPersonalMentorPick', 'app_id'),
 		);
 	}

@@ -11,6 +11,4 @@ $this->breadcrumbs=array(
 
 <h2>Send New Invitation</h2>
 
-<?php echo $this->renderPartial('add', array('model'=>$model)); 
-
-?>
+<?php echo $this->renderPartial('add', array('model'=>$model)); ?>

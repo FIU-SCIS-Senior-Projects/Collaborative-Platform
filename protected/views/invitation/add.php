@@ -27,11 +27,14 @@
 		<?php echo $form->checkBox($model,'administrator',array('style'=>'float:left')); ?>
         <p style="float:left; margin-left:5px">System Administrator</p><br/><br/>
 		<?php echo $form->error($model,'administrator'); ?>
-
-
-        <?php echo $form->checkBox($model,'mentee',array('style'=>'float:left')); ?>
+        
+         <?php echo $form->checkBox($model,'mentee',array('style'=>'float:left')); ?>
         <p style="float:left; margin-left:5px">Mentee</p><br/><br/>
         <?php echo $form->error($model,'mentee'); ?>
+        
+        <?php echo $form->checkBox($model,'mentor',array('style'=>'float:left')); ?>
+        <p style="float:left; margin-left:5px">Mentor</p><br/><br/>
+        <?php echo $form->error($model,'mentor'); ?>
 
         <?php echo CHtml::submitButton('Send', array("class"=>"btn btn-primary")); ?>
 	</div>
