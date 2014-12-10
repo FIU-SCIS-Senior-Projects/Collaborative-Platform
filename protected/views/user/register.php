@@ -192,7 +192,7 @@ Yii::app()->clientScript->registerScript('register', "
 				    </div>
 	    			<div class="span3 lightMarginL">
 	    				<h4>Education</h4>
-						<?php $data = array('Select', 'Bachelors', 'Masters', 'PhD')?>
+						<?php $data = array('Select', 'Currently Pursuing Degree', 'Bachelors', 'Masters', 'PhD')?>
 				        <?php echo $form->dropDownListRow($infoModel,'degree',array_combine($data, $data), array('id'=>'deg')); ?>
 						<p id='deg-error' class="note errMsg hidden">A degree must be selected.</p>
 				        						
