@@ -15,9 +15,11 @@
  * @property string $customer_lname
  *
  * The followings are the available model relations:
+ * @property ApplicationProjectMentorPick[] $applicationProjectMentorPicks
  * @property Mentee[] $mentees
  * @property User $proposeByUser
  * @property ProjectMentor $projectMentorUser
+ * @property ProjectMentorProjects[] $projectMentorProjects
  */
 class Project extends CActiveRecord
 {
@@ -67,7 +69,9 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'mentees' => array(self::HAS_MANY, 'Mentee', 'project_id'),
+				'applicationProjectMentorPicks' => array(self::HAS_MANY, 'ApplicationProjectMentorPick', 'project_id'),
+				'mentees' => array(self::HAS_MANY, 'Mentee', 'project_id'),
+				'projectMentorProjects' => array(self::HAS_MANY, 'ProjectMentorProjects', 'project_id'),
 			'proposeByUser' => array(self::BELONGS_TO, 'User', 'propose_by_user_id'),
 			'projectMentorUser' => array(self::BELONGS_TO, 'ProjectMentor', 'project_mentor_user_id'),
 		);

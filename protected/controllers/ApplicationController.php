@@ -249,7 +249,10 @@ class ApplicationController extends Controller
 						$actualPick = $this->loadProjectPick($pick);
 						$this->updatePickStatus($actualPick, 'Approved');
 						
-						// update entry
+						// update entry NO LONGER USED AS WE NOW HAVE MULTIPLE PROJECTS
+						//$project = new ProjectMentorProjects('add_new');
+						//$project->user_id = $user_id;
+						//$project->project_id = $actualPick->project_id;
 						$project = $this->loadProject($actualPick->project_id);
 						$project->project_mentor_user_id = $user_id;
 						$project->save();
@@ -471,7 +474,7 @@ class ApplicationController extends Controller
 							
 						$personalMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
 								FROM application_personal_mentor_pick t, user u
-								WHERE t.user_id = u.id AND (t.approval_status != "Proposed by Mentor" AND t.approval_status != "Proposed by System") 
+								WHERE t.user_id = u.id AND (t.approval_status = "Approved" OR t.approval_status = "Rejected" OR t.approval_status = "Proposed by Admin") 
 								AND t.app_id = '.$personalMentor->id.'');
 						
 						$personalMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
@@ -503,7 +506,7 @@ class ApplicationController extends Controller
 				if ($projectMentor != null){
 						$projectMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
 								FROM application_project_mentor_pick t, project p
-								WHERE t.project_id = p.id AND (t.approval_status != "Proposed by Mentor" AND t.approval_status != "Proposed by System")
+								WHERE t.project_id = p.id AND (t.approval_status = "Approved" OR t.approval_status = "Rejected" OR t.approval_status = "Proposed by Admin")
 								AND t.app_id = '.$projectMentor->id.'');
 						
 						

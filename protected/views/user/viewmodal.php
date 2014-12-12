@@ -202,39 +202,38 @@ return false;
  	echo 'Maximum Projects: ' . $maxProjects;
 			 
 	    
-	    
-	    			$thisID = $model->id;
-                    $rawData = new CSqlDataProvider('SELECT id, title FROM project WHERE project_mentor_user_id = '.$thisID.'');
-                   
-                                        
-                    $this->widget('bootstrap.widgets.TbGridView', array(
-                    		'type'=>'striped condensed hover',
-                    		'id'=>'id',
-                    		'dataProvider'=>$rawData,
-                    		'summaryText'=>'',
-                    		//'filter'=>$model,
-                    		'columns'=>array(
-                    				array(
-                    						'name'=>'',
-											'value'=>'$data["title"]',                    						
-                    				),
-                    				array(
-                    						'header'=>'Options',
-                    						'class'=>'bootstrap.widgets.TbButtonColumn',
-                    						'template'=> '{view}',
-                    						'buttons'=>array(
-                    								'view'=>
-                    								array(
-                    										'url'=>'Yii::app()->createUrl("project/viewmodal", array("id"=>$data["id"]))',
-                    				
-                    								),
-                    						),
-                    				),
-                    				
-                    		),
-                    )); ?>
-</div>
-<?php }?>
+ 	$thisID = $model->id;
+ 	$rawData = new CSqlDataProvider('SELECT id, title FROM project WHERE project_mentor_user_id = '.$thisID.'');
+ 	 
+ 	
+ 	$this->widget('bootstrap.widgets.TbGridView', array(
+ 			'type'=>'striped condensed hover',
+ 			'id'=>'id',
+ 			'dataProvider'=>$rawData,
+ 			'summaryText'=>'',
+ 			//'filter'=>$model,
+ 			'columns'=>array(
+ 					array(
+ 							'name'=>'',
+ 							'value'=>'$data["title"]',
+ 					),
+ 					array(
+ 							'header'=>'Options',
+ 							'class'=>'bootstrap.widgets.TbButtonColumn',
+ 							'template'=> '{view}',
+ 							'buttons'=>array(
+ 									'view'=>
+ 									array(
+ 											'url'=>'Yii::app()->createUrl("project/viewmodal", array("id"=>$data["id"]))',
+ 	
+ 									),
+ 							),
+ 					),
+ 	
+ 			),
+ 	                    )); ?>
+ 	</div>
+ 	<?php }?>
 	
 <!-- PERSONAL MENTOR START -->
 <?php if($model->isPerMentor) {?>

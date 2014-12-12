@@ -36,7 +36,7 @@
         <p style="float:left; margin-left:5px">Mentor</p><br/><br/>
         <?php echo $form->error($model,'mentor'); ?>
 
-        <?php echo CHtml::submitButton('Send', array("class"=>"btn btn-primary")); ?>
+        <?php echo CHtml::submitButton('Next', array("class"=>"btn btn-primary")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

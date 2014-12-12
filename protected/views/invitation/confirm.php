@@ -9,6 +9,8 @@ $this->breadcrumbs=array(
 
 ?>
 
+
+
 <?php $form=$this->beginWidget('CActiveForm', array( 
     'id'=>'invitation-form', 
     'enableAjaxValidation'=>false, 
@@ -21,7 +23,7 @@ $this->breadcrumbs=array(
     </div> 
     
    <div class="row buttons"> 
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Send'); ?>
+        <?php echo CHtml::submitButton('Send Email', array("class"=>"btn btn-primary")); ?>
     </div> 
 
 <?php $this->endWidget(); ?>
