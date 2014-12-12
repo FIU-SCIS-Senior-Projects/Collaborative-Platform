@@ -71,8 +71,10 @@ $('#subdomain_changes .btn-danger').click(function(){
 		
 		function submitCheck(obj) {
 			if (count == myCount) {
-				var submit = $('#submit');
+				var submit = $('#submitmain');
 				submit.removeAttr('disabled');
+					console.log('i enabled you!');
+		
 			}
 			console.log(count + '/' + myCount);
 		}
@@ -734,7 +736,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 <?php echo CHtml::hiddenField('subdomain_picks_accept', '', array('id'=>'subdomainhiddeninputaccept'));?>
 <?php echo CHtml::hiddenField('subdomain_picks_reject', '', array('id'=>'subdomainhiddeninputreject'));?>
 			
-<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary",'id'=>'submit', "disabled"=>"disabled")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
+<?php echo CHtml::submitButton('Submit', array("class"=>"btn btn-large btn-primary",'id'=>'submitmain', "disabled"=>"disabled")/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
 
 <a style="text-decoration:none" href="/coplat/index.php/application/admin">
 	<?php $this->widget('bootstrap.widgets.TbButton', array(
