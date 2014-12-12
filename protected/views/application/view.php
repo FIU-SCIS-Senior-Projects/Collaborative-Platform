@@ -343,7 +343,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 		));
 ?>
 
-<?php //$this->renderPartial('app_personalpick_form', array('model'=>$perModel))?>
+<?php $this->renderPartial('app_personalpick_form', array('model'=>$perModel))?>
 
 
 </div>
@@ -481,7 +481,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 		));
 ?>
 
-<?php //$this->renderPartial('app_projectpick_form', array('model'=>$proModel))?>
+<?php $this->renderPartial('app_projectpick_form', array('model'=>$proModel))?>
 
 
 </div>
@@ -620,7 +620,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 )); 
 ?>
 
-<?php //$this->renderPartial('app_domainpick_form', array('model'=>$domModel))?>
+<?php $this->renderPartial('app_domainpick_form', array('model'=>$domModel))?>
 
 
 <h4>Sub-Domain Picks</h4>
@@ -715,7 +715,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 )); 
 ?>
 
-<?php //$this->renderPartial('app_subdomainpick_form', array('model'=>$subModel))?>
+<?php $this->renderPartial('app_subdomainpick_form', array('model'=>$subModel))?>
 
 </div>
 	<?php } else if ($domCount > 1) echo 'Too many entries';?>
