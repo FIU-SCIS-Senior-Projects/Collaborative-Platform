@@ -318,7 +318,7 @@ Yii::app()->clientScript->registerScript('register', "
 			// get a list of current selections
 			var currentIds = $('#hiddeninput').val().split(',');
 			
-			if(currentIds[i] === ''){
+			if(currentIds[0] === ''){
 				$('#your_picks_message').text('You have selected NO mentees.');
 			} else {
 				$('#your_picks_message').text('You have selected these mentees.');

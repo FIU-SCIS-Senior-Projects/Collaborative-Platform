@@ -57,10 +57,19 @@ class HomeController extends Controller
 
         // $TicketsR = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'reject'));
         $TicketsC = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id) and status=:status", array(":id" => $user->id,":status"=>'close'));
-
+		
+        $count = Yii::app()->db->createCommand()->
+			select('count(*)')->
+			from('application_personal_mentor')->
+			where('user_id =:id', array(':id'=>$user->id))->
+			andWhere('status = "Mentor"')->
+			queryScalar();
+        if($count > 0) $button = 1;
+        else $button = 0;
+        
         $this->render('userHome', array('TicketsO' => $TicketsO, 'TicketsC' => $TicketsC,
             //'results' => $results,
-            'user' => $user));
+            'user' => $user, 'proposal_button'=>$button));
 
     }
 

@@ -362,7 +362,7 @@ class User extends CActiveRecord
     }
     
     // returns a list of users
-    public function returnUsersForApp($dataProvider){
+    public function returnUsersForApp($dataProvider, $id){
     	$users = array();
     	foreach($dataProvider->getData() as $user){
     		$temp = array();
@@ -391,7 +391,7 @@ class User extends CActiveRecord
     				$temp["project"] = "None";
     				$temp["description"] = "";
     			}
-    			
+    				
     			$personalMentor = User::model()->findByPk($mentee->personal_mentor_user_id);
     			if(count($personalMentor) > 0 && $mentee->personal_mentor_user_id != 999){
     				$mentorTrim = array();
@@ -399,6 +399,7 @@ class User extends CActiveRecord
     				$mentorTrim["avatar"] = $personalMentor->pic_url;
     			} 
     			$temp["mentor"] = $mentorTrim;
+    			
     		}
     		
     		
