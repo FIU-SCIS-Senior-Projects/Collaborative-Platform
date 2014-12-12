@@ -6412,3 +6412,178 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/application/domain
 HTTP_REFERER=http://localhost:3838/coplat/index.php/application/portal
 ---
+2014/12/12 04:54:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor`, CONSTRAINT `application_personal_mentor_ibfk_2` FOREIGN KEY (`university_id`) REFERENCES `university` (`id`) ON DELETE SET NULL ON UPDATE SET NULL). The SQL statement executed was: INSERT INTO `application_personal_mentor` (`system_pick_amount`, `university_id`, `status`, `user_id`, `date_created`) VALUES (:yp0, :yp1, :yp2, :yp3, NOW()).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (696)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/12 04:54:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor`, CONSTRAINT `application_personal_mentor_ibfk_2` FOREIGN KEY (`university_id`) REFERENCES `university` (`id`) ON DELETE SET NULL ON UPDATE SET NULL). The SQL statement executed was: INSERT INTO `application_personal_mentor` (`system_pick_amount`, `university_id`, `status`, `user_id`, `date_created`) VALUES (:yp0, :yp1, :yp2, :yp3, NOW())' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(696): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/12/12 04:58:02 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (706)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/12 04:58:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(706): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/12/12 06:09:06 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor`, CONSTRAINT `application_personal_mentor_ibfk_2` FOREIGN KEY (`university_id`) REFERENCES `university` (`id`) ON DELETE SET NULL ON UPDATE SET NULL). The SQL statement executed was: INSERT INTO `application_personal_mentor` (`system_pick_amount`, `university_id`, `status`, `user_id`, `date_created`) VALUES (:yp0, :yp1, :yp2, :yp3, NOW()).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (696)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/12 06:09:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor`, CONSTRAINT `application_personal_mentor_ibfk_2` FOREIGN KEY (`university_id`) REFERENCES `university` (`id`) ON DELETE SET NULL ON UPDATE SET NULL). The SQL statement executed was: INSERT INTO `application_personal_mentor` (`system_pick_amount`, `university_id`, `status`, `user_id`, `date_created`) VALUES (:yp0, :yp1, :yp2, :yp3, NOW())' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(696): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/12/12 06:09:33 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (706)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/12 06:09:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(706): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/12/12 06:13:38 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (706)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/12 06:13:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(706): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/12/12 06:16:31 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (706)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/12 06:16:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(706): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
+2014/12/12 06:17:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php (707)
+in C:\xampp\htdocs\coplat\index.php (14)
+2014/12/12 06:17:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`application_personal_mentor_pick`, CONSTRAINT `application_personal_mentor_pick_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `application_personal_mentor_pick` (`app_id`, `user_id`, `approval_status`) VALUES (:yp0, :yp1, :yp2)' in C:\xampp\htdocs\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(1023): CDbCommand->execute()
+#1 C:\xampp\htdocs\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\coplat\protected\controllers\ApplicationController.php(707): CActiveRecord->save(false)
+#3 C:\xampp\htdocs\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionPersonal()
+#4 C:\xampp\htdocs\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(282): CController->run('personal')
+#13 C:\xampp\htdocs\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/per...')
+#14 C:\xampp\htdocs\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/application/personal
+HTTP_REFERER=http://localhost:3838/coplat/index.php/application/personal
+---
