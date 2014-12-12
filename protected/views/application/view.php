@@ -312,23 +312,8 @@ $('#subdomain_changes .btn-danger').click(function(){
 				),
 		));
 ?>
-<?php //echo CHtml::link('Link Text',
-                       //Yii::app()->createUrl('application/adminpersonal',array(
-                                                        // 'id'=>'1012',
-                                                        // 'appid'=>'1',))); ?>>
-<?php $this->widget('bootstrap.widgets.TbButton', array(
-		'buttonType'=>'button',
-		'label'=>'Propose New Mentee',
-		'icon'=>'plus white',
-		'size'=>'medium',
-		'type'=> 'primary',
-		'htmlOptions'=>array(
-					'id'=>'personal_propose',	
-			),
-		));?>
-</a>
 
-<?php $this->renderPartial('app_personalpick_form', array('model'=>$perModel))?>
+
 
 <hr>
 <h4>History</h4>
@@ -355,6 +340,9 @@ $('#subdomain_changes .btn-danger').click(function(){
 				),
 		));
 ?>
+
+<?php $this->renderPartial('app_personalpick_form', array('model'=>$perModel))?>
+
 
 </div>
 	<?php } else if ($persCount > 1) echo 'Too many entries';?>
@@ -466,17 +454,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 				),
 		));
 ?>
-<a href=../application/create>
-<?php $this->widget('bootstrap.widgets.TbButton', array(
-		'buttonType'=>'button',
-		'label'=>'Propose New Project',
-		'icon'=>'plus white',
-		'size'=>'medium',
-		'type'=> 'primary',
-		));?>
-</a>
 
-<?php $this->renderPartial('app_projectpick_form', array('model'=>$proModel))?>
 
 <hr>
 <h4>History</h4>
@@ -500,6 +478,10 @@ $('#subdomain_changes .btn-danger').click(function(){
 				),
 		));
 ?>
+
+<?php $this->renderPartial('app_projectpick_form', array('model'=>$proModel))?>
+
+
 </div>
 	<?php } else if ($projCount > 1) echo 'Too many entries';?>
 
@@ -610,17 +592,6 @@ $('#subdomain_changes .btn-danger').click(function(){
 			),
 )); 
 ?>
-<a href=../application/create>
-<?php $this->widget('bootstrap.widgets.TbButton', array(
-		'buttonType'=>'button',
-		'label'=>'Propose New Domain',
-		'icon'=>'plus white',
-		'size'=>'medium',
-		'type'=> 'primary',
-		));?>
-</a>
-
-<?php $this->renderPartial('app_domainpick_form', array('model'=>$domModel))?>
 
 <hr>
 <h5>History</h5>
@@ -646,6 +617,10 @@ $('#subdomain_changes .btn-danger').click(function(){
 			),
 )); 
 ?>
+
+<?php $this->renderPartial('app_domainpick_form', array('model'=>$domModel))?>
+
+
 <h4>Sub-Domain Picks</h4>
 <?php	$this->widget('bootstrap.widgets.TbGridView', array(
 	    'id' => 'subdomain_changes',
@@ -708,17 +683,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 			),
 )); 
 ?>
-<a href=../application/create>
-<?php $this->widget('bootstrap.widgets.TbButton', array(
-		'buttonType'=>'button',
-		'label'=>'Propose New Subdomain',
-		'icon'=>'plus white',
-		'size'=>'medium',
-		'type'=> 'primary',
-		));?>
-</a>
 
-<?php $this->renderPartial('app_subdomainpick_form', array('model'=>$subModel))?>
 
 <hr>
 <h5>History</h5>
@@ -747,6 +712,9 @@ $('#subdomain_changes .btn-danger').click(function(){
 			),
 )); 
 ?>
+
+<?php $this->renderPartial('app_subdomainpick_form', array('model'=>$subModel))?>
+
 </div>
 	<?php } else if ($domCount > 1) echo 'Too many entries';?>
 
