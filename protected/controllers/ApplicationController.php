@@ -466,6 +466,7 @@ class ApplicationController extends Controller
 				$personalMentor = $this->loadPersonalMentorByUser($user_id);
 				$personalMentorHistory = null;
 				$personalMentorChanges = null;
+				$personalMentorProposals = null;
 				$personalCount = 0;
 				if ($personalMentor != null){
 							
@@ -678,10 +679,10 @@ class ApplicationController extends Controller
 		$model = new ApplicationPersonalMentor;
 		$students = new User;
 		$unis = array();
+		$user = User::model()->getCurrentUser();
 		
 		if (Yii::app()->getRequest()->isPostRequest) {
 			// on application submit
-			$user = User::model()->getCurrentUser();		
 			
 			// pull application data and save
 			$model->attributes = $_POST['ApplicationPersonalMentor'];
@@ -719,7 +720,7 @@ class ApplicationController extends Controller
 			// on initial load
 			$students->unsetAttributes();
 			$students->isMentee = 1;
-			$student = User::model()->returnUsersForApp($students->searchNoPagination());
+			$student = User::model()->returnUsersForApp($students->searchNoPagination(), $user->id);
 			$universities = University::model()->getUniversities();
 			$unis[0] = 'Any';
 			foreach ($universities as $uni) $unis[$uni->id] = $uni->name;
@@ -832,10 +833,394 @@ class ApplicationController extends Controller
 		));
 	}
 	
+	public function actionApprove(){
+		//$this->layout = '';
+		$user = User::model()->getCurrentUser();		
+		$perModel = new ApplicationPersonalMentorPick();
+		$proModel = new ApplicationProjectMentorPick();
+		$domModel = new ApplicationDomainMentorPick();
+		$subModel = new ApplicationSubdomainMentorPick();
+		
+		
+		if (Yii::app()->getRequest()->isPostRequest) {
+							
+				$projectFlag = false;
+				$personalFlag = false;
+				$domainFlag = false;
+		
+				$domApp = $this->loadDomainMentorForApproval($user->id);
+				$persApp = $this->loadPersonalMentorForApproval($user->id);
+				$projApp = $this->loadProjectMentorForApproval($user->id);
+		
+		
+				// PERSONAL PICKS ACCEPT
+				$mypicks = $_POST['personal_picks_accept'];
+		
+				if ($mypicks != ''){
+					$mypicks = explode(',', $mypicks);
+						
+					// cycle through each and add permanetly to appropriate table
+					foreach($mypicks as $pick){
+						$actualPick = $this->loadPersonalPick($pick);
+						$this->updatePickStatus($actualPick, 'Approved');
+		
+						// create new entry
+						$mentee = new PersonalMentorMentees('add_new');
+						$mentee->user_id = $actualPick->user_id; // mentee id
+						$mentee->personal_mentor_id = $user->id; // mentor id
+						$mentee->save();
+		
+					}
+						
+					// add entry to personal_mentor
+					$personalEntry = $this->isNewEntry($user->id, 'personal_mentor');
+		
+					// if it already exists do NOTHING . change here with else statement to perform update
+					if ($personalEntry < 1){
+						// add entry to personal_mentor
+						$pementor = new PersonalMentor('add_new');
+						$pementor->user_id = $user->id;
+						$pementor->max_hours = $persApp->max_hours;
+						$pementor->max_mentees = $persApp->max_amount;
+						$pementor->save();
+					} // else UPDATE
+						
+					$personalFlag = true;
+					//$loaduser->isPerMentor = 1;
+						
+				}
+		
+				// PERSONAL PICKS REJECT
+				$mypicks = $_POST['personal_picks_reject'];
+		
+				if ($mypicks != ''){
+					$mypicks = explode(',', $mypicks);
+						
+					// cycle through each and add permanetly to appropriate table
+					foreach($mypicks as $pick){
+						$actualPick = $this->loadPersonalPick($pick);
+						$this->updatePickStatus($actualPick, 'Rejected');
+					}
+						
+					$personalFlag = true;
+						
+				}
+		
+				// PROJECT PICKS ACCEPT
+				$mypicks = $_POST['project_picks_accept'];
+					
+				if ($mypicks != ''){
+					$mypicks = explode(',', $mypicks);
+						
+					// cycle through each and add permanetly to appropriate table
+					foreach($mypicks as $pick){
+						$actualPick = $this->loadProjectPick($pick);
+						$this->updatePickStatus($actualPick, 'Approved');
+						
+						// update entry
+						$project = $this->loadProject($actualPick->project_id);
+						$project->project_mentor_user_id = $user->id;
+						$project->save();
+		
+					}
+						
+					// add entry to project_mentor
+					$projectEntry = $this->isNewEntry($user->id, 'project_mentor');
+						
+					// if it already exists do NOTHING . change here with else statement to perform update
+					if ($projectEntry < 1){
+						// add entry to project_mentor
+						$promentor = new ProjectMentor('add_new');
+						$promentor->user_id = $user->id;
+						$promentor->max_hours = $projApp->max_hours;
+						$promentor->max_projects = $projApp->max_amount;
+						$promentor->save();
+					} // else UPDATE
+						
+					$projectFlag = true;
+					//$loaduser->isProMentor = 1;
+				}
+		
+				// PROJECT PICKS REJECT
+				$mypicks = $_POST['project_picks_reject'];
+		
+				if ($mypicks != ''){
+					$mypicks = explode(',', $mypicks);
+						
+					foreach($mypicks as $pick){
+						$actualPick = $this->loadProjectPick($pick);
+						$this->updatePickStatus($actualPick, 'Rejected');
+					}
+						
+					$projectFlag = true;
+				}
+		
+				// DOMAIN PICKS ACCEPT
+				$mypicks = $_POST['domain_picks_accept'];
+		
+				if ($mypicks != ''){
+					$mypicks = explode(',', $mypicks);
+						
+					// cycle through each and add permanetly to appropriate table
+					foreach($mypicks as $pick){
+						$actualPick = $this->loadDomainPick($pick);
+						$this->updatePickStatus($actualPick, 'Approved');
+		
+						// create new entry
+						$domain = new UserDomain('add_new');
+						$domain->user_id = $user>id;
+						$domain->domain_id = $actualPick->domain_id;
+						$domain->rate = $actualPick->proficiency;
+						$domain->active = 1;
+						$domain->tier_team = 1;
+						$domain->save();
+					}
+						
+					$domainFlag = true;
+					//$loaduser->isDomMentor = 1;
+				}
+		
+				// DOMAIN PICKS REJECT
+				$mypicks = $_POST['domain_picks_reject'];
+		
+				if ($mypicks != ''){
+					$mypicks = explode(',', $mypicks);
+						
+					// cycle through each and add permanetly to appropriate table
+					foreach($mypicks as $pick){
+						$actualPick = $this->loadDomainPick($pick);
+						$this->updatePickStatus($actualPick, 'Rejected');
+					}
+						
+					$domainFlag = true;
+				}
+		
+				// SUBDOMAIN PICKS ACCEPT
+				$mypicks = $_POST['subdomain_picks_accept'];
+		
+				if ($mypicks != ''){
+					$mypicks = explode(',', $mypicks);
+						
+					// cycle through each and add permanetly to appropriate table
+					foreach($mypicks as $pick){
+						$actualPick = $this->loadSubDomainPick($pick);
+						$this->updatePickStatus($actualPick, 'Approved');
+		
+						//create new entry
+						$subdomain = new UserDomain('add_new');
+						$subdomain->user_id = $user->id;
+						$subdomain->domain_id = $actualPick->subdomain->domain->id;
+						$subdomain->subdomain_id = $actualPick->subdomain_id;
+						$subdomain->rate = $actualPick->proficiency;
+						$subdomain->active = 1;
+						$subdomain->tier_team = 1;
+						$subdomain->save();
+					}
+						
+						
+					$domainFlag = true;
+					//$loaduser->isDomMentor = 1;
+						
+				}
+		
+				// SUBDOMAIN PICKS REJECT
+				$mypicks = $_POST['subdomain_picks_reject'];
+					
+				if ($mypicks != ''){
+					$mypicks = explode(',', $mypicks);
+		
+					// cycle through each and add permanetly to appropriate table
+					foreach($mypicks as $pick){
+						$actualPick = $this->loadSubDomainPick($pick);
+						$this->updatePickStatus($actualPick, 'Rejected');
+					}
+		
+					$domainFlag = true;
+				}
+		
+				$closed = new ApplicationClosed();
+				$closedOne = false;		
+		
+				if ($domainFlag){
+					// add entry to domain_mentor
+					$domEntry = $this->isNewEntry($user->id, 'domain_mentor');
+					$user->isDomMentor = 1;
+		
+					// add entry to domain_mentor
+					// if it already exists do NOTHING . change here with else statement to perform update
+					if ($domEntry < 1){
+						$dmentor = new DomainMentor('add_new');
+						$dmentor->user_id = $user->id;
+						$dmentor->max_tickets = $domApp->max_amount;
+						$dmentor->save();
+					} // else UPDATE
+						
+						
+
+					$this->updateAppStatus($domApp, 'Closed');
+					$closed->app_domain_mentor_id = $domApp->id;
+					$closedOne = true;
+				}
+					
+				if ($personalFlag){
+						
+					$user->isPerMentor = 1;
+						
+					$this->updateAppStatus($persApp, 'Closed');
+					$closed->app_personal_mentor_id = $persApp->id;
+					$closedOne = true;
+				}
+		
+				if ($projectFlag){
+						
+					$user->isProMentor = 1;
+						
+					$this->updateAppStatus($projApp, 'Closed');
+					$closed->app_project_mentor_id = $projApp->id;
+					$closedOne = true;
+				}
+		
+				$user->save();
+		
+		
+				if ($closedOne) {
+					$closed->date = new CDbExpression('NOW()');
+					$closed->save();
+				}
+		
+				$this->redirect("/coplat/index.php/application/portal");
+			
+				
+		}  // on initial load
+		
+		// application personal mentor
+		
+		// load application sent by admin
+		$personalMentor = $this->loadPersonalMentorForApproval($user->id);
+		$personalMentorHistory = null;
+		$personalMentorChanges = null;
+		$personalCount = 0;
+		if ($personalMentor != null){
+				
+			$personalMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
+								FROM application_personal_mentor_pick t, user u
+								WHERE t.user_id = u.id AND (t.approval_status = "Approved" OR t.approval_status = "Rejected")
+								AND t.app_id = '.$personalMentor->id.'');
+		
+			$personalMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
+								FROM application_personal_mentor_pick t, user u
+								WHERE t.user_id = u.id AND (t.approval_status = "Proposed by Admin")
+								AND t.app_id = '.$personalMentor->id.'');
+		
+			$personalCount = Yii::app()->db->createCommand()->
+			select('count(*)')->
+			from('application_personal_mentor_pick')->
+			where('app_id =:id', array(':id'=>$personalMentor->id))->
+			andWhere('approval_status = "Proposed by Admin"')->
+			queryScalar();
+		}
+		
+		// application project mentor
+		$projectMentor = $this->loadProjectMentorForApproval($user->id);
+		$projectMentorHistory = null;
+		$projectMentorChanges = null;
+		$projectCount = 0;
+		if ($projectMentor != null){
+			$projectMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
+								FROM application_project_mentor_pick t, project p
+								WHERE t.project_id = p.id AND (t.approval_status = "Approved" OR t.approval_status = "Rejected")
+								AND t.app_id = '.$projectMentor->id.'');
+		
+		
+			$projectMentorChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
+								FROM application_project_mentor_pick t, project p
+								WHERE t.project_id = p.id AND (t.approval_status = "Proposed by Admin")
+								AND t.app_id = '.$projectMentor->id.'');
+		
+			$projectCount = Yii::app()->db->createCommand()->
+			select('count(*)')->
+			from('application_project_mentor_pick')->
+			where('app_id =:id', array(':id'=>$projectMentor->id))->
+			andWhere('approval_status = "Proposed by Admin"')->
+			queryScalar();
+		}
+		
+		// application domain mentor
+		$domainMentor = $this->loadDomainMentorForApproval($user->id);
+		$domainHistory = null;
+		$domainChanges= null;
+		$domainCount = 0;
+		$subdomainHistory = null;
+		$subdomainChanges = null;
+		$subdomainCount = 0;
+		if ($domainMentor != null){
+				
+			$domainHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.domain_id, t.proficiency, t.approval_status, d.name
+								FROM application_domain_mentor_pick t, domain d
+								WHERE (t.approval_status = "Approved" OR t.approval_status = "Rejected") AND t.domain_id = d.id AND t.app_id = '.$domainMentor->id.'');
+		
+		
+			$domainChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.domain_id, t.proficiency, t.approval_status, d.name
+								FROM application_domain_mentor_pick t, domain d
+								WHERE (t.approval_status = "Proposed by Admin")
+								AND t.domain_id = d.id AND t.app_id= '.$domainMentor->id.'');
+		
+			$domainCount = Yii::app()->db->createCommand()->
+			select('count(*)')->
+			from('application_domain_mentor_pick')->
+			where('app_id =:id', array(':id'=>$domainMentor->id))->
+			andWhere('approval_status = "Proposed by Admin"')->
+			queryScalar();
+		
+			$subdomainHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.subdomain_id, t.proficiency, t.approval_status, d.name as "dname", s.name as "sname"
+								FROM application_subdomain_mentor_pick t, subdomain s, domain d
+								WHERE (t.approval_status = "Approved" OR t.approval_status = "Rejected") AND s.domain_id = d.id AND s.id = t.subdomain_id AND t.app_id = '.$domainMentor->id.'');
+		
+			$subdomainChanges = new CSqlDataProvider('SELECT t.id, t.app_id, t.subdomain_id, t.proficiency, t.approval_status, d.name as "dname", s.name as "sname"
+								FROM application_subdomain_mentor_pick t, subdomain s, domain d
+								WHERE (t.approval_status = "Proposed by Admin")
+								AND s.domain_id = d.id AND s.id = t.subdomain_id AND t.app_id = '.$domainMentor->id.'');
+		
+			$subdomainCount = Yii::app()->db->createCommand()->
+			select('count(*)')->
+			from('application_subdomain_mentor_pick')->
+			where('app_id =:id', array(':id'=>$domainMentor->id))->
+			andWhere('approval_status = "Proposed by Admin"')->
+			queryScalar();
+		}
+		
+		$userInfo = $this->loadUserInfoByUser($user->id);
+		
+		$newCount = $personalCount + $projectCount + $domainCount + $subdomainCount;
+		
+		
+		
+		// render view
+		$this->render('approve', array('user_id'=>$user->id,
+				'personalMentor'=>$personalMentor,'personalMentorHistory'=>$personalMentorHistory,'personalMentorChanges'=>$personalMentorChanges,
+				'projectMentor'=>$projectMentor,'projectMentorHistory'=>$projectMentorHistory,'projectMentorChanges'=>$projectMentorChanges,
+				'domainMentor'=>$domainMentor, 'domainHistory'=>$domainHistory,'domainChanges'=>$domainChanges,
+				'subdomainHistory'=>$subdomainHistory,'subdomainChanges'=>$subdomainChanges,
+				'newCount'=>$newCount,
+				'perModel'=>$perModel,
+				'proModel'=>$proModel,
+				'domModel'=>$domModel,
+				'subModel'=>$subModel,
+				'userInfo'=>$userInfo,
+		
+		));
+	}
 	
 	public function loadPersonalMentorByUser($id)
 	{
 		$params = array('user_id'=>$id, 'status'=>'Admin');
+		$model=ApplicationPersonalMentor::model()->findByAttributes($params);
+		return $model;
+	}
+	
+	public function loadPersonalMentorForApproval($id)
+	{
+		$params = array('user_id'=>$id, 'status'=>'Mentor');
 		$model=ApplicationPersonalMentor::model()->findByAttributes($params);
 		return $model;
 	}
@@ -847,9 +1232,23 @@ class ApplicationController extends Controller
 		return $model;
 	}
 	
+	public function loadProjectMentorForApproval($id)
+	{
+		$params = array('user_id'=>$id, 'status'=>'Mentor');
+		$model=ApplicationProjectMentor::model()->findByAttributes($params);
+		return $model;
+	}
+	
 	public function loadDomainMentorByUser($id)
 	{
 		$params = array('user_id'=>$id, 'status'=>'Admin');
+		$model=ApplicationDomainMentor::model()->findByAttributes($params);
+		return $model;
+	}
+	
+	public function loadDomainMentorForApproval($id)
+	{
+		$params = array('user_id'=>$id, 'status'=>'Mentor');
 		$model=ApplicationDomainMentor::model()->findByAttributes($params);
 		return $model;
 	}

@@ -159,6 +159,11 @@ class Subdomain extends CActiveRecord
     		$temp["name"] = $sub->name;
     		$temp["description"] = $sub->description;
     		$temp["need"] = $sub->need;
+    		
+    		$d = new UserDomain;
+    		$d->subdomain_id = $sub->id;
+    		$temp["mentors"] = UserDomain::model()->getMentorsFromSubdomain($d->search());
+    		
     		$subs[] = $temp;
     	}
     	return $subs;
