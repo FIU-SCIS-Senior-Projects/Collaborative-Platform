@@ -1,6 +1,5 @@
 <?php
-/* @var $this ApplicationController */
-/* @var $model Application */
+
 
 $this->breadcrumbs=array(
 	'Manage Applications',
@@ -10,6 +9,14 @@ $this->breadcrumbs=array(
 
 <h1>Manage Applications</h1>
 
+<a href=../application/viewhistory>
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+		'buttonType'=>'button',
+		'label'=>'View Closed Applications',
+		'size'=>'medium',
+		'type'=> 'success',
+		));?>
+</a>
 <?php 
 
 	$this->widget('bootstrap.widgets.TbGridView', array(

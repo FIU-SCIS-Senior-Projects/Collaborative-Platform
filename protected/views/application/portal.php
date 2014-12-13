@@ -87,6 +87,15 @@ Yii::app()->clientScript->registerScript('register', "
 	                'label'=>'Done',
 	            )); ?>
 			</a>
+			<a href=../application/viewhistory>
+				<?php $this->widget('bootstrap.widgets.TbButton', array(
+					'buttonType'=>'button',
+					'type'=>'primary',
+					'block'=>'true',
+					'size'=>'large',
+	                'label'=>'View Closed Applications',
+					));?>
+</a>
 		</div>
 	</div>
 	<div class="span4">

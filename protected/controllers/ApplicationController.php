@@ -33,7 +33,7 @@ class ApplicationController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','view', 'adminpersonal'),
+				'actions'=>array('admin','view', 'adminpersonal', 'viewhistory'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -60,6 +60,64 @@ class ApplicationController extends Controller
 	public function actionUpdate()
 	{
 		$this->render('update');
+	}
+	
+	public function actionViewHistory(){
+		$model = new ApplicationClosed();
+		$isAdmin = User::isCurrentUserAdmin();
+		if (!$isAdmin)
+			$model->user_id = User::getCurrentUserId();
+		
+		
+		
+		$this->render('viewhistory',array('model'=>$model));
+		
+	}
+	
+	public function actionHistory($id){
+		
+		$model = ApplicationClosed::model()->findByPk($id);
+		
+		$personalMentorHistory = null;
+		$projectMentorHistory = null;
+		$domainHistory = null;
+		$subdomainHistory = null;
+		
+		
+		if (!is_null($model->app_personal_mentor_id)){
+			$personalMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname
+				FROM application_personal_mentor_pick t, user u
+				WHERE t.user_id = u.id AND (t.approval_status = "Approved" OR t.approval_status = "Rejected")
+				AND t.app_id = '.$model->app_personal_mentor_id.'');
+		}
+		
+		if (!is_null($model->app_project_mentor_id)){
+		$projectMentorHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.project_id, t.approval_status, p.title
+								FROM application_project_mentor_pick t, project p
+								WHERE t.project_id = p.id AND (t.approval_status = "Approved" OR t.approval_status = "Rejected")
+								AND t.app_id = '.$model->app_project_mentor_id.'');
+		}
+		
+		if (!is_null($model->app_domain_mentor_id)){
+		$domainHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.domain_id, t.proficiency, t.approval_status, d.name
+								FROM application_domain_mentor_pick t, domain d
+								WHERE (t.approval_status = "Approved" OR t.approval_status = "Rejected") 
+									AND t.domain_id = d.id AND t.app_id = '.$model->app_domain_mentor_id.'');
+		}
+		
+		if (!is_null($model->app_domain_mentor_id)){
+			$subdomainHistory = new CSqlDataProvider('SELECT t.id, t.app_id, t.subdomain_id, t.proficiency, t.approval_status, d.name as "dname", s.name as "sname"
+				FROM application_subdomain_mentor_pick t, subdomain s, domain d
+				WHERE (t.approval_status = "Approved" OR t.approval_status = "Rejected")
+					AND s.domain_id = d.id AND s.id = t.subdomain_id AND t.app_id = '.$model->app_domain_mentor_id.'');
+		}
+		
+			$this->render('history', array('personalHistory'=>$personalMentorHistory,
+									'projectHistory'=>$projectMentorHistory,
+									'domainHistory'=>$domainHistory,
+									'subdomainHistory'=>$subdomainHistory,
+			));
+		
 	}
 	
 	public function actionAdmin()
@@ -456,6 +514,7 @@ class ApplicationController extends Controller
 				
 				
 				if ($closedOne) {
+					$closed->user_id = $user_id;
 					$closed->date = new CDbExpression('NOW()');	
 					$closed->save();
 				}
@@ -1089,6 +1148,7 @@ class ApplicationController extends Controller
 		
 		
 				if ($closedOne) {
+					$closed->user_id = $user->id;
 					$closed->date = new CDbExpression('NOW()');
 					$closed->save();
 				}
