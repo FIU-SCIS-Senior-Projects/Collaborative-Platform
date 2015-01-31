@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/tooltipster.css" />
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.tooltipster.js"></script>
+	<script type="text/javascript" src="https://raw.github.com/desandro/masonry/master/jquery.masonry.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			$('#container').masonry({
+			    itemSelector: '.item',
+			    columnWidth: 240
+			 });
+			  			
+			/*
+$('#hi').tooltipster({
+				content: '<img src="http://mediacdn.disqus.com/uploads/users/4210/450/avatar92.jpg?1359914706" width="20" height="20" />',
+				functionBefore: function(origin, continueTooltip) {
+					continueTooltip();
+					if (origin.data('ajax') !== 'cached') {
+						setTimeout(function() {
+							console.log(1);
+							origin.data('tooltipsterContent', 'New content').data('ajax', 'cached');
+						}, 1000);
+					}
+				}
+			});
+*/
+			
+			$('.tooltip').tooltipster({
+			    animation: 'grow',
+			    trigger: 'click'
+			});
+			
+		});
+	</script>
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+	<section class="container tooltip" title="Parent container">
+		<a href="http://google.com" class="tooltip" title="Get your Google on">Google</a>
+	</section>
+	
+	<section class="container">
+		<div id="hi" style="width: 100px; height: 100px; margin: 0 0 0 500px; background: #f00;" class="tooltip" title="This is a longer ketchup muffins long so freaking long let's talk about really yummy waffles please tooltip title yo asdf asdf asdf <a href='http://google.com'>link</a>"></div>
+		<a href="http://google.com" class="tooltip" title="Get your Google on">Hover <span>here</span></a>
+		<br />
+		<a href="http://google.com" class="tooltip" title="Get your Google on and your ketchup out!">Google</a>
+	</section>
+	
+	<section class="container">
+		<img src="images/map.png" usemap="#map" />
+		<map name="map">
+			<area shape="circle" coords="396,220,102" href="#" class="tooltip" title="Hello thar, mate!" />
+		</map>
+	</section>
+	
+	<div id="container">
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</div>
+		<div class="item tooltip" title="Hell there mate!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</div>
+	</div>
+		
+</body>
+</html>
