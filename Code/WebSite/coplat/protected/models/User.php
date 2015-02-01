@@ -16,6 +16,7 @@
  * @property string $activation_chain
  * @property integer $disable
  * @property string $biography
+ * @property int $university_id
  * @property string $linkedin_id
  * @property string $fiucs_id
  * @property string $google_id
@@ -35,10 +36,14 @@
  * @property Message[] $messages
  * @property Message[] $messages1
  * @property PersonalMentor $personalMentor
+ * @property PersonalMentorMentees[] $personalMentorMentees
+ * @property PersonalMentorMentees[] $personalMentorMentees1
  * @property ProjectMentor $projectMentor
  * @property Ticket[] $tickets
  * @property Ticket[] $tickets1
+ * @property UserDomain[] $userDomains
  * @property Domain[] $domains
+ * @property UserInfo $user_info
  */
 class User extends CActiveRecord
 {
@@ -46,9 +51,20 @@ class User extends CActiveRecord
     public $vjf_role;
     public $men_role;
     public $rmj_role;
+    /* advanced search variables */
+    public $firstField;
+    public $quantity;
+    public $criteria;
     /*assign variables */
     public $userDomain;
     public $userId;
+    /*temporary variables currently not stored in db*/
+    public $combineRoles;
+    public $fullName;
+    public $skills;
+    public $toggleUser = 0;
+    public $invitemessage = '';
+    
     /*Change the value when the system is deploy */
     public static $admin = 5;
     /* The most expert in the Domain */
@@ -88,7 +104,9 @@ class User extends CActiveRecord
             array('biography', 'length', 'max' => 500),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, isDomMentor, isStudent, isMentee, isJudge, isEmployer', 'safe', 'on' => 'search'),
+            array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, 
+            		disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, 
+            		isDomMentor, isStudent, isMentee, isJudge, isEmployer, combineRoles, fullName', 'safe', 'on' => 'search'),
         );
     }
 
@@ -110,13 +128,18 @@ class User extends CActiveRecord
             'administrator' => array(self::HAS_ONE, 'Administrator', 'user_id'),
             'domainMentor' => array(self::HAS_ONE, 'DomainMentor', 'user_id'),
             'mentee' => array(self::HAS_ONE, 'Mentee', 'user_id'),
+        	//'mentees' => array(self::HAS_MANY, 'Mentee', 'personal_mentor_user_id', 'index'=>'personal_mentor_user_id'),
             'messages' => array(self::HAS_MANY, 'Message', 'receiver'),
             'messages1' => array(self::HAS_MANY, 'Message', 'sender'),
             'personalMentor' => array(self::HAS_ONE, 'PersonalMentor', 'user_id'),
+        	'personalMentorMentees' => array(self::HAS_MANY, 'PersonalMentorMentees', 'user_id'),
+        	'personalMentorMentees1' => array(self::HAS_MANY, 'PersonalMentorMentees', 'personal_mentor_id'),
             'projectMentor' => array(self::HAS_ONE, 'ProjectMentor', 'user_id'),
             'tickets' => array(self::HAS_MANY, 'Ticket', 'assign_user_id'),
             'tickets1' => array(self::HAS_MANY, 'Ticket', 'creator_user_id'),
             'domains' => array(self::MANY_MANY, 'Domain', 'user_domain(user_id, domain_id)'),
+        	'userDomains' => array(self::HAS_MANY, 'UserDomain', 'user_id'),	
+        	'user_info' => array(self::HAS_ONE, 'UserInfo', 'user_id'),
         );
     }
 
@@ -130,15 +153,16 @@ class User extends CActiveRecord
             'username' => 'User Name',
             'password' => 'Password',
             'password2' => 'Re-type Password',
-            'email' => 'e-mail',
+            'email' => 'Email',
             'fname' => 'First Name',
             'mname' => 'Middle Name',
             'lname' => 'Last Name',
             'pic_url' => 'Pic Url',
             'activated' => 'Activated',
             'activation_chain' => 'Activation Chain',
-            'disable' => 'Disable',
+            'disable' => 'Disabled',
             'biography' => 'Biography',
+        	'university_id' => 'University',
             'linkedin_id' => 'Linkedin',
             'fiucs_id' => 'Fiucs',
             'google_id' => 'Google',
@@ -152,7 +176,14 @@ class User extends CActiveRecord
             'isEmployer' => 'Employer',
             'vjf_role' => 'Virtual Job Fair Roles:',
             'men_role' => 'Mentoring Platform Roles:',
-            'rmj_role' => 'Remote Mobil Judge Roles:'
+            'rmj_role' => 'Remote Mobil Judge Roles:',
+            'rmj_role' => 'Remote Mobil Judge Roles:',
+            'firstField' => 'Type: ',
+        	'criteria' => 'Assigned to: ',
+        	'quantity' => 'projects, mentors, or mentees',
+            'combineRoles' => 'Roles',
+        	'fullName' => 'Name',
+        	'skills' => 'Skills',	
         );
     }
 
@@ -164,36 +195,99 @@ class User extends CActiveRecord
     {
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
-
-        $criteria = new CDbCriteria;
-
-        $criteria->compare('id', $this->id, true);
-        $criteria->compare('username', $this->username, true);
-        //$criteria->compare('password',$this->password,true);
-        $criteria->compare('email', $this->email, true);
-        $criteria->compare('fname', $this->fname, true);
-        $criteria->compare('mname', $this->mname, true);
-        $criteria->compare('lname', $this->lname, true);
-        //$criteria->compare('pic_url',$this->pic_url,true);
-        $criteria->compare('activated', $this->activated);
-        //$criteria->compare('activation_chain',$this->activation_chain,true);
-        $criteria->compare('disable', $this->disable);
-        //$criteria->compare('biography',$this->biography,true);
-        //$criteria->compare('linkedin_id',$this->linkedin_id,true);
-        //$criteria->compare('fiucs_id',$this->fiucs_id,true);
-        //$criteria->compare('google_id',$this->google_id,true);
-        $criteria->compare('isAdmin', $this->isAdmin);
-        $criteria->compare('isProMentor', $this->isProMentor);
-        $criteria->compare('isPerMentor', $this->isPerMentor);
-        $criteria->compare('isDomMentor', $this->isDomMentor);
-        $criteria->compare('isStudent', $this->isStudent);
-        $criteria->compare('isMentee', $this->isMentee);
-        $criteria->compare('isJudge', $this->isJudge);
-        $criteria->compare('isEmployer', $this->isEmployer);
-
+        $criteria = $this->setCriteria();
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+        		'sort'=>array(
+        				'attributes'=>array(
+        						'fullName'=>array(
+        								'asc'=>'lname',
+        								'desc'=>'lname DESC',
+        						),
+        						'*',
+        				),
+        		),
         ));
+    }
+    
+    public function searchNoPagination() {
+    	$criteria = $this->setCriteria();
+    	return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        		'sort'=>array(
+        				'attributes'=>array(
+        						'fullName'=>array(
+        								'asc'=>'lname',
+        								'desc'=>'lname DESC',
+        						),
+        						'*',
+        				),
+        		),
+        		'pagination'=>false,
+        ));
+    }
+    
+    public function setCriteria(){
+    	$criteria = new CDbCriteria;
+    	
+    	$criteria->compare('fname', $this->fullName, true, 'OR');
+    	$criteria->compare('lname', $this->fullName, true, 'OR');
+    	
+    	//$criteria->compare('id', $this->id, true);
+    	$criteria->compare('username', $this->username, true);
+    	//$criteria->compare('password',$this->password,true);
+    	$criteria->compare('email', $this->email, true);
+    	//$criteria->compare('fname', $this->fname, true);
+    	//$criteria->compare('mname', $this->mname, true);
+    	//$criteria->compare('lname', $this->lname, true);
+    	//$criteria->compare('pic_url',$this->pic_url,true);
+    	$criteria->compare('activated', $this->activated);
+    	//$criteria->compare('activation_chain',$this->activation_chain,true);
+    	$criteria->compare('disable', $this->disable);
+    	//$criteria->compare('biography',$this->biography,true);
+    	//$criteria->compare('linkedin_id',$this->linkedin_id,true);
+    	//$criteria->compare('fiucs_id',$this->fiucs_id,true);
+    	//$criteria->compare('google_id',$this->google_id,true);
+    	//$criteria->compare('isAdmin', $this->isAdmin);
+    	$criteria->compare('isProMentor', $this->isProMentor);
+    	$criteria->compare('isPerMentor', $this->isPerMentor);
+    	$criteria->compare('isDomMentor', $this->isDomMentor);
+    	$criteria->compare('isStudent', $this->isStudent);
+    	$criteria->compare('isMentee', $this->isMentee);
+    	//$criteria->compare('isJudge', $this->isJudge);
+    	//$criteria->compare('isEmployer', $this->isEmployer);
+    	
+    	return $criteria;
+    }
+
+    public function getCombineRoles(){
+    	$count = 0;
+        $st = '';
+
+        if ($this->isProMentor){
+        	$count = $count + 1;
+            $st .= 'Project ';
+        }
+        if ($this->isPerMentor){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
+            $st .= 'Personal ';
+        }
+        if ($this->isDomMentor){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
+     
+            $st .= 'Domain ';
+        }
+        if ($this->isMentee){
+        	if ($count >= 1) $st .= ' | ';
+        	$count = $count + 1;
+        	 
+            $st .= 'Mentee';
+        }
+        return $st;
     }
 
     /* retrieve all user ids in the system */
@@ -233,7 +327,6 @@ class User extends CActiveRecord
         return $user->username;
     }
 
-
     public static function replaceMessage($to, $message)
     {
         $file = fopen("/var/www/html/coplat/email/index1.html", "r");
@@ -245,6 +338,76 @@ class User extends CActiveRecord
         $html = str_replace("%USER%", $to, $html);
         $html = str_replace("%MESSAGE%", $message, $html);
         return $html;
+    }
+    
+    public function getMenteeProject(){
+    	//$ret = $this->mentee->
+    }
+    
+    public function getMenteePersonalMentor(){
+    	
+    }
+    
+    public function getFullName(){
+    	$name = $this->fname . ' ' . $this->lname;
+    	return $name;
+    }
+    
+    // returns a list of users
+    public function returnUsersForApp($dataProvider){
+    	$users = array();
+    	foreach($dataProvider->getData() as $user){
+    		$temp = array();
+    		
+    		$temp["id"] = $user->id;
+    		$temp["name"] = $user->getFullName();
+    		$temp["university"] = University::model()->universityById($user->university_id);
+    		$temp["avatar"] = $user->pic_url;
+    		$temp["email"] = $user->email;
+    		
+    		$mentee = Mentee::model()->findByPk($user->id);
+    		$mentorTrim = array();
+    		$mentorTrim["name"] = "None";
+    		$mentorTrim["avatar"] = "";
+    		
+    		if(count($mentee) == 0){
+    			$temp["project"] = "None";
+    			$temp["description"] = "";
+    			$temp["mentor"] = $mentorTrim;
+    		} else {
+    			$project = Project::model()->findByPk($mentee->project_id);
+    			if(count($project) > 0){
+    				$temp["project"] = $project->title;
+    				$temp["description"] = $project->getDescriptionOfSize(200);
+    			} else{
+    				$temp["project"] = "None";
+    				$temp["description"] = "";
+    			}
+    			
+    			$personalMentor = User::model()->findByPk($mentee->personal_mentor_user_id);
+    			if(count($personalMentor) > 0 && $mentee->personal_mentor_user_id != 999){
+    				$mentorTrim = array();
+    				$mentorTrim["name"] = $personalMentor->getFullName();
+    				$mentorTrim["avatar"] = $personalMentor->pic_url;
+    			} 
+    			$temp["mentor"] = $mentorTrim;
+    		}
+    		
+    		
+    		$users[] = $temp;
+    	}
+    	return $users;
+    }
+    
+    public function getUniversityName(){
+    	$uni = University::model()->findByPk($this->university_id);
+    	if($uni == NULL) return "FIU";
+    	return $uni->name;
+    }
+    
+    public function getPic(){
+    	$pic = '<img src="' . $this->pic_url . '" height="20" width="20"></img>';
+    	return $pic;
     }
 
     public function isAdmin()
@@ -373,6 +536,7 @@ class User extends CActiveRecord
         $email->message = $html;
         $email->send();
     }
+    
     
     /*Assign Domain Mentor to a Ticket */
     public static function assignTicket($domain_id, $sub)
@@ -678,6 +842,42 @@ class User extends CActiveRecord
         $email->message = $html;
         $email->send();
 
+    }
+    
+    public static function sendInviteByMessage($invitation){
+    	$to = "";
+    	$html = User::replaceMessage($to, $invitation);
+    	$email = Yii::app()->email;
+    	$email->to = $invitation->email;
+    	$email->from = 'Collaborative Platform';
+    	$email->subject = 'We need you.';
+    	$email->message = $html;
+    	$email->send();
+    	
+    	
+    }
+    
+    public static function setInvitationEmail($invitation)
+    {
+    	$link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+    	$admin = User::model()->findByPk($invitation->administrator_user_id);
+    	$to = "";
+    	$message = "The Collaborative Platform system administrator, " . $admin->fname . " " . $admin->lname . ", through this email would like to invite you to participate on it as: <br/>";
+    	if ($invitation->administrator == 1)
+    		$message = $message . "<b><u>System Administrator</u>: Responsible, for users, invitations, projects, domains and sub-domains management.</b><br/>";
+    	if ($invitation->mentor == 1)
+    		$message = $message . "<b><u>Mentor</u></b><br/>&nbsp;&nbsp;<i>Domain Mentor: Provide solutions using his/her expertise in specific domains to questions within the platform.</i><br/>&nbsp;&nbsp;<i>Project Mentor: Guide the project development through the semester.</i><br/>&nbsp;&nbsp;<i>Personal Mentor: Provide assistance and guidance to his/her mentees.</i><br/>";
+    	if ($invitation->employer == 1)
+    		$message = $message . "<b><u>Employer</u>: Publish Job offers, and get to interview potential employees through the Virtual Job Fair Module.</b><br/>";
+    	if ($invitation->judge == 1)
+    		$message = $message . "<b><u>Judge</u>: Judge Senior Projects presentations through the Remote Judge Module.</b><br/>";
+    	if ($invitation->mentee == 1)
+    		$message = $message . "<b><u>Mentee</u>: Platform general user that will interact will the all the users of the platform trough the Mentoring Module..</b><br/>";
+    
+    	$message = $message . "</h2><br/>" . $link . " to access the platform.";
+    
+    	$invitemessage = $message;
+    	return $message;
     }
 
     public static function addNewMessageNotification($sender, $receiver, $link, $level)

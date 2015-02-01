@@ -9,68 +9,105 @@ $this->breadcrumbs=array(
 /*$this->menu=array(
 	array('label'=>'List User', 'url'=>array('index')),
 	array('label'=>'Create User', 'url'=>array('create')),
-);*/
-
-/*Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
+);
+*/
+Yii::app()->clientScript->registerScript('search', "
+$('.asearch-button').click(function(){
+	$('.asearch-form').toggle();
+	$('.bsearch-form').toggle();
 	return false;
 });
-$('.search-form form').submit(function(){
+
+$('.bsearch-button').click(function(){
+	$('.bsearch-form').toggle();
+	$('.asearch-form').toggle();
+	return false;
+});
+
+$('.bsearch-form form').submit(function(){
 	$('#user-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
 });
-");*/
 
+$('.asearch-form form').submit(function(){
+	$('#user-grid').yiiGridView('update', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+
+");
 ?>
 
 <h2>Manage Users</h2>
 
-<a href=../user/create>
+<a href=../user/admin_create_user>
 <?php $this->widget('bootstrap.widgets.TbButton', array(
 		'buttonType'=>'button',
-		'label'=>'Add New User',
+		'label'=>'Add a Mentor',
 		'icon'=>'plus white',
-		'size'=>'small',
+		'size'=>'medium',
 		'type'=> 'success',
-		//'url'=>'user/create',
-		// button for ADD NEW USER
-		// FIX HREF
-));?>
-</a>
 
+		));?>
+</a><br/><br/>
 
-<?php //echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<!--<div class="search-form" style="display:none">
-<?php $this->renderPartial('search',array(
-    'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+<?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?><!--
+<br/>
 
+<!-- basic search-form -->
+<div class="bsearch-form" style="display:">
+    <?php $this->renderPartial('search',array('model'=>$model)); ?>
+</div>
 
-<?php $linkfind ='href="/coplat/index.php/user/findMentors"'; ?>
-<div style="float: left">
-    <a <?php echo $linkfind; ?>><img style="display: block;" border="0" src="/coplat/images/find.png" id="find" width="50" height="50">
-        <p stlye="width: 200px; position: relative; top: -200px;">Find Domain Mentors</p>
-    </a>
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'asearch-button')); ?>
+
+<!-- advanced search-form -->
+<div class="asearch-form" style="display:none">
+    <?php $this->renderPartial('advanced_search',array('model'=>$model)); ?>
 </div>
 
 
-
-
+<?php //$linkfind ='href="/coplat/index.php/user/findMentors"'; ?>
+<!--
+<div style="float: left">
+    <a <?php //echo $linkfind; ?>><img style="display: block;" border="0" src="/coplat/images/find.png" id="find" width="50" height="50">
+        <p stlye="width: 200px; position: relative; top: -200px;">Find Domain Mentors</p>
+    </a>
+</div>
+//-->
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
+    'type'=>'striped condensed hover',
     'id'=>'user-grid',
+    'selectableRows'=>1,		
+    //'selectionChanged'=>
+    //    'function(data) {
+    //        $("#viewModal .modal-body p").html(data);
+    //        $("#viewModal").modal();
+    //   }',
     'dataProvider'=>$model->search(),
     'filter'=>$model,
     'columns'=>array(
         'username',
         'email',
-        'fname',
-        'mname',
-        'lname',
+                array(
+            'name'  => 'fullName',
+            'value' => '($data->getFullName())',
+            'header'=> CHtml::encode($model->getAttributeLabel('fullName')),
+            'filter'=> CHtml::activeTextField($model, 'fullName'),
+        ),
+        array(
+            'name'  => 'combineRoles',
+            'value' => '($data->getCombineRoles())',
+            'header'=> CHtml::encode($model->getAttributeLabel('combineRoles')),
+        	'htmlOptions'=>array('width'=>'225px'),
+        	'filter'=>'',
+        	//'filter'=> CHtml::activeTextField($model, 'combineRoles'),
+        ),
+        /**
         array(
             'name'=>'activated',
             'header'=>'Activated',
@@ -82,7 +119,9 @@ $('.search-form form').submit(function(){
             'header'=>'Disable',
             'type'=>'raw',
             'htmlOptions'=>array('width'=>'10'),
-        ),
+
+             ),
+
         array(
             'name'=>'isProMentor',
             'header'=>'Project M.',
@@ -103,4 +142,54 @@ $('.search-form form').submit(function(){
             'class'=>'CButtonColumn',
 
         ),
-    ))); ?>
+         **/
+    		array(
+    				'header'=>'Options',
+    				'class'=>'bootstrap.widgets.TbButtonColumn',
+    				'template'=> '{view} {update} {delete}',
+    				'buttons'=>array(
+    						'view'=>
+    						array(
+    								'url'=>'Yii::app()->createUrl("user/viewmodal", array("id"=>$data->id))',
+    								'options'=>array(
+    										// disabled for better viewing of page
+    										'ajax'=>array(
+    												'type'=>'POST',
+    												'url'=>"js:$(this).attr('href')",
+    												'success'=>'function(data) { $("#viewModal .modal-body p").html(data); $("#viewModal").modal(); }'
+    												
+    										),
+    								),
+    						),
+    				),
+    		) 
+    		
+)));
+?>
+
+
+<!-- View Popup  -->
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'viewModal', 'htmlOptions' => array('style' => 'width: 800px; margin-left: -400px'))); ?>
+<!-- Popup Header -->
+
+<div class="modal-header">
+</div>
+
+<!-- Popup Content -->
+<div class="modal-body">
+    <p></p>
+    
+</div>
+<!-- Popup Footer -->
+<div class="modal-footer">
+
+    <!-- close button -->
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label'=>'Close',
+        'url'=>'#',
+        'htmlOptions'=>array('data-dismiss'=>'modal'),
+    )); ?>
+    <!-- close button ends-->
+</div>
+<?php $this->endWidget(); ?>
+<!-- View Popup ends -->

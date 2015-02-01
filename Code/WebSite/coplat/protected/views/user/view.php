@@ -4,10 +4,10 @@
 
 if(User::isCurrentUserAdmin())
 {
-    $this->breadcrumbs=array(
-        'Manage Users'=>array('admin'),
-        $model->fname,
-    );
+     $this->breadcrumbs=array(
+         'Manage Users'=>array('admin'),
+         $model->fname,
+     );
 }
 ?>
 
