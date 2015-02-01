@@ -13,9 +13,12 @@ class InvitationController extends Controller
 	 */
 	public function filters()
 	{
+		
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
+			//array('booster.filters.BoosterFilter - create')
+
 		);
 	}
 
@@ -36,7 +39,7 @@ class InvitationController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'viewmodal', 'confirm'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -55,6 +58,36 @@ class InvitationController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+	
+	public function actionViewmodal($id)
+	{
+		$model = $this->loadModel($id);
+		 
+	
+		if( Yii::app()->request->isAjaxRequest )
+			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
+		else
+			$this->render('viewmodal',array('model'=>$model));
+		 
+	}
+	
+	public function actionConfirm($id){
+		
+		$model=$this->loadModel($id);
+		
+		if(isset($_POST['Invitation']))
+		{
+			$model->attributes=$_POST['Invitation'];
+			$model->save();
+			User::sendInviteByMessage($model);
+			$this->redirect(array('admin'));
+		}
+
+		$this->render('confirm',array(
+				'model'=>$model,'id'=>$id,
+		));
+		
+	}
 
 	/**
 	 * Creates a new model.
@@ -63,19 +96,42 @@ class InvitationController extends Controller
 	public function actionCreate()
 	{
 		$model=new Invitation;
+		$this->layout = '';
+		
+		/**
+		 * todo:
+		 * 
+		 * create the ability to select the different roles
+		 * personal mentor
+		 * project mentor
+		 * domain mentor
+		 * 
+		 * click generate and then the text box is updated to display template data.
+		 * 
+		 * the admin can then make changes to the textbox and when submit occurs
+		 * the data from the textbox is captured and sent to the email function
+		 * with email and message as parameters.
+		 */
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Invitation']))
 		{
+			$user = new User();
+				
 			$model->attributes=$_POST['Invitation'];
             $model->administrator_user_id = (int)User::getCurrentUserId();
             $model->date = date('Y-m-d H:i:s');
+            $model->employer = 0;
+            $model->judge = 0;
+            $model->message = $user->setInvitationEmail($model);
+            
 			if($model->save())
             {
-			    User::sendInvitationEmail($model);
-				$this->redirect(array('admin','id'=>$model->id));
+			    //User::sendInvitationEmail($model);
+				//$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('confirm', 'id'=>$model->id));
             }
 		}
 
@@ -141,6 +197,9 @@ class InvitationController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		
+		$this->layout = '//layouts/column1';
+		
 		$model=new Invitation('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Invitation']))

@@ -36,13 +36,27 @@ class ProjectController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'viewmodal'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
 		);
+	}
+	
+	public function actionViewmodal($id)
+	{
+		$this->layout = '//layouts/column1';
+		
+		$model = $this->loadModel($id);
+	
+		// modal is disabled which is the ajax part so will always just 'render'
+		if( Yii::app()->request->isAjaxRequest )
+			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
+		else
+			$this->render('viewmodal',array('model'=>$model));
+	
 	}
 
 	/**
@@ -55,7 +69,7 @@ class ProjectController extends Controller
         $propose_by = User::model()->findByPk($model->propose_by_user_id);
         $promentor = User::model()->findByPk($model->project_mentor_user_id);
 
-        $this->render('view',array(
+        $this->renderPartial('view',array(
 			'model'=>$this->loadModel($id),
             'promentor' => $promentor,
             'propose_by' => $propose_by,
@@ -147,6 +161,9 @@ class ProjectController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		$this->layout = '//layouts/column1';
+		
+		
 		$model=new Project('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Project']))

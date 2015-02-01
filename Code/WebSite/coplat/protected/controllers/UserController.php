@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         return array(
             'accessControl', // perform access control for CRUD operations
-            'postOnly + delete', // we only allow deletion via POST request
+            'postOnly + delete', // we only allow deletion via POST request        		
         );
     }
 
@@ -38,7 +38,7 @@ class UserController extends Controller
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors'),
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search', 'viewmodal', 'UpdateUser', 'admin_create_user'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -60,13 +60,37 @@ class UserController extends Controller
 
         $this->render('roles', array('model'=> $model));
     }
-
+    
+    public function actionViewmodal($id)
+    {
+    	
+    	/**
+    	 * todo:
+    	 * 
+    	 * add ability to delete roles for mentors
+    	 */
+    	
+    	$this->layout = '//layouts/column1';
+    	 
+    	$model = $this->loadModel($id);
+    	 
+    	// ajax for modal. disabled in admin.php
+    	if( Yii::app()->request->isAjaxRequest )
+			$this->renderPartial('viewmodal',array('model'=>$model), false, true);
+    	else 
+    		$this->render('viewmodal',array('model'=>$model));
+    	
+    }
+    
+    
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
     public function actionView($id)
     {
+        echo("<script>console.log('actionView!');</script>");
+
         $model = $this->loadModel($id);
         $promentor = ProjectMentor::model()->getProMentor($id);
         $permentor = PersonalMentor::model()->getPerMentor($id);
@@ -205,7 +229,7 @@ class UserController extends Controller
             $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
 
             $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects));
-
+            
             /*$this->render('view',array(
                 'model'=>$this->loadModel($id),
             ));*/
@@ -216,7 +240,7 @@ class UserController extends Controller
             $userdoms = UserDomain::model()->findAllBySql("SELECT distinct domain_id FROM user_domain WHERE user_id=$id");
             $Mentees = Mentee::model()->findAllBySql("SELECT user_id FROM mentee WHERE personal_mentor_user_id=$id");
             $Tickets= Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id=:id", array(":id"=>$id));
-
+            
             $this->render('view', array('Tickets' => $Tickets, 'model'=> $model, 'userdoms' => $userdoms, 'Mentees' => $Mentees, 'projects' => $projects,
                 'model'=>$this->loadModel($id)));
         }
@@ -229,29 +253,83 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model=new User;
+        $model->username = "";
+        $model->password = "";
+        
+        $infoModel = new UserInfo;
+        $infoModel->user_id = $model->id;
+        
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
         $error='';
-
-
-        if(isset($_POST['User']))
+        $form = 'user-Register-form';
+        //If a new User has been successfully created e.g. the user has created an account from the register.php page        
+        
+        if(isset($_POST['User']) && isset($_POST['UserInfo']))
         {
             /*if ($this->actionVerifyRegistration() != "") {
                 $this->render('create', array('model'=>$model));
             }*/
-
-
+			
+        	echo("<script>console.log('New User Registered');</script>");
+        	// auto-fill biography information
             $model->attributes=$_POST['User'];
             $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
             $model->biography = "Tell us something about yourself...";
             $model->activation_chain = $this->genRandomString(10);
             $model->activated = 1;
+            
+            //$emailCheck=User::model()->find(array(
+		    //  'select'=>'email',
+		    //  'condition'=>'email=:email',
+		    //  'params'=>array(':email'=>$model->email))
+		    //);
+            
+            //$unameCheck=User::model()->find(array(
+		    //  'select'=>'username',
+		    //  'condition'=>'username=:username',
+		    //  'params'=>array(':username'=>$model->username))
+		    //);
+            
+            //if($emailCheck === null or $unameCheck === null){
+            //	$error = "username or email taken";
+            //	$this->render('create',array(
+            //			'model'=>$model,'infoModel'=> $infoModel, 'error' => $error,
+            //	));
+            //	return;
+            //}
+            
+            // hash entered password
+            $pw = $model->password;
+            $hasher = new PasswordHash(8, false);
+            $model->password = $hasher->HashPassword($model->password);
 
-            $error = $this->verifyRegistration();
-            if($error==null)
+            $error1 = $this->verifyRegistration();
+            if($error1==null)
             {
 
                 $model->save(false);
+                
+                if(isset($_POST['UserInfo'])){
+                	// get entered personal info
+                	$infoModel->attributes=$_POST['UserInfo'];
+                	$infoModel->user_id = $model->id;
+                	$infoModel->save(false);
+                }
+                
+                
+                //newUserLogin($model, $pw);
+                $login = new LoginForm;
+                $login->username = $model->username;
+                $login->password = $pw;
+                $login->login();
+                $this->redirect("/coplat/index.php/application/portal");
+                
+                // Confirmation email for registration
+                //$userfullName = $model->fname.' '.$model->lname;
+                //$adminName = User::getCurrentUser();
+                //User::sendConfirmationEmail($userfullName, $model->email,$model->username,$pw,$adminName->fname.' '.$adminName->lname);
+                
                 if($model->isProMentor)
                 {
                     $proMentor = new ProjectMentor;
@@ -280,9 +358,10 @@ class UserController extends Controller
 
                 }
             }
-
-
         }
+        
+        
+        
         if(isset($_POST['Roles']))
         {
             $proMentor = ProjectMentor::model()->getProMentor($_COOKIE['UserID']);
@@ -413,7 +492,8 @@ class UserController extends Controller
 
 
             }
-
+			/* This is set up for a user being added by an admin
+			 * 
             $hasher = new PasswordHash(8, false);
             $pw = $this->genRandomString(8);
             $user->password = $hasher->HashPassword($pw);
@@ -421,12 +501,12 @@ class UserController extends Controller
             $userfullName = $user->fname.' '.$user->lname;
             $adminName = User::getCurrentUser();
             User::sendConfirmationEmail($userfullName, $user->email,$user->username,$pw,$adminName->fname.' '.$adminName->lname);
-
+			*/
 
         }
         //$error = '';
         $this->render('create',array(
-            'model'=>$model,'error' => $error
+            'model'=>$model,'infoModel'=> $infoModel, 'error' => $error,
         ));
         return;
 
@@ -434,16 +514,234 @@ class UserController extends Controller
 
     }
     
-    /*
-     * initiate self serve registration for new users
-     */
+
     public function actionRegister(){
-    	$error = '';
-    	$this->render('register', array('error'=>$error));
+    	$model=new User;
+    	$model->username = "";
+    	$model->password = "";
+    	
+    	$infoModel = new UserInfo;
+    	$infoModel->user_id = $model->id;
+    	
+    	// Uncomment the following line if AJAX validation is needed
+    	// $this->performAjaxValidation($model);
+    	$error='';
+    	$form = 'user-Register-form';
+    	//If a new User has been successfully created e.g. the user has created an account from the register.php page
+    	
+    	if(isset($_POST['User']) && isset($_POST['UserInfo']))
+    	{
+    		/*if ($this->actionVerifyRegistration() != "") {
+    		 $this->render('create', array('model'=>$model));
+    		}*/
+    			
+    		echo("<script>console.log('New User Registered');</script>");
+    		// auto-fill biography information
+    		$model->attributes=$_POST['User'];
+    		$model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
+    		$model->biography = "Tell us something about yourself...";
+    		$model->activation_chain = $this->genRandomString(10);
+    		$model->activated = 1;
+    	
+    	
+    	
+    		// hash entered password
+    		$pw = $model->password;
+    		$hasher = new PasswordHash(8, false);
+    		$model->password = $hasher->HashPassword($model->password);
+    	
+    		$error1 = $this->verifyRegistration();
+    		if($error1==null)
+    		{
+    	
+    			$model->save(false);
+    	
+    			if(isset($_POST['UserInfo'])){
+    				// get entered personal info
+    				$infoModel->attributes=$_POST['UserInfo'];
+    				$infoModel->user_id = $model->id;
+    				$infoModel->save(false);
+    			}
+    	
+    	
+    			//newUserLogin($model, $pw);
+    			$login = new LoginForm;
+    			$login->username = $model->username;
+    			$login->password = $pw;
+    			$login->login();
+    			$this->redirect("/coplat/index.php/application/portal");
+    		}
+    	}
+    	
+    	$this->render('register',array(
+    			'model'=>$model,'infoModel'=> $infoModel, 'error' => $error,
+    	));
+    	return;
     }
+    
+    public function actionAdmin_Create_User()
+    {
+    	$model=new User;
+    	// Uncomment the following line if AJAX validation is needed
+    	// $this->performAjaxValidation($model);
+    	$error='';
+    	if(isset($_POST['User']))
+    	{
+    	/*if ($this->actionVerifyRegistrationOld() != "") {
+    		$this->render('create', array('model'=>$model));
+    		 }*/
+    		 $model->attributes=$_POST['User'];
+    		 $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
+    		 $model->biography = "Tell us something about yourself...";
+            $model->activation_chain = $this->genRandomString(10);
+            $model->activated = 1;
+    		 $error = $this->verifyRegistrationOld();
+    		 if($error==null)
+    		 {
+    		 $model->save(false);
+    		 if($model->isProMentor)
+    		 {
+    		 $proMentor = new ProjectMentor;
+    		 $proMentor->user_id = $model->id;
+    		 $proMentor->max_hours = 0;
+    		 $proMentor->max_projects = 0;
+    		 $proMentor->save(false);
+    		 }
+    		 if($model->isDomMentor)
+    		 {
+    		 $domMentor = new DomainMentor();
+    		 $domMentor->user_id = $model->id;
+    		 $domMentor->max_tickets = 0;
+    		 $domMentor->save();
+    		 }
+    		 if($model->isPerMentor)
+    		 {
+    		 $perMentor = new PersonalMentor();
+    		 $perMentor->user_id = $model->id;
+    		 $perMentor->max_hours =0 ;
+    		 $perMentor->max_mentees = 0;
+    		 $perMentor->save();
+    		 }
+    		 }
+    		 }
+    		 if(isset($_POST['Roles']))
+    		 {
+    		 $proMentor = ProjectMentor::model()->getProMentor($_COOKIE['UserID']);
+    		 $perMentor = PersonalMentor::model()->getPerMentor($_COOKIE['UserID']);
+    		 $domMentor = DomainMentor::model()->getDomMentor($_COOKIE['UserID']);
+    		 //$model->save(false);
+    		 $user = User::model()->findByPk($_COOKIE['UserID']);
+    		 if($user->isProMentor ==1)
+    		 {
+    		 //$proMentor = new ProjectMentor;
+    		 $proMentor->user_id = $user->id;
+    		 $proMentor->max_hours =$_POST['pjmhours'] ;
+    		 $all = Project::model()->findAll();
+    		 $proMentor->save();
+    		 $count =0;
+    		 foreach ($all as $each)
+    		 	{
+    		 	if(isset($_POST[$each->id.'pjm']))
+    		 {
+    		 $p = Project::model()->findByPk($each->id);
+    		 $p->project_mentor_user_id =$_COOKIE['UserID'];
+    		 $p->save(false);
+    		 $count++;
+    		 }
+    		 }
+    		 $proMentor->max_projects = $count;
+    		 $proMentor->save();
+    		 }
+    		 if($user->isDomMentor ==1)
+    		 {
+    	//UserDomain::model()->deleteAll("user_id = ".$user->id);
+    		$domMentor->max_tickets = $_POST['dmmaxtickets'];
+    		$domMentor->save();
+    		$all = Domain::model()->findAll();
+    		foreach ($all as $each)
+    		{
+    			if(isset($_POST[$each->id]))
+    		 {
+    		 $user_domain = new UserDomain();
+    		 $user_domain->user_id = $domMentor->user_id;
+    		 $user_domain->domain_id= $each->id;
+    		 $user_domain->active=1;
+    		 	$user_domain->save(false);
+    		 	$allsubs = Subdomain::model()->findAllBySql("select * from subdomain where domain_id = $each->id");
+    		 	if($allsubs!=null)
+    		 	{
+    		 	foreach( $allsubs as $onesub)
+    		 	{
+    		 	$temp = $onesub->id.'ddmsub';
+    		 	if(isset($_POST[$temp]))
+    		 	{
+    		 	$user_domain = new UserDomain();
+    		 	$user_domain->user_id = $domMentor->user_id;
+    		 	$user_domain->domain_id= $each->id;
+    		 	$user_domain->active=1;
+    		 	$rate = $each->id.'-'.$onesub->id.'dmrate';
+    		 	$tier = $each->id.'-'.$onesub->id.'dmtier';
+    		 		$user_domain->rate = $_POST[$rate];
+    		 		$user_domain->tier_team = $_POST[$tier];
+    		 				$user_domain->subdomain_id = $onesub->id;
+    		 				$user_domain->save(false);
+    		 	}
+    		 	}
+    		 	} else
+    		 	{
+    		 	$user_domain = new UserDomain();
+    		 	$user_domain->user_id = $domMentor->user_id;
+    		 	$user_domain->domain_id= $each->id;
+    		 		$user_domain->active=1;
+    		 		$user_domain->save(false);
+    		 	}
+    		 	}
+    		 	}
+    		 	}
+    		 	if($user->isPerMentor)
+    		 	{
+    		 		//$perMentor = new PersonalMentor();
+    		 		$perMentor->user_id = $user->id;
+    		 		$perMentor->max_hours =$_POST['pmhours'] ;
+    		 		$all = Mentee::model()->findAll();
+    		 		$perMentor->save();
+    		 		$count =0;
+    		 		foreach ($all as $each)
+    		 		{
+    		 		if(isset($_POST[$each->user_id.'pm']))
+    	{
+    	$p = Mentee::model()->findByPk($each->user_id);
+    	$p->personal_mentor_user_id =$_COOKIE['UserID'];
+    	$p->save(false);
+    	$count++;
+    	}
+    	}
+    	$perMentor->max_mentees = $count;
+    		$perMentor->save();
+    	}
+    				$hasher = new PasswordHash(8, false);
+    				$pw = $this->genRandomString(8);
+    				$user->password = $hasher->HashPassword($pw);
+    			$user->save(false);
+    			$userfullName = $user->fname.' '.$user->lname;
+    			$adminName = User::getCurrentUser();
+    			User::sendConfirmationEmail($userfullName, $user->email,$user->username,$pw,$adminName->fname.' '.$adminName->lname);
+    		}
+    		//$error = '';
+    			$this->render('admin_create_user',array(
+    			'model'=>$model,'error' => $error
+    					));
+    					return;
+    					//$this->render('add',array('model'=>$model, 'error' => $error));
+    		}
+    
     
     public function actionCreate_Admin()
     {
+
+        echo ("<script>console.log('actionCreate_Admin');</script>");
+
+
         $model=new User;
 
         // Uncomment the following line if AJAX validation is needed
@@ -484,6 +782,9 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+        echo("<script>console.log('actionUpdate');</script>");
+
+
         $model = $this->loadModel($id);
 
         $this->renderPartial('update', array('model'=> $model));
@@ -497,6 +798,7 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
+
         //Soft delete (Disable the User)
         $model=$this->loadModel($id);
         $model->disable = 1;
@@ -516,9 +818,11 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
+
+        echo("<script>console.log('actionIndex');</script>");
+
         $dataProvider=new CActiveDataProvider('User');
-        $this->render('index',array(
-            'dataProvider'=>$dataProvider,
+        $this->render('index',array('dataProvider'=>$dataProvider,
         ));
     }
 
@@ -527,15 +831,34 @@ class UserController extends Controller
      */
     public function actionAdmin()
     {
+    	$this->layout = '//layouts/column1';
+
         $model=new User('search');
         $model->unsetAttributes();  // clear any default values
-        if(isset($_GET['User']))
+        if(isset($_GET['User'])) {
             $model->attributes=$_GET['User'];
-
+        }
         $this->render('admin',array(
             'model'=>$model,
         ));
     }
+
+    public function actionSearch()
+    {
+        echo("<script>console.log('actionSearch');</script>");
+
+        $model=new User('search');
+        $model->unsetAttributes();  // clear any default values
+        
+        if(isset($_GET['User'])) {
+        	$model->attributes=$_GET['User'];
+        }
+        	
+        $this->render('search',array(
+            'model'=>$model,
+        ));
+    }
+    
 
     public function actionChangePassword() {
         $model = User::getCurrentUser();
@@ -628,14 +951,44 @@ class UserController extends Controller
 
         return true;
     }
+    
+    public function verifyRegistrationOld(){
+    	$user = $_POST['User'];
+    	$error = "";
+    	$username = $user['username'];
+    	//$password = $user['password'];
+    	//$password2 = $user['password2'];
+    	$email = $user['email'];
+    	if ((strlen($username) < 4) || (!ctype_alnum($username))) {
+    		$error .= "Username must be alphanumeric and at least 4 characters.<br />";
+    	}
+    	if (User::model()->find("username=:username",array(':username'=>$username))) {
+    		$error .= "Username is taken<br />";
+    	}
+    	if (User::model()->find("email=:email",array(':email'=>$email))) {
+    		$error .= "Email is taken<br />";
+    	}
+    	//if ($password != $password2) {
+    	//   $error .= "Passwords do not match<br />";
+    	//}
+    	//if (strlen($password) < 6) {
+    	//   $error .= "Password must be more than 5 characters<br />";
+    	// }
+    	if (!$this->check_email_address($email)){
+    	$error .= "Email is not correct format<br />";
+    	}
+    		print $error;
+        return $error;
+    }
 
     public function verifyRegistration(){
         $user = $_POST['User'];
+        $info = $_POST['UserInfo'];
         $error = "";
 
         $username = $user['username'];
-        //$password = $user['password'];
-        //$password2 = $user['password2'];
+        $password = $user['password'];
+        $password2 = $user['password2'];
         $email = $user['email'];
 
 
@@ -648,16 +1001,15 @@ class UserController extends Controller
         if (User::model()->find("email=:email",array(':email'=>$email))) {
             $error .= "Email is taken<br />";
         }
-        //if ($password != $password2) {
-        //   $error .= "Passwords do not match<br />";
-        //}
-        //if (strlen($password) < 6) {
-        //   $error .= "Password must be more than 5 characters<br />";
-        // }
+        if ($password != $password2) {
+           $error .= "Passwords do not match<br />";
+        }
+        if (strlen($password) < 6) {
+           $error .= "Password must be more than 5 characters<br />";
+         }
         if (!$this->check_email_address($email)){
             $error .= "Email is not correct format<br />";
         }
-
         print $error;
         return $error;
     }
@@ -671,6 +1023,10 @@ class UserController extends Controller
      */
     public function loadModel($id)
     {
+
+        echo("<script>console.log('loadModel message!');</script>");
+
+
         $model=User::model()->findByPk($id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
@@ -717,10 +1073,30 @@ class UserController extends Controller
                 'pageSize' => 10,
             ),
         ));
-        $this->render('findMentors',array('domMentors'=>$domMentors,'dataProviderCompined'=>$dataProviderCompined,'filtersForm'=>$filtersForm,'error' => $error));
+        $this->render('findMentors',array('domMentors'=>$domMentors,'dataProviderCompined'=>$dataProviderCompined,
+        		'filtersForm'=>$filtersForm,'error' => $error));
 
     }
-
+    
+    public function getTabs($form, $model){
+    	$tabs = array(
+					array(
+					'active'=>true,
+					'label'=>"Account",
+					'content'=>$this->renderPartial('accountInfoForm', array('form'=>$form, 'model'=>$model), true)),
+					array(
+					'label'=>"Personal Info",
+					'content'=>$this->renderPartial('personalInfoForm', array('form'=>$form, 'model'=>$model), true)),
+				);
+		return $tabs;
+    }
+    
+public function actionUpdateUser()
+{
+   			$es = new EditableSaver('user');  //'User' is name of model to be updated
+		    $es->update();
+}
+    
     /**
      * Performs the AJAX validation.
      * @param User $model the model to be validated

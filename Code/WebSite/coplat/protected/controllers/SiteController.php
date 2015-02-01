@@ -177,4 +177,9 @@ class SiteController extends Controller
 		$error = '';
 		$this->render('landing', array('error'=>$error));
 	}
+	
+	/*
+	 * 
+	 */
+	
 }

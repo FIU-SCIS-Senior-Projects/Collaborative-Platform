@@ -2,6 +2,10 @@
 
 // uncomment the following to define a path alias Yii::setPathOfAlias('local','path/to/local-folder');
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+Yii::setPathOfAlias('editable', dirname(__FILE__).'/../extensions/x-editable');
+Yii::setPathOfAlias('booster', dirname(__FILE__).'/../extensions/booster');
+Yii::setPathOfAlias('fiuCustom', dirname(__FILE__).'/../controllers/custom');
+
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
@@ -16,12 +20,13 @@ return array(
 		),
 	),
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'editable', ),
 
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'editable.*',
 	),
 
 	'modules'=>array(
@@ -42,6 +47,17 @@ return array(
 
 	// application components
 	'components'=>array(
+			//X-editable config
+			'editable' => array(
+					'class'     => 'editable.EditableConfig',
+					'form'      => 'bootstrap',        //form style: 'bootstrap', 'jqueryui', 'plain'
+					'mode'      => 'inline',            //mode: 'popup' or 'inline'
+					'defaults'  => array(              //default settings for all editable elements
+							'emptytext' => 'Click to edit'
+					)
+			),
+			
+			
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -68,10 +84,11 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=coplat2',
+			'connectionString' => 'mysql:host=localhost;dbname=coplat',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
+			//'password' => '9Qst32+',	
 			'charset' => 'utf8',
 		),
 		
@@ -97,9 +114,13 @@ return array(
 		'bootstrap'=>array(
 			'class'=>'bootstrap.components.Bootstrap'
 		),
+		'booster'=>array(
+			'class'=>'booster.components.Booster'
+		),
 		'multicomplete'=>array(
 				'class'=>'multicomplete.MultiComplete.php')		
-	),
+		),
+		
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']

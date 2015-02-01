@@ -36,7 +36,7 @@ class SubdomainController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'viewmodal'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -59,6 +59,19 @@ class SubdomainController extends Controller
             'domainName' => $domainName
 		));
 	}
+	
+	public function actionViewmodal($id)
+	{
+		$this->layout = '//layouts/column1';
+		
+		$model = $this->loadModel($id);
+
+		if( Yii::app()->request->isAjaxRequest )
+			$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
+		else
+			$this->render('viewmodal',array('model'=>$model,));
+		
+	}
 
 	/**
 	 * Creates a new model.
@@ -75,7 +88,7 @@ class SubdomainController extends Controller
 		{
 			$model->attributes=$_POST['Subdomain'];
 			if($model->save())
-				$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('domain/admin'));
 		}
 
 		$this->render('create',array(
@@ -136,13 +149,16 @@ class SubdomainController extends Controller
 	 * Manages all models.
 	 */
 	public function actionAdmin()
-	{
+	{		
+		$this->layout = '//layouts/column1';
+		
+		
 		$model=new Subdomain('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Subdomain']))
 			$model->attributes=$_GET['Subdomain'];
 
-		$this->render('admin',array(
+		$this->renderPartial('admin',array(
 			'model'=>$model,
 		));
 	}
