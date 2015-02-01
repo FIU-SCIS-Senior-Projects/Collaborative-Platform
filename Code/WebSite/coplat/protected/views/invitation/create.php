@@ -2,10 +2,10 @@
 /* @var $this InvitationController */
 /* @var $model Invitation */
 
-$this->breadcrumbs=array(
-	'Invitations'=>array('admin'),
+/*$this->breadcrumbs=array(
+	'Invitations'=>array('index'),
 	'Create',
-);
+);*/
 
 ?>
 

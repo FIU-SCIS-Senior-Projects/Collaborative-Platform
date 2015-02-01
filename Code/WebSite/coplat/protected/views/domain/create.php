@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Manage Domains'=>array('admin'),
-	'Create Domain',
+	'Create',
 );
 
 /*$this->menu=array(

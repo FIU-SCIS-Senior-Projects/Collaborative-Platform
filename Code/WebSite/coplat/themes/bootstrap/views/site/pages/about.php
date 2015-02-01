@@ -38,7 +38,7 @@ $this->breadcrumbs=array(
 </table>
 </br>
 
-<h5>Version 3.0 - 12/12/2014</h5>
+<h5>Version 3.0 - In Progress</h5>
 
 <table style="margin-left: 20px">
     <tr><td style="font-size: 14px; font-weight: bold">Admin Dashboard &nbsp;</td><td> Jonathan Sanchez</td></tr>

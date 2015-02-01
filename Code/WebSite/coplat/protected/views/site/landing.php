@@ -27,7 +27,7 @@ $this->breadcrumbs=array(
 </br>
 
 <div class="row">
-	<div class="span3 lightMarginL">
+	<div class="span3">
 		<img src="../../images/landing/mentor.jpg"></img>
 	</div>
 	<div class="span9">
@@ -56,7 +56,7 @@ $this->breadcrumbs=array(
 		interdum sodales. In hac habitasse platea dictumst. </p>
 		<br></br>
 		<div class="offset1 span6">
-			<a style="text-decoration:none" href="/coplat/index.php/user/create">
+			<a style="text-decoration:none" href="">
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
 	                'buttonType'=>'button',
 	                'type'=>'primary',

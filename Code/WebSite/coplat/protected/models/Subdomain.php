@@ -9,8 +9,6 @@
  * @property string $description
  * @property integer $validator
  * @property string $domain_id
- * @property string $need
- * @property integer $need_amount
  *
  * The followings are the available model relations:
  * @property Domain $domain
@@ -19,8 +17,6 @@
  */
 class Subdomain extends CActiveRecord
 {
-	
-	public $domainName;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -44,21 +40,19 @@ class Subdomain extends CActiveRecord
 	 */
 	public function rules()
 	{
-        // NOTE: you should only define rules for those attributes that 
-        // will receive user inputs. 
-        return array( 
-            array('domain_id, name', 'required'),
-            //array('validator, need_amount', 'numerical', 'integerOnly'=>true),
-        	array('need_amount', 'numerical', 'integerOnly'=>true, 'min'=>1, 'max'=>100),
-        	array('name', 'length', 'max'=>45),
-            array('description', 'length', 'max'=>5000),
-            array('domain_id', 'length', 'max'=>11),
-            array('need', 'length', 'max'=>7),
-            // The following rule is used by search(). 
-            // Please remove those attributes that should not be searched. 
-            array('id, name, description, validator, domain_id, need, need_amount, domainName', 'safe', 'on'=>'search'), 
-        ); 
-    } 
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
+		return array(
+			array('domain_id, name', 'required'),
+			array('validator', 'numerical', 'integerOnly'=>true),
+			array('name', 'length', 'max'=>45),
+			array('description', 'length', 'max'=>5000),
+			array('domain_id', 'length', 'max'=>11),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
+			array('id, name, description, validator, domain_id', 'safe', 'on'=>'search'),
+		);
+	}
 
 	/**
 	 * @return array relational rules.
@@ -85,8 +79,6 @@ class Subdomain extends CActiveRecord
 			'description' => 'Description',
 			'validator' => 'Proficiency Cutoff',
 			'domain_id' => 'Domain',
-            'need' => 'Need',
-            'need_amount' => 'Need Amount',
 		);
 	}
 
@@ -94,82 +86,21 @@ class Subdomain extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search() 
-    { 
-        // Warning: Please modify the following code to remove attributes that 
-        // should not be searched. 
+	public function search()
+	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
 
-        $criteria=$this->setCriteria();
+		$criteria=new CDbCriteria;
 
-   		 return new CActiveDataProvider($this, array( 
-            'criteria'=>$criteria,
-        		'sort'=>array(
-        				'attributes'=>array(
-        						'domainName'=>array(
-        								'asc'=>'domain.name',
-        								'desc'=>'domain.name DESC',
-        						),
-        						'*',
-        				),
-        		),
-        )); 
-    } 
-    
-    public function searchNoPagination() {
-    	$criteria = $this->setCriteria();
-    	return new CActiveDataProvider($this, array(
-    			'criteria' => $criteria,
-    			'pagination'=>false,
-    	));
-    }
-    
-    public function setCriteria(){
-    	$criteria=new CDbCriteria;
-    
-        $criteria->with = array( 'domain',);
-       	
-       	$criteria->compare('domain.name', $this->domainName, true);
-        
-       	$criteria->compare('t.id',$this->id,true);
-        $criteria->compare('t.name',$this->name,true);
-        $criteria->compare('t.description',$this->description,true);
-        $criteria->compare('t.validator',$this->validator);
-        $criteria->compare('t.domain_id',$this->domain_id,true);
-        $criteria->compare('t.need',$this->need,true);
-        $criteria->compare('t.need_amount',$this->need_amount);
-    
-    	return $criteria;
-    	
-    }
-    
-    public function setCriteriaForApp(){
-    	$criteria=new CDbCriteria;
-    	$criteria->compare('domain_id',$this->domain_id,true);
-    	return new CActiveDataProvider($this, array(
-    			'criteria' => $criteria,
-    			'pagination'=>false,
-    	));
-    }
-    
-    public function getSubdomainsForApp($dataprovider){
-    	$subs = array();
-    	foreach($dataprovider->getData() as $sub){
-    		$temp = array();
-    		$temp["id"] = $sub->id;
-    		$temp["name"] = $sub->name;
-    		$temp["description"] = $sub->description;
-    		$temp["need"] = $sub->need;
-    		
-    		$d = new UserDomain;
-    		$d->subdomain_id = $sub->id;
-    		$temp["mentors"] = UserDomain::model()->getMentorsFromSubdomain($d->search());
-    		
-    		$subs[] = $temp;
-    	}
-    	return $subs;
-    }
-    
-    public function getDomainName() {
-    	return $this->domain->name;
-    }
+		$criteria->compare('id',$this->id,true);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('validator',$this->validator);
+		$criteria->compare('domain_id',$this->domain_id,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 }

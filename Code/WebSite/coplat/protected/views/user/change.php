@@ -3,7 +3,6 @@ $user =User::model()->findBySql("select * from user where id = $model->id");//cu
 $def = User::model()->findBySql("select * from user where username = 'DEFAULT'");//default user
 $all = Domain::model()->findAll(); //all domains
 
-echo ("<script>console.log('change.php');</script>");
 
 if($user->isProMentor==1 || $user->isDomMentor==1 || $user->isPerMentor==1)
 {

@@ -8,7 +8,6 @@
  * @property string $description
  * @property string $added_date
  * @property string $ticket_id
- * @property string $user_added
  *
  * The followings are the available model relations:
  * @property Ticket $ticket
@@ -49,7 +48,7 @@ class Comment extends CActiveRecord
             array('user_added', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, description, added_date, ticket_id, user_added', 'safe', 'on'=>'search'),
+			array('id, description, added_date, ticket_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -94,8 +93,6 @@ class Comment extends CActiveRecord
 		//$criteria->compare('description',$this->description,true);
 		//$criteria->compare('added_date',$this->added_date,true);
 		$criteria->compare('ticket_id',$this->ticket_id,true);
-		$criteria->compare('user_added',$this->user_added,true);
-		
 
 
 		return new CActiveDataProvider($this, array(

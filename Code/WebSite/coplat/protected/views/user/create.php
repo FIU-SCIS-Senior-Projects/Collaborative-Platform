@@ -1,7 +1,6 @@
 <?php
 /* @var $this UserController */
 /* @var $model User */
-/* @var $infoModel UserInfo */
 
 /*$this->breadcrumbs=array(
 	'Users'=>array('index'),
@@ -10,7 +9,24 @@
 */
 ?>
 
-<h2 id="register-title">Collaborative Platform Registration</h2>
+<h2>Collaborative Platform Registration</h2>
 <?php
-	    echo $this->renderPartial('register', array('model'=>$model, 'infoModel'=>$infoModel, 'error'=>$error));
+
+if($model->username == null || $error!=null)
+    echo $this->renderPartial('register', array('model'=>$model, 'error'=>$error));
+else
+    echo $this->renderPartial('roles', array('model'=>$model));
+
+
+
+
+
 ?>
+<?php // print_r($_POST); ?>
+
+
+
+
+
+
+

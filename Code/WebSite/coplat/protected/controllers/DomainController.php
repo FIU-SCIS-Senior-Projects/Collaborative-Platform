@@ -36,7 +36,7 @@ class DomainController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete', 'viewmodal'),
+				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -44,22 +44,7 @@ class DomainController extends Controller
 			),
 		);
 	}
-	
-	public function actionViewmodal($id)
-	{
-		
-		$this->layout = '//layouts/column1';
-	
-		$model = $this->loadModel($id);
-			
-		if( Yii::app()->request->isAjaxRequest )
-			$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
-		else
-			$this->render('viewmodal',array('model'=>$model,));
-		
-	
-	}
-	
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -86,7 +71,7 @@ class DomainController extends Controller
 		{
 			$model->attributes=$_POST['Domain'];
             if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -148,10 +133,7 @@ class DomainController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$this->layout = '//layouts/column1';
-		
 		$model=new Domain('search');
-		
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Domain']))
 			$model->attributes=$_GET['Domain'];

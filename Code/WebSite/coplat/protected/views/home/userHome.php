@@ -11,20 +11,6 @@ if(User::isCurrentUserAdmin())
  * Date: 4/9/14
  * Time: 2:08 PM
  */
-	
-	$button = addslashes(json_encode($button));
-	
-	
-Yii::app()->clientScript->registerScript('register', "
-	
-		window.button = JSON.parse('" . $button . "');
-	
-		function setButtons(){
-			if(window.button === 0) $('#proposalButton').addClass('hidden disabled');
-		}
-	
-		setButtons();
-");
 ?>
 
 <div><h2><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h2></div>
@@ -84,15 +70,7 @@ Yii::app()->clientScript->registerScript('register', "
         </tr>
     </table>
 <div><h3>My To Do</h3></div>
-<br/>
-<a id="proposalButton" style="text-decoration:none" href="/coplat/index.php/application/approve">
-				<?php $this->widget('bootstrap.widgets.TbButton', array(
-	                'buttonType'=>'button',
-	                'type'=>'primary',
-					'size'=>'large',
-	                'label'=>'New Proposal!',
-	            )); ?>
-            </a>
+
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
 <div id="fullcontent">
 

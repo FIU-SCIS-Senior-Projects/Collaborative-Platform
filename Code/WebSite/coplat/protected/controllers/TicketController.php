@@ -36,30 +36,13 @@ class TicketController extends Controller
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem', 'viewModal'),
+                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
             ),
         );
-    }
-    
-    public function actionViewmodal($id)
-    {
-    	$this->layout = '';
-    	$model = $this->loadModel($id);
-
-    	if( Yii::app()->request->isAjaxRequest )
-    		$this->renderPartial('viewmodal',array('model'=>$model,), false, true);
-    	else
-    		$this->render('viewmodal',array('model'=>$model,));
-    	 
-    }
-    
-    public function actionUpdateStatus(){
-    	$es = new EditableSaver('Ticket');  //'User' is name of model to be updated
-    	$es->update();
     }
 
     /**
@@ -418,7 +401,6 @@ class TicketController extends Controller
             //$model->attributes = $_POST['Ticket'];
             if ($newStatus == 0) {
                 $model->status = 'Close';
-                $model->closed_date = new CDbExpression('NOW()');
                 if ($model->save()) {
                     if (User::isCurrentUserAdmin()) {
                         $response['url'] = "/coplat/index.php/home/adminHome";
@@ -497,43 +479,13 @@ class TicketController extends Controller
      */
     public function actionAdmin()
     {
-    	$this->layout='';
         $model = new Ticket('search');
-        
-        $cUser = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0 order by lname");
-        $data1 = array();
-        
-        foreach($cUser as $u){
-        	$data1[$u->id] = $u->fname.' '.$u->lname;
-        }
-
-        $aUser = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0 order by lname");
-        $data2 = array();
-        
-        foreach($aUser as $u){
-        	$data2[$u->id] = $u->fname.' '.$u->lname;
-        }
-        
-        $dom = Domain::model()->findAllBySql("select id, name from domain order by name");
-        $data3 = array();
-        
-        foreach($dom as $u){
-        	$data3[$u->id] = $u->name;
-        }
-        
-        $subdom = Subdomain::model()->findAllBySql("select id, name from subdomain order by name");
-        $data4 = array();
-        
-        foreach($subdom as $u){
-        	$data4[$u->id] = $u->name;
-        }
-        
         $model->unsetAttributes(); // clear any default values
         if (isset($_GET['Ticket']))
             $model->attributes = $_GET['Ticket'];
 
         $this->render('admin', array(
-            'model' => $model, 'data1' => $data1, 'data2'=>$data2,'data3'=>$data3,'data4'=>$data4,
+            'model' => $model,
         ));
     }
 

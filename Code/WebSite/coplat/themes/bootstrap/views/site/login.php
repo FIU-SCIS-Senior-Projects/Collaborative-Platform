@@ -69,7 +69,7 @@ $this->breadcrumbs=array(
 			echo $form->checkBox($model,'rememberMe',array('style'=>'float:left'));
 		?>
 		<p style="float:left; margin-left:5px">Remember Me</p></br></br>
-		
+
         <div style="float:left;">
             <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'submit',

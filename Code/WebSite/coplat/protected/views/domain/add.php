@@ -26,18 +26,11 @@
 		<?php echo $form->textArea($model,'description',array('id'=>'theDescription', 'style'=>'width:631px', 'cols'=>100, 'rows'=>5,
             'width'=>'691px','size'=>500,'maxlength'=>500)); ?>
 		<?php echo $form->error($model,'description'); ?>
-        
-		<?php echo $form->labelEx($model,'validator'); ?>
-		<?php echo $form->dropDownList($model,'validator', array(1,2,3,4,5,6,7,8,9,10), array()); ?>
-		<?php echo $form->error($model,'validator'); ?>
 
-		<?php echo $form->labelEx($model,'need'); ?>
-		<?php echo $form->dropDownList($model,'validator', array("High", "Medium", "Low"), array()); ?>
-		<?php echo $form->error($model,'need'); ?>
-
-		<?php echo $form->labelEx($model,'need_amount'); ?>
-		<?php echo $form->textField($model,'need_amount'); ?>
-		<?php echo $form->error($model,'need_amount'); ?>
+        <?php echo $form->labelEx($model,'validator'); ?>
+        <?php echo $form->numberField($model, 'validator', array('max'=> 10, 'min' => 1)); ?>
+        <?php echo $form->error($model,'validator');
+        ?>
         <br/>
 
         <?php echo CHtml::submitButton('Create', array("class"=>"btn btn-primary")); ?>

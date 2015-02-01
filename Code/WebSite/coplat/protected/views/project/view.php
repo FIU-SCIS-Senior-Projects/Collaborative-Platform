@@ -2,10 +2,10 @@
 /* @var $this ProjectController */
 /* @var $model Project */
 
-// $this->breadcrumbs=array(
-//     'Manage Projects'=>array('admin'),
-//     $model->title,
-// );
+$this->breadcrumbs=array(
+    'Manage Projects'=>array('admin'),
+    $model->title,
+);
 
 
 ?>

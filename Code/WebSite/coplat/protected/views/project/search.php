@@ -6,7 +6,7 @@
 
 
 <?php
-$users = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0 order by lname");
+$users = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0");
 $data = array();
 
 foreach($users as $u){
