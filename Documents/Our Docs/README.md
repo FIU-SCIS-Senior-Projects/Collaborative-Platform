@@ -18,6 +18,11 @@
 
 ***
 
+### Sequence Diagram
+![Class Diagram](https://raw.githubusercontent.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/develop/Documents/Images/SequenceAdminPullMenteeReport.png "Admin Pull Mentee Reports")
+
+***
+
 ## System Design
 
 ### System Architecture
