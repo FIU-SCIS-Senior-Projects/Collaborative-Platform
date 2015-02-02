@@ -113,15 +113,15 @@ class CDbConnection extends CApplicationComponent
 	 * update to PHP 5.3.6+ and to specify charset via DSN like
 	 * 'mysql:dbname=mydatabase;host=127.0.0.1;charset=GBK;'.
 	 */
-	public $connectionString;
+	public $connectionString = 'mysql:host=127.0.0.1;dbname=coplat';
 	/**
 	 * @var string the username for establishing DB connection. Defaults to empty string.
 	 */
-	public $username='';
+	public $username='root';
 	/**
 	 * @var string the password for establishing DB connection. Defaults to empty string.
 	 */
-	public $password='';
+	public $password='9Qst32+';
 	/**
 	 * @var integer number of seconds that table metadata can remain valid in cache.
 	 * Use 0 or negative value to indicate not caching schema.
