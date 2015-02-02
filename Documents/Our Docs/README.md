@@ -18,9 +18,10 @@
 
 ***
 
-### Sequence Diagram
+### Sequence Diagrams
 ![Class Diagram](https://raw.githubusercontent.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/develop/Documents/Images/SequenceAdminPullMenteeReport.png "Admin Pull Mentee Reports")
-
+![Class Diagram](https://raw.githubusercontent.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/develop/Documents/Images/SequenceAdminPullMentorReport.png "Admin Pull Mentor Reports")
+![Class Diagram](https://raw.githubusercontent.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/develop/Documents/Images/SequenceAdminPullTicketReport.png "Admin Pull Ticket Reports")
 ***
 
 ## System Design
