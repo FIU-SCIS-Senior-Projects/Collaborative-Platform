@@ -14,7 +14,10 @@
 ![Collaborative Tools](https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/blob/develop/Documents/Images/Collaborative%20Tools.png "Collaborative Tools")
 
 ### Class Diagram
+#### Admin Reports
 ![Class Diagram](https://raw.githubusercontent.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/develop/Documents/Images/AdminReportsClassDiagram.png "Class Diagram")
+#### Meetings
+![Class Diagram](https://raw.githubusercontent.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/develop/Documents/Images/MeetingClassDiagram.png "Class Diagram")
 
 ***
 
