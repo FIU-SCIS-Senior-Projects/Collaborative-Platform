@@ -59,9 +59,27 @@
 #### ER Diagram
 ![ER](https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/blob/develop/Documents/Images/EntityRelationshipModel.png "ER")
 
+### Security and Privacy
+
+####Yii access control rules
+	The Yii framework provides access control with respect to any controller being used.  This access control will reject a subset of users (not logged, students, employers, etc…) from performing certain actions.  For example, users that are not logged in will not have access to profile pages.
+
+####Security Features 
+
+#####Password Encryption
+	User password will be hashed in the database. Upon registration into the system, passwords entered will be hashed right away and will not be saved anywhere on the system.  Upon login, the password entered again will be hashed and the hashed data will be used to query the database.
+
+#####Cross-site Scripting & SQL Injection Prevention
+	The Yii framework takes measures against common web exploitations such as cross-site scripting or SQL injection.  Using Yii, we can be rest assured that such things should not occur.
+
+#####Secure Registration Process
+	The registration process is not as simple as most sites, especially for employers.  Administrators will have to verify employers after they register in order to ensure they are actual employers and maintain the integrity of the system.  Only those employers registered and verified will be able to post jobs and interact with students.
+
+
+
 
 ***
 ## Project Planning
 
 ### Gantt Chart (Project Schedule)
-![Gantt Chart](https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/blob/develop/Documents/Images/GanttChart.tiff "Gantt")
+![Gantt Chart](https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/blob/develop/Documents/Images/GanttChart.png "Gantt")
