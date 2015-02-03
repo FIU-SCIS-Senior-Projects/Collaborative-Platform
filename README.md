@@ -8,8 +8,8 @@
 * **Videos**                   Contains installation videos, module presentation, etc.
 
 ##Deployed Site
-* [Development Server](cp-dev.cis.fiu.edu)
-* [Production Server](cp.cis.fiu.edu)
+* [Development Server](http://cp-dev.cis.fiu.edu)
+* [Production Server](http://cp.cis.fiu.edu)
 
 ##Coding Guidelines
 
