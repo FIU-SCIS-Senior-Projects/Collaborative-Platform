@@ -451,7 +451,7 @@ class User extends CActiveRecord
     }
 
     public static function isCurrentUserAdmin()
-    {
+    {    
         $username = Yii::app()->user->name;
         $user = User::model()->find("username=:username", array(':username' => $username));
         if ($user == null)
