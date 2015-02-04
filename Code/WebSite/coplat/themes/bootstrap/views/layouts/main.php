@@ -25,8 +25,8 @@
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/table-fix-header.js"></script>
 	<link rel="shortcut icon" href="/coplat/images/ico/icon.ico">
 </head>
-
 <body>
+
 <?php
     $userinfo = "";
     if(!Yii::app()->user->isGuest)
@@ -52,6 +52,9 @@ if( User::isCurrentUserMentee())
 
 ?>
 <?php 
+    $currentUserIsAdmin = User::isCurrentUserAdmin();
+	$currentUserIsGuest = Yii::app()->user->isGuest;
+    
 	$this->widget('bootstrap.widgets.TbNavbar',array(
         'htmlOptions'=>array('class'=>'myNavbar','style'=>''),
         'type'=>'null',
@@ -60,89 +63,63 @@ if( User::isCurrentUserMentee())
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array('-',
-            				array('label'=>'Home', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest ),
-							array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!Yii::app()->user->isGuest ),
-							array('label'=>'Manage','visible'=>!Yii::app()->user->isGuest && User::isCurrentUserAdmin(Yii::app()->user->name),
-									'class'=>'bootstrap.widgets.TbMenu',
+            				array('label'=>'Home', 'url'=>array('/'), 'visible'=>!$currentUserIsGuest ),           //Home menu
+							array('label'=>'Mail', 'url'=>array('/message'), 'visible'=>!$currentUserIsGuest ),    //Message menu
+							array('label'=>'Reports','visible'=>$currentUserIsAdmin,                               //Reports Root Menu
+							                        'class'=>'bootstrap.widgets.TbMenu',
 									'items'=>array('-',
-											array('label'=>'Users','visible'=>!Yii::app()->user->isGuest,
-													'class'=>'bootstrap.widgets.TbMenu',
-													'url'=>array('user/admin'),
-														
-													/*'items'=>array(array('label'=>'Manage', 'url'=>array('user/admin'), 'visible'=>!Yii::app()->user->isGuest),
-													 array('label'=>'Add Administrator', 'url'=>array('user/create_admin'), 'visible'=>!Yii::app()->user->isGuest),
-															array('label'=>'Add User', 'url'=>array('user/create'), 'visible'=>!Yii::app()->user->isGuest),
-							
-							
-													),*/
-											),
-											array('label'=>'Projects','visible'=>!Yii::app()->user->isGuest,
-													'class'=>'bootstrap.widgets.TbMenu',
-													'url'=>array('project/admin')
-													/*'items'=>array(array('label'=>'Manage', 'url'=>array('project/admin'), 'visible'=>!Yii::app()->user->isGuest),
-													 array('label'=>'Create', 'url'=>array('project/create'), 'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'Mentors','visible'=>$currentUserIsAdmin,       //Mentor Report
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('/MentorReport'),	
+													),
+													array('label'=>'Mentee','visible'=>$currentUserIsAdmin,        //Mentee Report
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('/MenteeReport')
+													),
+													array('label'=>'Ticket','visible'=>$currentUserIsAdmin,        //Ticket Report
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('/TicketReport'),
+													),
+											
+									)),
+							array('label'=>'Manage','visible'=>!$currentUserIsGuest && $currentUserIsAdmin,         //Manage Root Menu
+									                'class'=>'bootstrap.widgets.TbMenu',
+									'items'=>array('-',
+													array('label'=>'Users','visible'=>!$currentUserIsGuest,         //Manage Users
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('user/admin'),
+													),
+													array('label'=>'Projects','visible'=>!$currentUserIsGuest,      //Manage Projects
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('project/admin')
+													),	
+													array('label'=>'Domains','visible'=>!$currentUserIsGuest,       //Manage Domains
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('domain/admin'),
+													),												
+													array('label'=>'Tickets','visible'=>!$currentUserIsGuest,       //Manage Tickets
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('ticket/admin')									
+													),
+													array('label'=>'Invites','visible'=>!$currentUserIsGuest,       //Manage Invitations
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('invitation/admin')
 																
+													),												
+													array('label'=>'Applications','visible'=>!$currentUserIsGuest,  //Manage applications
+															'class'=>'bootstrap.widgets.TbMenu',
+															'url'=>array('application/admin')
 													),
-							*/
-											),
-												
-												
-											array('label'=>'Domains','visible'=>!Yii::app()->user->isGuest,
-													'class'=>'bootstrap.widgets.TbMenu',
-													'url'=>array('domain/admin'),
-														
-														
-													/*'items'=>array(array('label'=>'Manage', 'url'=>array('domain/admin'), 'visible'=>!Yii::app()->user->isGuest),
-													 array('label'=>'Create', 'url'=>array('domain/create'), 'visible'=>!Yii::app()->user->isGuest),
-																
-													),
-							*/
-														
-											),
-												
-											array('label'=>'Tickets','visible'=>!Yii::app()->user->isGuest,
-													'class'=>'bootstrap.widgets.TbMenu',
-													'url'=>array('ticket/admin')
-							
-											),
-												
-											/*
-											 array('label'=>'Sub-Domain','visible'=>!Yii::app()->user->isGuest,
-											 		'class'=>'bootstrap.widgets.TbMenu',
-											 		'htmlOptions'=>array('class'=>'pull-left'),
-											 		'items'=>array(array('label'=>'Manage', 'url'=>array('subdomain/admin'), 'visible'=>!Yii::app()->user->isGuest),
-											 				array('label'=>'Create', 'url'=>array('subdomain/create'), 'visible'=>!Yii::app()->user->isGuest),
-							
-											 		),
-											 ),
-							*/
-											array('label'=>'Invites','visible'=>!Yii::app()->user->isGuest,
-													'class'=>'bootstrap.widgets.TbMenu',
-													'url'=>array('invitation/admin')
-														
-											),
-												
-											array('label'=>'Applications','visible'=>!Yii::app()->user->isGuest,
-													'class'=>'bootstrap.widgets.TbMenu',
-													'url'=>array('application/admin')
-							
-													/*'items'=>array(array('label'=>'Manage', 'url'=>array('invitation/admin'), 'visible'=>!Yii::app()->user->isGuest),
-													 array('label'=>'Send', 'url'=>array('invitation/create'), 'visible'=>!Yii::app()->user->isGuest),
-							
-													),
-							*/
-											),
 									),
 							),
-							array('label'=>'Mentor Apply', 'url'=>array('application/portal'),'visible'=>!Yii::app()->user->isGuest),
-                            array('label'=>'Create Ticket', 'url'=>array('/ticket/create'), 'visible'=>!Yii::app()->user->isGuest ),
-                            array('label'=>  $userinfo, 'url'=>'#', 'items'=>array(
-								array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!Yii::app()->user->isGuest),
-								array('label'=>'Change Password','visible'=>  $cp, 'url'=>'/coplat/index.php/user/ChangePassword'),
-				
-								'----',
-								array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-								array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),)),
+							array('label'=>'Mentor Apply', 'url'=>array('application/portal'),'visible'=>!$currentUserIsGuest), //Mentor Apply
+                            array('label'=>'Create Ticket', 'url'=>array('/ticket/create'), 'visible'=>!$currentUserIsGuest ),  //Create Ticket
+                            array('label'=>  $userinfo, 'url'=>'#', 'items'=>array(                                             //User Info root menu
+								array('label'=>'My Profile', 'url'=>array('profile/userProfile'), 'visible'=>!$currentUserIsGuest),  //View Profile
+								array('label'=>'Change Password','visible'=>  $cp, 'url'=>'/coplat/index.php/user/ChangePassword'),  //Change password
+			  		            '----',
+								array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!$currentUserIsGuest),  //Change logout
+								array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>$currentUserIsGuest),)),                               //Log in
                             array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
                             //array('label'=>'Contact', 'url'=>array('site/contact')),
 
