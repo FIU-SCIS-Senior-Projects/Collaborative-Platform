@@ -10694,6 +10694,7 @@
     <Compile Include="protected\controllers\InvitationController.php" />
     <Compile Include="protected\controllers\LoginController.php" />
     <Compile Include="protected\controllers\MenteeController.php" />
+    <Compile Include="protected\controllers\ReportMenteeController.php" />
     <Compile Include="protected\controllers\ReportMentorController.php" />
     <Compile Include="protected\controllers\MessageController.php" />
     <Compile Include="protected\controllers\NotificationController.php" />
@@ -12372,7 +12373,8 @@
     <Compile Include="protected\views\mentee\_form.php" />
     <Compile Include="protected\views\mentee\_search.php" />
     <Compile Include="protected\views\mentee\_view.php" />
-    <Compile Include="protected\views\ReportMentor\index.php" />
+    <Compile Include="protected\views\reportMentee\index.php" />
+    <Compile Include="protected\views\reportMentor\index.php" />
     <Compile Include="protected\views\message\send.php" />
     <Compile Include="protected\views\message\view.php" />
     <Compile Include="protected\views\notification\View.php" />
@@ -14671,6 +14673,7 @@
     <Folder Include="protected\views\layouts" />
     <Folder Include="protected\views\mentee" />
     <Folder Include="protected\views\message" />
+    <Folder Include="protected\views\reportMentee\" />
     <Folder Include="protected\views\ReportMentor\" />
     <Folder Include="protected\views\notification" />
     <Folder Include="protected\views\personalMeeting" />
