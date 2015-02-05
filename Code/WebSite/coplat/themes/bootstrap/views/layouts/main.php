@@ -68,7 +68,7 @@ if( User::isCurrentUserMentee())
 							array('label'=>'Reports','visible'=>$currentUserIsAdmin,                               //Reports Root Menu
 							                        'class'=>'bootstrap.widgets.TbMenu',
 									'items'=>array('-',
-													array('label'=>'Mentors','visible'=>$currentUserIsAdmin,       //Mentor Report
+													array('label'=>'Mentor','visible'=>$currentUserIsAdmin,       //Mentor Report
 															'class'=>'bootstrap.widgets.TbMenu',
 															'url'=>array('/MentorReport'),	
 													),

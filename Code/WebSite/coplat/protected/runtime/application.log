@@ -6930,3 +6930,378 @@ REQUEST_URI=/coplat/index.php/home/adminHome
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\User.php (457)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\home\adminHome.php (9)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\HomeController.php (89)
+2015/02/04 04:17:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/04 04:17:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MenteeReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MenteeReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MenteeReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/04 04:17:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "TicketReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('TicketReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/TicketReport
+HTTP_REFERER=http://localhost/coplat/index.php/MenteeReport
+---
+2015/02/04 23:57:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/04 23:57:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/04 23:58:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/04 23:58:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/05 00:06:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/05 00:27:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MenteeReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MenteeReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MenteeReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/05 00:27:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "TicketReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('TicketReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/TicketReport
+HTTP_REFERER=http://localhost/coplat/index.php/MenteeReport
+---
+2015/02/05 00:28:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MenteeReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MenteeReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MenteeReport
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2015/02/05 00:28:58 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('User')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/User
+---
+2015/02/05 00:29:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:30:35 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:30:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:31:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:31:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:31:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:31:54 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:32:07 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:33:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:33:42 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:38:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+---
+2015/02/05 00:38:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+---
+2015/02/05 00:50:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('mentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/mentorReport
+---
+2015/02/05 01:28:45 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+---
+2015/02/05 01:29:33 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+---
+2015/02/05 01:51:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MenteeReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MenteeReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MenteeReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/05 01:51:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "TicketReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('TicketReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/TicketReport
+HTTP_REFERER=http://localhost/coplat/index.php/MenteeReport
+---
