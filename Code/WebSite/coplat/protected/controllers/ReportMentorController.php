@@ -8,7 +8,7 @@
  * @version 1.0
  * @author aalfonso
  */
-class MentorReportController extends Controller
+class ReportMentorController extends Controller
 {
     
     //////////////////////////////////////////Controll

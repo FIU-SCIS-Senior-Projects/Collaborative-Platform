@@ -70,15 +70,15 @@ if( User::isCurrentUserMentee())
 									'items'=>array('-',
 													array('label'=>'Mentor','visible'=>$currentUserIsAdmin,       //Mentor Report
 															'class'=>'bootstrap.widgets.TbMenu',
-															'url'=>array('/MentorReport'),	
+															'url'=>array('/ReportMentor'),	
 													),
 													array('label'=>'Mentee','visible'=>$currentUserIsAdmin,        //Mentee Report
 															'class'=>'bootstrap.widgets.TbMenu',
-															'url'=>array('/MenteeReport')
+															'url'=>array('/ReportMentee')
 													),
 													array('label'=>'Ticket','visible'=>$currentUserIsAdmin,        //Ticket Report
 															'class'=>'bootstrap.widgets.TbMenu',
-															'url'=>array('/TicketReport'),
+															'url'=>array('/ReportTicket'),
 													),
 											
 									)),
