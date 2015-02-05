@@ -7339,3 +7339,30 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/ReportMentee
 HTTP_REFERER=http://localhost/coplat/index.php/ReportMentor
 ---
+2015/02/05 02:45:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "reportMentee".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportMentee')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/reportMentee
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentor
+---
+2015/02/05 02:45:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "reportTicket".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentee
+---
+2015/02/05 03:21:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "reportMentee".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportMentee')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/reportMentee
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentor
+---
