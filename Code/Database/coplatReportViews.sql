@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2015 at 03:43 AM
+-- Generation Time: Feb 07, 2015 at 12:02 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -52,6 +52,25 @@ CREATE TABLE `report_mentee` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `report_mentor`
+--
+DROP VIEW IF EXISTS `report_mentor`;
+CREATE TABLE `report_mentor` (
+`MentorUserName` varchar(45)
+,`MentorEmail` varchar(255)
+,`MentorFirstName` varchar(45)
+,`MentorLastName` varchar(100)
+,`MentorMiddleName` varchar(45)
+,`MentorDisabled` tinyint(1)
+,`MentorEmployeuser_info` varchar(50)
+,`MentorPosition` varchar(50)
+,`MentorDegree` varchar(50)
+,`MentorFieldOfStudy` varchar(50)
+,`MentorGradYear` int(4) unsigned
+);
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `report_ticket`
 --
 DROP VIEW IF EXISTS `report_ticket`;
@@ -91,6 +110,15 @@ CREATE TABLE `report_ticket` (
 DROP TABLE IF EXISTS `report_mentee`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_mentee` AS select `user`.`id` AS `menteeUserID`,`user`.`username` AS `menteeUserName`,`user`.`email` AS `menteeEmail`,`user`.`fname` AS `menteeFirstName`,`user`.`mname` AS `menteeMiddleName`,`user`.`lname` AS `menteeLastName`,`user`.`disable` AS `menteeDisabled`,`user`.`university_id` AS `menteeUniversityID`,`menteeuniversity`.`name` AS `menteeUniversityNamementee`,`personalmentoruser`.`id` AS `menteePersonalMentorID`,`personalmentoruser`.`email` AS `menteePersonalMentorEmail`,`personalmentoruser`.`fname` AS `menteePersonalMentorFirstName`,`personalmentoruser`.`mname` AS `menteePersonalMentorMiddleName`,`personalmentoruser`.`lname` AS `menteePersonalMentorLastName`,`personalmentoruser`.`disable` AS `menteePersonalMentorDisabled`,`menteeuser`.`project_id` AS `menteeProjectID`,`menteeproject`.`title` AS `menteeProjectTitle`,`menteeproject`.`start_date` AS `menteeProjectStartData`,`menteeproject`.`due_date` AS `menteeProjectDueDate`,`menteeproject`.`customer_fname` AS `menteeProjectCustomerFirstName`,`menteeproject`.`customer_lname` AS `menteeProjectCustomerLastname` from (((((`user` left join `mentee` `menteeuser` on((`user`.`id` = `menteeuser`.`user_id`))) left join `university` `menteeuniversity` on((`menteeuniversity`.`id` = `user`.`university_id`))) left join `personal_mentor` `personalmentor` on((`personalmentor`.`user_id` = `menteeuser`.`personal_mentor_user_id`))) left join `user` `personalmentoruser` on((`personalmentoruser`.`id` = `personalmentor`.`user_id`))) left join `project` `menteeproject` on((`menteeproject`.`id` = `menteeuser`.`project_id`))) where (`user`.`isMentee` = 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `report_mentor`
+--
+DROP TABLE IF EXISTS `report_mentor`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_mentor` AS select `user`.`username` AS `MentorUserName`,`user`.`email` AS `MentorEmail`,`user`.`fname` AS `MentorFirstName`,`user`.`lname` AS `MentorLastName`,`user`.`mname` AS `MentorMiddleName`,`user`.`disable` AS `MentorDisabled`,`mentorinfo`.`employer` AS `MentorEmployeuser_info`,`mentorinfo`.`position` AS `MentorPosition`,`mentorinfo`.`degree` AS `MentorDegree`,`mentorinfo`.`field_of_study` AS `MentorFieldOfStudy`,`mentorinfo`.`grad_year` AS `MentorGradYear` from (`user` left join `user_info` `mentorinfo` on((`user`.`id` = `mentorinfo`.`user_id`))) where ((`user`.`isPerMentor` = 1) or (`user`.`isProMentor` = 1) or (`user`.`isDomMentor` = 1));
 
 -- --------------------------------------------------------
 
