@@ -1,3 +1,7 @@
+#cotools-panel{
+  margin-bottom: 25px;
+}
+
 .tab-filler{
 	background-color: gray;
 	color: white;
@@ -13,16 +17,25 @@
   min-height: 100px;
   text-align: center;
 }
-.videoContainer {
-  position: relative;
-  width: 200px;
-  height: 150px;
+.video-container-md{
+    width: 400px;
+    height: 300px;
+    position: relative;
 }
-.videoContainer video {
+.video-container {
+    height: 200px;
+    min-width: auto;
+    position: relative;
+}
+.video-container  video, .video-container-md  video {
   position: absolute;
   width: 100%;
   height: 100%;
 }
+
+
+
+
 .volume_bar {
   position: absolute;
   width: 5px;
