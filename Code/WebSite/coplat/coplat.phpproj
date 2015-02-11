@@ -12106,6 +12106,7 @@
     <Compile Include="protected\models\ProjectMeeting.php" />
     <Compile Include="protected\models\ProjectMentor.php" />
     <Compile Include="protected\models\ProjectMentorProjects.php" />
+    <Compile Include="protected\models\ReportTicket.php" />
     <Compile Include="protected\models\Subdomain.php" />
     <Compile Include="protected\models\Ticket.php" />
     <Compile Include="protected\models\University.php" />
