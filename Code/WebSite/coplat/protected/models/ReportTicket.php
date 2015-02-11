@@ -19,9 +19,9 @@
  * @property string $assignedUserEmail
  * @property string $ticketDomainID
  * @property string $ticketDomainName
- * @property string $ticketSubDomticketainID
+ * @property string $ticketSubDomainID
  * @property string $ticketSubDomainName
- * @property integer $ticketPriority
+ * @property integer $ticketPriorityID
  * @property string $ticketPriorityDescription
  * @property string $ticketAssignedDate
  * @property string $ticketClosedDate
@@ -55,9 +55,9 @@ class ReportTicket extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('creatorID, creatorEmail, ticketStatus, ticketCreatedDate, ticketSubject, ticketDescription, ticketDomainID, ticketDomainName, ticketPriority, ticketPriorityDescription', 'required'),
-			array('creatorDisabled, assignedUserDisabled, ticketPriority, ticketIsEscalated', 'numerical', 'integerOnly'=>true),
-			array('ticketID, creatorID, ticketAssignUserID, ticketDomainID, ticketSubDomticketainID', 'length', 'max'=>11),
+			array('creatorID, creatorEmail, ticketStatus, ticketCreatedDate, ticketSubject, ticketDescription, ticketDomainID, ticketDomainName, ticketPriorityID, ticketPriorityDescription', 'required'),
+			array('creatorDisabled, assignedUserDisabled, ticketPriorityID, ticketIsEscalated', 'numerical', 'integerOnly'=>true),
+			array('ticketID, creatorID, ticketAssignUserID, ticketDomainID, ticketSubDomainID', 'length', 'max'=>11),
 			array('creatorName, assignedUserName', 'length', 'max'=>192),
 			array('creatorEmail, assignedUserEmail', 'length', 'max'=>255),
 			array('ticketStatus, ticketSubject, ticketDomainName, ticketSubDomainName, ticketPriorityDescription', 'length', 'max'=>45),
@@ -65,7 +65,7 @@ class ReportTicket extends CActiveRecord
 			array('ticketAssignedDate, ticketClosedDate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ticketID, creatorID, creatorName, creatorDisabled, creatorEmail, ticketStatus, ticketCreatedDate, ticketSubject, ticketDescription, ticketAssignUserID, assignedUserName, assignedUserDisabled, assignedUserEmail, ticketDomainID, ticketDomainName, ticketSubDomticketainID, ticketSubDomainName, ticketPriority, ticketPriorityDescription, ticketAssignedDate, ticketClosedDate, ticketIsEscalated', 'safe', 'on'=>'search'),
+			array('ticketID, creatorID, creatorName, creatorDisabled, creatorEmail, ticketStatus, ticketCreatedDate, ticketSubject, ticketDescription, ticketAssignUserID, assignedUserName, assignedUserDisabled, assignedUserEmail, ticketDomainID, ticketDomainName, ticketSubDomainID, ticketSubDomainName, ticketPriorityID, ticketPriorityDescription, ticketAssignedDate, ticketClosedDate, ticketIsEscalated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -101,9 +101,9 @@ class ReportTicket extends CActiveRecord
 			'assignedUserEmail' => 'Assigned User Email',
 			'ticketDomainID' => 'Ticket Domain',
 			'ticketDomainName' => 'Ticket Domain Name',
-			'ticketSubDomticketainID' => 'Ticket Sub Domticketain',
+			'ticketSubDomainID' => 'Ticket Sub Domticketain',
 			'ticketSubDomainName' => 'Ticket Sub Domain Name',
-			'ticketPriority' => 'Ticket Priority',
+			'ticketPriorityID' => 'Ticket Priority ID',
 			'ticketPriorityDescription' => 'Ticket Priority Description',
 			'ticketAssignedDate' => 'Ticket Assigned Date',
 			'ticketClosedDate' => 'Ticket Closed Date',
@@ -122,28 +122,26 @@ class ReportTicket extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-        $criteria->compare('ticketID',$this->ticketID,true);
-        //$criteria->compare('creatorID',$this->creatorID,true);
-        //$criteria->compare('creatorName',$this->creatorName,true);
-        //$criteria->compare('creatorDisabled',$this->creatorDisabled);
-        //$criteria->compare('creatorEmail',$this->creatorEmail,true);
-        //$criteria->compare('ticketStatus',$this->ticketStatus,true);
-        //$criteria->compare('ticketCratedDate',$this->ticketCratedDate,true);
-        //$criteria->compare('ticketSubject',$this->ticketSubject,true);
-        //$criteria->compare('ticketDescription',$this->ticketDescription,true);
-        //$criteria->compare('ticketAssignUserID',$this->ticketAssignUserID,true);
-        //$criteria->compare('assignedUserName',$this->assignedUserName,true);
-        //$criteria->compare('assignedUserDisabled',$this->assignedUserDisabled);
-        //$criteria->compare('assignedUserEmail',$this->assignedUserEmail,true);
-        //$criteria->compare('ticketDomainID',$this->ticketDomainID,true);
-        //$criteria->compare('ticketDomainName',$this->ticketDomainName,true);
-        //$criteria->compare('ticketSubDomticketainID',$this->ticketSubDomticketainID,true);
-        //$criteria->compare('ticketSubDomainName',$this->ticketSubDomainName,true);
-        //$criteria->compare('ticketPriority',$this->ticketPriority);
-        //$criteria->compare('ticketPriorityDescription',$this->ticketPriorityDescription,true);
-        //$criteria->compare('ticketAssignedDate',$this->ticketAssignedDate,true);
-        //$criteria->compare('ticketClosedDate',$this->ticketClosedDate,true);
-        //$criteria->compare('ticketIsEscalated',$this->ticketIsEscalated);
+        $criteria->compare('ticketID',$this->ticketID,false);
+        $criteria->compare('creatorName',$this->creatorName,true);
+        $criteria->compare('creatorID',$this->creatorID,false);
+        $criteria->compare('creatorDisabled',$this->creatorDisabled);
+        $criteria->compare('creatorEmail',$this->creatorEmail,true);
+        $criteria->compare('ticketStatus',$this->ticketStatus,false );
+        $criteria->compare('ticketCreatedDate',$this->ticketCreatedDate,true);
+        $criteria->compare('assignedUserName',$this->assignedUserName,true);
+        $criteria->compare('ticketAssignUserID',$this->ticketAssignUserID,false);
+        $criteria->compare('assignedUserDisabled',$this->assignedUserDisabled,false );
+        $criteria->compare('assignedUserEmail',$this->assignedUserEmail,true);
+        $criteria->compare('ticketDomainID',$this->ticketDomainID);
+        $criteria->compare('ticketSubDomainID',$this->ticketSubDomainID);
+        $criteria->compare('ticketPriorityID',$this->ticketPriorityID);
+        $criteria->compare('ticketAssignedDate',$this->ticketAssignedDate,true );
+        $criteria->compare('ticketClosedDate',$this->ticketClosedDate,true);
+        $criteria->compare('ticketIsEscalated',$this->ticketIsEscalated);
+        $criteria->compare('ticketSubject',$this->ticketSubject,true);
+        $criteria->compare('ticketDescription',$this->ticketDescription,true);
+      
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
