@@ -4911,8 +4911,19 @@ return str;
             peerConnectionConfig: {
               iceServers: [
               {url:'stun:stun.l.google.com:19302'},
+              {url:'stun:stun.anyfirewall.com:3478'},
               {
-                url:'turn:jorgetravieso.com',
+                url:'turn:turn.bistri.com:80',
+                credential:'homeo',
+                username:'homeo'
+              }, 
+              {
+                url:'turn:turn.anyfirewall.com:443?transport=tcp',
+                credential:'webrtc',
+                username:'webrtc'
+              },
+              {
+                url:'turn:192.237.178.87',
                 credential:'uGWZ85HvuQg4dBHeQ6xUBMJZ',
                 username:'webmaster'
               }
