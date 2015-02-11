@@ -11,6 +11,9 @@
 class ReportTicketController extends Controller 
 {
     
+    private $reportResultDataProvider;
+       
+      
     //////////////////////////////////////////Controll
     public function filters()
     {
@@ -36,9 +39,26 @@ class ReportTicketController extends Controller
     {
         $this->layout = '//layouts/column1'; // very simple layout (no layout)
         echo("<script>console.log('actionIndex');</script>");
+        
+       
+            
+        
+       // $results = Yii::app()->db->createCommand()->select()->from('report_ticket')->queryAll();
+       
+        
+       // $reportResultDataProvider = new CArrayDataProvider($results);
+        //$reportResultDataProvider->keyField = 'ticketID' ;       
 
-        //$dataProvider=new CActiveDataProvider('User');
-        $this->render('index');  ///,array('dataProvider'=>$dataProvider)
+         //$dataProvider=new CActiveDataProvider('User');
+        //$this->render('index', array ('reportResultDataProvider' => $reportResultDataProvider));  ///,array('dataProvider'=>$dataProvider)
+       
+        $model = new ReportTicket('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['ReportTicket'])) {
+            $model->attributes=$_GET['ReportTicket'];
+        }
+        $this->render('index', array('model' => $model ));
+        
     }   
 
     
