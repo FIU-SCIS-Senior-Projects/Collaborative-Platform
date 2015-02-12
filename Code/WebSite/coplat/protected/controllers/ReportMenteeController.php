@@ -36,9 +36,14 @@ class ReportMenteeController extends Controller
     {
         $this->layout = '//layouts/column1'; // very simple layout (no layout)
         echo("<script>console.log('actionIndex');</script>");
-
-        //$dataProvider=new CActiveDataProvider('User');
-        $this->render('index');  ///,array('dataProvider'=>$dataProvider)
-    } 
+                
+        $model = new ReportMentee('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['ReportMentee'])) {
+            $model->attributes=$_GET['ReportMentee'];
+        }
+        $this->render('index', array('model' => $model ));
+        
+    }  
     
 }
