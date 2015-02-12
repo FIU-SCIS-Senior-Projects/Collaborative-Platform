@@ -12108,6 +12108,7 @@
     <Compile Include="protected\models\ProjectMentor.php" />
     <Compile Include="protected\models\ProjectMentorProjects.php" />
     <Compile Include="protected\models\ReportMentee.php" />
+    <Compile Include="protected\models\ReportMentor.php" />
     <Compile Include="protected\models\ReportTicket.php" />
     <Compile Include="protected\models\Subdomain.php" />
     <Compile Include="protected\models\Ticket.php" />
@@ -12378,7 +12379,6 @@
     <Compile Include="protected\views\mentee\_search.php" />
     <Compile Include="protected\views\mentee\_view.php" />
     <Compile Include="protected\views\reportMentee\index.php" />
-    <Compile Include="protected\views\reportMentor\index.php" />
     <Compile Include="protected\views\message\send.php" />
     <Compile Include="protected\views\message\view.php" />
     <Compile Include="protected\views\notification\View.php" />
@@ -12439,6 +12439,7 @@
     <Compile Include="protected\views\projectMentor\_form.php" />
     <Compile Include="protected\views\projectMentor\_search.php" />
     <Compile Include="protected\views\projectMentor\_view.php" />
+    <Compile Include="protected\views\reportMentor\index.php" />
     <Compile Include="protected\views\reportTicket\index.php" />
     <Compile Include="protected\views\site\pages\about.php" />
     <Compile Include="protected\views\site\pages\create_admin.php" />
@@ -14678,9 +14679,9 @@
     <Folder Include="protected\views\layouts" />
     <Folder Include="protected\views\mentee" />
     <Folder Include="protected\views\message" />
+    <Folder Include="protected\views\reportMentor\" />
     <Folder Include="protected\views\reportTicket\" />
     <Folder Include="protected\views\reportMentee\" />
-    <Folder Include="protected\views\reportMentor\" />
     <Folder Include="protected\views\notification" />
     <Folder Include="protected\views\personalMeeting" />
     <Folder Include="protected\views\personalMentor" />
