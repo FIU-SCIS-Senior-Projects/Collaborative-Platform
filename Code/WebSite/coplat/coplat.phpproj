@@ -10675,6 +10675,7 @@
     <Compile Include="js\jquery.validate.js" />
     <Compile Include="multicomplete\.DS_Store" />
     <Compile Include="protected\components\Controller.php" />
+    <Compile Include="protected\components\ReportUtils.php" />
     <Compile Include="protected\components\UserIdentity.php" />
     <Compile Include="protected\config\console.php" />
     <Compile Include="protected\config\main.php" />
@@ -10694,6 +10695,8 @@
     <Compile Include="protected\controllers\InvitationController.php" />
     <Compile Include="protected\controllers\LoginController.php" />
     <Compile Include="protected\controllers\MenteeController.php" />
+    <Compile Include="protected\controllers\ReportMenteeController.php" />
+    <Compile Include="protected\controllers\ReportMentorController.php" />
     <Compile Include="protected\controllers\MessageController.php" />
     <Compile Include="protected\controllers\NotificationController.php" />
     <Compile Include="protected\controllers\PersonalMeetingController.php" />
@@ -10703,6 +10706,7 @@
     <Compile Include="protected\controllers\ProjectController.php" />
     <Compile Include="protected\controllers\ProjectMeetingController.php" />
     <Compile Include="protected\controllers\ProjectMentorController.php" />
+    <Compile Include="protected\controllers\ReportTicketController.php" />
     <Compile Include="protected\controllers\SiteController.php" />
     <Compile Include="protected\controllers\SubdomainController.php" />
     <Compile Include="protected\controllers\TicketController.php" />
@@ -12103,6 +12107,9 @@
     <Compile Include="protected\models\ProjectMeeting.php" />
     <Compile Include="protected\models\ProjectMentor.php" />
     <Compile Include="protected\models\ProjectMentorProjects.php" />
+    <Compile Include="protected\models\ReportMentee.php" />
+    <Compile Include="protected\models\ReportMentor.php" />
+    <Compile Include="protected\models\ReportTicket.php" />
     <Compile Include="protected\models\Subdomain.php" />
     <Compile Include="protected\models\Ticket.php" />
     <Compile Include="protected\models\University.php" />
@@ -12371,6 +12378,7 @@
     <Compile Include="protected\views\mentee\_form.php" />
     <Compile Include="protected\views\mentee\_search.php" />
     <Compile Include="protected\views\mentee\_view.php" />
+    <Compile Include="protected\views\reportMentee\index.php" />
     <Compile Include="protected\views\message\send.php" />
     <Compile Include="protected\views\message\view.php" />
     <Compile Include="protected\views\notification\View.php" />
@@ -12431,6 +12439,8 @@
     <Compile Include="protected\views\projectMentor\_form.php" />
     <Compile Include="protected\views\projectMentor\_search.php" />
     <Compile Include="protected\views\projectMentor\_view.php" />
+    <Compile Include="protected\views\reportMentor\index.php" />
+    <Compile Include="protected\views\reportTicket\index.php" />
     <Compile Include="protected\views\site\pages\about.php" />
     <Compile Include="protected\views\site\pages\create_admin.php" />
     <Compile Include="protected\views\site\pages\verification.php" />
@@ -14669,6 +14679,9 @@
     <Folder Include="protected\views\layouts" />
     <Folder Include="protected\views\mentee" />
     <Folder Include="protected\views\message" />
+    <Folder Include="protected\views\reportMentor\" />
+    <Folder Include="protected\views\reportTicket\" />
+    <Folder Include="protected\views\reportMentee\" />
     <Folder Include="protected\views\notification" />
     <Folder Include="protected\views\personalMeeting" />
     <Folder Include="protected\views\personalMentor" />
