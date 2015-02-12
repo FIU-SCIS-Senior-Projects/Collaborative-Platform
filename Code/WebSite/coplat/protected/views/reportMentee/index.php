@@ -172,6 +172,7 @@ input[type="color"],
                     array('id'=>'mente-grid',                          
                           'type'=>'striped condensed',
                           'dataProvider'=> $model->search(),
+                          'enablePagination' => false,
                           'filter'=>$model,
                           'columns' =>getMenteColumns($model)));
                           

@@ -224,6 +224,7 @@ input[type="color"],
                     array('id'=>'ticket-grid',                          
                           'type'=>'striped condensed',
                           'dataProvider'=> $model->search(),
+                          'enablePagination' => false,
                           'filter'=>$model,
                           'columns' =>getTicketColumns($model) ));
                           

@@ -128,8 +128,7 @@ class ReportMentee extends CActiveRecord
 		$criteria->compare('menteeProjectDueDate',$this->menteeProjectDueDate,true);
 		$criteria->compare('menteeProjectCustomerName',$this->menteeProjectCustomerName,true);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+		return new CActiveDataProvider($this, array('criteria'=>$criteria,
+                                                    'pagination'=> false));
 	}
 }

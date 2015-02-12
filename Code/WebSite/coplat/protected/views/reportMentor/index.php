@@ -155,6 +155,7 @@ function getMentorColumns($model)
                     array('id'=>'mentor-grid',                          
                         'type'=>'striped condensed',
                         'dataProvider'=> $model->search(),
+                        'enablePagination' => false,
                         'filter'=>$model,
                         'columns' =>getMentorColumns($model) ));
 ?>

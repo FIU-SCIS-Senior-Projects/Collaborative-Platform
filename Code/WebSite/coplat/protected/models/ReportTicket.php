@@ -143,8 +143,8 @@ class ReportTicket extends CActiveRecord
         $criteria->compare('ticketDescription',$this->ticketDescription,true);
       
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+		return new CActiveDataProvider($this,
+                                      array('criteria'=>$criteria,
+                                            'pagination'=> false));
 	}
 }

@@ -127,8 +127,7 @@ class ReportMentor extends CActiveRecord
 		$criteria->compare('fieldOfStudy',$this->fieldOfStudy,true);
 		$criteria->compare('gradYear',$this->gradYear,false );
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+		return new CActiveDataProvider($this, array('criteria'=>$criteria,
+                                                    'pagination'=> false));
 	}
 }
