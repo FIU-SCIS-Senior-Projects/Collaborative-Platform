@@ -6,7 +6,7 @@ $this->breadcrumbs=array('Ticket Report');
 
    table {
         table-layout: fixed;
-        width:2000px;
+       /**/ width:2000px;
     }
     .container  {
           display:table;   
@@ -46,23 +46,6 @@ input[type="color"],
 </style>
 <?php 
 
-      function dateformat($date){
-          $date=date('m-d-Y',strtotime($date));   
-         return $date;
-
-     }
-
-
-      function getZeroOneToYesNo($value)
-      {
-           $res = "Yes";
-           
-           if ($value == 0)
-               $res = "No";
-           
-           return $res;
-      
-      }
 
       function getTicketColumns($model)
       {
@@ -94,7 +77,7 @@ input[type="color"],
          //creator Disabled
          $creatorDisabled = array('name'  => 'creatorDisabled',
                                   'header'=> 'Creator Disabled',
-                                  'value' => 'getZeroOneToYesNo($data->creatorDisabled)',
+                                  'value' => 'ReportUtils::getZeroOneToYesNo($data->creatorDisabled)',
                                   'filter'=> array('1'=>'Yes','0'=>'No'),
                                   'headerHtmlOptions' => array('width'=>'80', ));
          $columns[] = $creatorDisabled;
@@ -121,7 +104,7 @@ input[type="color"],
          //ticket created date
          $ticketCreatedDate = array('name'  => 'ticketCreatedDate',
                                     'header'=> 'Created Date',
-                                    'value'=>'dateformat($data->ticketCreatedDate)',
+                                    'value'=>'ReportUtils::dateformat($data->ticketCreatedDate)',
                                     'filter'=> CHtml::activeDateField($model, 'ticketCreatedDate'),
                                     'headerHtmlOptions' => array('width'=>'160', ));
          $columns[] = $ticketCreatedDate; 
@@ -145,7 +128,7 @@ input[type="color"],
          //ticket assigned to user disabled
          $assignedToDisabled =    array('name'  => 'assignedUserDisabled',
                                   'header'=> 'Assigned To (Disabled)',
-                                  'value' => 'getZeroOneToYesNo($data->assignedUserDisabled)',
+                                  'value' => 'ReportUtils::getZeroOneToYesNo($data->assignedUserDisabled)',
                                   'filter'=> array('1'=>'Yes','0'=>'No'),
                                   'headerHtmlOptions' => array('width'=>'100', ));
          $columns[] = $assignedToDisabled; 
@@ -165,7 +148,7 @@ input[type="color"],
                                                                        'ticketDomainID',
                                                                        CHtml::listData(Domain::model()->findAll(),'id', 'name'),
                                                                        array('empty'=>' ')),
-                                  'headerHtmlOptions' => array('width'=>'170', ));
+                                  'headerHtmlOptions' => array('width'=>'200', ));
          $columns[] = $ticketDomain; 
          
          
@@ -194,7 +177,7 @@ input[type="color"],
         //ticket ticketAssignedDate
          $ticketAssignedDate =  array('name'  => 'ticketAssignedDate',
                                     'header'=> 'Ticket Assigned Date',
-                                    'value'=>'dateformat($data->ticketAssignedDate)',
+                                    'value'=>'ReportUtils::dateformat($data->ticketAssignedDate)',
                                     'filter'=> CHtml::activeDateField($model, 'ticketAssignedDate'),
                                     'headerHtmlOptions' => array('width'=>'160', ));
          $columns[] = $ticketAssignedDate; 
@@ -203,7 +186,7 @@ input[type="color"],
         //ticket closed date
          $ticketClosedDate = array('name'  => 'ticketClosedDate',
                                     'header'=> 'Ticket Closed Date',
-                                    'value'=>'dateformat($data->ticketClosedDate)',
+                                    'value'=>'ReportUtils::dateformat($data->ticketClosedDate)',
                                     'filter'=> CHtml::activeDateField($model, 'ticketClosedDate'),
                                     'headerHtmlOptions' => array('width'=>'160', ));
          $columns[] = $ticketClosedDate; 
@@ -211,7 +194,7 @@ input[type="color"],
         //ticket excalated
          $ticketIsEscalated = array('name'  => 'ticketIsEscalated',
                                     'header'=> 'Escalated',
-                                    'value' => 'getZeroOneToYesNo($data->ticketIsEscalated)',
+                                    'value' => 'ReportUtils::getZeroOneToYesNo($data->ticketIsEscalated)',
                                     'filter'=> array('1'=>'Yes','0'=>'No'),
                                     'headerHtmlOptions' => array('width'=>'80', ));
          $columns[] = $ticketIsEscalated; 

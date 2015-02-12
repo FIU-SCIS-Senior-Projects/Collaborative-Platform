@@ -10675,6 +10675,7 @@
     <Compile Include="js\jquery.validate.js" />
     <Compile Include="multicomplete\.DS_Store" />
     <Compile Include="protected\components\Controller.php" />
+    <Compile Include="protected\components\ReportUtils.php" />
     <Compile Include="protected\components\UserIdentity.php" />
     <Compile Include="protected\config\console.php" />
     <Compile Include="protected\config\main.php" />
@@ -12106,6 +12107,7 @@
     <Compile Include="protected\models\ProjectMeeting.php" />
     <Compile Include="protected\models\ProjectMentor.php" />
     <Compile Include="protected\models\ProjectMentorProjects.php" />
+    <Compile Include="protected\models\ReportMentee.php" />
     <Compile Include="protected\models\ReportTicket.php" />
     <Compile Include="protected\models\Subdomain.php" />
     <Compile Include="protected\models\Ticket.php" />
