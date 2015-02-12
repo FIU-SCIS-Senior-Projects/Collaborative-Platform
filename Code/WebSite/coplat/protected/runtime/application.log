@@ -6930,181 +6930,1415 @@ REQUEST_URI=/coplat/index.php/home/adminHome
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\User.php (457)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\home\adminHome.php (9)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\HomeController.php (89)
-2015/02/06 21:51:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Connection refused' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php:381
+2015/02/04 04:17:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
 Stack trace:
-#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
-#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
-#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModule.php(387): CDbConnection->init()
-#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
-#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
-#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
-#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
-#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(80): CActiveRecord::model('User')
-#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(465): User::model()
-#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/main.php(46): User::isCurrentUserMentee()
-#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
-#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
-#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(206): COutputProcessor->run()
-#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
-#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/column1.php(6): CBaseController->endContent()
-#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php(134): CController->render('login', Array)
-#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
-#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('login')
-#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
-#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
-#29 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
-#30 {main}
-REQUEST_URI=/coplat/index.php/site/login
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
 ---
-2015/02/06 21:52:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Connection refused' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php:381
+2015/02/04 04:17:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MenteeReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
 Stack trace:
-#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
-#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
-#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModule.php(387): CDbConnection->init()
-#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
-#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
-#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
-#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
-#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(80): CActiveRecord::model('User')
-#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(465): User::model()
-#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/main.php(46): User::isCurrentUserMentee()
-#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
-#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
-#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(206): COutputProcessor->run()
-#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
-#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/column1.php(6): CBaseController->endContent()
-#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php(134): CController->render('login', Array)
-#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
-#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('login')
-#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
-#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
-#29 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
-#30 {main}
-REQUEST_URI=/coplat/index.php/site/login
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MenteeReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MenteeReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
 ---
-2015/02/06 21:52:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Connection refused' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php:381
+2015/02/04 04:17:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "TicketReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
 Stack trace:
-#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
-#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
-#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModule.php(387): CDbConnection->init()
-#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
-#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
-#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
-#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
-#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(80): CActiveRecord::model('User')
-#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(465): User::model()
-#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/main.php(46): User::isCurrentUserMentee()
-#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
-#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
-#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(206): COutputProcessor->run()
-#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
-#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/column1.php(6): CBaseController->endContent()
-#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php(134): CController->render('login', Array)
-#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
-#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('login')
-#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
-#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
-#29 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
-#30 {main}
-REQUEST_URI=/coplat/index.php/site/login
-HTTP_REFERER=http://localhost/
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('TicketReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/TicketReport
+HTTP_REFERER=http://localhost/coplat/index.php/MenteeReport
 ---
-2015/02/11 17:29:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Connection refused' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php:381
+2015/02/04 23:57:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
 Stack trace:
-#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
-#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
-#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModule.php(387): CDbConnection->init()
-#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
-#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
-#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
-#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
-#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(80): CActiveRecord::model('User')
-#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(465): User::model()
-#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/main.php(46): User::isCurrentUserMentee()
-#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
-#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
-#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(206): COutputProcessor->run()
-#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
-#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/column1.php(6): CBaseController->endContent()
-#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php(134): CController->render('login', Array)
-#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
-#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('login')
-#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
-#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
-#29 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
-#30 {main}
-REQUEST_URI=/coplat/index.php/site/login
-HTTP_REFERER=http://localhost/
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
 ---
-2015/02/11 18:07:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Connection refused' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php:381
+2015/02/04 23:57:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
 Stack trace:
-#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
-#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
-#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModule.php(387): CDbConnection->init()
-#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
-#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
-#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
-#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
-#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(80): CActiveRecord::model('User')
-#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(465): User::model()
-#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/main.php(46): User::isCurrentUserMentee()
-#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
-#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
-#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(206): COutputProcessor->run()
-#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
-#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/column1.php(6): CBaseController->endContent()
-#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
-#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
-#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
-#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php(134): CController->render('login', Array)
-#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
-#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
-#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
-#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('login')
-#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
-#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
-#29 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
-#30 {main}
-REQUEST_URI=/coplat/index.php/site/login
-HTTP_REFERER=http://10.108.212.181/
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
 ---
+2015/02/04 23:58:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/04 23:58:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MentorReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/05 00:06:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/05 00:27:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MenteeReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MenteeReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MenteeReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/05 00:27:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "TicketReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('TicketReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/TicketReport
+HTTP_REFERER=http://localhost/coplat/index.php/MenteeReport
+---
+2015/02/05 00:28:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MenteeReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MenteeReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MenteeReport
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2015/02/05 00:28:58 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('User')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/User
+---
+2015/02/05 00:29:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:30:35 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:30:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:31:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:31:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:31:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:31:54 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:32:07 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:33:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:33:42 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/user/admin
+---
+2015/02/05 00:38:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+---
+2015/02/05 00:38:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+---
+2015/02/05 00:50:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('mentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/mentorReport
+---
+2015/02/05 01:28:45 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+---
+2015/02/05 01:29:33 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MentorReport')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/MentorReport
+---
+2015/02/05 01:51:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "MenteeReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('MenteeReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/MenteeReport
+HTTP_REFERER=http://localhost/coplat/index.php/MentorReport
+---
+2015/02/05 01:51:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "TicketReport".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('TicketReport')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/TicketReport
+HTTP_REFERER=http://localhost/coplat/index.php/MenteeReport
+---
+2015/02/05 02:36:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ReportMentor".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ReportMentor')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/ReportMentor
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/05 02:37:43 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ReportMentor')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/ReportMentor
+---
+2015/02/05 02:44:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ReportMentee".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('ReportMentee')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/ReportMentee
+HTTP_REFERER=http://localhost/coplat/index.php/ReportMentor
+---
+2015/02/05 02:45:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "reportMentee".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportMentee')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/reportMentee
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentor
+---
+2015/02/05 02:45:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "reportTicket".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentee
+---
+2015/02/05 03:21:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "reportMentee".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportMentee')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/reportMentee
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentor
+---
+2015/02/05 03:27:16 [error] [exception.CException] exception 'CException' with message 'ReportMenteeController cannot find the requested view "index".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', NULL, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMenteeController.php(41): CController->render('index')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportMenteeController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportMentee')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportMentee
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentor
+---
+2015/02/05 03:32:15 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportMentee')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/reportMentee
+---
+2015/02/05 03:33:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "reportTicket".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentor
+---
+2015/02/05 03:49:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "reportTicket".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentee
+---
+2015/02/05 03:49:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/reportTicket
+---
+2015/02/05 03:49:49 [error] [exception.CException] exception 'CException' with message 'ReportTicketController cannot find the requested view "index".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', NULL, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(41): CController->render('index')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/reportTicket
+---
+2015/02/05 03:52:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('report')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/report
+---
+2015/02/05 03:52:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+---
+2015/02/07 00:26:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii'".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('gii'')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/gii'
+---
+2015/02/07 00:39:56 [error] [exception.CException] exception 'CException' with message 'The "dataProvider" property cannot be empty.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php:105
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridView.php(314): CBaseListView->init()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\extensions\bootstrap\widgets\TbGridView.php(49): CGridView->init()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(147): TbGridView->init()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(7): CBaseController->widget('bootstrap.widge...', Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', NULL, true)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', NULL, true)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', NULL, true)
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(41): CController->render('index')
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#22 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#23 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/admin
+---
+2015/02/07 00:43:13 [error] [exception.CException] exception 'CException' with message 'Property "ReportTicketController.test" is not defined.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(7): CComponent->__get('test')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', NULL, true)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', NULL, true)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', NULL, true)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(43): CController->render('index')
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/application/1012
+---
+2015/02/07 00:43:47 [error] [php] Undefined variable: test (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php:45)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (45)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 00:45:23 [error] [php] Undefined variable: test (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php:7)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(43): ReportTicketController->render()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (7)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (43)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 00:48:11 [error] [php] Undefined variable: test (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php:45)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (45)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 00:48:53 [error] [exception.CException] exception 'CException' with message 'Property "ReportTicketController.test" is not defined.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(7): CComponent->__get('test')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', NULL, true)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', NULL, true)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', NULL, true)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(42): CController->render('index')
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/application/1012
+---
+2015/02/07 00:59:52 [error] [php] Missing argument 1 for CArrayDataProvider::__construct(), called in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php on line 43 and defined (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CArrayDataProvider.php:73)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (43)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 01:00:25 [error] [php] include(Person.php): failed to open stream: No such file or directory (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(44): spl_autoload_call()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (44)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 01:00:53 [error] [php] Undefined variable: reportResultDataProvider (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php:10)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(51): ReportTicketController->render()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (10)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (51)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 01:02:48 [error] [php] Missing argument 1 for CArrayDataProvider::__construct(), called in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php on line 48 and defined (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CArrayDataProvider.php:73)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (48)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 01:02:58 [error] [php] Undefined variable: reportResultDataProvider (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php:10)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(51): ReportTicketController->render()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (10)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (51)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 01:04:39 [error] [php] Undefined variable: reportResultDataProvider (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php:10)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(51): ReportTicketController->render()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (10)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (51)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 01:05:06 [error] [php] Undefined variable: reportResultDataProvider (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php:10)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(51): ReportTicketController->render()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (10)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (51)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/07 01:07:49 [error] [php] Illegal string offset 'id' (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CArrayDataProvider.php:108)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(129): TbGridView->renderKeys()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(173): TbGridView->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(10): ReportTicketController->widget()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportTicketController->renderInternal()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(51): ReportTicketController->render()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (10)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (51)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/11 00:25:24 [error] [exception.CException] exception 'CException' with message 'ReportTicketController cannot find the requested view "admin".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): CController->render('admin', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 00:26:03 [error] [exception.CException] exception 'CException' with message 'ReportTicketController cannot find the requested view "admin".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(55): CController->render('admin', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 00:26:10 [error] [exception.CException] exception 'CException' with message 'ReportTicketController cannot find the requested view "admin".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(55): CController->render('admin', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 00:26:27 [error] [exception.CException] exception 'CException' with message 'ReportTicketController cannot find the requested view "admin".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(54): CController->render('admin', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 00:27:10 [error] [exception.CException] exception 'CException' with message 'ReportTicketController cannot find the requested view "admin".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): CController->render('admin', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 00:27:30 [error] [exception.CException] exception 'CException' with message 'ReportTicketController cannot find the requested view "admin".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): CController->render('admin', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 00:29:37 [error] [exception.CException] exception 'CException' with message 'ReportTicketController cannot find the requested view "admin".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): CController->render('admin', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 00:49:42 [error] [php] include(TbDataColumn.php): failed to open stream: No such file or directory (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(15): spl_autoload_call()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(29): getTicketColumns()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportTicketController->renderInternal()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): ReportTicketController->render()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (15)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (29)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (56)
+2015/02/11 00:57:08 [error] [exception.CException] exception 'CException' with message 'Alias "zii.widgets.grid" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\YiiBase.php:316
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWidgetFactory.php(146): YiiBase::import('zii.widgets.gri...', true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(ReportTicketController), 'zii.widgets.gri...', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(31): CBaseController->widget('zii.widgets.gri...', Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', Array, true)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', Array, true)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): CController->render('index', Array)
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 00:57:55 [error] [exception.CException] exception 'CException' with message 'Property "CGridView.type" is not defined.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWidgetFactory.php(161): CComponent->__set('type', 'striped condens...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(ReportTicketController), 'zii.widgets.gri...', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(31): CBaseController->widget('zii.widgets.gri...', Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', Array, true)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', Array, true)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): CController->render('index', Array)
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/02/11 01:09:51 [error] [php] Illegal string offset 'id' (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridColumn.php:118)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#1 unknown(0): TbGridView->renderSection()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(173): TbGridView->run()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(32): ReportTicketController->widget()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportTicketController->renderInternal()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): ReportTicketController->render()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#22 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#23 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (32)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/11 02:40:02 [error] [php] Array to string conversion (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\extensions\bootstrap\widgets\TbGridView.php:74)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(112): ReportTicketController->widget()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportTicketController->renderInternal()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): ReportTicketController->render()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\extensions\bootstrap\widgets\TbGridView.php (74)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (112)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (56)
+2015/02/11 02:40:20 [error] [exception.CException] exception 'CException' with message 'Property "TbGridView.class" is not defined.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWidgetFactory.php(161): CComponent->__set('class', 'example')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(ReportTicketController), 'bootstrap.widge...', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(112): CBaseController->widget('bootstrap.widge...', Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', Array, true)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', Array, true)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): CController->render('index', Array)
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/reportTicket
+HTTP_REFERER=http://localhost/coplat/index.php/reportTicket
+---
+2015/02/11 03:33:03 [error] [php] Undefined variable: model (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php:44)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportTicketController->renderInternal()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): ReportTicketController->render()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (44)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (182)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (56)
+2015/02/11 03:35:06 [error] [php] Undefined variable: model (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php:44)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportTicketController->renderInternal()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(56): ReportTicketController->render()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (44)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (183)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (56)
+2015/02/11 05:07:17 [error] [exception.CException] exception 'CException' with message 'Property "ReportTicket.ticketCratedDate" is not defined.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(143): CComponent->__get('ticketCratedDat...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\ReportTicket.php(131): CActiveRecord->__get('ticketCratedDat...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(211): ReportTicket->search()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', Array, true)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', Array, true)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(60): CController->render('index', Array)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportTicket')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/reportTicket?ReportTicket%5BticketID%5D=&ReportTicket%5BcreatorName%5D=&ReportTicket%5BcreatorID%5D=&ReportTicket%5BcreatorDisabled%5D=&ReportTicket%5BcreatorEmail%5D=&ReportTicket%5BticketStatus%5D=&ReportTicket%5BticketCreatedDate%5D=2017-01-02&ReportTicket%5BassignedUserName%5D=&ReportTicket%5BticketAssignUserID%5D=&ReportTicket%5BassignedUserDisabled%5D=&ReportTicket%5BassignedUserEmail%5D=&ReportTicket%5BticketDomainName%5D=&ReportTicket%5BticketSubDomainName%5D=&ReportTicket%5BticketPriorityDescription%5D=&ReportTicket%5BticketAssignedDate%5D=&ReportTicket%5BticketClosedDate%5D=&ReportTicket%5BticketIsEscalated%5D=&ReportTicket%5BticketSubject%5D=&ReportTicket%5BticketDescription%5D=&ReportTicket_page=1&ajax=ticket-grid
+HTTP_REFERER=http://localhost/coplat/index.php/reportTicket
+---
+2015/02/11 05:12:23 [error] [php] include(Datacomponent.php): failed to open stream: No such file or directory (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\YiiBase.php:421)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php(606) : eval()'d code(1): spl_autoload_call()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php(606): eval()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CDataColumn.php(131): TbDataColumn->evaluateExpression()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridColumn.php(144): TbDataColumn->renderDataCellContent()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridView.php(589): TbDataColumn->renderDataCell()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridView.php(545): TbGridView->renderTableRow()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridView.php(455): TbGridView->renderTableBody()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(160): TbGridView->renderItems()
+#8 unknown(0): TbGridView->renderSection()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(128): TbGridView->renderContent()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(173): TbGridView->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php(214): ReportTicketController->widget()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportTicketController->renderInternal()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(60): ReportTicketController->render()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#23 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#24 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#25 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#26 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#27 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#28 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#29 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#30 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (214)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (60)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/11 05:14:51 [error] [php] Undefined variable: data (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php:124)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportTicketController->renderInternal()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportTicketController->renderFile()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportTicketController->renderPartial()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php(60): ReportTicketController->render()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportTicketController->actionIndex()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportTicketController->runAction()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportTicketController->filterAccessControl()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportTicketController->runActionWithFilters()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportTicketController->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportTicket
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (124)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportTicket\index.php (222)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportTicketController.php (60)
+2015/02/12 00:56:03 [error] [php] Use of undefined constant menteeUserName - assumed 'menteeUserName' (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentee\index.php:80)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportMenteeController->renderInternal()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportMenteeController->renderFile()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportMenteeController->renderPartial()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMenteeController.php(45): ReportMenteeController->render()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportMenteeController->actionIndex()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportMenteeController->runAction()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportMenteeController->filterAccessControl()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportMenteeController->runActionWithFilters()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportMenteeController->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportMentee
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentee\index.php (80)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentee\index.php (90)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMenteeController.php (45)
+2015/02/12 02:25:55 [error] [php] Invalid argument supplied for foreach() (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\extensions\bootstrap\widgets\TbGridView.php:85)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(147): TbGridView->init()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(172): ReportMentorController->createWidget()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php(63): ReportMentorController->widget()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportMentorController->renderInternal()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportMentorController->renderFile()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportMentorController->renderPartial()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMentorController.php(45): ReportMentorController->render()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportMentorController->actionIndex()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportMentorController->runAction()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportMentorController->filterAccessControl()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportMentorController->runActionWithFilters()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportMentorController->run()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportMentor
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\extensions\bootstrap\widgets\TbGridView.php (85)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\extensions\bootstrap\widgets\TbGridView.php (49)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php (63)
+2015/02/12 02:30:45 [error] [exception.CException] exception 'CException' with message 'Property "ReportMentor.creatorDisabled" is not defined.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(143): CComponent->__get('creatorDisabled')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php(606) : eval()'d code(1): CActiveRecord->__get('creatorDisabled')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php(606): eval()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CDataColumn.php(131): CComponent->evaluateExpression('ReportUtils::ge...', Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridColumn.php(144): CDataColumn->renderDataCellContent(0, Object(ReportMentor))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridView.php(589): CGridColumn->renderDataCell(0)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridView.php(545): CGridView->renderTableRow(0)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\grid\CGridView.php(455): CGridView->renderTableBody()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(160): CGridView->renderItems()
+#9 [internal function]: CBaseListView->renderSection(Array)
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(143): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{item...')
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(128): CBaseListView->renderContent()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(173): CBaseListView->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php(90): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', Array, true)
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', Array, true)
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMentorController.php(45): CController->render('index', Array)
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportMentorController->actionIndex()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#29 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('reportMentor')
+#30 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#31 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#32 {main}
+REQUEST_URI=/coplat/index.php/reportMentor
+HTTP_REFERER=http://localhost/coplat/index.php/reportMentee
+---
+2015/02/12 02:54:09 [error] [php] Undefined variable: model (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php:58)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportMentorController->renderInternal()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportMentorController->renderFile()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportMentorController->renderPartial()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMentorController.php(45): ReportMentorController->render()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportMentorController->actionIndex()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportMentorController->runAction()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportMentorController->filterAccessControl()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportMentorController->runActionWithFilters()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportMentorController->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportMentor
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php (58)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php (144)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMentorController.php (45)

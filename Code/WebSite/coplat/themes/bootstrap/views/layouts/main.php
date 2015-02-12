@@ -68,17 +68,17 @@ if( User::isCurrentUserMentee())
 							array('label'=>'Reports','visible'=>$currentUserIsAdmin,                               //Reports Root Menu
 							                        'class'=>'bootstrap.widgets.TbMenu',
 									'items'=>array('-',
-													array('label'=>'Mentors','visible'=>$currentUserIsAdmin,       //Mentor Report
+													array('label'=>'Mentor','visible'=>$currentUserIsAdmin,       //Mentor Report
 															'class'=>'bootstrap.widgets.TbMenu',
-															'url'=>array('/MentorReport'),	
+															'url'=>array('/reportMentor'),	
 													),
 													array('label'=>'Mentee','visible'=>$currentUserIsAdmin,        //Mentee Report
 															'class'=>'bootstrap.widgets.TbMenu',
-															'url'=>array('/MenteeReport')
+															'url'=>array('/reportMentee')
 													),
 													array('label'=>'Ticket','visible'=>$currentUserIsAdmin,        //Ticket Report
 															'class'=>'bootstrap.widgets.TbMenu',
-															'url'=>array('/TicketReport'),
+															'url'=>array('/reportTicket'),
 													),
 											
 									)),
