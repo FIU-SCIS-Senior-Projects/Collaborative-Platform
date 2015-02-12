@@ -8319,3 +8319,26 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/reportMentor
 HTTP_REFERER=http://localhost/coplat/index.php/reportMentee
 ---
+2015/02/12 02:54:09 [error] [php] Undefined variable: model (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php:58)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): ReportMentorController->renderInternal()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): ReportMentorController->renderFile()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): ReportMentorController->renderPartial()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMentorController.php(45): ReportMentorController->render()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ReportMentorController->actionIndex()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ReportMentorController->runAction()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ReportMentorController->filterAccessControl()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ReportMentorController->runActionWithFilters()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ReportMentorController->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/reportMentor
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php (58)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\reportMentor\index.php (144)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ReportMentorController.php (45)

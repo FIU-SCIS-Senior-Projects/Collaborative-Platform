@@ -110,7 +110,7 @@ class ReportMentor extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('userID',$this->userID,true);
+		$criteria->compare('userID',$this->userID,false );
 		$criteria->compare('userName',$this->userName,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('name',$this->name,true);
@@ -125,7 +125,7 @@ class ReportMentor extends CActiveRecord
 		$criteria->compare('position',$this->position,true);
 		$criteria->compare('degree',$this->degree,true);
 		$criteria->compare('fieldOfStudy',$this->fieldOfStudy,true);
-		$criteria->compare('gradYear',$this->gradYear,true);
+		$criteria->compare('gradYear',$this->gradYear,false );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
