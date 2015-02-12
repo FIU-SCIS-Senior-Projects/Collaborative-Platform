@@ -37,8 +37,13 @@ class ReportMentorController extends Controller
         $this->layout = '//layouts/column1'; // very simple layout (no layout)
         echo("<script>console.log('actionIndex');</script>");
 
-        //$dataProvider=new CActiveDataProvider('User');
-        $this->render('index');  ///,array('dataProvider'=>$dataProvider)
+        $model = new ReportMentor ('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['ReportMentor'])) {
+            $model->attributes=$_GET['ReportMentor'];
+        }
+        $this->render('index', array('model' => $model ));  
+         
     }   
     
 }
