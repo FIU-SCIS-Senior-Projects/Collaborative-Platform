@@ -1,12 +1,76 @@
 <?php
+Yii::app()->clientScript->registerCoreScript('jquery.ui');
 $this->breadcrumbs=array('Ticket Report');
 ?>
-<h2>Ticket Report</h2>
+<script>
+    function getNumFromStr(str)
+    {
+       var pattern = /[0-9]+/;
+       return str.match(pattern);       
+    }
+
+   $(function() {
+
+      $(".grid-view .items thead tr th").draggable({ revert: true });;
+
+      $(".grid-view .items thead tr th").droppable({
+
+          drop: function (event, ui) {
+              var destination = getNumFromStr(this.id);
+              var source = getNumFromStr(ui.draggable[0].id);
+              $.get("", { sourceColumn: source, destinationColumn: destination });
+              location.reload(true);
+            
+           /*  jQuery('#ticket-grid').yiiGridView({
+                  'ajaxUpdate': false,
+                  'ajaxVar': 'ajax', 'pagerClass': 'pagination', 'loadingClass': 'grid-view-loading', 'filterClass': 'filters', 'tableClass': 'items table table-striped table-condensed', 'selectableRows': 1, 'enableHistory': false, 'updateSelector': '{page}, {sort}', 'filterSelector': '{filter}'
+              });*/
+           
+             /* jQuery(function ($) {
+                  if ($.fn.editable) $.extend($.fn.editable.defaults, { 'emptytext': 'Click to edit', 'mode': 'inline' });
+                  
+                  jQuery('body').tooltip({ 'selector': 'a[rel=tooltip]' });
+                  jQuery('body').popover({ 'selector': 'a[rel=popover]' });
+              });*/
+              /*]]>*/
+
+
+
+              /* $.get("reportTicket", function (data) {
+                  $(".result").html(data);
+                  alert("Load was performed.");
+              });*/
+
+             /* jQuery.ajax({
+                  url: 'index.php/reportTicket',
+                  type: "GET",
+                  data: { ajaxData: destination },
+                  error: function (xhr, tStatus, e) {
+                      if (!xhr) {
+                          alert(" We have an error ");
+                          alert(tStatus + "   " + e.message);
+                      } else {
+                          alert("else: " + e.message); // the great unknown
+                      }
+                  },
+                  success: function (resp) {
+                      alert("ff");
+                  }
+              });*/
+          
+      }
+
+    });
+
+  });
+    // class="draggable droppable"
+  </script>
+<h2>Ticket Report</h2> 
 <style type="text/css">
 
    table {
         table-layout: fixed;
-       /**/ width:2000px;
+        width:2000px;
     }
     .container  {
           display:table;   
@@ -50,8 +114,11 @@ input[type="color"],
 
       function getTicketColumns($model)
       {
+          $columns = Yii::app()->session['TicketColumnOrder'];
           
-         $columns = array();
+          if (!isset($columns))
+          {
+           $columns = array();
          
          
          //ticket ID
@@ -214,15 +281,45 @@ input[type="color"],
                                     'filter'=> CHtml::activeTextField($model, 'ticketDescription'),
                                     'headerHtmlOptions' => array('width'=>'400', ));
          $columns[] = $ticketDescription; 
+         }
+          
+          
+          //only if make a cache of the columns if needed
+        if (isset($_GET['sourceColumn']) && isset($_GET['destinationColumn']))
+         {
+             
+             $source = $_GET['sourceColumn'] ;
+             $destination = $_GET['destinationColumn'];
+             
+            
+             $sourceIndex = $source[0];
+             $destIndex   = $destination[0];
+             
+             
+                   
+             
+             $tmpDest = $columns[$destIndex];
+             $columns[$destIndex] = $columns[$sourceIndex];
+             $columns[$sourceIndex] = $tmpDest;        
+             
+             
+             Yii::app()->session['TicketColumnOrder'] = $columns;
+         }
+                   
+        
          
          return $columns;
       }
+      
+   
+
       
       
 
       
       $this->widget('bootstrap.widgets.TbGridView', 
-                    array('id'=>'ticket-grid',                          
+                    array('id'=>'ticket-grid', 
+                          'ajaxUpdate'=>false,
                           'type'=>'striped condensed',
                           'template' => '{items}{summary}',
                           'dataProvider'=> $model->search(),
