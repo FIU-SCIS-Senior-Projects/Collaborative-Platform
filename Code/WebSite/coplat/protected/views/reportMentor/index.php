@@ -14,7 +14,7 @@ $this->breadcrumbs=array('Mentor Report');
 
     .grid-view  {
          display:table;
-         padding-top:0px;
+         padding-top:0px !important;
       }
 
     .summary {
@@ -154,6 +154,7 @@ function getMentorColumns($model)
     $this->widget('bootstrap.widgets.TbGridView', 
                     array('id'=>'mentor-grid',                          
                         'type'=>'striped condensed',
+                        'template' => '{items}{summary}',
                         'dataProvider'=> $model->search(),
                         'enablePagination' => false,
                         'filter'=>$model,

@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array('Ticket Report');
 ?>
-<h1>Ticket Report</h1>
+<h2>Ticket Report</h2>
 <style type="text/css">
 
    table {
@@ -14,6 +14,7 @@ $this->breadcrumbs=array('Ticket Report');
 
     .grid-view  {
          display:table;
+         padding-top:0px !important;
       }
 
     .summary {
@@ -223,6 +224,7 @@ input[type="color"],
       $this->widget('bootstrap.widgets.TbGridView', 
                     array('id'=>'ticket-grid',                          
                           'type'=>'striped condensed',
+                          'template' => '{items}{summary}',
                           'dataProvider'=> $model->search(),
                           'enablePagination' => false,
                           'filter'=>$model,

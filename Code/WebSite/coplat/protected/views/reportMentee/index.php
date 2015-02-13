@@ -14,6 +14,7 @@ $this->breadcrumbs=array('Mentee Report');
 
     .grid-view  {
          display:table;
+         padding-top:0px !important;
       }
 
     .summary {
@@ -171,6 +172,7 @@ input[type="color"],
       $this->widget('bootstrap.widgets.TbGridView', 
                     array('id'=>'mente-grid',                          
                           'type'=>'striped condensed',
+                          'template' => '{items}{summary}',
                           'dataProvider'=> $model->search(),
                           'enablePagination' => false,
                           'filter'=>$model,
