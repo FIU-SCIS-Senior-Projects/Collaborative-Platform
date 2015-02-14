@@ -41,8 +41,7 @@ class ReportTicketController extends Controller
         echo("<script>console.log('actionIndex');</script>");
         
        
-            
-        
+       
        // $results = Yii::app()->db->createCommand()->select()->from('report_ticket')->queryAll();
        
         
@@ -57,7 +56,7 @@ class ReportTicketController extends Controller
         if(isset($_GET['ReportTicket'])) {
             $model->attributes=$_GET['ReportTicket'];
         }
-        $this->render('index', array('model' => $model ));
+        $this->render('index', array('model' => $model, ));
         
     }   
 

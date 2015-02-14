@@ -1,12 +1,37 @@
 <?php
+Yii::app()->clientScript->registerCoreScript('jquery.ui');
 $this->breadcrumbs=array('Ticket Report');
 ?>
-<h2>Ticket Report</h2>
+<script>
+    function getNumFromStr(str)
+    {
+       var pattern = /[0-9]+/;
+       return str.match(pattern);       
+    }
+
+   $(function() {
+
+      $(".grid-view .items thead tr th").draggable({ revert: true });;
+
+      $(".grid-view .items thead tr th").droppable({
+
+          drop: function (event, ui) {
+              var destination = getNumFromStr(this.id);
+              var source = getNumFromStr(ui.draggable[0].id);
+              $.get("", { sourceColumn: source, destinationColumn: destination });
+              location.reload(true);
+          }
+
+    });
+
+  });
+</script>
+<h2>Ticket Report</h2> 
 <style type="text/css">
 
    table {
         table-layout: fixed;
-       /**/ width:2000px;
+        width:2000px;
     }
     .container  {
           display:table;   
@@ -50,8 +75,11 @@ input[type="color"],
 
       function getTicketColumns($model)
       {
+          $columns = Yii::app()->session['TicketColumnOrder'];
           
-         $columns = array();
+          if (!isset($columns))
+          {
+           $columns = array();
          
          
          //ticket ID
@@ -214,15 +242,38 @@ input[type="color"],
                                     'filter'=> CHtml::activeTextField($model, 'ticketDescription'),
                                     'headerHtmlOptions' => array('width'=>'400', ));
          $columns[] = $ticketDescription; 
+         }
+          
+          
+          //only if make a cache of the columns if needed
+        if (isset($_GET['sourceColumn']) && isset($_GET['destinationColumn']))
+         {
+             
+             $source = $_GET['sourceColumn'] ;
+             $destination = $_GET['destinationColumn'];
+             
+            
+             $sourceIndex = $source[0];
+             $destIndex   = $destination[0];
+             
+             
+             $tmpDest = $columns[$destIndex];
+             $columns[$destIndex] = $columns[$sourceIndex];
+             $columns[$sourceIndex] = $tmpDest;        
+             
+             
+             Yii::app()->session['TicketColumnOrder'] = $columns;
+         }
+                   
+        
          
          return $columns;
       }
       
-      
-
-      
+   
       $this->widget('bootstrap.widgets.TbGridView', 
-                    array('id'=>'ticket-grid',                          
+                    array('id'=>'ticket-grid', 
+                          'ajaxUpdate'=>false,
                           'type'=>'striped condensed',
                           'template' => '{items}{summary}',
                           'dataProvider'=> $model->search(),
