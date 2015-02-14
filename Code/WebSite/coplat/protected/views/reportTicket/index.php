@@ -20,51 +20,12 @@ $this->breadcrumbs=array('Ticket Report');
               var source = getNumFromStr(ui.draggable[0].id);
               $.get("", { sourceColumn: source, destinationColumn: destination });
               location.reload(true);
-            
-           /*  jQuery('#ticket-grid').yiiGridView({
-                  'ajaxUpdate': false,
-                  'ajaxVar': 'ajax', 'pagerClass': 'pagination', 'loadingClass': 'grid-view-loading', 'filterClass': 'filters', 'tableClass': 'items table table-striped table-condensed', 'selectableRows': 1, 'enableHistory': false, 'updateSelector': '{page}, {sort}', 'filterSelector': '{filter}'
-              });*/
-           
-             /* jQuery(function ($) {
-                  if ($.fn.editable) $.extend($.fn.editable.defaults, { 'emptytext': 'Click to edit', 'mode': 'inline' });
-                  
-                  jQuery('body').tooltip({ 'selector': 'a[rel=tooltip]' });
-                  jQuery('body').popover({ 'selector': 'a[rel=popover]' });
-              });*/
-              /*]]>*/
-
-
-
-              /* $.get("reportTicket", function (data) {
-                  $(".result").html(data);
-                  alert("Load was performed.");
-              });*/
-
-             /* jQuery.ajax({
-                  url: 'index.php/reportTicket',
-                  type: "GET",
-                  data: { ajaxData: destination },
-                  error: function (xhr, tStatus, e) {
-                      if (!xhr) {
-                          alert(" We have an error ");
-                          alert(tStatus + "   " + e.message);
-                      } else {
-                          alert("else: " + e.message); // the great unknown
-                      }
-                  },
-                  success: function (resp) {
-                      alert("ff");
-                  }
-              });*/
-          
-      }
+          }
 
     });
 
   });
-    // class="draggable droppable"
-  </script>
+</script>
 <h2>Ticket Report</h2> 
 <style type="text/css">
 
@@ -296,8 +257,6 @@ input[type="color"],
              $destIndex   = $destination[0];
              
              
-                   
-             
              $tmpDest = $columns[$destIndex];
              $columns[$destIndex] = $columns[$sourceIndex];
              $columns[$sourceIndex] = $tmpDest;        
@@ -312,11 +271,6 @@ input[type="color"],
       }
       
    
-
-      
-      
-
-      
       $this->widget('bootstrap.widgets.TbGridView', 
                     array('id'=>'ticket-grid', 
                           'ajaxUpdate'=>false,
