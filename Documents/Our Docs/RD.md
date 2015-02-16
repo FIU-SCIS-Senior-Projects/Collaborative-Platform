@@ -5,7 +5,7 @@
 ### Use Case Model
 
 #### Admin Reports
-![Admin Reports](https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/blob/develop/Documents/Images/UseCasesAdminReports.jpg "Admin Reports")
+![Admin Reports](https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/blob/develop/Documents/Images/UseCasesAdminReports.png "Admin Reports")
 
 #### Senior Project Website Integration
 ![SPWS Integration](https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Collaborative-Platform-Ver-5.0/blob/develop/Documents/Images/SPW%20Integration.png "SPWS Integration")
