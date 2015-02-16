@@ -112,11 +112,11 @@
                         </tr>
                         <tr>
                              <td>
-                                <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip" data-placement="top" title="Share Screen"><i class="fa fa-slideshare"></i>
+                                <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip" id="share-screen" data-placement="top" title="Share Screen"><i class="fa fa-slideshare"></i>
                                 </button>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip" data-placement="top" title="Stop Sharing"><i class="fa fa-stop"></i>
+                                <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip" id="stop-share-screen" data-placement="top" title="Stop Sharing"><i class="fa fa-stop"></i>
                                 </button>
                             </td>
                             <td>
@@ -145,44 +145,35 @@
     <script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
 
     <script>
-        // https://github.com/muaz-khan/RTCMultiConnection#1-link-the-library
-        // channel-id
-        var MODERATOR_CHANNEL_ID = 'ABCDEF-' + window.RMCDefaultChannel;
+// https://github.com/muaz-khan/RTCMultiConnection#1-link-the-library
 
-        var MODERATOR_SESSION_ID = 'XYZ'; // room-id
-        var MODERATOR_ID = 'JKL'; // user-id
-        var MODERATOR_SESSION = { // media-type
-            audio: true,
-            video: true
-        };
-        var MODERATOR_EXTRA = {}; // empty extra-data
-
-        // moderator
+        var rmc = new RTCMultiConnection();
+        rmc.body = document.getElementById('video-container');
+        // http://www.rtcmulticonnection.org/docs/#getExternalIceServers
+        rmc.getExternalIceServers = false;
         document.getElementById('open-room').onclick = function() {
-            this.disabled = true;
-
-            moderator = new RTCMultiConnection(MODERATOR_CHANNEL_ID);
-            moderator.session = MODERATOR_SESSION;
-            moderator.userid = MODERATOR_ID;
-            moderator.extra = MODERATOR_EXTRA;
-            moderator.body = document.getElementById('video-container');
-            moderator.open({
-                dontTransmit: true,
-                sessionid: MODERATOR_SESSION_ID
-            });
+            // http://www.rtcmulticonnection.org/docs/open/
+            rmc.open();
         };
-
-        // participants
         document.getElementById('join-room').onclick = function() {
-            this.disabled = true;
-            participants = new RTCMultiConnection(MODERATOR_CHANNEL_ID);
-            participants.body = document.getElementById('video-container');
-            participants.join({
-                sessionid: MODERATOR_SESSION_ID,
-                userid: MODERATOR_ID,
-                extra: MODERATOR_EXTRA,
-                session: MODERATOR_SESSION
+            // http://www.rtcmulticonnection.org/docs/connect/
+            rmc.connect();
+        };
+        rmc.onMediaCaptured = function() {
+            document.getElementById('share-screen').disabled = false;
+            document.getElementById('open-room').disabled = true;
+            document.getElementById('join-room').disabled = true;
+        };
+        document.getElementById('share-screen').onclick = function() {
+            // http://www.rtcmulticonnection.org/docs/addStream/
+            rmc.addStream({
+                screen: true,
+                oneway: true
             });
+            //document.getElementById('recordScreen').disabled = false;
+        };
+        document.getElementById('stop-share-screen').onclick = function(){
+            rmc.removeStream('screen');
         };
         </script>
         <script>
