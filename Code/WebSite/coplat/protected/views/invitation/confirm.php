@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 );
 
 ?>
+<script src="<?php echo Yii::app()->baseUrl.'/ckeditor/ckeditor.js'; ?>"></script>
 
 <?php $form=$this->beginWidget('CActiveForm', array( 
     'id'=>'invitation-form', 
@@ -16,7 +17,7 @@ $this->breadcrumbs=array(
 
    <div class="row"> 
         <?php echo $form->labelEx($model,'message'); ?>
-        <?php echo $form->textArea($model,'message',array('size'=>60,'maxlength'=>750, 'style'=>'width: 570px; height: 230px;')); ?>
+        <?php echo $form->textArea($model,'message',array('size'=>60, 'id'=>'msgeditor' , 'maxlength'=>750, 'style'=>'width: 570px; height: 230px;')); ?>
         <?php echo $form->error($model,'message'); ?>
     </div> 
     
@@ -25,3 +26,6 @@ $this->breadcrumbs=array(
     </div> 
 
 <?php $this->endWidget(); ?>
+<script type="text/javascript">
+    CKEDITOR.replace('msgeditor');
+</script>
