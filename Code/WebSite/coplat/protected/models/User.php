@@ -329,8 +329,12 @@ class User extends CActiveRecord
 
     public static function replaceMessage($to, $message)
     {
-        $file = fopen("/var/www/html/coplat/email/index1.html", "r");
+        //$file = fopen("/var/www/html/coplat/email/index1.html", "r");
         //$file = fopen("C:/xampp/htdocs/coplat/email/index1.html", "r");
+        $path = Yii::app()->basePath."/../email/index1.html";
+        
+        
+        $file = fopen($path, "r");
         $html = "";
         while (!feof($file)) {
             $html .= fgets($file);
@@ -846,7 +850,7 @@ class User extends CActiveRecord
     
     public static function sendInviteByMessage($invitation){
     	$to = "";
-    	$html = User::replaceMessage($to, $invitation);
+    	$html = User::replaceMessage($to, $invitation->message);
     	$email = Yii::app()->email;
     	$email->to = $invitation->email;
     	$email->from = 'Collaborative Platform';
