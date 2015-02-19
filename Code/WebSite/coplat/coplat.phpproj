@@ -12445,6 +12445,7 @@
     <Compile Include="protected\views\reportTicket\index.php" />
     <Compile Include="protected\views\site\pages\about.php" />
     <Compile Include="protected\views\site\pages\create_admin.php" />
+    <Compile Include="protected\views\site\pages\disableUser.php" />
     <Compile Include="protected\views\site\pages\verification.php" />
     <Compile Include="protected\views\site\.DS_Store" />
     <Compile Include="protected\views\site\contact.php" />
