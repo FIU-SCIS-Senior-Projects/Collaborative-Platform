@@ -33,17 +33,17 @@ class LoginController extends Controller
         /* Please look in the documentation for the Gmail account to update the links*/
         
         //this is the client key for http://localhost/coplat/index.php/site/login?r=Login/google_oauth2_callback
-        $client = new OAuth2\Client( '18539649881-nf47u1hqi68u16719abpqa1c86hhgr3b.apps.googleusercontent.com',
+       /* $client = new OAuth2\Client( '18539649881-nf47u1hqi68u16719abpqa1c86hhgr3b.apps.googleusercontent.com',
                                      'eIdiK7XoWCK2GLSB0DbA5KDy',
-                                     $this->getAuthorizationCallbackURL());
+                                     $this->getAuthorizationCallbackURL());*/
         
         
         
         
         //this is the client key for http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback
-       /*$client = new OAuth2\Client( '265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com',
+       $client = new OAuth2\Client( '265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com',
                                      'UwkqyyRLy0I_sJXwZ_JqurVh',
-                                     $this->getAuthorizationCallbackURL());*/
+                                     $this->getAuthorizationCallbackURL());
 
         $configuration = new OAuth2\Service\Configuration('https://accounts.google.com/o/oauth2/auth', 
                                                           'https://accounts.google.com/o/oauth2/auth/token');
@@ -85,20 +85,20 @@ class LoginController extends Controller
     public function actionGoogle_oauth2_callback() {
         $code=null;// = $this->input->get("code");
         
-        $urlLogingCallback = Yii::app()->getRequest()->getHostInfo();
-        $urlLogingCallback = $urlLogingCallback.'/coplat/index.php/site/login?r=Login/google_oauth2_callback'; //prepare the call back
+        /*$urlLogingCallback = Yii::app()->getRequest()->getHostInfo();
+        $urlLogingCallback = $urlLogingCallback.'/coplat/index.php/site/login?r=Login/google_oauth2_callback';*/ //prepare the call back
 
         
         //please comment and uncomment accordingly
         //this is the client key for http://localhost/coplat/index.php/site/login?r=Login/google_oauth2_callback
-        $client = new OAuth2\Client( '18539649881-nf47u1hqi68u16719abpqa1c86hhgr3b.apps.googleusercontent.com',
+       /* $client = new OAuth2\Client( '18539649881-nf47u1hqi68u16719abpqa1c86hhgr3b.apps.googleusercontent.com',
                                      'eIdiK7XoWCK2GLSB0DbA5KDy',
-                                     $this->getAuthorizationCallbackURL());
+                                     $this->getAuthorizationCallbackURL());*/
      
         //this is the client key for http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback
-        /*$client = new OAuth2\Client('265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com', 
+        $client = new OAuth2\Client('265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com', 
                                       'UwkqyyRLy0I_sJXwZ_JqurVh',
-                                       $urlLogingCallback );*/
+                                       $this->getAuthorizationCallbackURL() );
 
         $configuration = new OAuth2\Service\Configuration(
             'https://accounts.google.com/o/oauth2/auth', 'https://accounts.google.com/o/oauth2/token'
