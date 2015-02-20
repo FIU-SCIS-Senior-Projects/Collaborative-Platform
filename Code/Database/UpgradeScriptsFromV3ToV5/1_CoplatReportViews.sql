@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2015 at 12:02 AM
+-- Generation Time: Feb 20, 2015 at 08:24 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `coplat`
@@ -26,28 +20,23 @@ SET time_zone = "+00:00";
 -- Stand-in structure for view `report_mentee`
 --
 DROP VIEW IF EXISTS `report_mentee`;
-CREATE TABLE `report_mentee` (
-`menteeUserID` int(11) unsigned
-,`menteeUserName` varchar(45)
-,`menteeEmail` varchar(255)
-,`menteeFirstName` varchar(45)
-,`menteeMiddleName` varchar(45)
-,`menteeLastName` varchar(100)
-,`menteeDisabled` tinyint(1)
-,`menteeUniversityID` int(11) unsigned
-,`menteeUniversityNamementee` varchar(50)
-,`menteePersonalMentorID` int(11) unsigned
-,`menteePersonalMentorEmail` varchar(255)
-,`menteePersonalMentorFirstName` varchar(45)
-,`menteePersonalMentorMiddleName` varchar(45)
-,`menteePersonalMentorLastName` varchar(100)
-,`menteePersonalMentorDisabled` tinyint(1)
+CREATE TABLE IF NOT EXISTS `report_mentee` (
+`UserID` int(11) unsigned
+,`UserName` varchar(45)
+,`Email` varchar(255)
+,`Name` varchar(192)
+,`Disabled` tinyint(1)
+,`UniversityID` int(11) unsigned
+,`UniversityName` varchar(50)
+,`PersonalMentorID` int(11) unsigned
+,`PersonalMentorEmail` varchar(255)
+,`PersonalMentorName` varchar(192)
+,`PersonalMentorDisabled` tinyint(1)
 ,`menteeProjectID` int(11) unsigned
 ,`menteeProjectTitle` varchar(45)
-,`menteeProjectStartData` date
+,`menteeProjectStartDate` date
 ,`menteeProjectDueDate` date
-,`menteeProjectCustomerFirstName` varchar(20)
-,`menteeProjectCustomerLastname` varchar(20)
+,`menteeProjectCustomerName` varchar(41)
 );
 -- --------------------------------------------------------
 
@@ -55,18 +44,23 @@ CREATE TABLE `report_mentee` (
 -- Stand-in structure for view `report_mentor`
 --
 DROP VIEW IF EXISTS `report_mentor`;
-CREATE TABLE `report_mentor` (
-`MentorUserName` varchar(45)
-,`MentorEmail` varchar(255)
-,`MentorFirstName` varchar(45)
-,`MentorLastName` varchar(100)
-,`MentorMiddleName` varchar(45)
-,`MentorDisabled` tinyint(1)
-,`MentorEmployeuser_info` varchar(50)
-,`MentorPosition` varchar(50)
-,`MentorDegree` varchar(50)
-,`MentorFieldOfStudy` varchar(50)
-,`MentorGradYear` int(4) unsigned
+CREATE TABLE IF NOT EXISTS `report_mentor` (
+`userID` int(11) unsigned
+,`userName` varchar(45)
+,`email` varchar(255)
+,`name` varchar(192)
+,`disabled` tinyint(1)
+,`isProjectMentor` tinyint(1)
+,`isPersonalMentor` tinyint(1)
+,`isDomainMentor` tinyint(1)
+,`isJudge` tinyint(1)
+,`isNew` tinyint(4)
+,`isEmployer` tinyint(1)
+,`employer` varchar(50)
+,`position` varchar(50)
+,`degree` varchar(50)
+,`fieldOfStudy` varchar(50)
+,`gradYear` int(4) unsigned
 );
 -- --------------------------------------------------------
 
@@ -74,33 +68,29 @@ CREATE TABLE `report_mentor` (
 -- Stand-in structure for view `report_ticket`
 --
 DROP VIEW IF EXISTS `report_ticket`;
-CREATE TABLE `report_ticket` (
+CREATE TABLE IF NOT EXISTS `report_ticket` (
 `ticketID` int(11) unsigned
 ,`creatorID` int(11) unsigned
-,`creatorFirstName` varchar(45)
-,`creatorMiddleName` varchar(45)
-,`creatorLastName` varchar(100)
+,`creatorName` varchar(192)
 ,`creatorDisabled` tinyint(1)
 ,`creatorEmail` varchar(255)
 ,`ticketStatus` varchar(45)
-,`ticketCratedDate` datetime
+,`ticketCreatedDate` datetime
 ,`ticketSubject` varchar(45)
 ,`ticketDescription` varchar(500)
 ,`ticketAssignUserID` int(11) unsigned
-,`assignedUserFirstName` varchar(45)
-,`assignedUserLastName` varchar(100)
-,`assignedUserMiddleName` varchar(45)
+,`assignedUserName` varchar(192)
 ,`assignedUserDisabled` tinyint(1)
 ,`assignedUserEmail` varchar(255)
 ,`ticketDomainID` int(11) unsigned
 ,`ticketDomainName` varchar(45)
-,`ticketSubDomticketainID` int(11) unsigned
+,`ticketSubDomainID` int(11) unsigned
 ,`ticketSubDomainName` varchar(45)
-,`ticketPriority` int(11)
+,`ticketPriorityID` int(11)
 ,`ticketPriorityDescription` varchar(45)
 ,`ticketAssignedDate` datetime
 ,`ticketClosedDate` datetime
-,`ticketIsEscalated` tinyint(1)
+,`ticketIsEscalated` int(4)
 );
 -- --------------------------------------------------------
 
@@ -109,7 +99,7 @@ CREATE TABLE `report_ticket` (
 --
 DROP TABLE IF EXISTS `report_mentee`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_mentee` AS select `user`.`id` AS `menteeUserID`,`user`.`username` AS `menteeUserName`,`user`.`email` AS `menteeEmail`,`user`.`fname` AS `menteeFirstName`,`user`.`mname` AS `menteeMiddleName`,`user`.`lname` AS `menteeLastName`,`user`.`disable` AS `menteeDisabled`,`user`.`university_id` AS `menteeUniversityID`,`menteeuniversity`.`name` AS `menteeUniversityNamementee`,`personalmentoruser`.`id` AS `menteePersonalMentorID`,`personalmentoruser`.`email` AS `menteePersonalMentorEmail`,`personalmentoruser`.`fname` AS `menteePersonalMentorFirstName`,`personalmentoruser`.`mname` AS `menteePersonalMentorMiddleName`,`personalmentoruser`.`lname` AS `menteePersonalMentorLastName`,`personalmentoruser`.`disable` AS `menteePersonalMentorDisabled`,`menteeuser`.`project_id` AS `menteeProjectID`,`menteeproject`.`title` AS `menteeProjectTitle`,`menteeproject`.`start_date` AS `menteeProjectStartData`,`menteeproject`.`due_date` AS `menteeProjectDueDate`,`menteeproject`.`customer_fname` AS `menteeProjectCustomerFirstName`,`menteeproject`.`customer_lname` AS `menteeProjectCustomerLastname` from (((((`user` left join `mentee` `menteeuser` on((`user`.`id` = `menteeuser`.`user_id`))) left join `university` `menteeuniversity` on((`menteeuniversity`.`id` = `user`.`university_id`))) left join `personal_mentor` `personalmentor` on((`personalmentor`.`user_id` = `menteeuser`.`personal_mentor_user_id`))) left join `user` `personalmentoruser` on((`personalmentoruser`.`id` = `personalmentor`.`user_id`))) left join `project` `menteeproject` on((`menteeproject`.`id` = `menteeuser`.`project_id`))) where (`user`.`isMentee` = 1);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_mentee` AS select `user`.`id` AS `UserID`,`user`.`username` AS `UserName`,`user`.`email` AS `Email`,concat_ws(' ',`user`.`fname`,`user`.`mname`,`user`.`lname`) AS `Name`,`user`.`disable` AS `Disabled`,`user`.`university_id` AS `UniversityID`,`menteeuniversity`.`name` AS `UniversityName`,`personalmentoruser`.`id` AS `PersonalMentorID`,`personalmentoruser`.`email` AS `PersonalMentorEmail`,concat_ws(' ',`personalmentoruser`.`fname`,`personalmentoruser`.`mname`,`personalmentoruser`.`lname`) AS `PersonalMentorName`,`personalmentoruser`.`disable` AS `PersonalMentorDisabled`,`menteeuser`.`project_id` AS `menteeProjectID`,`menteeproject`.`title` AS `menteeProjectTitle`,`menteeproject`.`start_date` AS `menteeProjectStartDate`,`menteeproject`.`due_date` AS `menteeProjectDueDate`,concat_ws(' ',`menteeproject`.`customer_fname`,`menteeproject`.`customer_lname`) AS `menteeProjectCustomerName` from (((((`user` left join `mentee` `menteeuser` on((`user`.`id` = `menteeuser`.`user_id`))) left join `university` `menteeuniversity` on((`menteeuniversity`.`id` = `user`.`university_id`))) left join `personal_mentor` `personalmentor` on((`personalmentor`.`user_id` = `menteeuser`.`personal_mentor_user_id`))) left join `user` `personalmentoruser` on((`personalmentoruser`.`id` = `personalmentor`.`user_id`))) left join `project` `menteeproject` on((`menteeproject`.`id` = `menteeuser`.`project_id`))) where (`user`.`isMentee` = 1);
 
 -- --------------------------------------------------------
 
@@ -118,7 +108,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `report_mentor`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_mentor` AS select `user`.`username` AS `MentorUserName`,`user`.`email` AS `MentorEmail`,`user`.`fname` AS `MentorFirstName`,`user`.`lname` AS `MentorLastName`,`user`.`mname` AS `MentorMiddleName`,`user`.`disable` AS `MentorDisabled`,`mentorinfo`.`employer` AS `MentorEmployeuser_info`,`mentorinfo`.`position` AS `MentorPosition`,`mentorinfo`.`degree` AS `MentorDegree`,`mentorinfo`.`field_of_study` AS `MentorFieldOfStudy`,`mentorinfo`.`grad_year` AS `MentorGradYear` from (`user` left join `user_info` `mentorinfo` on((`user`.`id` = `mentorinfo`.`user_id`))) where ((`user`.`isPerMentor` = 1) or (`user`.`isProMentor` = 1) or (`user`.`isDomMentor` = 1));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_mentor` AS select `user`.`id` AS `userID`,`user`.`username` AS `userName`,`user`.`email` AS `email`,concat_ws(' ',`user`.`fname`,`user`.`mname`,`user`.`lname`) AS `name`,`user`.`disable` AS `disabled`,`user`.`isProMentor` AS `isProjectMentor`,`user`.`isPerMentor` AS `isPersonalMentor`,`user`.`isDomMentor` AS `isDomainMentor`,`user`.`isJudge` AS `isJudge`,`user`.`isNew` AS `isNew`,`user`.`isEmployer` AS `isEmployer`,`mentorinfo`.`employer` AS `employer`,`mentorinfo`.`position` AS `position`,`mentorinfo`.`degree` AS `degree`,`mentorinfo`.`field_of_study` AS `fieldOfStudy`,`mentorinfo`.`grad_year` AS `gradYear` from (`user` left join `user_info` `mentorinfo` on((`user`.`id` = `mentorinfo`.`user_id`))) where ((`user`.`isPerMentor` = 1) or (`user`.`isProMentor` = 1) or (`user`.`isDomMentor` = 1));
 
 -- --------------------------------------------------------
 
@@ -127,8 +117,4 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `report_ticket`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_ticket` AS select `ticket`.`id` AS `ticketID`,`ticket`.`creator_user_id` AS `creatorID`,`ticketowner`.`fname` AS `creatorFirstName`,`ticketowner`.`mname` AS `creatorMiddleName`,`ticketowner`.`lname` AS `creatorLastName`,`ticketowner`.`disable` AS `creatorDisabled`,`ticketowner`.`email` AS `creatorEmail`,`ticket`.`status` AS `ticketStatus`,`ticket`.`created_date` AS `ticketCratedDate`,`ticket`.`subject` AS `ticketSubject`,`ticket`.`description` AS `ticketDescription`,`ticket`.`assign_user_id` AS `ticketAssignUserID`,`userassigned`.`fname` AS `assignedUserFirstName`,`userassigned`.`lname` AS `assignedUserLastName`,`userassigned`.`mname` AS `assignedUserMiddleName`,`userassigned`.`disable` AS `assignedUserDisabled`,`userassigned`.`email` AS `assignedUserEmail`,`ticket`.`domain_id` AS `ticketDomainID`,`ticketdomain`.`name` AS `ticketDomainName`,`ticket`.`subdomain_id` AS `ticketSubDomticketainID`,`ticketsubdomain`.`name` AS `ticketSubDomainName`,`ticket`.`priority_id` AS `ticketPriority`,`ticketpriority`.`description` AS `ticketPriorityDescription`,`ticket`.`assigned_date` AS `ticketAssignedDate`,`ticket`.`closed_date` AS `ticketClosedDate`,`ticket`.`isEscalated` AS `ticketIsEscalated` from (((((`ticket` join `user` `ticketowner` on((`ticketowner`.`id` = `ticket`.`creator_user_id`))) join `domain` `ticketdomain` on((`ticketdomain`.`id` = `ticket`.`domain_id`))) join `priority` `ticketpriority` on((`ticketpriority`.`id` = `ticket`.`priority_id`))) left join `user` `userassigned` on((`userassigned`.`id` = `ticket`.`assign_user_id`))) left join `subdomain` `ticketsubdomain` on((`ticketsubdomain`.`id` = `ticket`.`subdomain_id`)));
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `report_ticket` AS select `ticket`.`id` AS `ticketID`,`ticket`.`creator_user_id` AS `creatorID`,concat_ws(' ',`ticketowner`.`fname`,`ticketowner`.`mname`,`ticketowner`.`lname`) AS `creatorName`,`ticketowner`.`disable` AS `creatorDisabled`,`ticketowner`.`email` AS `creatorEmail`,`ticket`.`status` AS `ticketStatus`,`ticket`.`created_date` AS `ticketCreatedDate`,`ticket`.`subject` AS `ticketSubject`,`ticket`.`description` AS `ticketDescription`,`ticket`.`assign_user_id` AS `ticketAssignUserID`,concat_ws(' ',`userassigned`.`fname`,`userassigned`.`mname`,`userassigned`.`lname`) AS `assignedUserName`,`userassigned`.`disable` AS `assignedUserDisabled`,`userassigned`.`email` AS `assignedUserEmail`,`ticket`.`domain_id` AS `ticketDomainID`,`ticketdomain`.`name` AS `ticketDomainName`,`ticket`.`subdomain_id` AS `ticketSubDomainID`,`ticketsubdomain`.`name` AS `ticketSubDomainName`,`ticket`.`priority_id` AS `ticketPriorityID`,`ticketpriority`.`description` AS `ticketPriorityDescription`,`ticket`.`assigned_date` AS `ticketAssignedDate`,`ticket`.`closed_date` AS `ticketClosedDate`,ifnull(`ticket`.`isEscalated`,0) AS `ticketIsEscalated` from (((((`ticket` join `user` `ticketowner` on((`ticketowner`.`id` = `ticket`.`creator_user_id`))) join `domain` `ticketdomain` on((`ticketdomain`.`id` = `ticket`.`domain_id`))) join `priority` `ticketpriority` on((`ticketpriority`.`id` = `ticket`.`priority_id`))) left join `user` `userassigned` on((`userassigned`.`id` = `ticket`.`assign_user_id`))) left join `subdomain` `ticketsubdomain` on((`ticketsubdomain`.`id` = `ticket`.`subdomain_id`)));
