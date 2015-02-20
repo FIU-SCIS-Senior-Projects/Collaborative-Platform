@@ -10,6 +10,7 @@ class UserController extends Controller
      */
     public $layout='//layouts/column2';
 
+ 
     /**
      * @return array action filters
      */
@@ -799,18 +800,49 @@ class UserController extends Controller
     public function actionDelete($id)
     {
 
-        //Soft delete (Disable the User)
-        $model=$this->loadModel($id);
-        $model->disable = 1;
-
-        $model->save(false);
+      
+        $model = $this->loadModel($id);
+        
+        $deleteMessage = "";
+        
+        if ($model->isAdmin == 1)
+        {
+            $deleteMessage = "You can not delete the administrators.";
+        }  
+        elseif (count( $model->tickets) >0)
+        {
+            $deleteMessage = "You can not delete this user because it have tickets assigned to it.";
+        }
+        
+        
+       
+               
+        //we can proceed with the deletion
+        if ($deleteMessage == "")
+        {
+          $model->delete();
+         
+         ////soft delete
+         //$model->disable = 1;
+         //$model->save(false);
 
         //Hard delete
         //$this->loadModel($id)->delete();
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+       }
         if(!isset($_GET['ajax']))
-            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        {
+         $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        }else{
+            
+      
+            $_SESSION['deleteMessage'] = $deleteMessage;
+            $this->render("index", array( 'deleteMessage'=>$deleteMessage),true );
+        }
+           
+        
+        
     }
 
     /**
