@@ -52,7 +52,7 @@ class LoginController extends Controller
     private  function GetCPDevelopmentAuthorizationClient()
     {
         //this is the client key for http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback
-           $client = new OAuth2\Client('265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com', 
+           return new OAuth2\Client('265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com', 
                                       'UwkqyyRLy0I_sJXwZ_JqurVh',
                                        $this->getAuthorizationCallbackURL() );
     } 
