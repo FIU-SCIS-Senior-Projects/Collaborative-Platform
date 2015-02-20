@@ -26,19 +26,17 @@ class LoginController extends Controller
 {
     /*THIS CONTROLLER ONLY HANDLES MENTEES LOGIN!!!!!!*/
     
-    private $devenv = Enviroments::cpDev;
+    private $devenv = Enviroments::localhostDev;
+      
     
-  
     
-    
-    public function getAuthorizationCallbackURL()
+    private function getAuthorizationCallbackURL()
     {
         $urlLogingCallback = Yii::app()->getRequest()->getHostInfo();
         $urlLogingCallback = $urlLogingCallback.'/coplat/index.php/site/login?r=Login/google_oauth2_callback'; //prepare the call back
         return $urlLogingCallback;    
     }
-    
-    
+        
     
     private  function GetLocalhostDevelopmentAuthorizationClient()
     {
