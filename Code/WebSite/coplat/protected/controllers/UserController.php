@@ -805,22 +805,26 @@ class UserController extends Controller
         
         $deleteMessage = "";
         
-        if ($model->isAdmin == 1)
+        if ($model->isAdmin == 1 || isset($model->administrator))
         {
-            $deleteMessage = "You can not delete the administrators.";
+            $deleteMessage = "You can not delete administrators. Try disable the user.";
         }  
         elseif (count( $model->tickets) >0)
         {
-            $deleteMessage = "You can not delete this user because it have tickets assigned to it.";
+            $deleteMessage = "You can not delete this user because is assigned to a ticket. Try disable the user.";
+        }elseif (count($model->tickets1) > 0)
+        {
+            $deleteMessage = "You can not delete this user because it is the owner of tickets. Try disable the user.";
         }
         
-        
+        if ( $deleteMessage <> "")
+        {
+            throw new CHttpException(400,$deleteMessage);
+        }
        
                
         //we can proceed with the deletion
-        if ($deleteMessage == "")
-        {
-          $model->delete();
+        $model->delete();
          
          ////soft delete
          //$model->disable = 1;
@@ -830,16 +834,11 @@ class UserController extends Controller
         //$this->loadModel($id)->delete();
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-       }
-        if(!isset($_GET['ajax']))
-        {
+     
+        
+        if(!isset($_GET['ajax']))     
          $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-        }else{
-            
-      
-            $_SESSION['deleteMessage'] = $deleteMessage;
-            $this->render("index", array( 'deleteMessage'=>$deleteMessage),true );
-        }
+       
            
         
         
