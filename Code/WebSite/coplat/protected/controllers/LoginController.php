@@ -14,9 +14,21 @@ require_once("protected/extensions/Oauth2/Service/Configuration.php");
 require_once("protected/extensions/Oauth2/DataStore/Session.php");
 require_once("protected/extensions/Oauth2/Service.php");
 
+class Enviroments
+{
+    const localhostDev = 1;
+    const cpDev = 2;
+    const production = 3;
+    
+}
+
 class LoginController extends Controller
 {
     /*THIS CONTROLLER ONLY HANDLES MENTEES LOGIN!!!!!!*/
+    
+    private $devenv = Enviroments::cpDev;
+    
+  
     
     
     public function getAuthorizationCallbackURL()
@@ -25,7 +37,54 @@ class LoginController extends Controller
         $urlLogingCallback = $urlLogingCallback.'/coplat/index.php/site/login?r=Login/google_oauth2_callback'; //prepare the call back
         return $urlLogingCallback;    
     }
-
+    
+    
+    
+    private  function GetLocalhostDevelopmentAuthorizationClient()
+    {
+        //this is the client key for http://localhost/coplat/index.php/site/login?r=Login/google_oauth2_callback
+        return  new OAuth2\Client( '18539649881-nf47u1hqi68u16719abpqa1c86hhgr3b.apps.googleusercontent.com',
+                                     'eIdiK7XoWCK2GLSB0DbA5KDy',
+                                     $this->getAuthorizationCallbackURL());
+    }  
+    
+    
+    private  function GetCPDevelopmentAuthorizationClient()
+    {
+        //this is the client key for http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback
+           $client = new OAuth2\Client('265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com', 
+                                      'UwkqyyRLy0I_sJXwZ_JqurVh',
+                                       $this->getAuthorizationCallbackURL() );
+    } 
+    
+    
+    private function GetGoogleAuthCallbacK()
+    {
+        
+        $client;
+        switch ($this->devenv)
+        {            
+            case Enviroments::cpDev:
+                $client = $this->GetCPDevelopmentAuthorizationClient();                    
+                
+                break;
+            case Enviroments::localhostDev:
+                $client = $this->GetLocalhostDevelopmentAuthorizationClient();
+                break;
+            case Enviroments::production:
+                //TODO: implement this enviroment callback
+                
+                break;                
+            default:
+                
+                throw new CHttpException(404,'Application enviroment not specified.');
+            
+        }   
+        
+        return $client;
+    }
+     
+    
     public function actionFiu_oauth2() {
         
        
@@ -36,14 +95,15 @@ class LoginController extends Controller
        /* $client = new OAuth2\Client( '18539649881-nf47u1hqi68u16719abpqa1c86hhgr3b.apps.googleusercontent.com',
                                      'eIdiK7XoWCK2GLSB0DbA5KDy',
                                      $this->getAuthorizationCallbackURL());*/
+        $client = $this->GetGoogleAuthCallbacK();
         
         
         
         
         //this is the client key for http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback
-       $client = new OAuth2\Client( '265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com',
+      /* $client = new OAuth2\Client( '265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com',
                                      'UwkqyyRLy0I_sJXwZ_JqurVh',
-                                     $this->getAuthorizationCallbackURL());
+                                     $this->getAuthorizationCallbackURL());*/
 
         $configuration = new OAuth2\Service\Configuration('https://accounts.google.com/o/oauth2/auth', 
                                                           'https://accounts.google.com/o/oauth2/auth/token');
@@ -57,8 +117,6 @@ class LoginController extends Controller
         $service->authorize();
     }
     
-   
-
     public function google_oauth2() {
         
         //'http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback'
@@ -85,20 +143,21 @@ class LoginController extends Controller
     public function actionGoogle_oauth2_callback() {
         $code=null;// = $this->input->get("code");
         
-        /*$urlLogingCallback = Yii::app()->getRequest()->getHostInfo();
-        $urlLogingCallback = $urlLogingCallback.'/coplat/index.php/site/login?r=Login/google_oauth2_callback';*/ //prepare the call back
 
-        
         //please comment and uncomment accordingly
         //this is the client key for http://localhost/coplat/index.php/site/login?r=Login/google_oauth2_callback
-       /* $client = new OAuth2\Client( '18539649881-nf47u1hqi68u16719abpqa1c86hhgr3b.apps.googleusercontent.com',
+        $client = $this->GetGoogleAuthCallbacK(); 
+        
+      
+        
+        /* new OAuth2\Client( '18539649881-nf47u1hqi68u16719abpqa1c86hhgr3b.apps.googleusercontent.com',
                                      'eIdiK7XoWCK2GLSB0DbA5KDy',
                                      $this->getAuthorizationCallbackURL());*/
      
         //this is the client key for http://cp-dev.cis.fiu.edu/coplat/index.php/site/login?r=Login/google_oauth2_callback
-        $client = new OAuth2\Client('265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com', 
+     /*   $client = new OAuth2\Client('265213885628-bvag1ur2vpn9a1asmagjn4rtb624p0l2.apps.googleusercontent.com', 
                                       'UwkqyyRLy0I_sJXwZ_JqurVh',
-                                       $this->getAuthorizationCallbackURL() );
+                                       $this->getAuthorizationCallbackURL() );*/
 
         $configuration = new OAuth2\Service\Configuration(
             'https://accounts.google.com/o/oauth2/auth', 'https://accounts.google.com/o/oauth2/token'
