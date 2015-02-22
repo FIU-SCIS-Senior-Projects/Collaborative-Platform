@@ -226,3 +226,59 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/site/login?r=Login/fiu_oauth2
 HTTP_REFERER=http://localhost/coplat/index.php/site/login
 ---
+2015/02/22 08:17:47 [error] [php] strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (/Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/home/adminHome.php:132)
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): HomeController->renderInternal()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): HomeController->renderFile()
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(782): HomeController->renderPartial()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/HomeController.php(89): HomeController->render()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): HomeController->actionadminHome()
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): HomeController->runAction()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): HomeController->filterAccessControl()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): HomeController->runActionWithFilters()
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): HomeController->run()
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/adminHome
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/home/adminHome.php (132)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/HomeController.php (89)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/02/22 08:17:56 [error] [php] strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (/Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/home/adminHome.php:132)
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): HomeController->renderInternal()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): HomeController->renderFile()
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(782): HomeController->renderPartial()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/HomeController.php(89): HomeController->render()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): HomeController->actionadminHome()
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): HomeController->runAction()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): HomeController->filterAccessControl()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): HomeController->runActionWithFilters()
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): HomeController->run()
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/home/adminHome
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/home/adminHome.php (132)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/HomeController.php (89)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/02/22 08:18:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(270): CController->missingAction('')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('')
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('home')
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/home/
+---

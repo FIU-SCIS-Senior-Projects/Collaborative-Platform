@@ -151,6 +151,6 @@ if( User::isCurrentUserMentee())
 </body>
 	<div style="height:50px;"></div>
     <div style="position:fixed; text-align:center; width:100%; height:20px; background-color:white; border-top: 1px solid rgb(206, 206, 206); padding:5px; 		bottom:0px; ">
-        <a target="blank" href="http://fiu.edu">Florida Interational University</a> | Collaborative Platform - Senior Project 2014
+        <a target="blank" href="http://fiu.edu">Florida International University</a> | Collaborative Platform - Senior Project 2015
     </div>
 </html>
