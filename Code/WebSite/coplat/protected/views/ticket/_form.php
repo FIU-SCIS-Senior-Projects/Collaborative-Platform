@@ -35,11 +35,18 @@
         <?php echo $form->textArea($model, 'description', array('id' => 'description', 'style' => 'width:500px', 'cols' => 110, 'rows' => 5, 'width' => '300px')); ?>
         <?php echo $form->error($model, 'description'); ?>
 
-        <?php echo $form->labelEx($model, 'Attach File (optional)'); ?>
-        <?php /*echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); */ ?>
-        <?php echo CHtml::activeFileField($model, 'file'); ?>
-        <?php /*echo $form->error($model,'file');*/ ?>
+        <?php
+        $priority = Priority::model()->findAll();
+        $data = array();
+        foreach ($priority as $prio) {
+            $data[$prio->id] = $prio->description;
+        } ?>
+        <?php echo $form->labelEx($model, 'priority_id'); ?>
+        <?php echo $form->dropDownList($model, 'priority_id', $data, array('prompt' => 'Select'));?>
+        <?php echo $form->error($model, 'priority_id');?>
 
+
+ 
         <?php
         /* If the user if project mentor. He has the option of assign the ticket to another project mentor */
         if (User::isCurrentUserProMentor() || User::isCurrentUserAdmin()) {
@@ -51,23 +58,10 @@
             foreach ($pmentor as $mod) {
                 $data[$mod->id] = $mod->fname . ' ' . $mod->lname;
             } ?>
-            <br/><br/>
             <?php echo $form->labelEx($model, 'Assign to a Project Mentor (optional)'); ?>
             <?php echo $form->dropDownList($model, 'assign_user_id', $data, array('prompt' => 'Select'));?>
             <?php echo $form->error($model, 'assign_user_id');?>
         <?php } ?>
-
-        <br/><br/>
-        <?php
-        $priority = Priority::model()->findAll();
-        $data = array();
-        foreach ($priority as $prio) {
-            $data[$prio->id] = $prio->description;
-        } ?>
-        <?php echo $form->labelEx($model, 'Assign a Priority'); ?>
-        <?php echo $form->dropDownList($model, 'priority_id', $data, array('prompt' => 'Select'));?>
-        <?php echo $form->error($model, 'priority_id');?>
-
 
         <?php
         /* If the user if project mentor. He has the option of assign the ticket to another project mentor */
@@ -107,13 +101,16 @@
 
 
             //}?>
-            <br/><br/>
             <?php echo $form->labelEx($model, 'Assign to a Mentor (optional)'); ?>
             <?php echo $form->dropDownList($model, 'assign_user_id', $data, array('prompt' => 'Select'));?>
 
 
             <?php echo $form->error($model, 'assign_user_id');?>
         <?php }?>
+
+        <?php echo $form->labelEx($model, 'Attach File (optional)'); ?>
+        <?php /*echo $form->textField($model,'file',array('size'=>60,'maxlength'=>255)); */ ?>
+        <?php echo CHtml::activeFileField($model, 'file'); ?>
 
         <br/><br/>
         <?php echo CHtml::submitButton('Submit', array("class" => "btn btn-primary")); ?>
