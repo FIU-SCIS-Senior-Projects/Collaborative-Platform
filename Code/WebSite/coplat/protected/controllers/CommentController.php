@@ -71,23 +71,62 @@ class CommentController extends Controller
 
 		if(isset($_POST['Comment']))
 		{
-            $model-> description = $_POST['Comment']['description'];
-			$model -> ticket_id = $id;
+                   //Collect the model
+                   $model-> description = $_POST['Comment']['description'];
+		   $model -> ticket_id = $id;
 			/*Set the date */
-			$model -> added_date = new CDbExpression('NOW()');
+		   $model -> added_date = new CDbExpression('NOW()');
 
-            /* Get the name and lastname of the current user */
-            $user = User::model()->getCurrentUser();
-            /** @var User user_added */
-            $model ->user_added = $user->fname.' '.$user->lname;
+                   /* Get the name and lastname of the current user */
+                   $user = User::model()->getCurrentUser();
+                   /** @var User user_added */
+                   $model ->user_added = $user->fname.' '.$user->lname;
+                   
+                   
+                             
+                   $ticket =  Ticket::model()->findByPk($id);
+                   if (!isset($ticket))
+                   {
+                       throw new Exception("Ticket with ID: ".$id." not found", "", "");
+                   }
+                   
+                   //deduct what event type is going to be
+                   $eventType = EventType::Event_Commented_By_Mentor;
+                   if ($user->id == $ticket->creator_user_id)
+                   {
+                       $eventType = EventType::Event_Commented_By_Owner;
+                   }
 			
-			if($model->save(false))
-            {
-                /* Send Notification about the comment added to a ticket */
-                User::sendTicketCommentedEmailNotification($model->ticket_id);
-
-
-            }
+                   
+                   $trans = Yii::app()->db->beginTransaction();
+                   $saved = true;
+                   try 
+                   {
+                   
+		      $model->save(false);
+                      
+                       TicketEvents::recordEvent($eventType, 
+                                                 $id,
+                                                 NULL, 
+                                                 $model->id, 
+                                                 NULL);
+                      
+                   
+                       $trans->commit();
+                    } 
+                    catch (Exception $e) 
+                    {
+                      $trans->rollback();
+                      Yii::log("Error occurred while saving the ticket comment. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+                      $saved = false;
+                    }
+                    
+                    if ($saved)
+                    {
+                        User::sendTicketCommentedEmailNotification($model->ticket_id);
+                    }
+                   
+                   
 		}
 	}
 

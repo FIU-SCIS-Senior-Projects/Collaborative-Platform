@@ -9,7 +9,7 @@
  * @property string $ticket_id
  * @property string $event_recorded_date
  * @property string $old_value
- * @property string $new_value
+ * @property string $new_value //in the case of comment, it will hold the comment id
  * @property string $comment
  * @property string $event_performed_by_user_id
  *
