@@ -167,41 +167,47 @@ class TicketController extends Controller
             }
             
             
-            $isNewTicket = $model->isNewRecord;
-            $trans = Yii::app()->db->beginTransaction();
-            $saved = true;
-            try {
+           
+            
+            //do a validation before introducing the overgead of the transaction 
+            if ($model->validate())
+            {
+                 $isNewTicket = $model->isNewRecord;
+                 $saved = true;
+                 $trans = Yii::app()->db->beginTransaction();
                 
-               //save the ticket
-                $model->save();
-               
+                try {                    
+                    //save the ticket
+                    $model->save();               
                               
-               //save the NEW event
-               if ($isNewTicket)
-               {
+                   //save the NEW event
+                   if ($isNewTicket)
+                   {
                    
                    TicketEvents::recordEvent(EventType::Event_New, 
                                              $model->id, 
                                              NULL, 
                                              NULL, 
                                              NULL);
-               }
-                
-               $trans->commit();
-                 
-            } catch (Exception $e) {
+                    }  
+                    $trans->commit();
+                } catch (Exception $e) 
+                {
                 $trans->rollback();
                  Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
                 $saved = false;
-            }
-                        
-            if ($saved) {
-                /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                if($isNewTicket)
-                    User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
+                }
+                
+                 if ($saved) {
+                    /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+                    if($isNewTicket)
+                      User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
 
-                $this->redirect(array('view', 'id' => $model->id));
-            } 
+                   $this->redirect(array('view', 'id' => $model->id));
+                 } 
+            }
+     
+            
         }
         $this->render('create', array(
             'model' => $model,
