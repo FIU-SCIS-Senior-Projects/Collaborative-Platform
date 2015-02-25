@@ -128,7 +128,7 @@ class TicketController extends Controller
                 $model->priority_id = null;
             }
 
-            $priority_id = $model->priority_id;
+            //$priority_id = $model->priority_id;
 
             /* Populate ticket attributes */
             $model->creator_user_id = User::getCurrentUserId(); /*Get the ID of the user */
@@ -165,19 +165,50 @@ class TicketController extends Controller
             } else {
                 $model->file = '';
             }
-            $send = $model->isNewRecord;
-            if ($model->save()) {
+            
+            
+            $isNewTicket = $model->isNewRecord;
+            $trans = Yii::app()->db->beginTransaction();
+            $saved = true;
+            try {
+                
+               //save the ticket
+                $model->save();
+               
+                              
+               //save the NEW event
+               if ($isNewTicket)
+               {
+                   
+                   TicketEvents::recordEvent(EventType::Event_New, 
+                                             $model->id, 
+                                             NULL, 
+                                             NULL, 
+                                             NULL);
+               }
+                
+               $trans->commit();
+                 
+            } catch (Exception $e) {
+                $trans->rollback();
+                 Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+                $saved = false;
+            }
+                        
+            if ($saved) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                if($send)
+                if($isNewTicket)
                     User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
 
                 $this->redirect(array('view', 'id' => $model->id));
-            }
+            } 
         }
         $this->render('create', array(
             'model' => $model,
         ));
     }
+    
+    
 
     /**
      * Updates a particular model.

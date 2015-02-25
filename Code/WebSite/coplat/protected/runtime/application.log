@@ -504,3 +504,9 @@ REQUEST_URI=/coplat/index.php/invitation/confirm/22
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\User.php (337)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\User.php (853)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\InvitationController.php (82)
+2015/02/25 02:48:05 [error] [TicketController::actionCreate] Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: Ticket ID required when loggin ticket events.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (194)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/02/25 02:48:26 [error] [TicketController::actionCreate] Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: Ticket ID required when loggin ticket events.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (194)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
