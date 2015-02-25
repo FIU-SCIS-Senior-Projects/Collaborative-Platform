@@ -12,7 +12,7 @@ class EventType extends CActiveRecord
        const Event_New = 1; //this event does not record old or new values... this event only records when it was created and by whom
        const Event_Commented_By_Mentor = 5; //when commented by mentor, the ticket event should record in the new value, the comment ID for further reference
        const Event_Commented_By_Owner = 4;  //when commented by Owner, the ticket event should record in the new value, the comment ID for further reference
-       
+       const Event_Status_Changed = 2;      //when the status changes... it should be recorded the old value and the new value
        /**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.

@@ -450,10 +450,78 @@ class TicketController extends Controller
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
         //$old_mentor = $model->assign_user_id;
-        if (isset($_POST['Ticket']['status'])) {
+              
+        
+         if (isset($_POST['Ticket']['status'])) 
+         {
             $newStatus = $_POST['Ticket']['status'];
-            //$model->attributes = $_POST['Ticket'];
-            if ($newStatus == 0) {
+            
+            $oldStatus = $model->status;
+            $eventType = EventType::Event_Status_Changed;
+            
+            
+            //prepare the model according to the status
+             if ($newStatus == 0) {
+                  $model->status = Ticket::Status_Close;
+                  $model->closed_date = new CDbExpression('NOW()');
+             } elseif ($newStatus == 1) {
+                  $model->status = Ticket::Status_Reject;
+             }            
+             
+             //save the canges
+             $saved = true;
+             $trans = Yii::app()->db->beginTransaction();
+                
+                try {                    
+                    //save the ticket
+                    $model->save();               
+                              
+                    //save the NEW event
+                    TicketEvents::recordEvent($eventType, 
+                                              $model->id,
+                                              $oldStatus, 
+                                              $model->status, 
+                                              NULL);
+                   
+                    $trans->commit();
+                } catch (Exception $e) 
+                {
+                  $trans->rollback();
+                  Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+                  $saved = false;
+                }
+             
+             //preparae the routing etc
+             if ($saved)
+             {
+                   if (User::isCurrentUserAdmin()) {
+                        $response['url'] = "/coplat/index.php/home/adminHome";
+                    } else {
+                        $response['url'] = "/coplat/index.php/home/userHome";
+                    }
+                    
+                   if ($model->status == Ticket::Status_Close)
+                   {
+                    //mentor notification
+                    $mentor_id = $model->assign_user_id;
+                    $mentor = User::model()->findByPk($mentor_id);
+                    $mentorfullName = $mentor->fname.' '.$mentor->lname;
+                    User::sendNotification( $mentor->email,"Ticket #" . $model->id . " has been closed.", "Ticket #" . $model->id . " has been closed." , $mentorfullName);
+                   }elseif ($model->status == Ticket::Status_Reject && !User::isCurrentUserAdmin())
+                   {
+                       $this->actionTicketRejectedAdminAlert(User::model()->getCurrentUserId(), $model->id);
+                   }
+             }
+             else
+             {
+                $response['url'] = "/coplat/index.php/home/userHome";
+             }
+             
+             echo json_encode($response);
+             exit();
+         }              
+         
+           /* if ($newStatus == 0) {
                 $model->status = 'Close';
                 $model->closed_date = new CDbExpression('NOW()');
                 if ($model->save()) {
@@ -493,7 +561,7 @@ class TicketController extends Controller
                 echo json_encode($response);
                 exit();
             }
-        }
+        }*/
 
     }
 

@@ -69,7 +69,7 @@ class CommentController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Comment']))
+		if(isset($_POST['Comment']) && $_POST['Comment']['description'] <> "" )
 		{
                    //Collect the model
                    $model-> description = $_POST['Comment']['description'];
