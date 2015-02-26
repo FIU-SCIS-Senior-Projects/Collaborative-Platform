@@ -102,7 +102,10 @@
         <br/>
         <!-- Button trigger modal Reassign -->
         <?php
-        if ( (User::isCurrentUserAdmin() && $model->status == 'Pending') || (User::isCurrentUserDomMentor() && $model->status == 'Pending' && $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId()== $model->assign_user_id  && User::getCurrentUserId() != $model->creator_user_id ))
+        if ( (User::isCurrentUserAdmin() && $model->status == 'Pending') || 
+              (User::isCurrentUserDomMentor() && $model->status == 'Pending' && 
+               $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId()== $model->assign_user_id  && 
+               User::getCurrentUserId() != $model->creator_user_id ))
         {
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Re Assign',
@@ -182,6 +185,40 @@
             ?>
         </table>
     </div>
+    
+     <div class="container" style="width: 800px; margin-left: 0px; overflow-y: scroll">
+        <div style="color: #0044cc"><h3>Events</h3></div>
+        <br>
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-fixed-header"
+               id="example"
+               width="100%">
+            <thead class="header">
+            <tr style="background-color: #EEE">
+                <th width="1%"> No</th>
+                <th width="14%">Event Date</th>
+                <th width="30%">Description</th>
+                <th width="15%">Performed by</th>
+            </tr>
+            </thead>
+            <?php foreach ($model->ticketEvents as $event) {
+                ?>
+                <tbody>
+                <tr>
+                    <td><?php echo $event->id; ?></td>
+                    <td><?php echo date("M d, Y", strtotime($event->event_recorded_date)) ?></td>
+                    <td><?php echo $event->getEventDescription() ?></td>                    
+                    <td><?php echo $event->eventPerformedByUser->getFullName() ?></td>
+                </tr>
+                </tbody>
+            <?php
+            }
+            ?>
+        </table>
+    </div>
+    
+    
+    
+    
     <!-- End List of Comments -->
 </div> <!-- END FULL CONTENT -->
 <!-- End List of Comments -->
@@ -258,7 +295,8 @@
                 <input style ="display:none" type = "text" id = "file" value='<?php /*echo $model->file;*/ ?>'</input> -->
         <?php
         //Logic to identified is a subdomain is being specified
-        $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE activated =:activated and (isAdmin =:isAdmin or isDomMentor=:isDomMentor and id!=:userid)", array(':activated' => 1, ':isAdmin' => 1, ':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
+        $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE activated =:activated and (isAdmin =:isAdmin or isDomMentor=:isDomMentor and id!=:userid)", 
+                                                 array(':activated' => 1, ':isAdmin' => 1, ':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
         $data = array();
         //tito
         foreach ($userDomain as $mod) {
