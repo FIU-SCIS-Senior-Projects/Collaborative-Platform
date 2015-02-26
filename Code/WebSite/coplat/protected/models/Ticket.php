@@ -28,9 +28,14 @@
  * @property Domain $domain
  * @property Subdomain $subdomain
  * @property Priority $priority
+ * @property TicketEvents[] $ticketEvents
  */
 class Ticket extends CActiveRecord
 {
+    
+    const Status_Close = 'Close';
+    const Status_Reject ='Reject';
+    const Status_Pending = 'Pending';
 
     public $creatorName;
     public $assignedName;
@@ -90,6 +95,7 @@ class Ticket extends CActiveRecord
 			'domain' => array(self::BELONGS_TO, 'Domain', 'domain_id'),
 			'subdomain' => array(self::BELONGS_TO, 'Subdomain', 'subdomain_id'),
 			'priority' => array(self::BELONGS_TO, 'Priority', 'priority_id'),
+                        'ticketEvents' => array(self::HAS_MANY, 'TicketEvents', 'ticket_id')
 		);
 	}
 

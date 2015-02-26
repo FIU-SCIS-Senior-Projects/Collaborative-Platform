@@ -128,7 +128,7 @@ class TicketController extends Controller
                 $model->priority_id = null;
             }
 
-            $priority_id = $model->priority_id;
+            //$priority_id = $model->priority_id;
 
             /* Populate ticket attributes */
             $model->creator_user_id = User::getCurrentUserId(); /*Get the ID of the user */
@@ -165,19 +165,56 @@ class TicketController extends Controller
             } else {
                 $model->file = '';
             }
-            $send = $model->isNewRecord;
-            if ($model->save()) {
-                /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
-                if($send)
-                    User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
+            
+            
+           
+            
+            //do a validation before introducing the overgead of the transaction 
+            if ($model->validate())
+            {
+                 $isNewTicket = $model->isNewRecord;
+                 $saved = true;
+                 $trans = Yii::app()->db->beginTransaction();
+                
+                try {                    
+                    //save the ticket
+                    $model->save();               
+                              
+                   //save the NEW event
+                   if ($isNewTicket)
+                   {
+                   
+                   TicketEvents::recordEvent(EventType::Event_New, 
+                                             $model->id, 
+                                             NULL, 
+                                             NULL, 
+                                             NULL);
+                    }  
+                    $trans->commit();
+                } catch (Exception $e) 
+                {
+                $trans->rollback();
+                 Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+                $saved = false;
+                }
+                
+                 if ($saved) {
+                    /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+                    if($isNewTicket)
+                      User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
 
-                $this->redirect(array('view', 'id' => $model->id));
+                   $this->redirect(array('view', 'id' => $model->id));
+                 } 
             }
+     
+            
         }
         $this->render('create', array(
             'model' => $model,
         ));
     }
+    
+    
 
     /**
      * Updates a particular model.
@@ -188,6 +225,7 @@ class TicketController extends Controller
        //tito
     public function actionReassign($id)//when mentors select in assign: automatically reassignment
     {
+        //first load the ticket from the DB in order to extract the old mentor and to make an update
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
@@ -195,9 +233,11 @@ class TicketController extends Controller
         $old_mentor = $model->assign_user_id;
 
         if (isset($_POST['Ticket'])) {
+            
+            
+            //begin collecting all the data
             $model->attributes = $_POST['Ticket'];
 
-            //tito
             $systemID = User::model()->findBySql("SELECT * from user  WHERE username=:id", array(":id" => 'SYSTEM'));
             if($model->assign_user_id == $systemID->id){
 
@@ -214,16 +254,54 @@ class TicketController extends Controller
                 }
             }
 
-            $response = array();
+            $recordStatusChangeFromRejectToPending = false;
             /*Change the status of the ticket to Pending from Reject */
-            if($model->status = 'Reject'){
-                $model->status = 'Pending';
+            if($model->status == Ticket::Status_Reject){
+                $model->status = Ticket::Status_Pending;
+                $recordStatusChangeFromRejectToPending = true;
             }
-
-
             $model->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
-
-            if ($model->save()) {
+            
+            
+             //Save all the ticket with it's transactions
+             $saved = true;
+             $trans = Yii::app()->db->beginTransaction();
+             try 
+             {
+                 //save the ticket
+                 $model->save();
+                 
+                 //save the Reassign event
+                 TicketEvents::recordEvent(EventType::Event_AssignedOrReasignedToUser, 
+                                           $model->id,
+                                           $old_mentor, 
+                                           $model->assign_user_id, 
+                                           NULL);
+                 
+                 
+                 if ($recordStatusChangeFromRejectToPending)
+                 {
+                     TicketEvents::recordEvent(EventType::Event_Status_Changed, 
+                                               $model->id,
+                                               Ticket::Status_Reject, 
+                                               Ticket::Status_Pending, 
+                                               NULL);                    
+                 }
+                                 
+                 
+                 $trans->commit();
+             } 
+             catch (Exception $e) 
+             {
+              $trans->rollback();
+              Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+              $saved = false;
+            }
+            
+            
+            //prepare the response
+            $response = array();             
+            if ($saved) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
                 User::sendStatusReassignedEmailNotificationToOldMentor($model->id, $old_mentor, User::model()->getCurrentUserId());
 
@@ -413,10 +491,77 @@ class TicketController extends Controller
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
         //$old_mentor = $model->assign_user_id;
-        if (isset($_POST['Ticket']['status'])) {
+              
+        
+         if (isset($_POST['Ticket']['status'])) 
+         {
             $newStatus = $_POST['Ticket']['status'];
-            //$model->attributes = $_POST['Ticket'];
-            if ($newStatus == 0) {
+            
+            $oldStatus = $model->status;
+                      
+            
+            //prepare the model according to the status
+             if ($newStatus == 0) {
+                  $model->status = Ticket::Status_Close;
+                  $model->closed_date = new CDbExpression('NOW()');
+             } elseif ($newStatus == 1) {
+                  $model->status = Ticket::Status_Reject;
+             }            
+             
+             //save the canges
+             $saved = true;
+             $trans = Yii::app()->db->beginTransaction();
+                
+                try {                    
+                    //save the ticket
+                    $model->save();               
+                              
+                    //save the NEW event
+                    TicketEvents::recordEvent(EventType::Event_Status_Changed, 
+                                              $model->id,
+                                              $oldStatus, 
+                                              $model->status, 
+                                              NULL);
+                   
+                    $trans->commit();
+                } catch (Exception $e) 
+                {
+                  $trans->rollback();
+                  Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+                  $saved = false;
+                }
+             
+             //preparae the routing etc
+             if ($saved)
+             {
+                   if (User::isCurrentUserAdmin()) {
+                        $response['url'] = "/coplat/index.php/home/adminHome";
+                    } else {
+                        $response['url'] = "/coplat/index.php/home/userHome";
+                    }
+                    
+                   if ($model->status == Ticket::Status_Close)
+                   {
+                    //mentor notification
+                    $mentor_id = $model->assign_user_id;
+                    $mentor = User::model()->findByPk($mentor_id);
+                    $mentorfullName = $mentor->fname.' '.$mentor->lname;
+                    User::sendNotification( $mentor->email,"Ticket #" . $model->id . " has been closed.", "Ticket #" . $model->id . " has been closed." , $mentorfullName);
+                   }elseif ($model->status == Ticket::Status_Reject && !User::isCurrentUserAdmin())
+                   {
+                       $this->actionTicketRejectedAdminAlert(User::model()->getCurrentUserId(), $model->id);
+                   }
+             }
+             else
+             {
+                $response['url'] = "/coplat/index.php/home/userHome";
+             }
+             
+             echo json_encode($response);
+             exit();
+         }              
+         
+           /* if ($newStatus == 0) {
                 $model->status = 'Close';
                 $model->closed_date = new CDbExpression('NOW()');
                 if ($model->save()) {
@@ -456,7 +601,7 @@ class TicketController extends Controller
                 echo json_encode($response);
                 exit();
             }
-        }
+        }*/
 
     }
 
@@ -589,33 +734,81 @@ class TicketController extends Controller
         }
         if (!$sub)  $modelNew->assign_user_id = User::escalateTicket($model->domain_id, $sub);
         else $modelNew->assign_user_id = User::escalateTicket($model->subdomain_id, $sub);
+        
+         $saved = true;
+         $trans = Yii::app()->db->beginTransaction();
+         
+         try 
+         {
+             $saved = $modelNew->save();
+             
+             $sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) SELECT description, added_date,' . $modelNew->id . ', user_added FROM comment WHERE ticket_id =' . $model->id;
+             $command = Yii::app()->db->createCommand($sql);
+             $command->execute();
+             
+             //generate the escalated events
+             TicketEvents::recordEvent(EventType::Event_Escalated_To, 
+                                       $model->id,
+                                       NULL, 
+                                       $modelNew->id, //refrence to the new ticket
+                                       NULL);
+             
+             //generate the new event
+             TicketEvents::recordEvent(EventType::Event_New, 
+                                       $modelNew->id, 
+                                       NULL, 
+                                       NULL, 
+                                       NULL);
+             
+             //generate the escalated events
+             TicketEvents::recordEvent(EventType::Event_Escalated_From,
+                                       $modelNew->id, 
+                                       $model->id, 
+                                       NULL, 
+                                       NULL);
+                                 
+              
+             
+             $trans->commit();
+         }catch (Exception $e) 
+        {
+                $trans->rollback();
+                Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+                $saved = false;
+        }
+        
 
         //$send = $modelNew->isNewRecord;
-        if ($modelNew->save()) {
+        if ($saved) 
+        {
             /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
             // if($send)
-            User::sendTicketAssignedEmailNotification($modelNew->creator_user_id,$modelNew->assign_user_id, $modelNew->domain_id);
+            User::sendTicketAssignedEmailNotification($modelNew->creator_user_id,
+                                                      $modelNew->assign_user_id,
+                                                      $modelNew->domain_id);
 
             // $this->redirect(array('view', 'id' => $modelNew->id));
+
+            //copy all the comments from the old ticket to the new ticket
+           
+
+            //this has been substituted here for a change of status
+          /*  $sql2 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $model->id . ', "System")';
+            $command2 = Yii::app()->db->createCommand($sql2);
+            $command2->execute();
+
+            $sql3 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $modelNew->id . ', "System")';
+            $command3 = Yii::app()->db->createCommand($sql3);
+            $command3->execute();*/
+
+
+            $response = array();
+            $response['url'] = "/coplat/index.php/home/userHome";
+
+
+            echo json_encode($response);
+            exit();
         }
-
-        $sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) SELECT description, added_date,' . $modelNew->id . ', user_added FROM comment WHERE ticket_id =' . $model->id;
-        $command = Yii::app()->db->createCommand($sql);
-        $command->execute();
-
-        $sql2 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $model->id . ', "System")';
-        $command2 = Yii::app()->db->createCommand($sql2);
-        $command2->execute();
-
-        $sql3 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $modelNew->id . ', "System")';
-        $command3 = Yii::app()->db->createCommand($sql3);
-        $command3->execute();
-
-
-        $response = array();
-        $response['url'] = "/coplat/index.php/home/userHome";
-        echo json_encode($response);
-        exit();
     }
 
 
