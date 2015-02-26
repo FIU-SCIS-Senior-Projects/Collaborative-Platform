@@ -89,13 +89,13 @@ class Ticket extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'comments' => array(self::HAS_MANY, 'Comment', 'ticket_id'),
+			'comments' => array(self::HAS_MANY, 'Comment', 'ticket_id', 'order'=>'added_date DESC'),
 			'creatorUser' => array(self::BELONGS_TO, 'User', 'creator_user_id'),
 			'assignUser' => array(self::BELONGS_TO, 'User', 'assign_user_id'),
 			'domain' => array(self::BELONGS_TO, 'Domain', 'domain_id'),
 			'subdomain' => array(self::BELONGS_TO, 'Subdomain', 'subdomain_id'),
 			'priority' => array(self::BELONGS_TO, 'Priority', 'priority_id'),
-                        'ticketEvents' => array(self::HAS_MANY, 'TicketEvents', 'ticket_id')
+                        'ticketEvents' => array(self::HAS_MANY, 'TicketEvents', 'ticket_id', 'order'=>'event_recorded_date DESC')
 		);
 	}
 

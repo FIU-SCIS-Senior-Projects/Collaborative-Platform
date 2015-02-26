@@ -154,5 +154,55 @@ class TicketEvents extends CActiveRecord
             return $resEvent;
         }
         
+        public function getEventDescription()
+        {
+            $description =  '';
+            
+            switch ($this->event_type_id)
+            {
+                case EventType::Event_New:
+                    $description = 'Ticket created.';
+                    break;
+                
+                case EventType::Event_Status_Changed:
+                    $description = 'Event status changed from '. $this->old_value.' to '.$this->new_value;
+                    break;
+                
+                case EventType::Event_AssignedOrReasignedToUser:
+                    
+                    $oldUser = User::model()->findByPk($this->old_value);
+                    $oldUserName = '';
+                    if (isset($oldUser))
+                       $oldUserName = $oldUser->getFullName();
+                    
+                    $newUser = User::model()->findByPk($this->new_value);
+                    $newUserName = '';
+                    if (isset($newUser))
+                        $newUserName = $newUser->getFullName();
+                    $description = 'Event reasigned from user: '.$oldUserName.' to user: '.$newUserName ;
+                    break;
+                
+                case EventType::Event_Commented_By_Owner:
+                    $description = 'Event commented by owner. Comment #'.$this->new_value.'.';
+                    break;
+                    
+                case EventType::Event_Commented_By_Mentor:
+                    $description = 'Event commented by mentor. Comment #'.$this->new_value.'.';
+                    break;
+                    
+                case EventType::Event_Escalated_To:
+                    $description = 'Event escalated to ticket #'.$this->new_value.'.';
+                    break;
+                    
+                case EventType::Event_Escalated_From:
+                    $description = 'Event escalated from ticket #'.$this->old_value.'.';
+                    break;
+                        
+                
+            }
+                           
+            return $description;
+        }
+        
         
 }
