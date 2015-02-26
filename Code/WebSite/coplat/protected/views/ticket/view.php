@@ -185,6 +185,40 @@
             ?>
         </table>
     </div>
+    
+     <div class="container" style="width: 800px; margin-left: 0px; overflow-y: scroll">
+        <div style="color: #0044cc"><h3>Events</h3></div>
+        <br>
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-fixed-header"
+               id="example"
+               width="100%">
+            <thead class="header">
+            <tr style="background-color: #EEE">
+                <th width="1%"> No</th>
+                <th width="14%">Event Date</th>
+                <th width="30%">Description</th>
+                <th width="15%">Performed by</th>
+            </tr>
+            </thead>
+            <?php foreach ($model->ticketEvents as $event) {
+                ?>
+                <tbody>
+                <tr>
+                    <td><?php echo $event->id; ?></td>
+                    <td><?php echo date("M d, Y", strtotime($event->event_recorded_date)) ?></td>
+                    <td><?php echo $event->getEventDescription() ?></td>                    
+                    <td><?php echo $event->eventPerformedByUser->getFullName() ?></td>
+                </tr>
+                </tbody>
+            <?php
+            }
+            ?>
+        </table>
+    </div>
+    
+    
+    
+    
     <!-- End List of Comments -->
 </div> <!-- END FULL CONTENT -->
 <!-- End List of Comments -->
