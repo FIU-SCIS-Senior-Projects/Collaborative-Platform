@@ -7,6 +7,7 @@ class VideoConferenceController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+    //public $layout='//layouts/videoconference';
 
 	/**
 	 * @return array action filters
@@ -32,7 +33,7 @@ class VideoConferenceController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','join'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -55,6 +56,17 @@ class VideoConferenceController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+
+    /**
+     *
+     */
+
+    public function actionJoin($id){
+        $this->render('join',array(
+            'model'=>$this->loadModel($id),
+        ));
+    }
+
 
 	/**
 	 * Creates a new model.
