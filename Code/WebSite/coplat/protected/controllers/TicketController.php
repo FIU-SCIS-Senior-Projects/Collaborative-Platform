@@ -225,6 +225,7 @@ class TicketController extends Controller
        //tito
     public function actionReassign($id)//when mentors select in assign: automatically reassignment
     {
+        //first load the ticket from the DB in order to extract the old mentor and to make an update
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
@@ -232,9 +233,11 @@ class TicketController extends Controller
         $old_mentor = $model->assign_user_id;
 
         if (isset($_POST['Ticket'])) {
+            
+            
+            //begin collecting all the data
             $model->attributes = $_POST['Ticket'];
 
-            //tito
             $systemID = User::model()->findBySql("SELECT * from user  WHERE username=:id", array(":id" => 'SYSTEM'));
             if($model->assign_user_id == $systemID->id){
 
@@ -251,16 +254,54 @@ class TicketController extends Controller
                 }
             }
 
-            $response = array();
+            $recordStatusChangeFromRejectToPending = false;
             /*Change the status of the ticket to Pending from Reject */
-            if($model->status = 'Reject'){
-                $model->status = 'Pending';
+            if($model->status == Ticket::Status_Reject){
+                $model->status = Ticket::Status_Pending;
+                $recordStatusChangeFromRejectToPending = true;
             }
-
-
             $model->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
-
-            if ($model->save()) {
+            
+            
+             //Save all the ticket with it's transactions
+             $saved = true;
+             $trans = Yii::app()->db->beginTransaction();
+             try 
+             {
+                 //save the ticket
+                 $model->save();
+                 
+                 //save the Reassign event
+                 TicketEvents::recordEvent(EventType::Event_AssignedOrReasignedToUser, 
+                                           $model->id,
+                                           $old_mentor, 
+                                           $model->assign_user_id, 
+                                           NULL);
+                 
+                 
+                 if ($recordStatusChangeFromRejectToPending)
+                 {
+                     TicketEvents::recordEvent(EventType::Event_Status_Changed, 
+                                               $model->id,
+                                               Ticket::Status_Reject, 
+                                               Ticket::Status_Pending, 
+                                               NULL);                    
+                 }
+                                 
+                 
+                 $trans->commit();
+             } 
+             catch (Exception $e) 
+             {
+              $trans->rollback();
+              Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+              $saved = false;
+            }
+            
+            
+            //prepare the response
+            $response = array();             
+            if ($saved) {
                 /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
                 User::sendStatusReassignedEmailNotificationToOldMentor($model->id, $old_mentor, User::model()->getCurrentUserId());
 

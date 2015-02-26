@@ -35,6 +35,7 @@ class Ticket extends CActiveRecord
     
     const Status_Close = 'Close';
     const Status_Reject ='Reject';
+    const Status_Pending = 'Pending';
 
     public $creatorName;
     public $assignedName;
