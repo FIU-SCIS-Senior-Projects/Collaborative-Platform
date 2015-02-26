@@ -14,6 +14,8 @@ class EventType extends CActiveRecord
        const Event_Commented_By_Owner = 4;  //when commented by Owner, the ticket event should record in the new value, the comment ID for further reference
        const Event_Status_Changed = 2;      //when the status changes... it should be recorded the old value and the new value
        const Event_AssignedOrReasignedToUser = 3; //when the ticket is reasigned we just record the old mentor in the old value and the new mentor in the new value
+       const Event_Escalated_To = 6; //when the event is escalated, to another ticket
+       const Event_Escalated_From = 7; //when the event is escalated from another tikcet
        
        /**
 	 * Returns the static model of the specified AR class.

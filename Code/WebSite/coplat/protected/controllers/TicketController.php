@@ -498,8 +498,7 @@ class TicketController extends Controller
             $newStatus = $_POST['Ticket']['status'];
             
             $oldStatus = $model->status;
-            $eventType = EventType::Event_Status_Changed;
-            
+                      
             
             //prepare the model according to the status
              if ($newStatus == 0) {
@@ -518,7 +517,7 @@ class TicketController extends Controller
                     $model->save();               
                               
                     //save the NEW event
-                    TicketEvents::recordEvent($eventType, 
+                    TicketEvents::recordEvent(EventType::Event_Status_Changed, 
                                               $model->id,
                                               $oldStatus, 
                                               $model->status, 
@@ -735,33 +734,81 @@ class TicketController extends Controller
         }
         if (!$sub)  $modelNew->assign_user_id = User::escalateTicket($model->domain_id, $sub);
         else $modelNew->assign_user_id = User::escalateTicket($model->subdomain_id, $sub);
+        
+         $saved = true;
+         $trans = Yii::app()->db->beginTransaction();
+         
+         try 
+         {
+             $saved = $modelNew->save();
+             
+             $sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) SELECT description, added_date,' . $modelNew->id . ', user_added FROM comment WHERE ticket_id =' . $model->id;
+             $command = Yii::app()->db->createCommand($sql);
+             $command->execute();
+             
+             //generate the escalated events
+             TicketEvents::recordEvent(EventType::Event_Escalated_To, 
+                                       $model->id,
+                                       NULL, 
+                                       $modelNew->id, //refrence to the new ticket
+                                       NULL);
+             
+             //generate the new event
+             TicketEvents::recordEvent(EventType::Event_New, 
+                                       $modelNew->id, 
+                                       NULL, 
+                                       NULL, 
+                                       NULL);
+             
+             //generate the escalated events
+             TicketEvents::recordEvent(EventType::Event_Escalated_From,
+                                       $modelNew->id, 
+                                       $model->id, 
+                                       NULL, 
+                                       NULL);
+                                 
+              
+             
+             $trans->commit();
+         }catch (Exception $e) 
+        {
+                $trans->rollback();
+                Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+                $saved = false;
+        }
+        
 
         //$send = $modelNew->isNewRecord;
-        if ($modelNew->save()) {
+        if ($saved) 
+        {
             /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
             // if($send)
-            User::sendTicketAssignedEmailNotification($modelNew->creator_user_id,$modelNew->assign_user_id, $modelNew->domain_id);
+            User::sendTicketAssignedEmailNotification($modelNew->creator_user_id,
+                                                      $modelNew->assign_user_id,
+                                                      $modelNew->domain_id);
 
             // $this->redirect(array('view', 'id' => $modelNew->id));
+
+            //copy all the comments from the old ticket to the new ticket
+           
+
+            //this has been substituted here for a change of status
+          /*  $sql2 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $model->id . ', "System")';
+            $command2 = Yii::app()->db->createCommand($sql2);
+            $command2->execute();
+
+            $sql3 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $modelNew->id . ', "System")';
+            $command3 = Yii::app()->db->createCommand($sql3);
+            $command3->execute();*/
+
+
+            $response = array();
+            $response['url'] = "/coplat/index.php/home/userHome";
+
+
+            echo json_encode($response);
+            exit();
         }
-
-        $sql = 'INSERT INTO comment(description, added_date, ticket_id, user_added) SELECT description, added_date,' . $modelNew->id . ', user_added FROM comment WHERE ticket_id =' . $model->id;
-        $command = Yii::app()->db->createCommand($sql);
-        $command->execute();
-
-        $sql2 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $model->id . ', "System")';
-        $command2 = Yii::app()->db->createCommand($sql2);
-        $command2->execute();
-
-        $sql3 = 'INSERT INTO comment(description, added_date, ticket_id, user_added) VALUES ("Ticket ' . $model->id . ' was escalated to ticket '. $modelNew->id . '" , ' . $modelNew->created_date. ',' . $modelNew->id . ', "System")';
-        $command3 = Yii::app()->db->createCommand($sql3);
-        $command3->execute();
-
-
-        $response = array();
-        $response['url'] = "/coplat/index.php/home/userHome";
-        echo json_encode($response);
-        exit();
     }
 
 
