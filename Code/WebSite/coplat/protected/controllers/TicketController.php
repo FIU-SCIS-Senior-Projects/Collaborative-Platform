@@ -68,6 +68,8 @@ class TicketController extends Controller
      */
     public function actionView($id)
     {
+        
+        
         /*Retrieve ticket Details */
         $ticket = Ticket::model()->findByPk($id);
         /*Retrieve the names for each ticket */
@@ -81,12 +83,38 @@ class TicketController extends Controller
         {
             $subdomainName = Subdomain::model()->findBySql("SELECT * from subdomain  WHERE id=:id", array(":id" => $ticket->subdomain_id));
             $tier = UserDomain::model()->findBySql("SELECT * from user_domain WHERE user_id =:id and domain_id =:id2 and subdomain_id =:id3", array(":id" => $ticket->assign_user_id, ":id2" => $ticket->domain_id, ":id3" => $ticket->subdomain_id));
-
         }
+        
+            
+              
+        
         $this->render('view', array(
             'model' => $this->loadModel($id), /*Return all the ticket details */
             'userCreator' => $userCreator, 'userAssign' => $userAssign, 'domainName' => $domainName, 'subdomainName' => $subdomainName, 'priority' => $priority, 'tier' =>$tier
         ));
+        
+        
+       if (!Yii::app()->request->isPostRequest && !Yii::app()->request->isAjaxRequest)  
+       {
+           $curentUserID = User::getCurrentUserId();
+              
+           if ($ticket->creator_user_id == $curentUserID)
+           {
+              TicketEvents::recordEvent(EventType::Event_Opened_By_Owner, 
+                                        $ticket->id, 
+                                        NULL, 
+                                        NULL, 
+                                        NULL);             
+           }elseif ($ticket->assign_user_id == $curentUserID)
+           {
+                TicketEvents::recordEvent(EventType::Event_Opened_By_Mentor, 
+                                          $ticket->id, 
+                                          NULL, 
+                                          NULL, 
+                                          NULL); 
+           }   
+       }
+        
     }
 
     /**
