@@ -165,7 +165,7 @@ class TicketEvents extends CActiveRecord
                     break;
                 
                 case EventType::Event_Status_Changed:
-                    $description = 'Event status changed from '. $this->old_value.' to '.$this->new_value;
+                    $description = 'Status changed from '. $this->old_value.' to '.$this->new_value;
                     break;
                 
                 case EventType::Event_AssignedOrReasignedToUser:
@@ -179,23 +179,31 @@ class TicketEvents extends CActiveRecord
                     $newUserName = '';
                     if (isset($newUser))
                         $newUserName = $newUser->getFullName();
-                    $description = 'Event reasigned from user: '.$oldUserName.' to user: '.$newUserName ;
+                    $description = 'Reasigned from user: '.$oldUserName.' to user: '.$newUserName ;
                     break;
                 
                 case EventType::Event_Commented_By_Owner:
-                    $description = 'Event commented by owner. Comment #'.$this->new_value.'.';
+                    $description = 'Commented by owner. Comment #'.$this->new_value.'.';
                     break;
                     
                 case EventType::Event_Commented_By_Mentor:
-                    $description = 'Event commented by mentor. Comment #'.$this->new_value.'.';
+                    $description = 'Commented by mentor. Comment #'.$this->new_value.'.';
                     break;
                     
                 case EventType::Event_Escalated_To:
-                    $description = 'Event escalated to ticket #'.$this->new_value.'.';
+                    $description = 'Escalated to ticket #'.$this->new_value.'.';
                     break;
                     
                 case EventType::Event_Escalated_From:
-                    $description = 'Event escalated from ticket #'.$this->old_value.'.';
+                    $description = 'Escalated from ticket #'.$this->old_value.'.';
+                    break;
+                
+                case EventType::Event_Opened_By_Owner:
+                    $description = 'Opened by Owner';
+                    break;
+                
+                case EventType::Event_Opened_By_Mentor:
+                    $description = 'Opened by Mentor';
                     break;
                         
                 

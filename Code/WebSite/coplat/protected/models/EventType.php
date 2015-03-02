@@ -16,6 +16,8 @@ class EventType extends CActiveRecord
        const Event_AssignedOrReasignedToUser = 3; //when the ticket is reasigned we just record the old mentor in the old value and the new mentor in the new value
        const Event_Escalated_To = 6; //when the event is escalated, to another ticket
        const Event_Escalated_From = 7; //when the event is escalated from another tikcet
+       const Event_Opened_By_Owner = 8; //registers if the ticket was opened by the creator
+       const Event_Opened_By_Mentor = 9; //registers if the ticket was opned by the mentor
        
        /**
 	 * Returns the static model of the specified AR class.

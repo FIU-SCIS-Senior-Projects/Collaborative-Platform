@@ -25,4 +25,6 @@ INSERT IGNORE INTO `event_type` (`id`, `description`) VALUES(4, 'Commented by ow
 INSERT IGNORE INTO `event_type` (`id`, `description`) VALUES(5, 'Commented by mentor ');
 INSERT IGNORE INTO `event_type` (`id`, `description`) VALUES(6, 'Escalated to ');
 INSERT IGNORE INTO `event_type` (`id`, `description`) VALUES(7, 'Escalated from ');
+INSERT IGNORE INTO `event_type` (`id`, `description`) VALUES(8, 'Opened by owner ');
+INSERT IGNORE INTO `event_type` (`id`, `description`) VALUES(9, 'Opened by mentor ');
 
