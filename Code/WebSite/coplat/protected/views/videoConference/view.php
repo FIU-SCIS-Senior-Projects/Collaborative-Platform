@@ -26,11 +26,6 @@ $this->menu = array(
 
 
 
-
-
-
-
-
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
@@ -40,6 +35,9 @@ $this->menu = array(
 		'scheduled_for',
 		'notes',
 	),
+
 )); ?>
+
+<a href="./join/<?php echo $model->id?>">Join Now</a>
 
 

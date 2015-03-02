@@ -45,6 +45,23 @@
 		<?php echo $form->error($model,'notes'); ?>
 	</div>
 
+    <div class="row">
+        <label for="invitee-1">Invitee</label>
+        <input type="email" class="form-control" id="invitee-1" placeholder="invitee email">
+    </div>
+
+    <div class="row">
+        <label for="invitee-1">Invitee</label>
+        <input type="email" class="form-control" id="invitee-2" placeholder="invitee email">
+    </div>
+
+    <div class="row">
+        <label for="invitee-1">Invitee</label>
+        <input type="email" class="form-control" id="invitee-3" placeholder="invitee email">
+    </div>
+
+
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
