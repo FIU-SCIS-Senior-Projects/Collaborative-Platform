@@ -173,12 +173,17 @@ class TicketEvents extends CActiveRecord
                     $oldUser = User::model()->findByPk($this->old_value);
                     $oldUserName = '';
                     if (isset($oldUser))
-                       $oldUserName = $oldUser->getFullName();
+                    {
+                         $oldUserName = $oldUser->getFullName();
+                    }                      
                     
                     $newUser = User::model()->findByPk($this->new_value);
                     $newUserName = '';
                     if (isset($newUser))
+                    {
                         $newUserName = $newUser->getFullName();
+                    }
+                        
                     $description = 'Reasigned from user: '.$oldUserName.' to user: '.$newUserName ;
                     break;
                 
@@ -199,11 +204,11 @@ class TicketEvents extends CActiveRecord
                     break;
                 
                 case EventType::Event_Opened_By_Owner:
-                    $description = 'Opened by Owner';
+                    $description = 'Viewed by Owner';
                     break;
                 
                 case EventType::Event_Opened_By_Mentor:
-                    $description = 'Opened by Mentor';
+                    $description = 'Viewed by Mentor';
                     break;
                         
                 

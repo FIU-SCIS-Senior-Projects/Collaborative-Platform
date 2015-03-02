@@ -105,7 +105,7 @@ class TicketController extends Controller
                                         NULL, 
                                         NULL, 
                                         NULL);             
-           }elseif ($ticket->assign_user_id == $curentUserID)
+           }else
            {
                 TicketEvents::recordEvent(EventType::Event_Opened_By_Mentor, 
                                           $ticket->id, 
