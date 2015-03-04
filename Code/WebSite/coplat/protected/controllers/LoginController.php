@@ -26,7 +26,7 @@ class LoginController extends Controller
 {
     /*THIS CONTROLLER ONLY HANDLES MENTEES LOGIN!!!!!!*/
     
-    private $devenv = Enviroments::cpDev;
+    private $devenv = Enviroments::localhostDev;
       
     
     
