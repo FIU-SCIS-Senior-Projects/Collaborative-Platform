@@ -25,8 +25,8 @@ Yii::app()->clientScript->registerScript('logoFix',
       ]);
 
       var options = {
-        width: 1000,
-        height: 563,
+        width: 500,
+        height: 300,
         hAxis: {
           title: 'Time of Day',
           format: 'h:mm a',
@@ -44,5 +44,49 @@ Yii::app()->clientScript->registerScript('logoFix',
     }
       ",CClientScript::POS_HEAD);
 ?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
-<div id="ex0"></div>
+
+<?php echo CHtml::beginForm();?>
+
+<style>
+    .dashItem{border:1px solid #666;}    
+</style>
+
+<table >
+    <tr>
+        <td class="dashItem">            
+            <div id="ex0"></div>
+            <table>
+                <tr>
+                    <td><?php echo CHtml::activeLabel($filter,'newTicketsFromDate'); ?></td>
+                    <td><?php  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                                            'model' => $filter,          
+                                            'attribute' => 'newTicketsFromDate',
+                                            'name' => 'newTicketsFromDate',
+                                            'htmlOptions'=> array("style"=>"width:77px;"),
+                                            'options' => array('dateFormat' => 'yy-mm-dd')));?>
+                    </td>
+                    <td><?php echo CHtml::activeLabel($filter,'newTicketsToDate'); ?></td>
+                    <td><?php  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                                            'model' => $filter,          
+                                            'attribute' => 'newTicketsToDate',
+                                            'name' => 'newTicketsToDate',
+                                            'htmlOptions'=> array("style"=>"width:77px;"),
+                                            'options' => array('dateFormat' => 'yy-mm-dd')));?>
+                    </td>        
+                </tr> 
+            </table> 
+        </td>
+        <td>
+            
+            
+        </td> 
+    </tr> 
+</table>
+
+
+
+
+
+<?php echo CHtml::endForm(); ?>
+
+
