@@ -59,6 +59,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                 array('label' => 'Home', 'url' => array('/'), 'visible' => !$currentUserIsGuest),           //Home menu
                 array('label' => 'Mail', 'url' => array('/message'), 'visible' => !$currentUserIsGuest),    //Message menu
                 array('label' => 'Utilization Dashboard', 'url' => array('/utilizationDashboard'), 'visible'=> $currentUserIsAdmin), //Utilization dashboard
+
                 array('label' => 'Reports', 'visible' => $currentUserIsAdmin,                                //Reports Root Menu
                     'class' => 'bootstrap.widgets.TbMenu',
                     'items' => array('-',
@@ -76,6 +77,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                         ),
 
                     )),
+                array('label' => 'Video Conference', 'url' => array('/videoConference'), 'visible'=> !$currentUserIsGuest), //Utilization dashboard
                 array('label' => 'Manage', 'visible' => !$currentUserIsGuest && $currentUserIsAdmin,         //Manage Root Menu
                     'class' => 'bootstrap.widgets.TbMenu',
                     'items' => array('-',
