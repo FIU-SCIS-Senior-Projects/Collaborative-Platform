@@ -46,23 +46,96 @@ class UtilizationDashboardFilter extends CFormModel
             return $ultilizationFilter;
         }
         
+    
+   
     public function retrieveDashboardData(&$newEvents)
     {
-       $command =  Yii::app()->db->createCommand();
+        //New event data
+      $this->retrieveEventsData($newEventData);
+       
+       $fromDate = new DateTime($this->newTicketsFromDate);
+       $toDate = new DateTime($this->newTicketsToDate);
+       
+       $dateInterval;
+       switch ($this->newTicketsCurrentDimension)
+       {
+           case DimensionType::Date:
+              $dateInterval =  new DateInterval("P1D");
+               break;            
+           case DimensionType::MonthOfTheYear:
+              $dateInterval =  new DateInterval("P1M");
+              DateUtils::resetDateToFirstDayOfTheMonth($fromDate); 
+              break;           
+           case DimensionType::Year:
+               $dateInterval =  new DateInterval("P1Y");
+               DateUtils::resetDateToFirstDayOfTheYear($fromDate); 
+               break;
+           default:
+               throw new CException("Invalid dimension");
+       }   
+       
+       $dateFormated = "";
+       $currentIndex = 0;
+       
+       if (count($newEventData)> $currentIndex)
+       {
+            $currentReading = $newEventData[0]; 
+       }           
+     
+       while ($fromDate <= $toDate)
+       { 
+          $countPart = 0; 
+          DateUtils::getDateParts($fromDate,  $year,$month, $day);
+          
+          if (isset($currentReading))
+          {
+            $currentReadingYear =  ArrayUtils::getValueOrDefault($currentReading, "Year",1);
+            $currentReadingMonth = ArrayUtils::getValueOrDefault($currentReading, "Month", 1);
+            $currentReadingDay =   ArrayUtils::getValueOrDefault($currentReading, "Day" ,1); 
+            
+            if ($year == $currentReadingYear && $month == $currentReadingMonth && $day == $currentReadingDay)
+            {
+               $countPart =  ArrayUtils::getValueOrDefault($currentReading, "EventCount",0);
+               $currentIndex++;
+               if (count($newEventData)> $currentIndex)
+               {
+                   $currentReading = $newEventData[0]; 
+               }else
+               {
+                   $currentReading = NULL;                   
+               }               
+            }
+            
+          }       
+                   
+          
+          $dateFormated = $dateFormated.sprintf('[new Date(%s, %s, %s), %s],',$year,$month,$day,$countPart);
+         
+           
+          $fromDate->add($dateInterval);
+       }
+        $newEvents = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
+       
+    }
+    
+    
+     private function retrieveEventsData(&$newEventsData)
+    {
+        $command =  Yii::app()->db->createCommand();
        
        //new tickets data
        switch ($this->newTicketsCurrentDimension)
        {
            case DimensionType::Date:
-               $command->select(array("COUNT(1) AS EventCount, ticket_events.event_recorded_date AS DateRecorded"));  
+               $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
                $command->group('DATE(ticket_events.event_recorded_date)');
                break;            
            case DimensionType::MonthOfTheYear:
-               $command->select(array("COUNT(1) AS EventCount, date_sub(ticket_events.event_recorded_date, INTERVAL DAY(ticket_events.event_recorded_date) -1 DAY) AS DateRecorded")); 
+               $command->select(array("COUNT(1) AS EventCount, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date) AS Year")); 
                $command->group('YEAR(ticket_events.event_recorded_date), MONTH(ticket_events.event_recorded_date)');
                break;           
            case DimensionType::Year:
-               $command->select(array("COUNT(1) AS EventCount, MAKEDATE(ticket_events.event_recorded_date,1)  AS DateRecorded")); 
+               $command->select(array("COUNT(1) AS EventCount, YEAR(event_recorded_date) AS Year")); 
                $command->group('YEAR(ticket_events.event_recorded_date)');
                break;
            default:
@@ -71,8 +144,12 @@ class UtilizationDashboardFilter extends CFormModel
        
        $command->from("ticket_events");
        $command->where("ticket_events.event_type_id = ".EventType::Event_New);
-       $newEvents = $command->queryAll(); 
+       //$test = $command->text;
+       $newEventsData = $command->queryAll(); 
     }
+     
+    
+    
         
         
 }

@@ -2,38 +2,28 @@
 $this->breadcrumbs=array('Utilization Dashboard');
 Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}");
 Yii::app()->clientScript->registerScript('logoFix',
-                                         "            google.load('visualization', '1', {packages: ['corechart']});
+  " google.load('visualization', '1', {packages: ['corechart']});
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {
 
       var data = new google.visualization.DataTable();
-      data.addColumn('timeofday', 'Time of Day');
-      data.addColumn('number', 'Motivation Level');
-
-      data.addRows([
-        [{v: [8, 0, 0], f: '8 am'}, 1],
-        [{v: [9, 0, 0], f: '9 am'}, 2],
-        [{v: [10, 0, 0], f:'10 am'}, 3],
-        [{v: [11, 0, 0], f: '11 am'}, 4],
-        [{v: [12, 0, 0], f: '12 pm'}, 5],
-        [{v: [13, 0, 0], f: '1 pm'}, 6],
-        [{v: [14, 0, 0], f: '2 pm'}, 7],
-        [{v: [15, 0, 0], f: '3 pm'}, 8],
-        [{v: [16, 0, 0], f: '4 pm'}, 9],
-        [{v: [17, 0, 0], f: '5 pm'}, 10],
-      ]);
-
-      var options = {
+      data.addColumn('date', 'Time of Day');
+      data.addColumn('number', 'Opened tickets');
+          
+     data.addRows(".$newEvents.") 
+     var options = {
         width: 500,
         height: 300,
+        legend: 'none',
+        title: 'Fill me',
         hAxis: {
           title: 'Time of Day',
-          format: 'h:mm a',
-          gridlines: {count: 10}
+          format: 'MMM:yyyy',
+
         },
         vAxis: {
-          title: 'Rating (scale of 1-10)'
+          title: 'Amount of tickets created'
         }
       };
 
@@ -47,14 +37,15 @@ Yii::app()->clientScript->registerScript('logoFix',
 
 <?php echo CHtml::beginForm();?>
 
-<style>
-    .dashItem{border:1px solid #666;}    
+<style> 
+    .dashItem{border:1px solid #666;} 
+    .chartCont{ overflow:auto;}
 </style>
 
 <table >
     <tr>
         <td class="dashItem">            
-            <div id="ex0"></div>
+            <div id="ex0" class="chartCont"></div>
             <table>
                 <tr>
                     <td><?php echo CHtml::activeLabel($filter,'newTicketsFromDate'); ?></td>
