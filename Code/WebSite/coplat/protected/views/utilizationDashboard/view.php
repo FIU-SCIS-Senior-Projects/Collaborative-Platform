@@ -17,15 +17,14 @@ Yii::app()->clientScript->registerScript('logoFix',
        chartWidth = data.getNumberOfRows() * 35;
       }
       data.addRows(".$newEvents."); 
-      var options = {        
+      var options = {  
         width:chartWidth,
         height: 300,
         legend: 'none',
-        title: 'Tickets created by ".UtilizationDashboardFilter::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
+        title: 'Tickets created per ".DimensionType::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
         hAxis: {
-          title: '".UtilizationDashboardFilter::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
-          format: '".UtilizationDashboardFilter::getDateFormatByDimension($filter->newTicketsCurrentDimension)."',
-
+          title: '".DimensionType::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
+          format: '".DimensionType::getDateFormatByDimension($filter->newTicketsCurrentDimension)."',
         },
         vAxis: {
           title: 'Amount of tickets created'
@@ -68,12 +67,18 @@ Yii::app()->clientScript->registerScript('logoFix',
                                             'name' => 'newTicketsToDate',
                                             'htmlOptions'=> array("style"=>"width:77px;"),
                                             'options' => array('dateFormat' => 'yy-mm-dd')));?>
-                    </td>        
+                    </td>
+                    <td><label>Time Dimension</label></td>
+                    <td><?php 
+                             echo CHtml::activeDropDownList($filter,
+                                                   'newTicketsCurrentDimension',
+                                                   DimensionType::getDimensions());?></td>
+                    
                 </tr> 
             </table> 
         </td>
         <td>
-            
+         
             
         </td> 
     </tr> 

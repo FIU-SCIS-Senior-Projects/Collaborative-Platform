@@ -4,6 +4,55 @@ class DimensionType
     const Date =1;
     const Year =2;
     const MonthOfTheYear = 3;    
+    
+    
+    public static function getDimensions()
+    {
+     return  array(DimensionType::Date  =>DimensionType::getDescriptionByDateDimension(DimensionType::Date),
+                   DimensionType::MonthOfTheYear  =>DimensionType::getDescriptionByDateDimension(DimensionType::MonthOfTheYear),
+                   DimensionType::Year  =>DimensionType::getDescriptionByDateDimension(DimensionType::Year));
+    }
+    
+    public static function getDescriptionByDateDimension($dimensionType)
+     {
+       switch ($dimensionType)
+       {
+           case DimensionType::Date:
+                   $dimensionDesc = "date";   
+               break;            
+           case DimensionType::MonthOfTheYear:
+                   $dimensionDesc = "month"; 
+               break;           
+           case DimensionType::Year:
+                  $dimensionDesc = "year"; 
+               break;
+           default:
+               throw new CException("Invalid dimension");
+       }
+       return $dimensionDesc;
+     }
+     
+     public function getDateFormatByDimension($dimensionType)
+     {
+         switch ($dimensionType)
+       {
+           case DimensionType::Date:
+                   $dimensionFormat = "dd MMM yyyy";   
+               break;            
+           case DimensionType::MonthOfTheYear:
+                   $dimensionFormat = "MMM yyyy"; 
+               break;           
+           case DimensionType::Year:
+                  $dimensionFormat = "yyyy"; 
+               break;
+           default:
+               throw new CException("Invalid dimension");
+       }
+       return $dimensionFormat;
+     }
+    
+           
+    
 }
 
 
@@ -162,43 +211,7 @@ class UtilizationDashboardFilter extends CFormModel
     }
        
     
-     public function getDescriptionByDateDimension($dimensionType)
-     {
-       switch ($dimensionType)
-       {
-           case DimensionType::Date:
-                   $dimensionDesc = "date";   
-               break;            
-           case DimensionType::MonthOfTheYear:
-                   $dimensionDesc = "month"; 
-               break;           
-           case DimensionType::Year:
-                  $dimensionDesc = "year"; 
-               break;
-           default:
-               throw new CException("Invalid dimension");
-       }
-       return $dimensionDesc;
-     }
-     
-     public function getDateFormatByDimension($dimensionType)
-     {
-         switch ($dimensionType)
-       {
-           case DimensionType::Date:
-                   $dimensionFormat = "dd MMM yyyy";   
-               break;            
-           case DimensionType::MonthOfTheYear:
-                   $dimensionFormat = "MMM yyyy"; 
-               break;           
-           case DimensionType::Year:
-                  $dimensionFormat = "yyyy"; 
-               break;
-           default:
-               throw new CException("Invalid dimension");
-       }
-       return $dimensionFormat;
-     }
+
      
      
 }
