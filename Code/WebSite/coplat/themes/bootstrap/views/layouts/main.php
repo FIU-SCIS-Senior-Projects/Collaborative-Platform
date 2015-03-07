@@ -77,7 +77,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                         ),
 
                     )),
-                array('label' => 'Video Conference', 'url' => array('/videoConference'), 'visible'=> !$currentUserIsGuest), //Utilization dashboard
+                array('label' => 'Video Conf.', 'url' => array('/videoConference'), 'visible'=> !$currentUserIsGuest), //Utilization dashboard
                 array('label' => 'Manage', 'visible' => !$currentUserIsGuest && $currentUserIsAdmin,         //Manage Root Menu
                     'class' => 'bootstrap.widgets.TbMenu',
                     'items' => array('-',

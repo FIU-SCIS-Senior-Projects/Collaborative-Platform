@@ -6,6 +6,8 @@
 
 #cotools-panel{
   margin-bottom: 25px;
+    min-height: 600px;
+    min-width: 100%;
 }
 
 .tab-filler{
@@ -16,6 +18,8 @@
 	min-width: 100%;
 	text-align: center;
 }
+
+
 .video-filler{
 	background-color: gray;
 	color: white;

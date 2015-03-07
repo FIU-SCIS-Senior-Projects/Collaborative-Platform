@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+
+	<title>Canvas Designer ® Muaz Khan</title>    
+	<meta name="description" content="HTML5 Canvas Designer ® Muaz Khan – A tool aimed to give you a full-fledged drawing surface and also auto generate appropriate code for you in different formats! Generator/Tool/Editor – 2D API/Context">
+
+	<meta name="author" content="Muaz Khan">
+	<link rel="author" type="text/html" href="https://plus.google.com/+MuazKhan">
+</head>
+<body>
+<script src="canvas-designer-widget.js"></script>
+<script src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
+<script src="https://cdn.webrtc-experiment.com/firebase.js"></script>
+
+<style>
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+input[type=text] {
+    -webkit-user-select: initial;
+    -moz-user-select: initial;
+    -o-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
+</style>
+
+<div id="widget-container" style="position: fixed;bottom: 0;right: 20%;left: 20%;height: 100%;border: 1px solid black; border-top:0; border-bottom: 0;"></div>
+
+<div id="action-controls" style="width: 19%; padding: 1%;position: absolute;left:0;">
+    <h2>Select Icons</h2>
+    <input type="checkbox" id="pencil" checked>
+    <label for="pencil">pencil</label><br>
+    
+    <input type="checkbox" id="eraser" checked>
+    <label for="eraser">eraser</label><br>
+    
+    <input type="checkbox" id="text" checked>
+    <label for="text">text</label><br>
+    
+    <input type="checkbox" id="line">
+    <label for="line">line</label><br>
+    
+    <input type="checkbox" id="dragSingle">
+    <label for="dragSingle">dragSingle</label><br>
+    
+    <input type="checkbox" id="dragMultiple">
+    <label for="dragMultiple">dragMultiple</label><br>
+    
+    <input type="checkbox" id="arc">
+    <label for="arc">arc</label><br>
+    
+    <input type="checkbox" id="rectangle">
+    <label for="rectangle">rectangle</label><br>
+    
+    <input type="checkbox" id="quadratic">
+    <label for="quadratic">quadratic</label><br>
+    
+    <input type="checkbox" id="bezier">
+    <label for="bezier">bezier</label><br><br>
+    
+    <hr>
+    <div id="hide-on-datachannel-opened">
+    You can open a private WebRTC room to sync dashboard with private users.
+    <input type="text" id="room-id" placeholder="room-id"><button id="open-room">Open</button>
+    </div>
+</div>
+
+<div style="position: fixed; right: 0; width: 19%; padding: 1%;top:0; text-align: center;">
+    <h1>Canvas Designer!</h1>
+    <h2>
+        <a href="https://github.com/muaz-khan/Canvas-Designer">This tool is Open-Sourced!</a>
+    </h2>
+    
+    Author: <a href="https://github.com/muaz-khan">Muaz Khan</a>
+    
+    <hr>
+    <h2>How to use in your own site?</h2>
+    
+    <ol style="text-align: left;">
+        <li>Take all code from <a href="https://github.com/muaz-khan/Canvas-Designer">this link</a> and upload somewhere on your site.</li>
+        <li>Target directly will be having this file: <a href="https://github.com/muaz-khan/Canvas-Designer/blob/master/canvas-designer-widget.js">canvas-designer-widget.js</a>. Link this file in your HTML/PHP page.</li>
+        <li>
+            Use this command to append widget in your HTML page:<br>
+            
+            <code>CanvasDesigner.appendTo(<br>document.documentElement<br>);</code>
+            <br><br>
+            <a href="https://github.com/muaz-khan/Canvas-Designer#how-to-use">Read more here</a>.
+        </li>
+    </ol>
+</div>
+
+<script>
+document.getElementById('open-room').onclick = function() {
+    var roomid = document.getElementById('room-id').value;
+    if(!roomid.length) return alert('Please enter roomid.');
+    
+    this.disabled = true;
+    
+    connection.channel = connection.userid = roomid;
+    connection.open({
+        dontTransmit: true,
+        sessionid: roomid
+    });
+    
+    this.parentNode.innerHTML = '<a href="#' + roomid + '" target="_blank">Please share this link</a>';
+};
+
+var connection = new RTCMultiConnection();
+connection.enableFileSharing = false;
+connection.session = {
+    data: true
+};
+connection.sdpConstraints.mandatory = {
+    OfferToReceiveAudio: false,
+    OfferToReceiveVideo: false
+};
+if(location.hash.replace('#', '').length) {
+    var roomid = location.hash.replace('#', '');
+    connection.channel = roomid;
+    connection.join({
+        userid: roomid,
+        sessionid: roomid,
+        extra: {},
+        session: connection.session
+    });
+}
+
+connection.onopen = function() {
+    document.getElementById('hide-on-datachannel-opened').style.display = 'none';
+};
+
+connection.onmessage = function(event) {
+    CanvasDesigner.syncData( event.data );
+};
+</script>
+
+<script>
+CanvasDesigner.addSyncListener(function(data) {
+    connection.send(data);
+});
+
+CanvasDesigner.setSelected('pencil');
+
+CanvasDesigner.setTools({
+    pencil: true,
+    text: true,
+    eraser: true
+});
+
+CanvasDesigner.appendTo(document.getElementById('widget-container'));
+
+Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox) {
+    checkbox.onchange = function() {
+        CanvasDesigner.destroy();
+        
+        CanvasDesigner.addSyncListener(function(data) {
+            connection.send(data);
+        });
+        
+        var tools = {};
+        Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox2) {
+            if(checkbox2.checked) {
+                tools[checkbox2.id] = true;
+            }
+        });
+        CanvasDesigner.setTools(tools);
+        CanvasDesigner.appendTo(document.getElementById('widget-container'));
+    };
+});
+</script>
+</body>
+</html>

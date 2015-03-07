@@ -21,6 +21,7 @@ $this->breadcrumbs = array(
 
 <!-- Init Site Scripts -->
 <script>
+    //hack bootstrap 2 to 3
     $(".span9:first").removeClass('span9');
 </script>
 
@@ -59,11 +60,14 @@ $this->breadcrumbs = array(
 <div class="row">
     <div class="col-md-10">
 
+
+
         <div id="cotools-panel">
+           <!--
             <div class="tab-filler">
                 <h2>Collaborative Panel</h2>
             </div>
-
+    -->
 
         </div>
 
@@ -130,7 +134,12 @@ $this->breadcrumbs = array(
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
+<!-- Remote
 <script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
+<script type='text/javascript' src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>
+-->
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/RTCMultiConnection.js"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
 
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection#1-link-the-library
@@ -139,6 +148,13 @@ $this->breadcrumbs = array(
     rmc.body = document.getElementById('video-container');
     // http://www.rtcmulticonnection.org/docs/#getExternalIceServers
     rmc.getExternalIceServers = false;
+    rmc.session = {
+        video: true,
+        audio: true,
+        data: true
+    }
+
+
     document.getElementById('open-room').onclick = function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
@@ -170,7 +186,7 @@ $this->breadcrumbs = array(
 
     document.getElementById('disconnect').onclick = function () {
         rmc.disconnect();
-    }
+    };
 
     /*
      //to know the stream type
@@ -194,6 +210,49 @@ $this->breadcrumbs = array(
      }
      };
      */
+
+    rmc.onmessage = function(event) {
+        CanvasDesigner.syncData( event.data );
+    };
+
+
+
+
+    CanvasDesigner.addSyncListener(function(data) {
+        rmc.send(data);
+    });
+
+    CanvasDesigner.setSelected('pencil');
+
+    CanvasDesigner.setTools({
+        pencil: true,
+        text: true,
+        eraser: true
+    });
+
+    CanvasDesigner.appendTo(document.getElementById('cotools-panel'));
+
+    /*
+    Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox) {
+        checkbox.onchange = function() {
+            CanvasDesigner.destroy();
+
+            CanvasDesigner.addSyncListener(function(data) {
+                connection.send(data);
+            });
+
+            var tools = {};
+            Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox2) {
+                if(checkbox2.checked) {
+                    tools[checkbox2.id] = true;
+                }
+            });
+            CanvasDesigner.setTools(tools);
+            CanvasDesigner.appendTo(document.getElementById('cotools-panel'));
+        };
+    });
+
+*/
 </script>
 
 
