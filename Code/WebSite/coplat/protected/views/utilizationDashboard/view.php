@@ -8,18 +8,23 @@ Yii::app()->clientScript->registerScript('logoFix',
     function drawChart() {
 
       var data = new google.visualization.DataTable();
-      data.addColumn('date', 'Time of Day');
-      data.addColumn('number', 'Opened tickets');
-          
-     data.addRows(".$newEvents.") 
-     var options = {
-        width: 500,
+      data.addColumn('date');
+      data.addColumn('number');
+      
+      var chartWidth = 500;
+      if (data.getNumberOfRows() > 15)
+      {
+       chartWidth = data.getNumberOfRows() * 35;
+      }
+      data.addRows(".$newEvents."); 
+      var options = {        
+        width:chartWidth,
         height: 300,
         legend: 'none',
-        title: 'Fill me',
+        title: 'Tickets created by ".UtilizationDashboardFilter::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
         hAxis: {
-          title: 'Time of Day',
-          format: 'MMM:yyyy',
+          title: '".UtilizationDashboardFilter::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
+          format: '".UtilizationDashboardFilter::getDateFormatByDimension($filter->newTicketsCurrentDimension)."',
 
         },
         vAxis: {
@@ -39,7 +44,7 @@ Yii::app()->clientScript->registerScript('logoFix',
 
 <style> 
     .dashItem{border:1px solid #666;} 
-    .chartCont{ overflow:auto;}
+    .chartCont{ overflow:auto; width:500px;}
 </style>
 
 <table >
