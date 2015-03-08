@@ -32,7 +32,7 @@ class DimensionType
        return $dimensionDesc;
      }
      
-     public function getDateFormatByDimension($dimensionType)
+     public static function getDateFormatByDimension($dimensionType)
      {
          switch ($dimensionType)
        {
@@ -79,19 +79,21 @@ class UtilizationDashboardFilter extends CFormModel
     {
 		return array(
 			'newTicketsFromDate' => 'From',
-			'newTicketsToDate' => 'To');
+			'newTicketsToDate' => 'To',
+            'newTicketsDomainID' => 'Domain',
+            'newTicketsSubDomainID'=>'Sub Domain'   );
     }
     
     public static function initializeFilters()
     {
             $date = new DateTime();
-            date_sub($date, new DateInterval("P1Y"));
+		    date_sub($date, new DateInterval("P1Y"));
             
             //Initialize the filter model
             $ultilizationFilter = new UtilizationDashboardFilter();
             $ultilizationFilter->newTicketsCurrentDimension = DimensionType::MonthOfTheYear;
             $ultilizationFilter->newTicketsToDate = date('m/d/Y');// date("m/d/y");
-            $ultilizationFilter->newTicketsFromDate =  $date->format('m/d/Y');
+		    $ultilizationFilter->newTicketsFromDate =  $date->format('m/d/Y');
             return $ultilizationFilter;
         }
         

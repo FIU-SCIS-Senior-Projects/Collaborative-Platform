@@ -11,7 +11,7 @@ Yii::app()->clientScript->registerScript('logoFix',
       data.addColumn('date');
       data.addColumn('number');
       
-      var chartWidth = 500;
+      var chartWidth = 600;
       if (data.getNumberOfRows() > 15)
       {
        chartWidth = data.getNumberOfRows() * 35;
@@ -21,6 +21,7 @@ Yii::app()->clientScript->registerScript('logoFix',
         width:chartWidth,
         height: 300,
         legend: 'none',
+		bar: {groupWidth: 10},
         title: 'Tickets created per ".DimensionType::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
         hAxis: {
           title: '".DimensionType::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
@@ -38,56 +39,83 @@ Yii::app()->clientScript->registerScript('logoFix',
     }
       ",CClientScript::POS_HEAD);
 ?>
-
-<?php echo CHtml::beginForm();?>
-
 <style> 
-    .dashItem{border:1px solid #666;} 
-    .chartCont{ overflow:auto; width:500px;}
+     form {width:100%}
+    .dashItem{border:1px solid #666; height:100%} 
+    .chartCont{ overflow:auto; width:630px; height:100%}
 </style>
 
-<table >
-    <tr>
-        <td class="dashItem">            
-            <div id="ex0" class="chartCont"></div>
+<?php echo CHtml::beginForm();?>
+     <div class="dashItem">             
             <table>
-                <tr>
-                    <td><?php echo CHtml::activeLabel($filter,'newTicketsFromDate'); ?></td>
-                    <td><?php  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                <td>
+                    <div id="ex0" class="chartCont"></div>
+                </td>
+                <td>
+                   <table>
+					   <tr>
+                          <td>
+                               <?php echo CHtml::activeLabel($filter,'newTicketsFromDate');
+   							         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                             'model' => $filter,          
                                             'attribute' => 'newTicketsFromDate',
                                             'name' => 'newTicketsFromDate',
-                                            'htmlOptions'=> array("style"=>"width:77px;"),
-                                            'options' => array('dateFormat' => 'yy-mm-dd')));?>
-                    </td>
-                    <td><?php echo CHtml::activeLabel($filter,'newTicketsToDate'); ?></td>
-                    <td><?php  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                                            'htmlOptions'=> array('submit'=>'')));
+							   ?>
+                           </td>                            
+                        </tr>
+						<tr>
+						   <td>
+                            <?php echo CHtml::activeLabel($filter,'newTicketsToDate'); 
+  							      $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                             'model' => $filter,          
                                             'attribute' => 'newTicketsToDate',
                                             'name' => 'newTicketsToDate',
-                                            'htmlOptions'=> array("style"=>"width:77px;"),
-                                            'options' => array('dateFormat' => 'yy-mm-dd')));?>
-                    </td>
-                    <td><label>Time Dimension</label></td>
-                    <td><?php 
-                             echo CHtml::activeDropDownList($filter,
-                                                   'newTicketsCurrentDimension',
-                                                   DimensionType::getDimensions());?></td>
-                    
-                </tr> 
-            </table> 
-        </td>
-        <td>
-         
-            
-        </td> 
-    </tr> 
-</table>
-
-
-
-
-
+                                            'htmlOptions'=> array('submit'=>'')));?> 
+							</td> 				
+                        </tr> 					
+                        <tr>
+                            <td>
+                                <?php echo CHtml::activeLabel($filter,'newTicketsDomainID'); 
+								      echo CHtml::activeDropDownList($filter,
+																	'newTicketsDomainID',
+																	CHtml::listData(Domain::model()->findAll(),'id', 'name'),
+																	array('empty'=>' ', 'submit'=>''));?>
+                            </td>
+                        </tr>
+						<tr>
+                            <td>
+							  	<?php 
+								     $domainID = $filter->newTicketsDomainID;
+									 if (isset($domainID) && $domainID > 0 )
+									 {
+										$subdomain = SubDomain::model()->findAllByAttributes(array('domain_id'=>$domainID));
+									 }else
+									 {
+										$subdomain = array();
+									 }
+   								      echo CHtml::activeLabel($filter,'newTicketsSubDomainID'); 
+   								      echo CHtml::activeDropDownList($filter,
+																	 'newTicketsSubDomainID',
+																	 CHtml::listData($subdomain,'id', 'name'),
+																	 array('empty'=>' ', 'submit'=>''));?>
+                           </td>
+                        </tr>                        
+                        <tr>
+                            <td>
+                                <label>Time Dimension</label>
+                                <?php  echo CHtml::activeDropDownList($filter,
+                                                                      'newTicketsCurrentDimension',
+                                                                      DimensionType::getDimensions(),
+																	  array('submit'=>''));?>                                
+                            </td>
+                        </tr>
+                        
+                                          
+                   </table> 
+                </td>
+            </table>
+        </div>
 <?php echo CHtml::endForm(); ?>
 
 

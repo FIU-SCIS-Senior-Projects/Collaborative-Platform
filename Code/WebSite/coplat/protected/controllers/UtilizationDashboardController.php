@@ -9,15 +9,26 @@ class UtilizationDashboardController extends Controller
         
 	public function actionIndex()
 	{ 
+	      if (!Yii::app()->request->isPostRequest)
+		  {
             $ultilizationFilter = UtilizationDashboardFilter::initializeFilters(); 
-            $ultilizationFilter->retrieveDashboardData($newEvents);            
-	    $this->render('view', array('filter'=>$ultilizationFilter,
-                                        'newEvents' => $newEvents));
+           
+          }	else
+		  {
+			  if(isset($_POST['UtilizationDashboardFilter'])) 
+			  {
+			   $ultilizationFilter = new UtilizationDashboardFilter ();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+              }
+		  }	
+		  
+		  $ultilizationFilter->retrieveDashboardData($newEvents);  
+	      $this->render('view', array('filter'=>$ultilizationFilter,'newEvents' => $newEvents));
 	}
         
        
-
-        public function filters()
+    public function filters()
 	{
 	   return array('accessControl');
 	}
