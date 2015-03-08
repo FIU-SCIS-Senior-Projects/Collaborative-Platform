@@ -33,7 +33,7 @@ class VideoConferenceController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','join'),
+				'actions'=>array('create','update','join','delete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -82,8 +82,16 @@ class VideoConferenceController extends Controller
 		if(isset($_POST['VideoConference']))
 		{
 			$model->attributes=$_POST['VideoConference'];
-			if($model->save())
+            $model->moderator_id = Yii::app()->user->getId();
+            $model->scheduled_on = date("Y-m-d H:i:s");
+
+           // Yii::log('moderator_id '.$model->moderator_id);
+            echo "<script>alert(" . $model->moderator_id . ")</script>";
+
+            if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
+
+
 		}
 
 		$this->render('create',array(

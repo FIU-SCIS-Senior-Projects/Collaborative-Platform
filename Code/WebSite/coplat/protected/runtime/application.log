@@ -1053,3 +1053,686 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/videoConference/join/widget.html?tools={%22pencil%22:true,%22text%22:true,%22eraser%22:true}&selectedIcon=pencil
 HTTP_REFERER=http://localhost/coplat/index.php/videoConference/join/1
 ---
+2015/03/07 14:23:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Connection refused' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(80): CActiveRecord::model('User')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(469): User::model()
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/main.php(40): User::isCurrentUserMentee()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(206): COutputProcessor->run()
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/column1.php(6): CBaseController->endContent()
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php(134): CController->render('login', Array)
+#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('login')
+#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#29 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#30 {main}
+REQUEST_URI=/coplat/index.php/site/login
+---
+2015/03/07 19:13:50 [warning] [application] Failed to set unsafe attribute "subject" of "VideoConference".
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (108)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 19:15:44 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/videoConference/admin
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 19:15:49 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/videoConference/admin
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/index
+---
+2015/03/07 19:22:37 [error] [exception.CException] exception 'CException' with message 'Property "CRequiredValidator.0" is not defined.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CComponent.php:173
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/validators/CValidator.php(189): CComponent->__set('0', 'length')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModel.php(286): CValidator::createValidator('required', Object(VideoConference), 'subject', Array)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModel.php(260): CModel->createValidators()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModel.php(303): CModel->getValidators('id')
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/helpers/CHtml.php(1237): CModel->isAttributeRequired('id')
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CActiveForm.php(562): CHtml::activeLabelEx(Object(VideoConference), 'id', Array)
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/videoConference/_form.php(21): CActiveForm->labelEx(Object(VideoConference), 'id')
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/videoConference/create.php(18): CController->renderPartial('_form', Array)
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(91): CController->render('create', Array)
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#29 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/index
+---
+2015/03/07 19:22:45 [error] [exception.CException] exception 'CException' with message 'Property "CRequiredValidator.0" is not defined.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CComponent.php:173
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/validators/CValidator.php(189): CComponent->__set('0', 'length')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModel.php(286): CValidator::createValidator('required', Object(VideoConference), 'subject', Array)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModel.php(260): CModel->createValidators()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModel.php(303): CModel->getValidators('id')
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/helpers/CHtml.php(1237): CModel->isAttributeRequired('id')
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CActiveForm.php(562): CHtml::activeLabelEx(Object(VideoConference), 'id', Array)
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/videoConference/_form.php(21): CActiveForm->labelEx(Object(VideoConference), 'id')
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/videoConference/create.php(18): CController->renderPartial('_form', Array)
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(91): CController->render('create', Array)
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#29 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/index
+---
+2015/03/07 19:28:46 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_on`, `scheduled_for`, `notes`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (85)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 19:28:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_on`, `scheduled_for`, `notes`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(85): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 19:34:36 [error] [php] date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (/Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php:86)
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): VideoConferenceController->runAction()
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): VideoConferenceController->filterAccessControl()
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): VideoConferenceController->runActionWithFilters()
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): VideoConferenceController->run()
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/videoConference/create
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (86)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 20:11:11 [error] [php] date(): Invalid date.timezone value 'America/NY', we selected the timezone 'UTC' for now. (/Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php:86)
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): VideoConferenceController->runAction()
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): VideoConferenceController->filterAccessControl()
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): VideoConferenceController->runActionWithFilters()
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): VideoConferenceController->run()
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/videoConference/create
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (86)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 15:13:22 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (88)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 15:13:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(88): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 15:15:01 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (88)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 15:15:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(88): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 16:20:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Connection refused' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(User))
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(80): CActiveRecord::model('User')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/User.php(469): User::model()
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/main.php(40): User::isCurrentUserMentee()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(206): COutputProcessor->run()
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/themes/bootstrap/views/layouts/column1.php(6): CBaseController->endContent()
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(784): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php(134): CController->render('login', Array)
+#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#25 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('login')
+#27 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#28 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#29 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#30 {main}
+REQUEST_URI=/coplat/index.php/site/login
+---
+2015/03/07 16:24:18 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (88)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 16:24:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(88): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 17:15:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Connection refused' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php:381
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(438): CModule->getComponent('db')
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(623): CApplication->getDb()
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(2309): CActiveRecord->getDbConnection()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(VideoConference))
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/VideoConference.php(26): CActiveRecord::model('VideoConference')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(172): VideoConference::model()
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(66): VideoConferenceController->loadModel('1')
+#10 [internal function]: VideoConferenceController->actionJoin('1')
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(VideoConferenceController), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(VideoConferenceController), Object(ReflectionMethod), Array)
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('join')
+#22 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#23 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#25 {main}
+REQUEST_URI=/coplat/index.php/videoConference/join/1
+---
+2015/03/07 17:19:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (88)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 17:19:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(88): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 17:21:18 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (91)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 17:21:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(91): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 17:21:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (91)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 17:21:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(91): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 17:37:12 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (91)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 17:37:12 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(91): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 17:40:02 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4).
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php (91)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php (14)
+2015/03/07 17:40:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`video_conference`, CONSTRAINT `fk_Moderator` FOREIGN KEY (`moderator_id`) REFERENCES `user` (`id`)). The SQL statement executed was: INSERT INTO `video_conference` (`subject`, `scheduled_for`, `notes`, `moderator_id`, `scheduled_on`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(1023): CDbCommand->execute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/db/ar/CActiveRecord.php(795): CActiveRecord->insert(NULL)
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(91): CActiveRecord->save()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): VideoConferenceController->actionCreate()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/create
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/create
+---
+2015/03/07 17:47:31 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.user_id" is not defined.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CWebUser.php(140): CComponent->__get('user_id')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/videoConference/view.php(5): CWebUser->__get('user_id')
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(57): CController->render('view', Array)
+#7 [internal function]: VideoConferenceController->actionView('1')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(VideoConferenceController), Array)
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(VideoConferenceController), Object(ReflectionMethod), Array)
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/videoConference/1
+---
+2015/03/07 17:57:30 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.user_id" is not defined.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CWebUser.php(140): CComponent->__get('user_id')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/videoConference/view.php(5): CWebUser->__get('user_id')
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(57): CController->render('view', Array)
+#7 [internal function]: VideoConferenceController->actionView('1')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(VideoConferenceController), Array)
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(VideoConferenceController), Object(ReflectionMethod), Array)
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/videoConference/1
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/
+---
+2015/03/07 18:13:14 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser._id" is not defined.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CWebUser.php(140): CComponent->__get('_id')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/videoConference/view.php(5): CWebUser->__get('_id')
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(57): CController->render('view', Array)
+#7 [internal function]: VideoConferenceController->actionView('1')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(VideoConferenceController), Array)
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(VideoConferenceController), Object(ReflectionMethod), Array)
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/videoConference/1
+---
+2015/03/07 23:29:41 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser._id" is not defined.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CComponent.php:130
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CWebUser.php(140): CComponent->__get('_id')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/views/videoConference/view.php(5): CWebUser->__get('_id')
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(126): require('/Library/WebSer...')
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Library/WebSer...', Array, true)
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(869): CBaseController->renderFile('/Library/WebSer...', Array, true)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(57): CController->render('view', Array)
+#7 [internal function]: VideoConferenceController->actionView('1')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(VideoConferenceController), Array)
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(VideoConferenceController), Object(ReflectionMethod), Array)
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#17 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#20 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/videoConference/1
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/
+---
+2015/03/07 23:32:40 [error] [php] Undefined variable: _id (/Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/components/UserIdentity.php:35)
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute()
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CModel.php(159): CInlineValidator->validate()
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php(94): LoginForm->validate()
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(286): SiteController->runAction()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): SiteController->run()
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/site/login
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/components/UserIdentity.php (35)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/models/LoginForm.php (59)
+in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/SiteController.php (94)
+2015/03/07 23:35:20 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/videoConference/admin
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/index
+---
+2015/03/07 23:35:30 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('delete')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/videoConference/delete/8
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/8
+---
+2015/03/07 23:37:04 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/videoConference/admin
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/8
+---
+2015/03/07 23:37:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php:177
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/protected/controllers/VideoConferenceController.php(56): VideoConferenceController->loadModel('8')
+#1 [internal function]: VideoConferenceController->actionView('8')
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(VideoConferenceController), Array)
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(VideoConferenceController), Object(ReflectionMethod), Array)
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#11 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#14 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference/8
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/
+---
+2015/03/07 23:37:41 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(291): CFilterChain->run()
+#6 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#9 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/coplat/index.php/videoConference/admin
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/9
+---

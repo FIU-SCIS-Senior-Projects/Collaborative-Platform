@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'video_conference':
  * @property string $id
+ * @property string $subject
  * @property string $moderator_id
  * @property string $scheduled_on
  * @property string $scheduled_for
@@ -41,13 +42,15 @@ class VideoConference extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, moderator_id', 'required'),
-			array('id, moderator_id', 'length', 'max'=>11),
+//			array('id, moderator_id', 'required'),
+//			array('id, moderator_id', 'length', 'max'=>11),
+            array('subject', 'required'),
+            array('subject', 'length', 'max'=>255),
 			array('notes', 'length', 'max'=>255),
 			array('scheduled_on, scheduled_for', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, moderator_id, scheduled_on, scheduled_for, notes', 'safe', 'on'=>'search'),
+			array('id, subject, moderator_id, scheduled_on, scheduled_for, notes', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,6 +73,7 @@ class VideoConference extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+            'subject' => 'Subject',
 			'moderator_id' => 'Moderator',
 			'scheduled_on' => 'Scheduled On',
 			'scheduled_for' => 'Scheduled For',
@@ -89,6 +93,7 @@ class VideoConference extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
+        $criteria->compare('subject',$this->subject,true);
 		$criteria->compare('moderator_id',$this->moderator_id,true);
 		$criteria->compare('scheduled_on',$this->scheduled_on,true);
 		$criteria->compare('scheduled_for',$this->scheduled_for,true);

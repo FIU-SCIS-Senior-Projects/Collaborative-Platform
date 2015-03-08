@@ -1,18 +1,17 @@
 
 use coplat;
 
-/*
-Need to add foreign key constraints
-*/
+
 drop table video_conference;
 
 CREATE TABLE IF NOT EXISTS `video_conference` (
-  `id` int(11) unsigned NOT NULL Primary Key,
+  `id` int(11) unsigned NOT NULL Primary Key AUTO_INCREMENT,
+  `subject` varchar(255) NOT NULL,
   `moderator_id` int(11) unsigned NOT NULL,
-  `scheduled_on` datetime, 
+  `scheduled_on` datetime NOT NULL, 
   `scheduled_for` datetime,
   `notes` varchar(255)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
 ALTER TABLE video_conference

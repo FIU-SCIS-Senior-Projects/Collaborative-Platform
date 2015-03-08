@@ -15,6 +15,8 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+
+    <!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'id'); ?>
 		<?php echo $form->textField($model,'id',array('size'=>11,'maxlength'=>11)); ?>
@@ -26,13 +28,20 @@
 		<?php echo $form->textField($model,'moderator_id',array('size'=>11,'maxlength'=>11)); ?>
 		<?php echo $form->error($model,'moderator_id'); ?>
 	</div>
+    -->
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'subject'); ?>
+        <?php echo $form->textField($model,'subject'); ?>
+        <?php echo $form->error($model,'subject'); ?>
+    </div>
+    <!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'scheduled_on'); ?>
 		<?php echo $form->textField($model,'scheduled_on'); ?>
 		<?php echo $form->error($model,'scheduled_on'); ?>
 	</div>
-
+    -->
 	<div class="row">
 		<?php echo $form->labelEx($model,'scheduled_for'); ?>
 		<?php echo $form->textField($model,'scheduled_for'); ?>

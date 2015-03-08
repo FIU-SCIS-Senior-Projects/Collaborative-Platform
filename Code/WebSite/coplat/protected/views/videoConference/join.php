@@ -22,7 +22,9 @@ $this->breadcrumbs = array(
 <!-- Init Site Scripts -->
 <script>
     //hack bootstrap 2 to 3
-    $(".span9:first").removeClass('span9');
+    $('.span9:first').removeClass('span9');
+    $('.container:first').removeClass('container');
+    $('.span3:first').removeClass('span3');
 </script>
 
 
@@ -57,8 +59,9 @@ $this->breadcrumbs = array(
     <h1>Collaborative Tools</h1>
 </div>
 
+<div class="container">
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
 
 
 
@@ -74,10 +77,20 @@ $this->breadcrumbs = array(
     </div>
 
 
-    <div class="col-md-2">
+    <div class="col-md-4">
         <!-- required for floating -->
         <!-- Nav tabs -->
-        <div id="tool-box">
+
+                <div id="tool-box" class="list-group">
+                    <a href="#"  class="list-group-item"><i class="fa fa-paint-brush" ></i>&nbsp;&nbsp;Whiteboard</a>
+                    <a href="#" class="list-group-item"><i class="fa fa-recycle" ></i>&nbsp;&nbsp;Reset Board</a>
+                    <a href="#" id="share-screen" class="list-group-item"><i class="fa fa-desktop" ></i>&nbsp;&nbsp;Share Screen</a>
+                    <a href="#" id="stop-share-screen" class="list-group-item"><i class="fa fa-stop" ></i>&nbsp;&nbsp;Stop Sharing</a>
+                    <a href="#" class="list-group-item"><i class="fa fa-sliders" ></i>&nbsp;&nbsp;Settings</a>
+                    <a href="#" id="disconnect" class="list-group-item"><i class="fa fa-close" ></i>&nbsp;&nbsp;Disconnect</a>
+                </div>
+            <!--
+
             <h4>Tool Box</h4>
             <table>
                 <tr>
@@ -117,17 +130,19 @@ $this->breadcrumbs = array(
                     </td>
                 </tr>
             </table>
+
         </div>
         <button id="disconnect" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top"
                 title="Settings">Disconnect
         </button>
+        -->
     </div>
-</div>
+</div> <!-- end of row -->
 
 
 <h3> Participants </h3>
 <div id="video-container" class="row"></div>
-
+</div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -168,25 +183,25 @@ $this->breadcrumbs = array(
         document.getElementById('open-room').disabled = true;
         document.getElementById('join-room').disabled = true;
     };
-    document.getElementById('share-screen').onclick = function () {
+    $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.addStream({
             screen: true,
             oneway: true
         });
         //document.getElementById('recordScreen').disabled = false;
-    };
+    });
 
 
-    //when the user clicsk the stop-share-screen button it removes all the screen
-    document.getElementById('stop-share-screen').onclick = function () {
+    //when the user clicks the stop-share-screen button it removes all the screen
+    $('#stop-share-screen').click(function () {
         rmc.removeStream('screen');
-    };
+    });
 
 
-    document.getElementById('disconnect').onclick = function () {
+    $('#disconnect').click(function () {
         rmc.disconnect();
-    };
+    });
 
     /*
      //to know the stream type
@@ -264,11 +279,8 @@ $this->breadcrumbs = array(
 </script>
 
 
-</body>
-<div style="height:50px;"></div>
-<div
-    style="position:fixed; text-align:center; width:100%; height:20px; background-color:white; border-top: 1px solid rgb(206, 206, 206); padding:5px; 		bottom:0px; ">
-    <a target="blank" href="http://fiu.edu">Florida International University</a> | Collaborative Platform - Senior
-    Project 2015
-</div>
-</html>
+
+
+
+
+

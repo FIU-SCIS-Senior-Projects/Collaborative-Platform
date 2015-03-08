@@ -2,7 +2,7 @@
 /* @var $this VideoConferenceController */
 /* @var $model VideoConference */
 
-
+//echo Yii::app()->user->getId();
 
 
 $this->breadcrumbs = array(

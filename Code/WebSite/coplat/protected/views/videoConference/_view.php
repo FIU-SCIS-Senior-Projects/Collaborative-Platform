@@ -5,8 +5,11 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+
+
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('subject')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->subject), array('view', 'id'=>$data->id)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('moderator_id')); ?>:</b>

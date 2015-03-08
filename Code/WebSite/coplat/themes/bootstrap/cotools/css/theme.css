@@ -3,11 +3,15 @@
   padding: 15px;
 
 }
+#tool-box a.list-group-item{
+  color:#18536b;
+}
 
 #cotools-panel{
   margin-bottom: 25px;
-    min-height: 600px;
+    height: 300px;
     min-width: 100%;
+    border: 3px solid #18536b;
 }
 
 .tab-filler{
