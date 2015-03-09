@@ -1,39 +1,34 @@
 <?php
 $this->breadcrumbs=array('Utilization Dashboard');
-Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}");
-Yii::app()->clientScript->registerScript('logoFix',
-                                         "            google.load('visualization', '1', {packages: ['corechart']});
+Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi");
+/*Yii::app()->clientScript->registerScript('logoFix',
+  " google.load('visualization', '1', {packages: ['corechart']});
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {
 
       var data = new google.visualization.DataTable();
-      data.addColumn('timeofday', 'Time of Day');
-      data.addColumn('number', 'Motivation Level');
-
-      data.addRows([
-        [{v: [8, 0, 0], f: '8 am'}, 1],
-        [{v: [9, 0, 0], f: '9 am'}, 2],
-        [{v: [10, 0, 0], f:'10 am'}, 3],
-        [{v: [11, 0, 0], f: '11 am'}, 4],
-        [{v: [12, 0, 0], f: '12 pm'}, 5],
-        [{v: [13, 0, 0], f: '1 pm'}, 6],
-        [{v: [14, 0, 0], f: '2 pm'}, 7],
-        [{v: [15, 0, 0], f: '3 pm'}, 8],
-        [{v: [16, 0, 0], f: '4 pm'}, 9],
-        [{v: [17, 0, 0], f: '5 pm'}, 10],
-      ]);
-
-      var options = {
-        width: 1000,
-        height: 563,
+      data.addColumn('date');
+      data.addColumn('number');
+      
+      var chartWidth = 600;
+      if (data.getNumberOfRows() > 15)
+      {
+       chartWidth = data.getNumberOfRows() * 35;
+      }
+      data.addRows(".$newEvents."); 
+      var options = {  
+        width:chartWidth,
+        height: 300,
+        legend: 'none',
+		bar: {groupWidth: 10},
+        title: 'Tickets created per ".DimensionType::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
         hAxis: {
-          title: 'Time of Day',
-          format: 'h:mm a',
-          gridlines: {count: 10}
+          title: '".DimensionType::getDescriptionByDateDimension($filter->newTicketsCurrentDimension)."',
+          format: '".DimensionType::getDateFormatByDimension($filter->newTicketsCurrentDimension)."',
         },
         vAxis: {
-          title: 'Rating (scale of 1-10)'
+          title: 'Amount of tickets created'
         }
       };
 
@@ -42,7 +37,17 @@ Yii::app()->clientScript->registerScript('logoFix',
 
       chart.draw(data, options);
     }
-      ",CClientScript::POS_HEAD);
+      ",CClientScript::POS_HEAD);*/
 ?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
-<div id="ex0"></div>
+<style> 
+     form {width:100%}
+    .dashItem{border:1px solid #666; height:100%} 
+    .chartCont{ overflow:auto; width:630px; height:100%}
+</style>
+<?php echo  $this->renderPartial('NewTicketsPerOverTime',array('filter'=>$filter,'newEvents'=>$newEvents),false,false); ?>
+
+
+
+
+
+
