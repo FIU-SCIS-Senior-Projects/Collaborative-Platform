@@ -113,7 +113,6 @@
             </table>
         </div>
 <script>
-    
          function refreshNewTicketsChart()
          {   
           newTicketsData.removeRows(0, newTicketsData.getNumberOfRows());
@@ -130,6 +129,7 @@
           
          $('#UtilizationDashboardFilter_newTicketsDomainID').on('change', function()
          {
+             
             var subDomSelect = $('#UtilizationDashboardFilter_newTicketsSubDomainID'); 
             subDomSelect.html("");
             subDomSelect.append('<option value=""> </option>'); 
