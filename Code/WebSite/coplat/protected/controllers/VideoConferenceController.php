@@ -103,14 +103,12 @@ class VideoConferenceController extends Controller
                         $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
                         //$model->addError('error2', "An error occurred upon saving the invitation to " . $email);
                     }else{
-                        Yii::$app->mail->compose()
-                            ->setFrom('noreply@cp.cis.fiu.edu')
-                            ->setTo($email)
-                            ->setSubject('Scheduled Meeting')
-                            ->setBody("You have a new meeting invitation. Please join here:
-                                https://cp.cis.fiu.edu/coplat/index.php/videoConference/join/".$model->id)
-                            ->send();
-                    }
+                        $moderatorfullName = Yii::app()->user->fname . " " . Yii::app()->user->lfame;
+                        $inviteefullName = $invitee->fname . " " . $invitee->lname;
+
+                        VCInvitation::sendInvitationEmail($model->id,$moderatorfullName, $inviteefullName, $email);
+
+                        ;}
                 }
 
                 Yii::app()->user->setFlash('error', $invitationError);

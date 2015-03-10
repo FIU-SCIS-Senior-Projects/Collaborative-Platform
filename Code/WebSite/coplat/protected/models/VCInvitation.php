@@ -92,7 +92,7 @@ class VCInvitation extends CActiveRecord
 		));
 	}
 
-    public function sendInvitationEmail($meeting_id, $moderator_name, $invitee_name, $invitee_email){
+    public static function sendInvitationEmail($meeting_id, $moderator_name, $invitee_name, $invitee_email){
 
 
 
@@ -102,7 +102,7 @@ class VCInvitation extends CActiveRecord
         $email = Yii::app()->email;
         $email->to = $invitee_email;
         $email->from = 'Collaborative Platform';
-        $email->subject = '';
+        $email->subject = 'New Video Conference Invitation';
         $email->message = $html;
         $email->send();
     }

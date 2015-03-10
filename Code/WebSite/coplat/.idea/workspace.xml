@@ -46,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.75" vertical-offset="1464" max-vertical-offset="3360">
-              <caret line="110" column="93" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="93" />
+            <state vertical-scroll-proportion="0.87142855" vertical-offset="1315" max-vertical-offset="3330">
+              <caret line="108" column="113" selection-start-line="108" selection-start-column="113" selection-end-line="108" selection-end-column="113" />
               <folding />
             </state>
           </provider>
@@ -69,7 +69,7 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.8333335" vertical-offset="11494" max-vertical-offset="17370">
+            <state vertical-scroll-proportion="-482.5" vertical-offset="30" max-vertical-offset="17370">
               <caret line="774" column="63" selection-start-line="774" selection-start-column="27" selection-end-line="774" selection-end-column="63" />
               <folding>
                 <marker date="1424423909000" expanded="true" signature="10710:10748" placeholder="SELECT id fr..user..." />
@@ -105,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VCInvitation.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VCInvitation.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/VCInvitation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6142857" vertical-offset="1315" max-vertical-offset="1740">
-              <caret line="102" column="36" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
+            <state vertical-scroll-proportion="-3.9583333" vertical-offset="1315" max-vertical-offset="1740">
+              <caret line="94" column="46" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -193,8 +193,8 @@
         <option value="$PROJECT_DIR$/protected/views/videoConference/_view.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/_form.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/view.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/VideoConferenceController.php" />
         <option value="$PROJECT_DIR$/protected/models/VCInvitation.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/VideoConferenceController.php" />
       </list>
     </option>
   </component>
@@ -1045,9 +1045,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/VCInvitation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9583333" vertical-offset="1315" max-vertical-offset="1740">
+          <caret line="94" column="46" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8333335" vertical-offset="11494" max-vertical-offset="17370">
+        <state vertical-scroll-proportion="-482.5" vertical-offset="30" max-vertical-offset="17370">
           <caret line="774" column="63" selection-start-line="774" selection-start-column="27" selection-end-line="774" selection-end-column="63" />
           <folding>
             <marker date="1424423909000" expanded="true" signature="10710:10748" placeholder="SELECT id fr..user..." />
@@ -1074,16 +1082,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.75" vertical-offset="1464" max-vertical-offset="3360">
-          <caret line="110" column="93" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/VCInvitation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6142857" vertical-offset="1315" max-vertical-offset="1740">
-          <caret line="102" column="36" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.87142855" vertical-offset="1315" max-vertical-offset="3330">
+          <caret line="108" column="113" selection-start-line="108" selection-start-column="113" selection-end-line="108" selection-end-column="113" />
           <folding />
         </state>
       </provider>
