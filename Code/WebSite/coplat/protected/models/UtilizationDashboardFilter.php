@@ -172,7 +172,7 @@ class UtilizationDashboardFilter extends CFormModel
     {
         $command =  Yii::app()->db->createCommand();
                   
-       switch ($this->newTicketsCurrentDimension)
+     /*  switch ($this->newTicketsCurrentDimension)
        {
          case DimensionType::Date:
                $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
@@ -211,7 +211,7 @@ class UtilizationDashboardFilter extends CFormModel
        
       
        
-       $newEventsData = $command->queryAll(); 
+       $newEventsData = $command->queryAll(); */
     }
        
     
