@@ -91,7 +91,7 @@ class UtilizationDashboardFilter extends CFormModel
             
             //Initialize the filter model
             $ultilizationFilter = new UtilizationDashboardFilter();
-            $ultilizationFilter->newTicketsCurrentDimension = DimensionType::Date;
+            $ultilizationFilter->newTicketsCurrentDimension = DimensionType::MonthOfTheYear;
             $ultilizationFilter->newTicketsToDate = date('m/d/Y');// date("m/d/y");
 		    $ultilizationFilter->newTicketsFromDate =  $date->format('m/d/Y');
             return $ultilizationFilter;
