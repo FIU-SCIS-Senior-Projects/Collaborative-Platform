@@ -100,10 +100,11 @@ class UtilizationDashboardFilter extends CFormModel
     public function retrieveDashboardData(&$newEvents)
     {
         //New event data
+
       $this->retrieveEventsData($newEventData);
        
-       $fromDate = new DateTime($this->newTicketsFromDate);
-       $toDate = new DateTime($this->newTicketsToDate);
+      $fromDate = new DateTime($this->newTicketsFromDate);
+      $toDate = new DateTime($this->newTicketsToDate);
        
        $dateInterval;
        switch ($this->newTicketsCurrentDimension)
@@ -148,7 +149,7 @@ class UtilizationDashboardFilter extends CFormModel
                $currentIndex++;
                if (count($newEventData)> $currentIndex)
                {
-                   $currentReading = $newEventData[0]; 
+                   $currentReading = $newEventData[$currentIndex]; 
                }else
                {
                    $currentReading = NULL;                   
@@ -163,17 +164,17 @@ class UtilizationDashboardFilter extends CFormModel
           $fromDate->add($dateInterval);
        }
         $newEvents = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
-       
+
     }
     
     
      private function retrieveEventsData(&$newEventsData)
     {
-        $command =  Yii::app()->db->createCommand();
+      $command =  Yii::app()->db->createCommand();
                   
-       switch ($this->newTicketsCurrentDimension)
+      switch ($this->newTicketsCurrentDimension)
        {
-           case DimensionType::Date:
+         case DimensionType::Date:
                $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
                $command->group('DATE(ticket_events.event_recorded_date)');
            
@@ -198,7 +199,7 @@ class UtilizationDashboardFilter extends CFormModel
        $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
                                                                        "' AND '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsToDate)."'");
         
-       if (isset($this->newTicketsDomainID) && $this->newTicketsDomainID >0)
+    if (isset($this->newTicketsDomainID) && $this->newTicketsDomainID >0)
        {
             $command->andWhere("ticket.domain_id = ".$this->newTicketsDomainID);
        }
@@ -207,7 +208,7 @@ class UtilizationDashboardFilter extends CFormModel
        {
             $command->andWhere("ticket.subdomain_id = ".$this->newTicketsSubDomainID);
        }
-      
+      // echo $command->text;
        
        $newEventsData = $command->queryAll(); 
     }

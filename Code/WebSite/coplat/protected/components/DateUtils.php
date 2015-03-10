@@ -35,7 +35,9 @@ class DateUtils extends CComponent {
     
     public static function getSQLDateStringFromDateStr($date)
     {
-       return  date( 'Y-m-d', (new DateTime($date))->getTimestamp() );
+       $dt = new DateTime($date);
+       $sqlDate = date( 'Y-m-d',$dt->getTimestamp());
+       return $sqlDate;
     }
     
 }
