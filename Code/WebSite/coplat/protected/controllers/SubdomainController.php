@@ -28,7 +28,7 @@ class SubdomainController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','SubdomainsByDomainID'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -134,7 +134,28 @@ class SubdomainController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
-	/**
+        public  function actionSubdomainsByDomainID()
+        {
+            
+            if (isset($_POST['domain']))
+            {
+                $domainID = $_POST['domain'];
+                $all = array();
+                $subdomains = Subdomain::model()->findAll("domain_id=".$domainID); 
+               foreach ($subdomains as $subdom) 
+               {
+                $all[] = array(
+                    'id' => $subdom->id,
+                    'name' => $subdom->name,
+                );
+                }
+              echo json_encode($all);
+              exit();
+             }
+        }
+
+
+        /**
 	 * Lists all models.
 	 */
 	public function actionIndex()
