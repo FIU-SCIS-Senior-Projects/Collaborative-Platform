@@ -100,8 +100,8 @@ class UtilizationDashboardFilter extends CFormModel
     public function retrieveDashboardData(&$newEvents)
     {
         //New event data
-       $newEventData = array();
-     //  $this->retrieveEventsData($newEventData);
+
+      $this->retrieveEventsData($newEventData);
        
    /*   $fromDate = new DateTime($this->newTicketsFromDate);
        $toDate = new DateTime($this->newTicketsToDate);
