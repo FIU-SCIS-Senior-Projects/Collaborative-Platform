@@ -9,10 +9,9 @@ class UtilizationDashboardController extends Controller
         
 	public function actionIndex()
 	{ 
-	    /*  if (!Yii::app()->request->isPostRequest)
-	      {
-               $ultilizationFilter = UtilizationDashboardFilter::initializeFilters(); 
-           
+	       if (!Yii::app()->request->isPostRequest)
+	       {
+                $ultilizationFilter = UtilizationDashboardFilter::initializeFilters(); 
                }	
                else
 	       {
@@ -22,8 +21,10 @@ class UtilizationDashboardController extends Controller
                          $ultilizationFilter->unsetAttributes();  // clear any default values  
                          $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                     }
-		}	
-		$ultilizationFilter->retrieveDashboardData($newEvents); 
+		}
+                
+                
+		/*$ultilizationFilter->retrieveDashboardData($newEvents); 
                 if (Yii::app()->request->isAjaxRequest)
                 {
                   $this->renderPartial('NewTicketsPerOverTime',array('filter'=>$ultilizationFilter,'newEvents'=>$newEvents),false,true);
