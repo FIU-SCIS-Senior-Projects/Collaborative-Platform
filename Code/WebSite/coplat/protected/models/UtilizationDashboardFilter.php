@@ -91,7 +91,7 @@ class UtilizationDashboardFilter extends CFormModel
             
             //Initialize the filter model
             $ultilizationFilter = new UtilizationDashboardFilter();
-            $ultilizationFilter->newTicketsCurrentDimension = DimensionType::MonthOfTheYear;
+            $ultilizationFilter->newTicketsCurrentDimension = DimensionType::Date;
             $ultilizationFilter->newTicketsToDate = date('m/d/Y');// date("m/d/y");
 		    $ultilizationFilter->newTicketsFromDate =  $date->format('m/d/Y');
             return $ultilizationFilter;
@@ -149,7 +149,7 @@ class UtilizationDashboardFilter extends CFormModel
                $currentIndex++;
                if (count($newEventData)> $currentIndex)
                {
-                   $currentReading = $newEventData[0]; 
+                   $currentReading = $newEventData[$currentIndex]; 
                }else
                {
                    $currentReading = NULL;                   
@@ -208,6 +208,7 @@ class UtilizationDashboardFilter extends CFormModel
        {
             $command->andWhere("ticket.subdomain_id = ".$this->newTicketsSubDomainID);
        }
+      // echo $command->text;
        
        $newEventsData = $command->queryAll(); 
     }
