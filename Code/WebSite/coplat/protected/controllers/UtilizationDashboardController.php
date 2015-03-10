@@ -13,27 +13,16 @@ class UtilizationDashboardController extends Controller
 	       {
                 $ultilizationFilter = UtilizationDashboardFilter::initializeFilters(); 
                }	
-               else
+               else if(isset($_POST['UtilizationDashboardFilter'])) 
 	       {
-		    if(isset($_POST['UtilizationDashboardFilter'])) 
-		    {
-			 $ultilizationFilter = new UtilizationDashboardFilter ();
-                         $ultilizationFilter->unsetAttributes();  // clear any default values  
-                         $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
-                    }
-		}
+		 $ultilizationFilter = new UtilizationDashboardFilter();
+                 $ultilizationFilter->unsetAttributes();  // clear any default values  
+                 $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];     
+		}                
                 
-                
-		$ultilizationFilter->retrieveDashboardData($newEvents); 
-                if (Yii::app()->request->isAjaxRequest)
-                {
-                  $this->renderPartial('NewTicketsPerOverTime',array('filter'=>$ultilizationFilter,'newEvents'=>$newEvents),false,true);
-                }else
-                {
-                  $this->render('view', array('filter'=>$ultilizationFilter,'newEvents' => $newEvents));  
-                }		  
-		  
-	}
+		$newEvents = $ultilizationFilter->retrieveNewTicketsDashboardData(); 
+                $this->render('view', array('filter'=>$ultilizationFilter,'newEvents' => $newEvents));  
+       }
         
         
         public function actionRefreshNewTickets()
@@ -44,7 +33,7 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ultilizationFilter->retrieveDashboardData($newEvents); 
+               $newEvents= $ultilizationFilter->retrieveNewTicketsDashboardData(); 
                
                $newTicketRes =  array('dimDesc' => DimensionType::getDescriptionByDateDimension($ultilizationFilter->newTicketsCurrentDimension),
                                       'newEvents' => $newEvents,
