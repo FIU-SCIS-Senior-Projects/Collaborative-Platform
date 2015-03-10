@@ -9,7 +9,7 @@ class UserIdentity extends CUserIdentity
 {
 
     private $_id;
-    //private $_fullName;
+    private $_fullName;
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
@@ -34,7 +34,7 @@ class UserIdentity extends CUserIdentity
 		else
 		{
             $this->_id=$user->id;
-            //$this->_fullName = $user->fname . " " . $user->lname;
+            $this->_fullName = $user->fname . " " . $user->lname;
 			$this->username = $user->username;
 			//$this->setState('lastLogin', date('m/d/y''));
 			
@@ -63,4 +63,8 @@ class UserIdentity extends CUserIdentity
         return $this->_id;
     }
 
+    public function getFullName()
+    {
+        return $this->_fullName;
+    }
 }
