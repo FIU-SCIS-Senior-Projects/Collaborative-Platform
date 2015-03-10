@@ -170,9 +170,9 @@ class UtilizationDashboardFilter extends CFormModel
     
      private function retrieveEventsData(&$newEventsData)
     {
-        $command =  Yii::app()->db->createCommand();
+      $command =  Yii::app()->db->createCommand();
                   
-     /*  switch ($this->newTicketsCurrentDimension)
+      switch ($this->newTicketsCurrentDimension)
        {
          case DimensionType::Date:
                $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
@@ -193,7 +193,7 @@ class UtilizationDashboardFilter extends CFormModel
            default:
                throw new CException("Invalid dimension");
        }
-       $command->from("ticket_events");
+      /*  $command->from("ticket_events");
        $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
        $command->where("ticket_events.event_type_id = ".EventType::Event_New);
        $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
