@@ -199,6 +199,7 @@ class UtilizationDashboardFilter extends CFormModel
        
        
        $test = new DateTime($this->newTicketsFromDate);
+       echo $test;
       // echo (new DateTime()->getTimestamp();  //  date( 'Y-m-d', (new DateTime($date))->getTimestamp() );
        
       // echo  DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate);
