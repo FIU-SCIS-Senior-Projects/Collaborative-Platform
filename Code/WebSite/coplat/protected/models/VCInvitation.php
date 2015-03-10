@@ -92,11 +92,13 @@ class VCInvitation extends CActiveRecord
 		));
 	}
 
-    public static function sendInvitationEmail($meeting_id, $moderator_name, $invitee_name, $invitee_email){
+    public static function sendInvitationEmail($meeting_id, $moderator_id, $invitee_name, $invitee_email){
+
+        $moderator = User::model()->findByPk($moderator_id);
+        $moderator_name = $moderator->fname ." ".  $moderator->lname;
 
 
-
-        $message = "You have been invited to a video conference by " . $moderator_name . "<br>. Please join <a href='https://cp.cis.fiu.edu/coplat/index.php/videoConference/join/". $meeting_id."'>here</a>.";
+        $message = "You have been invited to a video conference by " . $moderator_name . "<br>. Please join <a href='https://cp.cis.fiu.edu/coplat/index.php/videoConference/join/". $meeting_id."'>here</a>. at " . Yii::app()->getBaseUrl(true);
         $html = User::replaceMessage($invitee_name, $message);
 
         $email = Yii::app()->email;
