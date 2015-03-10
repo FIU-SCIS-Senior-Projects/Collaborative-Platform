@@ -196,19 +196,10 @@ class UtilizationDashboardFilter extends CFormModel
        $command->from("ticket_events");
        $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
        $command->where("ticket_events.event_type_id = ".EventType::Event_New);
-       
-       
-      // $test = new DateTime($this->newTicketsFromDate);
-       //echo date( 'Y-m-d',$test->getTimestamp());
-      // echo (new DateTime()->getTimestamp();  //  date( 'Y-m-d', (new DateTime($date))->getTimestamp() );
-       
-   //   echo  DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate);
-      
-       
-        $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
+       $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
                                                                        "' AND '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsToDate)."'");
         
-    /* if (isset($this->newTicketsDomainID) && $this->newTicketsDomainID >0)
+    if (isset($this->newTicketsDomainID) && $this->newTicketsDomainID >0)
        {
             $command->andWhere("ticket.domain_id = ".$this->newTicketsDomainID);
        }
@@ -218,9 +209,7 @@ class UtilizationDashboardFilter extends CFormModel
             $command->andWhere("ticket.subdomain_id = ".$this->newTicketsSubDomainID);
        }
        
-      
-       
-       $newEventsData = $command->queryAll(); */
+     /*   $newEventsData = $command->queryAll(); */
     }
        
     
