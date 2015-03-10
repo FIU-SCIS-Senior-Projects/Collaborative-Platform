@@ -7049,3 +7049,188 @@ REQUEST_URI=/coplat/index.php/utilizationDashboard
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (126)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (27)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 18:52:11 [error] [php] Undefined variable: newEvents (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\utilizationDashboard\ClosedTicketsOverTime.php:15)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): UtilizationDashboardController->renderFile()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\utilizationDashboard\view.php(53): UtilizationDashboardController->renderPartial()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): UtilizationDashboardController->renderInternal()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): UtilizationDashboardController->renderFile()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): UtilizationDashboardController->renderPartial()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(28): UtilizationDashboardController->render()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionIndex()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\utilizationDashboard\ClosedTicketsOverTime.php (15)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\utilizationDashboard\view.php (53)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (28)
+2015/03/10 19:01:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "RefreshClosedTickets".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('RefreshClosedTi...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('RefreshClosedTi...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/RefreshClosedTickets
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/10 19:01:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "RefreshClosedTickets".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('RefreshClosedTi...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('RefreshClosedTi...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/RefreshClosedTickets
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/10 19:02:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "RefreshClosedTickets".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('RefreshClosedTi...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('RefreshClosedTi...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/RefreshClosedTickets
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/10 19:03:14 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:03:14 [error] [exception.CException] exception 'CException' with message 'Invalid dimension' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:335
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(245): UtilizationDashboardFilter->retrieveClosedEventsData()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(58): UtilizationDashboardFilter->retrieveClosedTicketsDashboardData()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionRefreshClosedTickets()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('RefreshClosedTi...')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/RefreshClosedTickets
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/10 19:03:17 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:03:17 [error] [exception.CException] exception 'CException' with message 'Invalid dimension' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:335
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(245): UtilizationDashboardFilter->retrieveClosedEventsData()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(58): UtilizationDashboardFilter->retrieveClosedTicketsDashboardData()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionRefreshClosedTickets()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('RefreshClosedTi...')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/RefreshClosedTickets
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/10 19:03:32 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:03:32 [error] [exception.CException] exception 'CException' with message 'Invalid dimension' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:335
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(245): UtilizationDashboardFilter->retrieveClosedEventsData()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(58): UtilizationDashboardFilter->retrieveClosedTicketsDashboardData()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionRefreshClosedTickets()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('RefreshClosedTi...')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/RefreshClosedTickets
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/10 19:08:19 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:08:19 [error] [exception.CException] exception 'CException' with message 'Invalid dimension' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:335
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(245): UtilizationDashboardFilter->retrieveClosedEventsData()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(58): UtilizationDashboardFilter->retrieveClosedTicketsDashboardData()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionRefreshClosedTickets()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('RefreshClosedTi...')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/RefreshClosedTickets
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/10 19:08:43 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:11:02 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:11:12 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:11:18 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:11:52 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:13:21 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:13:24 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:13:30 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:13:34 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/10 19:25:57 [warning] [application] Failed to set unsafe attribute "closedTicketsSubDomainID" of "UtilizationDashboardFilter".
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (56)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
