@@ -1,25 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "video_conference".
+ * This is the model class for table "vc_invitation".
  *
- * The followings are the available columns in table 'video_conference':
- * @property string $id
- * @property string $subject
- * @property string $moderator_id
- * @property string $scheduled_on
- * @property string $scheduled_for
- * @property string $notes
+ * The followings are the available columns in table 'vc_invitation':
+ * @property string $videoconference_id
+ * @property string $invitee_id
+ * @property string $status
  *
  * The followings are the available model relations:
- * @property User $moderator
+ * @property User $invitee
  */
-class VideoConference extends CActiveRecord
+class VCInvitation extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return VideoConference the static model class
+	 * @return VCInvitation the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -31,7 +28,7 @@ class VideoConference extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'video_conference';
+		return 'vc_invitation';
 	}
 
 	/**
@@ -42,15 +39,12 @@ class VideoConference extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-//			array('id, moderator_id', 'required'),
-//			array('id, moderator_id', 'length', 'max'=>11),
-            array('subject', 'required'),
-            array('subject', 'length', 'max'=>255),
-			array('notes', 'length', 'max'=>255),
-			array('scheduled_on, scheduled_for', 'safe'),
+			array('videoconference_id, invitee_id', 'required'),
+			array('videoconference_id, invitee_id', 'length', 'max'=>11),
+			array('status', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, subject, moderator_id, scheduled_on, scheduled_for, notes', 'safe', 'on'=>'search'),
+			array('videoconference_id, invitee_id, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,7 +56,7 @@ class VideoConference extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'moderator' => array(self::BELONGS_TO, 'User', 'moderator_id'),
+			'invitee' => array(self::BELONGS_TO, 'User', 'invitee_id'),
 		);
 	}
 
@@ -72,12 +66,9 @@ class VideoConference extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-            'subject' => 'Subject',
-			'moderator_id' => 'Moderator',
-			'scheduled_on' => 'Scheduled On',
-			'scheduled_for' => 'Date',
-			'notes' => 'Notes',
+			'videoconference_id' => 'Videoconference',
+			'invitee_id' => 'Invitee',
+			'status' => 'Status',
 		);
 	}
 
@@ -92,15 +83,29 @@ class VideoConference extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-        $criteria->compare('subject',$this->subject,true);
-		$criteria->compare('moderator_id',$this->moderator_id,true);
-		$criteria->compare('scheduled_on',$this->scheduled_on,true);
-		$criteria->compare('scheduled_for',$this->scheduled_for,true);
-		$criteria->compare('notes',$this->notes,true);
+		$criteria->compare('videoconference_id',$this->videoconference_id,true);
+		$criteria->compare('invitee_id',$this->invitee_id,true);
+		$criteria->compare('status',$this->status,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function sendInvitationEmail($meeting_id, $moderator_name, $invitee_name, $invitee_email){
+
+
+
+        $message = "You have been invited to a video conference by " . $moderator_name . "<br>. Please join <a href='https://cp.cis.fiu.edu/coplat/index.php/videoConference/join/". $meeting_id."'>here</a>.";
+        $html = User::replaceMessage($invitee_name, $message);
+
+        $email = Yii::app()->email;
+        $email->to = $invitee_email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = '';
+        $email->message = $html;
+        $email->send();
+    }
+
+
 }

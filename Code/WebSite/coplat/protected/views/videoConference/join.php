@@ -9,13 +9,16 @@
 /* @var $this VideoConferenceController */
 /* @var $model VideoConference */
 
-
-$this->breadcrumbs = array(
-    'Video Conferences' => array('index'),
-    'Join',
-    $model->id
-);
 ?>
+
+
+<ol class="breadcrumb">
+    <li><a href="/coplat/index.php">Home</a></li>
+    <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
+    <li><a href="/coplat/index.php/videoConference/<?php echo $model->id; ?>"><?php echo $model->id; ?></a></li>
+    <li class="active">Join</li>
+</ol>
+
 
 
 
@@ -48,10 +51,26 @@ $this->breadcrumbs = array(
 
 
 <hr/>
-<button id="open-room">Open Room</button>
-<!-- The meeting initiator -->
-<button id="join-room">Join Room</button>
-<!-- The meeting participants join-->
+
+<?php
+
+if(Yii::app()->user->getId() == $model->moderator_id)
+{
+   echo
+   " <!-- The meeting initiator -->
+    <button type='button' class='btn btn-primary' id='open-room'>Open Room</button> ";
+}
+else{
+    echo
+    "<!-- The meeting participants join-->
+    <button type='button' class='btn btn-primary' id='join-room'>Join Room</button>
+    ";
+}
+
+
+
+
+?>
 <hr/>
 
 
@@ -170,18 +189,18 @@ $this->breadcrumbs = array(
     }
 
 
-    document.getElementById('open-room').onclick = function () {
+    $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-    };
-    document.getElementById('join-room').onclick = function () {
+    });
+    $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
-    };
+    });
     rmc.onMediaCaptured = function () {
-        document.getElementById('share-screen').disabled = false;
-        document.getElementById('open-room').disabled = true;
-        document.getElementById('join-room').disabled = true;
+        $('#share-screen').removeAttr('disabled');
+        $('#open-room').attr('disabled','disabled');
+        $('#join-room').attr('disabled','disabled');
     };
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/

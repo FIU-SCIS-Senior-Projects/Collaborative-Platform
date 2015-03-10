@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `vc_invitation` (
   `invitee_id` int(11) unsigned NOT NULL,
   `status` varchar(32)	 
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
+ALTER TABLE `coplat`.`vc_invitation` 
+ADD PRIMARY KEY (`videoconference_id`, `invitee_id`);
 ALTER TABLE vc_invitation
 ADD CONSTRAINT fk_VC_Invitations
 FOREIGN KEY (invitee_id)

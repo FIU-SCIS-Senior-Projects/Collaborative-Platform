@@ -20,6 +20,7 @@
     <?php Yii::app()->bootstrap->register(); ?>
     <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.jgrowl.js"></script>
     <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/table-fix-header.js"></script>
+    <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui.min.js"></script>
     <link rel="shortcut icon" href="/coplat/images/ico/icon.ico">
 </head>
 <body>

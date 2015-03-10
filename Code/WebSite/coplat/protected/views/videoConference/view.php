@@ -11,7 +11,6 @@ $this->breadcrumbs = array(
 );
 
 
-
 $this->menu = array(
     array('label' => 'List VideoConference', 'url' => array('index')),
     array('label' => 'Create VideoConference', 'url' => array('create')),
@@ -21,23 +20,38 @@ $this->menu = array(
 );
 ?>
 
-<h1>View VideoConference #<?php echo $model->id; ?></h1>
+<style>
+    .error-message {
+        background-color: #f2dede;
+        border-radius: 3px;
+        padding:10px;
+    }
 
+</style>
+
+<h1>Subject: <?php echo $model->subject; ?></h1>
+
+
+
+<?php if (Yii::app()->user->hasFlash('error')): ?>
+    <h3>There were some problems with your invitations: </h3>
+    <div class="error-message">
+        <?php echo Yii::app()->user->getFlash('error'); ?>
+    </div>
+<?php endif; ?>
 
 
 
 <?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'moderator_id',
-		'scheduled_on',
-		'scheduled_for',
-		'notes',
-	),
+    'data' => $model,
+    'attributes' => array(
+        'scheduled_on',
+        'scheduled_for',
+        'notes',
+    ),
 
 )); ?>
 
-<a href="./join/<?php echo $model->id?>">Join Now</a>
+<a href="./join/<?php echo $model->id ?>">Join Now</a>
 
 
