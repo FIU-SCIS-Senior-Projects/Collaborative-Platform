@@ -44,8 +44,13 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
     .dashItem{border:1px solid #666; height:100%} 
     .chartCont{ overflow:auto; width:630px; height:100%}
 </style>
-<?php echo  $this->renderPartial('NewTicketsPerOverTime',array('filter'=>$filter,'newEvents'=>$newEvents),false,false); ?>
+<?php echo  $this->renderPartial('NewTicketsOverTime',
+                                 array('filter'=>$filter,
+                                       'newEvents'=>$newEvents),false,false); ?>
 
+<?php echo  $this->renderPartial('ClosedTicketsOverTime',
+                                array('filter'=>$filter,
+                                      'closedEvents'=>$closedEvents),false,false); ?>
 
 
 
