@@ -83,7 +83,7 @@ class VideoConferenceController extends Controller
 
         if (isset($_POST['VideoConference'])) {
             $model->attributes = $_POST['VideoConference'];      //get the rest of the attributes
-            $model->moderator_id = Yii::app()->user->getId();    //get the current users id
+            $model->moderator_id = Yii::app()->user->getDBId();    //get the current users id
             $model->scheduled_on = date("Y-m-d H:i:s");          //now
 
             $dateopt = $_POST['dateopt'];
