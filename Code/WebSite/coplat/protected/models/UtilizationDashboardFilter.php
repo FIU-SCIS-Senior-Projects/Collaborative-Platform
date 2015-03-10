@@ -199,10 +199,11 @@ class UtilizationDashboardFilter extends CFormModel
        
        
        $test = new DateTime($this->newTicketsFromDate);
-       echo $test->getTimestamp();
+       echo date( 'Y-m-d',$test->getTimestamp());
       // echo (new DateTime()->getTimestamp();  //  date( 'Y-m-d', (new DateTime($date))->getTimestamp() );
        
-      // echo  DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate);
+    //  echo  DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate);
+      
        
         /*$command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
                                                                        "' AND '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsToDate)."'");
