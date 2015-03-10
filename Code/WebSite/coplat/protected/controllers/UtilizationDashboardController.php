@@ -9,7 +9,7 @@ class UtilizationDashboardController extends Controller
         
 	public function actionIndex()
 	{ 
-	      if (!Yii::app()->request->isPostRequest)
+	    /*  if (!Yii::app()->request->isPostRequest)
 	      {
                $ultilizationFilter = UtilizationDashboardFilter::initializeFilters(); 
            
@@ -30,7 +30,7 @@ class UtilizationDashboardController extends Controller
                 }else
                 {
                   $this->render('view', array('filter'=>$ultilizationFilter,'newEvents' => $newEvents));  
-                }
+                }*/
 		  
 		  
 	}
