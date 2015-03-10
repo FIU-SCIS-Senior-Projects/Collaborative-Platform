@@ -195,8 +195,8 @@ class UtilizationDashboardFilter extends CFormModel
        }
        $command->from("ticket_events");
        $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
-          /* $command->where("ticket_events.event_type_id = ".EventType::Event_New);
-       $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
+       $command->where("ticket_events.event_type_id = ".EventType::Event_New);
+       /*$command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
                                                                        "' AND '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsToDate)."'");
         
       if (isset($this->newTicketsDomainID) && $this->newTicketsDomainID >0)
