@@ -198,11 +198,11 @@ class UtilizationDashboardFilter extends CFormModel
        $command->where("ticket_events.event_type_id = ".EventType::Event_New);
        
        
-       $test = new DateTime($this->newTicketsFromDate);
-       echo date( 'Y-m-d',$test->getTimestamp());
+      // $test = new DateTime($this->newTicketsFromDate);
+       //echo date( 'Y-m-d',$test->getTimestamp());
       // echo (new DateTime()->getTimestamp();  //  date( 'Y-m-d', (new DateTime($date))->getTimestamp() );
        
-    //  echo  DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate);
+      echo  DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate);
       
        
         /*$command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
