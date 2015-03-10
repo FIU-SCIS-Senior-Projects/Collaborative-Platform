@@ -26,6 +26,12 @@ class WebUser extends CWebUser
     {
         return $this->id;
     }
+
+    public function getFullName()
+    {
+
+        return $this->getName();
+    }
 }
 ?>
 
