@@ -4,7 +4,20 @@
 
 }
 #tool-box a.list-group-item{
-  color:#18536b;
+    color:#18536b;
+    margin-bottom: 5px;
+    border-color: #1b89a3;
+    border-radius: 4px;
+}
+
+#tool-box a.list-group-item:hover{
+    background-color: #19536c;
+    color: white;
+    border-color: #1b89a3;
+}
+
+#tool-box{
+    text-align: center;
 }
 
 #cotools-panel{

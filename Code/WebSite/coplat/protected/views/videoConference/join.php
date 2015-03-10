@@ -80,7 +80,7 @@ else{
 
 <div class="container">
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
 
 
 
@@ -96,11 +96,11 @@ else{
     </div>
 
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <!-- required for floating -->
         <!-- Nav tabs -->
 
-                <div id="tool-box" class="list-group">
+                <div id="tool-box"  class="list-group">
                     <a href="#"  class="list-group-item"><i class="fa fa-paint-brush" ></i>&nbsp;&nbsp;Whiteboard</a>
                     <a href="#" class="list-group-item"><i class="fa fa-recycle" ></i>&nbsp;&nbsp;Reset Board</a>
                     <a href="#" id="share-screen" class="list-group-item"><i class="fa fa-desktop" ></i>&nbsp;&nbsp;Share Screen</a>
