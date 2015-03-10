@@ -103,8 +103,8 @@ class UtilizationDashboardFilter extends CFormModel
 
       $this->retrieveEventsData($newEventData);
        
-   /*   $fromDate = new DateTime($this->newTicketsFromDate);
-       $toDate = new DateTime($this->newTicketsToDate);
+      $fromDate = new DateTime($this->newTicketsFromDate);
+      $toDate = new DateTime($this->newTicketsToDate);
        
        $dateInterval;
        switch ($this->newTicketsCurrentDimension)
@@ -127,7 +127,7 @@ class UtilizationDashboardFilter extends CFormModel
        $dateFormated = "";
        $currentIndex = 0;
        
-       if (count($newEventData)> $currentIndex)
+     /*   if (count($newEventData)> $currentIndex)
        {
             $currentReading = $newEventData[0]; 
        }           
