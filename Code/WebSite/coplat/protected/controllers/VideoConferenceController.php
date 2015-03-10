@@ -99,16 +99,14 @@ class VideoConferenceController extends Controller
                     $invitation->invitee_id = $invitee->id;
                     $invitation->videoconference_id = $model->id;
                     $invitation->status = "Maybe";
-                    if (!$invitation->save()) {                      //an error occurred
+                    if (!$invitation->save()) {                                         //an error occurred
                         $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
-                        //$model->addError('error2', "An error occurred upon saving the invitation to " . $email);
-                    }else{
-                        $moderatorfullName = Yii::app()->user->fname . " " . Yii::app()->user->lfame;
+                    } else {
+                        $moderatorfullName = Yii::app()->user->getFullName();           //this current user
                         $inviteefullName = $invitee->fname . " " . $invitee->lname;
 
-                        VCInvitation::sendInvitationEmail($model->id,$moderatorfullName, $inviteefullName, $email);
-
-                        ;}
+                        VCInvitation::sendInvitationEmail($model->id, $moderatorfullName, $inviteefullName, $email);;
+                    }
                 }
 
                 Yii::app()->user->setFlash('error', $invitationError);
