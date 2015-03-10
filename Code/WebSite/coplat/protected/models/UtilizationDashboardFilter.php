@@ -336,6 +336,7 @@ class UtilizationDashboardFilter extends CFormModel
        }
        $command->from("ticket_events");
        $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
+       //status changed and closed
        $command->where("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
        $command->where("ticket_events.new_value = 'Close'");
        $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
