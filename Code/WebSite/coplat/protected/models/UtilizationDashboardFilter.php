@@ -100,7 +100,8 @@ class UtilizationDashboardFilter extends CFormModel
     public function retrieveDashboardData(&$newEvents)
     {
         //New event data
-       $this->retrieveEventsData($newEventData);
+       $newEventData = array();
+     //  $this->retrieveEventsData($newEventData);
        
       $fromDate = new DateTime($this->newTicketsFromDate);
        $toDate = new DateTime($this->newTicketsToDate);
@@ -173,7 +174,7 @@ class UtilizationDashboardFilter extends CFormModel
                   
        switch ($this->newTicketsCurrentDimension)
        {
-       /*    case DimensionType::Date:
+         case DimensionType::Date:
                $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
                $command->group('DATE(ticket_events.event_recorded_date)');
            
@@ -210,7 +211,7 @@ class UtilizationDashboardFilter extends CFormModel
        
       
        
-       $newEventsData = $command->queryAll(); */
+       $newEventsData = $command->queryAll(); 
     }
        
     
