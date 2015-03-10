@@ -24,8 +24,8 @@ class UtilizationDashboardController extends Controller
 		}
                 
                 
-		/*$ultilizationFilter->retrieveDashboardData($newEvents); 
-                if (Yii::app()->request->isAjaxRequest)
+		$ultilizationFilter->retrieveDashboardData($newEvents); 
+                /*if (Yii::app()->request->isAjaxRequest)
                 {
                   $this->renderPartial('NewTicketsPerOverTime',array('filter'=>$ultilizationFilter,'newEvents'=>$newEvents),false,true);
                 }else
