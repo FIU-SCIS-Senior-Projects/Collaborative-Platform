@@ -209,7 +209,7 @@ class UtilizationDashboardFilter extends CFormModel
             $command->andWhere("ticket.subdomain_id = ".$this->newTicketsSubDomainID);
        }
        
-     /*   $newEventsData = $command->queryAll(); */
+       $newEventsData = $command->queryAll(); 
     }
        
     
