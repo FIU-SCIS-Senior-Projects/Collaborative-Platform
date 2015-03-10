@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array('Utilization Dashboard');
-Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi");
+Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}");
 /*Yii::app()->clientScript->registerScript('logoFix',
   " google.load('visualization', '1', {packages: ['corechart']});
     google.setOnLoadCallback(drawChart);
