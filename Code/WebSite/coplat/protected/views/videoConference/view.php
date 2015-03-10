@@ -33,10 +33,10 @@ $this->menu = array(
 
 
 
-<?php if (Yii::app()->user->hasFlash('error')): ?>
+<?php if (Yii::app()->user->hasFlash('invitation-error')): ?>
     <h3>There were some problems with your invitations: </h3>
     <div class="error-message">
-        <?php echo Yii::app()->user->getFlash('error'); ?>
+        <?php echo Yii::app()->user->getFlash('invitation-error'); ?>
     </div>
 <?php endif; ?>
 
