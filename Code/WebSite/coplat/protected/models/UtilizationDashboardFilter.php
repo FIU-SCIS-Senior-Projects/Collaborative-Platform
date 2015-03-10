@@ -102,7 +102,7 @@ class UtilizationDashboardFilter extends CFormModel
         //New event data
        $this->retrieveEventsData($newEventData);
        
-     /* $fromDate = new DateTime($this->newTicketsFromDate);
+      $fromDate = new DateTime($this->newTicketsFromDate);
        $toDate = new DateTime($this->newTicketsToDate);
        
        $dateInterval;
@@ -163,7 +163,7 @@ class UtilizationDashboardFilter extends CFormModel
           $fromDate->add($dateInterval);
        }
         $newEvents = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
-       */
+      
     }
     
     
@@ -207,9 +207,10 @@ class UtilizationDashboardFilter extends CFormModel
        {
             $command->andWhere("ticket.subdomain_id = ".$this->newTicketsSubDomainID);
        }
+       
       
        
-       $newEventsData = $command->queryAll(); 
+      // $newEventsData = $command->queryAll(); 
     }
        
     
