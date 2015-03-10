@@ -103,7 +103,7 @@ class VideoConferenceController extends Controller
                         $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
                     } else {
                         //$moderatorfullName = Yii::app()->user->getFullName();           //this current user
-                        $moderatorfullName = "Name Here"
+                        $moderatorfullName = "Name Here";
                         $inviteefullName = $invitee->fname . " " . $invitee->lname;
 
                         VCInvitation::sendInvitationEmail($model->id, $moderatorfullName, $inviteefullName, $email);;
