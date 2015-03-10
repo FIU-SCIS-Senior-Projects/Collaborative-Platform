@@ -18,7 +18,7 @@ class DimensionType
        switch ($dimensionType)
        {
            case DimensionType::Date:
-                   $dimensionDesc = "date";   
+                   $dimensionDesc = "day";   
                break;            
            case DimensionType::MonthOfTheYear:
                    $dimensionDesc = "month"; 
@@ -313,7 +313,7 @@ class UtilizationDashboardFilter extends CFormModel
     {
       $command =  Yii::app()->db->createCommand();
                   
-      switch ($this->newTicketsCurrentDimension)
+      switch ($this->closedTicketsCurrentDimension)
        {
          case DimensionType::Date:
                $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
@@ -339,17 +339,17 @@ class UtilizationDashboardFilter extends CFormModel
        //status changed and closed
        $command->where("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
        $command->where("ticket_events.new_value = 'Close'");
-       $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
-                                                                       "' AND '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsToDate)."'");
+       $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->closedTicketsFromDate).
+                                                                       "' AND '".DateUtils::getSQLDateStringFromDateStr($this->closedTicketsToDate)."'");
         
-       if (isset($this->newTicketsDomainID) && $this->newTicketsDomainID >0)
+       if (isset($this->closedTicketsDomainID) && $this->closedTicketsDomainID >0)
        {
-            $command->andWhere("ticket.domain_id = ".$this->newTicketsDomainID);
+            $command->andWhere("ticket.domain_id = ".$this->closedTicketsDomainID);
        }
        
-       if (isset($this->newTicketsSubDomainID) && $this->newTicketsSubDomainID >0)
+       if (isset($this->closedTicketsSubDomainID) && $this->closedTicketsSubDomainID >0)
        {
-            $command->andWhere("ticket.subdomain_id = ".$this->newTicketsSubDomainID);
+            $command->andWhere("ticket.subdomain_id = ".$this->closedTicketsSubDomainID);
        }
       // echo $command->text;
        

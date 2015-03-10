@@ -21,7 +21,11 @@ class UtilizationDashboardController extends Controller
 		}                
                 
 		$newEvents = $ultilizationFilter->retrieveNewTicketsDashboardData(); 
-                $this->render('view', array('filter'=>$ultilizationFilter,'newEvents' => $newEvents));  
+                $closedEvents = $ultilizationFilter->retrieveClosedTicketsDashboardData(); 
+                
+                $this->render('view', array('filter'=>$ultilizationFilter,
+                                            'newEvents' => $newEvents,
+                                            'closedEvents' => $closedEvents));  
        }
         
         
@@ -43,9 +47,24 @@ class UtilizationDashboardController extends Controller
             }            
         }
 
-
-
-
+        public function actionRefreshClosedTickets()
+        {            
+            if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $closedEvents= $ultilizationFilter->retrieveClosedTicketsDashboardData(); 
+               
+               $closedTicketRes =  array('dimDesc' => DimensionType::getDescriptionByDateDimension($ultilizationFilter->closedTicketsCurrentDimension),
+                                         'closedEvents' => $closedEvents,
+                                         'dimFormat' => DimensionType::getDateFormatByDimension($ultilizationFilter->closedTicketsCurrentDimension) );
+                           
+               echo json_encode($closedTicketRes);
+            }            
+        }
+     
         public function filters()
 	{
 	   return array('accessControl');
@@ -56,7 +75,7 @@ class UtilizationDashboardController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index','RefreshNewTickets'),
+                    'actions'=>array('index','RefreshNewTickets', 'RefreshClosedTickets'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
