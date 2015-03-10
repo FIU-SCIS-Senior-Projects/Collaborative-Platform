@@ -82,9 +82,25 @@ class VideoConferenceController extends Controller
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['VideoConference'])) {
-            $model->attributes = $_POST['VideoConference'];        //get the rest of the attributes
+            $model->attributes = $_POST['VideoConference'];      //get the rest of the attributes
             $model->moderator_id = Yii::app()->user->getId();    //get the current users id
             $model->scheduled_on = date("Y-m-d H:i:s");          //now
+
+            $dateopt = $_POST['dateopt'];
+            if($dateopt == "now"){
+                $model->scheduled_for = date("Y-m-d H:i:s");
+            }else if($dateopt == "later"){
+                if(!$model->scheduled_for){
+                    $model->addError('scheduled_for', "Date Time Cannot Be Blank");
+                    $this->render('create', array(
+                        'model' => $model,
+                    ));
+                    exit;
+                }else{                                           //validate
+                    /* TODO */
+                }
+            }
+
 
 
             if ($model->save()) {
@@ -102,10 +118,7 @@ class VideoConferenceController extends Controller
                     if (!$invitation->save()) {                                         //an error occurred
                         $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
                     } else {
-                        //$moderatorfullName = Yii::app()->user->getFullName();           //this current user
-                        //$moderatorfullName = "Name Here";
                         $inviteefullName = $invitee->fname . " " . $invitee->lname;
-
                         VCInvitation::sendInvitationEmail($model->id, $model->moderator_id, $inviteefullName, $email);;
                     }
                 }

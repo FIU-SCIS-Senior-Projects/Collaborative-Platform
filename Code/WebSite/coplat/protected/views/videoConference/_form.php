@@ -39,14 +39,16 @@
 </style>
 <script>
     $(document).ready(function () {
+        if($('#now').is(':checked')) {
+            $("#meeting-date-input").hide("slow");
+        }else{
+            $("#meeting-date-input").show("slow");
+        }
+
         $("#now").change(function () {
-            //alert("now");
-            $("#meeting-date-input").attr("disable");
             $("#meeting-date-input").hide("slow");
         });
         $("#later").change(function () {
-            //alert("later");
-            $("#meeting-date-input").removeAttr("active");
             $("#meeting-date-input").show("slow");
         });
     });
@@ -84,8 +86,6 @@
     <?php echo $form->errorSummary($model); ?>
 
 
-
-
     <div class="row">
         <?php echo $form->labelEx($model, 'subject'); ?>
         <?php echo $form->textField($model, 'subject'); ?>
@@ -94,10 +94,10 @@
 
     <div class="row">
         <label class="radio-inline">
-            <input id="now" value="now" checked type="radio" name="optradio">Now
+            <input id="now" value="now" checked type="radio" name="dateopt">Now
         </label>
         <label class="radio-inline">
-            <input id="later" value="later" type="radio" name="optradio">Later
+            <input id="later" value="later" type="radio" name="dateopt">Later
         </label>
     </div>
 
@@ -124,7 +124,7 @@
 
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
     </div>
 
     <?php $this->endWidget(); ?>
