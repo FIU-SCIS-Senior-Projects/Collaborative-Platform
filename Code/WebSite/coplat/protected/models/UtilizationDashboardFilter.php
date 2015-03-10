@@ -127,7 +127,7 @@ class UtilizationDashboardFilter extends CFormModel
        $dateFormated = "";
        $currentIndex = 0;
        
-     /*   if (count($newEventData)> $currentIndex)
+       if (count($newEventData)> $currentIndex)
        {
             $currentReading = $newEventData[0]; 
        }           
@@ -164,7 +164,7 @@ class UtilizationDashboardFilter extends CFormModel
           $fromDate->add($dateInterval);
        }
         $newEvents = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
-      */
+
     }
     
     
