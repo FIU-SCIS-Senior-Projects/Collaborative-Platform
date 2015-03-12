@@ -56,50 +56,74 @@ class DimensionType
 }
 
 
+class ReportType
+{
+    const None = 0;
+    const TicketsCreated =1;
+    const TicketsClosed =2;
+        
+    public static function getReportTypeDescription($reportType)
+    {
+       $res = "";
+       switch ($reportType)
+       {
+           case ReportType::TicketsCreated:
+                   $res = "Tickets created";   
+               break;            
+           case ReportType::TicketsClosed:
+                   $res = "Tickets closed"; 
+               break;           
+           default:
+               throw new CException("Invalid report type");
+       }       
+       return $res;
+    }
+    
+    public static function getReportTypes()
+    {
+             
+        
+        return  array( ReportType::None => " ",
+                       ReportType::TicketsCreated  =>ReportType::getReportTypeDescription(ReportType::TicketsCreated),
+                       ReportType::TicketsClosed =>ReportType::getReportTypeDescription( ReportType::TicketsClosed));
+        
+    }
+}
+
 class UtilizationDashboardFilter extends CFormModel
 {
-    //New ticket dashboard
-    public $newTicketsCurrentDimension;
-    public $newTicketsFromDate;
-    public $newTicketsToDate;
-    public $newTicketsDomainID;
-    public $newTicketsSubDomainID;
     
-    public $closedTicketsCurrentDimension;
-    public $closedTicketsFromDate;
-    public $closedTicketsToDate;
-    public $closedTicketsDomainID;
-    public $closedTicketsSubDomainID;
+    public $reportTypeId;
+    public $dim2ID;
+    public $fromDate;
+    public $toDate;
+    public $agregatedDomainID;
+    public $exclusiveDomainID;
+    public $subdomainID;
+    
 
-
-
-
-    public function rules()
+   public function rules()
     {
         return array(
-            array('newTicketsCurrentDimension, newTicketsFromDate, newTicketsToDate, '
-                . 'closedTicketsCurrentDimension, closedTicketsFromDate, closedTicketsToDate ', 'required'),
-            array('newTicketsDomainID, newTicketsSubDomainID, newTicketsCurrentDimension'
-                . 'closedTicketsDomainID, closedTicketsDomainID, closedTicketsCurrentDimension', 'numerical', 'integerOnly'=>true),
-            array('newTicketsFromDate, newTicketsToDate, '
-                . 'closedTicketsFromDate, closedTicketsToDate', 'date')                     
+            array('reportTypeId, dim2ID', 'required'),
+            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID', 'numerical', 'integerOnly'=>true),
+            array('fromDate, toDate', 'date')                     
         );
     }
     
     public function attributeLabels()
     {
 		return array(
-			'newTicketsFromDate' => 'From',
-			'newTicketsToDate' => 'To',
-                        'newTicketsDomainID' => 'Domain',
-                        'newTicketsSubDomainID'=>'Sub Domain',
-                        'closedTicketsFromDate' => 'From',
-			'closedTicketsToDate' => 'To',
-                        'closedTicketsDomainID' => 'Domain',
-                        'closedTicketsSubDomainID'=>'Sub Domain', );
+			'fromDate' => 'From',
+			'toDate' => 'To',
+                        'agregatedDomainID' => 'Domain (Aggregated)',
+                        'exclusiveDomainID'=>'Domain (Exclusive)',
+                        'subdomainID' => 'Sub Domain',			
+                        'reportTypeId' => 'Report Type',
+                        'dim2ID' => 'By');
     }
     
-    public static function initializeFilters()
+  /*  public static function initializeFilters()
     {
             $date = new DateTime();
 		    date_sub($date, new DateInterval("P1Y"));
@@ -117,7 +141,7 @@ class UtilizationDashboardFilter extends CFormModel
             
             
             return $ultilizationFilter;
-        }
+        }*/
         
         
     //New tickets    

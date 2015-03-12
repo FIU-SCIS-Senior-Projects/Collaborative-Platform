@@ -9,23 +9,23 @@ class UtilizationDashboardController extends Controller
         
 	public function actionIndex()
 	{ 
-	       if (!Yii::app()->request->isPostRequest)
+	      /* if (!Yii::app()->request->isPostRequest)
 	       {
                 $ultilizationFilter = UtilizationDashboardFilter::initializeFilters(); 
-               }	
-               else if(isset($_POST['UtilizationDashboardFilter'])) 
-	       {
-		 $ultilizationFilter = new UtilizationDashboardFilter();
-                 $ultilizationFilter->unsetAttributes();  // clear any default values  
-                 $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];     
-		}                
+               }*/	
+              // else if(isset($_POST['UtilizationDashboardFilter'])) 
+	       //{
+		 
+                 //$ultilizationFilter->unsetAttributes();  // clear any default values  
+                 //$ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];     
+		//}                
                 
-		$newEvents = $ultilizationFilter->retrieveNewTicketsDashboardData(); 
-                $closedEvents = $ultilizationFilter->retrieveClosedTicketsDashboardData(); 
-                
-                $this->render('view', array('filter'=>$ultilizationFilter,
-                                            'newEvents' => $newEvents,
-                                            'closedEvents' => $closedEvents));  
+		/*$newEvents = $ultilizationFilter->retrieveNewTicketsDashboardData(); 
+                $closedEvents = $ultilizationFilter->retrieveClosedTicketsDashboardData();*/
+            
+            
+                $ultilizationFilter = new UtilizationDashboardFilter();
+                $this->render('view', array('filter'=>$ultilizationFilter));  
        }
         
         
