@@ -761,12 +761,16 @@ class ApplicationController extends Controller
 			// save system picks
 			$systempicks = $_POST['systempicks'];
 			$systempicks = explode(',', $systempicks);
-			foreach($systempicks as $pick){
-				$dbpick = new ApplicationProjectMentorPick;
+			foreach($systempicks as $pick)
+                        {
+                            if ($pick > 0)
+                            {
+                                $dbpick = new ApplicationProjectMentorPick;
 				$dbpick->app_id = $application->id;
 				$dbpick->project_id = $pick;
 				$dbpick->approval_status = 'Proposed by System';
 				$dbpick->save(false);
+                            }				
 			}
 			
 			// redirect to application portal
