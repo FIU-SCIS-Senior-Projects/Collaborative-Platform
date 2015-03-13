@@ -63,7 +63,7 @@ $this->menu=array(
     foreach($vcs as $vc){
         $html = "
         <div class='mbox info'>
-            <a href='videoConference/%ID%'>%SUBJECT%</a>
+            <a href='../videoConference/%ID%'>%SUBJECT%</a>
             <p>%DATE%</p>
             <p>%NOTE%</p>
         </div>";
