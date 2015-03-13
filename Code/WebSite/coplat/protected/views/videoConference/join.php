@@ -243,9 +243,7 @@ if ($user->id == $model->moderator_id) {
             //alert("new screen");
         }
     };
-    */
-
-
+    
     //Whitebord Section
 
     function canvasInit() {
