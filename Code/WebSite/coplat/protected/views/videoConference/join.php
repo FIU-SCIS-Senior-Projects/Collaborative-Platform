@@ -239,7 +239,9 @@ if ($user->id == $model->moderator_id) {
         }
         if (e.isScreen) {
             $('#cotools-panel').empty();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+
+            $('#cotools-panel').html(e.mediaElement);
+            //document.getElementById('cotools-panel').appendChild(e.mediaElement);
             //alert("new screen");
         }
     };
