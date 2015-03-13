@@ -8,7 +8,6 @@
 class UserIdentity extends CUserIdentity
 {
 
-    private $databaseID;
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
@@ -32,7 +31,7 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode = 7;				
 		else
 		{
-            $this->databaseID=$user->id;
+
 			$this->username = $user->username;
 			//$this->setState('lastLogin', date('m/d/y''));
 			
@@ -58,10 +57,6 @@ class UserIdentity extends CUserIdentity
 
 
 
-    public function getDBId()
-    {
-        return $this->databaseID;
-    }
 
 
 

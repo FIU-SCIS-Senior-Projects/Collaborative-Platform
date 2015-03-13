@@ -52,20 +52,47 @@ class VideoConferenceController extends Controller
      */
     public function actionView($id)
     {
-        $this->render('view', array(
-            'model' => $this->loadModel($id),
-        ));
+        $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+        $invitation = VCInvitation::model()->findByAttributes(array("videoconference_id" => $id, "invitee_id" => $user->id));
+
+        Yii::trace(CVarDumper::dumpAsString($invitation));
+
+        if($invitation){
+            $this->render('view', array(
+                'model' => $this->loadModel($id),
+            ));
+        }
+        else{
+            $this->render('notAllowed', array(
+                    'model' => $this->renderPartial("notAllowed")
+                )
+            );
+        }
     }
 
     /**
-     *
+     * Lets user join the video conference room
+     * @param integer $id the ID of the model to be displayed
      */
 
     public function actionJoin($id)
     {
-        $this->render('join', array(
-            'model' => $this->loadModel($id),
-        ));
+        $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+        $invitation = VCInvitation::model()->findByAttributes(array("videoconference_id" => $id, "invitee_id" => $user->id));
+
+        Yii::trace(CVarDumper::dumpAsString($invitation));
+
+        if($invitation){
+            $this->render('join', array(
+                'model' => $this->loadModel($id),
+            ));
+        }
+        else{
+            $this->render('notAllowed', array(
+                'model' => $this->renderPartial("notAllowed")
+                )
+            );
+        }
     }
 
 
@@ -82,9 +109,10 @@ class VideoConferenceController extends Controller
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['VideoConference'])) {
-            $model->attributes = $_POST['VideoConference'];      //get the rest of the attributes
-            $model->moderator_id = Yii::app()->user->getDBId();    //get the current users id
-            $model->scheduled_on = date("Y-m-d H:i:s");          //now
+            $model->attributes = $_POST['VideoConference'];             //get the rest of the attributes
+            $moderator = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+            $model->moderator_id =    $moderator->id;                   //get the current users id
+            $model->scheduled_on = date("Y-m-d H:i:s");                 //now
 
             $dateopt = $_POST['dateopt'];
             if($dateopt == "now"){
@@ -179,9 +207,21 @@ class VideoConferenceController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('VideoConference');
+
+        $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+
+        $meetingsId = new CList();
+        $invitations = VCInvitation::model()->findAllByAttributes(array("invitee_id" =>$user->id));
+        foreach($invitations as $inv){
+            $meetingsId->add($inv->videoconference_id);
+        }
+        $meetings = VideoConference::model()->findAllByAttributes(array("moderator_id" =>$user->id));
+        foreach($meetings as $meeting){
+            $meetingsId->add($meeting->id);
+        }
+        //$dataProvider = new CActiveDataProvider('VideoConference');
         $this->render('index', array(
-            'dataProvider' => $dataProvider,
+            'meetingsId' => $meetingsId->toArray(),
         ));
     }
 
