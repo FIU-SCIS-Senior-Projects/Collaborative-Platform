@@ -103,4 +103,25 @@ class VideoConference extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function currentUserDataProvider()
+    {
+            // create your second data provider here
+            // with filtering based on model's attributes, e.g.:
+
+/*
+           // $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+
+
+
+
+            $criteria = new CDbCriteria;
+            $criteria->compare('someAttribute', $this->someAttribute);
+
+            return new CActiveDataProvider('User', array(
+                'criteria' => $criteria,
+            ));
+
+*/
+    }
 }
