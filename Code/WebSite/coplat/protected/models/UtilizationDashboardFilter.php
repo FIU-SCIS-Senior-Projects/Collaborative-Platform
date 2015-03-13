@@ -102,7 +102,7 @@ class UtilizationDashboardFilter extends CFormModel
     public $subdomainID;
     
 
-   public function rules()
+    public function rules()
     {
         return array(
             array('reportTypeId, dim2ID', 'required'),
@@ -123,28 +123,6 @@ class UtilizationDashboardFilter extends CFormModel
                         'dim2ID' => 'By');
     }
     
-  /*  public static function initializeFilters()
-    {
-            $date = new DateTime();
-		    date_sub($date, new DateInterval("P1Y"));
-            
-            //Initialize the filter model
-            $ultilizationFilter = new UtilizationDashboardFilter();
-            $ultilizationFilter->newTicketsCurrentDimension = DimensionType::MonthOfTheYear;
-            $ultilizationFilter->newTicketsToDate = date('m/d/Y');// date("m/d/y");
-	    $ultilizationFilter->newTicketsFromDate =  $date->format('m/d/Y');
-            
-            $ultilizationFilter->closedTicketsCurrentDimension = DimensionType::MonthOfTheYear;
-            $ultilizationFilter->closedTicketsToDate = date('m/d/Y');// date("m/d/y");
-	    $ultilizationFilter->closedTicketsFromDate =  $date->format('m/d/Y');
-            
-            
-            
-            return $ultilizationFilter;
-        }*/
-        
-        
-   
     public function retrieveCreateTicketsOvertimeDashboardData()
     {
       //retrieve tha data
@@ -231,6 +209,30 @@ class UtilizationDashboardFilter extends CFormModel
 
         return $newEvents;*/
     }
+    
+    public function retrieveClosedTicketsOvertimeDashboardData()
+    {
+      //retrieve tha data
+      $ticketsClosedData =  $this->retrieveClosedTicketsOvertimeData();
+      $dateFormated = "";
+      foreach ($ticketsClosedData as $data)
+      {
+          $countPart =  ArrayUtils::getValueOrDefault($data, "EventCount",0);
+          $currentReadingYear =  ArrayUtils::getValueOrDefault($data, "Year",1);
+          $currentReadingMonth = ArrayUtils::getValueOrDefault($data, "Month", 1);
+          $currentReadingDay =   ArrayUtils::getValueOrDefault($data, "Day" ,1); 
+          $dateFormated = $dateFormated.sprintf('[new Date(%s, %s, %s), %s],',
+                                               $currentReadingYear,
+                                               $currentReadingMonth - 1,
+                                               $currentReadingDay,
+                                               $countPart);
+       }
+       
+       //format the data
+       $chartFormatedData = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
+       return  $chartFormatedData; 
+        
+    }
         
     private function retrieveCreateTicketsOvertimeData()
     {
@@ -291,83 +293,11 @@ class UtilizationDashboardFilter extends CFormModel
        return $command->queryAll(); 
     }
     
-    
-    //Closed tickets
-    public function retrieveClosedTicketsDashboardData()
-    {
-        //New event data
-      $closedEventData =  $this->retrieveClosedEventsData();
-       
-      $fromDate = new DateTime($this->closedTicketsFromDate);
-      $toDate = new DateTime($this->closedTicketsToDate);
-       
-       $dateInterval;
-       switch ($this->closedTicketsCurrentDimension)
-       {
-           case DimensionType::Date:
-              $dateInterval =  new DateInterval("P1D");
-               break;            
-           case DimensionType::MonthOfTheYear:
-              $dateInterval =  new DateInterval("P1M");
-              DateUtils::resetDateToFirstDayOfTheMonth($fromDate); 
-              break;           
-           case DimensionType::Year:
-               $dateInterval =  new DateInterval("P1Y");
-               DateUtils::resetDateToFirstDayOfTheYear($fromDate); 
-               break;
-           default:
-               throw new CException("Invalid dimension");
-       }   
-       
-       $dateFormated = "";
-       $currentIndex = 0;
-       
-       if (count($closedEventData)> $currentIndex)
-       {
-            $currentReading = $closedEventData[0]; 
-       }           
-     
-       while ($fromDate <= $toDate)
-       { 
-          $countPart = 0; 
-          DateUtils::getDateParts($fromDate,  $year,$month, $day);
-          
-          if (isset($currentReading))
-          {
-            $currentReadingYear =  ArrayUtils::getValueOrDefault($currentReading, "Year",1);
-            $currentReadingMonth = ArrayUtils::getValueOrDefault($currentReading, "Month", 1);
-            $currentReadingDay =   ArrayUtils::getValueOrDefault($currentReading, "Day" ,1); 
-            
-            if ($year == $currentReadingYear && $month == $currentReadingMonth && $day == $currentReadingDay)
-            {
-               $countPart =  ArrayUtils::getValueOrDefault($currentReading, "EventCount",0);
-               $currentIndex++;
-               if (count($closedEventData)> $currentIndex)
-               {
-                   $currentReading = $closedEventData[$currentIndex]; 
-               }else
-               {
-                   $currentReading = NULL;                   
-               }               
-            }
-            
-          }       
-                   
-          $dateFormated = $dateFormated.sprintf('[new Date(%s, %s, %s), %s],',$year,$month - 1,$day,$countPart);
-         
-           
-          $fromDate->add($dateInterval);
-       }
-        $closedEvents = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
-
-        return $closedEvents;
-    }
-      
-    private function retrieveClosedEventsData()
+    private function retrieveClosedTicketsOvertimeData()
     {
       $command =  Yii::app()->db->createCommand();
                   
-      switch ($this->closedTicketsCurrentDimension)
+      switch ($this->dim2ID)
        {
          case DimensionType::Date:
                $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
@@ -375,12 +305,12 @@ class UtilizationDashboardFilter extends CFormModel
            
                break;            
            case DimensionType::MonthOfTheYear:
-               $command->select(array("COUNT(1) AS EventCount, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date) AS Year")); 
+               $command->select(array("COUNT(1) AS EventCount, 1 AS Day ,MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date) AS Year")); 
                $command->group('YEAR(ticket_events.event_recorded_date), MONTH(ticket_events.event_recorded_date)');
              
                break;           
            case DimensionType::Year:
-               $command->select(array("COUNT(1) AS EventCount, YEAR(event_recorded_date) AS Year")); 
+               $command->select(array("COUNT(1) AS EventCount, 1 AS Day, 1 AS Month, YEAR(event_recorded_date) AS Year")); 
                $command->group('YEAR(ticket_events.event_recorded_date)');
            
      
@@ -393,24 +323,59 @@ class UtilizationDashboardFilter extends CFormModel
        //status changed and closed
        $command->where("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
        $command->where("ticket_events.new_value = 'Close'");
-       $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->closedTicketsFromDate).
-                                                                       "' AND '".DateUtils::getSQLDateStringFromDateStr($this->closedTicketsToDate)."'");
-        
-       if (isset($this->closedTicketsDomainID) && $this->closedTicketsDomainID >0)
+       
+       
+       if ($this->fromDate != "")
        {
-            $command->andWhere("ticket.domain_id = ".$this->closedTicketsDomainID);
+           $command->andWhere("ticket_events.event_recorded_date >= '".DateUtils::getSQLDateStringFromDateStr($this->fromDate)."'");
        }
        
-       if (isset($this->closedTicketsSubDomainID) && $this->closedTicketsSubDomainID >0)
+       if ($this->toDate != "")
        {
-            $command->andWhere("ticket.subdomain_id = ".$this->closedTicketsSubDomainID);
+           $command->andWhere("ticket_events.event_recorded_date <= '".DateUtils::getSQLDateStringFromDateStr($this->toDate)."'");
+       }
+    
+       if (isset($this->exclusiveDomainID) && $this->exclusiveDomainID >0)
+       {
+            $command->andWhere("ticket.subdomain_id IS NULL AND ticket.domain_id = ".$this->exclusiveDomainID);
+       }
+       
+       if (isset($this->agregatedDomainID) && $this->agregatedDomainID >0)
+       {
+            $command->andWhere("ticket.domain_id = ".$this->agregatedDomainID);
+       }
+       
+       if (isset($this->subdomainID) && $this->subdomainID >0)
+       {
+            $command->andWhere("ticket.subdomain_id = ".$this->subdomainID);
        }
       // echo $command->text;
        
        return $command->queryAll(); 
     
     }
-    //End Closed tickets
+   
+    
+    
+    /*  public static function initializeFilters()
+    {
+            $date = new DateTime();
+		    date_sub($date, new DateInterval("P1Y"));
+            
+            //Initialize the filter model
+            $ultilizationFilter = new UtilizationDashboardFilter();
+            $ultilizationFilter->newTicketsCurrentDimension = DimensionType::MonthOfTheYear;
+            $ultilizationFilter->newTicketsToDate = date('m/d/Y');// date("m/d/y");
+	    $ultilizationFilter->newTicketsFromDate =  $date->format('m/d/Y');
+            
+            $ultilizationFilter->closedTicketsCurrentDimension = DimensionType::MonthOfTheYear;
+            $ultilizationFilter->closedTicketsToDate = date('m/d/Y');// date("m/d/y");
+	    $ultilizationFilter->closedTicketsFromDate =  $date->format('m/d/Y');
+            
+            
+            
+            return $ultilizationFilter;
+        }*/
 
      
      

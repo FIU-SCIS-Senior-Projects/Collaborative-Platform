@@ -43,6 +43,21 @@ class UtilizationDashboardController extends Controller
             }            
         }
         
+        public function actionTicketsClosedOverTime()
+        {
+            if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketsClosedData = $ultilizationFilter->retrieveClosedTicketsOvertimeDashboardData(); 
+               $data =  array('dashboardData' => $ticketsClosedData);
+               echo json_encode($data); 
+            }  
+        }
+
+
         public function actionRefreshNewTickets()
         {            
             if(isset($_POST['UtilizationDashboardFilter'])) 
@@ -89,7 +104,7 @@ class UtilizationDashboardController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index','TicketsCreatedOverTime', 'RefreshClosedTickets'),
+                    'actions'=>array('index','TicketsCreatedOverTime', 'RefreshClosedTickets', 'TicketsClosedOverTime'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),

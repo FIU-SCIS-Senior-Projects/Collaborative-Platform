@@ -380,11 +380,6 @@ $( document ).ready(function()
                   generateDashboardData(eval(data.dashboardData),
                                         reportID,
                                         dim2Id);
-                  // newTicketsData.addRows();
-                  // newTicketDimFormat = data.dimFormat;
-                  //drawNewTicketsOverTimeChart();    
-                  
-                  
                 },
                 'json').fail(function() {
                     $('#chartSection').html("");
