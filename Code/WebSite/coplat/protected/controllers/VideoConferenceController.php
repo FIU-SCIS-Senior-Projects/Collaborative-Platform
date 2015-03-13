@@ -213,15 +213,15 @@ class VideoConferenceController extends Controller
         $meetingsId = new CList();
         $invitations = VCInvitation::model()->findAllByAttributes(array("invitee_id" =>$user->id));
         foreach($invitations as $inv){
-            $meetingsId.add($inv->meeting_id);
+            $meetingsId->add($inv->videoconference_id);
         }
         $meetings = VideoConference::model()->findAllByAttributes(array("moderator_id" =>$user->id));
         foreach($meetings as $meeting){
-            $meetingsId.add($meeting->moderator_id);
+            $meetingsId->add($meeting->id);
         }
         //$dataProvider = new CActiveDataProvider('VideoConference');
         $this->render('index', array(
-            'meetingsId' => $meetingsId,
+            'meetingsId' => $meetingsId->toArray(),
         ));
     }
 
