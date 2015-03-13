@@ -144,13 +144,30 @@ class UtilizationDashboardFilter extends CFormModel
         }*/
         
         
-    //New tickets    
-    public function retrieveNewTicketsDashboardData()
+   
+    public function retrieveCreateTicketsOvertimeDashboardData()
     {
-        //New event data
-      $newEventData =  $this->retrieveNewEventsData();
+      //retrieve tha data
+      $ticketsCreatedData =  $this->retrieveCreateTicketsOvertimeData();
+      $dateFormated = "";
+      foreach ($ticketsCreatedData as $data)
+      {
+          $countPart =  ArrayUtils::getValueOrDefault($data, "EventCount",0);
+          $currentReadingYear =  ArrayUtils::getValueOrDefault($data, "Year",1);
+          $currentReadingMonth = ArrayUtils::getValueOrDefault($data, "Month", 1);
+          $currentReadingDay =   ArrayUtils::getValueOrDefault($data, "Day" ,1); 
+          $dateFormated = $dateFormated.sprintf('[new Date(%s, %s, %s), %s],',
+                                               $currentReadingYear,
+                                               $currentReadingMonth - 1,
+                                               $currentReadingDay,
+                                               $countPart);
+       }
        
-      $fromDate = new DateTime($this->newTicketsFromDate);
+       //format the data
+       $chartFormatedData = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
+       return  $chartFormatedData;   
+       
+    /*  $fromDate = new DateTime($this->newTicketsFromDate);
       $toDate = new DateTime($this->newTicketsToDate);
        
        $dateInterval;
@@ -212,27 +229,27 @@ class UtilizationDashboardFilter extends CFormModel
        }
         $newEvents = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
 
-        return $newEvents;
+        return $newEvents;*/
     }
         
-    private function retrieveNewEventsData()
+    private function retrieveCreateTicketsOvertimeData()
     {
       $command =  Yii::app()->db->createCommand();
                   
-      switch ($this->newTicketsCurrentDimension)
-       {
+      switch ($this->dim2ID)
+      {
          case DimensionType::Date:
                $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
                $command->group('DATE(ticket_events.event_recorded_date)');
            
                break;            
            case DimensionType::MonthOfTheYear:
-               $command->select(array("COUNT(1) AS EventCount, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date) AS Year")); 
+               $command->select(array("COUNT(1) AS EventCount, 1 AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date) AS Year")); 
                $command->group('YEAR(ticket_events.event_recorded_date), MONTH(ticket_events.event_recorded_date)');
              
                break;           
            case DimensionType::Year:
-               $command->select(array("COUNT(1) AS EventCount, YEAR(event_recorded_date) AS Year")); 
+               $command->select(array("COUNT(1) AS EventCount, 1 AS Day, 1 AS Month ,YEAR(event_recorded_date) AS Year")); 
                $command->group('YEAR(ticket_events.event_recorded_date)');
            
      
@@ -243,23 +260,36 @@ class UtilizationDashboardFilter extends CFormModel
        $command->from("ticket_events");
        $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
        $command->where("ticket_events.event_type_id = ".EventType::Event_New);
-       $command->andWhere("ticket_events.event_recorded_date between '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsFromDate).
-                                                                       "' AND '".DateUtils::getSQLDateStringFromDateStr($this->newTicketsToDate)."'");
-        
-    if (isset($this->newTicketsDomainID) && $this->newTicketsDomainID >0)
+       
+       
+       if ($this->fromDate != "")
        {
-            $command->andWhere("ticket.domain_id = ".$this->newTicketsDomainID);
+           $command->andWhere("ticket_events.event_recorded_date >= '".DateUtils::getSQLDateStringFromDateStr($this->fromDate)."'");
        }
        
-       if (isset($this->newTicketsSubDomainID) && $this->newTicketsSubDomainID >0)
+       if ($this->toDate != "")
        {
-            $command->andWhere("ticket.subdomain_id = ".$this->newTicketsSubDomainID);
+           $command->andWhere("ticket_events.event_recorded_date <= '".DateUtils::getSQLDateStringFromDateStr($this->toDate)."'");
+       }
+    
+       if (isset($this->exclusiveDomainID) && $this->exclusiveDomainID >0)
+       {
+            $command->andWhere("ticket.subdomain_id IS NULL AND ticket.domain_id = ".$this->exclusiveDomainID);
+       }
+       
+       if (isset($this->agregatedDomainID) && $this->agregatedDomainID >0)
+       {
+            $command->andWhere("ticket.domain_id = ".$this->agregatedDomainID);
+       }
+       
+       if (isset($this->subdomainID) && $this->subdomainID >0)
+       {
+            $command->andWhere("ticket.subdomain_id = ".$this->subdomainID);
        }
       // echo $command->text;
        
        return $command->queryAll(); 
     }
-    //End New tickets  
     
     
     //Closed tickets

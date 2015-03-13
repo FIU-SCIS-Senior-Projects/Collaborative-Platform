@@ -10,7 +10,7 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
 <?php $form = $this->beginWidget('CActiveForm', 
                                   array('action' => Yii::app()->createUrl($this->route),
                                        'method' => 'post',
-                                       'id'=> 'newTicketsForm')); ?>
+                                       'id'=> 'dashboarForm')); ?>
 <div class="dashItem">             
 <table>
     <td style="vertical-align:top">
@@ -92,7 +92,7 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
        </table> 
     </td>
     <td>
-        <div id="newTicketChart" class="chartCont"></div>
+        <div id="chartSection" class="chartCont"></div>
     </td>
 </table>
 </div>
@@ -103,7 +103,13 @@ $( document ).ready(function()
 { 
     var enumReportType = {
          TicketsCreated:1,
-         TicketsClosed:2,         
+         TicketsClosed:2, 
+         
+        properties: {
+                1: {name: "Amount of Tickets Created"},
+                2: {name: "Amount of Tickets Closed"},
+        }
+         
     };  
     
     var DimensionType = {
@@ -112,11 +118,20 @@ $( document ).ready(function()
       MonthOfTheYear:3,
       
       properties: {
-        1: {name: "Day", value: 1},
-        2: {name: "Year", value: 2},
-        3: {name: "Month", value: 3}
-      }
+        1: {name: "Day", value: 1, format:"dd MMM yyyy"},
+        2: {name: "Year", value: 2, format:"yyyy"},
+        3: {name: "Month", value: 3, format:"MMM yyyy"}
+      },    
+      
+      
+     isTimeDimension: function(dimType) 
+     {
+       return (dimType == DimensionType.Date || dimType == DimensionType.Year || dimType == DimensionType.MonthOfTheYear) ;
+     }
+     
     };
+    
+
     
    function showParentTr(selector, blnShow)
    {
@@ -286,30 +301,135 @@ $( document ).ready(function()
        }
 
      });
- 
-    
+     
+     
+     function isValidDate(str)
+     {
+       var dateParsed = Date.parse(str);
+       return !isNaN(dateParsed);
+     }
+     
+     function validChartParams()
+     {
+         var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID') ;
+         var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
+         
+         if (dim2Id == 0 || reportID == 0)
+         {
+             return false;
+         }
+         
+         var helperVal = $('#fromDate').val();
+         if (helperVal != '' &&  !isValidDate(helperVal))
+         {
+             logErrorMessage("Invalid From Date value");
+             return  false;
+         }
+         
+         helperVal = $('#toDate').val();
+         if (helperVal != "" &&  !isValidDate(helperVal))
+         {
+             logErrorMessage("Invalid To Date value");
+             return false;
+         }
+          
+         return true;
+     }
+     
+     function logErrorMessage(errorMessage)
+     {
+         $('#chartSection').append("<div class='errorMessage'>" + errorMessage + "<div>");
+     }
+     
+     
+     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate').on('change', function(){
+         $('#chartSection').html("");
+         if (validChartParams())
+         {
+           //retrieve the data
+           var dashboardAction;
+           var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID');
+           var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
+           
+           switch(reportID) 
+           {
+               case enumReportType.TicketsCreated:
+                   if (DimensionType.isTimeDimension(dim2Id))
+                   {
+                       dashboardAction = "TicketsCreatedOverTime";
+                   }
+                break;
+               case enumReportType.TicketsClosed:
+                   if (DimensionType.isTimeDimension(dim2Id))
+                   {
+                        dashboardAction = "TicketsClosedOverTime";
+                   }
+                break;             
+            }
+            logErrorMessage("Invalid From Date value");
+            
+            $('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
+                                    <img src='/coplat/images/ajax-loader.gif'>");
+                                                        
+                                                        
+           $.post('/coplat/index.php/utilizationDashboard/' + dashboardAction, 
+                $('#dashboarForm').serialize(),
+                function(data)
+                {
+                  $('#chartSection').html("");
+                  generateDashboardData(eval(data.dashboardData),
+                                        reportID,
+                                        dim2Id);
+                  // newTicketsData.addRows();
+                  // newTicketDimFormat = data.dimFormat;
+                  //drawNewTicketsOverTimeChart();    
+                  
+                  
+                },
+                'json').fail(function() {
+                    $('#chartSection').html("");
+                    logErrorMessage("Server Request error.");
+                 });
+         }
+     });
+     
+     function generateDashboardData(dashboardData, reportID, dim2Id)
+     {
+           var chartDataTable = new google.visualization.DataTable();
+           if (DimensionType.isTimeDimension(dim2Id))
+           { 
+               chartDataTable.addColumn('date');               
+           }
+           
+           if(reportID == enumReportType.TicketsCreated || reportID == enumReportType.TicketsClosed )
+           {
+                chartDataTable.addColumn('number');
+           }    
+           chartDataTable.addRows(dashboardData);
+           var chartWidth = 600;
+           var options = {  
+                   width:chartWidth,
+                   height: 300,
+                   legend: 'none',
+                   bar: {groupWidth: 10},
+                   title: enumReportType.properties[reportID].name + ' per ' + DimensionType.properties[dim2Id].name,
+                        hAxis: {
+                          title: DimensionType.properties[dim2Id].name,
+                          format: DimensionType.properties[dim2Id].format,
+                        },
+                        vAxis: {
+                          title: enumReportType.properties[reportID].name
+                        }
+            };
+            
+            var chart = new google.visualization.ColumnChart(document.getElementById('chartSection'));
+            chart.draw(chartDataTable, options);
+
+     }
    
 });
-         function refreshNewTicketsChart()
-         {   
-          newTicketsData.removeRows(0, newTicketsData.getNumberOfRows());
-	  $.post('/coplat/index.php/utilizationDashboard/RefreshNewTickets', 
-                 $('#newTicketsForm').serialize(),
-                 function(data){
-                     
-                    newTicketDimDesc =  data.dimDesc;
-                    newTicketsData.addRows(eval(data.newEvents));
-                    newTicketDimFormat = data.dimFormat;
-                    drawNewTicketsOverTimeChart();                    
-                },'json');
-          }
-          
-         
-    
       
-         $('#newTicketsFromDate, #newTicketsToDate, #UtilizationDashboardFilter_newTicketsDomainID, #UtilizationDashboardFilter_newTicketsSubDomainID, #UtilizationDashboardFilter_newTicketsCurrentDimension').on('change', function(){
-           refreshNewTicketsChart();       
-         });
+         
 </script>
 <?php $this->endWidget(); ?>
 
