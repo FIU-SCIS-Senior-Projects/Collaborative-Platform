@@ -134,11 +134,13 @@ $( document ).ready(function()
       Date:1,
       Year:2,
       MonthOfTheYear:3,
+      TicketAssignedMentor:4,
       
       properties: {
         1: {name: "Day", value: 1, format:"dd MMM yyyy"},
         2: {name: "Year", value: 2, format:"yyyy"},
-        3: {name: "Month", value: 3, format:"MMM yyyy"}
+        3: {name: "Month", value: 3, format:"MMM yyyy"},
+        4: {name: "Assigned Mentor", value: 4, format:""}
       },    
       
       
@@ -206,6 +208,7 @@ $( document ).ready(function()
         dim2IdElement.append('<option value="' +DimensionType.Date + '">' +  DimensionType.properties[DimensionType.Date].name +'</option>'); 
         dim2IdElement.append('<option value="' +DimensionType.Year + '">' +  DimensionType.properties[DimensionType.Year].name +'</option>');  
         dim2IdElement.append('<option value="' +DimensionType.MonthOfTheYear + '">' +  DimensionType.properties[DimensionType.MonthOfTheYear].name +'</option>'); 
+        dim2IdElement.append('<option value="' +DimensionType.TicketAssignedMentor + '">' +  DimensionType.properties[DimensionType.TicketAssignedMentor].name +'</option>'); 
     }
     
     $('#UtilizationDashboardFilter_reportTypeId').on('change', function(){
@@ -262,7 +265,6 @@ $( document ).ready(function()
         } 
     });
     
-    
     function getInputValueToInt(inputSelector)
     {
          var intValue = 0;
@@ -303,7 +305,6 @@ $( document ).ready(function()
       }
     });  
     
-    
     $('#UtilizationDashboardFilter_agregatedDomainID').on('change', function(){
 
        var subDomSelect = $('#UtilizationDashboardFilter_subdomainID'); 
@@ -324,14 +325,13 @@ $( document ).ready(function()
 
      });
      
-     
-     function isValidDate(str)
-     {
+    function isValidDate(str)
+    {
        var dateParsed = Date.parse(str);
        return !isNaN(dateParsed);
      }
      
-     function validChartParams()
+    function validChartParams()
      {
          var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID') ;
          var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
@@ -372,19 +372,25 @@ $( document ).ready(function()
            var dashboardAction;
            var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID');
            var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
-           
            switch(reportID) 
            {
+              
                case enumReportType.TicketsCreated:
                    if (DimensionType.isTimeDimension(dim2Id))
                    {
                        dashboardAction = "TicketsCreatedOverTime";
+                   }else if(dim2Id == DimensionType.TicketAssignedMentor)
+                   {
+                       dashboardAction = "TicketsCreatedByAssignedMentor";
                    }
                 break;
                case enumReportType.TicketsClosed:
                    if (DimensionType.isTimeDimension(dim2Id))
                    {
                         dashboardAction = "TicketsClosedOverTime";
+                   }else if(dim2Id == DimensionType.TicketAssignedMentor)
+                   {
+                        dashboardAction = "TicketsClosedByAssignedMentor";
                    }
                 break;             
             }
@@ -415,6 +421,9 @@ $( document ).ready(function()
            if (DimensionType.isTimeDimension(dim2Id))
            { 
                chartDataTable.addColumn('date');               
+           }else if(DimensionType.TicketAssignedMentor)
+           {
+               chartDataTable.addColumn('string');   
            }
            
            if(reportID == enumReportType.TicketsCreated || reportID == enumReportType.TicketsClosed )

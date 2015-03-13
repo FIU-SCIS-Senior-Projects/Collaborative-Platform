@@ -57,8 +57,37 @@ class UtilizationDashboardController extends Controller
             }  
         }
 
-
-        public function actionRefreshNewTickets()
+        
+        public function actionTicketsCreatedByAssignedMentor()
+        {
+            if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketsCreatedData = $ultilizationFilter->retrieveCreatedByAssignedMentorDashboardData(); 
+               $data =  array('dashboardData' => $ticketsCreatedData);
+               echo json_encode($data); 
+            }             
+        }
+        
+        public function actionTicketsClosedByAssignedMentor()
+        {
+            if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketsClosedData = $ultilizationFilter->retrieveClosedByAssignedMentorDashboardData(); 
+               $data =  array('dashboardData' => $ticketsClosedData);
+               echo json_encode($data); 
+            } 
+        }
+        
+        
+      /*  public function actionRefreshNewTickets()
         {            
             if(isset($_POST['UtilizationDashboardFilter'])) 
             {
@@ -92,7 +121,7 @@ class UtilizationDashboardController extends Controller
                            
                echo json_encode($closedTicketRes);
             }            
-        }
+        }*/
      
         public function filters()
 	{
@@ -104,7 +133,7 @@ class UtilizationDashboardController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index','TicketsCreatedOverTime', 'RefreshClosedTickets', 'TicketsClosedOverTime'),
+                    'actions'=>array('index','TicketsCreatedOverTime', 'RefreshClosedTickets', 'TicketsClosedOverTime', 'TicketsCreatedByAssignedMentor', 'TicketsClosedByAssignedMentor'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),

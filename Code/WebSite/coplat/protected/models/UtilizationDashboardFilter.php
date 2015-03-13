@@ -3,7 +3,8 @@ class DimensionType
 {
     const Date =1;
     const Year =2;
-    const MonthOfTheYear = 3;    
+    const MonthOfTheYear = 3;  
+    const TicketAssignedMentor = 4;
     
     
     public static function getDimensions()
@@ -235,7 +236,47 @@ class UtilizationDashboardFilter extends CFormModel
        return  $chartFormatedData; 
         
     }
+     
+    public function retrieveCreatedByAssignedMentorDashboardData()
+    {
         
+        //retrieve tha data
+      $ticketsCreatedData =  $this->retrieveCreatedTicketsByAssignedMentorData();
+      $dateFormated = "";
+      foreach ($ticketsCreatedData as $data)
+      {
+          $countPart =  ArrayUtils::getValueOrDefault($data, "EventCount",0);
+          $mentorName =   ArrayUtils::getValueOrDefault($data, "MentorName",0);
+          $dateFormated = $dateFormated.sprintf("['%s', %s],",
+                                               $mentorName,
+                                               $countPart);
+       }
+       
+       //format the data
+       $chartFormatedData = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
+       return  $chartFormatedData; 
+        
+    }
+    
+    public function retrieveClosedByAssignedMentorDashboardData()
+    {
+          //retrieve tha data
+      $ticketsCreatedData =  $this->retrieveClosedTicketsByAssignedMentorData();
+      $dateFormated = "";
+      foreach ($ticketsCreatedData as $data)
+      {
+          $countPart =  ArrayUtils::getValueOrDefault($data, "EventCount",0);
+          $mentorName =   ArrayUtils::getValueOrDefault($data, "MentorName",0);
+          $dateFormated = $dateFormated.sprintf("['%s', %s],",
+                                               $mentorName,
+                                               $countPart);
+       }
+       
+       //format the data
+       $chartFormatedData = "[".$dateFormated."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
+       return  $chartFormatedData;         
+    }
+    
     private function retrieveCreateTicketsOvertimeData()
     {
       $command =  Yii::app()->db->createCommand();
@@ -369,8 +410,116 @@ class UtilizationDashboardFilter extends CFormModel
     
     }
    
+    private function retrieveCreatedTicketsByAssignedMentorData()
+    {
+      $command =  Yii::app()->db->createCommand();
+                  
+      $command->select(array("COUNT(1) AS EventCount, CONCAT_WS(' ',
+                `user`.`fname`,
+                `user`.`mname`,
+                `user`.`lname`) AS MentorName")); 
+      $command->group('ticket.assign_user_id');
+           
+      
+       $command->from("ticket_events");
+       $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
+       $command->join('user', 'user.id = ticket.assign_user_id');
+       $command->where("ticket_events.event_type_id = ".EventType::Event_New);
+       
+       
+       if ($this->fromDate != "")
+       {
+           $command->andWhere("ticket_events.event_recorded_date >= '".DateUtils::getSQLDateStringFromDateStr($this->fromDate)."'");
+       }
+       
+       if ($this->toDate != "")
+       {
+           $command->andWhere("ticket_events.event_recorded_date <= '".DateUtils::getSQLDateStringFromDateStr($this->toDate)."'");
+       }
     
+       if (isset($this->exclusiveDomainID) && $this->exclusiveDomainID >0)
+       {
+            $command->andWhere("ticket.subdomain_id IS NULL AND ticket.domain_id = ".$this->exclusiveDomainID);
+       }
+       
+       if (isset($this->agregatedDomainID) && $this->agregatedDomainID >0)
+       {
+            $command->andWhere("ticket.domain_id = ".$this->agregatedDomainID);
+       }
+       
+       if (isset($this->subdomainID) && $this->subdomainID >0)
+       {
+            $command->andWhere("ticket.subdomain_id = ".$this->subdomainID);
+       }
+       
+       if (isset($this->assigned_mentor_id) && $this->assigned_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_mentor_id);
+       }
+       
+       
+      // $fsdf =  $command->text;
+       
+       return $command->queryAll(); 
+        
+    }
     
+    private function  retrieveClosedTicketsByAssignedMentorData()
+    {
+        $command =  Yii::app()->db->createCommand();
+                  
+      $command->select(array("COUNT(1) AS EventCount, CONCAT_WS(' ',
+                `user`.`fname`,
+                `user`.`mname`,
+                `user`.`lname`) AS MentorName")); 
+      $command->group('ticket.assign_user_id');
+           
+      
+       $command->from("ticket_events");
+       $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
+       $command->join('user', 'user.id = ticket.assign_user_id');
+       $command->where("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
+       $command->where("ticket_events.new_value = 'Close'");
+       
+       
+       if ($this->fromDate != "")
+       {
+           $command->andWhere("ticket_events.event_recorded_date >= '".DateUtils::getSQLDateStringFromDateStr($this->fromDate)."'");
+       }
+       
+       if ($this->toDate != "")
+       {
+           $command->andWhere("ticket_events.event_recorded_date <= '".DateUtils::getSQLDateStringFromDateStr($this->toDate)."'");
+       }
+    
+       if (isset($this->exclusiveDomainID) && $this->exclusiveDomainID >0)
+       {
+            $command->andWhere("ticket.subdomain_id IS NULL AND ticket.domain_id = ".$this->exclusiveDomainID);
+       }
+       
+       if (isset($this->agregatedDomainID) && $this->agregatedDomainID >0)
+       {
+            $command->andWhere("ticket.domain_id = ".$this->agregatedDomainID);
+       }
+       
+       if (isset($this->subdomainID) && $this->subdomainID >0)
+       {
+            $command->andWhere("ticket.subdomain_id = ".$this->subdomainID);
+       }
+       
+       if (isset($this->assigned_mentor_id) && $this->assigned_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_mentor_id);
+       }
+       
+       
+      // $fsdf =  $command->text;
+       
+       return $command->queryAll(); 
+        
+    }
+
+
     /*  public static function initializeFilters()
     {
             $date = new DateTime();
