@@ -143,6 +143,10 @@ class VideoConferenceController extends Controller
                         $invitationError .= $email . " does not appear in our records <br>";
                         continue;
                     }
+                    if($invitee->id = $moderator->id){
+                        continue;
+                    }
+
                     $invitation = new VCInvitation();
                     $invitation->invitee_id = $invitee->id;
                     $invitation->videoconference_id = $model->id;

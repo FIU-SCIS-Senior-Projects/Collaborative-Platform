@@ -124,4 +124,16 @@ class VideoConference extends CActiveRecord
 
 */
     }
+
+    public function findParticipantsAsString(){
+        $moderator = User::model()->findByAttributes(array("id" => $this->moderator_id));
+        $str = $moderator->fname . " " .$moderator->lname;
+        $invitations = VCInvitation::model()->findAllByAttributes(array("videoconference_id" =>$this->id));
+        foreach($invitations as $inv){
+            $invitee = User::model()->findByAttributes(array("id" => $inv->invitee_id));
+            $str .= ", " . $invitee->fname . " " .$invitee->lname;
+        }
+        return $str;
+
+    }
 }

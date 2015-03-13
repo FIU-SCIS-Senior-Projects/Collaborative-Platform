@@ -66,12 +66,14 @@ $this->menu=array(
             <a href='../videoConference/%ID%'>%SUBJECT%</a>
             <p>%DATE%</p>
             <p>%NOTE%</p>
+            <p>%PARTICIPANTS%</p>
         </div>";
 
         $html = str_replace("%ID%", $vc->id, $html);
         $html = str_replace("%SUBJECT%", $vc->subject, $html);
         $html = str_replace("%DATE%", $vc->scheduled_for, $html);
         $html = str_replace("%NOTE%", $vc->notes, $html);
+        $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsAsString(), $html);
         echo $html;
     }
 ?>

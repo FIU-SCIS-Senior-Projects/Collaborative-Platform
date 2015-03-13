@@ -20,13 +20,6 @@
 </ol>
 
 
-
-
-
-
-
-
-
 <!-- Init Site Scripts -->
 <script>
     //hack bootstrap 2 to 3
@@ -34,7 +27,6 @@
     $('.container:first').removeClass('container');
     $('.span3:first').removeClass('span3');
 </script>
-
 
 
 <!-- Bootstrap -->
@@ -51,21 +43,17 @@
 <![endif]-->
 
 
-
-
-
-
 <hr/>
 
 <?php
 
-if(Yii::app()->user->getId() == $model->moderator_id)
-{
-   echo
-   " <!-- The meeting initiator -->
+$user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+
+if ($user->id == $model->moderator_id) {
+    echo
+    " <!-- The meeting initiator -->
     <button type='button' class='btn btn-primary' id='open-room'>Open Room</button> ";
-}
-else{
+} else {
     echo
     "<!-- The meeting participants join-->
     <button type='button' class='btn btn-primary' id='join-room'>Join Room</button>
@@ -84,35 +72,38 @@ else{
 </div>
 
 <div class="container">
-<div class="row">
-    <div class="col-md-9">
+    <div class="row">
+        <div class="col-md-9">
 
 
+            <div id="cotools-panel">
+                <!--
+                 <div class="tab-filler">
+                     <h2>Collaborative Panel</h2>
+                 </div>
+         -->
 
-        <div id="cotools-panel">
-           <!--
-            <div class="tab-filler">
-                <h2>Collaborative Panel</h2>
             </div>
-    -->
 
         </div>
 
-    </div>
 
+        <div class="col-md-3">
+            <!-- required for floating -->
+            <!-- Nav tabs -->
 
-    <div class="col-md-3">
-        <!-- required for floating -->
-        <!-- Nav tabs -->
-
-                <div id="tool-box"  class="list-group">
-                    <a href="#"  class="list-group-item"><i class="fa fa-paint-brush" ></i>&nbsp;&nbsp;Whiteboard</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-recycle" ></i>&nbsp;&nbsp;Reset Board</a>
-                    <a href="#" id="share-screen" class="list-group-item"><i class="fa fa-desktop" ></i>&nbsp;&nbsp;Share Screen</a>
-                    <a href="#" id="stop-share-screen" class="list-group-item"><i class="fa fa-stop" ></i>&nbsp;&nbsp;Stop Sharing</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-sliders" ></i>&nbsp;&nbsp;Settings</a>
-                    <a href="#" id="disconnect" class="list-group-item"><i class="fa fa-close" ></i>&nbsp;&nbsp;Disconnect</a>
-                </div>
+            <div id="tool-box" class="list-group">
+                <a href="#" id="init-whiteboard" class="list-group-item"><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</a>
+                <a href="#" id="reset-whiteboard" class="list-group-item"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Reset
+                    Board</a>
+                <a href="#" id="share-screen" class="list-group-item"><i class="fa fa-desktop"></i>&nbsp;&nbsp;Share
+                    Screen</a>
+                <a href="#" id="stop-share-screen" class="list-group-item"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop
+                    Sharing</a>
+                <a href="#" class="list-group-item"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</a>
+                <a href="#" id="disconnect" class="list-group-item"><i
+                        class="fa fa-close"></i>&nbsp;&nbsp;Disconnect</a>
+            </div>
             <!--
 
             <h4>Tool Box</h4>
@@ -160,12 +151,14 @@ else{
                 title="Settings">Disconnect
         </button>
         -->
+        </div>
     </div>
-</div> <!-- end of row -->
+    <!-- end of row -->
 
 
-<h3> Participants </h3>
-<div id="video-container" class="row"></div>
+    <h3> Participants </h3>
+
+    <div id="video-container" class="row"></div>
 </div>
 
 
@@ -204,8 +197,8 @@ else{
     });
     rmc.onMediaCaptured = function () {
         $('#share-screen').removeAttr('disabled');
-        $('#open-room').attr('disabled','disabled');
-        $('#join-room').attr('disabled','disabled');
+        $('#open-room').attr('disabled', 'disabled');
+        $('#join-room').attr('disabled', 'disabled');
     };
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
@@ -227,71 +220,84 @@ else{
         rmc.disconnect();
     });
 
-    /*
-     //to know the stream type
-     rmc.onstream = function(e){
 
-     if(e.type == 'local'){
-     alert("the stream is local");
-     }
-     if(e.type == 'remote'){
-     alert("the stream is remote");
-     }
-     if(e.isVideo){
-     alert("new video");
-     document.getElementById('video-container').appendChild(e.mediaElement);
-     }
-     if(e.isAudio){
-     document.getElementById('video-container').appendChild(e.mediaElement);
-     }
-     if(e.isScreen){
-     alert("new screen");
-     }
-     };
-     */
+    //to know the stream type
+    rmc.onstream = function (e) {
 
-    rmc.onmessage = function(event) {
-        CanvasDesigner.syncData( event.data );
+        if (e.type == 'local') {
+           // alert("the stream is local");
+        }
+        if (e.type == 'remote') {
+           // alert("the stream is remote");
+        }
+        if (e.isVideo) {
+            //alert("new video");
+            document.getElementById('video-container').appendChild(e.mediaElement);
+        }
+        if (e.isAudio) {
+            document.getElementById('video-container').appendChild(e.mediaElement);
+        }
+        if (e.isScreen) {
+            $('#cotools-panel').empty();
+            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            //alert("new screen");
+        }
     };
+    */
 
 
+    //Whitebord Section
+
+    function canvasInit() {
+        rmc.onmessage = function (event) {
+            CanvasDesigner.syncData(event.data);
+        };
+        CanvasDesigner.addSyncListener(function (data) {
+            rmc.send(data);
+        });
+        CanvasDesigner.setSelected('pencil');
+        CanvasDesigner.setTools({
+            pencil: true,
+            text: true,
+            eraser: true
+        });
+        CanvasDesigner.appendTo(document.getElementById('cotools-panel'));
+    }
+    canvasInit();
 
 
-    CanvasDesigner.addSyncListener(function(data) {
-        rmc.send(data);
+    $("#reset-whiteboard").click(function () {
+        $('#cotools-panel').empty();
+        canvasInit();
     });
 
-    CanvasDesigner.setSelected('pencil');
-
-    CanvasDesigner.setTools({
-        pencil: true,
-        text: true,
-        eraser: true
+    $("#init-whiteboard").click(function () {
+        $('#cotools-panel').empty();
+        canvasInit();
     });
 
-    CanvasDesigner.appendTo(document.getElementById('cotools-panel'));
 
     /*
-    Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox) {
-        checkbox.onchange = function() {
-            CanvasDesigner.destroy();
+     Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox) {
+     checkbox.onchange = function() {
+     CanvasDesigner.destroy();
 
-            CanvasDesigner.addSyncListener(function(data) {
-                connection.send(data);
-            });
+     CanvasDesigner.addSyncListener(function(data) {
+     connection.send(data);
+     });
 
-            var tools = {};
-            Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox2) {
-                if(checkbox2.checked) {
-                    tools[checkbox2.id] = true;
-                }
-            });
-            CanvasDesigner.setTools(tools);
-            CanvasDesigner.appendTo(document.getElementById('cotools-panel'));
-        };
-    });
+     var tools = {};
+     Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox2) {
+     if(checkbox2.checked) {
+     tools[checkbox2.id] = true;
+     }
+     });
+     CanvasDesigner.setTools(tools);
+     CanvasDesigner.appendTo(document.getElementById('cotools-panel'));
+     };
+     });
 
-*/
+     */
 </script>
 
 
