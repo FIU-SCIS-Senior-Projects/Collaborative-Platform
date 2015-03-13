@@ -519,28 +519,7 @@ class UtilizationDashboardFilter extends CFormModel
         
     }
 
-
-    /*  public static function initializeFilters()
-    {
-            $date = new DateTime();
-		    date_sub($date, new DateInterval("P1Y"));
-            
-            //Initialize the filter model
-            $ultilizationFilter = new UtilizationDashboardFilter();
-            $ultilizationFilter->newTicketsCurrentDimension = DimensionType::MonthOfTheYear;
-            $ultilizationFilter->newTicketsToDate = date('m/d/Y');// date("m/d/y");
-	    $ultilizationFilter->newTicketsFromDate =  $date->format('m/d/Y');
-            
-            $ultilizationFilter->closedTicketsCurrentDimension = DimensionType::MonthOfTheYear;
-            $ultilizationFilter->closedTicketsToDate = date('m/d/Y');// date("m/d/y");
-	    $ultilizationFilter->closedTicketsFromDate =  $date->format('m/d/Y');
-            
-            
-            
-            return $ultilizationFilter;
-        }*/
-
-     
+   
      
 }
 
