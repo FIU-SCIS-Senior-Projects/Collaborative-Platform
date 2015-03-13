@@ -38,7 +38,12 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                          $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                 'model' => $filter,          
                                 'attribute' => 'fromDate',
-                                'name' => 'fromDate'));
+                                'name' => 'fromDate',
+                                'options'=>array(
+                                    'changeMonth'=>'true',
+                                    'changeYear' =>'true',
+                                    'showButtonPanel' => 'true')
+                           ));
                   ?>
                </td>                            
             </tr>
@@ -48,7 +53,11 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                       $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                 'model' => $filter,          
                                 'attribute' => 'toDate',
-                                'name' => 'toDate'));?> 
+                                'name' => 'toDate',
+                                'options'=>array(
+                                    'changeMonth'=>'true',
+                                    'changeYear' =>'true',
+                                    'showButtonPanel' => 'true')));?> 
                 </td> 				
             </tr> 
             <tr>
@@ -86,7 +95,16 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                                                         CHtml::listData(Domain::model()->findAll(),'id', 'name'),
                                                         array('empty'=>' '));?>
                 </td>
-            </tr>        
+            </tr>
+            <tr>
+                <td>
+                    <?php echo CHtml::activeLabel($filter,'assigned_mentor_id'); 
+                          echo CHtml::activeDropDownList($filter,
+                                                        'assigned_mentor_id',
+                                                        CHtml::listData(User::model()->findAll("isProMentor = 1 OR isPerMentor = 1 OR isDomMentor = 1"),'id', 'FullName'),
+                                                        array('empty'=>' '));?>
+                </td>
+            </tr> 
 
 
        </table> 
@@ -164,6 +182,9 @@ $( document ).ready(function()
         
         showParentTr("#UtilizationDashboardFilter_subdomainID",false);
         clearInputContent("#UtilizationDashboardFilter_subdomainID");
+        
+        showParentTr("#UtilizationDashboardFilter_assigned_mentor_id",false);
+        clearInputContent("#UtilizationDashboardFilter_assigned_mentor_id");
        
    }
    
@@ -173,6 +194,7 @@ $( document ).ready(function()
         showParentTr("#toDate",true);
         showParentTr("#UtilizationDashboardFilter_exclusiveDomainID",true);
         showParentTr("#UtilizationDashboardFilter_agregatedDomainID",true);
+        showParentTr("#UtilizationDashboardFilter_assigned_mentor_id", true);
       //  showParentTr("#UtilizationDashboardFilter_subdomainID",true);
    }
    
@@ -342,7 +364,7 @@ $( document ).ready(function()
      }
      
      
-     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate').on('change', function(){
+     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, #UtilizationDashboardFilter_assigned_mentor_id').on('change', function(){
          $('#chartSection').html("");
          if (validChartParams())
          {
@@ -370,7 +392,6 @@ $( document ).ready(function()
             
             $('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
                                     <img src='/coplat/images/ajax-loader.gif'>");
-                                                        
                                                         
            $.post('/coplat/index.php/utilizationDashboard/' + dashboardAction, 
                 $('#dashboarForm').serialize(),

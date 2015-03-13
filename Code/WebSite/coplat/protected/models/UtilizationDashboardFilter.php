@@ -100,13 +100,14 @@ class UtilizationDashboardFilter extends CFormModel
     public $agregatedDomainID;
     public $exclusiveDomainID;
     public $subdomainID;
+    public $assigned_mentor_id;
     
 
     public function rules()
     {
         return array(
             array('reportTypeId, dim2ID', 'required'),
-            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID', 'numerical', 'integerOnly'=>true),
+            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_mentor_id', 'numerical', 'integerOnly'=>true),
             array('fromDate, toDate', 'date')                     
         );
     }
@@ -120,7 +121,8 @@ class UtilizationDashboardFilter extends CFormModel
                         'exclusiveDomainID'=>'Domain (Exclusive)',
                         'subdomainID' => 'Sub Domain',			
                         'reportTypeId' => 'Report Type',
-                        'dim2ID' => 'By');
+                        'dim2ID' => 'By',
+                        'assigned_mentor_id' => 'Assigned Mentor');
     }
     
     public function retrieveCreateTicketsOvertimeDashboardData()
@@ -288,7 +290,14 @@ class UtilizationDashboardFilter extends CFormModel
        {
             $command->andWhere("ticket.subdomain_id = ".$this->subdomainID);
        }
-      // echo $command->text;
+       
+       if (isset($this->assigned_mentor_id) && $this->assigned_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_mentor_id);
+       }
+       
+       
+      // $fsdf =  $command->text;
        
        return $command->queryAll(); 
     }
@@ -348,6 +357,11 @@ class UtilizationDashboardFilter extends CFormModel
        if (isset($this->subdomainID) && $this->subdomainID >0)
        {
             $command->andWhere("ticket.subdomain_id = ".$this->subdomainID);
+       }
+       
+       if (isset($this->assigned_mentor_id) && $this->assigned_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_mentor_id);
        }
       // echo $command->text;
        
