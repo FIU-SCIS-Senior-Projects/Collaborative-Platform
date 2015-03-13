@@ -55,9 +55,12 @@ class VideoConferenceController extends Controller
         $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
         $invitation = VCInvitation::model()->findByAttributes(array("videoconference_id" => $id, "invitee_id" => $user->id));
 
-        Yii::trace(CVarDumper::dumpAsString($invitation));
+        $meeting = VideoConference::model()->findByAttributes(array("id" => $id));
 
-        if($invitation){
+
+        //Yii::trace(CVarDumper::dumpAsString($invitation));
+
+        if($invitation || $meeting){
             $this->render('view', array(
                 'model' => $this->loadModel($id),
             ));
@@ -79,10 +82,11 @@ class VideoConferenceController extends Controller
     {
         $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
         $invitation = VCInvitation::model()->findByAttributes(array("videoconference_id" => $id, "invitee_id" => $user->id));
+        $meeting = VideoConference::model()->findByAttributes(array("id" => $id));
 
-        Yii::trace(CVarDumper::dumpAsString($invitation));
+//        Yii::trace(CVarDumper::dumpAsString($invitation));
 
-        if($invitation){
+        if($invitation || $meeting){
             $this->render('join', array(
                 'model' => $this->loadModel($id),
             ));
