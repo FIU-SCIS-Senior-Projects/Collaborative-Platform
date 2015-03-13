@@ -52,6 +52,6 @@ $this->menu = array(
 
 )); ?>
 
-<a href="./join/<?php echo $model->id ?>">Join Now</a>
+<a href="https://cp-dev.cis.fiu.edu/coplat/index.php/videoConference/join/<?php echo $model->id ?>">Join Now</a>
 
 

@@ -115,7 +115,7 @@ class VideoConferenceController extends Controller
         if (isset($_POST['VideoConference'])) {
             $model->attributes = $_POST['VideoConference'];             //get the rest of the attributes
             $moderator = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
-            $model->moderator_id =    $moderator->id;                   //get the current users id
+            $model->moderator_id =  $moderator->id;                   //get the current users id
             $model->scheduled_on = date("Y-m-d H:i:s");                 //now
 
             $dateopt = $_POST['dateopt'];
@@ -143,7 +143,7 @@ class VideoConferenceController extends Controller
                         $invitationError .= $email . " does not appear in our records <br>";
                         continue;
                     }
-                    if($invitee->id = $moderator->id){
+                    if($invitee->id == $moderator->id){
                         continue;
                     }
 
