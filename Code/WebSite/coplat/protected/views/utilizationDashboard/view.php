@@ -3,38 +3,32 @@ $this->breadcrumbs=array('Utilization Dashboard');
 Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}");
 ?>
 <style> 
-     form {width:100%}
-    .dashItem{ height:100%;} 
-    .chartCont{ overflow:auto; width:630px; height:450px; border:1px solid #666;}
+    .dashItem{ height:100%; width:100%} 
+    .chartCont{ overflow:auto; width:100%; height:450px; border:1px solid #666;}
 </style>
 <?php $form = $this->beginWidget('CActiveForm', 
                                   array('action' => Yii::app()->createUrl($this->route),
                                        'method' => 'post',
                                        'id'=> 'dashboarForm')); ?>
-<div class="dashItem">             
-<table>
-    <td style="vertical-align:top">
-       <table>
-           <tr>
-               <td>
-                   <?php 
+
+<table class="dashItem">
+    <td style="vertical-align:top; width:225px;">
+        <div>
+             <?php 
                          echo $form->labelEx($filter,'reportTypeId'); 
                          echo CHtml::activeDropDownList($filter,
                                                         'reportTypeId',
                                                          ReportType::getReportTypes() );?>
-               </td>               
-           </tr>
-           <tr>
-                <td>
-                    <?php echo $form->labelEx($filter, 'dim2ID');
+        </div>
+        <div>
+            <?php echo $form->labelEx($filter, 'dim2ID');
                           echo CHtml::activeDropDownList($filter,
                                                          'dim2ID',
-                                                         array(0 => " "));?>                                
-                </td>
-            </tr>           
-            <tr>
-              <td>
-                   <?php echo CHtml::activeLabel($filter,'fromDate');
+                                                         array(0 => " "));?> 
+            
+        </div>
+        <div>
+            <?php echo CHtml::activeLabel($filter,'fromDate');
                          $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                 'model' => $filter,          
                                 'attribute' => 'fromDate',
@@ -45,11 +39,9 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                                     'showButtonPanel' => 'true')
                            ));
                   ?>
-               </td>                            
-            </tr>
-            <tr>
-                <td>
-                <?php echo CHtml::activeLabel($filter,'toDate'); 
+        </div>
+        <div>
+             <?php echo CHtml::activeLabel($filter,'toDate'); 
                       $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                 'model' => $filter,          
                                 'attribute' => 'toDate',
@@ -58,20 +50,16 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                                     'changeMonth'=>'true',
                                     'changeYear' =>'true',
                                     'showButtonPanel' => 'true')));?> 
-                </td> 				
-            </tr> 
-            <tr>
-                <td>
-                    <?php echo CHtml::activeLabel($filter,'agregatedDomainID'); 
+        </div>
+        <div>
+            <?php echo CHtml::activeLabel($filter,'agregatedDomainID'); 
                           echo CHtml::activeDropDownList($filter,
                                                         'agregatedDomainID',
                                                         CHtml::listData(Domain::model()->findAll(),'id', 'name'),
                                                         array('empty'=>' '));?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <?php 
+        </div>
+        <div>
+            <?php 
                          $domainID = $filter->agregatedDomainID;
                              if (isset($domainID) && $domainID > 0 )
                              {
@@ -85,35 +73,26 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                                                          'subdomainID',
                                                          CHtml::listData($subdomain,'id', 'name'),
                                                          array('empty'=>' '));?>
-               </td>
-            </tr>
-            <tr>
-                <td>
-                    <?php echo CHtml::activeLabel($filter,'exclusiveDomainID'); 
-                          echo CHtml::activeDropDownList($filter,
-                                                        'exclusiveDomainID',
-                                                        CHtml::listData(Domain::model()->findAll(),'id', 'name'),
-                                                        array('empty'=>' '));?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <?php echo CHtml::activeLabel($filter,'assigned_mentor_id'); 
-                          echo CHtml::activeDropDownList($filter,
-                                                        'assigned_mentor_id',
-                                                        CHtml::listData(User::model()->findAll("isProMentor = 1 OR isPerMentor = 1 OR isDomMentor = 1"),'id', 'FullName'),
-                                                        array('empty'=>' '));?>
-                </td>
-            </tr> 
-
-
-       </table> 
+        </div>
+        <div>
+            <?php echo CHtml::activeLabel($filter,'exclusiveDomainID'); 
+                  echo CHtml::activeDropDownList($filter,
+                                                'exclusiveDomainID',
+                                                CHtml::listData(Domain::model()->findAll(),'id', 'name'),
+                                                array('empty'=>' '));?>
+        </div>
+        <div>
+            <?php echo CHtml::activeLabel($filter,'assigned_domain_mentor_id'); 
+                  echo CHtml::activeDropDownList($filter,
+                                                 'assigned_domain_mentor_id',
+                                                 CHtml::listData(User::model()->findAllDomainMentors(),'id', 'FullName'),
+                                                 array('empty'=>' '));?>
+        </div> 
     </td>
-    <td>
+    <td style="vertical-align:top;">
         <div id="chartSection" class="chartCont"></div>
     </td>
 </table>
-</div>
 <script>
     
     
@@ -153,14 +132,14 @@ $( document ).ready(function()
     
 
     
-   function showParentTr(selector, blnShow)
+   function showParentDiv(selector, blnShow)
    {
       var displayValue = "none";
 	  if (blnShow == true )
 	  {
 	    displayValue = "table-row";
 	  }
-      $(selector).parent('td').parent('tr').css("display", displayValue);
+      $(selector).parent('div').css("display", displayValue);
    } 
    
    function clearInputContent(selector)
@@ -170,34 +149,34 @@ $( document ).ready(function()
    
    function clearAndHideFilters()
    {
-        showParentTr("#fromDate",false);
+        showParentDiv("#fromDate",false);
         clearInputContent("#fromDate");
        
-        showParentTr("#toDate",false);
+        showParentDiv("#toDate",false);
         clearInputContent("#toDate");
         
-        showParentTr("#UtilizationDashboardFilter_exclusiveDomainID",false);
+        showParentDiv("#UtilizationDashboardFilter_exclusiveDomainID",false);
         clearInputContent("#UtilizationDashboardFilter_exclusiveDomainID");
         
-        showParentTr("#UtilizationDashboardFilter_agregatedDomainID",false);
+        showParentDiv("#UtilizationDashboardFilter_agregatedDomainID",false);
         clearInputContent("#UtilizationDashboardFilter_agregatedDomainID");
         
-        showParentTr("#UtilizationDashboardFilter_subdomainID",false);
+        showParentDiv("#UtilizationDashboardFilter_subdomainID",false);
         clearInputContent("#UtilizationDashboardFilter_subdomainID");
         
-        showParentTr("#UtilizationDashboardFilter_assigned_mentor_id",false);
-        clearInputContent("#UtilizationDashboardFilter_assigned_mentor_id");
+        showParentDiv("#UtilizationDashboardFilter_assigned_domain_mentor_id",false);
+        clearInputContent("#UtilizationDashboardFilter_assigned_domain_mentor_id");
        
    }
    
    function showTicketCountChartFilters()
    {
-        showParentTr("#fromDate",true);
-        showParentTr("#toDate",true);
-        showParentTr("#UtilizationDashboardFilter_exclusiveDomainID",true);
-        showParentTr("#UtilizationDashboardFilter_agregatedDomainID",true);
-        showParentTr("#UtilizationDashboardFilter_assigned_mentor_id", true);
-      //  showParentTr("#UtilizationDashboardFilter_subdomainID",true);
+        showParentDiv("#fromDate",true);
+        showParentDiv("#toDate",true);
+        showParentDiv("#UtilizationDashboardFilter_exclusiveDomainID",true);
+        showParentDiv("#UtilizationDashboardFilter_agregatedDomainID",true);
+        showParentDiv("#UtilizationDashboardFilter_assigned_domain_mentor_id", true);
+      //  showParentDiv("#UtilizationDashboardFilter_subdomainID",true);
    }
    
    clearAndHideFilters();
@@ -286,44 +265,119 @@ $( document ).ready(function()
        var domainExclusiveID = getInputValueToInt('#UtilizationDashboardFilter_exclusiveDomainID'); 
        if (domainAggregatedID == 0 && domainExclusiveID == 0)
        {
-        showParentTr("#UtilizationDashboardFilter_subdomainID",false);
-        showParentTr("#UtilizationDashboardFilter_agregatedDomainID",true);
-        showParentTr("#UtilizationDashboardFilter_exclusiveDomainID",true);
+        showParentDiv("#UtilizationDashboardFilter_subdomainID",false);
+        showParentDiv("#UtilizationDashboardFilter_agregatedDomainID",true);
+        showParentDiv("#UtilizationDashboardFilter_exclusiveDomainID",true);
         clearInputContent("#UtilizationDashboardFilter_subdomainID");          
        }else if(domainAggregatedID > 0)
        {
         
-        showParentTr("#UtilizationDashboardFilter_subdomainID",true);
-        showParentTr("#UtilizationDashboardFilter_exclusiveDomainID",false);
+        showParentDiv("#UtilizationDashboardFilter_subdomainID",true);
+        showParentDiv("#UtilizationDashboardFilter_exclusiveDomainID",false);
         clearInputContent("#UtilizationDashboardFilter_exclusiveDomainID");  
        }else
       {
-        showParentTr("#UtilizationDashboardFilter_subdomainID",false);
-        showParentTr("#UtilizationDashboardFilter_agregatedDomainID",false);
+        showParentDiv("#UtilizationDashboardFilter_subdomainID",false);
+        showParentDiv("#UtilizationDashboardFilter_agregatedDomainID",false);
         clearInputContent("#UtilizationDashboardFilter_agregatedDomainID");    
         clearInputContent("#UtilizationDashboardFilter_subdomainID");  
       }
     });  
     
-    $('#UtilizationDashboardFilter_agregatedDomainID').on('change', function(){
-
-       var subDomSelect = $('#UtilizationDashboardFilter_subdomainID'); 
-       subDomSelect.html("");
-       subDomSelect.append('<option value="0"> </option>'); 
-
-       var domainID = $(this).val();
-       if(domainID != null) 
-       {
-           $.post('/coplat/index.php/Subdomain/SubdomainsByDomainID/', {domain: domainID}, function(domains){
+    $('#UtilizationDashboardFilter_subdomainID, #UtilizationDashboardFilter_agregatedDomainID').on('change', function(){
+        
+        var domainID = $('#UtilizationDashboardFilter_agregatedDomainID').val();
+        var subDomainID = $('#UtilizationDashboardFilter_subdomainID').val();
+        
+        if (subDomainID != null && subDomainID> 0)
+        {
+            var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
+            domainMentorSelect.html("");
+            domainMentorSelect.append('<option value="0"> </option>'); 
+            $.post('/coplat/index.php/User/UsersBySubDomainID/' + subDomainID, {}, function(users){
+            for(var i = 0; i < users.length; i++) 
+            {
+                   var user = users[i];
+                   domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+            }
+            }, 'json');           
+        }else if (domainID != null && domainID > 0)
+        {
+            var subDomSelect = $('#UtilizationDashboardFilter_subdomainID'); 
+            subDomSelect.html("");
+            subDomSelect.append('<option value="0"> </option>'); 
+            
+            $.post('/coplat/index.php/Subdomain/SubdomainsByDomainID/', {domain: domainID}, function(domains){
               for(var i = 0; i < domains.length; i++) 
               {
                    var domain = domains[i];
                    subDomSelect.append("<option value=\""+domain.id+"\">"+domain.name+"</option>");
               }
            }, 'json');
-       }
+           
+           var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
+           domainMentorSelect.html("");
+           domainMentorSelect.append('<option value="0"> </option>');
+           $.post('/coplat/index.php/User/UsersByDomainIDAggregated/' + domainID, {}, function(users){
+              for(var i = 0; i < users.length; i++) 
+              {
+                   var user = users[i];
+                   domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+              }
+           }, 'json');            
+        }else
+        {
+           var subDomSelect = $('#UtilizationDashboardFilter_subdomainID'); 
+           subDomSelect.html("");
+           subDomSelect.append('<option value="0"> </option>');
+           
+           var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
+           domainMentorSelect.html("");
+           domainMentorSelect.append('<option value="0"> </option>');  
+           
+            $.post('/coplat/index.php/User/AllDomainMentors/', {}, function(users){
+            for(var i = 0; i < users.length; i++) 
+            {
+              var user = users[i];
+              domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+            }
+            }, 'json');
+        }
+        
+    });
+    
+     $('#UtilizationDashboardFilter_exclusiveDomainID').on('change', function(){
+          
+                
+         var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
+         domainMentorSelect.html("");
+         domainMentorSelect.append('<option value="0"> </option>'); 
 
-     });
+            var domainID = $(this).val();
+            if(domainID != null && domainID > 0) 
+            {
+              
+               $.post('/coplat/index.php/User/UsersByDomainIDExclusive/' + domainID, {}, function(users){
+                   for(var i = 0; i < users.length; i++) 
+                   {
+                        var user = users[i];
+                        domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+                   }
+                }, 'json');
+             }else
+             {
+                   $.post('/coplat/index.php/User/AllDomainMentors/', {}, function(users){
+                         for(var i = 0; i < users.length; i++) 
+                         {
+                              var user = users[i];
+                              domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+                         }
+                         }, 'json');            
+             }
+          
+          
+      });
+     
      
     function isValidDate(str)
     {
@@ -364,7 +418,7 @@ $( document ).ready(function()
      }
      
      
-     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, #UtilizationDashboardFilter_assigned_mentor_id').on('change', function(){
+     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, #UtilizationDashboardFilter_assigned_domain_mentor_id').on('change', function(){
          $('#chartSection').html("");
          if (validChartParams())
          {
@@ -455,7 +509,7 @@ $( document ).ready(function()
 });
       
          
-</script>
+</script
 <?php $this->endWidget(); ?>
 
 

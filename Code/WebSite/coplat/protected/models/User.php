@@ -1150,4 +1150,44 @@ class User extends CActiveRecord
         }
         return self::$admin; /* Assign the ticket to the admin for reassign */
     }
+
+    public static function findAllDomainMentors()
+    {
+        return User::model()->findAll("isDomMentor = 1");
+    }
+    
+    public static function findAllDomainMentorsByDomainID($domainID, $exclusive)
+    {
+        if ($exclusive)
+        {
+            return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                        FROM user '
+                    . '                        INNER JOIN user_domain ON user_domain.user_id = user.id  '
+                    . '                        WHERE isDomMentor = 1 AND '
+                    . '                              user_domain.subdomain_id IS NULL AND '
+                    . '                              user_domain.domain_id = '.$domainID);  
+            
+        }
+        else
+        {
+            return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                         FROM user '
+                    . '                         INNER JOIN user_domain ON user_domain.user_id = user.id  '
+                    . '                         WHERE isDomMentor = 1 AND'
+                    . '                         user_domain.domain_id = '.$domainID); 
+        }
+        
+       
+    }
+    
+    public static function findAllDomainMentorsBySubDomainID($subDomainID)
+    {
+                    return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                         FROM user '
+                    . '                         INNER JOIN user_domain ON user_domain.user_id = user.id  '
+                    . '                         WHERE isDomMentor = 1 AND'
+                    . '                         user_domain.subdomain_id = '.$subDomainID);         
+    }
+    
+    
 }

@@ -9,6 +9,39 @@ class UtilizationDashboardController extends Controller
         
 	public function actionIndex()
 	{ 
+            
+           /* $subQueryCommand =  Yii::app()->db->createCommand();
+            
+            $subQueryCommand->select("ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS event_recorded_date");
+            $subQueryCommand->from("ticket_events");
+            $subQueryCommand->join("ticket","ticket.id = ticket_events.ticket_id" );
+            $subQueryCommand->where("ticket.status = 'Close'");
+            $subQueryCommand->andWhere("ticket_events.event_type_id = 2");
+            $subQueryCommand->andWhere("ticket_events.new_value = 'Close'");
+            $subQueryCommand->group("ticket_events.ticket_id");*/
+            //echo $subQueryCommand->text;
+            
+         
+              /* $command =  Yii::app()->db->createCommand();
+               $command->select(array("ticket_events.ticket_id", 
+                                      "ticket_events.event_recorded_date AS ceatedDate",
+	                              "tc.event_recorded_date AS closedDate"));  
+               $command->from("ticket_events");*/
+              /* $command->inne(new Query())*/
+               
+               /*$command->join("(SELECT ticket_events.ticket_id, 
+                                    MAX(ticket_events.event_recorded_date) AS event_recorded_date
+                                    FROM ticket_events
+                               INNER JOIN ticket ON ticket.id = ticket_events.ticket_id
+                               WHERE ticket.status = 'Close' AND
+                                     ticket_events.event_type_id = 2 AND 
+                                     ticket_events.new_value = 'Close'
+                               GROUP BY ticket_events.ticket_id) tc", "ticket_events.ticket_id = tc.ticket_id");*/
+              // $command->where("ticket_events.event_type_id = 1");
+               //echo $command->text;
+              // $command->queryAll();
+            
+            
 	      /* if (!Yii::app()->request->isPostRequest)
 	       {
                 $ultilizationFilter = UtilizationDashboardFilter::initializeFilters(); 
@@ -22,6 +55,10 @@ class UtilizationDashboardController extends Controller
                 
 		/*$newEvents = $ultilizationFilter->retrieveNewTicketsDashboardData(); 
                 $closedEvents = $ultilizationFilter->retrieveClosedTicketsDashboardData();*/
+            
+            
+            
+            
             
             
                 $ultilizationFilter = new UtilizationDashboardFilter();
