@@ -56,20 +56,22 @@ $this->menu=array(
 
     $vcs = VideoConference::model()->findAllByPk($meetingsId);
 
-
+// <!--<a href='../videoConference/%ID%'>%SUBJECT%</a> -->
 
 
 
     foreach($vcs as $vc){
         $html = "
-        <div class='mbox info'>
-            <a href='../videoConference/%ID%'>%SUBJECT%</a>
+        <div class='mbox info'> " .
+            CHtml::link($vc->subject, array('videoConference/' . $vc->id))
+            .
+            "
             <p>%DATE%</p>
             <p>%NOTE%</p>
             <p>%PARTICIPANTS%</p>
         </div>";
 
-        $html = str_replace("%ID%", $vc->id, $html);
+      //  $html = str_replace("%ID%", $vc->id, $html);
         $html = str_replace("%SUBJECT%", $vc->subject, $html);
         $html = str_replace("%DATE%", $vc->scheduled_for, $html);
         $html = str_replace("%NOTE%", $vc->notes, $html);

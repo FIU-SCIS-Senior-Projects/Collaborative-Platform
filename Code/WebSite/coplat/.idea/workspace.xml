@@ -49,8 +49,8 @@
       <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.875" vertical-offset="2199" max-vertical-offset="4245">
-              <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.875" vertical-offset="2184" max-vertical-offset="4245">
+              <caret line="147" column="21" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -59,8 +59,8 @@
       <file leaf-file-name="VideoConference.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-86.25" vertical-offset="0" max-vertical-offset="2160">
-              <caret line="138" column="1" selection-start-line="138" selection-start-column="1" selection-end-line="138" selection-end-column="1" />
+            <state vertical-scroll-proportion="32.958332" vertical-offset="1346" max-vertical-offset="2160">
+              <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -108,12 +108,12 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.166666" vertical-offset="776" max-vertical-offset="1515">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.45833334" vertical-offset="956" max-vertical-offset="1545">
+              <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
               <folding>
-                <element signature="e#1327#1436#0#PHP" expanded="true" />
-                <marker date="1426268855000" expanded="true" signature="791:812" placeholder="..." />
-                <marker date="1426268855000" expanded="true" signature="791:952" placeholder="..." />
+                <element signature="e#1434#1543#0#PHP" expanded="true" />
+                <marker date="1426274246000" expanded="true" signature="849:867" placeholder="..." />
+                <marker date="1426274246000" expanded="true" signature="849:1057" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -132,8 +132,8 @@
       <file leaf-file-name="join.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6614583" vertical-offset="3294" max-vertical-offset="4800">
-              <caret line="245" column="4" selection-start-line="245" selection-start-column="4" selection-end-line="245" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.7291667" vertical-offset="3225" max-vertical-offset="4830">
+              <caret line="243" column="12" selection-start-line="243" selection-start-column="12" selection-end-line="243" selection-end-column="12" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
               </folding>
@@ -154,18 +154,18 @@
       <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/videoConference/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.125" vertical-offset="255" max-vertical-offset="945">
-              <caret line="38" column="63" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="63" />
+            <state vertical-scroll-proportion="-16.5" vertical-offset="369" max-vertical-offset="945">
+              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/videoConference/create.php">
+      <file leaf-file-name="_view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/videoConference/_view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="345">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="68" />
+            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="555">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -193,16 +193,16 @@
         <option value="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/_view.php" />
         <option value="$PROJECT_DIR$/protected/components/WebUser.php" />
-        <option value="$PROJECT_DIR$/protected/views/videoConference/view.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/_form.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/cotools/css/theme.css" />
         <option value="$PROJECT_DIR$/protected/components/UserIdentity.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/_notAllowed.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/notAllowed.php" />
         <option value="$PROJECT_DIR$/protected/models/VCInvitation.php" />
-        <option value="$PROJECT_DIR$/protected/views/videoConference/index.php" />
         <option value="$PROJECT_DIR$/protected/models/VideoConference.php" />
         <option value="$PROJECT_DIR$/protected/controllers/VideoConferenceController.php" />
+        <option value="$PROJECT_DIR$/protected/views/videoConference/view.php" />
+        <option value="$PROJECT_DIR$/protected/views/videoConference/index.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/join.php" />
       </list>
     </option>
@@ -328,7 +328,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -872,14 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="555">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/videoConference/create.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="345">
@@ -900,14 +892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.25" vertical-offset="741" max-vertical-offset="2730">
           <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.125" vertical-offset="255" max-vertical-offset="945">
-          <caret line="38" column="63" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -947,14 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.875" vertical-offset="2199" max-vertical-offset="4245">
-          <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/bootstrap/cotools/js/canvas/canvas-designer-widget.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
@@ -973,28 +949,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-86.25" vertical-offset="0" max-vertical-offset="2160">
-          <caret line="138" column="1" selection-start-line="138" selection-start-column="1" selection-end-line="138" selection-end-column="1" />
+        <state vertical-scroll-proportion="32.958332" vertical-offset="1346" max-vertical-offset="2160">
+          <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.875" vertical-offset="2184" max-vertical-offset="4245">
+          <caret line="147" column="21" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="555">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.5" vertical-offset="369" max-vertical-offset="945">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.166666" vertical-offset="776" max-vertical-offset="1515">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.45833334" vertical-offset="956" max-vertical-offset="1545">
+          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
           <folding>
-            <element signature="e#1327#1436#0#PHP" expanded="true" />
-            <marker date="1426268855000" expanded="true" signature="791:812" placeholder="..." />
-            <marker date="1426268855000" expanded="true" signature="791:952" placeholder="..." />
+            <element signature="e#1434#1543#0#PHP" expanded="true" />
+            <marker date="1426274246000" expanded="true" signature="849:867" placeholder="..." />
+            <marker date="1426274246000" expanded="true" signature="849:1057" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6614583" vertical-offset="3294" max-vertical-offset="4800">
-          <caret line="245" column="4" selection-start-line="245" selection-start-column="4" selection-end-line="245" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.7291667" vertical-offset="3225" max-vertical-offset="4830">
+          <caret line="243" column="12" selection-start-line="243" selection-start-column="12" selection-end-line="243" selection-end-column="12" />
           <folding>
             <element signature="e#6#91#0#PHP" expanded="true" />
           </folding>
