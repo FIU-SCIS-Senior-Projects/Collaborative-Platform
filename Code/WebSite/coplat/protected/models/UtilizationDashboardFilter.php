@@ -102,13 +102,15 @@ class UtilizationDashboardFilter extends CFormModel
     public $exclusiveDomainID;
     public $subdomainID;
     public $assigned_domain_mentor_id;
+    public $assigned_project_mentor_id;
+    public $assigned_personal_mentor_id;
     
 
     public function rules()
     {
         return array(
             array('reportTypeId, dim2ID', 'required'),
-            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_domain_mentor_id', 'numerical', 'integerOnly'=>true),
+            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_domain_mentor_id, assigned_project_mentor_id, assigned_personal_mentor_id', 'numerical', 'integerOnly'=>true),
             array('fromDate, toDate', 'date')                     
         );
     }
@@ -123,7 +125,10 @@ class UtilizationDashboardFilter extends CFormModel
                         'subdomainID' => 'Sub Domain',			
                         'reportTypeId' => 'Report Type',
                         'dim2ID' => 'By',
-                        'assigned_domain_mentor_id' => 'Assigned Domain Mentor');
+                        'assigned_domain_mentor_id' => 'Assigned Domain Mentor',
+                        'assigned_project_mentor_id' => 'Assigned Project Mentor',
+                        'assigned_personal_mentor_id' => 'Assigned Personal Mentor'                   
+                    );
     }
     
     public function retrieveCreateTicketsOvertimeDashboardData()
@@ -335,8 +340,14 @@ class UtilizationDashboardFilter extends CFormModel
        if (isset($this->assigned_domain_mentor_id) && $this->assigned_domain_mentor_id >0)
        {
            $command->andWhere("ticket.assign_user_id = ".$this->assigned_domain_mentor_id);
+       }else if (isset($this->assigned_project_mentor_id) && $this->assigned_project_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_project_mentor_id);
+       }else if (isset($this->assigned_personal_mentor_id) && $this->assigned_personal_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_personal_mentor_id);
        }
-       
+      
        
       // $fsdf =  $command->text;
        
@@ -403,6 +414,12 @@ class UtilizationDashboardFilter extends CFormModel
        if (isset($this->assigned_domain_mentor_id) && $this->assigned_domain_mentor_id >0)
        {
            $command->andWhere("ticket.assign_user_id = ".$this->assigned_domain_mentor_id);
+       }else if (isset($this->assigned_project_mentor_id) && $this->assigned_project_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_project_mentor_id);
+       }else if (isset($this->assigned_personal_mentor_id) && $this->assigned_personal_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_personal_mentor_id);
        }
       // echo $command->text;
        
@@ -455,6 +472,12 @@ class UtilizationDashboardFilter extends CFormModel
        if (isset($this->assigned_domain_mentor_id) && $this->assigned_domain_mentor_id >0)
        {
            $command->andWhere("ticket.assign_user_id = ".$this->assigned_domain_mentor_id);
+       }else if (isset($this->assigned_project_mentor_id) && $this->assigned_project_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_project_mentor_id);
+       }else if (isset($this->assigned_personal_mentor_id) && $this->assigned_personal_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_personal_mentor_id);
        }
        
        
@@ -510,6 +533,12 @@ class UtilizationDashboardFilter extends CFormModel
        if (isset($this->assigned_domain_mentor_id) && $this->assigned_domain_mentor_id >0)
        {
            $command->andWhere("ticket.assign_user_id = ".$this->assigned_domain_mentor_id);
+       }else if (isset($this->assigned_project_mentor_id) && $this->assigned_project_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_project_mentor_id);
+       }else if (isset($this->assigned_personal_mentor_id) && $this->assigned_personal_mentor_id >0)
+       {
+           $command->andWhere("ticket.assign_user_id = ".$this->assigned_personal_mentor_id);
        }
        
        

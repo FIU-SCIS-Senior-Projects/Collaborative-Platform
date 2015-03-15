@@ -1156,6 +1156,16 @@ class User extends CActiveRecord
         return User::model()->findAll("isDomMentor = 1");
     }
     
+    public static function findAllProjectMentors()
+    {
+        return User::model()->findAll("isProMentor = 1");
+    }
+    
+    public static function findAllPersonalMentors()
+    {
+        return User::model()->findAll("isPerMentor = 1");
+    }
+    
     public static function findAllDomainMentorsByDomainID($domainID, $exclusive)
     {
         if ($exclusive)
