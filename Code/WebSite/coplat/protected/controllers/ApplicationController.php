@@ -813,7 +813,8 @@ class ApplicationController extends Controller
 				
 			$picks = $_POST['domPicks'];
 			$picks = explode(',', $picks);
-			foreach($picks as $pick){
+			foreach($picks as $pick)
+                        {
 				$dbpick = new ApplicationDomainMentorPick;
 				$dbpick->app_id = $application->id;
 				$temp = explode(':', $pick);
@@ -824,16 +825,21 @@ class ApplicationController extends Controller
 			}
 			
 			$picks = $_POST['subPicks'];
-			$picks = explode(',', $picks);
-			foreach($picks as $pick){
-				$dbpick = new ApplicationSubdomainMentorPick;
-				$dbpick->app_id = $application->id;
-				$temp = explode(':', $pick);
-				$dbpick->subdomain_id = $temp[0];
-				$dbpick->proficiency = $temp[1];
-				$dbpick->approval_status = 'Proposed by Mentor';
-				$dbpick->save(false);
-			}
+                        if (isset($picks) && $picks != "")
+                        {
+                            $picks = explode(',', $picks);
+                            foreach($picks as $pick)
+                            {
+                                    $dbpick = new ApplicationSubdomainMentorPick;
+                                    $dbpick->app_id = $application->id;
+                                    $temp = explode(':', $pick);
+                                    $dbpick->subdomain_id = $temp[0];
+                                    $dbpick->proficiency = $temp[1];
+                                    $dbpick->approval_status = 'Proposed by Mentor';
+                                    $dbpick->save(false);
+                            }                            
+                        }
+			
 
 			$this->redirect("/coplat/index.php/application/portal");
 		} else { // on initial load
