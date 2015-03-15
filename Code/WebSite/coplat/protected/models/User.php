@@ -365,7 +365,10 @@ class User extends CActiveRecord
     		
     		$temp["id"] = $user->id;
     		$temp["name"] = $user->getFullName();
-    		$temp["university"] = University::model()->universityById($user->university_id);
+    		if (isset($user->university_id) && $user->university_id > 0)
+			{
+				$temp["university"] = University::model()->universityById($user->university_id);
+			}		
     		$temp["avatar"] = $user->pic_url;
     		$temp["email"] = $user->email;
     		

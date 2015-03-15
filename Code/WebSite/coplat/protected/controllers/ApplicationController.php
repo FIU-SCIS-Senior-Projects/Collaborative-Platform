@@ -688,29 +688,41 @@ class ApplicationController extends Controller
 			$model->status = 'Admin';
 			$model->user_id = $user->id;
 			$model->date_created = new CDbExpression('NOW()');
-			if($model->university_id === 0) $model->university_id = NULL;
+			if(!isset($model->university_id) ||  $model->university_id == 0)
+                        {
+                           $model->university_id = NULL;
+                        }
+                          
 			$model->save(false);
 			
 			// save user picks
 			$mypicks = $_POST['picks'];
 			$mypicks = explode(',', $mypicks);
-			foreach($mypicks as $pick){
-				$dbpick = new ApplicationPersonalMentorPick;
+			foreach($mypicks as $pick)
+                        {
+                            if ($pick > 0)
+                            {
+                                $dbpick = new ApplicationPersonalMentorPick;
 				$dbpick->app_id = $model->id;
 				$dbpick->user_id = $pick;
 				$dbpick->approval_status = 'Proposed by Mentor';
-				$dbpick->save(false);
+				$dbpick->save(false);                                
+                            }				
 			}	
 			
 			// save system picks
 			$systempicks = $_POST['systempicks'];
 			$systempicks = explode(',', $systempicks);
-			foreach($systempicks as $pick){
-				$dbpick = new ApplicationPersonalMentorPick;
+			foreach($systempicks as $pick)
+                        {
+                            if ($pick > 0)
+                            {
+                               				$dbpick = new ApplicationPersonalMentorPick;
 				$dbpick->app_id = $model->id;
 				$dbpick->user_id = $pick;
 				$dbpick->approval_status = 'Proposed by System';
-				$dbpick->save(false);
+				$dbpick->save(false); 
+                            }
 			}
 			
 			// redirect to application portal
