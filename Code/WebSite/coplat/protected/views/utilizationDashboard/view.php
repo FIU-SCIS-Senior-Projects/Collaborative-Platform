@@ -13,6 +13,7 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
 
 <table class="dashItem">
     <td style="vertical-align:top; width:225px;">
+        <div id="filterRegion">
         <div>
              <?php 
                          echo $form->labelEx($filter,'reportTypeId'); 
@@ -102,6 +103,7 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                                                  CHtml::listData(User::model()->findAllPersonalMentors(),'id', 'FullName'),
                                                  array('empty'=>' '));?>
         </div>        
+       </div>
     </td>
     <td style="vertical-align:top;">
         <div id="chartSection" class="chartCont"></div>
@@ -112,6 +114,25 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
     
 $( document ).ready(function() 
 { 
+    
+    
+     
+    var chartRegionWidth =  $('.container').width();
+    chartRegionWidth = chartRegionWidth - 225 - 20;
+    
+    if (chartRegionWidth < 600)
+    {
+        chartRegionWidth = 600;
+    }
+    
+    $('#chartSection').width(chartRegionWidth);
+    
+    //var chartRegionHeight = $('#dashboarForm').height();
+   // alert(chartRegionHeight);
+    //$('#filterRegion').height(chartRegionHeight);
+ 
+    
+    
     var enumReportType = {
          TicketsCreated:1,
          TicketsClosed:2, 
@@ -502,12 +523,13 @@ $( document ).ready(function()
                chartDataTable.addColumn('string');   
            }
            
+           
            if(reportID == enumReportType.TicketsCreated || reportID == enumReportType.TicketsClosed )
            {
                 chartDataTable.addColumn('number');
            }    
            chartDataTable.addRows(dashboardData);
-           var chartWidth = 600;
+           var chartWidth = chartRegionWidth -8;
            var options = {  
                    width:chartWidth,
                    height: 300,
