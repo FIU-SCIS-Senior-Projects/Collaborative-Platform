@@ -104,13 +104,15 @@ class UtilizationDashboardFilter extends CFormModel
     public $assigned_domain_mentor_id;
     public $assigned_project_mentor_id;
     public $assigned_personal_mentor_id;
+    public $assigned_project_id;
+    public $mentee_id;
     
 
     public function rules()
     {
         return array(
             array('reportTypeId, dim2ID', 'required'),
-            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_domain_mentor_id, assigned_project_mentor_id, assigned_personal_mentor_id', 'numerical', 'integerOnly'=>true),
+            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_domain_mentor_id, assigned_project_mentor_id, assigned_personal_mentor_id, assigned_project_id, mentee_id', 'numerical', 'integerOnly'=>true),
             array('fromDate, toDate', 'date')                     
         );
     }
@@ -127,8 +129,9 @@ class UtilizationDashboardFilter extends CFormModel
                         'dim2ID' => 'By',
                         'assigned_domain_mentor_id' => 'Assigned Domain Mentor',
                         'assigned_project_mentor_id' => 'Assigned Project Mentor',
-                        'assigned_personal_mentor_id' => 'Assigned Personal Mentor'                   
-                    );
+                        'assigned_personal_mentor_id' => 'Assigned Personal Mentor',
+                        'assigned_project_id'=> 'Assigned to Project',
+                        'mentee_id'=> 'Mentee');
     }
     
     public function retrieveCreateTicketsOvertimeDashboardData()
@@ -347,6 +350,11 @@ class UtilizationDashboardFilter extends CFormModel
        {
            $command->andWhere("ticket.assign_user_id = ".$this->assigned_personal_mentor_id);
        }
+       
+       if (isset($this->mentee_id) && $this->mentee_id > 0 )
+       {
+          $command->andWhere("ticket.creator_user_id = ".$this->mentee_id); 
+       }
       
        
       // $fsdf =  $command->text;
@@ -421,6 +429,12 @@ class UtilizationDashboardFilter extends CFormModel
        {
            $command->andWhere("ticket.assign_user_id = ".$this->assigned_personal_mentor_id);
        }
+       
+       if (isset($this->mentee_id) && $this->mentee_id > 0 )
+       {
+          $command->andWhere("ticket.creator_user_id = ".$this->mentee_id); 
+       }
+       
       // echo $command->text;
        
        return $command->queryAll(); 
@@ -480,6 +494,10 @@ class UtilizationDashboardFilter extends CFormModel
            $command->andWhere("ticket.assign_user_id = ".$this->assigned_personal_mentor_id);
        }
        
+       if (isset($this->mentee_id) && $this->mentee_id > 0 )
+       {
+          $command->andWhere("ticket.creator_user_id = ".$this->mentee_id); 
+       }
        
       // $fsdf =  $command->text;
        
@@ -541,6 +559,10 @@ class UtilizationDashboardFilter extends CFormModel
            $command->andWhere("ticket.assign_user_id = ".$this->assigned_personal_mentor_id);
        }
        
+       if (isset($this->mentee_id) && $this->mentee_id > 0 )
+       {
+          $command->andWhere("ticket.creator_user_id = ".$this->mentee_id); 
+       }
        
       // $fsdf =  $command->text;
        

@@ -102,7 +102,22 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                                                  'assigned_personal_mentor_id',
                                                  CHtml::listData(User::model()->findAllPersonalMentors(),'id', 'FullName'),
                                                  array('empty'=>' '));?>
-        </div>        
+        </div> 
+        <div>
+            <?php echo CHtml::activeLabel($filter,'assigned_project_id'); 
+                  echo CHtml::activeDropDownList($filter,
+                                                 'assigned_project_id',
+                                                 array(),
+                                                 array('empty'=>' '));?>
+        </div
+        <div>
+            <?php echo CHtml::activeLabel($filter,'mentee_id'); 
+                  echo CHtml::activeDropDownList($filter,
+                                                 'mentee_id',
+                                                 array(),
+                                                 array('empty'=>' '));?>
+        </div>
+        
        </div>
     </td>
     <td style="vertical-align:top;">
