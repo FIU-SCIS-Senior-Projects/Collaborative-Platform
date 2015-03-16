@@ -20,6 +20,7 @@
  * @property integer $isEscalated
  * @property integer $Mentor1
  * @property integer $Mentor2
+ * 
  *
  * The followings are the available model relations:
  * @property Comment[] $comments

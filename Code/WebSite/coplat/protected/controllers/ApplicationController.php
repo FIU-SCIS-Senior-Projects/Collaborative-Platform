@@ -865,8 +865,14 @@ class ApplicationController extends Controller
 	public function loadProjectMentorByUser($id)
 	{
 		$params = array('user_id'=>$id, 'status'=>'Admin');
-		$model=ApplicationProjectMentor::model()->findByAttributes($params);
-		return $model;
+                
+                $sql = 'SELECT * '
+                        . '                                            FROM application_project_mentor '
+                        . '                                            WHERE user_id = '.$id.' AND status = "Admin"';
+                
+		$model=ApplicationProjectMentor::model()->findBySql($sql);
+                           
+                return $model;
 	}
 	
 	public function loadDomainMentorByUser($id)
