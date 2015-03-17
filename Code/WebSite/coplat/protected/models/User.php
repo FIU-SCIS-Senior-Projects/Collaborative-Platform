@@ -1202,5 +1202,21 @@ class User extends CActiveRecord
                     . '                         user_domain.subdomain_id = '.$subDomainID);         
     }
     
+    public static function sendMentorApplicationStatusEmail($model, $adminName){    	
+    	
+    	$email = Yii::app()->email;
+   	$link = CHtml::link('Click here to go to the site', 'http://' . Yii::app()->request->getServerName());
+    	 
+    	$message = $adminName.' has finished reviewing your mentor application<br/>'.$link.'';
+    	 
+    	$html = User::replaceMessage(($model->fname . ' ' . $model->lname), $message);
+    	 
+   	$email->to = $model->email;
+   	$email->from = 'Collaborative Platform';
+    	$email->subject = 'Your application has been reviewed!';
+    	$email->message = $html;
+   	$email->send();
+   }
+    
     
 }

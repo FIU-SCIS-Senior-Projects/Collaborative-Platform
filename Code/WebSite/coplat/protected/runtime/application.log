@@ -5494,3 +5494,32 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/application/null
 HTTP_REFERER=http://localhost/coplat/index.php/application/personal
 ---
+2015/03/17 04:27:46 [error] [php] Trying to get property of non-object (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ApplicationController.php:396)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): ApplicationController->runAction()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): ApplicationController->filterAccessControl()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): ApplicationController->runActionWithFilters()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): ApplicationController->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/application/10
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ApplicationController.php (396)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/17 04:28:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "null".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('null')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('null')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/nul...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/null
+HTTP_REFERER=http://localhost/coplat/index.php/application/personal
+---
