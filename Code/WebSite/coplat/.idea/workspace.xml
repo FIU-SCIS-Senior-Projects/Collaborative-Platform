@@ -46,30 +46,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="75.375" vertical-offset="3669" max-vertical-offset="4245">
-              <caret line="124" column="31" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VideoConference.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="42.333332" vertical-offset="1571" max-vertical-offset="2160">
-              <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="VCInvitation.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/VCInvitation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-52.125" vertical-offset="144" max-vertical-offset="1815">
+            <state vertical-scroll-proportion="-50.25" vertical-offset="189" max-vertical-offset="1815">
               <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding />
             </state>
@@ -103,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="join.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="join.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5677083" vertical-offset="3783" max-vertical-offset="5265">
-              <caret line="274" column="8" selection-start-line="274" selection-start-column="8" selection-end-line="274" selection-end-column="8" />
+            <state vertical-scroll-proportion="-13.375" vertical-offset="2094" max-vertical-offset="5445">
+              <caret line="161" column="8" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="8" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
               </folding>
@@ -115,10 +95,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="theme.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/bootstrap/cotools/css/theme.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.61174554" vertical-offset="555" max-vertical-offset="1605">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="RTCMultiConnection.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/bootstrap/cotools/js/RTCMultiConnection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="606.2593" vertical-offset="20824" max-vertical-offset="91560">
+            <state vertical-scroll-proportion="159.03703" vertical-offset="8749" max-vertical-offset="91560">
               <caret line="297" column="40" selection-start-line="297" selection-start-column="34" selection-end-line="297" selection-end-column="40" />
               <folding />
             </state>
@@ -148,7 +138,6 @@
         <option value="$PROJECT_DIR$/protected/views/videoConference/_view.php" />
         <option value="$PROJECT_DIR$/protected/components/WebUser.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/_form.php" />
-        <option value="$PROJECT_DIR$/themes/bootstrap/cotools/css/theme.css" />
         <option value="$PROJECT_DIR$/protected/components/UserIdentity.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/_notAllowed.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/notAllowed.php" />
@@ -158,6 +147,7 @@
         <option value="$PROJECT_DIR$/protected/views/videoConference/view.php" />
         <option value="$PROJECT_DIR$/protected/models/VCInvitation.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/join.php" />
+        <option value="$PROJECT_DIR$/themes/bootstrap/cotools/css/theme.css" />
       </list>
     </option>
   </component>
@@ -291,6 +281,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cotools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cotools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -809,13 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/bootstrap/cotools/css/theme.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="1620">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/LoginController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="3735">
@@ -933,14 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/VCInvitation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-52.125" vertical-offset="144" max-vertical-offset="1815">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/videoConference/view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6614583" vertical-offset="384" max-vertical-offset="960">
@@ -949,37 +950,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/bootstrap/cotools/js/RTCMultiConnection.js">
+    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="606.2593" vertical-offset="20824" max-vertical-offset="91560">
-          <caret line="297" column="40" selection-start-line="297" selection-start-column="34" selection-end-line="297" selection-end-column="40" />
+        <state vertical-scroll-proportion="1.4947916" vertical-offset="999" max-vertical-offset="4245">
+          <caret line="124" column="31" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="42.333332" vertical-offset="1571" max-vertical-offset="2160">
+        <state vertical-scroll-proportion="-0.98641765" vertical-offset="1136" max-vertical-offset="2160">
           <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
+    <entry file="file://$PROJECT_DIR$/protected/models/VCInvitation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="75.375" vertical-offset="3669" max-vertical-offset="4245">
-          <caret line="124" column="31" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+        <state vertical-scroll-proportion="-50.25" vertical-offset="189" max-vertical-offset="1815">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/cotools/js/RTCMultiConnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="159.03703" vertical-offset="8749" max-vertical-offset="91560">
+          <caret line="297" column="40" selection-start-line="297" selection-start-column="34" selection-end-line="297" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5677083" vertical-offset="3783" max-vertical-offset="5265">
-          <caret line="274" column="8" selection-start-line="274" selection-start-column="8" selection-end-line="274" selection-end-column="8" />
+        <state vertical-scroll-proportion="-13.375" vertical-offset="2094" max-vertical-offset="5445">
+          <caret line="161" column="8" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="8" />
           <folding>
             <element signature="e#6#91#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/bootstrap/cotools/css/theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61174554" vertical-offset="555" max-vertical-offset="1605">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

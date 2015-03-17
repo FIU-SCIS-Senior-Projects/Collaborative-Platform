@@ -227,16 +227,19 @@ if ($user->id == $model->moderator_id) {
         document.getElementById('input-text-chat').disabled = false;
     };
 
-    rmc.onmessage = function(event) {
-        alert('Target user (event.userid) said: ' + event.data);
-    };
+   // rmc.onmessage = function(event) {
+   //     alert('Target user (event.userid) said: ' + event.data);
+   // };
 
     document.getElementById('input-text-chat').onkeyup = function(e) {
         if(e.keyCode != 13) return; // if it is not Enter-key
         var value = this.value.replace(/^\s+|\s+$/g, '');
         if(!value.length) return; // if empty-spaces
 
-        rmc.send( value );
+        rmc.send( {
+            type: 'chat',
+            content : value
+        } );
         this.value = '';
     };
 
@@ -272,15 +275,24 @@ if ($user->id == $model->moderator_id) {
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
             //alert("new screen");
         }
-        
+
+    };
+
+
+    rmc.onmessage = function (event) {
+        if(event.data.type == "chat"){
+            alert('Target user (' + event.userid +') said: ' + event.data.content);
+        }
+        else{
+
+            CanvasDesigner.syncData(event.data);
+        }
     };
 
     //Whitebord Section
 
     function canvasInit() {
-        rmc.onmessage = function (event) {
-            CanvasDesigner.syncData(event.data);
-        };
+
         CanvasDesigner.addSyncListener(function (data) {
             rmc.send(data);
         });
