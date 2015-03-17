@@ -90,7 +90,6 @@ $('#subdomain_changes .btn-danger').click(function(){
 					child.removeAttr('disabled');
 					parent.attr('disabled', 'true');
 		
-					
 					removeId(value, childhiddenfield);
 					addId(value, parenthiddenfield);
   				}else{
@@ -562,7 +561,7 @@ $('#subdomain_changes .btn-danger').click(function(){
 	    'itemsCssClass' => 'table-bordered items',
 	    'dataProvider' => $domainChanges,
 		'columns'=>array(
-						//'id',
+						'id',
 						//'app_id',
 						array(
 								'value'=>'$data["name"]',

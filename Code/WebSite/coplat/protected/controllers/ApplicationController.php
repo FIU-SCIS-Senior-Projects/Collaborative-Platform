@@ -453,10 +453,11 @@ class ApplicationController extends Controller
 				
 				
 				if ($closedOne) {
+                                        $closed->user_id = $user_id;
 					$closed->date = new CDbExpression('NOW()');	
 					$closed->save();
 				}
-
+                                User::sendMentorApplicationStatusEmail($loaduser, "The administrator");
 				$this->redirect("/coplat/index.php/application/admin");
 			}
 			
