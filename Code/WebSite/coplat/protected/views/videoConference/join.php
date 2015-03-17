@@ -11,22 +11,26 @@
 
 ?>
 
+<!-- Init Site Scripts -->
+<script>
+    //hack bootstrap 2 to 3
+    $('.span9').removeClass('span9');
+    $('#page').removeClass('container');
+    $('.span3').removeClass('span3');
+</script>
 
+
+<div class="container">
 <ol class="breadcrumb">
     <li><a href="/coplat/index.php">Home</a></li>
     <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
     <li><a href="/coplat/index.php/videoConference/<?php echo $model->id; ?>"><?php echo $model->id; ?></a></li>
     <li class="active">Join</li>
 </ol>
+</div>
 
 
-<!-- Init Site Scripts -->
-<script>
-    //hack bootstrap 2 to 3
-    $('.span9:first').removeClass('span9');
-    $('.container:first').removeClass('container');
-    $('.span3:first').removeClass('span3');
-</script>
+
 
 
 <!-- Bootstrap -->
@@ -44,7 +48,7 @@
 
 
 <hr/>
-
+<div style="text-align: center;margin: 0 auto;">
 <?php
 
 $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
@@ -52,18 +56,40 @@ $user = User::model()->findByAttributes(array("username" => Yii::app()->user->ge
 if ($user->id == $model->moderator_id) {
     echo
     " <!-- The meeting initiator -->
-    <button type='button' class='btn btn-primary' id='open-room'>Open Room</button> ";
+    <button type='button' class='btn btn-success' id='open-room'><i class='fa fa-key'></i>&nbsp;&nbsp;Open Room</button> ";
 } else {
     echo
     "<!-- The meeting participants join-->
-    <button type='button' class='btn btn-primary' id='join-room'>Join Room</button>
+    <button type='button' class='btn btn-success' id='join-room'><i class='fa fa-users'></i>&nbsp;&nbsp;Join Room</button>
     ";
 }
 
-
-
-
 ?>
+
+<!--<button type='button' class='btn btn-primary' id='init-whiteboard'><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</button>-->
+<button type='button' class='btn btn-primary' id='reset-whiteboard'><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear Whiteboard</button>
+<button type='button' class='btn btn-primary' id='share-screen'><i class="fa fa-desktop"></i>&nbsp;&nbsp;Share Screen</button>
+<button type='button' class='btn btn-primary' id='stop-share-screen'><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</button>
+<button type='button' class='btn btn-primary' id='settings'><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</button>
+<button type='button' class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Disconnect</button>
+
+
+<!--
+<div id="tool-box" class="list-group">
+    <a href="#" id="init-whiteboard" class="list-group-item"><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</a>
+    <a href="#" id="reset-whiteboard" class="list-group-item"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Reset
+        Board</a>
+    <a href="#" id="share-screen" class="list-group-item"><i class="fa fa-desktop"></i>&nbsp;&nbsp;Share
+        Screen</a>
+    <a href="#" id="stop-share-screen" class="list-group-item"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop
+        Sharing</a>
+    <a href="#" class="list-group-item"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</a>
+    <a href="#" id="disconnect" class="list-group-item"><i
+            class="fa fa-close"></i>&nbsp;&nbsp;Disconnect</a>
+</div>
+
+-->
+</div>
 <hr/>
 
 <!--
@@ -72,97 +98,89 @@ if ($user->id == $model->moderator_id) {
 </div>
 -->
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-9">
+<div class="container-fluid">
+
+        <div class="row">
+
+            <div id="video-container" style="" class="col-md-2 col-lg-3">
+
+            </div>
+            <div id="cotools-container" class="col-md-8 col-lg-6">
+                <div id="cotools-panel">
+                    <!--
+                     <div class="tab-filler">
+                         <h2>Collaborative Panel</h2>
+                     </div>
+             -->
+                </div>
+
+            </div>
 
 
-            <div id="cotools-panel">
+            <div id="chat-container" class="col-md-2 col-lg-3">
+
+                <input type=text id="input-text-chat" disabled>
+                <div id="" class="row"></div>
+            </div>
+                <!-- required for floating -->
+                <!-- Nav tabs -->
+
+
                 <!--
-                 <div class="tab-filler">
-                     <h2>Collaborative Panel</h2>
-                 </div>
-         -->
+
+                <h4>Tool Box</h4>
+                <table>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
+                                    data-placement="top" title="Draw"><i class="fa fa-paint-brush"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
+                                    data-placement="top" title="Erase"><i class="fa fa-eraser"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
+                                    data-placement="top" title="Clear All"><i class="fa fa-recycle"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
+                                    id="share-screen" data-placement="top" title="Share Screen"><i
+                                    class="fa fa-slideshare"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
+                                    id="stop-share-screen" data-placement="top" title="Stop Sharing"><i
+                                    class="fa fa-stop"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
+                                    data-placement="top" title="Settings"><i class="fa fa-sliders"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
 
             </div>
+            <button id="disconnect" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top"
+                    title="Settings">Disconnect
+            </button>
+            -->
 
         </div>
-
-
-        <div class="col-md-3">
-            <!-- required for floating -->
-            <!-- Nav tabs -->
-
-            <div id="tool-box" class="list-group">
-                <a href="#" id="init-whiteboard" class="list-group-item"><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</a>
-                <a href="#" id="reset-whiteboard" class="list-group-item"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Reset
-                    Board</a>
-                <a href="#" id="share-screen" class="list-group-item"><i class="fa fa-desktop"></i>&nbsp;&nbsp;Share
-                    Screen</a>
-                <a href="#" id="stop-share-screen" class="list-group-item"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop
-                    Sharing</a>
-                <a href="#" class="list-group-item"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</a>
-                <a href="#" id="disconnect" class="list-group-item"><i
-                        class="fa fa-close"></i>&nbsp;&nbsp;Disconnect</a>
-            </div>
-            <!--
-
-            <h4>Tool Box</h4>
-            <table>
-                <tr>
-                    <td>
-                        <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                data-placement="top" title="Draw"><i class="fa fa-paint-brush"></i>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                data-placement="top" title="Erase"><i class="fa fa-eraser"></i>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                data-placement="top" title="Clear All"><i class="fa fa-recycle"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                id="share-screen" data-placement="top" title="Share Screen"><i
-                                class="fa fa-slideshare"></i>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                id="stop-share-screen" data-placement="top" title="Stop Sharing"><i
-                                class="fa fa-stop"></i>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                data-placement="top" title="Settings"><i class="fa fa-sliders"></i>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-
-        </div>
-        <button id="disconnect" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top"
-                title="Settings">Disconnect
-        </button>
-        -->
-        </div>
-    </div>
+    </section>
     <!-- end of row -->
-
-
-    <h3> Participants </h3>
-
-    <div id="video-container" class="row"></div>
-    <input type=text id="input-text-chat" disabled>
-    <div id="chat" class="row"></div>
 </div>
+
+
+<!--<div id="video-container"></div>-->
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -182,7 +200,7 @@ if ($user->id == $model->moderator_id) {
     var rmc = new RTCMultiConnection();
     rmc.body = document.getElementById('video-container');
     // http://www.rtcmulticonnection.org/docs/#getExternalIceServers
-    rmc.userid = "<?php echo Yii::app()->user->getId(); ?>" ;
+    rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.getExternalIceServers = false;
     rmc.session = {
         video: true,
@@ -207,39 +225,35 @@ if ($user->id == $model->moderator_id) {
     };
 
     //screen sharing
-
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
+
         rmc.addStream({
             screen: true,
             oneway: true
         });
-        //document.getElementById('recordScreen').disabled = false;
     });
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
         rmc.removeStream('screen');
+        $('#cotools-panel iframe').show();
     });
 
     //chat
-    rmc.onopen = function(event){
+    rmc.onopen = function (event) {
         alert('Text chat has been opened between you and ' + event.userid);
         document.getElementById('input-text-chat').disabled = false;
     };
 
-   // rmc.onmessage = function(event) {
-   //     alert('Target user (event.userid) said: ' + event.data);
-   // };
-
-    document.getElementById('input-text-chat').onkeyup = function(e) {
-        if(e.keyCode != 13) return; // if it is not Enter-key
+    document.getElementById('input-text-chat').onkeyup = function (e) {
+        if (e.keyCode != 13) return; // if it is not Enter-key
         var value = this.value.replace(/^\s+|\s+$/g, '');
-        if(!value.length) return; // if empty-spaces
+        if (!value.length) return; // if empty-spaces
 
-        rmc.send( {
+        rmc.send({
             type: 'chat',
-            content : value
-        } );
+            content: value
+        });
         this.value = '';
     };
 
@@ -255,21 +269,29 @@ if ($user->id == $model->moderator_id) {
     rmc.onstream = function (e) {
 
         if (e.type == 'local') {
-           // alert("the stream is local");
+            // alert("the stream is local");
         }
         if (e.type == 'remote') {
-           // alert("the stream is remote");
+            // alert("the stream is remote");
         }
 
         if (e.isVideo) {
             //alert("new video");
+            var uibox = document.createElement("div");
+            uibox.appendChild(document.createTextNode(e.userid));
+            uibox.className = "userid";
+
             document.getElementById('video-container').appendChild(e.mediaElement);
+            document.getElementById('video-container').appendChild(uibox);
+
         }
-        else if  (e.isAudio) {
+        else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen) {
-            $('#cotools-panel').empty();
+
+            $('#cotools-panel iframe').hide();
+            $('#cotools-panel video').remove();
 
             // $('#cotools-panel').html(e.mediaElement);
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
@@ -278,18 +300,20 @@ if ($user->id == $model->moderator_id) {
 
     };
 
-
+    //receiving a message
     rmc.onmessage = function (event) {
-        if(event.data.type == "chat"){
-            alert('Target user (' + event.userid +') said: ' + event.data.content);
+        if (event.data.type == "chat") {
+            alert('Target user (' + event.userid + ') said: ' + event.data.content);
         }
-        else{
+        else {
 
             CanvasDesigner.syncData(event.data);
         }
     };
 
-    //Whitebord Section
+
+
+    //Whiteboard Section
 
     function canvasInit() {
 
@@ -312,10 +336,10 @@ if ($user->id == $model->moderator_id) {
         canvasInit();
     });
 
-    $("#init-whiteboard").click(function () {
-        $('#cotools-panel').empty();
-        canvasInit();
-    });
+//    $("#init-whiteboard").click(function () {
+//        $('#cotools-panel').empty();
+//        canvasInit();
+//    });
 
 
     /*
