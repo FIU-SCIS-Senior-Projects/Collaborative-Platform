@@ -227,9 +227,9 @@ if ($user->id == $model->moderator_id) {
         document.getElementById('input-text-chat').disabled = false;
     };
 
-   // rmc.onmessage = function(event) {
-     //   alert('Target user (event.userid) said: ' + event.data);
-   // };
+    rmc.onmessage = function(event) {
+        alert('Target user (event.userid) said: ' + event.data);
+    };
 
     document.getElementById('input-text-chat').onkeyup = function(e) {
         if(e.keyCode != 13) return; // if it is not Enter-key
@@ -272,9 +272,7 @@ if ($user->id == $model->moderator_id) {
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
             //alert("new screen");
         }
-        else{
-            alert('Target user (e.userid) said: ' + e.data);
-        }
+        
     };
 
     //Whitebord Section
