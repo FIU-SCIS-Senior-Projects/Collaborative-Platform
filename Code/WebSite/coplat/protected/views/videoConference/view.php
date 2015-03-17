@@ -52,6 +52,8 @@ $this->menu = array(
 
 )); ?>
 
-<a href="https://cp-dev.cis.fiu.edu/coplat/index.php/videoConference/join/<?php echo $model->id ?>">Join Now</a>
+<!--<a href="https://cp-dev.cis.fiu.edu/coplat/index.php/videoConference/join/<?php echo $model->id ?>">Join Now</a>-->
 
-
+<?php
+echo CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $model->id ,array(),'https'));
+?>

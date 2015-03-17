@@ -46,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24479167" vertical-offset="1989" max-vertical-offset="4245">
-              <caret line="142" column="90" selection-start-line="142" selection-start-column="44" selection-end-line="142" selection-end-column="90" />
+            <state vertical-scroll-proportion="75.375" vertical-offset="3669" max-vertical-offset="4245">
+              <caret line="124" column="31" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -79,27 +79,11 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4840" max-vertical-offset="17370">
-              <caret line="341" column="50" selection-start-line="341" selection-start-column="16" selection-end-line="341" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4885" max-vertical-offset="18405">
+              <caret line="344" column="5" selection-start-line="341" selection-start-column="16" selection-end-line="341" selection-end-column="50" />
               <folding>
-                <marker date="1424423909000" expanded="true" signature="10710:10748" placeholder="SELECT id fr..user..." />
-                <marker date="1424423909000" expanded="true" signature="18014:18063" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1424423909000" expanded="true" signature="18288:18334" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1424423909000" expanded="true" signature="18944:18990" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1424423909000" expanded="true" signature="19351:19413" placeholder="SELECT COUNT..." />
-                <marker date="1424423909000" expanded="true" signature="20198:20266" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1424423909000" expanded="true" signature="20515:20580" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1424423909000" expanded="true" signature="21219:21265" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1424423909000" expanded="true" signature="21626:21688" placeholder="SELECT COUNT..." />
-                <marker date="1424423909000" expanded="true" signature="40864:40902" placeholder="SELECT * fro..user..." />
-                <marker date="1424423909000" expanded="true" signature="44951:45059" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1424423909000" expanded="true" signature="45348:45451" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1424423909000" expanded="true" signature="46130:46176" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1424423909000" expanded="true" signature="46537:46599" placeholder="SELECT COUNT..." />
-                <marker date="1424423909000" expanded="true" signature="47234:47283" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1424423909000" expanded="true" signature="47508:47554" placeholder="SELECT * FRO..user_domain..." />
-                <marker date="1424423909000" expanded="true" signature="48164:48210" placeholder="SELECT * FRO..domain_mentor..." />
-                <marker date="1424423909000" expanded="true" signature="48571:48633" placeholder="SELECT COUNT..." />
+                <marker date="1426580900000" expanded="true" signature="10710:10748" placeholder="SELECT id fr..user..." />
+                <marker date="1426580900000" expanded="true" signature="12562:12674" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -129,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="join.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="join.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="3270" max-vertical-offset="4830">
-              <caret line="226" column="4" selection-start-line="226" selection-start-column="4" selection-end-line="239" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.34895834" vertical-offset="3264" max-vertical-offset="5235">
+              <caret line="231" column="6" selection-start-line="231" selection-start-column="6" selection-end-line="231" selection-end-column="6" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
               </folding>
@@ -154,8 +138,8 @@
       <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/videoConference/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="369" max-vertical-offset="945">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.5" vertical-offset="384" max-vertical-offset="960">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -201,8 +185,8 @@
         <option value="$PROJECT_DIR$/protected/models/VCInvitation.php" />
         <option value="$PROJECT_DIR$/protected/models/VideoConference.php" />
         <option value="$PROJECT_DIR$/protected/controllers/VideoConferenceController.php" />
-        <option value="$PROJECT_DIR$/protected/views/videoConference/view.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/index.php" />
+        <option value="$PROJECT_DIR$/protected/views/videoConference/view.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/join.php" />
       </list>
     </option>
@@ -242,7 +226,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -363,6 +346,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane />
       </pane>
@@ -431,17 +415,20 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="a7036748-dd00-40f2-97bf-94197f86e63c" server_name="xampp apache">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -451,9 +438,6 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="a7036748-dd00-40f2-97bf-94197f86e63c" server_name="xampp apache">
       <method />
     </configuration>
     <list size="3">
@@ -513,15 +497,15 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.349454" sideWeight="0.59956074" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.349454" sideWeight="0.59956074" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3988006" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Migrations" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32704404" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39879155" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39879155" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32704404" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -541,12 +525,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24934383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Migrations" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27734375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32704404" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39879155" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39879155" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32704404" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -861,27 +845,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4840" max-vertical-offset="17370">
-          <caret line="341" column="50" selection-start-line="341" selection-start-column="16" selection-end-line="341" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4885" max-vertical-offset="18405">
+          <caret line="344" column="5" selection-start-line="341" selection-start-column="16" selection-end-line="341" selection-end-column="50" />
           <folding>
-            <marker date="1424423909000" expanded="true" signature="10710:10748" placeholder="SELECT id fr..user..." />
-            <marker date="1424423909000" expanded="true" signature="18014:18063" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1424423909000" expanded="true" signature="18288:18334" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1424423909000" expanded="true" signature="18944:18990" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1424423909000" expanded="true" signature="19351:19413" placeholder="SELECT COUNT..." />
-            <marker date="1424423909000" expanded="true" signature="20198:20266" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1424423909000" expanded="true" signature="20515:20580" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1424423909000" expanded="true" signature="21219:21265" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1424423909000" expanded="true" signature="21626:21688" placeholder="SELECT COUNT..." />
-            <marker date="1424423909000" expanded="true" signature="40864:40902" placeholder="SELECT * fro..user..." />
-            <marker date="1424423909000" expanded="true" signature="44951:45059" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1424423909000" expanded="true" signature="45348:45451" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1424423909000" expanded="true" signature="46130:46176" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1424423909000" expanded="true" signature="46537:46599" placeholder="SELECT COUNT..." />
-            <marker date="1424423909000" expanded="true" signature="47234:47283" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1424423909000" expanded="true" signature="47508:47554" placeholder="SELECT * FRO..user_domain..." />
-            <marker date="1424423909000" expanded="true" signature="48164:48210" placeholder="SELECT * FRO..domain_mentor..." />
-            <marker date="1424423909000" expanded="true" signature="48571:48633" placeholder="SELECT COUNT..." />
+            <marker date="1426580900000" expanded="true" signature="10710:10748" placeholder="SELECT id fr..user..." />
+            <marker date="1426580900000" expanded="true" signature="12562:12674" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -926,14 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="369" max-vertical-offset="945">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="956" max-vertical-offset="1545">
@@ -946,21 +906,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
+    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="3270" max-vertical-offset="4830">
-          <caret line="226" column="4" selection-start-line="226" selection-start-column="4" selection-end-line="239" selection-end-column="25" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="75.375" vertical-offset="3669" max-vertical-offset="4245">
+          <caret line="124" column="31" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
+    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24479167" vertical-offset="1989" max-vertical-offset="4245">
-          <caret line="142" column="90" selection-start-line="142" selection-start-column="44" selection-end-line="142" selection-end-column="90" />
+        <state vertical-scroll-proportion="-1.5" vertical-offset="384" max-vertical-offset="960">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34895834" vertical-offset="3264" max-vertical-offset="5235">
+          <caret line="231" column="6" selection-start-line="231" selection-start-column="6" selection-end-line="231" selection-end-column="6" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

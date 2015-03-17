@@ -66,10 +66,11 @@ if ($user->id == $model->moderator_id) {
 ?>
 <hr/>
 
-
+<!--
 <div class="page-header">
     <h1>Collaborative Tools</h1>
 </div>
+-->
 
 <div class="container">
     <div class="row">
@@ -159,6 +160,8 @@ if ($user->id == $model->moderator_id) {
     <h3> Participants </h3>
 
     <div id="video-container" class="row"></div>
+    <input type=text id="input-text-chat" disabled>
+    <div id="chat" class="row"></div>
 </div>
 
 
@@ -179,6 +182,7 @@ if ($user->id == $model->moderator_id) {
     var rmc = new RTCMultiConnection();
     rmc.body = document.getElementById('video-container');
     // http://www.rtcmulticonnection.org/docs/#getExternalIceServers
+    rmc.userid = "<?php echo Yii::app()->user->getId(); ?>" ;
     rmc.getExternalIceServers = false;
     rmc.session = {
         video: true,
@@ -195,11 +199,15 @@ if ($user->id == $model->moderator_id) {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
     });
+
     rmc.onMediaCaptured = function () {
         $('#share-screen').removeAttr('disabled');
         $('#open-room').attr('disabled', 'disabled');
         $('#join-room').attr('disabled', 'disabled');
     };
+
+    //screen sharing
+
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.addStream({
@@ -208,12 +216,31 @@ if ($user->id == $model->moderator_id) {
         });
         //document.getElementById('recordScreen').disabled = false;
     });
-
-
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
         rmc.removeStream('screen');
     });
+
+    //chat
+    rmc.onopen = function(event){
+        alert('Text chat has been opened between you and ' + event.userid);
+        document.getElementById('input-text-chat').disabled = false;
+    };
+
+    rmc.onmessage = function(event) {
+        alert('Target user (event.userid) said: ' + event.data);
+    };
+
+    document.getElementById('input-text-chat').onkeyup = function(e) {
+        if(e.keyCode != 13) return; // if it is not Enter-key
+        var value = this.value.replace(/^\s+|\s+$/g, '');
+        if(!value.length) return; // if empty-spaces
+
+        rmc.send( value );
+        this.value = '';
+    };
+
+    //end of chat
 
 
     $('#disconnect').click(function () {
