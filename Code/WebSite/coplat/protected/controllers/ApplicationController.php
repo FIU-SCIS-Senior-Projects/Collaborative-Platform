@@ -688,29 +688,41 @@ class ApplicationController extends Controller
 			$model->status = 'Admin';
 			$model->user_id = $user->id;
 			$model->date_created = new CDbExpression('NOW()');
-			if($model->university_id === 0) $model->university_id = NULL;
+			if(!isset($model->university_id) ||  $model->university_id == 0)
+                        {
+                           $model->university_id = NULL;
+                        }
+                          
 			$model->save(false);
 			
 			// save user picks
 			$mypicks = $_POST['picks'];
 			$mypicks = explode(',', $mypicks);
-			foreach($mypicks as $pick){
-				$dbpick = new ApplicationPersonalMentorPick;
+			foreach($mypicks as $pick)
+                        {
+                            if ($pick > 0)
+                            {
+                                $dbpick = new ApplicationPersonalMentorPick;
 				$dbpick->app_id = $model->id;
 				$dbpick->user_id = $pick;
 				$dbpick->approval_status = 'Proposed by Mentor';
-				$dbpick->save(false);
+				$dbpick->save(false);                                
+                            }				
 			}	
 			
 			// save system picks
 			$systempicks = $_POST['systempicks'];
 			$systempicks = explode(',', $systempicks);
-			foreach($systempicks as $pick){
-				$dbpick = new ApplicationPersonalMentorPick;
+			foreach($systempicks as $pick)
+                        {
+                            if ($pick > 0)
+                            {
+                               				$dbpick = new ApplicationPersonalMentorPick;
 				$dbpick->app_id = $model->id;
 				$dbpick->user_id = $pick;
 				$dbpick->approval_status = 'Proposed by System';
-				$dbpick->save(false);
+				$dbpick->save(false); 
+                            }
 			}
 			
 			// redirect to application portal
@@ -801,7 +813,8 @@ class ApplicationController extends Controller
 				
 			$picks = $_POST['domPicks'];
 			$picks = explode(',', $picks);
-			foreach($picks as $pick){
+			foreach($picks as $pick)
+                        {
 				$dbpick = new ApplicationDomainMentorPick;
 				$dbpick->app_id = $application->id;
 				$temp = explode(':', $pick);
@@ -812,16 +825,21 @@ class ApplicationController extends Controller
 			}
 			
 			$picks = $_POST['subPicks'];
-			$picks = explode(',', $picks);
-			foreach($picks as $pick){
-				$dbpick = new ApplicationSubdomainMentorPick;
-				$dbpick->app_id = $application->id;
-				$temp = explode(':', $pick);
-				$dbpick->subdomain_id = $temp[0];
-				$dbpick->proficiency = $temp[1];
-				$dbpick->approval_status = 'Proposed by Mentor';
-				$dbpick->save(false);
-			}
+                        if (isset($picks) && $picks != "")
+                        {
+                            $picks = explode(',', $picks);
+                            foreach($picks as $pick)
+                            {
+                                    $dbpick = new ApplicationSubdomainMentorPick;
+                                    $dbpick->app_id = $application->id;
+                                    $temp = explode(':', $pick);
+                                    $dbpick->subdomain_id = $temp[0];
+                                    $dbpick->proficiency = $temp[1];
+                                    $dbpick->approval_status = 'Proposed by Mentor';
+                                    $dbpick->save(false);
+                            }                            
+                        }
+			
 
 			$this->redirect("/coplat/index.php/application/portal");
 		} else { // on initial load
@@ -847,8 +865,14 @@ class ApplicationController extends Controller
 	public function loadProjectMentorByUser($id)
 	{
 		$params = array('user_id'=>$id, 'status'=>'Admin');
-		$model=ApplicationProjectMentor::model()->findByAttributes($params);
-		return $model;
+                
+                $sql = 'SELECT * '
+                        . '                                            FROM application_project_mentor '
+                        . '                                            WHERE user_id = '.$id.' AND status = "Admin"';
+                
+		$model=ApplicationProjectMentor::model()->findBySql($sql);
+                           
+                return $model;
 	}
 	
 	public function loadDomainMentorByUser($id)

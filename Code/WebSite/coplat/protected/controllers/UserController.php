@@ -39,7 +39,7 @@ class UserController extends Controller
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search', 'viewmodal', 'UpdateUser', 'admin_create_user'),
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search', 'viewmodal', 'UpdateUser', 'admin_create_user', 'UsersByDomainIDAggregated','AllDomainMentors', 'UsersByDomainIDExclusive', 'UsersBySubDomainID'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -1127,6 +1127,60 @@ public function actionUpdateUser()
    			$es = new EditableSaver('user');  //'User' is name of model to be updated
 		    $es->update();
 }
+
+    public function actionUsersByDomainIDAggregated($id)
+    {
+        
+        $all = array();
+        $users = User::model()->findAllDomainMentorsByDomainID($id,false);
+        foreach ($users as $user) 
+        {
+            $all[] = array(
+            'id' => $user->id, 'FullName' => $user->FullName);
+         }
+        
+        echo json_encode($all);
+     }
+     
+     public function  actionUsersByDomainIDExclusive($id)
+     {
+          $all = array();
+        $users = User::model()->findAllDomainMentorsByDomainID($id,true);
+        foreach ($users as $user) 
+        {
+            $all[] = array(
+            'id' => $user->id, 'FullName' => $user->FullName);
+         }
+        
+        echo json_encode($all);
+     }
+     
+     public function actionUsersBySubDomainID($id)
+     {
+        $all = array();
+        $users = User::model()->findAllDomainMentorsBySubDomainID($id);
+        foreach ($users as $user) 
+        {
+            $all[] = array(
+            'id' => $user->id, 'FullName' => $user->FullName);
+         }
+         echo json_encode($all);
+     }
+     
+     
+     public function actionAllDomainMentors()
+    {
+        
+        $all = array();
+        $users = User::model()->findAllDomainMentors();
+        foreach ($users as $user) 
+        {
+            $all[] = array(
+            'id' => $user->id, 'FullName' => $user->FullName);
+         }
+        
+        echo json_encode($all);
+     }
     
     /**
      * Performs the AJAX validation.

@@ -195,7 +195,7 @@ Yii::app()->clientScript->registerScript('register', "
 	};
 		
 	function moveToSelectedGrid(obj) {
-		// clear the current click handler
+        // clear the current click handler
 		obj.off('click');
 		
 		// move the DOM object over to the other table

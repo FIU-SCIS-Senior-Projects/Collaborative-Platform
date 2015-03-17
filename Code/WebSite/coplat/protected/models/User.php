@@ -365,7 +365,10 @@ class User extends CActiveRecord
     		
     		$temp["id"] = $user->id;
     		$temp["name"] = $user->getFullName();
-    		$temp["university"] = University::model()->universityById($user->university_id);
+    		if (isset($user->university_id) && $user->university_id > 0)
+			{
+				$temp["university"] = University::model()->universityById($user->university_id);
+			}		
     		$temp["avatar"] = $user->pic_url;
     		$temp["email"] = $user->email;
     		
@@ -1150,4 +1153,54 @@ class User extends CActiveRecord
         }
         return self::$admin; /* Assign the ticket to the admin for reassign */
     }
+
+    public static function findAllDomainMentors()
+    {
+        return User::model()->findAll("isDomMentor = 1");
+    }
+    
+    public static function findAllProjectMentors()
+    {
+        return User::model()->findAll("isProMentor = 1");
+    }
+    
+    public static function findAllPersonalMentors()
+    {
+        return User::model()->findAll("isPerMentor = 1");
+    }
+    
+    public static function findAllDomainMentorsByDomainID($domainID, $exclusive)
+    {
+        if ($exclusive)
+        {
+            return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                        FROM user '
+                    . '                        INNER JOIN user_domain ON user_domain.user_id = user.id  '
+                    . '                        WHERE isDomMentor = 1 AND '
+                    . '                              user_domain.subdomain_id IS NULL AND '
+                    . '                              user_domain.domain_id = '.$domainID);  
+            
+        }
+        else
+        {
+            return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                         FROM user '
+                    . '                         INNER JOIN user_domain ON user_domain.user_id = user.id  '
+                    . '                         WHERE isDomMentor = 1 AND'
+                    . '                         user_domain.domain_id = '.$domainID); 
+        }
+        
+       
+    }
+    
+    public static function findAllDomainMentorsBySubDomainID($subDomainID)
+    {
+                    return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                         FROM user '
+                    . '                         INNER JOIN user_domain ON user_domain.user_id = user.id  '
+                    . '                         WHERE isDomMentor = 1 AND'
+                    . '                         user_domain.subdomain_id = '.$subDomainID);         
+    }
+    
+    
 }
