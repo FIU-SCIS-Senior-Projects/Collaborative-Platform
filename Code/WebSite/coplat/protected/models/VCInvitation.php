@@ -99,8 +99,9 @@ class VCInvitation extends CActiveRecord
         $moderator = User::model()->findByPk($moderator_id);
         $moderator_name = $moderator->fname ." ".  $moderator->lname;
 
-
-        $message = "You have been invited to a video conference by " . $moderator_name . ".<br>Please join <a href=" . Yii::app()->getBaseUrl(true). "/index.php/videoConference/join/". $meeting_id."'>here</a>.";
+        $link = CHtml::link('here', Yii::app()->createAbsoluteUrl('videoConference/join/' . $meeting_id ,array(),'https'));
+        //$link = <a href='" . Yii::app()->getBaseUrl(true). "/index.php/videoConference/join/". $meeting_id . "'>here</a>.";
+        $message = "You have been invited to a video conference by " . $moderator_name . ".<br>Please join " . $link ;
         $html = User::replaceMessage($invitee_name, $message);
 
         $email = Yii::app()->email;

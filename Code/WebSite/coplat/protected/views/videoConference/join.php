@@ -227,9 +227,9 @@ if ($user->id == $model->moderator_id) {
         document.getElementById('input-text-chat').disabled = false;
     };
 
-    rmc.onmessage = function(event) {
-        alert('Target user (event.userid) said: ' + event.data);
-    };
+   // rmc.onmessage = function(event) {
+     //   alert('Target user (event.userid) said: ' + event.data);
+   // };
 
     document.getElementById('input-text-chat').onkeyup = function(e) {
         if(e.keyCode != 13) return; // if it is not Enter-key
@@ -257,19 +257,23 @@ if ($user->id == $model->moderator_id) {
         if (e.type == 'remote') {
            // alert("the stream is remote");
         }
+
         if (e.isVideo) {
             //alert("new video");
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        if (e.isAudio) {
+        else if  (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        if (e.isScreen) {
+        else if (e.isScreen) {
             $('#cotools-panel').empty();
 
             // $('#cotools-panel').html(e.mediaElement);
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
             //alert("new screen");
+        }
+        else{
+            alert('Target user (e.userid) said: ' + e.data);
         }
     };
 
