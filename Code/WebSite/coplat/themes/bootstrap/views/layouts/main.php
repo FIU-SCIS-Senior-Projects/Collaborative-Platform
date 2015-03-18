@@ -59,11 +59,14 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'items' => array('-',
                 array('label' => 'Home', 'url' => array('/'), 'visible' => !$currentUserIsGuest),           //Home menu
                 array('label' => 'Mail', 'url' => array('/message'), 'visible' => !$currentUserIsGuest),    //Message menu
-                array('label' => 'Utilization Dashboard', 'url' => array('/utilizationDashboard'), 'visible'=> $currentUserIsAdmin), //Utilization dashboard
-
+              
                 array('label' => 'Reports', 'visible' => $currentUserIsAdmin,                                //Reports Root Menu
                     'class' => 'bootstrap.widgets.TbMenu',
                     'items' => array('-',
+                        array('label' => 'Utilization Dashboard', 'visible'=> $currentUserIsAdmin,
+                              'class' => 'bootstrap.widgets.TbMenu', 
+                               'url' => array('/utilizationDashboard')), //Utilization dashboard
+
                         array('label' => 'Mentor', 'visible' => $currentUserIsAdmin,       //Mentor Report
                             'class' => 'bootstrap.widgets.TbMenu',
                             'url' => array('/reportMentor'),
@@ -75,7 +78,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                         array('label' => 'Ticket', 'visible' => $currentUserIsAdmin,        //Ticket Report
                             'class' => 'bootstrap.widgets.TbMenu',
                             'url' => array('/reportTicket'),
-                        ),
+                        ),                        
 
                     )),
                 array('label' => 'Video Conf.', 'url' => array('/videoConference'), 'visible'=> !$currentUserIsGuest), //Utilization dashboard

@@ -5658,3 +5658,19 @@ in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
 2015/03/18 03:53:49 [error] [TicketController::actionCreate] Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_assigned_project_id` FOREIGN KEY (`assigned_project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ticket` (`domain_id`, `subdomain_id`, `subject`, `description`, `priority_id`, `assigned_project_id`, `assign_user_id`, `file`, `creator_user_id`, `created_date`, `assigned_date`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, NOW(), NOW(), :yp9)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (225)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/18 22:59:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/index.php
+---
+2015/03/18 23:00:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/coplat/index.php/index.php
+---
