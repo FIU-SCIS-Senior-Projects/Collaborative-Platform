@@ -5523,3 +5523,138 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/application/null
 HTTP_REFERER=http://localhost/coplat/index.php/application/personal
 ---
+2015/03/17 22:13:44 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'coplat.vc_invitation' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `vc_invitation`.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\VCInvitation.php (23)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\VideoConferenceController.php (222)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/17 22:13:44 [error] [exception.CDbException] exception 'CDbException' with message 'The table "vc_invitation" for active record class "VCInvitation" cannot be found in the database.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php:2310
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(VCInvitation))
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\VCInvitation.php(23): CActiveRecord::model('VCInvitation')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\VideoConferenceController.php(222): VCInvitation::model()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): VideoConferenceController->actionIndex()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('videoConference')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference
+HTTP_REFERER=http://localhost/coplat/index.php/message
+---
+2015/03/17 22:23:26 [error] [exception.CException] exception 'CException' with message 'Property "CPortlet.0" is not defined.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWidgetFactory.php(161): CComponent->__set('0', 'title')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(UtilizationDashboardController), 'zii.widgets.CPo...', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(189): CBaseController->createWidget('zii.widgets.CPo...', Array)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\utilizationDashboard\view.php(15): CBaseController->beginWidget('zii.widgets.CPo...', Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', Array, true)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', Array, true)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(65): CController->render('view', Array)
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionIndex()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#22 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+HTTP_REFERER=http://localhost/coplat/index.php/ticket/admin
+---
+2015/03/17 22:24:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "null".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('null')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('null')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/nul...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/null
+HTTP_REFERER=http://localhost/coplat/index.php/application/personal
+---
+2015/03/17 23:41:16 [error] [exception.CException] exception 'CException' with message 'UtilizationDashboardController has an extra endWidget() call in its view.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php:210
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\utilizationDashboard\view.php(587): CBaseController->endWidget()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require('C:\\School\\Senio...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\School\\Senio...', Array, true)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): CBaseController->renderFile('C:\\School\\Senio...', Array, true)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(65): CController->render('view', Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionIndex()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#19 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/03/18 03:33:21 [error] [php] Missing argument 1 for Project::getMenteeProjects(), called in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\ticket\_form.php on line 49 and defined (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\Project.php:182)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): TicketController->renderInternal()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): TicketController->renderFile()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\ticket\create.php(13): TicketController->renderPartial()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): TicketController->renderInternal()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): TicketController->renderFile()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): TicketController->renderPartial()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php(242): TicketController->render()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): TicketController->actionCreate()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): TicketController->runAction()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): TicketController->filterAccessControl()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): TicketController->runActionWithFilters()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): TicketController->run()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/ticket/create
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\Project.php (182)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\ticket\_form.php (49)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\ticket\create.php (13)
+2015/03/18 03:48:09 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_assigned_project_id` FOREIGN KEY (`assigned_project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ticket` (`domain_id`, `subdomain_id`, `subject`, `description`, `priority_id`, `assigned_project_id`, `assign_user_id`, `file`, `creator_user_id`, `created_date`, `assigned_date`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, NOW(), NOW(), :yp9).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (209)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/18 03:48:10 [error] [TicketController::actionCreate] Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_assigned_project_id` FOREIGN KEY (`assigned_project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ticket` (`domain_id`, `subdomain_id`, `subject`, `description`, `priority_id`, `assigned_project_id`, `assign_user_id`, `file`, `creator_user_id`, `created_date`, `assigned_date`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, NOW(), NOW(), :yp9)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (225)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/18 03:49:31 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_assigned_project_id` FOREIGN KEY (`assigned_project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ticket` (`domain_id`, `subdomain_id`, `subject`, `description`, `priority_id`, `assigned_project_id`, `assign_user_id`, `file`, `creator_user_id`, `created_date`, `assigned_date`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, NOW(), NOW(), :yp9).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (209)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/18 03:49:31 [error] [TicketController::actionCreate] Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_assigned_project_id` FOREIGN KEY (`assigned_project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ticket` (`domain_id`, `subdomain_id`, `subject`, `description`, `priority_id`, `assigned_project_id`, `assign_user_id`, `file`, `creator_user_id`, `created_date`, `assigned_date`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, NOW(), NOW(), :yp9)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (225)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/18 03:51:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_assigned_project_id` FOREIGN KEY (`assigned_project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ticket` (`domain_id`, `subdomain_id`, `subject`, `description`, `priority_id`, `assigned_project_id`, `assign_user_id`, `file`, `creator_user_id`, `created_date`, `assigned_date`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, NOW(), NOW(), :yp9).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (209)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/18 03:53:49 [error] [TicketController::actionCreate] Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`ticket`, CONSTRAINT `fk_assigned_project_id` FOREIGN KEY (`assigned_project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `ticket` (`domain_id`, `subdomain_id`, `subject`, `description`, `priority_id`, `assigned_project_id`, `assign_user_id`, `file`, `creator_user_id`, `created_date`, `assigned_date`, `status`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, NOW(), NOW(), :yp9)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\TicketController.php (225)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)

@@ -5,11 +5,15 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
 <style> 
     .dashItem{ height:100%; width:100%} 
     .chartCont{ overflow:auto; width:100%; height:450px; border:1px solid #666;}
+    
+    .panel {background-color: #fff;  border: 1px solid transparent;}
+    
 </style>
 <?php $form = $this->beginWidget('CActiveForm', 
                                   array('action' => Yii::app()->createUrl($this->route),
                                        'method' => 'post',
                                        'id'=> 'dashboarForm')); ?>
+
 
 <table class="dashItem">
     <td style="vertical-align:top; width:225px;">

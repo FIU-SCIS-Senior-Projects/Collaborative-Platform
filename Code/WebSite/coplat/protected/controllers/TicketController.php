@@ -155,6 +155,11 @@ class TicketController extends Controller
             if ($model->priority_id == '') {
                 $model->priority_id = null;
             }
+            
+            if (!isset($model->assigned_project_id) || $model->assigned_project_id == '')
+            {
+                $model->assigned_project_id = null;
+            }
 
             //$priority_id = $model->priority_id;
 
