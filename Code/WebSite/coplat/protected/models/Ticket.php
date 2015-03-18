@@ -123,7 +123,7 @@ class Ticket extends CActiveRecord
 			'isEscalated' => 'Is Escalated',
 			'Mentor1' => 'Mentor1',
 			'Mentor2' => 'Mentor2',
-                        'assigned_project_id' => 'Assigned Project'
+                        'assigned_project_id' => 'Assigned to project'
 		);
 	}
 
