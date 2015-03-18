@@ -66,7 +66,7 @@ if ($user->id == $model->moderator_id) {
 
 ?>
 
-<!--<button type='button' class='btn btn-primary' id='init-whiteboard'><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</button>-->
+<button type='button' class='btn btn-primary' id="show-whiteboard"><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</button>
 <button type='button' class='btn btn-primary' id='reset-whiteboard'><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear Whiteboard</button>
 <button type='button' class='btn btn-primary' id='share-screen'><i class="fa fa-desktop"></i>&nbsp;&nbsp;Share Screen</button>
 <button type='button' class='btn btn-primary' id='stop-share-screen'><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</button>
@@ -92,11 +92,7 @@ if ($user->id == $model->moderator_id) {
 </div>
 <hr/>
 
-<!--
-<div class="page-header">
-    <h1>Collaborative Tools</h1>
-</div>
--->
+
 
 <div class="container-fluid">
 
@@ -107,11 +103,7 @@ if ($user->id == $model->moderator_id) {
             </div>
             <div id="cotools-container" class="col-md-8 col-lg-6">
                 <div id="cotools-panel">
-                    <!--
-                     <div class="tab-filler">
-                         <h2>Collaborative Panel</h2>
-                     </div>
-             -->
+
                 </div>
 
             </div>
@@ -122,57 +114,7 @@ if ($user->id == $model->moderator_id) {
                 <input type=text id="input-text-chat" disabled>
                 <div id="" class="row"></div>
             </div>
-                <!-- required for floating -->
-                <!-- Nav tabs -->
 
-
-                <!--
-
-                <h4>Tool Box</h4>
-                <table>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                    data-placement="top" title="Draw"><i class="fa fa-paint-brush"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                    data-placement="top" title="Erase"><i class="fa fa-eraser"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                    data-placement="top" title="Clear All"><i class="fa fa-recycle"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                    id="share-screen" data-placement="top" title="Share Screen"><i
-                                    class="fa fa-slideshare"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                    id="stop-share-screen" data-placement="top" title="Stop Sharing"><i
-                                    class="fa fa-stop"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary action-button shadow animate" data-toggle="tooltip"
-                                    data-placement="top" title="Settings"><i class="fa fa-sliders"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-
-            </div>
-            <button id="disconnect" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top"
-                    title="Settings">Disconnect
-            </button>
-            -->
 
         </div>
     </section>
@@ -228,6 +170,7 @@ if ($user->id == $model->moderator_id) {
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
 
+        rmc.removeStream('screen');
         rmc.addStream({
             screen: true,
             oneway: true
@@ -237,6 +180,7 @@ if ($user->id == $model->moderator_id) {
     $('#stop-share-screen').click(function () {
         rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
+        $('#cotools-panel video').remove();
     });
 
     //chat
@@ -332,14 +276,16 @@ if ($user->id == $model->moderator_id) {
 
 
     $("#reset-whiteboard").click(function () {
-        $('#cotools-panel').empty();
+        $('#cotools-panel iframe').empty();
+        $('#cotools-panel video').hide();
         canvasInit();
     });
 
-//    $("#init-whiteboard").click(function () {
-//        $('#cotools-panel').empty();
-//        canvasInit();
-//    });
+    $("#show-whiteboard").click(function () {
+        $('#cotools-panel video').hide();
+        $('#cotools-panel iframe').show();
+
+    });
 
 
     /*
