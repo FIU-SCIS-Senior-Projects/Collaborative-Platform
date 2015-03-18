@@ -94,6 +94,13 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                                                  array('empty'=>' '));?>
         </div> 
         <div>
+            <?php echo CHtml::activeLabel($filter,'assigned_project_id'); 
+                  echo CHtml::activeDropDownList($filter,
+                                                 'assigned_project_id',
+                                                 CHtml::listData(Project::model()->findAllProjects(), 'id', 'title'),
+                                                 array('empty'=>' '));?>
+        </div>            
+        <div>
             <?php echo CHtml::activeLabel($filter,'assigned_project_mentor_id'); 
                   echo CHtml::activeDropDownList($filter,
                                                  'assigned_project_mentor_id',
@@ -107,13 +114,7 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
                                                  CHtml::listData(User::model()->findAllPersonalMentors(),'id', 'FullName'),
                                                  array('empty'=>' '));?>
         </div> 
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_project_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_project_id',
-                                                 array(),
-                                                 array('empty'=>' '));?>
-        </div
+
         <div>
             <?php echo CHtml::activeLabel($filter,'mentee_id'); 
                   echo CHtml::activeDropDownList($filter,
@@ -226,6 +227,10 @@ $( document ).ready(function()
         
         showParentDiv("#UtilizationDashboardFilter_assigned_personal_mentor_id",false);
         clearInputContent("#UtilizationDashboardFilter_assigned_personal_mentor_id");
+        
+        showParentDiv('#UtilizationDashboardFilter_assigned_project_id',false);
+        clearInputContent("#UtilizationDashboardFilter_assigned_project_id");
+        
        
    }
    
@@ -238,6 +243,7 @@ $( document ).ready(function()
         showParentDiv("#UtilizationDashboardFilter_assigned_domain_mentor_id", true);
         showParentDiv("#UtilizationDashboardFilter_assigned_project_mentor_id", true);
         showParentDiv("#UtilizationDashboardFilter_assigned_personal_mentor_id", true);
+        showParentDiv('#UtilizationDashboardFilter_assigned_project_id', true);
       //  showParentDiv("#UtilizationDashboardFilter_subdomainID",true);
    }
    
@@ -480,7 +486,11 @@ $( document ).ready(function()
      }
      
      
-     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, #UtilizationDashboardFilter_assigned_domain_mentor_id, #UtilizationDashboardFilter_assigned_project_mentor_id, #UtilizationDashboardFilter_assigned_personal_mentor_id').on('change', function(){
+     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, \n\
+        #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, \n\
+        #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, \n\
+        #UtilizationDashboardFilter_assigned_domain_mentor_id, #UtilizationDashboardFilter_assigned_project_mentor_id, \n\
+        #UtilizationDashboardFilter_assigned_personal_mentor_id, #UtilizationDashboardFilter_assigned_project_id').on('change', function(){
          $('#chartSection').html("");
          if (validChartParams())
          {
@@ -489,25 +499,12 @@ $( document ).ready(function()
            var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID');
            var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
            switch(reportID) 
-           {
-              
+           {              
                case enumReportType.TicketsCreated:
-                   if (DimensionType.isTimeDimension(dim2Id))
-                   {
-                       dashboardAction = "TicketsCreatedOverTime";
-                   }else if(dim2Id == DimensionType.TicketAssignedMentor)
-                   {
-                       dashboardAction = "TicketsCreatedByAssignedMentor";
-                   }
+                   dashboardAction = "PullTicketsCreated";
                 break;
                case enumReportType.TicketsClosed:
-                   if (DimensionType.isTimeDimension(dim2Id))
-                   {
-                        dashboardAction = "TicketsClosedOverTime";
-                   }else if(dim2Id == DimensionType.TicketAssignedMentor)
-                   {
-                        dashboardAction = "TicketsClosedByAssignedMentor";
-                   }
+                   dashboardAction = "PullTicketsClosed";                  
                 break;             
             }
             logErrorMessage("Invalid From Date value");
