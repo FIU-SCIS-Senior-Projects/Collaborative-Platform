@@ -10,6 +10,19 @@
 /* @var $model VideoConference */
 
 ?>
+<script>
+    //https://gist.github.com/mathiasbynens/298591
+    $.fn.toggleAttr = function(attr, attr1, attr2) {
+        return this.each(function() {
+            var self = $(this);
+            if (self.attr(attr) == attr1)
+                self.attr(attr, attr2);
+            else
+                self.attr(attr, attr1);
+        });
+    };
+</script>
+
 
 <!-- Init Site Scripts -->
 <script>
@@ -17,6 +30,13 @@
     $('.span9').removeClass('span9');
     $('#page').removeClass('container');
     $('.span3').removeClass('span3');
+    $('.dropdown').click(function(){
+       $(this).toggleClass('open');
+    });
+    //$('div.btn-group').click(function(){
+        //$(this).parent().toggleClass('open');
+   //     $(this).child().toggleAttr('aria-expanded', true, false);
+   // });
 </script>
 
 
@@ -66,12 +86,40 @@ if ($user->id == $model->moderator_id) {
 
 ?>
 
+<!--
 <button type='button' class='btn btn-primary' id="show-whiteboard"><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</button>
 <button type='button' class='btn btn-primary' id='reset-whiteboard'><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear Whiteboard</button>
 <button type='button' class='btn btn-primary' id='share-screen'><i class="fa fa-desktop"></i>&nbsp;&nbsp;Share Screen</button>
 <button type='button' class='btn btn-primary' id='stop-share-screen'><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</button>
 <button type='button' class='btn btn-primary' id='settings'><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</button>
 <button type='button' class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Disconnect</button>
+-->
+
+
+    <!-- Single button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a id='show-whiteboard' href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show</a></li>
+            <li><a id='reset-whiteboard' href="#"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear</a></li>
+        </ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
+            <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
+            <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
+        </ul>
+    </div>
+    <button type='button' class='btn btn-primary' id='settings'><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</button>
+    <button type='button' class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Disconnect</button>
+
+
 
 
 <!--
@@ -276,7 +324,7 @@ if ($user->id == $model->moderator_id) {
 
 
     $("#reset-whiteboard").click(function () {
-        $('#cotools-panel iframe').empty();
+        $('#cotools-panel iframe').remove();
         $('#cotools-panel video').hide();
         canvasInit();
     });
@@ -284,7 +332,11 @@ if ($user->id == $model->moderator_id) {
     $("#show-whiteboard").click(function () {
         $('#cotools-panel video').hide();
         $('#cotools-panel iframe').show();
+    });
 
+    $("#show-screens").click(function () {
+        $('#cotools-panel video').show();
+        $('#cotools-panel iframe').hide();
     });
 
 
@@ -317,6 +369,8 @@ if ($user->id == $model->moderator_id) {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
+
+    $('.dropdown-toggle').dropdown();
 </script>
 
 

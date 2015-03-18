@@ -1,3 +1,16 @@
+.btn .caret{
+    margin-top: 0;
+}
+
+.navbar .nav .dropdown-toggle .caret {
+    margin-top: 0px;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {
+    background-image: none;
+    background-color: lightgrey;
+}
+
 #tool-box a.list-group-item{
     color:#18536b;
     margin-bottom: 5px;
