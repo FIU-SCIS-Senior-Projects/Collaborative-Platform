@@ -44,7 +44,19 @@
         <?php echo $form->labelEx($model, 'priority_id'); ?>
         <?php echo $form->dropDownList($model, 'priority_id', $data, array('prompt' => 'Select'));?>
         <?php echo $form->error($model, 'priority_id');?>
-
+        
+        <?php echo $form->labelEx($model, 'assigned_project_id');?>
+        <?php 
+              
+             $projectsByCurrentUser = Project::getMenteeProjects(User::getCurrentUserId());
+             if (count($projectsByCurrentUser) > 0 )
+             {
+               $model->assigned_project_id = $projectsByCurrentUser[0]->id;
+             }           
+              
+              echo $form->dropDownList($model, 'assigned_project_id', CHtml::listData($projectsByCurrentUser,'id','title' ), array('empty' => ' '));
+        ?>
+        <?php echo $form->error($model, 'assigned_project_id');?>
 
  
         <?php
@@ -103,6 +115,8 @@
             //}?>
             <?php echo $form->labelEx($model, 'Assign to a Mentor (optional)'); ?>
             <?php echo $form->dropDownList($model, 'assign_user_id', $data, array('prompt' => 'Select'));?>
+        
+        
 
 
             <?php echo $form->error($model, 'assign_user_id');?>

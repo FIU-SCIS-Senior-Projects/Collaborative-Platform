@@ -178,4 +178,12 @@ class Project extends CActiveRecord
 		}
 		return $projects;
 	}
+        
+        public function getMenteeProjects($user_id)
+        {
+          return Project::model()->findAllBySql("SELECT project.*
+                                                FROM project
+                                                INNER JOIN mentee ON mentee.project_id = project.id
+                                                WHERE mentee.user_id = ".$user_id);  
+        }
 }
