@@ -144,16 +144,11 @@ $( document ).ready(function()
      
     var chartRegionWidth =  $('.container').width();
     chartRegionWidth = chartRegionWidth - 225 - 30;
-    
     if (chartRegionWidth < 600)
     {
         chartRegionWidth = 600;
-    }
-    
+    }    
     $('#chartSection').width(chartRegionWidth);
-    
-
- 
     
     
     var enumReportType = {
@@ -173,18 +168,18 @@ $( document ).ready(function()
       MonthOfTheYear:3,
       TicketAssignedMentor:4,
       
-      properties: {
-        1: {name: "Day", value: 1, format:"dd MMM yyyy"},
-        2: {name: "Year", value: 2, format:"yyyy"},
-        3: {name: "Month", value: 3, format:"MMM yyyy"},
-        4: {name: "Assigned Mentor", value: 4, format:""}
-      },    
+		  properties: {
+			1: {name: "Day", value: 1, format:"dd MMM yyyy"},
+			2: {name: "Year", value: 2, format:"yyyy"},
+			3: {name: "Month", value: 3, format:"MMM yyyy"},
+			4: {name: "Assigned Mentor", value: 4, format:""},
+		  },    
       
       
-     isTimeDimension: function(dimType) 
-     {
-       return (dimType == DimensionType.Date || dimType == DimensionType.Year || dimType == DimensionType.MonthOfTheYear) ;
-     }
+		 isTimeDimension: function(dimType) 
+		 {
+		   return (dimType == DimensionType.Date || dimType == DimensionType.Year || dimType == DimensionType.MonthOfTheYear) ;
+		 }
      
     };
     
@@ -255,12 +250,14 @@ $( document ).ready(function()
    clearAndHideFilters();
 
     
-    function generateTicketCountDim2Select(dim2IdElement)
+    function generateTicketsDim2Select(dim2IdElement)
     {
         dim2IdElement.append('<option value="' +DimensionType.Date + '">' +  DimensionType.properties[DimensionType.Date].name +'</option>'); 
         dim2IdElement.append('<option value="' +DimensionType.Year + '">' +  DimensionType.properties[DimensionType.Year].name +'</option>');  
         dim2IdElement.append('<option value="' +DimensionType.MonthOfTheYear + '">' +  DimensionType.properties[DimensionType.MonthOfTheYear].name +'</option>'); 
         dim2IdElement.append('<option value="' +DimensionType.TicketAssignedMentor + '">' +  DimensionType.properties[DimensionType.TicketAssignedMentor].name +'</option>'); 
+		
+		
     }
     
     $('#UtilizationDashboardFilter_reportTypeId').on('change', function(){
@@ -269,18 +266,7 @@ $( document ).ready(function()
         dim2IdElement.html("");
         dim2IdElement.append('<option value="0"> </option>'); 
         var reportID = parseInt($(this).val());
-                
-        switch(reportID) 
-        {
-           case enumReportType.TicketsCreated:
-               generateTicketCountDim2Select(dim2IdElement);
-            break;
-          case enumReportType.TicketsClosed:
-               generateTicketCountDim2Select(dim2IdElement);         
-            break;
-           default: 
-               clearAndHideFilters();
-        }
+		generateTicketsDim2Select(dim2IdElement);       
         
     });
    
@@ -304,16 +290,7 @@ $( document ).ready(function()
         {
             
            var reportID = parseInt($(this).val());
-           switch(reportID) 
-           {
-               case enumReportType.TicketsCreated:
-                 showTicketCountChartFilters();
-                break;
-              case enumReportType.TicketsClosed:
-                 showTicketCountChartFilters();        
-                break;
-               default:      
-           }            
+		   showTicketCountChartFilters();                      
         } 
     });
     
@@ -584,7 +561,7 @@ $( document ).ready(function()
          }
      });
      
-     function generateDashboardData(dashboardData, reportID, dim2Id)
+     function `DashboardData(dashboardData, reportID, dim2Id)
      {
            var chartDataTable = new google.visualization.DataTable();
            if (DimensionType.isTimeDimension(dim2Id))
