@@ -39,7 +39,11 @@ class UserController extends Controller
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 'search', 'viewmodal', 'UpdateUser', 'admin_create_user', 'UsersByDomainIDAggregated','AllDomainMentors', 'UsersByDomainIDExclusive', 'UsersBySubDomainID'),
+                'actions'=>array('admin', 'view', 'update', 'delete', 'create_admin','findMentors', 
+                                 'search', 'viewmodal', 'UpdateUser', 'admin_create_user', 
+                                 'UsersByDomainIDAggregated','AllDomainMentors', 'UsersByDomainIDExclusive', 
+                                 'UsersBySubDomainID',
+                                 'MenteeBySubdomainID', 'MenteeByDomainID'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
@@ -1167,6 +1171,30 @@ public function actionUpdateUser()
          echo json_encode($all);
      }
      
+     
+     public function actionMenteeBySubdomainID($id)
+     {
+        $all = array();
+        $users = User::model()->findAllMenteesBySubDomainID($id);
+        foreach ($users as $user) 
+        {
+            $all[] = array(
+            'id' => $user->id, 'FullName' => $user->FullName);
+         }
+         echo json_encode($all);
+     }
+     
+     public function actionMenteeByDomainID($id)
+     {
+        $all = array();
+        $users = User::model()->findAllMenteesByDomainID($id);
+        foreach ($users as $user) 
+        {
+            $all[] = array(
+            'id' => $user->id, 'FullName' => $user->FullName);
+        }
+         echo json_encode($all);  
+     }
      
      public function actionAllDomainMentors()
     {

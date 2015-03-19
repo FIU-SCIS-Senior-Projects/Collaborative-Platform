@@ -348,6 +348,16 @@ class UtilizationDashboardFilter extends CFormModel
        {
           $command->andWhere("ticket.creator_user_id = ".$this->mentee_id); 
        }
+       
+       if (isset($this->assigned_project_id) && $this->assigned_project_id >0 )
+       {
+            $command->andWhere("ticket.assigned_project_id = ".$this->assigned_project_id); 
+       }
+       
+       if (isset($this->mentee_id) && $this->mentee_id > 0 )
+       {
+            $command->andWhere("ticket.creator_user_id = ".$this->mentee_id); 
+       }
         
     }
     

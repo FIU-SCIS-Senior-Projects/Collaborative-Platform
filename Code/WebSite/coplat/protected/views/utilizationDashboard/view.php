@@ -231,6 +231,8 @@ $( document ).ready(function()
         showParentDiv('#UtilizationDashboardFilter_assigned_project_id',false);
         clearInputContent("#UtilizationDashboardFilter_assigned_project_id");
         
+        showParentDiv('#UtilizationDashboardFilter_mentee_id',false);
+        clearInputContent("#UtilizationDashboardFilter_mentee_id");
        
    }
    
@@ -244,7 +246,7 @@ $( document ).ready(function()
         showParentDiv("#UtilizationDashboardFilter_assigned_project_mentor_id", true);
         showParentDiv("#UtilizationDashboardFilter_assigned_personal_mentor_id", true);
         showParentDiv('#UtilizationDashboardFilter_assigned_project_id', true);
-      //  showParentDiv("#UtilizationDashboardFilter_subdomainID",true);
+        showParentDiv('#UtilizationDashboardFilter_mentee_id',true);
    }
    
    clearAndHideFilters();
@@ -359,6 +361,8 @@ $( document ).ready(function()
         
         if (subDomainID != null && subDomainID> 0)
         {
+            
+            //domain mentor select
             var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
             domainMentorSelect.html("");
             domainMentorSelect.append('<option value="0"> </option>'); 
@@ -368,7 +372,22 @@ $( document ).ready(function()
                    var user = users[i];
                    domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
             }
-            }, 'json');           
+            }, 'json');
+            
+            //mentee select
+            var menteeSelect = $('#UtilizationDashboardFilter_mentee_id');
+            menteeSelect.html("");
+            menteeSelect.append('<option value="0"> </option>'); 
+            $.post('/coplat/index.php/User/MenteeBySubdomainID/' + subDomainID, {}, function(users){
+            for(var i = 0; i < users.length; i++) 
+            {
+                   var user = users[i];
+                   menteeSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+            }
+            }, 'json');
+            
+            
+            
         }else if (domainID != null && domainID > 0)
         {
             var subDomSelect = $('#UtilizationDashboardFilter_subdomainID'); 
@@ -392,7 +411,21 @@ $( document ).ready(function()
                    var user = users[i];
                    domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
               }
-           }, 'json');            
+           }, 'json');      
+           
+           
+           //mentee select
+            var menteeSelect = $('#UtilizationDashboardFilter_mentee_id');
+            menteeSelect.html("");
+            menteeSelect.append('<option value="0"> </option>'); 
+            $.post('/coplat/index.php/User/MenteeByDomainID/' + domainID, {}, function(users){
+            for(var i = 0; i < users.length; i++) 
+            {
+                   var user = users[i];
+                   menteeSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+            }
+            }, 'json');
+           
         }else
         {
            var subDomSelect = $('#UtilizationDashboardFilter_subdomainID'); 
@@ -402,6 +435,11 @@ $( document ).ready(function()
            var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
            domainMentorSelect.html("");
            domainMentorSelect.append('<option value="0"> </option>');  
+           
+            //mentee select
+            var menteeSelect = $('#UtilizationDashboardFilter_mentee_id');
+            menteeSelect.html("");
+            menteeSelect.append('<option value="0"> </option>'); 
            
             $.post('/coplat/index.php/User/AllDomainMentors/', {}, function(users){
             for(var i = 0; i < users.length; i++) 
@@ -420,6 +458,11 @@ $( document ).ready(function()
          var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
          domainMentorSelect.html("");
          domainMentorSelect.append('<option value="0"> </option>'); 
+         
+            //mentee select
+        var menteeSelect = $('#UtilizationDashboardFilter_mentee_id');
+        menteeSelect.html("");
+        menteeSelect.append('<option value="0"> </option>'); 
 
             var domainID = $(this).val();
             if(domainID != null && domainID > 0) 
@@ -432,6 +475,16 @@ $( document ).ready(function()
                         domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
                    }
                 }, 'json');
+                
+                
+               $.post('/coplat/index.php/User/MenteeByDomainID/' + domainID, {}, function(users){
+                    for(var i = 0; i < users.length; i++) 
+                    {
+                       var user = users[i];
+                       menteeSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+                    }
+                }, 'json');
+                
              }else
              {
                    $.post('/coplat/index.php/User/AllDomainMentors/', {}, function(users){
@@ -490,7 +543,8 @@ $( document ).ready(function()
         #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, \n\
         #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, \n\
         #UtilizationDashboardFilter_assigned_domain_mentor_id, #UtilizationDashboardFilter_assigned_project_mentor_id, \n\
-        #UtilizationDashboardFilter_assigned_personal_mentor_id, #UtilizationDashboardFilter_assigned_project_id').on('change', function(){
+        #UtilizationDashboardFilter_assigned_personal_mentor_id, #UtilizationDashboardFilter_assigned_project_id,\n\
+        #UtilizationDashboardFilter_mentee_id').on('change', function(){
          $('#chartSection').html("");
          if (validChartParams())
          {
@@ -507,7 +561,6 @@ $( document ).ready(function()
                    dashboardAction = "PullTicketsClosed";                  
                 break;             
             }
-            logErrorMessage("Invalid From Date value");
             
             $('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
                                     <img src='/coplat/images/ajax-loader.gif'>");
