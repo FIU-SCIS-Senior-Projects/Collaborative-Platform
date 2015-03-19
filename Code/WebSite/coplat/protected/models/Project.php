@@ -186,4 +186,9 @@ class Project extends CActiveRecord
                                                 INNER JOIN mentee ON mentee.project_id = project.id
                                                 WHERE mentee.user_id = ".$user_id);  
         }
+        
+        public function findAllProjects()
+        {
+            return Project::model()->findAll();
+        }
 }

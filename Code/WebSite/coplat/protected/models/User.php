@@ -1202,6 +1202,22 @@ class User extends CActiveRecord
                     . '                         user_domain.subdomain_id = '.$subDomainID);         
     }
     
+    public static function findAllMenteesBySubDomainID($subDomainID)
+    {
+        return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                     FROM user '
+                    . '                     INNER JOIN ticket ON user.id = ticket.creator_user_id  '
+                    . '                     WHERE  ticket.subdomain_id = '.$subDomainID);           
+    }
+    
+    public static function findAllMenteesByDomainID($domainID)
+    {
+        return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                     FROM user '
+                    . '                     INNER JOIN ticket ON user.id = ticket.creator_user_id  '
+                    . '                     WHERE  ticket.domain_id = '.$domainID);   
+    }
+    
     public static function sendMentorApplicationStatusEmail($model, $adminName){    	
     	
     	$email = Yii::app()->email;

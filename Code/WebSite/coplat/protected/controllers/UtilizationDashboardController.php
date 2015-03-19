@@ -66,21 +66,21 @@ class UtilizationDashboardController extends Controller
        }
         
        
-        public function actionTicketsCreatedOverTime()
-        {
+       public function actionPullTicketsCreated()
+       {
             if(isset($_POST['UtilizationDashboardFilter'])) 
             {
                $ultilizationFilter = new UtilizationDashboardFilter();
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketsCreatedData = $ultilizationFilter->retrieveCreateTicketsOvertimeDashboardData(); 
+               $ticketsCreatedData = $ultilizationFilter->retrieveTicketsCreatedDashboardData(); 
                $data =  array('dashboardData' => $ticketsCreatedData);
                echo json_encode($data); 
-            }            
-        }
-        
-        public function actionTicketsClosedOverTime()
+            }  
+       }
+       
+       public function actionPullTicketsClosed()
         {
             if(isset($_POST['UtilizationDashboardFilter'])) 
             {
@@ -88,78 +88,14 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketsClosedData = $ultilizationFilter->retrieveClosedTicketsOvertimeDashboardData(); 
+               $ticketsClosedData = $ultilizationFilter->retrieveTicketsClosedDashboardData(); 
                $data =  array('dashboardData' => $ticketsClosedData);
                echo json_encode($data); 
             }  
         }
-
-        
-        public function actionTicketsCreatedByAssignedMentor()
-        {
-            if(isset($_POST['UtilizationDashboardFilter'])) 
-            {
-               $ultilizationFilter = new UtilizationDashboardFilter();
-               $ultilizationFilter->unsetAttributes();  // clear any default values  
-               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
-               
-               $ticketsCreatedData = $ultilizationFilter->retrieveCreatedByAssignedMentorDashboardData(); 
-               $data =  array('dashboardData' => $ticketsCreatedData);
-               echo json_encode($data); 
-            }             
-        }
-        
-        public function actionTicketsClosedByAssignedMentor()
-        {
-            if(isset($_POST['UtilizationDashboardFilter'])) 
-            {
-               $ultilizationFilter = new UtilizationDashboardFilter();
-               $ultilizationFilter->unsetAttributes();  // clear any default values  
-               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
-               
-               $ticketsClosedData = $ultilizationFilter->retrieveClosedByAssignedMentorDashboardData(); 
-               $data =  array('dashboardData' => $ticketsClosedData);
-               echo json_encode($data); 
-            } 
-        }
-        
-        
-      /*  public function actionRefreshNewTickets()
-        {            
-            if(isset($_POST['UtilizationDashboardFilter'])) 
-            {
-               $ultilizationFilter = new UtilizationDashboardFilter();
-               $ultilizationFilter->unsetAttributes();  // clear any default values  
-               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
-               
-               $newEvents= $ultilizationFilter->retrieveNewTicketsDashboardData(); 
-               
-               $newTicketRes =  array('dimDesc' => DimensionType::getDescriptionByDateDimension($ultilizationFilter->newTicketsCurrentDimension),
-                                      'newEvents' => $newEvents,
-                                      'dimFormat' => DimensionType::getDateFormatByDimension($ultilizationFilter->newTicketsCurrentDimension) );
-                           
-               echo json_encode($newTicketRes);
-            }            
-        }
-
-        public function actionRefreshClosedTickets()
-        {            
-            if(isset($_POST['UtilizationDashboardFilter'])) 
-            {
-               $ultilizationFilter = new UtilizationDashboardFilter();
-               $ultilizationFilter->unsetAttributes();  // clear any default values  
-               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
-               
-               $closedEvents= $ultilizationFilter->retrieveClosedTicketsDashboardData(); 
-               
-               $closedTicketRes =  array('dimDesc' => DimensionType::getDescriptionByDateDimension($ultilizationFilter->closedTicketsCurrentDimension),
-                                         'closedEvents' => $closedEvents,
-                                         'dimFormat' => DimensionType::getDateFormatByDimension($ultilizationFilter->closedTicketsCurrentDimension) );
-                           
-               echo json_encode($closedTicketRes);
-            }            
-        }*/
-     
+       
+       
+      
         public function filters()
 	{
 	   return array('accessControl');
@@ -170,7 +106,7 @@ class UtilizationDashboardController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index','TicketsCreatedOverTime', 'RefreshClosedTickets', 'TicketsClosedOverTime', 'TicketsCreatedByAssignedMentor', 'TicketsClosedByAssignedMentor'),
+                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
