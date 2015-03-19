@@ -17,112 +17,111 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
 
 <table class="dashItem">
     <td style="vertical-align:top; width:225px;">
-        <div id="filterRegion">
-        <div>
-             <?php 
-                         echo $form->labelEx($filter,'reportTypeId'); 
-                         echo CHtml::activeDropDownList($filter,
-                                                        'reportTypeId',
-                                                         ReportType::getReportTypes() );?>
-        </div>
-        <div>
-            <?php echo $form->labelEx($filter, 'dim2ID');
-                          echo CHtml::activeDropDownList($filter,
-                                                         'dim2ID',
-                                                         array(0 => " "));?> 
-            
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'fromDate');
-                         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                                'model' => $filter,          
-                                'attribute' => 'fromDate',
-                                'name' => 'fromDate',
-                                'options'=>array(
-                                    'changeMonth'=>'true',
-                                    'changeYear' =>'true',
-                                    'showButtonPanel' => 'true')
-                           ));
-                  ?>
-        </div>
-        <div>
-             <?php echo CHtml::activeLabel($filter,'toDate'); 
-                      $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                                'model' => $filter,          
-                                'attribute' => 'toDate',
-                                'name' => 'toDate',
-                                'options'=>array(
-                                    'changeMonth'=>'true',
-                                    'changeYear' =>'true',
-                                    'showButtonPanel' => 'true')));?> 
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'agregatedDomainID'); 
-                          echo CHtml::activeDropDownList($filter,
-                                                        'agregatedDomainID',
-                                                        CHtml::listData(Domain::model()->findAll(),'id', 'name'),
-                                                        array('empty'=>' '));?>
-        </div>
-        <div>
-            <?php 
-                         $domainID = $filter->agregatedDomainID;
-                             if (isset($domainID) && $domainID > 0 )
-                             {
-                                    $subdomain = SubDomain::model()->findAllByAttributes(array('domain_id'=>$domainID));
-                             }else
-                             {
-                                    $subdomain = array();
-                             }
-                          echo CHtml::activeLabel($filter,'subdomainID'); 
-                          echo CHtml::activeDropDownList($filter, 
-                                                         'subdomainID',
-                                                         CHtml::listData($subdomain,'id', 'name'),
-                                                         array('empty'=>' '));?>
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'exclusiveDomainID'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                'exclusiveDomainID',
-                                                CHtml::listData(Domain::model()->findAll(),'id', 'name'),
-                                                array('empty'=>' '));?>
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_domain_mentor_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_domain_mentor_id',
-                                                 CHtml::listData(User::model()->findAllDomainMentors(),'id', 'FullName'),
-                                                 array('empty'=>' '));?>
-        </div> 
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_project_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_project_id',
-                                                 CHtml::listData(Project::model()->findAllProjects(), 'id', 'title'),
-                                                 array('empty'=>' '));?>
-        </div>            
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_project_mentor_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_project_mentor_id',
-                                                 CHtml::listData(User::model()->findAllProjectMentors(),'id', 'FullName'),
-                                                 array('empty'=>' '));?>
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_personal_mentor_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_personal_mentor_id',
-                                                 CHtml::listData(User::model()->findAllPersonalMentors(),'id', 'FullName'),
-                                                 array('empty'=>' '));?>
-        </div> 
-
-        <div>
-            <?php echo CHtml::activeLabel($filter,'mentee_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'mentee_id',
-                                                 array(),
-                                                 array('empty'=>' '));?>
-        </div>
-        
+        <div id="filterRegion" style="overflow:auto; padding-right:30px">
+			<div>
+				 <?php 
+							 echo $form->labelEx($filter,'reportTypeId'); 
+							 echo CHtml::activeDropDownList($filter,
+															'reportTypeId',
+															 ReportType::getReportTypes() );?>
+			</div>
+			<div>
+				<?php echo $form->labelEx($filter, 'dim2ID');
+							  echo CHtml::activeDropDownList($filter,
+															 'dim2ID',
+															 array(0 => " "));?> 
+				
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'fromDate');
+							 $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+									'model' => $filter,          
+									'attribute' => 'fromDate',
+									'name' => 'fromDate',
+									'options'=>array(
+										'changeMonth'=>'true',
+										'changeYear' =>'true',
+										'showButtonPanel' => 'true')
+							   ));
+					  ?>
+			</div>
+			<div>
+				 <?php echo CHtml::activeLabel($filter,'toDate'); 
+						  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+									'model' => $filter,          
+									'attribute' => 'toDate',
+									'name' => 'toDate',
+									'options'=>array(
+										'changeMonth'=>'true',
+										'changeYear' =>'true',
+										'showButtonPanel' => 'true')));?> 
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'agregatedDomainID'); 
+							  echo CHtml::activeDropDownList($filter,
+															'agregatedDomainID',
+															CHtml::listData(Domain::model()->findAll(),'id', 'name'),
+															array('empty'=>' '));?>
+			</div>
+			<div>
+				<?php 
+							 $domainID = $filter->agregatedDomainID;
+								 if (isset($domainID) && $domainID > 0 )
+								 {
+										$subdomain = SubDomain::model()->findAllByAttributes(array('domain_id'=>$domainID));
+								 }else
+								 {
+										$subdomain = array();
+								 }
+							  echo CHtml::activeLabel($filter,'subdomainID'); 
+							  echo CHtml::activeDropDownList($filter, 
+															 'subdomainID',
+															 CHtml::listData($subdomain,'id', 'name'),
+															 array('empty'=>' '));?>
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'exclusiveDomainID'); 
+					  echo CHtml::activeDropDownList($filter,
+													'exclusiveDomainID',
+													CHtml::listData(Domain::model()->findAll(),'id', 'name'),
+													array('empty'=>' '));?>
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'assigned_domain_mentor_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'assigned_domain_mentor_id',
+													 CHtml::listData(User::model()->findAllDomainMentors(),'id', 'FullName'),
+													 array('empty'=>' '));?>
+			</div> 
+			<div>
+				<?php echo CHtml::activeLabel($filter,'assigned_project_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'assigned_project_id',
+													 CHtml::listData(Project::model()->findAllProjects(), 'id', 'title'),
+													 array('empty'=>' '));?>
+			</div>            
+			<div>
+				<?php echo CHtml::activeLabel($filter,'assigned_project_mentor_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'assigned_project_mentor_id',
+													 CHtml::listData(User::model()->findAllProjectMentors(),'id', 'FullName'),
+													 array('empty'=>' '));?>
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'assigned_personal_mentor_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'assigned_personal_mentor_id',
+													 CHtml::listData(User::model()->findAllPersonalMentors(),'id', 'FullName'),
+													 array('empty'=>' '));?>
+			</div> 
+			<div>
+				<?php echo CHtml::activeLabel($filter,'mentee_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'mentee_id',
+													 array(),
+													 array('empty'=>' '));?>
+			</div>
+			
        </div>
     </td>
     <td style="vertical-align:top;">
@@ -134,11 +133,17 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
     
 $( document ).ready(function() 
 { 
-    
-    
+
+    var chartRegionHeight = $('.navbar-inner').height();
+    chartRegionHeight += $('.breadcrumbs').height();  
+	chartRegionHeight += 120; 
+	chartRegionHeight =  $( window ).height()  - chartRegionHeight;
+    $('#filterRegion').height(chartRegionHeight);
+	$('#chartSection').height(chartRegionHeight);
+	
      
     var chartRegionWidth =  $('.container').width();
-    chartRegionWidth = chartRegionWidth - 225 - 20;
+    chartRegionWidth = chartRegionWidth - 225 - 30;
     
     if (chartRegionWidth < 600)
     {
@@ -147,9 +152,7 @@ $( document ).ready(function()
     
     $('#chartSection').width(chartRegionWidth);
     
-    //var chartRegionHeight = $('#dashboarForm').height();
-   // alert(chartRegionHeight);
-    //$('#filterRegion').height(chartRegionHeight);
+
  
     
     
