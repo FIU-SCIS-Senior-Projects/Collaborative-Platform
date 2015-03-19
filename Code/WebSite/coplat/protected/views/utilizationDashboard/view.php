@@ -17,111 +17,111 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
 
 <table class="dashItem">
     <td style="vertical-align:top; width:225px;">
-        <div id="filterRegion">
-        <div>
-             <?php 
-                         echo $form->labelEx($filter,'reportTypeId'); 
-                         echo CHtml::activeDropDownList($filter,
-                                                        'reportTypeId',
-                                                         ReportType::getReportTypes() );?>
-        </div>
-        <div>
-            <?php echo $form->labelEx($filter, 'dim2ID');
-                          echo CHtml::activeDropDownList($filter,
-                                                         'dim2ID',
-                                                         array(0 => " "));?> 
-            
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'fromDate');
-                         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                                'model' => $filter,          
-                                'attribute' => 'fromDate',
-                                'name' => 'fromDate',
-                                'options'=>array(
-                                    'changeMonth'=>'true',
-                                    'changeYear' =>'true',
-                                    'showButtonPanel' => 'true')
-                           ));
-                  ?>
-        </div>
-        <div>
-             <?php echo CHtml::activeLabel($filter,'toDate'); 
-                      $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                                'model' => $filter,          
-                                'attribute' => 'toDate',
-                                'name' => 'toDate',
-                                'options'=>array(
-                                    'changeMonth'=>'true',
-                                    'changeYear' =>'true',
-                                    'showButtonPanel' => 'true')));?> 
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'agregatedDomainID'); 
-                          echo CHtml::activeDropDownList($filter,
-                                                        'agregatedDomainID',
-                                                        CHtml::listData(Domain::model()->findAll(),'id', 'name'),
-                                                        array('empty'=>' '));?>
-        </div>
-        <div>
-            <?php 
-                         $domainID = $filter->agregatedDomainID;
-                             if (isset($domainID) && $domainID > 0 )
-                             {
-                                    $subdomain = SubDomain::model()->findAllByAttributes(array('domain_id'=>$domainID));
-                             }else
-                             {
-                                    $subdomain = array();
-                             }
-                          echo CHtml::activeLabel($filter,'subdomainID'); 
-                          echo CHtml::activeDropDownList($filter, 
-                                                         'subdomainID',
-                                                         CHtml::listData($subdomain,'id', 'name'),
-                                                         array('empty'=>' '));?>
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'exclusiveDomainID'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                'exclusiveDomainID',
-                                                CHtml::listData(Domain::model()->findAll(),'id', 'name'),
-                                                array('empty'=>' '));?>
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_domain_mentor_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_domain_mentor_id',
-                                                 CHtml::listData(User::model()->findAllDomainMentors(),'id', 'FullName'),
-                                                 array('empty'=>' '));?>
-        </div> 
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_project_mentor_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_project_mentor_id',
-                                                 CHtml::listData(User::model()->findAllProjectMentors(),'id', 'FullName'),
-                                                 array('empty'=>' '));?>
-        </div>
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_personal_mentor_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_personal_mentor_id',
-                                                 CHtml::listData(User::model()->findAllPersonalMentors(),'id', 'FullName'),
-                                                 array('empty'=>' '));?>
-        </div> 
-        <div>
-            <?php echo CHtml::activeLabel($filter,'assigned_project_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'assigned_project_id',
-                                                 array(),
-                                                 array('empty'=>' '));?>
-        </div
-        <div>
-            <?php echo CHtml::activeLabel($filter,'mentee_id'); 
-                  echo CHtml::activeDropDownList($filter,
-                                                 'mentee_id',
-                                                 array(),
-                                                 array('empty'=>' '));?>
-        </div>
-        
+        <div id="filterRegion" style="overflow:auto; padding-right:30px">
+			<div>
+				 <?php 
+							 echo $form->labelEx($filter,'reportTypeId'); 
+							 echo CHtml::activeDropDownList($filter,
+															'reportTypeId',
+															 ReportType::getReportTypes() );?>
+			</div>
+			<div>
+				<?php echo $form->labelEx($filter, 'dim2ID');
+							  echo CHtml::activeDropDownList($filter,
+															 'dim2ID',
+															 array(0 => " "));?> 
+				
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'fromDate');
+							 $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+									'model' => $filter,          
+									'attribute' => 'fromDate',
+									'name' => 'fromDate',
+									'options'=>array(
+										'changeMonth'=>'true',
+										'changeYear' =>'true',
+										'showButtonPanel' => 'true')
+							   ));
+					  ?>
+			</div>
+			<div>
+				 <?php echo CHtml::activeLabel($filter,'toDate'); 
+						  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+									'model' => $filter,          
+									'attribute' => 'toDate',
+									'name' => 'toDate',
+									'options'=>array(
+										'changeMonth'=>'true',
+										'changeYear' =>'true',
+										'showButtonPanel' => 'true')));?> 
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'agregatedDomainID'); 
+							  echo CHtml::activeDropDownList($filter,
+															'agregatedDomainID',
+															CHtml::listData(Domain::model()->findAll(),'id', 'name'),
+															array('empty'=>' '));?>
+			</div>
+			<div>
+				<?php 
+							 $domainID = $filter->agregatedDomainID;
+								 if (isset($domainID) && $domainID > 0 )
+								 {
+										$subdomain = SubDomain::model()->findAllByAttributes(array('domain_id'=>$domainID));
+								 }else
+								 {
+										$subdomain = array();
+								 }
+							  echo CHtml::activeLabel($filter,'subdomainID'); 
+							  echo CHtml::activeDropDownList($filter, 
+															 'subdomainID',
+															 CHtml::listData($subdomain,'id', 'name'),
+															 array('empty'=>' '));?>
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'exclusiveDomainID'); 
+					  echo CHtml::activeDropDownList($filter,
+													'exclusiveDomainID',
+													CHtml::listData(Domain::model()->findAll(),'id', 'name'),
+													array('empty'=>' '));?>
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'assigned_domain_mentor_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'assigned_domain_mentor_id',
+													 CHtml::listData(User::model()->findAllDomainMentors(),'id', 'FullName'),
+													 array('empty'=>' '));?>
+			</div> 
+			<div>
+				<?php echo CHtml::activeLabel($filter,'assigned_project_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'assigned_project_id',
+													 CHtml::listData(Project::model()->findAllProjects(), 'id', 'title'),
+													 array('empty'=>' '));?>
+			</div>            
+			<div>
+				<?php echo CHtml::activeLabel($filter,'assigned_project_mentor_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'assigned_project_mentor_id',
+													 CHtml::listData(User::model()->findAllProjectMentors(),'id', 'FullName'),
+													 array('empty'=>' '));?>
+			</div>
+			<div>
+				<?php echo CHtml::activeLabel($filter,'assigned_personal_mentor_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'assigned_personal_mentor_id',
+													 CHtml::listData(User::model()->findAllPersonalMentors(),'id', 'FullName'),
+													 array('empty'=>' '));?>
+			</div> 
+			<div>
+				<?php echo CHtml::activeLabel($filter,'mentee_id'); 
+					  echo CHtml::activeDropDownList($filter,
+													 'mentee_id',
+													 array(),
+													 array('empty'=>' '));?>
+			</div>
+			
        </div>
     </td>
     <td style="vertical-align:top;">
@@ -133,23 +133,22 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
     
 $( document ).ready(function() 
 { 
-    
-    
+
+    var chartRegionHeight = $('.navbar-inner').height();
+    chartRegionHeight += $('.breadcrumbs').height();  
+	chartRegionHeight += 120; 
+	chartRegionHeight =  $( window ).height()  - chartRegionHeight;
+    $('#filterRegion').height(chartRegionHeight);
+	$('#chartSection').height(chartRegionHeight);
+	
      
     var chartRegionWidth =  $('.container').width();
-    chartRegionWidth = chartRegionWidth - 225 - 20;
-    
+    chartRegionWidth = chartRegionWidth - 225 - 30;
     if (chartRegionWidth < 600)
     {
         chartRegionWidth = 600;
-    }
-    
+    }    
     $('#chartSection').width(chartRegionWidth);
-    
-    //var chartRegionHeight = $('#dashboarForm').height();
-   // alert(chartRegionHeight);
-    //$('#filterRegion').height(chartRegionHeight);
- 
     
     
     var enumReportType = {
@@ -168,19 +167,29 @@ $( document ).ready(function()
       Year:2,
       MonthOfTheYear:3,
       TicketAssignedMentor:4,
+	  Mentee: 5,
+	  DomainExclusive: 6,
+	  DomainAggregated: 7,
+	  SubDomain: 8,
+	  Project:9,
       
-      properties: {
-        1: {name: "Day", value: 1, format:"dd MMM yyyy"},
-        2: {name: "Year", value: 2, format:"yyyy"},
-        3: {name: "Month", value: 3, format:"MMM yyyy"},
-        4: {name: "Assigned Mentor", value: 4, format:""}
-      },    
+		  properties: {
+			1: {name: "Day", value: 1, format:"dd MMM yyyy"},
+			2: {name: "Year", value: 2, format:"yyyy"},
+			3: {name: "Month", value: 3, format:"MMM yyyy"},
+			4: {name: "Assigned Mentor", value: 4, format:""},
+			5: {name: "Mentee", value: 5, format:""},
+			6: {name: "Domain (Exclusive)", value: 6, format:""}, 
+			7: {name: "Domain (Aggregated)", value: 7, format:""}, 
+			8: {name: "Sub-Domain", value: 8, format:""}, 
+			9: {name: "Project", value: 9, format:""}, 
+		  },    
       
       
-     isTimeDimension: function(dimType) 
-     {
-       return (dimType == DimensionType.Date || dimType == DimensionType.Year || dimType == DimensionType.MonthOfTheYear) ;
-     }
+		 isTimeDimension: function(dimType) 
+		 {
+		   return (dimType == DimensionType.Date || dimType == DimensionType.Year || dimType == DimensionType.MonthOfTheYear) ;
+		 }
      
     };
     
@@ -226,6 +235,12 @@ $( document ).ready(function()
         
         showParentDiv("#UtilizationDashboardFilter_assigned_personal_mentor_id",false);
         clearInputContent("#UtilizationDashboardFilter_assigned_personal_mentor_id");
+        
+        showParentDiv('#UtilizationDashboardFilter_assigned_project_id',false);
+        clearInputContent("#UtilizationDashboardFilter_assigned_project_id");
+        
+        showParentDiv('#UtilizationDashboardFilter_mentee_id',false);
+        clearInputContent("#UtilizationDashboardFilter_mentee_id");
        
    }
    
@@ -238,18 +253,27 @@ $( document ).ready(function()
         showParentDiv("#UtilizationDashboardFilter_assigned_domain_mentor_id", true);
         showParentDiv("#UtilizationDashboardFilter_assigned_project_mentor_id", true);
         showParentDiv("#UtilizationDashboardFilter_assigned_personal_mentor_id", true);
-      //  showParentDiv("#UtilizationDashboardFilter_subdomainID",true);
+        showParentDiv('#UtilizationDashboardFilter_assigned_project_id', true);
+        showParentDiv('#UtilizationDashboardFilter_mentee_id',true);
    }
    
    clearAndHideFilters();
 
     
-    function generateTicketCountDim2Select(dim2IdElement)
+    function generateTicketsDim2Select(dim2IdElement)
     {
         dim2IdElement.append('<option value="' +DimensionType.Date + '">' +  DimensionType.properties[DimensionType.Date].name +'</option>'); 
         dim2IdElement.append('<option value="' +DimensionType.Year + '">' +  DimensionType.properties[DimensionType.Year].name +'</option>');  
         dim2IdElement.append('<option value="' +DimensionType.MonthOfTheYear + '">' +  DimensionType.properties[DimensionType.MonthOfTheYear].name +'</option>'); 
         dim2IdElement.append('<option value="' +DimensionType.TicketAssignedMentor + '">' +  DimensionType.properties[DimensionType.TicketAssignedMentor].name +'</option>'); 
+		dim2IdElement.append('<option value="' +DimensionType.Mentee + '">' +  DimensionType.properties[DimensionType.Mentee].name +'</option>'); 
+		dim2IdElement.append('<option value="' +DimensionType.DomainExclusive + '">' +  DimensionType.properties[DimensionType.DomainExclusive].name +'</option>');
+		dim2IdElement.append('<option value="' +DimensionType.DomainAggregated + '">' +  DimensionType.properties[DimensionType.DomainAggregated].name +'</option>');
+		dim2IdElement.append('<option value="' +DimensionType.SubDomain + '">' +  DimensionType.properties[DimensionType.SubDomain].name +'</option>');
+		dim2IdElement.append('<option value="' +DimensionType.Project + '">' +  DimensionType.properties[DimensionType.Project].name +'</option>');
+		
+		
+		
     }
     
     $('#UtilizationDashboardFilter_reportTypeId').on('change', function(){
@@ -258,18 +282,7 @@ $( document ).ready(function()
         dim2IdElement.html("");
         dim2IdElement.append('<option value="0"> </option>'); 
         var reportID = parseInt($(this).val());
-                
-        switch(reportID) 
-        {
-           case enumReportType.TicketsCreated:
-               generateTicketCountDim2Select(dim2IdElement);
-            break;
-          case enumReportType.TicketsClosed:
-               generateTicketCountDim2Select(dim2IdElement);         
-            break;
-           default: 
-               clearAndHideFilters();
-        }
+		generateTicketsDim2Select(dim2IdElement);       
         
     });
    
@@ -293,16 +306,7 @@ $( document ).ready(function()
         {
             
            var reportID = parseInt($(this).val());
-           switch(reportID) 
-           {
-               case enumReportType.TicketsCreated:
-                 showTicketCountChartFilters();
-                break;
-              case enumReportType.TicketsClosed:
-                 showTicketCountChartFilters();        
-                break;
-               default:      
-           }            
+		   showTicketCountChartFilters();                      
         } 
     });
     
@@ -353,6 +357,8 @@ $( document ).ready(function()
         
         if (subDomainID != null && subDomainID> 0)
         {
+            
+            //domain mentor select
             var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
             domainMentorSelect.html("");
             domainMentorSelect.append('<option value="0"> </option>'); 
@@ -362,7 +368,22 @@ $( document ).ready(function()
                    var user = users[i];
                    domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
             }
-            }, 'json');           
+            }, 'json');
+            
+            //mentee select
+            var menteeSelect = $('#UtilizationDashboardFilter_mentee_id');
+            menteeSelect.html("");
+            menteeSelect.append('<option value="0"> </option>'); 
+            $.post('/coplat/index.php/User/MenteeBySubdomainID/' + subDomainID, {}, function(users){
+            for(var i = 0; i < users.length; i++) 
+            {
+                   var user = users[i];
+                   menteeSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+            }
+            }, 'json');
+            
+            
+            
         }else if (domainID != null && domainID > 0)
         {
             var subDomSelect = $('#UtilizationDashboardFilter_subdomainID'); 
@@ -386,7 +407,21 @@ $( document ).ready(function()
                    var user = users[i];
                    domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
               }
-           }, 'json');            
+           }, 'json');      
+           
+           
+           //mentee select
+            var menteeSelect = $('#UtilizationDashboardFilter_mentee_id');
+            menteeSelect.html("");
+            menteeSelect.append('<option value="0"> </option>'); 
+            $.post('/coplat/index.php/User/MenteeByDomainID/' + domainID, {}, function(users){
+            for(var i = 0; i < users.length; i++) 
+            {
+                   var user = users[i];
+                   menteeSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+            }
+            }, 'json');
+           
         }else
         {
            var subDomSelect = $('#UtilizationDashboardFilter_subdomainID'); 
@@ -396,6 +431,11 @@ $( document ).ready(function()
            var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
            domainMentorSelect.html("");
            domainMentorSelect.append('<option value="0"> </option>');  
+           
+            //mentee select
+            var menteeSelect = $('#UtilizationDashboardFilter_mentee_id');
+            menteeSelect.html("");
+            menteeSelect.append('<option value="0"> </option>'); 
            
             $.post('/coplat/index.php/User/AllDomainMentors/', {}, function(users){
             for(var i = 0; i < users.length; i++) 
@@ -414,6 +454,11 @@ $( document ).ready(function()
          var domainMentorSelect = $('#UtilizationDashboardFilter_assigned_domain_mentor_id');
          domainMentorSelect.html("");
          domainMentorSelect.append('<option value="0"> </option>'); 
+         
+            //mentee select
+        var menteeSelect = $('#UtilizationDashboardFilter_mentee_id');
+        menteeSelect.html("");
+        menteeSelect.append('<option value="0"> </option>'); 
 
             var domainID = $(this).val();
             if(domainID != null && domainID > 0) 
@@ -426,6 +471,16 @@ $( document ).ready(function()
                         domainMentorSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
                    }
                 }, 'json');
+                
+                
+               $.post('/coplat/index.php/User/MenteeByDomainID/' + domainID, {}, function(users){
+                    for(var i = 0; i < users.length; i++) 
+                    {
+                       var user = users[i];
+                       menteeSelect.append("<option value=\""+user.id+"\">"+user.FullName+"</option>");
+                    }
+                }, 'json');
+                
              }else
              {
                    $.post('/coplat/index.php/User/AllDomainMentors/', {}, function(users){
@@ -480,7 +535,12 @@ $( document ).ready(function()
      }
      
      
-     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, #UtilizationDashboardFilter_assigned_domain_mentor_id, #UtilizationDashboardFilter_assigned_project_mentor_id, #UtilizationDashboardFilter_assigned_personal_mentor_id').on('change', function(){
+     $('#UtilizationDashboardFilter_agregatedDomainID, #UtilizationDashboardFilter_subdomainID, \n\
+        #UtilizationDashboardFilter_exclusiveDomainID, #UtilizationDashboardFilter_dim2ID, \n\
+        #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, \n\
+        #UtilizationDashboardFilter_assigned_domain_mentor_id, #UtilizationDashboardFilter_assigned_project_mentor_id, \n\
+        #UtilizationDashboardFilter_assigned_personal_mentor_id, #UtilizationDashboardFilter_assigned_project_id,\n\
+        #UtilizationDashboardFilter_mentee_id').on('change', function(){
          $('#chartSection').html("");
          if (validChartParams())
          {
@@ -489,28 +549,14 @@ $( document ).ready(function()
            var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID');
            var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
            switch(reportID) 
-           {
-              
+           {              
                case enumReportType.TicketsCreated:
-                   if (DimensionType.isTimeDimension(dim2Id))
-                   {
-                       dashboardAction = "TicketsCreatedOverTime";
-                   }else if(dim2Id == DimensionType.TicketAssignedMentor)
-                   {
-                       dashboardAction = "TicketsCreatedByAssignedMentor";
-                   }
+                   dashboardAction = "PullTicketsCreated";
                 break;
                case enumReportType.TicketsClosed:
-                   if (DimensionType.isTimeDimension(dim2Id))
-                   {
-                        dashboardAction = "TicketsClosedOverTime";
-                   }else if(dim2Id == DimensionType.TicketAssignedMentor)
-                   {
-                        dashboardAction = "TicketsClosedByAssignedMentor";
-                   }
+                   dashboardAction = "PullTicketsClosed";                  
                 break;             
             }
-            logErrorMessage("Invalid From Date value");
             
             $('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
                                     <img src='/coplat/images/ajax-loader.gif'>");
@@ -537,7 +583,7 @@ $( document ).ready(function()
            if (DimensionType.isTimeDimension(dim2Id))
            { 
                chartDataTable.addColumn('date');               
-           }else if(DimensionType.TicketAssignedMentor)
+           }else 			   
            {
                chartDataTable.addColumn('string');   
            }
