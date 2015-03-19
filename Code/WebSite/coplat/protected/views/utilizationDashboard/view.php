@@ -167,12 +167,22 @@ $( document ).ready(function()
       Year:2,
       MonthOfTheYear:3,
       TicketAssignedMentor:4,
+	  Mentee: 5,
+	  DomainExclusive: 6,
+	  DomainAggregated: 7,
+	  SubDomain: 8,
+	  Project:9,
       
 		  properties: {
 			1: {name: "Day", value: 1, format:"dd MMM yyyy"},
 			2: {name: "Year", value: 2, format:"yyyy"},
 			3: {name: "Month", value: 3, format:"MMM yyyy"},
 			4: {name: "Assigned Mentor", value: 4, format:""},
+			5: {name: "Mentee", value: 5, format:""},
+			6: {name: "Domain (Exclusive)", value: 6, format:""}, 
+			7: {name: "Domain (Aggregated)", value: 7, format:""}, 
+			8: {name: "Sub-Domain", value: 8, format:""}, 
+			9: {name: "Project", value: 9, format:""}, 
 		  },    
       
       
@@ -256,6 +266,12 @@ $( document ).ready(function()
         dim2IdElement.append('<option value="' +DimensionType.Year + '">' +  DimensionType.properties[DimensionType.Year].name +'</option>');  
         dim2IdElement.append('<option value="' +DimensionType.MonthOfTheYear + '">' +  DimensionType.properties[DimensionType.MonthOfTheYear].name +'</option>'); 
         dim2IdElement.append('<option value="' +DimensionType.TicketAssignedMentor + '">' +  DimensionType.properties[DimensionType.TicketAssignedMentor].name +'</option>'); 
+		dim2IdElement.append('<option value="' +DimensionType.Mentee + '">' +  DimensionType.properties[DimensionType.Mentee].name +'</option>'); 
+		dim2IdElement.append('<option value="' +DimensionType.DomainExclusive + '">' +  DimensionType.properties[DimensionType.DomainExclusive].name +'</option>');
+		dim2IdElement.append('<option value="' +DimensionType.DomainAggregated + '">' +  DimensionType.properties[DimensionType.DomainAggregated].name +'</option>');
+		dim2IdElement.append('<option value="' +DimensionType.SubDomain + '">' +  DimensionType.properties[DimensionType.SubDomain].name +'</option>');
+		dim2IdElement.append('<option value="' +DimensionType.Project + '">' +  DimensionType.properties[DimensionType.Project].name +'</option>');
+		
 		
 		
     }
@@ -561,13 +577,13 @@ $( document ).ready(function()
          }
      });
      
-     function `DashboardData(dashboardData, reportID, dim2Id)
+     function generateDashboardData(dashboardData, reportID, dim2Id)
      {
            var chartDataTable = new google.visualization.DataTable();
            if (DimensionType.isTimeDimension(dim2Id))
            { 
                chartDataTable.addColumn('date');               
-           }else if(DimensionType.TicketAssignedMentor)
+           }else 			   
            {
                chartDataTable.addColumn('string');   
            }

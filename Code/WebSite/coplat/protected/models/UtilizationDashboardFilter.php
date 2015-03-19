@@ -5,6 +5,11 @@ class DimensionType
     const Year =2;
     const MonthOfTheYear = 3;  
     const TicketAssignedMentor = 4;
+	const Mentee = 5;
+	const DomainExclusive = 6;
+	const DomainAggregated = 7;
+	const SubDomain = 8;
+	const Project = 9;
     
     
     public static function getDimensions()
@@ -168,6 +173,43 @@ class UtilizationDashboardFilter extends CFormModel
                                                          $mentorName,
                                                          $countPart);
                       break;
+					  
+				   case DimensionType::Mentee:
+				      $menteeName =   ArrayUtils::getValueOrDefault($data, "MenteeName",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $menteeName,
+                                                         $countPart);
+                      break;
+				   case DimensionType::DomainExclusive:
+				      $domainExclusive =  ArrayUtils::getValueOrDefault($data, "Domain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $domainExclusive,
+                                                         $countPart);
+					  break;
+				   case DimensionType::DomainAggregated:
+				      $domainAggregated =  ArrayUtils::getValueOrDefault($data, "Domain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $domainAggregated,
+                                                         $countPart);
+					  break;
+					case DimensionType::SubDomain:
+				      $subDomain =  ArrayUtils::getValueOrDefault($data, "SubDomain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $subDomain,
+                                                         $countPart);
+					  break;
+					case DimensionType::Project:
+				      $project =  ArrayUtils::getValueOrDefault($data, "Project",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $project,
+                                                         $countPart);
+					  break;
+					  
+					  
+					  
+					  
+					  
+					  
                   
               }              
           }         
@@ -208,6 +250,38 @@ class UtilizationDashboardFilter extends CFormModel
                                                          $mentorName,
                                                          $countPart);
                       break;
+			 
+			       case DimensionType::Mentee:
+				      $menteeName =   ArrayUtils::getValueOrDefault($data, "MenteeName",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $menteeName,
+                                                         $countPart);
+                      break;
+					  
+				   case DimensionType::DomainExclusive:
+				      $domain =   ArrayUtils::getValueOrDefault($data, "Domain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $domain,
+                                                         $countPart);
+                      break;
+				   case DimensionType::DomainAggregated:
+				      $domainAggregated =  ArrayUtils::getValueOrDefault($data, "Domain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $domainAggregated,
+                                                         $countPart);
+					  break;
+				   case DimensionType::SubDomain:
+				      $subDomain =  ArrayUtils::getValueOrDefault($data, "SubDomain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $subDomain,
+                                                         $countPart);
+					  break;
+				    case DimensionType::Project:
+				      $project =  ArrayUtils::getValueOrDefault($data, "Project",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $project,
+                                                         $countPart);
+					  break;
                   
               }              
           } 
@@ -229,7 +303,7 @@ class UtilizationDashboardFilter extends CFormModel
        $command->from("ticket_events");
        $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
        $command->where("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
-       $command->where("ticket_events.new_value = 'Close'");
+       $command->andWhere("ticket_events.new_value = 'Close'");
                   
       switch ($this->dim2ID)
        {
@@ -255,7 +329,41 @@ class UtilizationDashboardFilter extends CFormModel
                  $command->group('ticket.assign_user_id');
                  $command->join('user', 'user.id = ticket.assign_user_id');
              break;
-          
+		    case DimensionType::Mentee:
+                $command->select(array("COUNT(1) AS EventCount, CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MenteeName")); 
+                 $command->group('ticket.creator_user_id');
+                 $command->join('user', 'user.id = ticket.creator_user_id');			
+		      break;
+			 case DimensionType::DomainExclusive:
+			     $command->select(array("COUNT(1) AS EventCount, domain.name AS Domain")); 
+                 $command->group('ticket.domain_id');
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+				 $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+			  case DimensionType::DomainAggregated:
+			     $command->select(array("COUNT(1) AS EventCount, domain.name AS Domain")); 
+                 $command->group('ticket.domain_id');
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+			  case DimensionType::SubDomain:
+			     $command->select(array("COUNT(1) AS EventCount, subdomain.name AS SubDomain")); 
+                 $command->group('ticket.subdomain_id');
+                 $command->join('subdomain', 'ticket.subdomain_id = subdomain.id');
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+			  case DimensionType::Project:
+			     $command->select(array("COUNT(1) AS EventCount, project.title AS Project")); 
+                 $command->group('ticket.assigned_project_id');
+                 $command->join('project', 'ticket.assigned_project_id = project.id');
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+			  
+			  
            default:
                throw new CException("Invalid dimension");
        }       
@@ -294,9 +402,41 @@ class UtilizationDashboardFilter extends CFormModel
                 `user`.`mname`,
                 `user`.`lname`) AS MentorName")); 
              $command->group('ticket.assign_user_id');
-             $command->join('user', 'user.id = ticket.assign_user_id');
-             
+             $command->join('user', 'user.id = ticket.assign_user_id');             
              break;
+		 case DimensionType::Mentee;
+                $command->select(array("COUNT(1) AS EventCount, CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MenteeName")); 
+                 $command->group('ticket.creator_user_id');
+                 $command->join('user', 'user.id = ticket.creator_user_id');		 
+			  break; 
+		  case DimensionType::DomainExclusive:
+			     $command->select(array("COUNT(1) AS EventCount, domain.name AS Domain")); 
+                 $command->group('ticket.domain_id');
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+				 $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+		  case DimensionType::DomainAggregated:
+			     $command->select(array("COUNT(1) AS EventCount, domain.name AS Domain")); 
+                 $command->group('ticket.domain_id');
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+	       case DimensionType::SubDomain:
+			     $command->select(array("COUNT(1) AS EventCount, subdomain.name AS SubDomain")); 
+                 $command->group('ticket.subdomain_id');
+                 $command->join('subdomain', 'ticket.subdomain_id = subdomain.id');
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+		    case DimensionType::Project:
+			     $command->select(array("COUNT(1) AS EventCount, project.title AS Project")); 
+                 $command->group('ticket.assigned_project_id');
+                 $command->join('project', 'ticket.assigned_project_id = project.id');
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
            default:
                throw new CException("Invalid dimension");
        }
