@@ -8,7 +8,8 @@
     <meta name="language" content="en"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="google-site-verification" content="3x6lVAUscjm7TbgKuOnySVxqX0x9DTxQWmcxV9ljyHQ" />
+    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk">
     <!--[if lt IE 8]>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css"
           media="screen, projection"/>
