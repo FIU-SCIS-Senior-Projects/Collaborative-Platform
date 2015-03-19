@@ -71,6 +71,7 @@
     <img src="https://www.webrtc-experiment.com/images/btn-install-chrome-extension.png" alt="Add to Chrome">
 </button>
 -->
+
 <div style="text-align: center;margin: 0 auto;">
 <?php
 
@@ -195,6 +196,7 @@ if ($user->id == $model->moderator_id) {
         alert("the extension is installed");
     }
 </script>
+
 <!--
     <script>
     //https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture
@@ -220,6 +222,7 @@ if ($user->id == $model->moderator_id) {
     }
 </script>
 -->
+
 
 
 <script>
@@ -327,12 +330,33 @@ if ($user->id == $model->moderator_id) {
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
 
+        !!navigator.webkitGetUserMedia
+        && !!window.chrome
+        && !!chrome.webstore
+        && !!chrome.webstore.install &&
+        chrome.webstore.install(
+            'https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk',
+            successCallback,
+            failureCallback
+        );
+
+
         rmc.removeStream('screen');
         rmc.addStream({
             screen: true,
             oneway: true
         });
     });
+
+    function successCallback() {
+        location.reload();
+    }
+
+    function failureCallback(error) {
+        alert(error);
+    }
+
+
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
         rmc.removeStream('screen');
