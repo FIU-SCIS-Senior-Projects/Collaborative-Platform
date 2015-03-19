@@ -1,3 +1,8 @@
+video{
+    height: 100px;
+    width: auto;
+}
+
 .btn .caret{
     margin-top: 0;
 }
@@ -44,23 +49,13 @@
 	text-align: center;
 }
 
-
-
-/*
-.video-container {
-    height: 200px;
-    min-width: auto;
-    position: relative;
-}
-*/
-
 .userid{
     display: block;
     text-align: center;
     border-bottom: 1px solid #000020;
     padding: 0px 10px 10px 10px;
     width: 90%;
-
+    float: right;
 
 }
 
@@ -68,12 +63,48 @@
 
 }
 
-#video-container{
-
+#chat-container{
+    border-radius: 4px;
 }
 
-#chat-container{
-    background-color: green;
+#chat-feed{
+    border: solid slategray 1px;
+    padding: 10px 15px;
+    background-color: #f2f2f2;
+    height: 250px;
+    overflow-y:auto;
+}
+
+p.msg{
+    font-size:0.94em;
+    color: #000000;
+}
+.msg span{
+    font-weight: bold;
+    color: blue;
+}
+
+
+#chat-container > div{
+    width: 100%;
+    margin: 0px 0px 10px 0px;
+}
+
+#chat-container>textarea{
+    height: 40px;
+    width: 80%;
+ }
+
+#chat-container textarea:hover{
+    border: solid #00438a 1px;
+}
+#chat-btn{
+    height: 40px;
+    width: 18%;
+}
+
+#video-container{
+
 }
 
 #video-container  video, #video-container-md  video {
@@ -81,10 +112,9 @@
     width: 95%;
     margin-bottom: 7px;
     height: auto;
+    float: right;
 
 }
-
-
 
 @media only screen
 and (min-device-width : 320px)
@@ -132,13 +162,13 @@ and (orientation : portrait) {
 and (min-width : 1224px) {
     #video-container  video, #video-container-md  video {
         /*position: absolute; */
-        width: 95%;
-        margin: 0 10px 7px 10px;
+        width: 80%;
+        margin: 0 0 7px 10px;
         height: auto;
 
     }
     .userid{
-        width: 95%;
+        width: 80%;
         margin-left: 10px;
     }
 }
@@ -150,7 +180,7 @@ and (min-width : 1824px) {
         /*position: absolute; */
         width: 65%;
         height: auto;
-        margin: 0 30px 7px 90px;
+        margin: 0 0 7px 90px;
 
     }
 
@@ -183,12 +213,10 @@ and (orientation : portrait) {
     /* STYLES GO HERE */
 }
 
-
 #cotools-panel video{
     width: 100%;
     height: auto;
 }
-
 
 .volume_bar {
   position: absolute;
@@ -199,36 +227,7 @@ and (orientation : portrait) {
   background-color: #12acef;
 }
 
-
-/*
-.animate {
-    transition: all 0.1s;
-    -webkit-transition: all 0.1s;
-}
-*/
-
 button[disabled] {
     background: rgba(216, 205, 205, 0.2);
     border: 1px solid rgb(233, 224, 224);
 }
-
-/*
-.action-button {
-    position: relative;
-    padding: 6px 9px;
-    margin: 0px 10px 10px 0px;
-    float: left;
-    border-radius: 10px;
-    font-size: 15px;
-    color: #FFF;
-    text-decoration: none;
-    background-color: #3498DB;
-    border-bottom: 5px solid #2980B9;
-    text-shadow: 0px -2px #2980B9;
-}
-.action-button:active {
-    transform: translate(0px, 5px);
-    -webkit-transform: translate(0px, 5px);
-    border-bottom: 1px solid;
-}
-*/

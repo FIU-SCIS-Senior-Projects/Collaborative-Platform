@@ -149,8 +149,13 @@ if ($user->id == $model->moderator_id) {
 
             <div id="chat-container" class="col-md-2 col-lg-3">
 
-                <input type=text id="input-text-chat" disabled>
-                <div id="" class="row"></div>
+
+                <div id="chat-feed">
+                    <p class="msg">Welcome to the chat room!</p>
+                </div>
+                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
+                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
+
             </div>
 
 
@@ -205,18 +210,12 @@ if ($user->id == $model->moderator_id) {
 
 
 <script>
-
-
-
-
     // https://github.com/muaz-khan/RTCMultiConnection
     var rmc = new RTCMultiConnection();
 
-    if(!rmc.UA.isChrome){
-        alert("The system has detected an unsupported browser. Please, use Google Chrome for the video conferences.");
-    }
-
-
+//    if(!rmc.UA.isChrome){
+//        alert("The system has detected an unsupported browser. Please, use Google Chrome for the video conferences.");
+//    }
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
         video: true,
@@ -249,7 +248,7 @@ if ($user->id == $model->moderator_id) {
                     // storing room on server
                     roomFirebase.set(rmc.sessionDescription);
                     // if room owner leaves; remove room from the server
-                    roomFirebase.onDisconnect().remove();
+                    //roomFirebase.onDisconnect().remove();
                 }
             });
         } else {
@@ -263,20 +262,34 @@ if ($user->id == $model->moderator_id) {
             // pure "sessionDescription" object is passed over "join" method
             // 2nd parameter is optional which allows you customize how to join the session
             rmc.join(sessionDescription, joinWith);
-            alert("you are joining a room");
-
+            //log("you are joining a room");
         }
-
-        //console.log('room is present?', sessionDescription == null);
     });
 
+/*
     jQuery(window).bind('beforeunload', function(){
-        if(rmc.isInitiator){
-            roomFirebase.remove();
+        rmc.leave();
+    //    if(rmc.isInitiator){
+      //      roomFirebase.remove();
             //need to refresh
-            return 'If the initiator leaves, no more participants may join the meeting.'; }
+          //  return 'If the initiator leaves, no more participants may join the meeting.';
+      //  }
     });
 
+*/
+
+    // if you want to prevent/override/bypass default behaviour
+    rmc.leaveOnPageUnload = false;
+
+    // display a notification box
+    window.addEventListener('beforeunload', function () {
+        return 'Do you want to leave?';
+    }, false);
+
+    // leave here
+    window.addEventListener('unload', function () {
+        rmc.leave();
+    }, false);
 
     rmc.onMediaCaptured = function () {
         $('#share-screen').removeAttr('disabled');
@@ -303,7 +316,7 @@ if ($user->id == $model->moderator_id) {
 
     //chat
     rmc.onopen = function (event) {
-        alert('Text chat has been opened between you and ' + event.userid);
+        //alert('Text chat has been opened between you and ' + event.userid);
         document.getElementById('input-text-chat').disabled = false;
     };
 
@@ -311,7 +324,7 @@ if ($user->id == $model->moderator_id) {
         if (e.keyCode != 13) return; // if it is not Enter-key
         var value = this.value.replace(/^\s+|\s+$/g, '');
         if (!value.length) return; // if empty-spaces
-
+        appendMsg("You", value);
         rmc.send({
             type: 'chat',
             content: value
@@ -319,46 +332,47 @@ if ($user->id == $model->moderator_id) {
         this.value = '';
     };
 
-    //end of chat
-
-
-    $('#disconnect').click(function () {
-        rmc.disconnect();
+    $("#chat-btn").click(function(){
+        var input = document.getElementById('input-text-chat');
+        var value = input.value.replace(/^\s+|\s+$/g, '');
+        if (!value.length) return; // if empty-spaces
+        appendMsg("You", value);
+        rmc.send({
+            type: 'chat',
+            content: value
+        });
+        input.value = '';
     });
 
 
+    //end of chat
+    $('#disconnect').click(function () {
+        rmc.leave();
+    });
+
     //to know the stream type
     rmc.onstream = function (e) {
-
         if (e.type == 'local') {
             // alert("the stream is local");
         }
         if (e.type == 'remote') {
             // alert("the stream is remote");
         }
-
         if (e.isVideo) {
-            //alert("new video");
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g,'');
-
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
-
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen) {
-
             $('#cotools-panel iframe').hide();
             $('#cotools-panel video').remove();
-
-            // $('#cotools-panel').html(e.mediaElement);
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
-            //alert("new screen");
         }
 
     };
@@ -366,13 +380,23 @@ if ($user->id == $model->moderator_id) {
     //receiving a message from
     rmc.onmessage = function (event) {
         if (event.data.type == "chat") {
-            alert('Target user (' + event.userid + ') said: ' + event.data.content);
+            //alert('Target user (' + event.userid + ') said: ' + event.data.content);
+            //$("#chat-feed").append("<p>Hello</p>");
+            appendMsg(event.userid, event.data.content);
         }
         else {
 
             CanvasDesigner.syncData(event.data);
         }
     };
+
+    function appendMsg(user,msg){
+
+        var $cont = $("#chat-feed");
+        $cont[0].scrollTop = $cont[0].scrollHeight;
+        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg +  " </p>");
+    }
+
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function(e) {
@@ -415,27 +439,6 @@ if ($user->id == $model->moderator_id) {
     });
 
 
-    /*
-     Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox) {
-     checkbox.onchange = function() {
-     CanvasDesigner.destroy();
-
-     CanvasDesigner.addSyncListener(function(data) {
-     connection.send(data);
-     });
-
-     var tools = {};
-     Array.prototype.slice.call(document.getElementById('action-controls').querySelectorAll('input[type=checkbox]')).forEach(function(checkbox2) {
-     if(checkbox2.checked) {
-     tools[checkbox2.id] = true;
-     }
-     });
-     CanvasDesigner.setTools(tools);
-     CanvasDesigner.appendTo(document.getElementById('cotools-panel'));
-     };
-     });
-
-     */
 </script>
 
 
