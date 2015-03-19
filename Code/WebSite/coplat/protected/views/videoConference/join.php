@@ -33,10 +33,21 @@
     $('.dropdown').click(function(){
        $(this).toggleClass('open');
     });
-    //$('div.btn-group').click(function(){
-        //$(this).parent().toggleClass('open');
-   //     $(this).child().toggleAttr('aria-expanded', true, false);
-   // });
+    $(document).ready(function(){
+        var link =  $("#select-screen-plugin");
+        if(navigator.userAgent.indexOf("Chrome") != -1){
+            link.attr("href", "https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk");
+        }
+        else if(navigator.userAgent.indexOf("Firefox") != -1 ){
+            link.attr("href", "https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi");
+        }
+        else{
+            alert("The browser you are using is unsupported. Please use Google Chrome");
+        }
+
+    });
+
+
 </script>
 
 
@@ -66,11 +77,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<!--
-<button onclick="" id="install-button" style="padding: 0;background: none;height: 61px;vertical-align: middle;cursor:pointer;">
-    <img src="https://www.webrtc-experiment.com/images/btn-install-chrome-extension.png" alt="Add to Chrome">
-</button>
--->
+
 
 <div style="text-align: center;margin: 0 auto;">
 <?php
@@ -91,15 +98,6 @@ if ($user->id == $model->moderator_id) {
 */
 ?>
 
-<!--
-<button type='button' class='btn btn-primary' id="show-whiteboard"><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</button>
-<button type='button' class='btn btn-primary' id='reset-whiteboard'><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear Whiteboard</button>
-<button type='button' class='btn btn-primary' id='share-screen'><i class="fa fa-desktop"></i>&nbsp;&nbsp;Share Screen</button>
-<button type='button' class='btn btn-primary' id='stop-share-screen'><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</button>
-<button type='button' class='btn btn-primary' id='settings'><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</button>
-<button type='button' class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Disconnect</button>
--->
-
 
     <!-- Single button -->
     <div class="btn-group">
@@ -116,6 +114,7 @@ if ($user->id == $model->moderator_id) {
             <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
+            <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a></li>
             <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
             <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
             <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
@@ -127,21 +126,7 @@ if ($user->id == $model->moderator_id) {
 
 
 
-<!--
-<div id="tool-box" class="list-group">
-    <a href="#" id="init-whiteboard" class="list-group-item"><i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard</a>
-    <a href="#" id="reset-whiteboard" class="list-group-item"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Reset
-        Board</a>
-    <a href="#" id="share-screen" class="list-group-item"><i class="fa fa-desktop"></i>&nbsp;&nbsp;Share
-        Screen</a>
-    <a href="#" id="stop-share-screen" class="list-group-item"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop
-        Sharing</a>
-    <a href="#" class="list-group-item"><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</a>
-    <a href="#" id="disconnect" class="list-group-item"><i
-            class="fa fa-close"></i>&nbsp;&nbsp;Disconnect</a>
-</div>
 
--->
 </div>
 <hr/>
 
@@ -190,12 +175,6 @@ if ($user->id == $model->moderator_id) {
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
 
-
-<script>
-    if (chrome.app.isInstalled) {
-        alert("the extension is installed");
-    }
-</script>
 
 <!--
     <script>
@@ -297,29 +276,8 @@ if ($user->id == $model->moderator_id) {
             //need to refresh
             return 'If the initiator leaves, no more participants may join the meeting.'; }
     });
-/*
-    $( window ).unload(function() {
-        if(rmc.isInitiator){
-            roomFirebase.remove();
-            alert ("The meeting is ending now");
-        }
-        else {
-            return ("You are bing");
-        }
-    });
-*/
-/*
 
-    $('#open-room').click(function () {
-        // http://www.rtcmulticonnection.org/docs/open/
-        rmc.open();
-    });
-    $('#join-room').click(function () {
-        // http://www.rtcmulticonnection.org/docs/connect/
-        rmc.connect();
-    });
 
-*/
     rmc.onMediaCaptured = function () {
         $('#share-screen').removeAttr('disabled');
         $('#open-room').attr('disabled', 'disabled');
@@ -329,33 +287,12 @@ if ($user->id == $model->moderator_id) {
     //screen sharing
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
-
-        !!navigator.webkitGetUserMedia
-        && !!window.chrome
-        && !!chrome.webstore
-        && !!chrome.webstore.install &&
-        chrome.webstore.install(
-            'https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk',
-            successCallback,
-            failureCallback
-        );
-
-
         rmc.removeStream('screen');
         rmc.addStream({
             screen: true,
             oneway: true
         });
     });
-
-    function successCallback() {
-        location.reload();
-    }
-
-    function failureCallback(error) {
-        alert(error);
-    }
-
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
