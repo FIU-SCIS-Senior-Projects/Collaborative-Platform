@@ -9,25 +9,33 @@ class UtilizationDashboardController extends Controller
         
 	public function actionIndex()
 	{ 
+            //closed query
+            //this query return all the closed tickets...
+            //all the filters mus be applied to this section
+           /* $closedTicketsQuery =  Yii::app()->db->createCommand();
+            $closedTicketsQuery->select("ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS ClosedDate");
+            $closedTicketsQuery->from("ticket_events");
+            $closedTicketsQuery->join("ticket","ticket.id = ticket_events.ticket_id" );
+            $closedTicketsQuery->where("ticket.status = 'Close'");
+            $closedTicketsQuery->andWhere("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
+            $closedTicketsQuery->andWhere("ticket_events.new_value = 'Close'");
+            $closedTicketsQuery->group("ticket_events.ticket_id");
             
-           /* $subQueryCommand =  Yii::app()->db->createCommand();
+            $ticketDurationQuery =  Yii::app()->db->createCommand();
+            $ticketDurationQuery->select(array("ticket_events.ticket_id", 
+                                               "MIN(ticket_events.event_recorded_date) AS OpenedDate",
+                                               "closedTicketInfo.ClosedDate",
+                                               "TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), closedTicketInfo.ClosedDate) AS HourLifeSpan" ));  
+            $ticketDurationQuery->from("ticket_events");
+            $ticketDurationQuery->join("(".$closedTicketsQuery->text.") closedTicketInfo ", "closedTicketInfo.ticket_id = ticket_events.ticket_id ");
+            $ticketDurationQuery->Where("ticket_events.event_type_id = ".EventType::Event_New); 
+            $ticketDurationQuery->group("ticket_events.ticket_id");*/
+                    
+                    
+           /* $tes =  $ticketDurationQuery->queryAll();
             
-            $subQueryCommand->select("ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS event_recorded_date");
-            $subQueryCommand->from("ticket_events");
-            $subQueryCommand->join("ticket","ticket.id = ticket_events.ticket_id" );
-            $subQueryCommand->where("ticket.status = 'Close'");
-            $subQueryCommand->andWhere("ticket_events.event_type_id = 2");
-            $subQueryCommand->andWhere("ticket_events.new_value = 'Close'");
-            $subQueryCommand->group("ticket_events.ticket_id");*/
-            //echo $subQueryCommand->text;
-            
-         
-              /* $command =  Yii::app()->db->createCommand();
-               $command->select(array("ticket_events.ticket_id", 
-                                      "ticket_events.event_recorded_date AS ceatedDate",
-	                              "tc.event_recorded_date AS closedDate"));  
-               $command->from("ticket_events");*/
-              /* $command->inne(new Query())*/
+            echo $tes;*/
+        
                
                /*$command->join("(SELECT ticket_events.ticket_id, 
                                     MAX(ticket_events.event_recorded_date) AS event_recorded_date
@@ -55,8 +63,9 @@ class UtilizationDashboardController extends Controller
                 
 		/*$newEvents = $ultilizationFilter->retrieveNewTicketsDashboardData(); 
                 $closedEvents = $ultilizationFilter->retrieveClosedTicketsDashboardData();*/
-            
-            
+              /*$ultilizationFilter1 = new UtilizationDashboardFilter();
+              $ultilizationFilter1->dim2ID = DimensionType::Date;
+              $ultilizationFilter1->retrieveAVGTicketCreatedData();*/
             
             
             
@@ -93,6 +102,20 @@ class UtilizationDashboardController extends Controller
                echo json_encode($data); 
             }  
         }
+        
+      public function actionPullAVGTicketDuration()
+        {
+            if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketsAVGLifeSpamData = $ultilizationFilter->retrieveAVGTicketCreatedDashboardData(); 
+               $data =  array('dashboardData' => $ticketsAVGLifeSpamData);
+               echo json_encode($data); 
+            }  
+        }
        
        
       
@@ -106,7 +129,7 @@ class UtilizationDashboardController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed'),
+                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),

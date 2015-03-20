@@ -153,11 +153,13 @@ $( document ).ready(function()
     
     var enumReportType = {
          TicketsCreated:1,
-         TicketsClosed:2, 
+         TicketsClosed:2,
+         TicketsAVGDuration:3,
          
         properties: {
                 1: {name: "Amount of Tickets Created"},
                 2: {name: "Amount of Tickets Closed"},
+                3: {name: "AVG Ticket Duration"}
         }
          
     };  
@@ -281,8 +283,8 @@ $( document ).ready(function()
         var dim2IdElement = $('#UtilizationDashboardFilter_dim2ID');
         dim2IdElement.html("");
         dim2IdElement.append('<option value="0"> </option>'); 
-        var reportID = parseInt($(this).val());
-		generateTicketsDim2Select(dim2IdElement);       
+       // var reportID = parseInt($(this).val());
+	generateTicketsDim2Select(dim2IdElement);       
         
     });
    
@@ -304,9 +306,8 @@ $( document ).ready(function()
             clearAndHideFilters();            
         }else
         {
-            
-           var reportID = parseInt($(this).val());
-		   showTicketCountChartFilters();                      
+          //var reportID = parseInt($(this).val());
+	 showTicketCountChartFilters();                      
         } 
     });
     
@@ -555,7 +556,10 @@ $( document ).ready(function()
                 break;
                case enumReportType.TicketsClosed:
                    dashboardAction = "PullTicketsClosed";                  
-                break;             
+                break; 
+            case enumReportType.TicketsAVGDuration:
+                 dashboardAction = "PullAVGTicketDuration";  
+                break; 
             }
             
             $('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
@@ -589,10 +593,10 @@ $( document ).ready(function()
            }
            
            
-           if(reportID == enumReportType.TicketsCreated || reportID == enumReportType.TicketsClosed )
-           {
+           //if(reportID == enumReportType.TicketsCreated || reportID == enumReportType.TicketsClosed )
+          // {
                 chartDataTable.addColumn('number');
-           }    
+         //  }    
            chartDataTable.addRows(dashboardData);
            var chartWidth = chartRegionWidth -8;
            var options = {  
