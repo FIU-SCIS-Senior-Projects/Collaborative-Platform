@@ -6253,14 +6253,367 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsCreated
 HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
 ---
-2015/03/21 08:29:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php:483
+2015/03/19 22:56:41 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'coplat.vc_invitation' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `vc_invitation`.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\VCInvitation.php (23)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\VideoConferenceController.php (222)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/19 22:56:41 [error] [exception.CDbException] exception 'CDbException' with message 'The table "vc_invitation" for active record class "VCInvitation" cannot be found in the database.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php:2310
 Stack trace:
-#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(270): CController->missingAction('img')
-#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('img')
-#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
-#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
-#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(VCInvitation))
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\VCInvitation.php(23): CActiveRecord::model('VCInvitation')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\VideoConferenceController.php(222): VCInvitation::model()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): VideoConferenceController->actionIndex()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('videoConference')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/03/19 23:20:35 [error] [php] Undefined variable: test (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php:36)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (36)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/19 23:29:28 [error] [php] Undefined variable: test (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php:39)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (39)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/19 23:46:57 [error] [php] Array to string conversion (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php:37)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (37)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/19 23:53:37 [error] [php] Array to string conversion (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php:37)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (37)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/19 23:53:40 [error] [php] Array to string conversion (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php:37)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (37)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/20 01:14:12 [error] [exception.CException] exception 'CException' with message 'Invalid dimension' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:392
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(67): UtilizationDashboardFilter->retrieveAVGTicketCreatedData()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionIndex()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/20 01:14:14 [error] [exception.CException] exception 'CException' with message 'Invalid dimension' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:392
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(67): UtilizationDashboardFilter->retrieveAVGTicketCreatedData()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionIndex()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/20 01:15:48 [error] [exception.CException] exception 'CException' with message 'Invalid dimension' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:392
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(67): UtilizationDashboardFilter->retrieveAVGTicketCreatedData()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionIndex()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#14 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
+2015/03/20 01:26:44 [error] [php] array_map(): Argument #2 should be an array (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:112)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/20 01:27:30 [error] [php] array_map(): Argument #2 should be an array (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\auth\CAccessControlFilter.php:112)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/20 01:37:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('undefined')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('undefined')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
 #5 {main}
-REQUEST_URI=/coplat/index.php/videoConference/img/modal_close.png
-HTTP_REFERER=http://localhost/coplat/index.php/videoConference/join/60
+REQUEST_URI=/coplat/index.php/utilizationDashboard/undefined
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/20 01:38:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('undefined')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('undefined')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/undefined
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/20 01:41:42 [error] [php] Invalid argument supplied for foreach() (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:307)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTicketDuration
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (307)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (114)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/20 01:42:57 [error] [php] Invalid argument supplied for foreach() (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:307)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTicketDuration
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (307)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (114)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/20 01:43:54 [error] [php] Invalid argument supplied for foreach() (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php:307)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTicketDuration
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (307)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (114)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/20 01:44:15 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_recorded_date' in 'field list'. The SQL statement executed was: SELECT AVG(HourLifeSpan) AS HourLifeSpan, 1 AS Day, 1 AS Month, YEAR(event_recorded_date) AS Year
+FROM (SELECT `ticket_events`.`ticket_id`, MIN(ticket_events.event_recorded_date) AS OpenedDate, `closedTicketInfo`.`ClosedDate`, TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), closedTicketInfo.ClosedDate) AS HourLifeSpan
+FROM `ticket_events`
+JOIN (SELECT ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS ClosedDate
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+WHERE ((ticket.status = 'Close') AND (ticket_events.event_type_id = 2)) AND (ticket_events.new_value = 'Close')
+GROUP BY `ticket_events`.`ticket_id`) closedTicketInfo  ON closedTicketInfo.ticket_id = ticket_events.ticket_id 
+WHERE ticket_events.event_type_id = 1
+GROUP BY `ticket_events`.`ticket_id`) p 
+JOIN `ticket` ON p.ticket_id = ticket.id
+GROUP BY YEAR(OpenedDate).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (475)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (305)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (114)
+2015/03/20 01:44:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_recorded_date' in 'field list'. The SQL statement executed was: SELECT AVG(HourLifeSpan) AS HourLifeSpan, 1 AS Day, 1 AS Month, YEAR(event_recorded_date) AS Year
+FROM (SELECT `ticket_events`.`ticket_id`, MIN(ticket_events.event_recorded_date) AS OpenedDate, `closedTicketInfo`.`ClosedDate`, TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), closedTicketInfo.ClosedDate) AS HourLifeSpan
+FROM `ticket_events`
+JOIN (SELECT ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS ClosedDate
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+WHERE ((ticket.status = 'Close') AND (ticket_events.event_type_id = 2)) AND (ticket_events.new_value = 'Close')
+GROUP BY `ticket_events`.`ticket_id`) closedTicketInfo  ON closedTicketInfo.ticket_id = ticket_events.ticket_id 
+WHERE ticket_events.event_type_id = 1
+GROUP BY `ticket_events`.`ticket_id`) p 
+JOIN `ticket` ON p.ticket_id = ticket.id
+GROUP BY YEAR(OpenedDate)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(475): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(305): UtilizationDashboardFilter->retrieveAVGTicketCreatedData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(114): UtilizationDashboardFilter->retrieveAVGTicketCreatedDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullAVGTicketDuration()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullAVGTicketDu...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTicketDuration
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/20 01:44:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_recorded_date' in 'field list'. The SQL statement executed was: SELECT AVG(HourLifeSpan) AS HourLifeSpan, 1 AS Day, 1 AS Month, YEAR(event_recorded_date) AS Year
+FROM (SELECT `ticket_events`.`ticket_id`, MIN(ticket_events.event_recorded_date) AS OpenedDate, `closedTicketInfo`.`ClosedDate`, TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), closedTicketInfo.ClosedDate) AS HourLifeSpan
+FROM `ticket_events`
+JOIN (SELECT ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS ClosedDate
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+WHERE ((ticket.status = 'Close') AND (ticket_events.event_type_id = 2)) AND (ticket_events.new_value = 'Close')
+GROUP BY `ticket_events`.`ticket_id`) closedTicketInfo  ON closedTicketInfo.ticket_id = ticket_events.ticket_id 
+WHERE ticket_events.event_type_id = 1
+GROUP BY `ticket_events`.`ticket_id`) p 
+JOIN `ticket` ON p.ticket_id = ticket.id
+GROUP BY YEAR(OpenedDate).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (475)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (305)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (114)
+2015/03/20 01:44:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_recorded_date' in 'field list'. The SQL statement executed was: SELECT AVG(HourLifeSpan) AS HourLifeSpan, 1 AS Day, 1 AS Month, YEAR(event_recorded_date) AS Year
+FROM (SELECT `ticket_events`.`ticket_id`, MIN(ticket_events.event_recorded_date) AS OpenedDate, `closedTicketInfo`.`ClosedDate`, TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), closedTicketInfo.ClosedDate) AS HourLifeSpan
+FROM `ticket_events`
+JOIN (SELECT ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS ClosedDate
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+WHERE ((ticket.status = 'Close') AND (ticket_events.event_type_id = 2)) AND (ticket_events.new_value = 'Close')
+GROUP BY `ticket_events`.`ticket_id`) closedTicketInfo  ON closedTicketInfo.ticket_id = ticket_events.ticket_id 
+WHERE ticket_events.event_type_id = 1
+GROUP BY `ticket_events`.`ticket_id`) p 
+JOIN `ticket` ON p.ticket_id = ticket.id
+GROUP BY YEAR(OpenedDate)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(475): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(305): UtilizationDashboardFilter->retrieveAVGTicketCreatedData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(114): UtilizationDashboardFilter->retrieveAVGTicketCreatedDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullAVGTicketDuration()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullAVGTicketDu...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTicketDuration
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
 ---
