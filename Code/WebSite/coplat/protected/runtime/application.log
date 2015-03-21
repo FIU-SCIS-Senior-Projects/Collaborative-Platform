@@ -6253,3 +6253,14 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsCreated
 HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
 ---
+2015/03/21 08:29:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php:483
+Stack trace:
+#0 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CController.php(270): CController->missingAction('img')
+#1 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/web/CWebApplication.php(141): CWebApplication->runController('videoConference...')
+#3 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Library/WebServer/Documents/coplat/Code/WebSite/coplat/index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/videoConference/img/modal_close.png
+HTTP_REFERER=http://localhost/coplat/index.php/videoConference/join/60
+---

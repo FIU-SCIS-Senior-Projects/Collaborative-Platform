@@ -171,6 +171,45 @@ class VideoConferenceController extends Controller
         ));
     }
 
+    public function actionInvite(){
+        $invitationError = "";
+        $inviteeEmails = $_GET['invitees']; // Returns an array
+        foreach ($inviteeEmails as $email) {
+            $invitee = User::model()->findByAttributes(array('email' => $email));
+            if ($invitee == null) {
+                $invitationError .= $email . " does not appear in our records <br>";
+                continue;
+            }
+            //if($invitee->id == $moderator->id){
+            //    continue;
+            //}
+            $vc_id = $_POST['meeting-id'];
+            $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc_id, 'invitee_id' => $invitee->id));
+            if($invitation == null){
+                $invitation = new VCInvitation();
+                $invitation->invitee_id = $invitee->id;
+                $invitation->videoconference_id = $vc_id;
+                $invitation->status = "Maybe";
+                if (!$invitation->save()) {                                         //an error occurred
+                    $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
+                } else {
+                    $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                    $meeting = VideoConference::model()->findByAttributes(array("id" => $vc_id));
+                    VCInvitation::sendInvitationEmail($meeting->id, $meeting->moderator_id, $inviteefullName, $email);;
+                }
+            }
+
+
+
+        }
+        /*
+        if($invitationError != ""){
+            Yii::app()->user->setFlash('invitation-error', $invitationError);
+        }
+        $this->redirect(array('view', 'id' => $model->id));
+        */
+    }
+
 
     /**
      * Updates a particular model.

@@ -1,9 +1,17 @@
-video{
+/*
+    Quick Fixes and Previous CSS Overrides
+*/
+
+.add_field_button{
+    margin-bottom: 10px;
+}
+
+video {
     height: 100px;
     width: auto;
 }
 
-.btn .caret{
+.btn .caret {
     margin-top: 0;
 }
 
@@ -16,40 +24,204 @@ video{
     background-color: lightgrey;
 }
 
-#tool-box a.list-group-item{
-    color:#18536b;
+/*
+
+Modal
+http://leanmodal.finelysliced.com.au/#
+
+*/
+#lean_overlay {
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    display: none;
+}
+
+#invite {
+    display: none;
+    position: fixed;
+    opacity: 1;
+    z-index: 11000;
+    left: 50%;
+    margin-left: -202px;
+    top: 200px;
+    width: 500px;
+    padding-bottom: 2px;
+    background: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
+}
+
+#invite-header {
+    background: url(/coplat/images/hd-bg.png);
+    padding: 18px 18px 14px 18px;
+    border-bottom: 1px solid #CCC;
+    border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+#invite .btn{
+    float: right;
+    margin: 0 57px 20px 0px;
+}
+
+.invitee_emails input{
+    width: 60%;
+    margin-top: 6px;
+    height: 25px;
+}
+
+.invitee_emails label{
+    padding-top: 0;
+}
+
+.invitee_emails{
+    margin-top: 4px;
+}
+/*
+
+#invite-header h3 {
+    color: #444;
+    font-size: 1.9em;
+    font-weight: 700;
+    margin-bottom: 3px;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#invite-header small {
+    color: #444;
+    font-size: 1.3em;
+    margin: 0;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+    text-shadow: none;
+}
+*/
+.modal_close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: url(/coplat/images/modal_close.png);
+    z-index: 2;
+}
+
+
+
+
+/*
+
+Tool box
+
+*/
+
+#tool-box a.list-group-item {
+    color: #18536b;
     margin-bottom: 5px;
     border-color: #1b89a3;
     border-radius: 4px;
 }
 
-#tool-box a.list-group-item:hover{
+#tool-box a.list-group-item:hover {
     background-color: #19536c;
     color: white;
     border-color: #1b89a3;
 }
 
-#tool-box{
+#tool-box {
     text-align: center;
 }
 
-#cotools-panel{
+/*
+    Collaborative Tools
+*/
+
+#cotools-panel {
     margin-bottom: 20px;
     height: 600px;
     width: 100%;
     border: 2px solid #18536b;
 }
 
-.tab-filler{
-	background-color: gray;
-	color: white;
-	padding: 30px;
-	min-height: 400px;
-	min-width: 100%;
-	text-align: center;
+#cotools-container {
+
 }
 
-.userid{
+/*
+    Chat Room
+*/
+
+#chat-container {
+    border-radius: 4px;
+}
+
+#chat-feed {
+    border: solid slategray 1px;
+    padding: 10px 15px;
+    background-color: #f2f2f2;
+    height: 250px;
+    overflow-y: auto;
+}
+
+p.msg {
+    font-size: 0.94em;
+    color: #000000;
+}
+
+.msg span {
+    font-weight: bold;
+    color: blue;
+}
+
+#chat-container > div {
+    width: 100%;
+    margin: 0px 0px 10px 0px;
+}
+
+#chat-container > textarea {
+    height: 40px;
+    width: 80%;
+}
+
+#chat-container textarea:hover {
+    border: solid #00438a 1px;
+}
+
+#chat-btn {
+    height: 40px;
+    width: 18%;
+}
+
+/*
+    video container
+*/
+
+#video-container {
+
+}
+
+#video-container video, #video-container-md video {
+    /*position: absolute; */
+    width: 95%;
+    margin-bottom: 7px;
+    height: auto;
+    float: right;
+
+}
+
+.userid {
     display: block;
     text-align: center;
     border-bottom: 1px solid #000020;
@@ -59,115 +231,59 @@ video{
 
 }
 
-#cotools-container{
-
-}
-
-#chat-container{
-    border-radius: 4px;
-}
-
-#chat-feed{
-    border: solid slategray 1px;
-    padding: 10px 15px;
-    background-color: #f2f2f2;
-    height: 250px;
-    overflow-y:auto;
-}
-
-p.msg{
-    font-size:0.94em;
-    color: #000000;
-}
-.msg span{
-    font-weight: bold;
-    color: blue;
-}
-
-
-#chat-container > div{
-    width: 100%;
-    margin: 0px 0px 10px 0px;
-}
-
-#chat-container>textarea{
-    height: 40px;
-    width: 80%;
- }
-
-#chat-container textarea:hover{
-    border: solid #00438a 1px;
-}
-#chat-btn{
-    height: 40px;
-    width: 18%;
-}
-
-#video-container{
-
-}
-
-#video-container  video, #video-container-md  video {
-  /*position: absolute; */
-    width: 95%;
-    margin-bottom: 7px;
-    height: auto;
-    float: right;
-
-}
-
 @media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
+and (min-device-width: 320px)
+and (max-device-width: 480px) {
     /* STYLES GO HERE */
 }
 
 /* Smartphones (landscape) ----------- */
 @media only screen
-and (min-width : 321px) {
+and (min-width: 321px) {
     /* STYLES GO HERE */
 }
 
 /* Smartphones (portrait) ----------- */
 @media only screen
-and (max-width : 320px) {
+and (max-width: 320px) {
     /* STYLES GO HERE */
 }
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px) {
+and (min-device-width: 768px)
+and (max-device-width: 1024px) {
     /* STYLES GO HERE */
 }
 
 /* iPads (landscape) ----------- */
 @media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape) {
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: landscape) {
     /* STYLES GO HERE */
 }
 
 /* iPads (portrait) ----------- */
 @media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : portrait) {
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: portrait) {
     /* STYLES GO HERE */
 }
 
 /* Desktops and laptops ----------- */
 @media only screen
-and (min-width : 1224px) {
-    #video-container  video, #video-container-md  video {
+and (min-width: 1224px) {
+    #video-container video, #video-container-md video {
         /*position: absolute; */
         width: 80%;
         margin: 0 0 7px 10px;
         height: auto;
 
     }
-    .userid{
+
+    .userid {
         width: 80%;
         margin-left: 10px;
     }
@@ -175,8 +291,8 @@ and (min-width : 1224px) {
 
 /* Large screens ----------- */
 @media only screen
-and (min-width : 1824px) {
-    #video-container  video, #video-container-md  video {
+and (min-width: 1824px) {
+    #video-container video, #video-container-md video {
         /*position: absolute; */
         width: 65%;
         height: auto;
@@ -184,7 +300,7 @@ and (min-width : 1824px) {
 
     }
 
-    .userid{
+    .userid {
         width: 65%;
         margin-left: 90px;
     }
@@ -192,39 +308,39 @@ and (min-width : 1824px) {
 
 /* iPhone 5 (portrait &amp; landscape)----------- */
 @media only screen
-and (min-device-width : 320px)
-and (max-device-width : 568px) {
+and (min-device-width: 320px)
+and (max-device-width: 568px) {
     /* STYLES GO HERE */
 }
 
 /* iPhone 5 (landscape)----------- */
 @media only screen
-and (min-device-width : 320px)
-and (max-device-width : 568px)
-and (orientation : landscape) {
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (orientation: landscape) {
     /* STYLES GO HERE */
 }
 
 /* iPhone 5 (portrait)----------- */
 @media only screen
-and (min-device-width : 320px)
-and (max-device-width : 568px)
-and (orientation : portrait) {
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (orientation: portrait) {
     /* STYLES GO HERE */
 }
 
-#cotools-panel video{
+#cotools-panel video {
     width: 100%;
     height: auto;
 }
 
 .volume_bar {
-  position: absolute;
-  width: 5px;
-  height: 0px;
-  right: 0px;
-  bottom: 0px;
-  background-color: #12acef;
+    position: absolute;
+    width: 5px;
+    height: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #12acef;
 }
 
 button[disabled] {

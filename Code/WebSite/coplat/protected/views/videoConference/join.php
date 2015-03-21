@@ -12,8 +12,8 @@
 ?>
 <script>
     //https://gist.github.com/mathiasbynens/298591
-    $.fn.toggleAttr = function(attr, attr1, attr2) {
-        return this.each(function() {
+    $.fn.toggleAttr = function (attr, attr1, attr2) {
+        return this.each(function () {
             var self = $(this);
             if (self.attr(attr) == attr1)
                 self.attr(attr, attr2);
@@ -21,6 +21,25 @@
                 self.attr(attr, attr1);
         });
     };
+</script>
+<script>
+    function ajaxGeneric(action, method, params, response_target) {
+        var infoBox = $(response_target);
+        var postAction = "";
+        console.log(params);
+        $.ajax({
+            type : method,
+            url : action,
+            data : params,
+            success : function(response) {
+                postAction = response.action;
+            }
+        }).done(function() {
+
+        }).fail(function() {
+
+        });
+    }
 </script>
 
 
@@ -30,18 +49,18 @@
     $('.span9').removeClass('span9');
     $('#page').removeClass('container');
     $('.span3').removeClass('span3');
-    $('.dropdown').click(function(){
-       $(this).toggleClass('open');
+    $('.dropdown').click(function () {
+        $(this).toggleClass('open');
     });
-    $(document).ready(function(){
-        var link =  $("#select-screen-plugin");
-        if(navigator.userAgent.indexOf("Chrome") != -1){
+    $(document).ready(function () {
+        var link = $("#select-screen-plugin");
+        if (navigator.userAgent.indexOf("Chrome") != -1) {
             link.attr("href", "https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk");
         }
-        else if(navigator.userAgent.indexOf("Firefox") != -1 ){
+        else if (navigator.userAgent.indexOf("Firefox") != -1) {
             link.attr("href", "https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi");
         }
-        else{
+        else {
             alert("The browser you are using is unsupported. Please use Google Chrome");
         }
 
@@ -51,17 +70,16 @@
 </script>
 
 
+
+
 <div class="container">
-<ol class="breadcrumb">
-    <li><a href="/coplat/index.php">Home</a></li>
-    <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
-    <li><a href="/coplat/index.php/videoConference/<?php echo $model->id; ?>"><?php echo $model->id; ?></a></li>
-    <li class="active">Join</li>
-</ol>
+    <ol class="breadcrumb">
+        <li><a href="/coplat/index.php">Home</a></li>
+        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
+        <li><a href="/coplat/index.php/videoConference/<?php echo $model->id; ?>"><?php echo $model->id; ?></a></li>
+        <li class="active">Join</li>
+    </ol>
 </div>
-
-
-
 
 
 <!-- Bootstrap -->
@@ -78,98 +96,135 @@
 <![endif]-->
 
 
-
 <div style="text-align: center;margin: 0 auto;">
-<?php
+    <?php
 
-$user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+    $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
 
-/*
-if ($user->id == $model->moderator_id) {
-    echo
-    " <!-- The meeting initiator -->
-    <button type='button' class='btn btn-success' id='open-room'><i class='fa fa-key'></i>&nbsp;&nbsp;Open Room</button> ";
-} else {
-    echo
-    "<!-- The meeting participants join-->
-    <button type='button' class='btn btn-success' id='join-room'><i class='fa fa-users'></i>&nbsp;&nbsp;Join Room</button>
-    ";
-}
-*/
-?>
+    /*
+    if ($user->id == $model->moderator_id) {
+        echo
+        " <!-- The meeting initiator -->
+        <button type='button' class='btn btn-success' id='open-room'><i class='fa fa-key'></i>&nbsp;&nbsp;Open Room</button> ";
+    } else {
+        echo
+        "<!-- The meeting participants join-->
+        <button type='button' class='btn btn-success' id='join-room'><i class='fa fa-users'></i>&nbsp;&nbsp;Join Room</button>
+        ";
+    }
+    */
+    ?>
 
 
     <!-- Single button -->
     <div class="btn-group">
-        <button type="button" title="Whiteboard actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <button type="button" title="Whiteboard actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                aria-expanded="false">
             <i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li><a id='show-whiteboard' title="Show the whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show</a></li>
-            <li><a id='reset-whiteboard' title="Clear the whiteboard" href="#"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear</a></li>
+            <li><a id='show-whiteboard' title="Show the whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show</a>
+            </li>
+            <li><a id='reset-whiteboard' title="Clear the whiteboard" href="#"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear</a>
+            </li>
         </ul>
     </div>
     <div class="btn-group">
-        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown" aria-expanded="false">
             <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a></li>
+            <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
+            </li>
             <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
             <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
             <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
         </ul>
     </div>
-    <button type='button' title="Settings" class='btn btn-primary' id='settings'><i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings</button>
-    <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave</button>
-
-
-
+    <div class="btn-group">
+        <button type="button" title="Application settings" class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a id='invite-user' rel="leanModal" name="invite" title="Invite people to the meeting" href="#invite" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;Invite
+                    People</a></li>
+        </ul>
+    </div>
+    <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
+    </button>
 
 
 </div>
 <hr/>
 
 
-
 <div class="container-fluid">
 
-        <div class="row">
 
-            <div id="video-container" style="" class="col-md-2 col-lg-3">
+    <div class="row">
 
-            </div>
-            <div id="cotools-container" class="col-md-8 col-lg-6">
-                <div id="cotools-panel">
-
-                </div>
-
-            </div>
-
-
-            <div id="chat-container" class="col-md-2 col-lg-3">
-
-
-                <div id="chat-feed">
-                    <p class="msg">Welcome to the chat room!</p>
-                </div>
-                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
-                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
-
-            </div>
-
+        <div id="video-container" style="" class="col-md-2 col-lg-3">
 
         </div>
+        <div id="cotools-container" class="col-md-8 col-lg-6">
+            <div id="cotools-panel">
+
+            </div>
+
+        </div>
+
+
+        <div id="chat-container" class="col-md-2 col-lg-3">
+
+
+            <div id="chat-feed">
+                <p class="msg">Welcome to the chat room!</p>
+            </div>
+            <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
+            <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
+
+        </div>
+
+
+    </div>
     </section>
     <!-- end of row -->
 </div>
 
+<div id="invite">
+    <div id="invite-ct">
+        <div id="invite-header">
+            <h3>Invite People</h3>
+            <small>Invite more people to the meeting</small>
+            <a class="modal_close" href="#"></a>
+        </div id="message_box">
+        <div>
+
+        </div>
+        <form id="invitation-form" class="form-horizontal" method="get" action="/coplat/videoConference/invite">
+            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>">
+            <div class="invitee_emails">
+                <div class="form-group">
+                        <label class="control-label col-md-2" for="invitee-1">Email 1</label>
+                        <div class="col-md-8">
+                            <input placeholder="Invitee email" class="form-control" id="invitee-1" type="email" name="invitees[]">
+                            <a href="#" class="add_field_button">&nbsp;&nbsp;<i class="fa fa-plus"></i></a>
+                        </div>
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">OK</button>
+        </form>
+    </div>
+</div>
 
 <!--<div id="video-container"></div>-->
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
 <!-- Remote
@@ -179,33 +234,8 @@ if ($user->id == $model->moderator_id) {
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/RTCMultiConnection.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.leanModal.min.js"></script>
 
-
-<!--
-    <script>
-    //https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture
-    //needs special tag on head
-    $('#install-button').click(function() {
-        !!navigator.webkitGetUserMedia
-        && !!window.chrome
-        && !!chrome.webstore
-        && !!chrome.webstore.install &&
-        chrome.webstore.install(
-            'https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk',
-            successCallback,
-            failureCallback
-        );
-    });
-
-    function successCallback() {
-        location.reload();
-    }
-
-    function failureCallback(error) {
-        alert(error);
-    }
-</script>
--->
 
 
 
@@ -213,9 +243,9 @@ if ($user->id == $model->moderator_id) {
     // https://github.com/muaz-khan/RTCMultiConnection
     var rmc = new RTCMultiConnection();
 
-//    if(!rmc.UA.isChrome){
-//        alert("The system has detected an unsupported browser. Please, use Google Chrome for the video conferences.");
-//    }
+    //    if(!rmc.UA.isChrome){
+    //        alert("The system has detected an unsupported browser. Please, use Google Chrome for the video conferences.");
+    //    }
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
         video: true,
@@ -223,15 +253,15 @@ if ($user->id == $model->moderator_id) {
         data: true
     };
     /*
-        Alternate Firebase URLs
-        webrtc-signaling.firebaseio.com
-        signaling.firebaseio.com
-        rtcweb.firebaseio.com
-        webrtc.firebaseio.com
-        webrtc-experiment.firebaseio.com
-        muazkh.firebaseio.com
-        muazkhan.firebaseio.com
-    */
+     Alternate Firebase URLs
+     webrtc-signaling.firebaseio.com
+     signaling.firebaseio.com
+     rtcweb.firebaseio.com
+     webrtc.firebaseio.com
+     webrtc-experiment.firebaseio.com
+     muazkh.firebaseio.com
+     muazkhan.firebaseio.com
+     */
     var firebaseURL = 'https://webrtc-signaling.firebaseio.com/';
     var roomFirebase = new Firebase(firebaseURL + rmc.channel + '-session');
     //alert(firebaseURL + rmc.channel + '-session');
@@ -244,7 +274,7 @@ if ($user->id == $model->moderator_id) {
                 sessionid: rmc.sessionid,
                 captureUserMediaOnDemand: false,
                 dontTransmit: true,
-                onMediaCaptured: function() {
+                onMediaCaptured: function () {
                     // storing room on server
                     roomFirebase.set(rmc.sessionDescription);
                     // if room owner leaves; remove room from the server
@@ -266,17 +296,7 @@ if ($user->id == $model->moderator_id) {
         }
     });
 
-/*
-    jQuery(window).bind('beforeunload', function(){
-        rmc.leave();
-    //    if(rmc.isInitiator){
-      //      roomFirebase.remove();
-            //need to refresh
-          //  return 'If the initiator leaves, no more participants may join the meeting.';
-      //  }
-    });
 
-*/
 
     // if you want to prevent/override/bypass default behaviour
     rmc.leaveOnPageUnload = false;
@@ -332,7 +352,7 @@ if ($user->id == $model->moderator_id) {
         this.value = '';
     };
 
-    $("#chat-btn").click(function(){
+    $("#chat-btn").click(function () {
         var input = document.getElementById('input-text-chat');
         var value = input.value.replace(/^\s+|\s+$/g, '');
         if (!value.length) return; // if empty-spaces
@@ -362,7 +382,7 @@ if ($user->id == $model->moderator_id) {
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
-            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g,'');
+            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
         }
@@ -390,17 +410,17 @@ if ($user->id == $model->moderator_id) {
         }
     };
 
-    function appendMsg(user,msg){
+    function appendMsg(user, msg) {
 
         var $cont = $("#chat-feed");
         $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg +  " </p>");
+        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
     }
 
 
     //removes the div containing the userid of the user who is leaving
-    rmc.onleave = function(e) {
-        $('#'+"uibox-" + e.userid.replace(/ |\(|\)/g,'')).remove();
+    rmc.onleave = function (e) {
+        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
     };
 
 
@@ -449,11 +469,50 @@ if ($user->id == $model->moderator_id) {
     });
 
     $('.dropdown-toggle').dropdown();
+
+    $(function () {
+        $('a[rel*=leanModal]').leanModal({top: 200, closeButton: ".modal_close"});
+    });
+
+
+    $(document).ready(function() {
+        var max_fields      = 10; //maximum input boxes allowed
+        var wrapper         = $(".invitee_emails"); //Fields wrapper
+        var add_button      = $(".add_field_button"); //Add button ID
+
+        var x = 1; //initlal text box count
+        $(add_button).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x < max_fields){ //max input box allowed
+                x++; //text box increment
+                $(wrapper).append(
+                    '<div class="form-group">' +
+
+                            '<label class="control-label col-md-2" for="invitee-'+x+'">Email ' + x + '</label>' +
+                            ' <div class="col-md-8">'+
+                            '<input placeholder="" type="email" class="form-control" id="invitee-' + x + '" name="invitees[]"/>' +
+                            '<a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a>' +
+                            '</div>' +
+                    '</div>'); //add input box
+            }
+        });
+
+        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+            e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
+        });
+    });
 </script>
 
-
-
-
-
-
+<script>
+    $(document).ready(function() {
+        $('#invitation-form').submit(function(event) {
+            var form = $(this);
+            var method = form.attr('method');
+            var action = form.attr('action');
+            var data = form.serialize();
+            ajaxGeneric(action, method, data, "#message_box");
+            event.preventDefault(); // Prevent the form from submitting via the browser.
+        });
+    });
+</script>
 
