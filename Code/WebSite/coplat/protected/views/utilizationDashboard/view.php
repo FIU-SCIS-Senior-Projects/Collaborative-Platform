@@ -155,11 +155,13 @@ $( document ).ready(function()
          TicketsCreated:1,
          TicketsClosed:2,
          TicketsAVGDuration:3,
+		 TicketsAVGTimeMentorAnswer:4,
          
         properties: {
-                1: {name: "Amount of Tickets Created"},
-                2: {name: "Amount of Tickets Closed"},
-                3: {name: "AVG Ticket Duration"}
+                1: {name: "Amount of Tickets Created", unit:""},
+                2: {name: "Amount of Tickets Closed", unit:""},
+                3: {name: "AVG Ticket Duration", unit:" (Hours)"},
+				4: {name: "AVG Time Mentor to answer", unit:" (Hours)"}
         }
          
     };  
@@ -553,13 +555,18 @@ $( document ).ready(function()
            {              
                case enumReportType.TicketsCreated:
                    dashboardAction = "PullTicketsCreated";
-                break;
+                   break;
                case enumReportType.TicketsClosed:
                    dashboardAction = "PullTicketsClosed";                  
-                break; 
-            case enumReportType.TicketsAVGDuration:
-                 dashboardAction = "PullAVGTicketDuration";  
-                break; 
+                   break; 
+               case enumReportType.TicketsAVGDuration:
+                   dashboardAction = "PullAVGTicketDuration";  
+                   break; 
+             	case enumReportType.TicketsAVGTimeMentorAnswer:
+                   dashboardAction = "PullAVGTimeMentorAnswer";  
+                   break; 				
+				
+		   
             }
             
             $('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
@@ -610,7 +617,7 @@ $( document ).ready(function()
                           format: DimensionType.properties[dim2Id].format,
                         },
                         vAxis: {
-                          title: enumReportType.properties[reportID].name
+                          title: enumReportType.properties[reportID].name +  enumReportType.properties[reportID].unit 
                         }
             };
             

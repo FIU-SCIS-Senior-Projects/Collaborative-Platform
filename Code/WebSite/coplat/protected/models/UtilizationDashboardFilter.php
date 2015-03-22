@@ -72,6 +72,7 @@ class ReportType
     const TicketsCreated =1;
     const TicketsClosed =2;
     const TicketsAVGDuration = 3;
+	const TicketsAVGTimeMentorAnswer = 4;
         
     public static function getReportTypeDescription($reportType)
     {
@@ -87,6 +88,10 @@ class ReportType
            case ReportType::TicketsAVGDuration:
                    $res = "AVG Ticket Duration"; 
                break; 
+			   
+		   case ReportType::TicketsAVGTimeMentorAnswer:
+		           $res = "AVG Time Mentor to answer"; 
+		       break;
            default:
                throw new CException("Invalid report type");
        }       
@@ -100,7 +105,8 @@ class ReportType
         return  array( ReportType::None => " ",
                        ReportType::TicketsCreated  =>ReportType::getReportTypeDescription(ReportType::TicketsCreated),
                        ReportType::TicketsClosed =>ReportType::getReportTypeDescription( ReportType::TicketsClosed),
-                       ReportType::TicketsAVGDuration =>ReportType::getReportTypeDescription( ReportType::TicketsAVGDuration)     );
+                       ReportType::TicketsAVGDuration =>ReportType::getReportTypeDescription( ReportType::TicketsAVGDuration),
+                       ReportType::TicketsAVGTimeMentorAnswer => ReportType::getReportTypeDescription(ReportType::TicketsAVGTimeMentorAnswer));
         
     }
 }
@@ -148,6 +154,7 @@ class UtilizationDashboardFilter extends CFormModel
                         'mentee_id'=> 'Mentee');
     }
     
+	///////////////////////////////////Data formatting//////////////////////////////////////////////////
     public function retrieveTicketsCreatedDashboardData()
     {
       //retrieve tha data
@@ -372,7 +379,80 @@ class UtilizationDashboardFilter extends CFormModel
         
     }
 
-    public function retrieveAVGTicketCreatedData()
+	public function retrieveAVGTimeMentorAnswerDashboardData()
+	{
+	
+	  $ticketsAVGTimeMentorAnswerData =  $this->retrieveAVGTimeMentorAnswerData();
+      $chartData = "";
+      foreach ($ticketsAVGTimeMentorAnswerData as $data)
+      {
+          $countPart =  ArrayUtils::getValueOrDefault($data, "HourAnswered",0);
+          
+          if  ( DimensionType::isTimeDimension($this->dim2ID))
+          {
+           $currentReadingYear =  ArrayUtils::getValueOrDefault($data, "Year",1);
+           $currentReadingMonth = ArrayUtils::getValueOrDefault($data, "Month", 1);
+           $currentReadingDay =   ArrayUtils::getValueOrDefault($data, "Day" ,1); 
+           $chartData = $chartData.sprintf('[new Date(%s, %s, %s), %s],',
+                                               $currentReadingYear,
+                                               $currentReadingMonth - 1,
+                                               $currentReadingDay,
+                                               $countPart);              
+          }else
+          {
+              switch ($this->dim2ID)
+              {
+                  case DimensionType::TicketAssignedMentor:
+                      $mentorName =   ArrayUtils::getValueOrDefault($data, "MentorName",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $mentorName,
+                                                         $countPart);
+                      break;
+			 
+			       case DimensionType::Mentee:
+				      $menteeName =   ArrayUtils::getValueOrDefault($data, "MenteeName",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $menteeName,
+                                                         $countPart);
+                      break;
+					  
+				   case DimensionType::DomainExclusive:
+				      $domain =   ArrayUtils::getValueOrDefault($data, "Domain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $domain,
+                                                         $countPart);
+                      break;
+				   case DimensionType::DomainAggregated:
+				      $domainAggregated =  ArrayUtils::getValueOrDefault($data, "Domain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $domainAggregated,
+                                                         $countPart);
+					  break;
+				   case DimensionType::SubDomain:
+				      $subDomain =  ArrayUtils::getValueOrDefault($data, "SubDomain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $subDomain,
+                                                         $countPart);
+					  break;
+				    case DimensionType::Project:
+				      $project =  ArrayUtils::getValueOrDefault($data, "Project",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $project,
+                                                         $countPart);
+					  break;
+                  
+              }              
+          } 
+
+       }
+       
+       //format the data
+       $chartFormatedData = "[".$chartData."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
+       return  $chartFormatedData; 
+     }
+	
+	////////////////////////////////////Data retrieval////////////////////////////////////////////////
+    private function retrieveAVGTicketCreatedData()
     {
         //closed query
         //this query return all the closed tickets...
@@ -475,7 +555,108 @@ class UtilizationDashboardFilter extends CFormModel
         return $command->queryAll(); 
         
     }
+	
+	private function retrieveAVGTimeMentorAnswerData()
+    {
+      
+        //all the filters mus be applied to this section
+        $answeredTicketsQuery =  Yii::app()->db->createCommand();
+        $answeredTicketsQuery->select("ticket_events.ticket_id, MIN(ticket_events.event_recorded_date) AS FirstAnswered");
+        $answeredTicketsQuery->from("ticket_events");
+        $answeredTicketsQuery->join("ticket","ticket.id = ticket_events.ticket_id" );
+        $answeredTicketsQuery->andWhere("ticket_events.event_type_id = ".EventType::Event_Commented_By_Mentor);
+        $answeredTicketsQuery->group("ticket_events.ticket_id");
+        
+        //at this point put all the filters so the tickets can be reduced according to the filter and for query optimization
+        $this->prepareAllFiltersCommand($answeredTicketsQuery);
+        
+        
 
+        $ticketDurationQuery =  Yii::app()->db->createCommand();
+        $ticketDurationQuery->select(array("ticket_events.ticket_id", 
+                                           "MIN(ticket_events.event_recorded_date) AS OpenedDate",
+                                           "answerdTicketInfo.FirstAnswered",
+                                           "TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), answerdTicketInfo.FirstAnswered) AS HourAnswered" ));  
+        $ticketDurationQuery->from("ticket_events");
+        $ticketDurationQuery->join("(".$answeredTicketsQuery->text.") answerdTicketInfo ", "answerdTicketInfo.ticket_id = ticket_events.ticket_id ");
+        $ticketDurationQuery->Where("ticket_events.event_type_id = ".EventType::Event_New); 
+        $ticketDurationQuery->group("ticket_events.ticket_id");
+        
+        $command =  Yii::app()->db->createCommand();   
+        
+        $command->from("(".$ticketDurationQuery->text.") p ");
+        $command->join("ticket", "p.ticket_id = ticket.id");
+        
+        
+        switch ($this->dim2ID)
+        {
+           case DimensionType::Date:
+               $command->select(array("AVG(HourAnswered) AS HourAnswered, DAY(OpenedDate) AS Day, MONTH(OpenedDate) AS Month, YEAR(OpenedDate)AS Year"));  
+               $command->group('DATE(OpenedDate)');
+           
+               break;            
+           case DimensionType::MonthOfTheYear:
+               $command->select(array("AVG(HourAnswered) AS HourAnswered, 1 AS Day ,MONTH(OpenedDate) AS Month, YEAR(OpenedDate) AS Year")); 
+               $command->group('YEAR(OpenedDate), MONTH(OpenedDate)');
+             
+               break;           
+           case DimensionType::Year:
+               $command->select(array("AVG(HourAnswered) AS HourAnswered, 1 AS Day, 1 AS Month, YEAR(OpenedDate) AS Year")); 
+               $command->group('YEAR(OpenedDate)');
+              break;
+           case DimensionType::TicketAssignedMentor:
+                 $command->select(array("AVG(HourAnswered) AS HourAnswered, CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MentorName")); 
+                 $command->group('ticket.assign_user_id');
+                 $command->join('user', 'user.id = ticket.assign_user_id');
+             break;
+		    case DimensionType::Mentee:
+                     $command->select(array("AVG(HourAnswered) AS HourAnswered, CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MenteeName")); 
+                    $command->group('ticket.creator_user_id');
+                    $command->join('user', 'user.id = ticket.creator_user_id');			
+		      break;
+		 case DimensionType::DomainExclusive:
+			     $command->select(array("AVG(HourAnswered) AS HourAnswered, domain.name AS Domain")); 
+                            $command->group('ticket.domain_id');
+                            $command->join('domain', 'ticket.domain_id = domain.id');
+                            $command->andWhere("ticket.domain_id IS NOT NULL");
+                            $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+			  case DimensionType::DomainAggregated:
+			     $command->select(array("AVG(HourAnswered) AS HourAnswered, domain.name AS Domain")); 
+                 $command->group('ticket.domain_id');
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+			  case DimensionType::SubDomain:
+			     $command->select(array("AVG(HourAnswered) AS HourAnswered, subdomain.name AS SubDomain")); 
+                 $command->group('ticket.subdomain_id');
+                 $command->join('subdomain', 'ticket.subdomain_id = subdomain.id');
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+			  case DimensionType::Project:
+			     $command->select(array("AVG(HourAnswered) AS HourAnswered, project.title AS Project")); 
+                 $command->group('ticket.assigned_project_id');
+                 $command->join('project', 'ticket.assigned_project_id = project.id');
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+			  
+			  
+           default:
+               throw new CException("Invalid dimension");
+         }
+         
+        // echo $command->text;
+        
+        return $command->queryAll(); 
+        
+    }
+	
     private function retrieveTicketsClosedData()
     {
         
@@ -628,6 +809,8 @@ class UtilizationDashboardFilter extends CFormModel
        return $command->queryAll(); 
     }
     
+	
+	///////////////////////////////////Parameter config/////////////////////////////////////////////////
     private function prepareAllFiltersCommand(&$command)
     {
         if ($this->fromDate != "")

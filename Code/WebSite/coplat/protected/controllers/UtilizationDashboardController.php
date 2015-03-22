@@ -104,7 +104,7 @@ class UtilizationDashboardController extends Controller
         }
         
       public function actionPullAVGTicketDuration()
-        {
+      {
             if(isset($_POST['UtilizationDashboardFilter'])) 
             {
                $ultilizationFilter = new UtilizationDashboardFilter();
@@ -115,7 +115,21 @@ class UtilizationDashboardController extends Controller
                $data =  array('dashboardData' => $ticketsAVGLifeSpamData);
                echo json_encode($data); 
             }  
-        }
+       }
+	   
+	  public function actionPullAVGTimeMentorAnswer()
+      {
+            if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketsAVGMentorAnswer = $ultilizationFilter->retrieveAVGTimeMentorAnswerDashboardData(); 
+               $data =  array('dashboardData' => $ticketsAVGMentorAnswer);
+               echo json_encode($data); 
+            }  
+       }
        
        
       
@@ -129,7 +143,7 @@ class UtilizationDashboardController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration'),
+                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 'PullAVGTimeMentorAnswer'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
