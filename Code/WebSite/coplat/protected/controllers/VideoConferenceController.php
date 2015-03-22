@@ -33,7 +33,7 @@ class VideoConferenceController extends Controller
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'join', 'delete'),
+                'actions' => array('create', 'update', 'join', 'delete', 'invite'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -60,12 +60,11 @@ class VideoConferenceController extends Controller
 
         //Yii::trace(CVarDumper::dumpAsString($invitation));
 
-        if($invitation || $meeting){
+        if ($invitation || $meeting) {
             $this->render('view', array(
                 'model' => $this->loadModel($id),
             ));
-        }
-        else{
+        } else {
             $this->render('notAllowed', array(
                     'model' => $this->renderPartial("notAllowed")
                 )
@@ -86,14 +85,13 @@ class VideoConferenceController extends Controller
 
 //        Yii::trace(CVarDumper::dumpAsString($invitation));
 
-        if($invitation || $meeting){
+        if ($invitation || $meeting) {
             $this->render('join', array(
                 'model' => $this->loadModel($id),
             ));
-        }
-        else{
+        } else {
             $this->render('notAllowed', array(
-                'model' => $this->renderPartial("notAllowed")
+                    'model' => $this->renderPartial("notAllowed")
                 )
             );
         }
@@ -115,24 +113,23 @@ class VideoConferenceController extends Controller
         if (isset($_POST['VideoConference'])) {
             $model->attributes = $_POST['VideoConference'];             //get the rest of the attributes
             $moderator = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
-            $model->moderator_id =  $moderator->id;                   //get the current users id
+            $model->moderator_id = $moderator->id;                   //get the current users id
             $model->scheduled_on = date("Y-m-d H:i:s");                 //now
 
             $dateopt = $_POST['dateopt'];
-            if($dateopt == "now"){
+            if ($dateopt == "now") {
                 $model->scheduled_for = date("Y-m-d H:i:s");
-            }else if($dateopt == "later"){
-                if(!$model->scheduled_for){
+            } else if ($dateopt == "later") {
+                if (!$model->scheduled_for) {
                     $model->addError('scheduled_for', "Date Time Cannot Be Blank");
                     $this->render('create', array(
                         'model' => $model,
                     ));
                     exit;
-                }else{                                           //validate
+                } else {                                           //validate
                     /* TODO */
                 }
             }
-
 
 
             if ($model->save()) {
@@ -143,7 +140,7 @@ class VideoConferenceController extends Controller
                         $invitationError .= $email . " does not appear in our records <br>";
                         continue;
                     }
-                    if($invitee->id == $moderator->id){
+                    if ($invitee->id == $moderator->id) {
                         continue;
                     }
 
@@ -158,7 +155,7 @@ class VideoConferenceController extends Controller
                         VCInvitation::sendInvitationEmail($model->id, $model->moderator_id, $inviteefullName, $email);;
                     }
                 }
-                if($invitationError != ""){
+                if ($invitationError != "") {
                     Yii::app()->user->setFlash('invitation-error', $invitationError);
                 }
                 $this->redirect(array('view', 'id' => $model->id));
@@ -171,37 +168,57 @@ class VideoConferenceController extends Controller
         ));
     }
 
-    public function actionInvite(){
-        $invitationError = "";
+    public function actionInvite()
+    {
+        //print_r("hey");
+        $message = "";
         $inviteeEmails = $_GET['invitees']; // Returns an array
+       // $flag = false;
+
         foreach ($inviteeEmails as $email) {
+
             $invitee = User::model()->findByAttributes(array('email' => $email));
             if ($invitee == null) {
-                $invitationError .= $email . " does not appear in our records <br>";
+                $message .= $email . " does not appear in our records <br>";
                 continue;
             }
+
             //if($invitee->id == $moderator->id){
             //    continue;
             //}
-            $vc_id = $_POST['meeting-id'];
-            $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc_id, 'invitee_id' => $invitee->id));
-            if($invitation == null){
-                $invitation = new VCInvitation();
-                $invitation->invitee_id = $invitee->id;
-                $invitation->videoconference_id = $vc_id;
-                $invitation->status = "Maybe";
-                if (!$invitation->save()) {                                         //an error occurred
-                    $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
-                } else {
-                    $inviteefullName = $invitee->fname . " " . $invitee->lname;
-                    $meeting = VideoConference::model()->findByAttributes(array("id" => $vc_id));
-                    VCInvitation::sendInvitationEmail($meeting->id, $meeting->moderator_id, $inviteefullName, $email);;
+            if (isset($_GET['meeting-id'])) {
+                $vc_id = $_GET['meeting-id'];
+                $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc_id, 'invitee_id' => $invitee->id));
+                if ($invitation == null) {
+
+                    $invitation = new VCInvitation();
+                    $invitation->invitee_id = $invitee->id;
+                    $invitation->videoconference_id = $vc_id;
+                    $invitation->status = "Maybe";
+                    if (!$invitation->save()) {                                         //an error occurred
+                        $message .= "An error occurred upon saving the invitation to " . $email . "error";
+                    } else {
+
+                        $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                        $meeting = VideoConference::model()->findByAttributes(array("id" => $vc_id));
+                        VCInvitation::sendInvitationEmail($meeting->id, $meeting->moderator_id, $inviteefullName, $email);;
+                    }
+                }
+                else{
+                    //print_r($invitation->invitee_id);
+                    //print_r($invitation->videoconference_id);
+
                 }
             }
 
 
-
         }
+
+        if ($message == "") {
+            $message = "The invitations have successfully been sent.";
+        }
+
+        print_r($message);
         /*
         if($invitationError != ""){
             Yii::app()->user->setFlash('invitation-error', $invitationError);
@@ -258,12 +275,12 @@ class VideoConferenceController extends Controller
         $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
 
         $meetingsId = new CList();
-        $invitations = VCInvitation::model()->findAllByAttributes(array("invitee_id" =>$user->id));
-        foreach($invitations as $inv){
+        $invitations = VCInvitation::model()->findAllByAttributes(array("invitee_id" => $user->id));
+        foreach ($invitations as $inv) {
             $meetingsId->add($inv->videoconference_id);
         }
-        $meetings = VideoConference::model()->findAllByAttributes(array("moderator_id" =>$user->id));
-        foreach($meetings as $meeting){
+        $meetings = VideoConference::model()->findAllByAttributes(array("moderator_id" => $user->id));
+        foreach ($meetings as $meeting) {
             $meetingsId->add($meeting->id);
         }
         //$dataProvider = new CActiveDataProvider('VideoConference');

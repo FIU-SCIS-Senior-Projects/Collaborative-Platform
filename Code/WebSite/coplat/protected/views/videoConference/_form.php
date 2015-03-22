@@ -36,6 +36,9 @@
     .add_field_button{
         margin-bottom: 10px;
     }
+    form{
+        margin-left: 35px;
+    }
 </style>
 <script>
     $(document).ready(function () {

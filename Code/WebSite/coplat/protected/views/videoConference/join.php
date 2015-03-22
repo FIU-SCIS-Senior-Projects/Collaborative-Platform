@@ -32,7 +32,8 @@
             url : action,
             data : params,
             success : function(response) {
-                postAction = response.action;
+                //postAction = response.action;
+                infoBox.html(response);
             }
         }).done(function() {
 
@@ -199,11 +200,11 @@
             <h3>Invite People</h3>
             <small>Invite more people to the meeting</small>
             <a class="modal_close" href="#"></a>
-        </div id="message_box">
-        <div>
+        </div >
+        <div id="message_box" style="padding: 10px;">
 
         </div>
-        <form id="invitation-form" class="form-horizontal" method="get" action="/coplat/videoConference/invite">
+        <form id="invitation-form" class="form-horizontal" method="get" action="../invite">
             <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>">
             <div class="invitee_emails">
                 <div class="form-group">
