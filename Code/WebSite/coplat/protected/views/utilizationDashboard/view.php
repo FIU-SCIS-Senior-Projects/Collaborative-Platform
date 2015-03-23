@@ -608,7 +608,7 @@ $( document ).ready(function()
            var chartWidth = chartRegionWidth -8;
            var options = {  
                    width:chartWidth,
-                   height: 300,
+                   height: chartRegionHeight - 30,
                    legend: 'none',
                    bar: {groupWidth: 10},
                    title: enumReportType.properties[reportID].name + ' per ' + DimensionType.properties[dim2Id].name,
