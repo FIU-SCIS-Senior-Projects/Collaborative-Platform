@@ -369,6 +369,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
+        setTimeout("location.href = '../';",2000);
     });
 
     //to know the stream type
