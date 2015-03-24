@@ -73,6 +73,7 @@ class ReportType
     const TicketsClosed =2;
     const TicketsAVGDuration = 3;
 	const TicketsAVGTimeMentorAnswer = 4;
+	const TicketsCurrentlyOpen = 5;
         
     public static function getReportTypeDescription($reportType)
     {
@@ -92,6 +93,10 @@ class ReportType
 		   case ReportType::TicketsAVGTimeMentorAnswer:
 		           $res = "AVG Time Mentor to answer"; 
 		       break;
+			   
+		   case ReportType::TicketsCurrentlyOpen:
+		            $res = "Tickets currently Open"; 
+		      break;
            default:
                throw new CException("Invalid report type");
        }       
@@ -106,7 +111,8 @@ class ReportType
                        ReportType::TicketsCreated  =>ReportType::getReportTypeDescription(ReportType::TicketsCreated),
                        ReportType::TicketsClosed =>ReportType::getReportTypeDescription( ReportType::TicketsClosed),
                        ReportType::TicketsAVGDuration =>ReportType::getReportTypeDescription( ReportType::TicketsAVGDuration),
-                       ReportType::TicketsAVGTimeMentorAnswer => ReportType::getReportTypeDescription(ReportType::TicketsAVGTimeMentorAnswer));
+                       ReportType::TicketsAVGTimeMentorAnswer => ReportType::getReportTypeDescription(ReportType::TicketsAVGTimeMentorAnswer),
+					   ReportType::TicketsCurrentlyOpen =>  ReportType::getReportTypeDescription(ReportType::TicketsCurrentlyOpen));
         
     }
 }
@@ -450,6 +456,80 @@ class UtilizationDashboardFilter extends CFormModel
        $chartFormatedData = "[".$chartData."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
        return  $chartFormatedData; 
      }
+	
+	public function retrieveTicketsCurrentlyOpenedDashboardData()
+	{
+		
+	  //retrieve tha data
+      $ticketsCreatedData =  $this->retrieveTicketsCurrentlyOpenedData();
+      $chartData = "";
+      foreach ($ticketsCreatedData as $data)
+      {
+          $countPart =  ArrayUtils::getValueOrDefault($data, "EventCount",0);
+          
+          if ( DimensionType::isTimeDimension($this->dim2ID))
+          {
+             $currentReadingYear =  ArrayUtils::getValueOrDefault($data, "Year",1);
+             $currentReadingMonth = ArrayUtils::getValueOrDefault($data, "Month", 1);
+             $currentReadingDay =   ArrayUtils::getValueOrDefault($data, "Day" ,1); 
+             $chartData = $chartData.sprintf('[new Date(%s, %s, %s), %s],',
+                                                    $currentReadingYear,
+                                                    $currentReadingMonth - 1,
+                                                    $currentReadingDay,
+                                                    $countPart);
+              
+          }else
+          {
+              switch ($this->dim2ID)
+              {
+                  case DimensionType::TicketAssignedMentor:
+                      $mentorName =   ArrayUtils::getValueOrDefault($data, "MentorName",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $mentorName,
+                                                         $countPart);
+                      break;
+					  
+				   case DimensionType::Mentee:
+				      $menteeName =   ArrayUtils::getValueOrDefault($data, "MenteeName",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $menteeName,
+                                                         $countPart);
+                      break;
+				   case DimensionType::DomainExclusive:
+				      $domainExclusive =  ArrayUtils::getValueOrDefault($data, "Domain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $domainExclusive,
+                                                         $countPart);
+					  break;
+				   case DimensionType::DomainAggregated:
+				      $domainAggregated =  ArrayUtils::getValueOrDefault($data, "Domain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $domainAggregated,
+                                                         $countPart);
+					  break;
+					case DimensionType::SubDomain:
+				      $subDomain =  ArrayUtils::getValueOrDefault($data, "SubDomain",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $subDomain,
+                                                         $countPart);
+					  break;
+					case DimensionType::Project:
+				      $project =  ArrayUtils::getValueOrDefault($data, "Project",0);
+                      $chartData = $chartData.sprintf("['%s', %s],",
+                                                         $project,
+                                                         $countPart);
+					  break;
+				   
+              }              
+          }         
+  
+       }
+       
+       //format the data
+       $chartFormatedData = "[".$chartData."]" ;// "[[new Date(2015, 2, 1),1],[new Date(2015, 3, 1),1]]";// json_encode($monthData);
+       return  $chartFormatedData;   
+		
+	}
 	
 	////////////////////////////////////Data retrieval////////////////////////////////////////////////
     private function retrieveAVGTicketCreatedData()
@@ -809,6 +889,82 @@ class UtilizationDashboardFilter extends CFormModel
        return $command->queryAll(); 
     }
     
+	private function retrieveTicketsCurrentlyOpenedData()
+	{
+	  $command =  Yii::app()->db->createCommand();
+      
+      $command->from("ticket_events");
+      $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
+      $command->where("ticket_events.event_type_id = ".EventType::Event_New);
+	  $command->andWhere("ticket.status = 'Pending'");
+                  
+      switch ($this->dim2ID)
+      {
+           case DimensionType::Date:
+               $command->select(array("COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year"));  
+               $command->group('DATE(ticket_events.event_recorded_date)');
+           
+               break;            
+           case DimensionType::MonthOfTheYear:
+               $command->select(array("COUNT(1) AS EventCount, 1 AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date) AS Year")); 
+               $command->group('YEAR(ticket_events.event_recorded_date), MONTH(ticket_events.event_recorded_date)');
+             
+               break;           
+           case DimensionType::Year:
+               $command->select(array("COUNT(1) AS EventCount, 1 AS Day, 1 AS Month ,YEAR(event_recorded_date) AS Year")); 
+               $command->group('YEAR(ticket_events.event_recorded_date)');
+               break;
+           
+         case DimensionType::TicketAssignedMentor:
+             $command->select(array("COUNT(1) AS EventCount, CONCAT_WS(' ',
+                `user`.`fname`,
+                `user`.`mname`,
+                `user`.`lname`) AS MentorName")); 
+             $command->group('ticket.assign_user_id');
+             $command->join('user', 'user.id = ticket.assign_user_id');             
+             break;
+		 case DimensionType::Mentee;
+                $command->select(array("COUNT(1) AS EventCount, CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MenteeName")); 
+                 $command->group('ticket.creator_user_id');
+                 $command->join('user', 'user.id = ticket.creator_user_id');		 
+			  break; 
+		  case DimensionType::DomainExclusive:
+			     $command->select(array("COUNT(1) AS EventCount, domain.name AS Domain")); 
+                 $command->group('ticket.domain_id');
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+				 $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+		  case DimensionType::DomainAggregated:
+			     $command->select(array("COUNT(1) AS EventCount, domain.name AS Domain")); 
+                 $command->group('ticket.domain_id');
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+	       case DimensionType::SubDomain:
+			     $command->select(array("COUNT(1) AS EventCount, subdomain.name AS SubDomain")); 
+                 $command->group('ticket.subdomain_id');
+                 $command->join('subdomain', 'ticket.subdomain_id = subdomain.id');
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+		    case DimensionType::Project:
+			     $command->select(array("COUNT(1) AS EventCount, project.title AS Project")); 
+                 $command->group('ticket.assigned_project_id');
+                 $command->join('project', 'ticket.assigned_project_id = project.id');
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+           default:
+               throw new CException("Invalid dimension");
+       }
+       
+       $this->prepareAllFiltersCommand($command);
+           
+       return $command->queryAll(); 		
+	}
+	
 	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////
     private function prepareAllFiltersCommand(&$command)

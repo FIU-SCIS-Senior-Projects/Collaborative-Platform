@@ -131,19 +131,31 @@ class UtilizationDashboardController extends Controller
             }  
        }
        
-       
+       public function actionPullTicketsCurrentlyOpened()
+       {
+            if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketsCreatedData = $ultilizationFilter->retrieveTicketsCurrentlyOpenedDashboardData(); 
+               $data =  array('dashboardData' => $ticketsCreatedData);
+               echo json_encode($data); 
+            }  
+       }
       
-        public function filters()
-	{
+       public function filters()
+	  {
 	   return array('accessControl');
-	}
+	  }
         
         //this is for the access rules
         public function accessRules()
         {
             return array(
                 array('allow',
-                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 'PullAVGTimeMentorAnswer'),
+                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
