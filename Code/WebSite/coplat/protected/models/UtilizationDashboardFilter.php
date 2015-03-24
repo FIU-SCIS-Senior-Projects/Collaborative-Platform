@@ -461,7 +461,7 @@ class UtilizationDashboardFilter extends CFormModel
 	{
 		
 	  //retrieve tha data
-      $ticketsCreatedData =  $this->retrieveTicketsCurrentlyOpened();
+      $ticketsCreatedData =  $this->retrieveTicketsCurrentlyOpenedData();
       $chartData = "";
       foreach ($ticketsCreatedData as $data)
       {
@@ -889,7 +889,7 @@ class UtilizationDashboardFilter extends CFormModel
        return $command->queryAll(); 
     }
     
-	private function retrieveTicketsCurrentlyOpened()
+	private function retrieveTicketsCurrentlyOpenedData()
 	{
 	  $command =  Yii::app()->db->createCommand();
       
