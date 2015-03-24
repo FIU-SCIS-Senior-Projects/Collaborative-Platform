@@ -156,12 +156,14 @@ $( document ).ready(function()
          TicketsClosed:2,
          TicketsAVGDuration:3,
 		 TicketsAVGTimeMentorAnswer:4,
+		 TicketsCurrentlyOpen:5,
          
         properties: {
                 1: {name: "Amount of Tickets Created", unit:""},
                 2: {name: "Amount of Tickets Closed", unit:""},
                 3: {name: "AVG Ticket Duration", unit:" (Hours)"},
-				4: {name: "AVG Time Mentor to answer", unit:" (Hours)"}
+				4: {name: "AVG Time Mentor to answer", unit:" (Hours)"},
+				5: {name: "Tickets currently Open", unit:""}
         }
          
     };  
@@ -564,6 +566,9 @@ $( document ).ready(function()
                    break; 
              	case enumReportType.TicketsAVGTimeMentorAnswer:
                    dashboardAction = "PullAVGTimeMentorAnswer";  
+				   break;
+			    case enumReportType.TicketsCurrentlyOpen:
+				   dashboardAction = "PullTicketsCurrentlyOpened";  				
                    break; 				
 				
 		   
