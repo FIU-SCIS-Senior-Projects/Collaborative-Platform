@@ -6783,3 +6783,498 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTimeMentorAnswer
 HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
 ---
+2015/03/24 20:08:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('undefined')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('undefined')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/undefined
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:10:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "PullTicketsUnanswered".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('PullTicketsUnan...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:11:30 [error] [exception.CException] exception 'CException' with message 'UtilizationDashboardFilter and its behaviors do not have a method or closure named "retrieveUnansweredTicketsDashboardData".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CComponent.php:265
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(156): CComponent->__call('retrieveUnanswe...', Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(156): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:39:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1126)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (156)
+2015/03/24 20:39:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1126): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(156): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:39:40 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_type_id' in on clause is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MenteeName
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+JOIN `user` ON user.id = ticket.creator_user_id
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY `ticket`.`creator_user_id`.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1126)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (156)
+2015/03/24 20:39:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_type_id' in on clause is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MenteeName
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+JOIN `user` ON user.id = ticket.creator_user_id
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY `ticket`.`creator_user_id`' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1126): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(156): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:39:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1126)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (156)
+2015/03/24 20:39:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1126): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(156): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:40:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (156)
+2015/03/24 20:40:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(156): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:41:00 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (156)
+2015/03/24 20:41:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(156): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:41:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (156)
+2015/03/24 20:41:17 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(156): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:46:06 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (160)
+2015/03/24 20:46:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(160): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:46:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (160)
+2015/03/24 20:46:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(160): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:46:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (160)
+2015/03/24 20:46:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(160): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:46:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, 1 AS Day, 1 AS Month ,YEAR(event_recorded_date) AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY YEAR(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (160)
+2015/03/24 20:46:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, 1 AS Day, 1 AS Month ,YEAR(event_recorded_date) AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY YEAR(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(160): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:46:34 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (160)
+2015/03/24 20:46:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY DATE(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(160): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/24 20:47:30 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, 1 AS Day, 1 AS Month ,YEAR(event_recorded_date) AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY YEAR(ticket_events.event_recorded_date).
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1127)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (544)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (160)
+2015/03/24 20:47:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'event_recorded_date' in field list is ambiguous. The SQL statement executed was: SELECT COUNT(1) AS EventCount, 1 AS Day, 1 AS Month ,YEAR(event_recorded_date) AS Year
+FROM `ticket`
+JOIN `ticket_events` ON ticket.id = ticket_events.ticket_id
+LEFT JOIN `ticket_events` `comented` ON ticket.id = comented.ticket_id AND comented.event_type_id = 5
+WHERE ((comented.ticket_id IS NULL) AND (ticket_events.event_type_id = 1)) AND (ticket.status = 'Pending')
+GROUP BY YEAR(ticket_events.event_recorded_date)' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1127): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(544): UtilizationDashboardFilter->retrieveUnansweredTicketsData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(160): UtilizationDashboardFilter->retrieveUnansweredTicketsDashboardData()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsUnanswered()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsUnan...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsUnanswered
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---

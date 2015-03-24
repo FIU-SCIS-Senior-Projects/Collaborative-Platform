@@ -12,16 +12,20 @@ class UtilizationDashboardController extends Controller
             //closed query
             //this query return all the closed tickets...
             //all the filters mus be applied to this section
-           /* $closedTicketsQuery =  Yii::app()->db->createCommand();
-            $closedTicketsQuery->select("ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS ClosedDate");
-            $closedTicketsQuery->from("ticket_events");
-            $closedTicketsQuery->join("ticket","ticket.id = ticket_events.ticket_id" );
-            $closedTicketsQuery->where("ticket.status = 'Close'");
-            $closedTicketsQuery->andWhere("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
-            $closedTicketsQuery->andWhere("ticket_events.new_value = 'Close'");
-            $closedTicketsQuery->group("ticket_events.ticket_id");
+          /* $command =  Yii::app()->db->createCommand();
+          
+
+          $command->from("ticket");
+          $command->join('ticket_events', 'ticket.id = ticket_events.ticket_id');
+          $command->leftJoin("ticket_events comented","ticket.id = comented.ticket_id AND comented.event_type_id = ".EventType::Event_Commented_By_Mentor);
+          $command->where("comented.ticket_id IS NULL");
+          $command->andWhere("ticket_events.event_type_id = ".EventType::Event_New);
+          $command->andWhere("ticket.status = 'Pending'");
+
+            echo  $command->text;*/
+          
             
-            $ticketDurationQuery =  Yii::app()->db->createCommand();
+            /*  $ticketDurationQuery =  Yii::app()->db->createCommand();
             $ticketDurationQuery->select(array("ticket_events.ticket_id", 
                                                "MIN(ticket_events.event_recorded_date) AS OpenedDate",
                                                "closedTicketInfo.ClosedDate",
@@ -144,6 +148,20 @@ class UtilizationDashboardController extends Controller
                echo json_encode($data); 
             }  
        }
+	   
+	   public function actionPullTicketsUnanswered()
+	   {
+		    if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketsUnanswered = $ultilizationFilter->retrieveUnansweredTicketsDashboardData(); 
+               $data =  array('dashboardData' => $ticketsUnanswered);
+               echo json_encode($data); 
+            }  
+	   }
       
        public function filters()
 	  {
@@ -155,7 +173,7 @@ class UtilizationDashboardController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened'),
+                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened', 'PullTicketsUnanswered'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
