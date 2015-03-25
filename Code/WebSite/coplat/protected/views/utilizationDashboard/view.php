@@ -156,12 +156,16 @@ $( document ).ready(function()
          TicketsClosed:2,
          TicketsAVGDuration:3,
 		 TicketsAVGTimeMentorAnswer:4,
+		 TicketsCurrentlyOpen:5,
+		 TicketsUnanswered:6,
          
         properties: {
                 1: {name: "Amount of Tickets Created", unit:""},
                 2: {name: "Amount of Tickets Closed", unit:""},
                 3: {name: "AVG Ticket Duration", unit:" (Hours)"},
-				4: {name: "AVG Time Mentor to answer", unit:" (Hours)"}
+				4: {name: "AVG Time Mentor to answer", unit:" (Hours)"},
+				5: {name: "Tickets currently Open", unit:""},
+				6: {name: "Tickets unanswered", unit:""},
         }
          
     };  
@@ -564,9 +568,13 @@ $( document ).ready(function()
                    break; 
              	case enumReportType.TicketsAVGTimeMentorAnswer:
                    dashboardAction = "PullAVGTimeMentorAnswer";  
-                   break; 				
-				
-		   
+				   break;
+			    case enumReportType.TicketsCurrentlyOpen:
+				   dashboardAction = "PullTicketsCurrentlyOpened";  				
+                   break; 
+                case enumReportType.TicketsUnanswered:
+				   dashboardAction = "PullTicketsUnanswered";  				
+                   break;
             }
             
             $('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
@@ -608,7 +616,7 @@ $( document ).ready(function()
            var chartWidth = chartRegionWidth -8;
            var options = {  
                    width:chartWidth,
-                   height: 300,
+                   height: chartRegionHeight - 30,
                    legend: 'none',
                    bar: {groupWidth: 10},
                    title: enumReportType.properties[reportID].name + ' per ' + DimensionType.properties[dim2Id].name,
