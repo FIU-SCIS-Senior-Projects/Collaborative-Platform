@@ -1252,7 +1252,7 @@ class UtilizationDashboardFilter extends CFormModel
        $command->where("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
        $command->andWhere("ticket_events.new_value = 'Close'");
 	   
-	 
+	  
                   
       switch ($this->dim2ID)
        {
@@ -1294,8 +1294,7 @@ class UtilizationDashboardFilter extends CFormModel
        }       
        $this->prepareAllFiltersCommand($command);
        return $command->queryAll(); 	
-	  // echo $command->text;
-    //  return array();	  
+ 
 	}
 	
 	
