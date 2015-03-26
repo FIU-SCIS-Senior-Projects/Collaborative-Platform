@@ -4,7 +4,7 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
 ?>
 <style> 
     .dashItem{ height:100%; width:100%} 
-    .chartCont{ overflow:auto; width:100%; height:450px; border:1px solid #666;}
+    .chartCont{ overflow:auto; width:100%; height:450px; border:1px solid #666;   }
     
     .panel {background-color: #fff;  border: 1px solid transparent;}
     
@@ -27,10 +27,16 @@ Yii::app()->clientScript->registerScriptFile("https://www.google.com/jsapi?autol
 			</div>
 			<div>
 				<?php echo $form->labelEx($filter, 'dim2ID');
-							  echo CHtml::activeDropDownList($filter,
-															 'dim2ID',
-															 array(0 => " "));?> 
+					  echo CHtml::activeDropDownList($filter,
+													 'dim2ID',
+													 array(0 => " "));?> 
 				
+			</div>
+			<div>
+			    <?php echo $form->labelEx($filter, 'reportFormatId');
+					  echo CHtml::activeDropDownList($filter,
+													 'reportFormatId',
+													 ReportFormat::getReportFormats() );?> 
 			</div>
 			<div>
 				<?php echo CHtml::activeLabel($filter,'fromDate');
@@ -150,7 +156,11 @@ $( document ).ready(function()
     }    
     $('#chartSection').width(chartRegionWidth);
     
-    
+    var enumReportFormat = {
+		chart:1,
+        rawData:2,		
+	}
+	
     var enumReportType = {
          TicketsCreated:1,
          TicketsClosed:2,
@@ -513,8 +523,9 @@ $( document ).ready(function()
      {
          var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID') ;
          var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
+		 var reportFormatId = getInputValueToInt('#UtilizationDashboardFilter_reportFormatId')
          
-         if (dim2Id == 0 || reportID == 0)
+         if (dim2Id == 0 || reportID == 0 || reportFormatId == 0)
          {
              return false;
          }
@@ -547,54 +558,119 @@ $( document ).ready(function()
         #UtilizationDashboardFilter_reportTypeId, #fromDate, #toDate, \n\
         #UtilizationDashboardFilter_assigned_domain_mentor_id, #UtilizationDashboardFilter_assigned_project_mentor_id, \n\
         #UtilizationDashboardFilter_assigned_personal_mentor_id, #UtilizationDashboardFilter_assigned_project_id,\n\
-        #UtilizationDashboardFilter_mentee_id').on('change', function(){
+        #UtilizationDashboardFilter_mentee_id, #UtilizationDashboardFilter_reportFormatId').on('change', function(){
          $('#chartSection').html("");
          if (validChartParams())
          {
-           //retrieve the data
-           var dashboardAction;
-           var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID');
-           var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
-           switch(reportID) 
-           {              
-               case enumReportType.TicketsCreated:
-                   dashboardAction = "PullTicketsCreated";
-                   break;
-               case enumReportType.TicketsClosed:
-                   dashboardAction = "PullTicketsClosed";                  
-                   break; 
-               case enumReportType.TicketsAVGDuration:
-                   dashboardAction = "PullAVGTicketDuration";  
-                   break; 
-             	case enumReportType.TicketsAVGTimeMentorAnswer:
-                   dashboardAction = "PullAVGTimeMentorAnswer";  
-				   break;
-			    case enumReportType.TicketsCurrentlyOpen:
-				   dashboardAction = "PullTicketsCurrentlyOpened";  				
-                   break; 
-                case enumReportType.TicketsUnanswered:
-				   dashboardAction = "PullTicketsUnanswered";  				
-                   break;
-            }
-            
-            $('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
-                                    <img src='/coplat/images/ajax-loader.gif'>");
-                                                        
-           $.post('/coplat/index.php/utilizationDashboard/' + dashboardAction, 
-                $('#dashboarForm').serialize(),
-                function(data)
-                {
-                  $('#chartSection').html("");
-                  generateDashboardData(eval(data.dashboardData),
-                                        reportID,
-                                        dim2Id);
-                },
-                'json').fail(function() {
-                    $('#chartSection').html("");
-                    logErrorMessage("Server Request error.");
-                 });
+			 
+			 var reportFormatId = getInputValueToInt("#UtilizationDashboardFilter_reportFormatId");
+			 switch (reportFormatId)
+			 {
+				 case enumReportFormat.chart:
+				   pullAndGenerateChartData();
+				 break;	
+                 case enumReportFormat.rawData:
+				   pullAndGenerateRawData();
+				 break;   				 
+			 }
+			 
+			 
          }
      });
+	 
+	 function pullAndGenerateRawData()
+	 {
+		 		   //retrieve the data
+			   var dashboardAction;
+			   var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID');
+			   var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
+			   switch(reportID) 
+			   {              
+				   case enumReportType.TicketsCreated:
+					   dashboardAction = "PullTicketsCreatedRaw";
+					   break;
+				   case enumReportType.TicketsClosed:
+					   dashboardAction = "PullTicketsClosedRaw";                  
+					   break; 
+				   case enumReportType.TicketsAVGDuration:
+					   dashboardAction = "PullAVGTicketDurationRaw";  
+					   break; 
+					case enumReportType.TicketsAVGTimeMentorAnswer:
+					   dashboardAction = "PullAVGTimeMentorAnswerRaw";  
+					   break;
+					case enumReportType.TicketsCurrentlyOpen:
+					   dashboardAction = "PullTicketsCurrentlyOpenedRaw";  				
+					   break; 
+					case enumReportType.TicketsUnanswered:
+					   dashboardAction = "PullTicketsUnansweredRaw";  				
+					   break;
+				}
+				
+				$('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
+										<img src='/coplat/images/ajax-loader.gif'>");
+															
+			   $.post('/coplat/index.php/utilizationDashboard/' + dashboardAction, 
+					$('#dashboarForm').serialize(),
+					function(data)
+					{
+					  $('#chartSection').html(data);
+					 /* generateDashboardData(eval(data.dashboardData),
+											reportID,
+											dim2Id);*/
+					},
+					'html').fail(function() {
+						$('#chartSection').html("");
+						logErrorMessage("Server Request error.");
+					 });
+		 
+	 }
+	 
+	 
+	 function pullAndGenerateChartData()
+	 {
+		   //retrieve the data
+			   var dashboardAction;
+			   var dim2Id = getInputValueToInt('#UtilizationDashboardFilter_dim2ID');
+			   var reportID = getInputValueToInt('#UtilizationDashboardFilter_reportTypeId');
+			   switch(reportID) 
+			   {              
+				   case enumReportType.TicketsCreated:
+					   dashboardAction = "PullTicketsCreated";
+					   break;
+				   case enumReportType.TicketsClosed:
+					   dashboardAction = "PullTicketsClosed";                  
+					   break; 
+				   case enumReportType.TicketsAVGDuration:
+					   dashboardAction = "PullAVGTicketDuration";  
+					   break; 
+					case enumReportType.TicketsAVGTimeMentorAnswer:
+					   dashboardAction = "PullAVGTimeMentorAnswer";  
+					   break;
+					case enumReportType.TicketsCurrentlyOpen:
+					   dashboardAction = "PullTicketsCurrentlyOpened";  				
+					   break; 
+					case enumReportType.TicketsUnanswered:
+					   dashboardAction = "PullTicketsUnanswered";  				
+					   break;
+				}
+				
+				$('#chartSection').html("<div style='text-align: center;'>Loading chart data please wait<div>\n\
+										<img src='/coplat/images/ajax-loader.gif'>");
+															
+			   $.post('/coplat/index.php/utilizationDashboard/' + dashboardAction, 
+					$('#dashboarForm').serialize(),
+					function(data)
+					{
+					  $('#chartSection').html("");
+					  generateDashboardData(eval(data.dashboardData),
+											reportID,
+											dim2Id);
+					},
+					'json').fail(function() {
+						$('#chartSection').html("");
+						logErrorMessage("Server Request error.");
+					 });		 
+	 }
      
      function generateDashboardData(dashboardData, reportID, dim2Id)
      {

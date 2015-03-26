@@ -123,9 +123,41 @@ class ReportType
     }
 }
 
+class ReportFormat
+{	
+	const chart =1;
+    const rawData =2;
+	
+	public static function getReportFormats()
+    {
+     return  array(ReportFormat::chart  =>ReportFormat::getFormatDescriptionByFormatID(ReportFormat::chart),
+                   ReportFormat::rawData  =>ReportFormat::getFormatDescriptionByFormatID(ReportFormat::rawData));
+    }
+	
+	
+	public static function getFormatDescriptionByFormatID($formatId)
+	{
+		
+	   $res = "";
+       switch ($formatId)
+       {
+           case ReportFormat::chart:
+                   $res = "Chart";   
+               break;            
+           case ReportFormat::rawData:
+                   $res = "Raw Data"; 
+               break;   
+           default:
+               throw new CException("Invalid report format");
+       }       
+       return $res;
+		
+	}
+}
+
 class UtilizationDashboardFilter extends CFormModel
 {
-    
+	    
     public $reportTypeId;
     public $dim2ID;
     public $fromDate;
@@ -138,13 +170,14 @@ class UtilizationDashboardFilter extends CFormModel
     public $assigned_personal_mentor_id;
     public $assigned_project_id;
     public $mentee_id;
+	public $reportFormatId;
     
 
     public function rules()
     {
         return array(
-            array('reportTypeId, dim2ID', 'required'),
-            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_domain_mentor_id, assigned_project_mentor_id, assigned_personal_mentor_id, assigned_project_id, mentee_id', 'numerical', 'integerOnly'=>true),
+            array('reportTypeId, dim2ID, reportFormatId', 'required'),
+            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_domain_mentor_id, assigned_project_mentor_id, assigned_personal_mentor_id, assigned_project_id, mentee_id, reportFormatId', 'numerical', 'integerOnly'=>true),
             array('fromDate, toDate', 'date')                     
         );
     }
@@ -163,7 +196,8 @@ class UtilizationDashboardFilter extends CFormModel
                         'assigned_project_mentor_id' => 'Assigned Project Mentor',
                         'assigned_personal_mentor_id' => 'Assigned Personal Mentor',
                         'assigned_project_id'=> 'Assigned to Project',
-                        'mentee_id'=> 'Mentee');
+                        'mentee_id'=> 'Mentee',
+						'reportFormatId' => 'Report Format');
     }
     
 	///////////////////////////////////Data formatting//////////////////////////////////////////////////
@@ -1126,6 +1160,89 @@ class UtilizationDashboardFilter extends CFormModel
            
        return $command->queryAll(); 		
 	}
+	
+	//////////////////////////////////////////////Utilization Raw Data//////////////////////////////////
+	public function retrieveTicketsCreatedRawData()
+    {
+      $command =  Yii::app()->db->createCommand();
+      
+      $command->from("ticket_events");
+      $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
+	  $command->join('report_ticket rt', 'ticket.id = rt.ticketID');
+      $command->where("ticket_events.event_type_id = ".EventType::Event_New);
+                  
+      switch ($this->dim2ID)
+      {
+           case DimensionType::Date:
+               $command->select(array("DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year, 
+			                           rt.ticketID AS id,  rt.* "));  
+               break;            
+           case DimensionType::MonthOfTheYear:
+               $command->select(array("MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date) AS Year,
+			                           rt.ticketID AS id,  rt.*")); 
+               break;           
+           case DimensionType::Year:
+               $command->select(array("YEAR(event_recorded_date) AS Year,
+			                           rt.ticketID AS id,  rt.*")); 
+               break;
+           
+         case DimensionType::TicketAssignedMentor:
+             $command->select(array("CONCAT_WS(' ',
+                `user`.`fname`,
+                `user`.`mname`,
+                `user`.`lname`) AS MentorName,
+				rt.ticketID AS id,  rt.* ")); 
+             $command->join('user', 'user.id = ticket.assign_user_id');             
+             break;
+		 case DimensionType::Mentee;
+                $command->select(array("CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MenteeName,
+										 rt.ticketID AS id,  rt.*")); 
+                 $command->join('user', 'user.id = ticket.creator_user_id');		 
+			  break; 
+		  case DimensionType::DomainExclusive:
+			     $command->select(array("domain.name AS Domain",
+				                        "rt.ticketID AS id",
+				                        "rt.*",)); 
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+				 $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+		  case DimensionType::DomainAggregated:
+			     $command->select(array("domain.name AS Domain",
+				                        "rt.ticketID AS id", 
+                                        "rt.*")); 
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+	       case DimensionType::SubDomain:
+			     $command->select(array("subdomain.name AS SubDomain",
+				                        "rt.ticketID AS id",
+                                        "rt.*")); 
+                 $command->join('subdomain', 'ticket.subdomain_id = subdomain.id');
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+		    case DimensionType::Project:
+			     $command->select(array("project.title AS Project",
+				                        "rt.ticketID AS id",
+                                        "rt.*")); 
+                 $command->join('project', 'ticket.assigned_project_id = project.id');
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+           default:
+               throw new CException("Invalid dimension");
+       }
+       
+       $this->prepareAllFiltersCommand($command);
+		
+        return $command->queryAll(); 
+	  // return array();
+    }
+    
+	
+	
 	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////
     private function prepareAllFiltersCommand(&$command)
