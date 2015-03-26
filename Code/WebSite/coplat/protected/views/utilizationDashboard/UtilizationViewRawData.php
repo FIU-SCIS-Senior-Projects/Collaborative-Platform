@@ -3,7 +3,7 @@
 .summary {text-align:left !important;}
 </style>
 <?php 
-      function getTicketColumns($model)
+      function getRenderColumns($model)
       {
         
         $columns = array();       
@@ -82,6 +82,6 @@
                           'template' => '{items}{summary}',
                           'dataProvider'=> $dataprovider,
 						  'enablePagination' => false,
-						  'columns' =>getTicketColumns(null)));
+						  'columns' =>getRenderColumns(null)));
                           
 ?>
