@@ -1241,7 +1241,10 @@ class UtilizationDashboardFilter extends CFormModel
 	  // return array();
     }
     
-	
+	public function retrieveTicketsClosedRawData()
+	{
+		
+	}
 	
 	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////

@@ -3,7 +3,7 @@
 .summary {text-align:left !important;}
 </style>
 <?php 
-      function getRenderColumns($model)
+      function getColumns($model)
       {
         
         $columns = array();       
@@ -82,6 +82,6 @@
                           'template' => '{items}{summary}',
                           'dataProvider'=> $dataprovider,
 						  'enablePagination' => false,
-						  'columns' =>getRenderColumns(null)));
+						  'columns' =>getColumns(null)));
                           
 ?>

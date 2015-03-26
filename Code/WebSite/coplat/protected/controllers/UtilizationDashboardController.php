@@ -116,6 +116,11 @@ class UtilizationDashboardController extends Controller
 			                                                       'ultilizationFilter' => $ultilizationFilter ),false,true);	
             }  		   
 	   }
+	   
+	   public function actionPullTicketsClosedRaw()
+	   {
+		   
+	   }
 		
 	  
        public function filters()
@@ -128,7 +133,10 @@ class UtilizationDashboardController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened', 'PullTicketsUnanswered' , 'PullTicketsCreatedRaw'),
+                    'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 
+					                          'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened',
+											  'PullTicketsUnanswered' , 'PullTicketsCreatedRaw',
+											  'PullTicketsClosedRaw'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
