@@ -174,3 +174,251 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsCurrentlyOpenedRaw
 HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
 ---
+2015/03/26 23:52:55 [error] [php] Invalid argument supplied for foreach() (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CArrayDataProvider.php:107)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\zii\widgets\CBaseListView.php(129): TbGridView->renderKeys()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(173): TbGridView->run()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\utilizationDashboard\UtilizationViewRawData.php(85): UtilizationDashboardController->widget()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): UtilizationDashboardController->renderInternal()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): UtilizationDashboardController->renderFile()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(132): UtilizationDashboardController->renderPartial()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsClosedRaw()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UtilizationDashboardController->runAction()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UtilizationDashboardController->filterAccessControl()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UtilizationDashboardController->runActionWithFilters()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UtilizationDashboardController->run()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsClosedRaw
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\utilizationDashboard\UtilizationViewRawData.php (85)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (132)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/26 23:59:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id,  rt`.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close').
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1295)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (128)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/26 23:59:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id,  rt`.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close')' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1295): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(128): UtilizationDashboardFilter->retrieveTicketsClosedRawData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsClosedRaw()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsClos...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsClosedRaw
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/26 23:59:32 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id,  rt`.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close').
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1295)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (128)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/26 23:59:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id,  rt`.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close')' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1295): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(128): UtilizationDashboardFilter->retrieveTicketsClosedRawData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsClosedRaw()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsClos...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsClosedRaw
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/26 23:59:56 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS ``
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id`, `rt`.* AS ``
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close').
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1295)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (128)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/26 23:59:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS ``
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id`, `rt`.* AS ``
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close')' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1295): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(128): UtilizationDashboardFilter->retrieveTicketsClosedRawData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsClosedRaw()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsClos...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsClosedRaw
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/27 00:00:32 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS ``
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id`, `rt`.* AS ``
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close').
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1295)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (128)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/27 00:00:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS ``
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id`, `rt`.* AS ``
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close')' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1295): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(128): UtilizationDashboardFilter->retrieveTicketsClosedRawData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsClosedRaw()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsClos...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsClosedRaw
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/27 00:02:50 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id, rt`.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close').
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php (1296)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php (128)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/03/27 00:02:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+' at line 1. The SQL statement executed was: SELECT `rt`.`ticketID` AS `id, rt`.`* `
+FROM `ticket_events`
+JOIN `ticket` ON ticket.id = ticket_events.ticket_id
+JOIN `report_ticket` `rt` ON ticket.id = rt.ticketID
+WHERE (ticket_events.event_type_id = 2) AND (ticket_events.new_value = 'Close')' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\UtilizationDashboardFilter.php(1296): CDbCommand->queryAll()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UtilizationDashboardController.php(128): UtilizationDashboardFilter->retrieveTicketsClosedRawData()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UtilizationDashboardController->actionPullTicketsClosedRaw()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsClos...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsClosedRaw
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/27 00:18:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "PullTicketsCurrentlyOpenedRaw".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('PullTicketsCurr...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullTicketsCurr...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsCurrentlyOpenedRaw
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---
+2015/03/27 00:18:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "PullAVGTicketDurationRaw".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('PullAVGTicketDu...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullAVGTicketDu...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTicketDurationRaw
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---

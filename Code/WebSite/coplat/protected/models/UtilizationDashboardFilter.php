@@ -1243,7 +1243,59 @@ class UtilizationDashboardFilter extends CFormModel
     
 	public function retrieveTicketsClosedRawData()
 	{
-		
+	   $command =  Yii::app()->db->createCommand();
+     
+	   $command->select(array("rt.ticketID AS id", "rt.*"));  
+       $command->from("ticket_events");
+       $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
+	   $command->join('report_ticket rt', 'ticket.id = rt.ticketID');
+       $command->where("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
+       $command->andWhere("ticket_events.new_value = 'Close'");
+	   
+	 
+                  
+      switch ($this->dim2ID)
+       {
+         case DimensionType::Date:
+          
+               break;            
+           case DimensionType::MonthOfTheYear:
+             
+               break;           
+           case DimensionType::Year:
+              break;
+           case DimensionType::TicketAssignedMentor:
+                 $command->join('user', 'user.id = ticket.assign_user_id');
+             break;
+		    case DimensionType::Mentee:
+                 $command->join('user', 'user.id = ticket.creator_user_id');			
+		      break;
+			 case DimensionType::DomainExclusive:
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+				 $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+			  case DimensionType::DomainAggregated:
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+			  case DimensionType::SubDomain:
+                 $command->join('subdomain', 'ticket.subdomain_id = subdomain.id');
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+			  case DimensionType::Project:
+                 $command->join('project', 'ticket.assigned_project_id = project.id');
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+			  
+			  
+           default:
+               throw new CException("Invalid dimension");
+       }       
+       $this->prepareAllFiltersCommand($command);
+       return $command->queryAll(); 	
+	  // echo $command->text;
+    //  return array();	  
 	}
 	
 	

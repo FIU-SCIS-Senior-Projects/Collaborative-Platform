@@ -119,7 +119,18 @@ class UtilizationDashboardController extends Controller
 	   
 	   public function actionPullTicketsClosedRaw()
 	   {
-		   
+		    if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketRawData = $ultilizationFilter->retrieveTicketsClosedRawData();
+               $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
+			   			   
+               $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
+			                                                       'ultilizationFilter' => $ultilizationFilter ),false,true);	
+            }  
 	   }
 		
 	  
