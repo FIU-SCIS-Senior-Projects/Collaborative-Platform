@@ -1298,6 +1298,11 @@ class UtilizationDashboardFilter extends CFormModel
 	}
 	
 	
+	public function retrieveTicketDurationRawData()
+	{
+		
+	}
+	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////
     private function prepareAllFiltersCommand(&$command)
     {

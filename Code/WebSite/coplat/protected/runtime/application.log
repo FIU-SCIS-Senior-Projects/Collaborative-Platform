@@ -422,3 +422,14 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTicketDurationRaw
 HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
 ---
+2015/03/27 00:25:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "PullAVGTicketDurationRaw".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('PullAVGTicketDu...')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullAVGTicketDu...')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('utilizationDash...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTicketDurationRaw
+HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
+---

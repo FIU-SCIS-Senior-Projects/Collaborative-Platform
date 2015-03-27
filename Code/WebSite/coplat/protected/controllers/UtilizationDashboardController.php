@@ -133,6 +133,21 @@ class UtilizationDashboardController extends Controller
             }  
 	   }
 		
+	   public function actionPullTicketDurationRaw()
+	   {
+		    if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketRawData = $ultilizationFilter->retrieveTicketDurationRawData();
+               $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
+			   			   
+               $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
+			                                                       'ultilizationFilter' => $ultilizationFilter ),false,true);	
+            }   
+	   }
 	  
        public function filters()
 	  {
@@ -147,7 +162,8 @@ class UtilizationDashboardController extends Controller
                     'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 
 					                          'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened',
 											  'PullTicketsUnanswered' , 'PullTicketsCreatedRaw',
-											  'PullTicketsClosedRaw'),
+											  'PullTicketsClosedRaw', 'PullAVGTicketRaw',
+											  'PullAVGTicketDurationRaw'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
