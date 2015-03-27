@@ -352,10 +352,10 @@ class UtilizationDashboardFilter extends CFormModel
         
     }
     
-    public function retrieveAVGTicketCreatedDashboardData()
+    public function retrieveAVGTicketDurationDashboardData()
     {
         
-      $ticketsAVGLifeSpanData =  $this->retrieveAVGTicketCreatedData();
+      $ticketsAVGLifeSpanData =  $this->retrieveAVGTicketDurationData();
       $chartData = "";
       foreach ($ticketsAVGLifeSpanData as $data)
       {
@@ -647,7 +647,7 @@ class UtilizationDashboardFilter extends CFormModel
 	}
 	
 	////////////////////////////////////Data retrieval////////////////////////////////////////////////
-    private function retrieveAVGTicketCreatedData()
+    private function retrieveAVGTicketDurationData()
     {
         //closed query
         //this query return all the closed tickets...
@@ -1300,7 +1300,76 @@ class UtilizationDashboardFilter extends CFormModel
 	
 	public function retrieveTicketDurationRawData()
 	{
-		
+		//closed query
+        //this query return all the closed tickets...
+        //all the filters mus be applied to this section
+        $closedTicketsQuery =  Yii::app()->db->createCommand();
+        $closedTicketsQuery->select("ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS ClosedDate");
+        $closedTicketsQuery->from("ticket_events");
+        $closedTicketsQuery->join("ticket","ticket.id = ticket_events.ticket_id" );
+        $closedTicketsQuery->where("ticket.status = 'Close'");
+        $closedTicketsQuery->andWhere("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
+        $closedTicketsQuery->andWhere("ticket_events.new_value = 'Close'");
+        $closedTicketsQuery->group("ticket_events.ticket_id");
+        
+        //at this point put all the filters to the tickets can be reduced according to the filter and for query optimization
+        $this->prepareAllFiltersCommand($closedTicketsQuery);
+        
+        
+
+        $ticketDurationQuery =  Yii::app()->db->createCommand();
+        $ticketDurationQuery->select(array("ticket_events.ticket_id", 
+                                           "MIN(ticket_events.event_recorded_date) AS OpenedDate",
+                                           "closedTicketInfo.ClosedDate",
+                                           "TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), closedTicketInfo.ClosedDate) AS HourLifeSpan" ));  
+        $ticketDurationQuery->from("ticket_events");
+        $ticketDurationQuery->join("(".$closedTicketsQuery->text.") closedTicketInfo ", "closedTicketInfo.ticket_id = ticket_events.ticket_id ");
+        $ticketDurationQuery->Where("ticket_events.event_type_id = ".EventType::Event_New); 
+        $ticketDurationQuery->group("ticket_events.ticket_id");
+        
+        $command =  Yii::app()->db->createCommand();   
+        
+		$command->select(array("rt.ticketID AS id", "rt.*","p.HourLifeSpan"));  
+        $command->from("(".$ticketDurationQuery->text.") p ");
+		$command->join("ticket", "p.ticket_id = ticket.id");
+		$command->join('report_ticket rt', 'ticket.id = rt.ticketID');
+        
+        
+        switch ($this->dim2ID)
+        {
+           case DimensionType::Date:
+                      
+               break;            
+           case DimensionType::MonthOfTheYear:
+                      
+               break;           
+           case DimensionType::Year:
+                          break;
+           case DimensionType::TicketAssignedMentor:
+                    break;
+		    case DimensionType::Mentee:
+                   		
+		      break;
+		 case DimensionType::DomainExclusive:
+                  $command->andWhere("ticket.domain_id IS NOT NULL");
+                  $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+			  case DimensionType::DomainAggregated:
+			    $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+			  case DimensionType::SubDomain:
+			    $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+			  case DimensionType::Project:
+			    $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+           default:
+               throw new CException("Invalid dimension");
+         }
+         
+        // echo $command->text;
+        
+        return $command->queryAll(); 		
 	}
 	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////

@@ -3,10 +3,24 @@
 .summary {text-align:left !important;}
 </style>
 <?php 
-      function getColumns($model)
+      function getColumns($ultilizationFilter)
       {
         
-        $columns = array();       
+       $columns = array();  
+
+       switch ($ultilizationFilter->reportTypeId)
+        {
+           case ReportType::TicketsAVGDuration:
+            $columns[] =  array('name'  => 'HourLifeSpan',
+                                'header'=> 'Duration (hours)',
+                                 'headerHtmlOptions' => array('width'=>'75', ));       
+               break;            
+          
+         }	   
+
+
+
+	   
        $columns[] =  array('name'  => 'ticketID',
                             'header'=> 'Ticket #',
                             'headerHtmlOptions' => array('width'=>'75', ));
@@ -82,6 +96,6 @@
                           'template' => '{items}{summary}',
                           'dataProvider'=> $dataprovider,
 						  'enablePagination' => false,
-						  'columns' =>getColumns(null)));
+						  'columns' =>getColumns($ultilizationFilter)));
                           
 ?>

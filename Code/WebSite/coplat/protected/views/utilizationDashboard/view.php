@@ -593,7 +593,7 @@ $( document ).ready(function()
 					   dashboardAction = "PullTicketsClosedRaw";                  
 					   break; 
 				   case enumReportType.TicketsAVGDuration:
-					   dashboardAction = "PullAVGTicketDurationRaw";  
+					   dashboardAction = "PullTicketDurationRaw";  
 					   break; 
 					case enumReportType.TicketsAVGTimeMentorAnswer:
 					   dashboardAction = "PullAVGTimeMentorAnswerRaw";  
