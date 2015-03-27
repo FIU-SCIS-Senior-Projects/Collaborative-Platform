@@ -51,7 +51,7 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketsAVGLifeSpamData = $ultilizationFilter->retrieveAVGTicketCreatedDashboardData(); 
+               $ticketsAVGLifeSpamData = $ultilizationFilter->retrieveAVGTicketDurationDashboardData(); 
                $data =  array('dashboardData' => $ticketsAVGLifeSpamData);
                echo json_encode($data); 
             }  
@@ -163,7 +163,7 @@ class UtilizationDashboardController extends Controller
 					                          'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened',
 											  'PullTicketsUnanswered' , 'PullTicketsCreatedRaw',
 											  'PullTicketsClosedRaw', 'PullAVGTicketRaw',
-											  'PullAVGTicketDurationRaw'),
+											  'PullTicketDurationRaw'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
