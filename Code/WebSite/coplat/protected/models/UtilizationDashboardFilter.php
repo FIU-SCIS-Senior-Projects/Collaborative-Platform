@@ -123,9 +123,41 @@ class ReportType
     }
 }
 
+class ReportFormat
+{	
+	const chart =1;
+    const rawData =2;
+	
+	public static function getReportFormats()
+    {
+     return  array(ReportFormat::chart  =>ReportFormat::getFormatDescriptionByFormatID(ReportFormat::chart),
+                   ReportFormat::rawData  =>ReportFormat::getFormatDescriptionByFormatID(ReportFormat::rawData));
+    }
+	
+	
+	public static function getFormatDescriptionByFormatID($formatId)
+	{
+		
+	   $res = "";
+       switch ($formatId)
+       {
+           case ReportFormat::chart:
+                   $res = "Chart";   
+               break;            
+           case ReportFormat::rawData:
+                   $res = "Raw Data"; 
+               break;   
+           default:
+               throw new CException("Invalid report format");
+       }       
+       return $res;
+		
+	}
+}
+
 class UtilizationDashboardFilter extends CFormModel
 {
-    
+	    
     public $reportTypeId;
     public $dim2ID;
     public $fromDate;
@@ -138,13 +170,14 @@ class UtilizationDashboardFilter extends CFormModel
     public $assigned_personal_mentor_id;
     public $assigned_project_id;
     public $mentee_id;
+	public $reportFormatId;
     
 
     public function rules()
     {
         return array(
-            array('reportTypeId, dim2ID', 'required'),
-            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_domain_mentor_id, assigned_project_mentor_id, assigned_personal_mentor_id, assigned_project_id, mentee_id', 'numerical', 'integerOnly'=>true),
+            array('reportTypeId, dim2ID, reportFormatId', 'required'),
+            array('reportTypeId, dim2ID, agregatedDomainID, exclusiveDomainID, subdomainID, assigned_domain_mentor_id, assigned_project_mentor_id, assigned_personal_mentor_id, assigned_project_id, mentee_id, reportFormatId', 'numerical', 'integerOnly'=>true),
             array('fromDate, toDate', 'date')                     
         );
     }
@@ -163,7 +196,8 @@ class UtilizationDashboardFilter extends CFormModel
                         'assigned_project_mentor_id' => 'Assigned Project Mentor',
                         'assigned_personal_mentor_id' => 'Assigned Personal Mentor',
                         'assigned_project_id'=> 'Assigned to Project',
-                        'mentee_id'=> 'Mentee');
+                        'mentee_id'=> 'Mentee',
+						'reportFormatId' => 'Report Format');
     }
     
 	///////////////////////////////////Data formatting//////////////////////////////////////////////////
@@ -318,10 +352,10 @@ class UtilizationDashboardFilter extends CFormModel
         
     }
     
-    public function retrieveAVGTicketCreatedDashboardData()
+    public function retrieveAVGTicketDurationDashboardData()
     {
         
-      $ticketsAVGLifeSpanData =  $this->retrieveAVGTicketCreatedData();
+      $ticketsAVGLifeSpanData =  $this->retrieveAVGTicketDurationData();
       $chartData = "";
       foreach ($ticketsAVGLifeSpanData as $data)
       {
@@ -613,7 +647,7 @@ class UtilizationDashboardFilter extends CFormModel
 	}
 	
 	////////////////////////////////////Data retrieval////////////////////////////////////////////////
-    private function retrieveAVGTicketCreatedData()
+    private function retrieveAVGTicketDurationData()
     {
         //closed query
         //this query return all the closed tickets...
@@ -1125,6 +1159,217 @@ class UtilizationDashboardFilter extends CFormModel
       // echo $command->text;
            
        return $command->queryAll(); 		
+	}
+	
+	//////////////////////////////////////////////Utilization Raw Data//////////////////////////////////
+	public function retrieveTicketsCreatedRawData()
+    {
+      $command =  Yii::app()->db->createCommand();
+      
+      $command->from("ticket_events");
+      $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
+	  $command->join('report_ticket rt', 'ticket.id = rt.ticketID');
+      $command->where("ticket_events.event_type_id = ".EventType::Event_New);
+                  
+      switch ($this->dim2ID)
+      {
+           case DimensionType::Date:
+               $command->select(array("DAY(event_recorded_date) AS Day, MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date)AS Year, 
+			                           rt.ticketID AS id,  rt.* "));  
+               break;            
+           case DimensionType::MonthOfTheYear:
+               $command->select(array("MONTH(event_recorded_date) AS Month, YEAR(event_recorded_date) AS Year,
+			                           rt.ticketID AS id,  rt.*")); 
+               break;           
+           case DimensionType::Year:
+               $command->select(array("YEAR(event_recorded_date) AS Year,
+			                           rt.ticketID AS id,  rt.*")); 
+               break;
+           
+         case DimensionType::TicketAssignedMentor:
+             $command->select(array("CONCAT_WS(' ',
+                `user`.`fname`,
+                `user`.`mname`,
+                `user`.`lname`) AS MentorName,
+				rt.ticketID AS id,  rt.* ")); 
+             $command->join('user', 'user.id = ticket.assign_user_id');             
+             break;
+		 case DimensionType::Mentee;
+                $command->select(array("CONCAT_WS(' ',
+                                        `user`.`fname`,
+                                        `user`.`mname`,
+                                        `user`.`lname`) AS MenteeName,
+										 rt.ticketID AS id,  rt.*")); 
+                 $command->join('user', 'user.id = ticket.creator_user_id');		 
+			  break; 
+		  case DimensionType::DomainExclusive:
+			     $command->select(array("domain.name AS Domain",
+				                        "rt.ticketID AS id",
+				                        "rt.*",)); 
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+				 $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+		  case DimensionType::DomainAggregated:
+			     $command->select(array("domain.name AS Domain",
+				                        "rt.ticketID AS id", 
+                                        "rt.*")); 
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+	       case DimensionType::SubDomain:
+			     $command->select(array("subdomain.name AS SubDomain",
+				                        "rt.ticketID AS id",
+                                        "rt.*")); 
+                 $command->join('subdomain', 'ticket.subdomain_id = subdomain.id');
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+		    case DimensionType::Project:
+			     $command->select(array("project.title AS Project",
+				                        "rt.ticketID AS id",
+                                        "rt.*")); 
+                 $command->join('project', 'ticket.assigned_project_id = project.id');
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+           default:
+               throw new CException("Invalid dimension");
+       }
+       
+       $this->prepareAllFiltersCommand($command);
+		
+        return $command->queryAll(); 
+	  // return array();
+    }
+    
+	public function retrieveTicketsClosedRawData()
+	{
+	   $command =  Yii::app()->db->createCommand();
+     
+	   $command->select(array("rt.ticketID AS id", "rt.*"));  
+       $command->from("ticket_events");
+       $command->join('ticket', 'ticket.id = ticket_events.ticket_id');
+	   $command->join('report_ticket rt', 'ticket.id = rt.ticketID');
+       $command->where("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
+       $command->andWhere("ticket_events.new_value = 'Close'");
+	   
+	  
+                  
+      switch ($this->dim2ID)
+       {
+         case DimensionType::Date:
+          
+               break;            
+           case DimensionType::MonthOfTheYear:
+             
+               break;           
+           case DimensionType::Year:
+              break;
+           case DimensionType::TicketAssignedMentor:
+                 $command->join('user', 'user.id = ticket.assign_user_id');
+             break;
+		    case DimensionType::Mentee:
+                 $command->join('user', 'user.id = ticket.creator_user_id');			
+		      break;
+			 case DimensionType::DomainExclusive:
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+				 $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+			  case DimensionType::DomainAggregated:
+                 $command->join('domain', 'ticket.domain_id = domain.id');
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+			  case DimensionType::SubDomain:
+                 $command->join('subdomain', 'ticket.subdomain_id = subdomain.id');
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+			  case DimensionType::Project:
+                 $command->join('project', 'ticket.assigned_project_id = project.id');
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+			  
+			  
+           default:
+               throw new CException("Invalid dimension");
+       }       
+       $this->prepareAllFiltersCommand($command);
+       return $command->queryAll(); 	
+ 
+	}
+	
+	
+	public function retrieveTicketDurationRawData()
+	{
+		//closed query
+        //this query return all the closed tickets...
+        //all the filters mus be applied to this section
+        $closedTicketsQuery =  Yii::app()->db->createCommand();
+        $closedTicketsQuery->select("ticket_events.ticket_id, MAX(ticket_events.event_recorded_date) AS ClosedDate");
+        $closedTicketsQuery->from("ticket_events");
+        $closedTicketsQuery->join("ticket","ticket.id = ticket_events.ticket_id" );
+        $closedTicketsQuery->where("ticket.status = 'Close'");
+        $closedTicketsQuery->andWhere("ticket_events.event_type_id = ".EventType::Event_Status_Changed);
+        $closedTicketsQuery->andWhere("ticket_events.new_value = 'Close'");
+        $closedTicketsQuery->group("ticket_events.ticket_id");
+        
+        //at this point put all the filters to the tickets can be reduced according to the filter and for query optimization
+        $this->prepareAllFiltersCommand($closedTicketsQuery);
+        
+        
+
+        $ticketDurationQuery =  Yii::app()->db->createCommand();
+        $ticketDurationQuery->select(array("ticket_events.ticket_id", 
+                                           "MIN(ticket_events.event_recorded_date) AS OpenedDate",
+                                           "closedTicketInfo.ClosedDate",
+                                           "TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), closedTicketInfo.ClosedDate) AS HourLifeSpan" ));  
+        $ticketDurationQuery->from("ticket_events");
+        $ticketDurationQuery->join("(".$closedTicketsQuery->text.") closedTicketInfo ", "closedTicketInfo.ticket_id = ticket_events.ticket_id ");
+        $ticketDurationQuery->Where("ticket_events.event_type_id = ".EventType::Event_New); 
+        $ticketDurationQuery->group("ticket_events.ticket_id");
+        
+        $command =  Yii::app()->db->createCommand();   
+        
+		$command->select(array("rt.ticketID AS id", "rt.*","p.HourLifeSpan"));  
+        $command->from("(".$ticketDurationQuery->text.") p ");
+		$command->join("ticket", "p.ticket_id = ticket.id");
+		$command->join('report_ticket rt', 'ticket.id = rt.ticketID');
+        
+        
+        switch ($this->dim2ID)
+        {
+           case DimensionType::Date:
+                      
+               break;            
+           case DimensionType::MonthOfTheYear:
+                      
+               break;           
+           case DimensionType::Year:
+                          break;
+           case DimensionType::TicketAssignedMentor:
+                    break;
+		    case DimensionType::Mentee:
+                   		
+		      break;
+		 case DimensionType::DomainExclusive:
+                  $command->andWhere("ticket.domain_id IS NOT NULL");
+                  $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+			  case DimensionType::DomainAggregated:
+			    $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+			  case DimensionType::SubDomain:
+			    $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+			  case DimensionType::Project:
+			    $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+           default:
+               throw new CException("Invalid dimension");
+         }
+         
+        // echo $command->text;
+        
+        return $command->queryAll(); 		
 	}
 	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////
