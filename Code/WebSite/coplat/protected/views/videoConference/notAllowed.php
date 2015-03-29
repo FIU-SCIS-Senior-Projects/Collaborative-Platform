@@ -21,5 +21,5 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h3>You are not authorized to join this meeting</h3>
+<h3><?php echo $message; ?></h3>
 

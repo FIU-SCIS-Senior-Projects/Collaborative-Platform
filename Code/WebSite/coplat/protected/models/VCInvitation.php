@@ -93,7 +93,6 @@ class VCInvitation extends CActiveRecord
 	}
 
 
-
     public static function sendInvitationEmail($meeting_id, $moderator_id, $invitee_name, $invitee_email){
 
         $moderator = User::model()->findByPk($moderator_id);

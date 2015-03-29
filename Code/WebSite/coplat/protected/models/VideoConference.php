@@ -125,6 +125,7 @@ class VideoConference extends CActiveRecord
 */
     }
 
+
     public function findParticipantsAsString(){
         $moderator = User::model()->findByAttributes(array("id" => $this->moderator_id));
         $str = $moderator->fname . " " .$moderator->lname;
@@ -133,6 +134,50 @@ class VideoConference extends CActiveRecord
             $invitee = User::model()->findByAttributes(array("id" => $inv->invitee_id));
             $str .= ", " . $invitee->fname . " " .$invitee->lname;
         }
+        return $str;
+
+    }
+
+    public function findParticipantsHTMLList(){
+
+        $moderator = User::model()->findByAttributes(array("id" => $this->moderator_id));
+
+
+
+
+
+
+
+
+        $str = "<ul> " .
+                    "<li><span>Moderator:</span>" . $moderator->fname . " " .$moderator->lname . "</li>";
+
+        $invitations = VCInvitation::model()->findAllByAttributes(array("videoconference_id" =>$this->id));
+        foreach($invitations as $inv){
+            $invitee = User::model()->findByAttributes(array("id" => $inv->invitee_id));
+
+            $status = "";
+            $title = "";
+            if($inv->status == "Rejected"){
+                $title='Rejected';
+                $status = "<i  style='color:#d9534f;' class='fa fa-ban'></i>";
+            }
+            else if($inv->status == "Accepted"){
+                $title='Accepted';
+                $status = "<i style='color:#5cb85c;' class='fa fa-check-circle-o'></i>";
+            }
+            else {
+                $title='Pending user response';
+                $status = "<i class='fa fa-question-circle'></i>";
+            }
+
+
+
+            $str .= "<li title='$title'>" . $invitee->fname . " " .$invitee->lname . " " . $status . "<li>";
+        }
+
+        $str .= "</ul>";
+
         return $str;
 
     }

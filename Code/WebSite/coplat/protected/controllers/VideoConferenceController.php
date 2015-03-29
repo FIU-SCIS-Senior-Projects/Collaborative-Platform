@@ -33,7 +33,7 @@ class VideoConferenceController extends Controller
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'join', 'delete', 'invite'),
+                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -65,10 +65,8 @@ class VideoConferenceController extends Controller
                 'model' => $this->loadModel($id),
             ));
         } else {
-            $this->render('notAllowed', array(
-                    'model' => $this->renderPartial("notAllowed")
-                )
-            );
+            $message = "You are not allowed to view this meeting's details";
+            $this->render('notAllowed', array("message" => $message));
         }
     }
 
@@ -90,10 +88,8 @@ class VideoConferenceController extends Controller
                 'model' => $this->loadModel($id),
             ));
         } else {
-            $this->render('notAllowed', array(
-                    'model' => $this->renderPartial("notAllowed")
-                )
-            );
+            $message = "You are not allowed to join this meeting";
+            $this->render('notAllowed', array('message' => $message));
         }
     }
 
@@ -147,7 +143,7 @@ class VideoConferenceController extends Controller
                     $invitation = new VCInvitation();
                     $invitation->invitee_id = $invitee->id;
                     $invitation->videoconference_id = $model->id;
-                    $invitation->status = "Maybe";
+                    $invitation->status = "Unknown";
                     if (!$invitation->save()) {                                         //an error occurred
                         $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
                     } else {
@@ -167,6 +163,11 @@ class VideoConferenceController extends Controller
             'model' => $model,
         ));
     }
+
+    /**
+     * Add Participants Inside Video Conference Room. Works with an AJAX GET request with a list of all the emails as
+     * parameters
+     */
 
     public function actionInvite()
     {
@@ -227,6 +228,38 @@ class VideoConferenceController extends Controller
         */
     }
 
+    public function actionAccept($id){
+
+        $invitee = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+        $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $id, 'invitee_id' => $invitee->id));
+        if($invitation != null){
+            $invitation->status = "Accepted";
+            $invitation->save();
+            $this->redirect(array('index', 'id' => $id));
+        }
+        else {
+            $message = "You are not allowed to accept this meeting invitation";
+            $this->render('notAllowed', array("message" => $message));
+        }
+
+
+    }
+
+    public function actionReject($id){
+
+        $invitee = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+        $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $id, 'invitee_id' => $invitee->id));
+        if($invitation != null) {
+            $invitation->status = "Rejected";
+            $invitation->save();
+            $this->redirect(array('index', 'id' => $id));
+        }
+        else {
+            $message = "You are not allowed to reject this meeting invitation";
+            $this->render('notAllowed', array("message" => $message));
+        }
+    }
+
 
     /**
      * Updates a particular model.
@@ -234,7 +267,9 @@ class VideoConferenceController extends Controller
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id)
+
     {
+        /*
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
@@ -249,26 +284,41 @@ class VideoConferenceController extends Controller
         $this->render('update', array(
             'model' => $model,
         ));
+        */
     }
 
     /**
-     * Deletes a particular model.
-     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * Deletes a particular video conference model.
+     * Only moderators are
      * @param integer $id the ID of the model to be deleted
      */
     public function actionDelete($id)
     {
-        $this->loadModel($id)->delete();
+        if(Yii::app()->request->isPostRequest)
+        {
 
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-        if (!isset($_GET['ajax']))
-            $this->redirect("../");
-        //$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+        $meeting = VideoConference::model()->findByPk($id);
+
+        if ($user->id == $meeting->moderator_id) {
+            $this->loadModel($id)->delete();
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if (!isset($_GET['ajax']))
+                $this->redirect("../");
+            //$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        } else {
+            $message = "You are not allowed to delete this meeting";
+            $this->render('notAllowed', array("message" => $message));
+        }
+        }else{
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+
+        }
+
     }
-
-    /**
-     * Lists all models.
-     */
+        /**
+         * Lists all models.
+         */
     public function actionIndex()
     {
 
