@@ -64,7 +64,12 @@ $this->menu=array(
 
 
 
-
+<?php if (Yii::app()->user->hasFlash('invitation-error')): ?>
+    <h3>There were some problems with your invitations: </h3>
+    <div class="error-message">
+        <?php echo Yii::app()->user->getFlash('invitation-error'); ?>
+    </div>
+<?php endif; ?>
 
 
 
@@ -73,10 +78,6 @@ $this->menu=array(
 
     $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
     $vcs = VideoConference::model()->findAllByPk($meetingsId);
-
-// <!--<a href='../videoConference/%ID%'>%SUBJECT%</a> -->
-
-
 
     foreach($vcs as $vc){
         $ismoderator  = $user->id == $vc->moderator_id;
@@ -112,13 +113,6 @@ $this->menu=array(
             }
 
             $html .=  "</div>";
-
-
-
-
-
-
-      //  $html = str_replace("%ID%", $vc->id, $html);
         $html = str_replace("%SUBJECT%", $vc->subject, $html);
         $html = str_replace("%DATE%", $user_friendly_date, $html);
         $html = str_replace("%NOTE%", $vc->notes, $html);
@@ -128,52 +122,6 @@ $this->menu=array(
     }
 ?>
 
-<!--
-<script>
-    function ajaxGeneric(action, method, params, response_target) {
-        var infoBox = $(response_target);
-        var postAction = "";
-        console.log(params);
-        $.ajax({
-            type : method,
-            url : action,
-            data : params,
-            success : function(response) {
-                //postAction = response.action;
-                infoBox.html(response);
-            }
-        }).done(function() {
-
-        }).fail(function() {
-
-        });
-    }
-
-
-    $(document).ready(function() {
-        $('.delete-btn').click(function(event) {
-            var method = 'POST';
-            var action = 'delete';
-
-            var pos = $(this).attr('id').indexOf("-");
-            var id = $(this).attr('id').substring(pos + 1);
-            var data = {'id' : id};
-
-            ajaxGeneric(action, method, data, "#message_box");
-            event.preventDefault(); // Prevent the form from submitting via the browser.
-        });
-    });
-</script>
--->
 
 
 
-
-<?php
-/*
-$this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-));
-*/
-?>
