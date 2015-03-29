@@ -164,6 +164,11 @@ class UtilizationDashboardController extends Controller
 			                                                       'ultilizationFilter' => $ultilizationFilter ),false,true);	
             }
 	   }
+	   
+	   public function actionPullTicketsCurrentlyOpenedRaw()
+	   {
+		   
+	   }
 	  
        public function filters()
 	  {
