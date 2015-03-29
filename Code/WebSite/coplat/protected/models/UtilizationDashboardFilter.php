@@ -1502,7 +1502,58 @@ class UtilizationDashboardFilter extends CFormModel
 	
 	public function retrieveTicketsUnansweredRaw()
 	{
-		
+		 $command =  Yii::app()->db->createCommand();
+          
+          $command->select(array("rt.ticketID AS id", "rt.*","TIMESTAMPDIFF(HOUR, ticket_events.event_recorded_date,NOW()) AS OpenedSince"));
+          $command->from("ticket");
+          $command->join('ticket_events', 'ticket.id = ticket_events.ticket_id');
+		  $command->join('report_ticket rt', 'ticket.id = rt.ticketID');
+          $command->leftJoin("ticket_events comented","ticket.id = comented.ticket_id AND comented.event_type_id = ".EventType::Event_Commented_By_Mentor);
+          $command->where("comented.ticket_id IS NULL");
+          $command->andWhere("ticket_events.event_type_id = ".EventType::Event_New);
+          $command->andWhere("ticket.status = 'Pending'");
+		  
+
+                  
+      switch ($this->dim2ID)
+      {
+           case DimensionType::Date:
+             
+               break;            
+           case DimensionType::MonthOfTheYear:
+           
+               break;           
+           case DimensionType::Year:
+            
+               break;
+           
+         case DimensionType::TicketAssignedMentor:
+                  
+             break;
+		 case DimensionType::Mentee;
+               	 
+			  break; 
+		  case DimensionType::DomainExclusive:
+			     $command->andWhere("ticket.domain_id IS NOT NULL");
+				 $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+		  case DimensionType::DomainAggregated:
+			     $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+	       case DimensionType::SubDomain:
+			     $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+		    case DimensionType::Project:
+			     $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+           default:
+               throw new CException("Invalid dimension");
+       }
+       
+       $this->prepareAllFiltersCommand($command);
+      // echo $command->text;
+           
+       return $command->queryAll(); 			
 	}
 	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////
