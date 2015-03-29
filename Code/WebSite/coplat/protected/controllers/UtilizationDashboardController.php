@@ -167,7 +167,18 @@ class UtilizationDashboardController extends Controller
 	   
 	   public function actionPullTicketsCurrentlyOpenedRaw()
 	   {
-		   
+		   if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketRawData = $ultilizationFilter->retrieveTicketsCurrentlyOpenedRaw();
+               $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
+			   			   
+               $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
+			                                                       'ultilizationFilter' => $ultilizationFilter ),false,true);	
+            }
 	   }
 	  
        public function filters()
@@ -184,7 +195,8 @@ class UtilizationDashboardController extends Controller
 					                          'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened',
 											  'PullTicketsUnanswered' , 'PullTicketsCreatedRaw',
 											  'PullTicketsClosedRaw', 'PullAVGTicketRaw',
-											  'PullTicketDurationRaw', 'PullTimeMentorAnswerRaw'),
+											  'PullTicketDurationRaw', 'PullTimeMentorAnswerRaw',
+											  'PullTicketsCurrentlyOpenedRaw'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),

@@ -21,7 +21,15 @@
             $columns[] =  array('name'  => 'HourAnswered',
                                 'header'=> 'Time to answer (hours)',
                                 'headerHtmlOptions' => array('width'=>'120', ));       
-               break;   
+               break;  
+
+            case ReportType::TicketsCurrentlyOpen:
+			 $columns[] =  array('name'  => 'OpenedSince',
+                                'header'=> 'Opened Since (hours)',
+                                'headerHtmlOptions' => array('width'=>'120', ));       
+               break;  
+
+			
 
 			   
           
