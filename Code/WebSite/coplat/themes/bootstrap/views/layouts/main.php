@@ -14,13 +14,15 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css"
           media="screen, projection"/>
     <![endif]-->
-
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/jquery.jgrowl.css"/>
+    <link rel="stylesheet"
+          href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/fontawesome/css/font-awesome.min.css">
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <?php Yii::app()->bootstrap->register(); ?>
     <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.jgrowl.js"></script>
     <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/table-fix-header.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui.min.js"></script>
     <link rel="shortcut icon" href="/coplat/images/ico/icon.ico">
 </head>
