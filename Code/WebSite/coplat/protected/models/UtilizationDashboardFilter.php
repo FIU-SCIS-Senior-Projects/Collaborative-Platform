@@ -1448,6 +1448,10 @@ class UtilizationDashboardFilter extends CFormModel
 		
 	}
 	
+	public function retrieveTicketsCurrentlyOpenedRaw()
+	{
+		
+	}
 	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////
     private function prepareAllFiltersCommand(&$command)
