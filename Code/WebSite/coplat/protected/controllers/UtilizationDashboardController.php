@@ -151,7 +151,18 @@ class UtilizationDashboardController extends Controller
 	    
 	   public function actionPullTimeMentorAnswerRaw()
 	   {
-		   
+		   if(isset($_POST['UtilizationDashboardFilter'])) 
+            {
+               $ultilizationFilter = new UtilizationDashboardFilter();
+               $ultilizationFilter->unsetAttributes();  // clear any default values  
+               $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
+               
+               $ticketRawData = $ultilizationFilter->retrieveTimeMentorAnswerRaw();
+               $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
+			   			   
+               $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
+			                                                       'ultilizationFilter' => $ultilizationFilter ),false,true);	
+            }
 	   }
 	  
        public function filters()

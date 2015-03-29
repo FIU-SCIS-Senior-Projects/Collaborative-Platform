@@ -1375,6 +1375,76 @@ class UtilizationDashboardFilter extends CFormModel
 	
 	public function retrieveTimeMentorAnswerRaw()
 	{
+		 //all the filters mus be applied to this section
+        $answeredTicketsQuery =  Yii::app()->db->createCommand();
+        $answeredTicketsQuery->select("ticket_events.ticket_id, MIN(ticket_events.event_recorded_date) AS FirstAnswered");
+        $answeredTicketsQuery->from("ticket_events");
+        $answeredTicketsQuery->join("ticket","ticket.id = ticket_events.ticket_id" );
+        $answeredTicketsQuery->andWhere("ticket_events.event_type_id = ".EventType::Event_Commented_By_Mentor);
+        $answeredTicketsQuery->group("ticket_events.ticket_id");
+        
+        //at this point put all the filters so the tickets can be reduced according to the filter and for query optimization
+        $this->prepareAllFiltersCommand($answeredTicketsQuery);
+        
+        
+
+        $ticketDurationQuery =  Yii::app()->db->createCommand();
+        $ticketDurationQuery->select(array("ticket_events.ticket_id", 
+                                           "MIN(ticket_events.event_recorded_date) AS OpenedDate",
+                                           "answerdTicketInfo.FirstAnswered",
+                                           "TIMESTAMPDIFF(HOUR, MIN(ticket_events.event_recorded_date), answerdTicketInfo.FirstAnswered) AS HourAnswered" ));  
+        $ticketDurationQuery->from("ticket_events");
+        $ticketDurationQuery->join("(".$answeredTicketsQuery->text.") answerdTicketInfo ", "answerdTicketInfo.ticket_id = ticket_events.ticket_id ");
+	    $ticketDurationQuery->Where("ticket_events.event_type_id = ".EventType::Event_New); 
+        $ticketDurationQuery->group("ticket_events.ticket_id");
+        
+        $command =  Yii::app()->db->createCommand();   
+        
+		
+		$command->select(array("rt.ticketID AS id", "rt.*","p.HourAnswered"));
+        $command->from("(".$ticketDurationQuery->text.") p ");
+        $command->join("ticket", "p.ticket_id = ticket.id");
+		$command->join('report_ticket rt', 'ticket.id = rt.ticketID');
+
+        
+        
+        switch ($this->dim2ID)
+        {
+           case DimensionType::Date:
+          
+               break;            
+           case DimensionType::MonthOfTheYear:
+             
+               break;           
+           case DimensionType::Year:
+              break;
+           case DimensionType::TicketAssignedMentor:
+             break;
+		    case DimensionType::Mentee:
+  
+		      break;
+		 case DimensionType::DomainExclusive:
+                            $command->andWhere("ticket.domain_id IS NOT NULL");
+                            $command->andWhere("ticket.subdomain_id IS NULL");
+			  break;
+			  case DimensionType::DomainAggregated:
+				 $command->andWhere("ticket.domain_id IS NOT NULL");
+			  break;
+			  case DimensionType::SubDomain:
+				 $command->andWhere("ticket.subdomain_id IS NOT NULL");
+			  break;
+			  case DimensionType::Project:
+				 $command->andWhere("ticket.assigned_project_id IS NOT NULL");
+			    break;
+			  
+			  
+           default:
+               throw new CException("Invalid dimension");
+         }
+         
+        // echo $command->text;
+        
+        return $command->queryAll(); 
 		
 	}
 	
