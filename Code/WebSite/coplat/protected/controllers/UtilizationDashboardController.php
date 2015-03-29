@@ -148,6 +148,11 @@ class UtilizationDashboardController extends Controller
 			                                                       'ultilizationFilter' => $ultilizationFilter ),false,true);	
             }   
 	   }
+	    
+	   public function actionPullTimeMentorAnswerRaw()
+	   {
+		   
+	   }
 	  
        public function filters()
 	  {
@@ -163,7 +168,7 @@ class UtilizationDashboardController extends Controller
 					                          'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened',
 											  'PullTicketsUnanswered' , 'PullTicketsCreatedRaw',
 											  'PullTicketsClosedRaw', 'PullAVGTicketRaw',
-											  'PullTicketDurationRaw'),
+											  'PullTicketDurationRaw', 'PullTimeMentorAnswerRaw'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
