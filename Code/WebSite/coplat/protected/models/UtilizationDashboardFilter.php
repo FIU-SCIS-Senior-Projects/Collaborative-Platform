@@ -1500,6 +1500,11 @@ class UtilizationDashboardFilter extends CFormModel
 		
 	}
 	
+	public function retrieveTicketsUnansweredRaw()
+	{
+		
+	}
+	
 	///////////////////////////////////Parameter config/////////////////////////////////////////////////
     private function prepareAllFiltersCommand(&$command)
     {
