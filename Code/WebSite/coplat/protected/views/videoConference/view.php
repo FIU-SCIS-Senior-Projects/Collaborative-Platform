@@ -84,7 +84,7 @@ $this->menu = array(
     $user_friendly_date = $dt->format("m/d/Y h:i:s a");
 
     $html = "
-        <div id='mbox-$model->id' class='mbox info'> 
+        <div id='mbox-$model->id' class='mbox info'>
             <p>%DATE%</p>
             <hr>
             %PARTICIPANTS%
