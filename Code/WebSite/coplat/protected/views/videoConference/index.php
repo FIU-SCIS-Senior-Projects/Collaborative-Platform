@@ -12,9 +12,10 @@ $this->breadcrumbs=array(
 	'Video Conferences',
 );
 
+//array('label'=>'Manage VideoConference', 'url'=>array('admin')),
 $this->menu=array(
 	array('label'=>'Create VideoConference', 'url'=>array('create')),
-	array('label'=>'Manage VideoConference', 'url'=>array('admin')),
+
 );
 
 ?>
@@ -53,6 +54,12 @@ $this->menu=array(
     .ui-tooltip{
        padding: 3px;
        font-size: smaller;
+    }
+
+    .mbox button, .mbox .btn{
+        padding: 2px 4px;
+        font-size: small;
+        margin-right: 4px;
     }
 
 </style>

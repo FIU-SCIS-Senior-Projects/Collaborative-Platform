@@ -13,12 +13,13 @@ $this->breadcrumbs = array(
 );
 
 //array('label' => 'Update VideoConference', 'url' => array('update', 'id' => $model->id)),
+//array('label' => 'Manage VideoConference', 'url' => array('admin')),
 
 $this->menu = array(
     array('label' => 'List VideoConference', 'url' => array('index')),
     array('label' => 'Create VideoConference', 'url' => array('create')),
-    array('label' => 'Delete VideoConference', 'url' => '#', 'visible' => $ismoderator, 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')),
-    array('label' => 'Manage VideoConference', 'url' => array('admin')),
+    array('label' => 'Delete VideoConference', 'url' => '#', 'visible' => $ismoderator, 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?'))
+
 );
 ?>
 
@@ -64,18 +65,19 @@ $this->menu = array(
             font-size: smaller;
         }
 
+        .mbox button, .mbox .btn{
+            padding: 2px 4px;
+            font-size: small;
+            margin-right: 4px;
+        }
+
     </style>
 
 
 
     <h3><?php echo $model->subject; ?></h3>
 
-    <?php if (Yii::app()->user->hasFlash('invitation-error')): ?>
-        <h3>There were some problems with your invitations: </h3>
-        <div class="error-message">
-            <?php echo Yii::app()->user->getFlash('invitation-error'); ?>
-        </div>
-    <?php endif; ?>
+
 
     <?php
 
@@ -120,6 +122,13 @@ $this->menu = array(
 
 
     ?>
+
+<?php if (Yii::app()->user->hasFlash('invitation-error')): ?>
+    <h3>There were some problems with your invitations: </h3>
+    <div style="margin-top:20px;" class="error-message">
+        <?php echo Yii::app()->user->getFlash('invitation-error'); ?>
+    </div>
+<?php endif; ?>
 
 
 
