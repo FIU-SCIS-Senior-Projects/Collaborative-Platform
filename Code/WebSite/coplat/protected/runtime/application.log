@@ -576,3 +576,34 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/utilizationDashboard/PullAVGTimeMentorAnswerRaw
 HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
 ---
+2015/04/01 00:40:19 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`id AS SubDomainID`, `subdomain`.`name` AS `SubDomainName`, `ticket`.`creator_u' at line 1. The SQL statement executed was: SELECT `DISTINCT` AS `subdomain`.`id AS SubDomainID`, `subdomain`.`name` AS `SubDomainName`, `ticket`.`creator_user_id` AS `MenteeUserID`
+FROM `subdomain`
+JOIN `ticket` ON ticket.subdomain_id = subdomain.id
+ORDER BY `ticket`.`creator_user_id`.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\AnalyticalFilter.php (12)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\AnalyticalController.php (42)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/04/01 00:40:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`id AS SubDomainID`, `subdomain`.`name` AS `SubDomainName`, `ticket`.`creator_u' at line 1. The SQL statement executed was: SELECT `DISTINCT` AS `subdomain`.`id AS SubDomainID`, `subdomain`.`name` AS `SubDomainName`, `ticket`.`creator_user_id` AS `MenteeUserID`
+FROM `subdomain`
+JOIN `ticket` ON ticket.subdomain_id = subdomain.id
+ORDER BY `ticket`.`creator_user_id`' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php(414): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\AnalyticalFilter.php(12): CDbCommand->queryRow()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\AnalyticalController.php(42): AnalyticalFilter->retrieveSubDomainsUsedPerMentee()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): AnalyticalController->actionPullFrecuentMentorSubdomains()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('PullFrecuentMen...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('Analytical/Pull...')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/Analytical/PullFrecuentMentorSubdomains
+---
