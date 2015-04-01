@@ -36,10 +36,17 @@ class AnalyticalController extends Controller
             //1 pull all the attributes (Dinstinct SubDomains used)
             $subdomainsUsedCol = Subdomain::getAllSubdomainsInUse();
             
-            //2 build the attributes collection            
+            //2 build the attributes collection
+            $attributeCol = array();
+            $lastAttribIndex  = count($subdomainsUsedCol) -1;
+            for ($i = 0; $i <= $lastAttribIndex; $i++)
+            {
+               $attributeCol = new Attribute($subdomainsUsedCol[$i]->name, $i);
+               
+            }
             
             //3 pull all the item sets (relation of Subdomains with mentee)
-            $subdomainsPerMenteeCol = AnalyticalFilter::retrieveSubDomainsUsedPerMentee();
+            $subdomainsPerMenteeCol = AssociationFilter::retrieveSubDomainsUsedPerMentee();
             
             //4 build the instances
             
