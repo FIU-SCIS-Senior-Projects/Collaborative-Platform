@@ -34,12 +34,12 @@ class AnalyticalController extends Controller
         public function actionPullFrecuentMentorSubdomains()
         {
             //1 pull all the attributes (Dinstinct SubDomains used)
-            $subdomainsUsed = Subdomain::getAllSubdomainsInUse();
+            $subdomainsUsedCol = Subdomain::getAllSubdomainsInUse();
             
             //2 build the attributes collection            
             
             //3 pull all the item sets (relation of Subdomains with mentee)
-            $subdomainsPerMentee = AnalyticalFilter::retrieveSubDomainsUsedPerMentee();
+            $subdomainsPerMenteeCol = AnalyticalFilter::retrieveSubDomainsUsedPerMentee();
             
             //4 build the instances
             
