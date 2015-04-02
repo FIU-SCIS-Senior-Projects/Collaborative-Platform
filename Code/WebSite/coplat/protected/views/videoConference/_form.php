@@ -43,16 +43,16 @@
 <script>
     $(document).ready(function () {
         if($('#now').is(':checked')) {
-            $("#meeting-date-input").hide("slow");
+            $(".meeting-date-input").hide("slow");
         }else{
-            $("#meeting-date-input").show("slow");
+            $(".meeting-date-input").show("slow");
         }
 
         $("#now").change(function () {
-            $("#meeting-date-input").hide("slow");
+            $(".meeting-date-input").hide("slow");
         });
         $("#later").change(function () {
-            $("#meeting-date-input").show("slow");
+            $(".meeting-date-input").show("slow");
         });
     });
 </script>
@@ -75,6 +75,37 @@
             e.preventDefault(); $(this).parent('div').remove(); x--;
         })
     });
+</script>
+<script>
+
+    function checkForm(form){
+        var dateREGEX = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/
+        //var timeREGEX = "";
+        alert("hey");
+        if(!isValid(dateREGEX, form.date.value)){
+            alert("hey");
+            $("#date-in").prepend('<div class="errorMessage">Please use this format: mm/dd/yyyy</div>');
+            return false;
+        }
+       /* if(!isValid(timeREGEX,form.time.value){
+            $("#time-in").prepend('<div class="errorMessage">Please use this format: mm/dd/yyyy</div>');
+            return false;
+        }
+        */
+        return true;
+    }
+
+
+
+
+    function isValid(regex, val) {
+       // var dateREGEX = "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$";
+       // var re = new RegExp(regex);
+        return (regex.test(val));
+    }
+
+
+
 </script>
 
 <div class="form">
@@ -104,10 +135,23 @@
         </label>
     </div>
 
-    <div id="meeting-date-input" class="row">
+    <div class="meeting-date-input row" id="date-in">
+
+        <label for="date">Date</label>
+        <input placeholder="mm/dd/yyyy" id="date" type="date" name="date">
+
+
+
+
+        <!--
         <?php echo $form->labelEx($model, 'scheduled_for'); ?>
         <?php echo $form->textField($model, 'scheduled_for'); ?>
-        <?php echo $form->error($model, 'scheduled_for'); ?>
+        <?php echo $form->error($model, 'scheduled_for'); ?>-->
+    </div>
+
+    <div class="meeting-date-input row" id="time-in">
+        <label for="time">Date</label>
+        <input placeholder="09:00 am" id="time" type="time" name="time">
     </div>
 
     <div class="row">

@@ -83,7 +83,7 @@ $this->menu = array(
 
     $ismoderator = $user->id == $model->moderator_id;
     $dt = new DateTime($model->scheduled_for);
-    $user_friendly_date = $dt->format("m/d/Y h:i:s a");
+    $user_friendly_date = $dt->format("m/d/Y h:i a");
 
     $html = "
         <div id='mbox-$model->id' class='mbox info'>

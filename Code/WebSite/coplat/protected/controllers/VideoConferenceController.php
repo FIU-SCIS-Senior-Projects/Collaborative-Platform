@@ -109,22 +109,35 @@ class VideoConferenceController extends Controller
         if (isset($_POST['VideoConference'])) {
             $model->attributes = $_POST['VideoConference'];             //get the rest of the attributes
             $moderator = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
-            $model->moderator_id = $moderator->id;                   //get the current users id
+            $model->moderator_id = $moderator->id;                      //get the current users id
             $model->scheduled_on = date("Y-m-d H:i:s");                 //now
 
             $dateopt = $_POST['dateopt'];
             if ($dateopt == "now") {
                 $model->scheduled_for = date("Y-m-d H:i:s");
             } else if ($dateopt == "later") {
-                if (!$model->scheduled_for) {
-                    $model->addError('scheduled_for', "Date Time Cannot Be Blank");
+                if(isset($_POST["date"]) && isset($_POST["time"])){
+                    $format = "m/d/Y H:i a";
+                    $date = DateTime::createFromFormat($format, $_POST['date'] ."  " .$_POST['time']);
+                    if(!$date) {
+                        $model->addError('date', "Wrong format for the date");
+                        $this->render('create', array(
+                            'model' => $model,
+                        ));
+                        exit;
+                    } else {
+                        $model->scheduled_for = $date->format("Y-m-d H:i:s");
+                    }
+                }
+                else{
+                    $model->addError('date', "Wrong format for the date");
                     $this->render('create', array(
                         'model' => $model,
                     ));
                     exit;
-                } else {                                           //validate
-                    /* TODO */
                 }
+
+
             }
 
 
