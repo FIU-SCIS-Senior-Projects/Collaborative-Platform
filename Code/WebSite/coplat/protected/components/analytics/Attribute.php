@@ -15,6 +15,11 @@ class Attribute
      {
          return $this->m_Index;
      }
+     
+     public function name()
+     {
+         return $this->m_Name;
+     }
  }
 
 

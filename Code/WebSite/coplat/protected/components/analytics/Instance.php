@@ -3,12 +3,12 @@
  class Instance
  {
      protected $m_AttValues;
-     protected $m_Dataset;
+    // protected $m_Dataset;
      
      public function Instance($numAttributes) 
      {
       $this->m_AttValues = array_fill(0,$numAttributes, NAN);    
-      $this->m_Dataset = null;
+    //  $this->m_Dataset = null;
      }
      
      public function numAttributes() 
@@ -29,6 +29,11 @@
     public function value($attIndex) 
     {
      return $this->m_AttValues[$attIndex];
+    }
+    
+    public function isMissing($attIndex) 
+    {
+      return is_nan($this->m_AttValues[$attIndex]);
     }
 
 }

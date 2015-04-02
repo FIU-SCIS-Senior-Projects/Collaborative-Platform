@@ -8,14 +8,14 @@
     protected $m_delta = 0.5;
     protected $m_numInstances;
     protected $m_offDiskReportingFrequency = 10000;
-    protected $m_positiveIndex = 2;
-    protected $m_metric = METRIC_TYPE::CONFIDENCE;
+    protected $m_positiveIndex = 1;
+   // protected $m_metric = METRIC_TYPE::CONFIDENCE;
     protected $m_metricThreshold = 0.9;
     protected $m_largeItemSets;
     protected $m_rules;
     protected $m_maxItems = -1;
     protected $m_mustContainOR = false;
-  	   
+  /*	   
     private static function nextSubset($subset)
     {
         for($i = 0; $i < count($subset); $i++)
@@ -76,61 +76,7 @@
           return $consequence;
      }
 
-     public function  generateRulesBruteForce($largeItemSets,
-                                             $metricToUse,
-                                             $metricThreshold,
-                                             $upperBoundMinSuppAsInstances,
-                                             $lowerBoundMinSuppAsInstances,
-                                             $totalTransactions) 
-    {
-
-            $rules = array(); // new ArrayList<AssociationRule>();
-            $largeItemSets->sort();
-
-            $frequencyLookup = new HashMap();//   new HashMap<Collection<BinaryItem>, Integer>();
-
-            $frequentBinaryItemset = $largeItemSets->getSet();
-            // process each large item set
-            foreach ($frequentBinaryItemset as $fis) 
-            {
-              $frequencyLookup.offsetSet($fis->getItems(), $fis->getSupport());
-              if (count($fis.getItems()) > 1) 
-              {
-                    // generate all the possible subsets for the premise
-                    $subset = array_fill(0,count($fis->getItems()), false);  //array[fis.getItems().size()];
-                $premise = null;
-                    $consequence = null;
-                    while (($premise = $this->getPremise($fis, $subset)) != null) 
-                    {
-                             if (count($premise) > 0 && count($premise) < count($fis->getItems())) 
-                             {
-                                    $consequence = $this->getConsequence($fis, $subset);
-                                    $totalSupport = $fis->getSupport();
-                                    $supportPremise = $frequencyLookup->offsetGet($premise);
-                                    $supportConsequence = $frequencyLookup->get($consequence);
-
-                                    // a candidate rule
-                                    $candidate = new DefaultAssociationRule($premise,
-                                                    $consequence, 
-                                                                                                                    $metricToUse, 
-                                                                                                                    $supportPremise,
-                                                                            $supportConsequence, 
-                                                                                                                    $totalSupport, 
-                                                                                                                    $totalTransactions);
-                                    if ($candidate->getPrimaryMetricValue() > $metricThreshold  && 
-                                        $candidate->getTotalSupport() >= $lowerBoundMinSuppAsInstances && 
-                                            $candidate->getTotalSupport() <= $upperBoundMinSuppAsInstances) {
-                                      // accept this rule
-                                      $rules[] = candidate;
-                                    }
-                              }
-                            nextSubset($subset);
-                    }
-               }			
-
-            }
-    return rules;
-    }
+    
 	
     public static function pruneRules($rulesToPrune,
                                       $itemsToConsider,
@@ -224,129 +170,227 @@
 		}
 
 		
-    private function processSingleton($current,
-                                          $singletons)
-		{
-			if ($current instanceof SparseInstance) 
-			{
-				for ( $j = 0; $j < $current->numValues(); $j++) 
-				{
-					$attIndex = $current->index($j);
-                    $singletons[$attIndex]->increaseFrequency();
-				}
-			} 
-			else 
-			{
-				for ($j = 0; $j < $current->numAttributes(); $j++) 
-				{
-					if (!$current->isMissing($j)) 
-					{
-						if ($current->attribute($j)->numValues() == 1 || $current->value($j) == $this->m_positiveIndex - 1) 
-						{
-							$singletons[$j]->increaseFrequency();
-						}
-					}
-				}
-			}
-		}
+  
 			
 		
-    protected function  getSingletons($source)
-		{
-			$singletons = array();
-			$data = null;
-			
-			if ($source instanceof Instances) 
-			{
-     			$data = $source;
-		    } 
-			elseif ($source instanceof ArffLoader) 
-			{
-				$data = $source->getStructure();
-			}
-			
-			for ($i = 0; $i < $data->numAttributes(); $i++) 
-			{
-				$singletons[] = new BinaryItem($data->attribute($i), $this->m_positiveIndex - 1);
-			}
-			
-			if ($source instanceof Instances) 
-			{
-				// set the number of instances
-				$this->m_numInstances = $data->numInstances();
-				
-				for ($i = 0; i < $data->numInstances(); $i++) 
-				{
-					$current = $data->instance($i);
-					processSingleton($current, $singletons);
-				}
-			} 
-			elseif ($source instanceof ArffLoader) 
-			{
-				$loader = $source;
-				$current = null;
-				$count = 0;
-				while (($current = $loader->getNextInstance($data)) != null) 
-				{
-					processSingleton($current, $singletons);
-					$count++;
-				}
-				
-				// set the number of instances
-				$this->m_numInstances = $count;
-				$loader->reset();
-			}
-		return $singletons;
-        }
+    
 		
 		 
-    private function insertInstance($current,
+   */  
+    
+    
+     public function  generateRulesBruteForce($largeItemSets,
+                                             $metricThreshold,
+                                             $upperBoundMinSuppAsInstances,
+                                             $lowerBoundMinSuppAsInstances,
+                                             $totalTransactions) 
+    {
+
+            $rules = array(); // new ArrayList<AssociationRule>();
+            $largeItemSets->sort();
+
+            $frequencyLookup = new HashMap();//   new HashMap<Collection<BinaryItem>, Integer>();
+
+            $frequentBinaryItemset = $largeItemSets->getSet();
+            // process each large item set
+            foreach ($frequentBinaryItemset as $fis) 
+            {
+              $frequencyLookup->offsetSet($fis->getItems(), $fis->getSupport());
+              if (count($fis->getItems()) > 1) 
+              {
+                    // generate all the possible subsets for the premise
+                $subset = array_fill(0,count($fis->getItems()), false);  //array[fis.getItems().size()];
+                $premise = null;
+                    $consequence = null;
+                    while (($premise = $this->getPremise($fis, $subset)) != null) 
+                    {
+                             if (count($premise) > 0 && count($premise) < count($fis->getItems())) 
+                             {
+                                    $consequence = $this->getConsequence($fis, $subset);
+                                    $totalSupport = $fis->getSupport();
+                                    $supportPremise = $frequencyLookup->offsetGet($premise);
+                                    $supportConsequence = $frequencyLookup->get($consequence);
+
+                                    // a candidate rule
+                                    $candidate = new DefaultAssociationRule($premise,
+                                                    $consequence, 
+                                                                                                                    $metricToUse, 
+                                                                                                                    $supportPremise,
+                                                                            $supportConsequence, 
+                                                                                                                    $totalSupport, 
+                                                                                                                    $totalTransactions);
+                                    if ($candidate->getPrimaryMetricValue() > $metricThreshold  && 
+                                        $candidate->getTotalSupport() >= $lowerBoundMinSuppAsInstances && 
+                                            $candidate->getTotalSupport() <= $upperBoundMinSuppAsInstances) {
+                                      // accept this rule
+                                      $rules[] = candidate;
+                                    }
+                              }
+                            nextSubset($subset);
+                    }
+               }			
+
+            }
+    return $rules;
+    }
+    
+    
+    protected function mineTree($tree, 
+                                $largeItemSets,
+                                $recursionLevel, 
+                                $conditionalItems, 
+                                $minSupport) 
+    {
+
+    if (!$tree->isEmpty($recursionLevel)) 
+    {
+      if ($this->m_maxItems > 0 && $recursionLevel >= $this->m_maxItems) 
+      {
+        // don't mine any further
+        return;
+      }
+
+      $headerTable = $tree->getHeaderTable();
+      $keys = $headerTable->keys();
+      // System.err.println("Number of freq item sets collected " +
+      // largeItemSets.size());
+      foreach ($keys as $item) 
+      {
+
+        $itemHeader = $headerTable->offsetGet($item);
+
+        // check for minimum support at this level
+        $support = $itemHeader->getProjectedCounts()->getCount($recursionLevel);
+        if ($support >= $minSupport) 
+        {
+          // process header list at this recursion level
+          foreach ($itemHeader->getHeaderList() as $n)  
+          {
+            // push count up path to root
+            $currentCount = $n->getProjectedCount($recursionLevel);
+            if ($currentCount > 0) 
+            {
+              $temp = $n->getParent();
+              while ($temp != $tree) 
+              {
+                // set/increase for the node
+                $temp->increaseProjectedCount($recursionLevel + 1, $currentCount);
+
+                // set/increase for the header table
+                $headerTable->offsetGet($temp->getItem())->getProjectedCounts()->increaseCount($recursionLevel + 1, $currentCount);
+
+                $temp = $temp->getParent();
+              }
+            }
+          }
+
+          $newConditional = clone $conditionalItems;
+
+          // this item gets added to the conditional items
+          $newConditional->addItem($item);
+          $newConditional->setSupport($support);
+
+          // now add this conditional item set to the list of large item sets
+          $largeItemSets->addItemSet($newConditional);
+
+          // now recursively process the new tree
+          $this->mineTree($tree, $largeItemSets, $recursionLevel + 1, $newConditional,$minSupport);
+
+          // reverse the propagated counts
+          foreach ($itemHeader->getHeaderList() as $n) 
+          {
+            $temp = $n->getParent();
+            while ($temp != $tree) 
+            {
+              $temp->removeProjectedCount($recursionLevel + 1);
+              $temp = $temp->getParent();
+            }
+          }
+
+          // reverse the propagated counts in the header list
+          // at this recursion level
+          foreach ( $headerTable->values() as $h) 
+          {
+            $h->getProjectedCounts()->removeCount($recursionLevel + 1);
+          }
+        }
+      }
+    }
+  }
+    
+    
+    private function processSingleton($currentInstance, $singletons)
+    {          
+        for ($j = 0; $j < $currentInstance->numAttributes(); $j++) 
+        {
+            if (!$currentInstance->isMissing($j)) 
+            {
+                if ($currentInstance->value($j) == $this->m_positiveIndex) 
+                {
+                        $singletons[$j]->increaseFrequency();
+                }
+            }
+        } 
+     }
+    
+    protected function getSingletons($source)
+    {
+        $singletons = array();
+        for ($i = 0; $i < $source->numAttributes(); $i++) 
+        {
+           $singletons[] = new BinaryItem($source->attribute($i), $this->m_positiveIndex);
+        }
+
+        // set the number of instances
+        $this->m_numInstances = $source->numInstances();
+        for ($i = 0; $i < $source->numInstances(); $i++) 
+        {
+            $current = $source->instance($i);
+            $this->processSingleton($current, $singletons);
+        }
+        return $singletons;
+    }
+
+     private function insertInstance($current,
 		                    $singletons, 
 				    $tree,
 				    $minSupport)
    {
+	$transaction = array(); // new ArrayList<BinaryItem>();
 			
-			$transaction = array(); // new ArrayList<BinaryItem>();
-			
-			if ($current instanceof SparseInstance) 
-			{
-				for ($j = 0; $j < $current->numValues(); $j++) 
-				{
-					$attIndex = $current->index($j);
-					if ($singletons[$attIndex]->getFrequency() >= $minSupport) 
-					{
-						$transaction[] = $singletons[$attIndex];
-					}
-				}
-				Collections.sort($transaction);
-				$tree->addItemSet($transaction, 1);
-			} 
-			else 
-			{
-				for ($j = 0; $j < $current->numAttributes(); $j++) 
-				{
-					if (!$current->isMissing($j)) 
-					{
-						if ($current->attribute($j)->numValues() == 1
-            || current.value(j) == m_positiveIndex - 1) {
-            if (singletons.get(j).getFrequency() >= minSupport) {
-              transaction.add(singletons.get(j));
+	for ($j = 0; $j < $current->numAttributes(); $j++) 
+	{
+	    if (!$current->isMissing($j)) 
+	    {
+		if ($current->value($j) == $this->m_positiveIndex) 
+                {
+                   if ($singletons[$j]->getFrequency() >= $minSupport) 
+                   {
+                       $transaction[] = $singletons[$j];
+                   }
+                }
             }
-          }
         }
+        
+        usort($transaction, array('BinaryItem', 'cmp'));
+        $tree->addItemSet($transaction, 1);
+      }      
+      
+    
+    protected function buildFPTree($singletons,$dataSource, $minSupport)
+    {
+      $tree = new FPTreeRoot();
+      for ($i = 0; $i < $dataSource->numInstances(); $i++) 
+      {
+         $this->insertInstance($dataSource->instance($i), $singletons, $tree, $minSupport);
       }
-      Collections.sort(transaction);
-      tree.addItemSet(transaction, 1);
+      return $tree;        
     }
-			
-			
-			
-   }	   
-
+    
     public function buildAssociations($source) //Instances
     {
         $breakOnNext = false;
-        $singletons = getSingletons($source);
+        $singletons = $this->getSingletons($source);
         
         if ($this->m_upperBoundMinSupport > 1)
         {
@@ -377,7 +421,7 @@
        
        if ($this->m_delta > 1)
        {
-         $deltaAsFraction =  $this->m_delta;
+         $deltaAsFraction =  $this->m_delta / $this->m_numInstances;
        }
        else
        {
@@ -389,26 +433,25 @@
        do {
            $currentSupportAsInstances = ($currentSupport > 1) ? $currentSupport: ceil($currentSupport * $this->m_numInstances);
              
-           $tree = buildFPTree($singletons, $source,$currentSupportAsInstances);
+           $tree = $this->buildFPTree($singletons, $source,$currentSupportAsInstances);
            $largeItemSets = new FrequentItemSets($this->m_numInstances);
 
            // mine the tree
            $conditionalItems = new FrequentBinaryItemSet(array(), 0);
-           mineTree($tree, $largeItemSets, 0, $conditionalItems, $currentSupportAsInstances);
+           $this->mineTree($tree, $largeItemSets, 0, $conditionalItems, $currentSupportAsInstances);
            $this->m_largeItemSets = $largeItemSets;
            
           // save memory
            $tree = null;
            
-           $this->m_rules = generateRulesBruteForce($this->m_largeItemSets,
-                                                    $this->m_metric,
+           $this->m_rules = $this->generateRulesBruteForce($this->m_largeItemSets,
                                                     $this->m_metricThreshold, 
                                                     $upperBoundMinSuppAsInstances,
                                                     $lowerBoundMinSuppAsInstances, 
                                                     $this->m_numInstances);
     
      
-      if (!$this->m_findAllRulesForSupportLevel) {
+      //if (!$this->m_findAllRulesForSupportLevel) {
         if ($breakOnNext) {
           break;
         }
@@ -424,17 +467,17 @@
             break;
           }
         }
-      } else {
+      //} else {
         // just break out of the loop as we are just finding all rules
         // with a minimum support + metric
-        break;
-      }
+      //  break;
+      //}
     } while (count($this->m_rules) < $this->m_numRulesToFind);
        
        
                
     }
-	   
+	 
    }
 
 
