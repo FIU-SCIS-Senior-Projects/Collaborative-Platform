@@ -89,7 +89,7 @@ $this->menu=array(
     foreach($vcs as $vc){
         $ismoderator  = $user->id == $vc->moderator_id;
         $dt = new DateTime($vc->scheduled_for);
-        $user_friendly_date = $dt->format("m/d/Y h:i a");
+        $user_friendly_date = $dt->format("m/d/Y h:i A");
 
         $html = "
         <div id='mbox-$vc->id' class='mbox info'> " .

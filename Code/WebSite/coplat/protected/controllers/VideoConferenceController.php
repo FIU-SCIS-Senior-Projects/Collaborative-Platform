@@ -118,9 +118,9 @@ class VideoConferenceController extends Controller
             } else if ($dateopt == "later") {
                 if(isset($_POST["date"]) && isset($_POST["time"])){
                     $format = "m/d/Y H:i a";
-                    $date = DateTime::createFromFormat($format, $_POST['date'] ."  " .$_POST['time']);
+                    $date = DateTime::createFromFormat($format, $_POST['date'] ."  " . strtolower($_POST['time']));
                     if(!$date) {
-                        $model->addError('date', "Wrong format for the date");
+                        $model->addError('date', "Wrong format for the date " . $_POST['date'] ."  " . strtolower($_POST['time']));
                         $this->render('create', array(
                             'model' => $model,
                         ));
