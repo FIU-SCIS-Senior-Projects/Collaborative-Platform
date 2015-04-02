@@ -48,7 +48,7 @@ class BinaryItem
     if ($this->m_frequency == $comp->getFrequency()) 
     {
       // sort by name
-      return -1 * strcmp($this->m_attribute.name(), $comp->getAttribute()->name());
+      return -1 * strcmp($this->m_attribute->name(), $comp->getAttribute()->name());
     }
     if ($comp->getFrequency() < $comp->m_frequency) 
     {

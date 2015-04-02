@@ -87,7 +87,7 @@
 
             foreach ($rulesToPrune as $r ) 
             {
-              if ($r.containsItems($itemsToConsider, $useOr)) 
+              if ($r->containsItems($itemsToConsider, $useOr)) 
               {
                     $result[] = $r;
               }
@@ -141,7 +141,7 @@
 				{
 					if ($transactionsMustContainIndexes[$i]) 
 					{
-						if ($inst.value($i) == $this->m_positiveIndex) 
+						if ($inst->value($i) == $this->m_positiveIndex) 
 						{
 							if ($this->m_mustContainOR) 
 							{
