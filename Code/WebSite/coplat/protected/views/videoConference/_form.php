@@ -150,7 +150,7 @@
     </div>
 
     <div class="meeting-date-input row" id="time-in">
-        <label for="time">Date</label>
+        <label for="time">Time</label>
         <input placeholder="09:00 am" id="time" type="time" name="time">
     </div>
 

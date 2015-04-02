@@ -130,7 +130,7 @@ class VideoConferenceController extends Controller
                     }
                 }
                 else{
-                    $model->addError('date', "Wrong format for the date");
+                    $model->addError('date', "Empty date or time");
                     $this->render('create', array(
                         'model' => $model,
                     ));
