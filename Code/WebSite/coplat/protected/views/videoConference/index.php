@@ -2,7 +2,37 @@
 /* @var $this VideoConferenceController */
 /* @var $meetingsId array */
 
+function accept($vcid){
+    return CHtml::ajaxLink('Accept',
+        Yii::app()->createAbsoluteUrl('videoConference/accept/'.$vcid),
+        array(
+            'type'=>'get',
+            'data' => array('id' =>$vcid,'type'=>'get'),
+            'update'=>'message',
+            'success' => 'function(response) {
+                                $(".message").html(response);
+                                location.reload();
+                                }',
+        ),
+        array( 'confirm'=>'Are you sure you want to accept this invitation?', 'role' => "button", "class" => "btn btn-success")
+    );
+}
 
+function reject($vcid){
+    return CHtml::ajaxLink('Reject',
+        Yii::app()->createAbsoluteUrl('videoConference/reject/'.$vcid),
+        array(
+            'type'=>'get',
+            'data' => array('id' =>$vcid,'type'=>'get'),
+            'update'=>'message',
+            'success' => 'function(response) {
+                                $(".message").html(response);
+                                location.reload();
+                                }',
+        ),
+        array( 'confirm'=>'Are you sure you want to reject this invitation?', 'role' => "button", "class" => "btn btn-danger")
+    );
+}
 
 ///* @var $dataProvider CActiveDataProvider */
 
@@ -117,7 +147,20 @@ $this->menu=array(
                     ),
                     array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
                 );
+            }else{
+                $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
+                if($invitation->status == "Unknown"){
+                    $html .= accept($vc->id);
+                    $html .= reject($vc->id);
+                }else if($invitation->status == "Accepted"){
+                    $html .= reject($vc->id);
+                }else{
+                    $html .= accept($vc->id);
+                }
+
             }
+
+
 
             $html .=  "</div>";
         $html = str_replace("%SUBJECT%", $vc->subject, $html);

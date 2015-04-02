@@ -4,6 +4,42 @@
 /*this refers a ticket */
 
 ?>
+<style>
+    .radio-inline {
+        display: inline-block;
+        padding-left: 20px;
+        margin-bottom: 0;
+        font-weight: 400;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    label.radio-inline {
+
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: 700;
+
+    }
+    #meeting-date-input{
+        display: none;
+    }
+
+    .radio-inline input[type=radio], .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox] {
+        position: absolute;
+        margin-top: 4px \9;
+        margin-left: -20px;
+    }
+
+    .add_field_button{
+        margin-bottom: 10px;
+    }
+    input.large{
+        width: 90%;
+
+    }
+</style>
 <div style="color: #0044cc"><h3>Ticket #  <?php echo $model->id; ?></h3></div>
 <br>
 <div id="fullcontent">
@@ -133,22 +169,23 @@
                 ),
             ));
         }?>
-
+        <br>
+        <br>
         <?php
-        /*$tier = UserDomain::model()->find("user_id=:id", array(':id' => $model->assign_user_id));
-
-        if ($tier->tier_team == 1) {
-            $this->widget('bootstrap.widgets.TbButton', array(
-                'label' => 'Escalate',
+        if(User::isCurrentUserAdmin() || User::isCurrentUserDomMentor()){
+                $this->widget('bootstrap.widgets.TbButton', array(
+                'label' => 'Schedule Meeting',
                 'type' => 'primary',
                 'htmlOptions' => array(
                     'data-toggle' => 'modal',
-                    'data-target' => '#myModalEscalate',
-                    'style' => 'width: 120px',
+                    'data-target' => '#myModalScheduleVC',
+                    'style' => 'width: 120px'
                 ),
             ));
-        } */
+        }
+
         ?>
+
     </div>
     <!-- End Buttons Options -->
 
@@ -466,6 +503,158 @@
 </script>
 
 
+<!-- Schedule VC Modal -->
+<div class="modal fade" id="myModalScheduleVC" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Schedule Video Conference For Ticket #<?php echo $model->id ?></h4>
+    </div>
+    <div class="modal-body">
+        <div class="form" style="margin-left: 30px">
+       <form id="video-conference-form" method="POST" action="/coplat/index.php/videoConference/createfrommodal">
+
+        <div id="message_box"></div>
+
+        <div class="row">
+            <label for="subject">Subject</label>
+            <input value="<?php echo  $model->subject. " - Ticket #" . $model->id?>" class="large" id="subject" type="text" name="VideoConference[subject]">
+        </div>
+
+        <div class="row">
+            <label class="radio-inline">
+                <input id="now" value="now" checked type="radio" name="dateopt">Now
+            </label>
+            <label class="radio-inline">
+                <input id="later" value="later" type="radio" name="dateopt">Later
+            </label>
+        </div>
+
+        <div class="meeting-date-input row" id="date-in">
+
+            <label for="date">Date</label>
+            <input placeholder="mm/dd/yyyy" id="date" type="text" name="date">
+
+        </div>
+
+        <div class="meeting-date-input row" id="time-in">
+            <label for="time">Time</label>
+            <input placeholder="09:00 am" id="time" type="text" name="time">
+        </div>
+
+        <div class="row">
+            <label for="notes">Notes</label>
+            <input class="large" value="<?php echo $model->description ?>" id="notes" type="text" name="VideoConference[notes]">
+        </div>
+
+
+        <div class="invitee_emails">
+            <div class="row">
+                <label for="invitee-1">Invitee Email</label>
+                <input placeholder="" id="invitee-1" type="email" name="invitees[]">
+                <button type="button" class="btn btn-info add_field_button"><i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+
+
+        <div class="row buttons">
+            <?php echo CHtml::submitButton("Schedule", array('class' => 'btn btn-primary')); ?>
+        </div>
+
+        </form>
+        </div>
+    </div>
+</div>
+<!-- Script for VC modal -->
+<script>
+    $(document).ready(function() {
+        $('#video-conference-form').submit(function(event) {
+            var form = $(this);
+            var method = form.attr('method');
+            var action = form.attr('action');
+            var data = form.serialize();
+            ajaxGeneric(action, method, data, "#message_box");
+            event.preventDefault(); // Prevent the form from submitting via the browser.
+        });
+    });
+
+
+    function ajaxGeneric(action, method, params, response_target) {
+        var infoBox = $(response_target);
+        $.ajax({
+            type : method,
+            url : action,
+            data : params,
+            success : function(response) {
+                if (response == "OK") {
+                    infoBox.removeClass("alert-danger");
+                    infoBox.addClass("alert-success");
+                    infoBox.html("The meeting has been successfully scheduled");
+                } else {
+                    infoBox.removeClass("alert-success");
+                    infoBox.addClass("alert-danger");
+                    infoBox.html(response);
+                }
+            }
+        }).done(function() {
+
+        }).fail(function() {
+            infoBox.removeClass("alert-success");
+            infoBox.addClass("alert-danger");
+            infoBox.html("Your request cannot be completed at this time");
+
+        });
+
+    }
+
+
+
+</script>
+<!--Script to hide and show the meeting date -->
+<script>
+    $(document).ready(function () {
+        if($('#now').is(':checked')) {
+            $(".meeting-date-input").hide("slow");
+        }else{
+            $(".meeting-date-input").show("slow");
+        }
+
+        $("#now").change(function () {
+            $(".meeting-date-input").hide("slow");
+        });
+        $("#later").change(function () {
+            $(".meeting-date-input").show("slow");
+        });
+    });
+</script>
+<!-- creates more emails input fields -->
+<script>
+    $(document).ready(function() {
+        var max_fields      = 10; //maximum input boxes allowed
+        var wrapper         = $(".invitee_emails"); //Fields wrapper
+        var add_button      = $(".add_field_button"); //Add button ID
+
+        var x = 1; //initlal text box count
+        $(add_button).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x < max_fields){ //max input box allowed
+                x++; //text box increment
+                $(wrapper).append('<div class="row"><label for="invitee-'+x+'">Invitee '+x+' Email</label><input placeholder="" type="email" id="invitee-' + x + '" name="invitees[]"/><a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a></div>'); //add input box
+            }
+        });
+
+        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
+    });
+</script>
+
+
+<!-- End Schedule VC Modal
+
+
+
+
 
 
 
@@ -496,3 +685,4 @@
     });
     $('.table-fixed-header').fixedHeader();
 </script>
+

@@ -108,7 +108,7 @@
     <div class="meeting-date-input row" id="date-in">
 
         <label for="date">Date</label>
-        <input placeholder="mm/dd/yyyy" id="date" type="" name="date">
+        <input placeholder="mm/dd/yyyy" id="date" type="text" name="date">
 
 
 

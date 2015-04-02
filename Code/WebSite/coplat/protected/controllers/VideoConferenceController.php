@@ -33,7 +33,7 @@ class VideoConferenceController extends Controller
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject'),
+                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject', "createfrommodal"),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -120,7 +120,7 @@ class VideoConferenceController extends Controller
                     $format = "m/d/Y H:i a";
                     $date = DateTime::createFromFormat($format, $_POST['date'] ."  " . strtolower($_POST['time']));
                     if(!$date) {
-                        $model->addError('date', "Wrong format for the date " . $_POST['date'] ."  " . strtolower($_POST['time']));
+                        $model->addError('date', "Wrong format for the date ");
                         $this->render('create', array(
                             'model' => $model,
                         ));
@@ -175,6 +175,80 @@ class VideoConferenceController extends Controller
         $this->render('create', array(
             'model' => $model,
         ));
+    }
+
+    /**
+     * Creates a new model fr
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionCreateFromModal()
+    {
+        $model = new VideoConference;
+        $invitationError = "";
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+
+        if (isset($_POST['VideoConference'])) {
+            $model->attributes = $_POST['VideoConference'];             //get the rest of the attributes
+            $moderator = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+            $model->moderator_id = $moderator->id;                      //get the current users id
+            $model->scheduled_on = date("Y-m-d H:i:s");                 //now
+
+            $dateopt = $_POST['dateopt'];
+            if ($dateopt == "now") {
+                $model->scheduled_for = date("Y-m-d H:i:s");
+            } else if ($dateopt == "later") {
+                if(isset($_POST["date"]) && isset($_POST["time"])){
+                    $format = "m/d/Y H:i a";
+                    $date = DateTime::createFromFormat($format, $_POST['date'] ."  " . strtolower($_POST['time']));
+                    if(!$date) {
+                        print_r("Wrong format for the date ");
+                        exit;
+                    } else {
+                        $model->scheduled_for = $date->format("Y-m-d H:i:s");
+                    }
+                }
+                else{
+                    print_r("Empty date or time");
+                    exit;
+                }
+
+
+            }
+
+            if ($model->save()) {
+                print_r("OK");
+                $inviteeEmails = $_POST['invitees']; // Returns an array
+                foreach ($inviteeEmails as $email) {
+                    $invitee = User::model()->findByAttributes(array('email' => $email));
+                    if ($invitee == null) {
+                        $invitationError .= $email . " does not appear in our records <br>";
+                        continue;
+                    }
+                    if ($invitee->id == $moderator->id) {
+                        continue;
+                    }
+
+                    $invitation = new VCInvitation();
+                    $invitation->invitee_id = $invitee->id;
+                    $invitation->videoconference_id = $model->id;
+                    $invitation->status = "Unknown";
+                    if (!$invitation->save()) {                                         //an error occurred
+                        $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
+                    } else {
+                        $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                        VCInvitation::sendInvitationEmail($model->id, $model->moderator_id, $inviteefullName, $email);;
+                    }
+                }
+                if ($invitationError != "") {
+                    Yii::app()->user->setFlash('invitation-error', $invitationError);
+                }
+               
+            }
+
+        }
+
     }
 
     /**
