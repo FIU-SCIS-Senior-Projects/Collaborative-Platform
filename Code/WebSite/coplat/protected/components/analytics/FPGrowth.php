@@ -15,8 +15,9 @@
     protected $m_rules;
     protected $m_maxItems = -1;
     protected $m_mustContainOR = false;
-  /*	   
-    private static function nextSubset($subset)
+	
+	
+	 private static function nextSubset($subset)
     {
         for($i = 0; $i < count($subset); $i++)
         {
@@ -31,8 +32,9 @@
                }			   
         }
     }
-	   	   
-    private static function getPremise($fis, $subset)
+	
+	
+	 private static function getPremise($fis, $subset)
     {
             $ok = false;
             for ($i = 0; $i< count($subset); $i++)
@@ -60,8 +62,8 @@
             }
             return $premise;		   
     }
-	   
-    private static function getConsequence($fis,$subset) 
+		
+	private static function getConsequence($fis,$subset) 
     {
          $consequence = array(); // new ArrayList<Item>();
          $items = $fis->getItems(); // = new ArrayList<Item>(fis.getItems());
@@ -75,9 +77,8 @@
            }
           return $consequence;
      }
-
-    
-	
+	 
+	 
     public static function pruneRules($rulesToPrune,
                                       $itemsToConsider,
                                       $useOr) 
@@ -93,14 +94,14 @@
             }
     return $result;
     }
-		
-    private function passesMustContain($inst,
+	
+   private function passesMustContain($inst,
 		                                   $transactionsMustContainIndexes,
 		                                   $numInTransactionsMustContainList) 
 	   {
 		  $result = false;
 
-			if ($inst instanceof SparseInstance) 
+			/*if ($inst instanceof SparseInstance) 
 			{
 				$containsCount = 0;
 				for ($i = 0; $i < $inst->numValues(); $i++) 
@@ -132,15 +133,15 @@
 						return true;
 					}
 				}
-			} 
-			else 
-			{
+			} */
+			//else 
+			//{
 				$containsCount = 0;
 				for ($i = 0; $i < count($transactionsMustContainIndexes); $i++) 
 				{
 					if ($transactionsMustContainIndexes[$i]) 
 					{
-						if ($inst.value($i) == $this->m_positiveIndex - 1) 
+						if ($inst.value($i) == $this->m_positiveIndex) 
 						{
 							if ($this->m_mustContainOR) 
 							{
@@ -164,19 +165,10 @@
 						return true;
 					}
 				}
-			}
+			//}
 
 		return result;
 		}
-
-		
-  
-			
-		
-    
-		
-		 
-   */  
     
     
      public function  generateRulesBruteForce($largeItemSets,
@@ -214,7 +206,6 @@
                                     // a candidate rule
                                     $candidate = new DefaultAssociationRule($premise,
                                                     $consequence, 
-                                                                                                                    $metricToUse, 
                                                                                                                     $supportPremise,
                                                                             $supportConsequence, 
                                                                                                                     $totalSupport, 
@@ -226,7 +217,7 @@
                                       $rules[] = candidate;
                                     }
                               }
-                            nextSubset($subset);
+                          $this->nextSubset($subset);
                     }
                }			
 
