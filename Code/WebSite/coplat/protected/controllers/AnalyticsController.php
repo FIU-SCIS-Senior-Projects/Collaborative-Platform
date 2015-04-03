@@ -1,7 +1,7 @@
 <?php
 
 
-class AnalyticalController extends Controller
+class AnalyticsController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -24,18 +24,43 @@ class AnalyticalController extends Controller
         {
             return array(
                 array('allow',
-                    'actions'=>array('index', 'PullFrecuentMentorSubdomains'),
+                    'actions'=>array('index', 'PullFrecuentMenteeSubdomains'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),
             );
         }
         
-        public function actionPullFrecuentMentorSubdomains()
+        public function actionPullFrecuentMenteeSubdomains()
         {
+            $associationFilter= new AssociationFilter();
+            if(isset($_POST['AssociationFilter'])) 
+            {
+               $associationFilter->attributes = $_POST['AssociationFilter'];
+               
+                if ( !is_numeric($associationFilter->lowerBoundMinSupport))
+                {
+                   $associationFilter->lowerBoundMinSupport =  0.1; 
+                }
+
+                if ( !is_numeric($associationFilter->numRulesToFind))
+                {
+                   $associationFilter->numRulesToFind =  10; 
+                }
+
+               if ( !is_numeric($associationFilter->uppperBoundMinSupport))
+               {
+                   $associationFilter->uppperBoundMinSupport =  1.0; 
+               }  
+               
+               
+            }else
+            {
+               $associationFilter->setDefaultValues();
+            }
             
-            
-            
+         //  echo $associationFilter->lowerBoundMinSupport;
+           
             
             
             //1 pull all the attributes (Dinstinct SubDomains used)
@@ -77,14 +102,33 @@ class AnalyticalController extends Controller
                    
             //5 calculate the association rules
             $fpGrowth = new FPGrowth();
+            $fpGrowth->m_numRulesToFind = $associationFilter->numRulesToFind;
+            $fpGrowth->m_upperBoundMinSupport =  $associationFilter->uppperBoundMinSupport;
+            $fpGrowth->lowerBoundMinSupport = $associationFilter->lowerBoundMinSupport;
+          
+          
+            
+            
             $fpGrowth->buildAssociations($instances);
             
             //6 render the association rules
             $rules = $fpGrowth->getRules();
+            
+            $associations = array();
+            $id = 0;
             foreach ($rules as $rule)
             {
-                echo $this->renderBinaryItemsCommaSeparated($rule->getPremise()). " ==> ".$this->renderBinaryItemsCommaSeparated($rule->getConsequence()). "</br>";                
+                $associations[] = array("id" => $id,
+                                        "Operator" => " ==> ",
+                                        "Premise" => $this->renderBinaryItemsCommaSeparated($rule->getPremise()),
+                                        "Consequence"  =>$this->renderBinaryItemsCommaSeparated($rule->getConsequence()) );
+                //echo $this->renderBinaryItemsCommaSeparated($rule->getPremise()). " ==> ".$this->renderBinaryItemsCommaSeparated($rule->getConsequence()). "</br>";                
+                $id++;
             } 
+            
+            $dataProvider=new CArrayDataProvider($associations, array('pagination'=> false));
+            $this->render("frecuentMenteeSubdomains", array('dataprovider' => $dataProvider, 
+                                                            'filter' => $associationFilter));
         }
         
         private function renderBinaryItemsCommaSeparated($binaryItems)

@@ -2,9 +2,9 @@
  
  class FPGrowth 
  {
-    protected $m_numRulesToFind = 10;
-    protected $m_upperBoundMinSupport = 1.0;
-    protected $m_lowerBoundMinSupport = 0.1;
+    public $m_numRulesToFind = 10;
+    public $m_upperBoundMinSupport = 1.0;
+    public $m_lowerBoundMinSupport = 0.1;
     protected $m_delta = 0.05;
     protected $m_numInstances;
     protected $m_offDiskReportingFrequency = 10000;
@@ -473,7 +473,7 @@
     
     public function getRules()
     {
-        return $this->m_rules;
+        return  array_slice ($this->m_rules, 0, $this->m_numRulesToFind) ;
     }
    }
 
