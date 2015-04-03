@@ -42,6 +42,10 @@ class BinaryItem
        return 1;
     }
     
+    public function getAttribute()
+    {
+        return $this->m_attribute;
+    }
     
    public function compareTo($comp) 
    {

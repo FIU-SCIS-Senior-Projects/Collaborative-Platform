@@ -35,6 +35,9 @@ class AnalyticalController extends Controller
         {
             
             
+            
+            
+            
             //1 pull all the attributes (Dinstinct SubDomains used)
             $subdomainsUsedCol = Subdomain::getAllSubdomainsInUse();
             
@@ -77,7 +80,23 @@ class AnalyticalController extends Controller
             $fpGrowth->buildAssociations($instances);
             
             //6 render the association rules
-
+            $rules = $fpGrowth->getRules();
+            foreach ($rules as $rule)
+            {
+                echo $this->renderBinaryItemsCommaSeparated($rule->getPremise()). " ==> ".$this->renderBinaryItemsCommaSeparated($rule->getConsequence()). "</br>";                
+            } 
+        }
+        
+        private function renderBinaryItemsCommaSeparated($binaryItems)
+        {
+           $res = "";
+           $separator = "";
+           foreach ($binaryItems as $binaryItm)
+           {
+            $res = $res.$separator.$binaryItm->getAttribute()->name();
+            $separator = ", ";
+           }     
+           return $res;
         }
         
         

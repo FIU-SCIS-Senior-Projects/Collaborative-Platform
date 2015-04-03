@@ -23,13 +23,13 @@
          {
          $this->m_items = $items;
          $this->m_support = $support;
-         uasort($this->m_items, array($this, 'compareTo'));  //Collections.sort($m_items);
+         usort($this->m_items, array($this, 'compareTo'));  //Collections.sort($m_items);
          }
 	  
       function addItem($i) 
       {
          $this->m_items[] = $i;
-         uasort($this->m_items, array($this, 'compareTo')); //   Collections.sort($m_items);
+         usort($this->m_items, array($this, 'compareTo')); //   Collections.sort($m_items);
        }
   
       function setSupport($support) 

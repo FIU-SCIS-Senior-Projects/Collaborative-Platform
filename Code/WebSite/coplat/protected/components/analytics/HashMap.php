@@ -60,7 +60,7 @@ class HashMap implements ArrayAccess {
             {
                 if (is_array($object))
                 {
-                    return serialize($object);
+                    return  serialize($object);
                 }else
                 {
                     return $object;

@@ -5,7 +5,7 @@
     protected $m_numRulesToFind = 10;
     protected $m_upperBoundMinSupport = 1.0;
     protected $m_lowerBoundMinSupport = 0.1;
-    protected $m_delta = 0.5;
+    protected $m_delta = 0.05;
     protected $m_numInstances;
     protected $m_offDiskReportingFrequency = 10000;
     protected $m_positiveIndex = 1;
@@ -17,7 +17,7 @@
     protected $m_mustContainOR = false;
 	
 	
-	 private static function nextSubset($subset)
+	 private static function nextSubset(&$subset)
     {
         for($i = 0; $i < count($subset); $i++)
         {
@@ -70,9 +70,9 @@
 
            for ($i = 0; $i < count($subset); $i++) 
            {
-             if (!$subset[i]) 
+             if (!$subset[$i]) 
                  {
-                   $consequence[] = $items[i];
+                   $consequence[] = $items[$i];
              }
            }
           return $consequence;
@@ -194,27 +194,27 @@
                 $subset = array_fill(0,count($fis->getItems()), false);  //array[fis.getItems().size()];
                 $premise = null;
                     $consequence = null;
-                    while (($premise = $this->getPremise($fis, $subset)) != null) 
+                    while (!is_null($premise = $this->getPremise($fis, $subset))) 
                     {
                              if (count($premise) > 0 && count($premise) < count($fis->getItems())) 
                              {
                                     $consequence = $this->getConsequence($fis, $subset);
                                     $totalSupport = $fis->getSupport();
                                     $supportPremise = $frequencyLookup->offsetGet($premise);
-                                    $supportConsequence = $frequencyLookup->get($consequence);
+                                    $supportConsequence = $frequencyLookup->offsetGet($consequence);
 
                                     // a candidate rule
                                     $candidate = new DefaultAssociationRule($premise,
-                                                    $consequence, 
-                                                                                                                    $supportPremise,
+                                                                            $consequence, 
+                                                                            $supportPremise,
                                                                             $supportConsequence, 
-                                                                                                                    $totalSupport, 
-                                                                                                                    $totalTransactions);
+                                                                            $totalSupport, 
+                                                                            $totalTransactions);
                                     if ($candidate->getPrimaryMetricValue() > $metricThreshold  && 
                                         $candidate->getTotalSupport() >= $lowerBoundMinSuppAsInstances && 
-                                            $candidate->getTotalSupport() <= $upperBoundMinSuppAsInstances) {
+                                        $candidate->getTotalSupport() <= $upperBoundMinSuppAsInstances) {
                                       // accept this rule
-                                      $rules[] = candidate;
+                                      $rules[] = $candidate;
                                     }
                               }
                           $this->nextSubset($subset);
@@ -251,8 +251,8 @@
         $itemHeader = $headerTable->offsetGet($item);
 
         // check for minimum support at this level
-        $support = $itemHeader->getProjectedCounts()->getCount($recursionLevel);
-        if ($support >= $minSupport) 
+       $support = $itemHeader->getProjectedCounts()->getCount($recursionLevel);
+       if ($support >= $minSupport) 
         {
           // process header list at this recursion level
           foreach ($itemHeader->getHeaderList() as $n)  
@@ -278,25 +278,25 @@
           $newConditional = clone $conditionalItems;
 
           // this item gets added to the conditional items
-          $newConditional->addItem($item);
-          $newConditional->setSupport($support);
+         $newConditional->addItem($item);
+         $newConditional->setSupport($support);
 
           // now add this conditional item set to the list of large item sets
-          $largeItemSets->addItemSet($newConditional);
+         $largeItemSets->addItemSet($newConditional);
 
           // now recursively process the new tree
           $this->mineTree($tree, $largeItemSets, $recursionLevel + 1, $newConditional,$minSupport);
 
           // reverse the propagated counts
-          foreach ($itemHeader->getHeaderList() as $n) 
-          {
+         foreach ($itemHeader->getHeaderList() as $n) 
+         {
             $temp = $n->getParent();
             while ($temp != $tree) 
             {
               $temp->removeProjectedCount($recursionLevel + 1);
               $temp = $temp->getParent();
             }
-          }
+         }
 
           // reverse the propagated counts in the header list
           // at this recursion level
@@ -304,8 +304,8 @@
           {
             $h->getProjectedCounts()->removeCount($recursionLevel + 1);
           }
-        }
-      }
+        } 
+     }
     }
   }
     
@@ -428,9 +428,9 @@
            $largeItemSets = new FrequentItemSets($this->m_numInstances);
 
            // mine the tree
-           $conditionalItems = new FrequentBinaryItemSet(array(), 0);
-           $this->mineTree($tree, $largeItemSets, 0, $conditionalItems, $currentSupportAsInstances);
-           $this->m_largeItemSets = $largeItemSets;
+            $conditionalItems = new FrequentBinaryItemSet(array(), 0);
+            $this->mineTree($tree, $largeItemSets, 0, $conditionalItems, $currentSupportAsInstances);
+            $this->m_largeItemSets = $largeItemSets;
            
           // save memory
            $tree = null;
@@ -449,6 +449,7 @@
         $currentSupport -= $deltaAsFraction;
         // System.err.println("currentSupport " + currentSupport +
         // " lowBoundAsFrac " + lowerBoundMinSuppAsFraction);
+        
         if ($currentSupport < $lowerBoundMinSuppAsFraction) {
           if ($currentSupport + $deltaAsFraction > $lowerBoundMinSuppAsFraction) {
             // ensure that the lower bound does get evaluated
@@ -468,7 +469,12 @@
        
                
     }
-	 
+
+    
+    public function getRules()
+    {
+        return $this->m_rules;
+    }
    }
 
 

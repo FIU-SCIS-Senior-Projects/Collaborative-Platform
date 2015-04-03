@@ -57,6 +57,7 @@ class ShadowCounts {
       if ($recursionLevel < count($this->m_counts)) 
       {
        unset($this->m_counts[$recursionLevel]);
+       $this->m_counts = array_values($this->m_counts); //reindex the array
       }
     }
   }

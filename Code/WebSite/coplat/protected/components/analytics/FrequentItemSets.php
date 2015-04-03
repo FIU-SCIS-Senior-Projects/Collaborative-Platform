@@ -67,7 +67,7 @@ class FrequentItemSets
 
         function sort()
         {
-                 uasort($this->m_sets, array($this, 'compare'));
+                 usort($this->m_sets, array($this, 'compare'));
         }
 
         function getSet()
