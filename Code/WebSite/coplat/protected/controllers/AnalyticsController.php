@@ -125,7 +125,7 @@ class AnalyticsController extends Controller
                 //echo $this->renderBinaryItemsCommaSeparated($rule->getPremise()). " ==> ".$this->renderBinaryItemsCommaSeparated($rule->getConsequence()). "</br>";                
                 $id++;
             } 
-            
+              
             $dataProvider=new CArrayDataProvider($associations, array('pagination'=> false));
             $this->render("frecuentMenteeSubdomains", array('dataprovider' => $dataProvider, 
                                                             'filter' => $associationFilter));
