@@ -101,7 +101,7 @@ class UtilizationDashboardController extends Controller
       
 	  
 	    ////////////////////////////////////raw data actions
-	   public function actionPullTicketsCreatedRaw()
+	   public function actionPullTicketsCreatedDetails()
 	   {
 		    if(isset($_POST['UtilizationDashboardFilter'])) 
             {
@@ -109,7 +109,7 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketRawData = $ultilizationFilter->retrieveTicketsCreatedRawData();
+               $ticketRawData = $ultilizationFilter->retrieveTicketsCreatedDetailsData();
                $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
 			   			   
                $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
@@ -117,7 +117,7 @@ class UtilizationDashboardController extends Controller
             }  		   
 	   }
 	   
-	   public function actionPullTicketsClosedRaw()
+	   public function actionPullTicketsClosedDetails()
 	   {
 		    if(isset($_POST['UtilizationDashboardFilter'])) 
             {
@@ -125,7 +125,7 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketRawData = $ultilizationFilter->retrieveTicketsClosedRawData();
+               $ticketRawData = $ultilizationFilter->retrieveTicketsClosedDetailsData();
                $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
 			   			   
                $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
@@ -133,7 +133,7 @@ class UtilizationDashboardController extends Controller
             }  
 	   }
 		
-	   public function actionPullTicketDurationRaw()
+	   public function actionPullTicketDurationDetails()
 	   {
 		    if(isset($_POST['UtilizationDashboardFilter'])) 
             {
@@ -141,7 +141,7 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketRawData = $ultilizationFilter->retrieveTicketDurationRawData();
+               $ticketRawData = $ultilizationFilter->retrieveTicketDurationDetailsData();
                $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
 			   			   
                $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
@@ -149,7 +149,7 @@ class UtilizationDashboardController extends Controller
             }   
 	   }
 	    
-	   public function actionPullTimeMentorAnswerRaw()
+	   public function actionPullTimeMentorAnswerDetails()
 	   {
 		   if(isset($_POST['UtilizationDashboardFilter'])) 
             {
@@ -157,7 +157,7 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketRawData = $ultilizationFilter->retrieveTimeMentorAnswerRaw();
+               $ticketRawData = $ultilizationFilter->retrieveTimeMentorAnswerDetailsData();
                $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
 			   			   
                $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
@@ -165,7 +165,7 @@ class UtilizationDashboardController extends Controller
             }
 	   }
 	   
-	   public function actionPullTicketsCurrentlyOpenedRaw()
+	   public function actionPullTicketsCurrentlyOpenedDetails()
 	   {
 		   if(isset($_POST['UtilizationDashboardFilter'])) 
             {
@@ -173,7 +173,7 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketRawData = $ultilizationFilter->retrieveTicketsCurrentlyOpenedRaw();
+               $ticketRawData = $ultilizationFilter->retrieveTicketsCurrentlyOpenedDetailsData();
                $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
 			   			   
                $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
@@ -181,7 +181,7 @@ class UtilizationDashboardController extends Controller
             }
 	   }
 	   
-	   public function actionPullTicketsUnansweredRaw()
+	   public function actionPullTicketsUnansweredDetails()
 	   {
 		   	if(isset($_POST['UtilizationDashboardFilter'])) 
             {
@@ -189,7 +189,7 @@ class UtilizationDashboardController extends Controller
                $ultilizationFilter->unsetAttributes();  // clear any default values  
                $ultilizationFilter->attributes = $_POST['UtilizationDashboardFilter'];
                
-               $ticketRawData = $ultilizationFilter->retrieveTicketsUnansweredRaw();
+               $ticketRawData = $ultilizationFilter->retrieveTicketsUnansweredDetailsData();
                $dataProvider=new CArrayDataProvider($ticketRawData, array('pagination'=> false));
 			   			   
                $this->renderPartial('UtilizationViewRawData',array('dataprovider' => $dataProvider,
@@ -209,10 +209,10 @@ class UtilizationDashboardController extends Controller
                 array('allow',
                     'actions'=>array('index', 'PullTicketsCreated', 'PullTicketsClosed','PullAVGTicketDuration', 
 					                          'PullAVGTimeMentorAnswer', 'PullTicketsCurrentlyOpened',
-											  'PullTicketsUnanswered' , 'PullTicketsCreatedRaw',
-											  'PullTicketsClosedRaw', 'PullAVGTicketRaw',
-											  'PullTicketDurationRaw', 'PullTimeMentorAnswerRaw',
-											  'PullTicketsCurrentlyOpenedRaw', 'PullTicketsUnansweredRaw'),
+											  'PullTicketsUnanswered' , 'PullTicketsCreatedDetails',
+											  'PullTicketsClosedDetails', 'PullAVGTicketDetails',
+											  'PullTicketDurationDetails', 'PullTimeMentorAnswerDetails',
+											  'PullTicketsCurrentlyOpenedDetails', 'PullTicketsUnansweredDetails'),
                     'users'=>array('admin')),
                 array('deny',  // deny all users
                     'users'=>array('*')),

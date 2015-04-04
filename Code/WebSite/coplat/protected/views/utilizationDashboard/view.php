@@ -587,22 +587,22 @@ $( document ).ready(function()
 			   switch(reportID) 
 			   {              
 				   case enumReportType.TicketsCreated:
-					   dashboardAction = "PullTicketsCreatedRaw";
+					   dashboardAction = "PullTicketsCreatedDetails";
 					   break;
 				   case enumReportType.TicketsClosed:
-					   dashboardAction = "PullTicketsClosedRaw";                  
+					   dashboardAction = "PullTicketsClosedDetails";                  
 					   break; 
 				   case enumReportType.TicketsAVGDuration:
-					   dashboardAction = "PullTicketDurationRaw";  
+					   dashboardAction = "PullTicketDurationDetails";  
 					   break; 
 					case enumReportType.TicketsAVGTimeMentorAnswer:
-					   dashboardAction = "PullTimeMentorAnswerRaw";  
+					   dashboardAction = "PullTimeMentorAnswerDetails";  
 					   break;
 					case enumReportType.TicketsCurrentlyOpen:
-					   dashboardAction = "PullTicketsCurrentlyOpenedRaw";  				
+					   dashboardAction = "PullTicketsCurrentlyOpenedDetails";  				
 					   break; 
 					case enumReportType.TicketsUnanswered:
-					   dashboardAction = "PullTicketsUnansweredRaw";  				
+					   dashboardAction = "PullTicketsUnansweredDetails";  				
 					   break;
 				}
 				
