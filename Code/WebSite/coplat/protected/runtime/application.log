@@ -4644,3 +4644,24 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/utilizationDashboard/PullTicketsCreatedRaw
 HTTP_REFERER=http://localhost/coplat/index.php/utilizationDashboard
 ---
+2015/04/05 06:50:10 [error] [php] Missing argument 3 for FPTreeNode::addItemSet(), called in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPGrowth.php on line 367 and defined (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPTreeNode.php:21)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPGrowth.php(427): FPGrowth->buildFPTree()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\AnalyticsController.php(112): FPGrowth->buildAssociations()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): AnalyticsController->actionPullFrecuentMenteeSubdomains()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): AnalyticsController->runAction()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): AnalyticsController->filterAccessControl()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): AnalyticsController->runActionWithFilters()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): AnalyticsController->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/analytics/PullFrecuentMenteeSubdomains
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPTreeNode.php (21)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPGrowth.php (367)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPGrowth.php (376)

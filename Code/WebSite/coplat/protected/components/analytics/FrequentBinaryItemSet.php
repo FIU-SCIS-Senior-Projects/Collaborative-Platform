@@ -6,17 +6,17 @@
       protected $m_items;
       protected $m_support;
 	  
-	  function compareTo($a, $comp)
+	  public static function  compareTo($a, $comp)
 	  {
             if ($a->getFrequency() == $comp->getFrequency())
             {
-                    return -1 * strcmp($a->m_attribute->name,$comp->m_attribute->name);
+                    return -1  * strcmp($a->getAttribute()->name(),$comp->getAttribute()->name());
             }
             else if ($comp->getFrequency() < $a->getFrequency())
             {
                     return -1;
             }
-            return 1;			
+            return 1;
 	  }
           
          function FrequentBinaryItemSet($items, $support) 

@@ -29,13 +29,13 @@ class BinaryItem
     }
     
     //Ensures that items will be sorted in descending order of frequency.
-    public function cmp($itemA, $itemB)
+    public static function cmp($itemA, $itemB)
     {
-       if ($itemA->m_frequency == $itemB->getFrequency()) 
+       if ($itemA->getFrequency() == $itemB->getFrequency()) 
        {
-          return -1 * strcmp($itemA->m_attribute->name(), $itemB->m_attribute->name());
+          return -1 * strcmp($itemA->getAttribute()->name(), $itemB->getAttribute()->name());
        }
-       if ($itemB->getFrequency() < $itemA->m_frequency) 
+       if ($itemB->getFrequency() < $itemA->getFrequency()) 
        {
          return -1;
        }
@@ -52,9 +52,9 @@ class BinaryItem
     if ($this->m_frequency == $comp->getFrequency()) 
     {
       // sort by name
-      return -1 * strcmp($this->m_attribute->name(), $comp->getAttribute()->name());
+      return -1 * strcmp($this->getAttribute()->name(), $comp->getAttribute()->name());
     }
-    if ($comp->getFrequency() < $comp->m_frequency) 
+    if ($this->getFrequency() < $comp->getFrequency()) 
     {
       return -1;
     }

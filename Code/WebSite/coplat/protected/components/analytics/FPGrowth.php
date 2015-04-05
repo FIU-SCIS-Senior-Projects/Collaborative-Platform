@@ -364,7 +364,7 @@
         }
         
         usort($transaction, array('BinaryItem', 'cmp'));
-        $tree->addItemSet($transaction, 1);
+        $tree->addItemSet2($transaction, 1);
       }      
       
     

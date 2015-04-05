@@ -11,7 +11,7 @@
        parent::FPTreeNode(null,null);  
      }
      
-     public function addItemSet($itemSet, $incr) 
+     public function addItemSet2($itemSet, $incr) 
      {
       parent::addItemSet($itemSet, $this->m_headerTable, $incr);
      }
