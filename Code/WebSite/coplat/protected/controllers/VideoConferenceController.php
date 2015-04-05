@@ -244,7 +244,7 @@ class VideoConferenceController extends Controller
                 if ($invitationError != "") {
                     Yii::app()->user->setFlash('invitation-error', $invitationError);
                 }
-               
+
             }
 
         }
