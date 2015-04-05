@@ -81,7 +81,11 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                         array('label' => 'Ticket', 'visible' => $currentUserIsAdmin,        //Ticket Report
                             'class' => 'bootstrap.widgets.TbMenu',
                             'url' => array('/reportTicket'),
-                        ),                        
+                        ), 
+                        array('label' => 'Frecuent Mentee Sub-Domains', 'visible' => $currentUserIsAdmin,        //Ticket Report
+                            'class' => 'bootstrap.widgets.TbMenu',
+                            'url' => array('/Analytics/PullFrecuentMenteeSubdomains'),
+                        ),  
 
                     )),
                 array('label' => 'Video Conf.', 'url' => array('/videoConference'), 'visible'=> !$currentUserIsGuest), //Utilization dashboard

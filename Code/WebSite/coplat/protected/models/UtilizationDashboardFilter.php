@@ -145,7 +145,7 @@ class ReportFormat
                    $res = "Chart";   
                break;            
            case ReportFormat::rawData:
-                   $res = "Raw Data"; 
+                   $res = "Details"; 
                break;   
            default:
                throw new CException("Invalid report format");
@@ -1162,7 +1162,7 @@ class UtilizationDashboardFilter extends CFormModel
 	}
 	
 	//////////////////////////////////////////////Utilization Raw Data//////////////////////////////////
-	public function retrieveTicketsCreatedRawData()
+	public function retrieveTicketsCreatedDetailsData()
     {
       $command =  Yii::app()->db->createCommand();
       
@@ -1241,7 +1241,7 @@ class UtilizationDashboardFilter extends CFormModel
 	  // return array();
     }
     
-	public function retrieveTicketsClosedRawData()
+	public function retrieveTicketsClosedDetailsData()
 	{
 	   $command =  Yii::app()->db->createCommand();
      
@@ -1298,7 +1298,7 @@ class UtilizationDashboardFilter extends CFormModel
 	}
 	
 	
-	public function retrieveTicketDurationRawData()
+	public function retrieveTicketDurationDetailsData()
 	{
 		//closed query
         //this query return all the closed tickets...
@@ -1373,7 +1373,7 @@ class UtilizationDashboardFilter extends CFormModel
 	}
 	
 	
-	public function retrieveTimeMentorAnswerRaw()
+	public function retrieveTimeMentorAnswerDetailsData()
 	{
 		 //all the filters mus be applied to this section
         $answeredTicketsQuery =  Yii::app()->db->createCommand();
@@ -1448,7 +1448,7 @@ class UtilizationDashboardFilter extends CFormModel
 		
 	}
 	
-	public function retrieveTicketsCurrentlyOpenedRaw()
+	public function retrieveTicketsCurrentlyOpenedDetailsData()
 	{
 	  $command =  Yii::app()->db->createCommand();
       
@@ -1500,7 +1500,7 @@ class UtilizationDashboardFilter extends CFormModel
 		
 	}
 	
-	public function retrieveTicketsUnansweredRaw()
+	public function retrieveTicketsUnansweredDetailsData()
 	{
 		 $command =  Yii::app()->db->createCommand();
           
