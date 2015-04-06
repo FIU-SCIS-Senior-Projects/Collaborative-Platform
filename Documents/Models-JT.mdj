@@ -86,7 +86,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFLS90jRNXzNxA="
 							},
-							"name": "CPv5_??? Accept Video Conference Invitation",
+							"name": "CPv5_011 Accept Video Conference Invitation",
 							"visibility": "public",
 							"isAbstract": false,
 							"isFinalSpecialization": false,
@@ -98,7 +98,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFLS90jRNXzNxA="
 							},
-							"name": "CPv5_??? Reject Video Conference Invitation",
+							"name": "CPv5_012 Reject Video Conference Invitation",
 							"visibility": "public",
 							"isAbstract": false,
 							"isFinalSpecialization": false,
@@ -1601,7 +1601,7 @@
 													"height": 39,
 													"autoResize": false,
 													"underline": false,
-													"text": "CPv5_??? Accept Video Conference Invitation",
+													"text": "CPv5_011 Accept Video Conference Invitation",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -1884,7 +1884,7 @@
 													"height": 39,
 													"autoResize": false,
 													"underline": false,
-													"text": "CPv5_??? Reject Video Conference Invitation",
+													"text": "CPv5_012 Reject Video Conference Invitation",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -5324,7 +5324,7 @@
 													"height": 26,
 													"autoResize": false,
 													"underline": false,
-													"text": "CPv5_??? Use Chat Room",
+													"text": "CPv5_013 Use Chat Room",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -6819,7 +6819,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFLS90jRNXzNxA="
 							},
-							"name": "CPv5_??? Use Chat Room",
+							"name": "CPv5_013 Use Chat Room",
 							"ownedElements": [
 								{
 									"_type": "UMLDependency",
