@@ -108,6 +108,30 @@ class UserDomain extends CActiveRecord
 		));
 	}
 	
+	public function getMentorsFromDomain($dataProvider){
+		$mentors = array();
+		foreach ($dataProvider->getData() as $ment){
+			$temp = array();
+			$mentor = User::model()->getUser($ment->user_id);
+			$temp["name"] = $mentor->getFullName();
+			$temp["pic"] = $mentor->pic_url;
+			$mentors[] = $temp;
+		}
+		return $mentors;
+	}
+	
+	public function getMentorsFromSubdomain($dataProvider){
+		$mentors = array();
+		foreach ($dataProvider->getData() as $ment){
+			$temp = array();
+			$mentor = User::model()->getUser($ment->user_id);
+			$temp["name"] = $mentor->getFullName();
+			$temp["pic"] = $mentor->pic_url;
+			$mentors[] = $temp;
+		}
+		return $mentors;
+	}
+	
 	public function getSubdomain(){
 		$subdomain = '';
 		if (is_null($this->subdomain_id))
