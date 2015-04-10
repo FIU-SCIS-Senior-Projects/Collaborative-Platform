@@ -1,6 +1,6 @@
 <?php
 
-class AnalyticalController extends Controller
+class AdministratorController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning

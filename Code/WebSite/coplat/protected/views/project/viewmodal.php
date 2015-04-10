@@ -44,7 +44,7 @@ $('.meetings-button').click(function(){
 <hr>
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 		'data'=>$model,
-		'type'=>'striped',
+		'type'=>'striped condensed',
 		'attributes'=>array(
 			array(
 					'label'=>'Title',
