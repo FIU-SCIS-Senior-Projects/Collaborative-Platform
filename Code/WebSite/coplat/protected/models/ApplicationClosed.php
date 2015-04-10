@@ -9,11 +9,13 @@
  * @property string $app_project_mentor_id
  * @property string $date
  * @property string $id
+ * @property string $user_id
  *
  * The followings are the available model relations:
  * @property ApplicationDomainMentor $appDomainMentor
  * @property ApplicationPersonalMentor $appPersonalMentor
  * @property ApplicationProjectMentor $appProjectMentor
+ * @property User $user
  */
 class ApplicationClosed extends CActiveRecord
 {
@@ -43,11 +45,11 @@ class ApplicationClosed extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('date', 'required'),
-			array('app_domain_mentor_id, app_personal_mentor_id, app_project_mentor_id', 'length', 'max'=>11),
+			array('date, user_id', 'required'),
+			array('app_domain_mentor_id, app_personal_mentor_id, app_project_mentor_id, user_id', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('app_domain_mentor_id, app_personal_mentor_id, app_project_mentor_id, date, id', 'safe', 'on'=>'search'),
+			array('app_domain_mentor_id, app_personal_mentor_id, app_project_mentor_id, date, id, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +64,7 @@ class ApplicationClosed extends CActiveRecord
 			'appDomainMentor' => array(self::BELONGS_TO, 'ApplicationDomainMentor', 'app_domain_mentor_id'),
 			'appPersonalMentor' => array(self::BELONGS_TO, 'ApplicationPersonalMentor', 'app_personal_mentor_id'),
 			'appProjectMentor' => array(self::BELONGS_TO, 'ApplicationProjectMentor', 'app_project_mentor_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -76,6 +79,7 @@ class ApplicationClosed extends CActiveRecord
 			'app_project_mentor_id' => 'App Project Mentor',
 			'date' => 'Date',
 			'id' => 'ID',
+			'user_id' => 'User',
 		);
 	}
 
@@ -95,6 +99,7 @@ class ApplicationClosed extends CActiveRecord
 		$criteria->compare('app_project_mentor_id',$this->app_project_mentor_id,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('id',$this->id,true);
+		$criteria->compare('user_id',$this->user_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

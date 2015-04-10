@@ -31,6 +31,10 @@
  *
  * The followings are the available model relations:
  * @property Administrator $administrator
+ * @property ApplicationDomainMentor[] $applicationDomainMentors
+ * @property ApplicationPersonalMentor[] $applicationPersonalMentors
+ * @property ApplicationPersonalMentorPick[] $applicationPersonalMentorPicks
+ * @property ApplicationProjectMentor[] $applicationProjectMentors
  * @property DomainMentor $domainMentor
  * @property Mentee $mentee
  * @property Message[] $messages
@@ -39,6 +43,7 @@
  * @property PersonalMentorMentees[] $personalMentorMentees
  * @property PersonalMentorMentees[] $personalMentorMentees1
  * @property ProjectMentor $projectMentor
+ * @property ProjectMentorProjects[] $projectMentorProjects
  * @property Ticket[] $tickets
  * @property Ticket[] $tickets1
  * @property UserDomain[] $userDomains
@@ -126,6 +131,10 @@ class User extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'administrator' => array(self::HAS_ONE, 'Administrator', 'user_id'),
+        		'applicationDomainMentors' => array(self::HAS_MANY, 'ApplicationDomainMentor', 'user_id'),
+        		'applicationPersonalMentors' => array(self::HAS_MANY, 'ApplicationPersonalMentor', 'user_id'),
+        		'applicationPersonalMentorPicks' => array(self::HAS_MANY, 'ApplicationPersonalMentorPick', 'user_id'),
+        		'applicationProjectMentors' => array(self::HAS_MANY, 'ApplicationProjectMentor', 'user_id'),
             'domainMentor' => array(self::HAS_ONE, 'DomainMentor', 'user_id'),
             'mentee' => array(self::HAS_ONE, 'Mentee', 'user_id'),
         	//'mentees' => array(self::HAS_MANY, 'Mentee', 'personal_mentor_user_id', 'index'=>'personal_mentor_user_id'),
@@ -135,6 +144,7 @@ class User extends CActiveRecord
         	'personalMentorMentees' => array(self::HAS_MANY, 'PersonalMentorMentees', 'user_id'),
         	'personalMentorMentees1' => array(self::HAS_MANY, 'PersonalMentorMentees', 'personal_mentor_id'),
             'projectMentor' => array(self::HAS_ONE, 'ProjectMentor', 'user_id'),
+        		'projectMentorProjects' => array(self::HAS_MANY, 'ProjectMentorProjects', 'user_id'),
             'tickets' => array(self::HAS_MANY, 'Ticket', 'assign_user_id'),
             'tickets1' => array(self::HAS_MANY, 'Ticket', 'creator_user_id'),
             'domains' => array(self::MANY_MANY, 'Domain', 'user_domain(user_id, domain_id)'),
@@ -398,6 +408,7 @@ class User extends CActiveRecord
     				$mentorTrim["avatar"] = $personalMentor->pic_url;
     			} 
     			$temp["mentor"] = $mentorTrim;
+    			
     		}
     		
     		
@@ -662,6 +673,23 @@ class User extends CActiveRecord
         $email->send();
     }
 
+    public static function sendMentorApplicationStatusEmail($model, $adminName){
+    	
+    	
+    	$email = Yii::app()->email;
+    	$link = CHtml::link('Click here to go to the site', 'http://' . Yii::app()->request->getServerName());
+    	 
+    	$message = $adminName.' has finished reviewing your mentor application<br/>'.$link.'';
+    	 
+    	$html = User::replaceMessage(($model->fname . ' ' . $model->lname), $message);
+    	 
+    	$email->to = $model->email;
+    	$email->from = 'Collaborative Platform';
+    	$email->subject = 'Your application has been reviewed!';
+    	$email->message = $html;
+    	$email->send();
+    }
+
     public static function sendRejectionAlertToAdmin($ticket_id, $userfullName, $user_email, $adminfullName, $admin_email)
     {
         $email = Yii::app()->email;
@@ -823,7 +851,7 @@ class User extends CActiveRecord
 
     public static function sendInvitationEmail($invitation)
     {
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/site/landing');
         $admin = User::model()->findByPk($invitation->administrator_user_id);
         $to = "";
         $message = "The Collaborative Platform system administrator, " . $admin->fname . " " . $admin->lname . ", through this email would like to invite you to participate on it as: <br/>";
@@ -853,7 +881,8 @@ class User extends CActiveRecord
     
     public static function sendInviteByMessage($invitation){
     	$to = "";
-    	$html = User::replaceMessage($to, $invitation->message);
+    	$message = $invitation->message;
+    	$html = User::replaceMessage($to, $message);
     	$email = Yii::app()->email;
     	$email->to = $invitation->email;
     	$email->from = 'Collaborative Platform';
@@ -866,7 +895,7 @@ class User extends CActiveRecord
     
     public static function setInvitationEmail($invitation)
     {
-    	$link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
+    	$link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/site/landing');
     	$admin = User::model()->findByPk($invitation->administrator_user_id);
     	$to = "";
     	$message = "The Collaborative Platform system administrator, " . $admin->fname . " " . $admin->lname . ", through this email would like to invite you to participate on it as: <br/>";
@@ -1218,7 +1247,7 @@ class User extends CActiveRecord
                     . '                     WHERE  ticket.domain_id = '.$domainID);   
     }
     
-    public static function sendMentorApplicationStatusEmail($model, $adminName){    	
+    /*public static function sendMentorApplicationStatusEmail($model, $adminName){    	
     	
     	$email = Yii::app()->email;
    	$link = CHtml::link('Click here to go to the site', 'http://' . Yii::app()->request->getServerName());
@@ -1232,7 +1261,7 @@ class User extends CActiveRecord
     	$email->subject = 'Your application has been reviewed!';
     	$email->message = $html;
    	$email->send();
-   }
+   }*/
     
     
 }
