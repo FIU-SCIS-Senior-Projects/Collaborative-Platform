@@ -136,6 +136,10 @@ class Domain extends CActiveRecord
     		$temp["description"] = $domain->description;
     		$temp["need"] = $domain->need;
     		
+    		$d = new UserDomain;
+   			$d->domain_id = $domain->id;
+    		$temp["mentors"] = UserDomain::model()->getMentorsFromDomain($d->search());
+    		
     		$subs = new Subdomain();
     		$subs->domain_id = $domain->id;
     		$temp["subdomains"] = Subdomain::model()->getSubdomainsForApp($subs->setCriteriaForApp(), $domain->id);
