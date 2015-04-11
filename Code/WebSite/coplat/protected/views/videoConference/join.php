@@ -98,21 +98,17 @@
 
 <div style="text-align: center;margin: 0 auto;">
     <?php
-
     $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
-
-    /*
     if ($user->id == $model->moderator_id) {
         echo
         " <!-- The meeting initiator -->
-        <button type='button' class='btn btn-success' id='open-room'><i class='fa fa-key'></i>&nbsp;&nbsp;Open Room</button> ";
+        <button title='Click here to start the meeting' type='button' class='btn btn-success' id='open-room'><i class='fa fa-key'></i>&nbsp;&nbsp;Open Room</button> ";
     } else {
         echo
         "<!-- The meeting participants join-->
-        <button type='button' class='btn btn-success' id='join-room'><i class='fa fa-users'></i>&nbsp;&nbsp;Join Room</button>
+        <button title='Click here to join the meeting' type='button' class='btn btn-success' id='join-room'><i class='fa fa-users'></i>&nbsp;&nbsp;Join Room</button>
         ";
     }
-    */
     ?>
 
 
@@ -241,17 +237,16 @@
 
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
+
     var rmc = new RTCMultiConnection();
 
-    //    if(!rmc.UA.isChrome){
-    //        alert("The system has detected an unsupported browser. Please, use Google Chrome for the video conferences.");
-    //    }
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
         video: true,
         audio: true,
         data: true
     };
+
     /*
      Alternate Firebase URLs
      webrtc-signaling.firebaseio.com
@@ -261,7 +256,7 @@
      webrtc-experiment.firebaseio.com
      muazkh.firebaseio.com
      muazkhan.firebaseio.com
-     */
+
     var firebaseURL = 'https://webrtc-signaling.firebaseio.com/';
     var roomFirebase = new Firebase(firebaseURL + rmc.channel + '-session');
     //alert(firebaseURL + rmc.channel + '-session');
@@ -296,10 +291,18 @@
         }
     });
 
+*/
 
 
-    // if you want to prevent/override/bypass default behaviour
-    rmc.leaveOnPageUnload = false;
+    $('#open-room').click(function () {
+        // http://www.rtcmulticonnection.org/docs/open/
+        rmc.open();
+    });
+    $('#join-room').click(function () {
+        // http://www.rtcmulticonnection.org/docs/connect/
+        rmc.connect();
+    });
+
 
     // display a notification box
     window.addEventListener('beforeunload', function () {
