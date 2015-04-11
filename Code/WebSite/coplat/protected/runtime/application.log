@@ -4665,3 +4665,118 @@ REQUEST_URI=/coplat/index.php/analytics/PullFrecuentMenteeSubdomains
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPTreeNode.php (21)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPGrowth.php (367)
 in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\components\analytics\FPGrowth.php (376)
+2015/04/10 19:15:03 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'coplat.vc_invitation' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `vc_invitation`.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\VCInvitation.php (23)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\VideoConferenceController.php (415)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/04/10 19:15:04 [error] [exception.CDbException] exception 'CDbException' with message 'The table "vc_invitation" for active record class "VCInvitation" cannot be found in the database.' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php:2310
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(387): CActiveRecordMetaData->__construct(Object(VCInvitation))
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\models\VCInvitation.php(23): CActiveRecord::model('VCInvitation')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\VideoConferenceController.php(415): VCInvitation::model()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): VideoConferenceController->actionIndex()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('videoConference')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/coplat/index.php/videoConference
+HTTP_REFERER=http://localhost/coplat/index.php/message
+---
+2015/04/10 19:31:02 [error] [exception.CException] exception 'CException' with message 'ApplicationController cannot find the requested view "viewhistory".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('viewhistory', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ApplicationController.php(73): CController->render('viewhistory', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ApplicationController->actionViewHistory()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('viewhistory')
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/vie...')
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#15 {main}
+REQUEST_URI=/coplat/index.php/application/viewhistory
+HTTP_REFERER=http://localhost/coplat/index.php/application/portal
+---
+2015/04/10 19:31:38 [error] [exception.CException] exception 'CException' with message 'ApplicationController cannot find the requested view "history".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:878
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): CController->renderPartial('history', Array, true)
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ApplicationController.php(119): CController->render('history', Array)
+#2 [internal function]: ApplicationController->actionHistory('4')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(ApplicationController), Array)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ApplicationController), Object(ReflectionMethod), Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('history')
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/his...')
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#17 {main}
+REQUEST_URI=/coplat/index.php/application/history/4
+HTTP_REFERER=http://localhost/coplat/index.php/application/viewhistory
+---
+2015/04/10 19:37:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "null".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('null')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('null')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/nul...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/null
+HTTP_REFERER=http://localhost/coplat/index.php/application/personal
+---
+2015/04/10 19:37:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "null".' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php:483
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(270): CController->missingAction('null')
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('null')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('application/nul...')
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/coplat/index.php/application/null
+HTTP_REFERER=http://localhost/coplat/index.php/application/personal
+---
+2015/04/10 19:39:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`mentee`, CONSTRAINT `fk_mentee_project1` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: UPDATE `mentee` SET `user_id`=:yp0, `personal_mentor_user_id`=:yp1, `project_id`=:yp2 WHERE `mentee`.`user_id`='1023'.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ImportController.php (108)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ImportController.php (58)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/04/10 19:39:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`coplat`.`mentee`, CONSTRAINT `fk_mentee_project1` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: UPDATE `mentee` SET `user_id`=:yp0, `personal_mentor_user_id`=:yp1, `project_id`=:yp2 WHERE `mentee`.`user_id`='1023'' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1691): CDbCommand->execute()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1070): CActiveRecord->updateByPk('1023', Array)
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(795): CActiveRecord->update(NULL)
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ImportController.php(108): CActiveRecord->save(false)
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\ImportController.php(58): ImportController->assignProjectforUser('mjord008', '104')
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): ImportController->actionImport()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('import')
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('Import/import')
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#13 {main}
+REQUEST_URI=/coplat/index.php/home/adminHome?r=Import/import
+HTTP_REFERER=http://localhost/coplat/index.php/home/adminHome
+---
