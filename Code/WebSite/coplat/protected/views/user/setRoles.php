@@ -542,8 +542,52 @@ if($model->isPerMentor==1)
     </div>
 <?php }?>
 
+<?php
+if($model->isMentee==1){?>
 <div id="fourth" class="step">
+    <h3><span class="font_normal_07em_black">Role: Mentee</span></h3><br />
+    
+    
+    <div  class="my-box-container7" style="width: auto;">
+        
+        <table>
+            <tr>
+                <td>Personal Mentor:</td>
+                <td><?php
+                    $users = User::LoadPersonalMentors();
+                    $userDisp = array();
+                    $userDisp[0] = " ";
+                    foreach ($users as $user) 
+                    {
+                        $userDisp[$user->id] = $user->fname . ' ' . $user->lname;
+                    }
+                     echo CHtml::dropDownList('mentePersonalMentor', 0,$userDisp);
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Project:</td>
+                <td>
+                    <?php
+
+                        $projects = Project::model()->findAllBySql("select * from project");
+                        $projectsCol = array();
+                        $projectsCol[0] = "";
+                        foreach ($projects as $project) 
+                        {
+                           $projectsCol[$project->id] = $project->title;
+                        }
+                        echo CHtml::dropDownList('menteeProject', 0,$projectsCol);
+
+
+                       ?> 
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
+<?php }?>    
+    
 
 </div>
 

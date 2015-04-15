@@ -1249,6 +1249,13 @@ class User extends CActiveRecord
                     . '                     WHERE  ticket.domain_id = '.$domainID);   
     }
     
+    public static function LoadPersonalMentors()
+    {
+        return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                     FROM user '
+                    . '                     INNER JOIN personal_mentor ON user.id = personal_mentor.user_id  ');   
+    }
+    
     /*public static function sendMentorApplicationStatusEmail($model, $adminName){    	
     	
     	$email = Yii::app()->email;
