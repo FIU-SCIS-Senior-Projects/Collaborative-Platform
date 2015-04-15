@@ -55,6 +55,7 @@ class User extends CActiveRecord
     public $password2;
     public $vjf_role;
     public $men_role;
+    public $user_roles;
     public $rmj_role;
     /* advanced search variables */
     public $firstField;
@@ -186,6 +187,7 @@ class User extends CActiveRecord
             'isEmployer' => 'Employer',
             'vjf_role' => 'Virtual Job Fair Roles:',
             'men_role' => 'Mentoring Platform Roles:',
+            'user_roles' => 'User Roles:',
             'rmj_role' => 'Remote Mobil Judge Roles:',
             'rmj_role' => 'Remote Mobil Judge Roles:',
             'firstField' => 'Type: ',
