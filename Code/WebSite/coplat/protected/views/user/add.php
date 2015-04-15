@@ -45,7 +45,7 @@
     <div id="regbox" style="margin-left:10px;width:180px!important">
         </br>
         <?php
-        echo $form->labelEx($model,'men_role');
+        echo $form->labelEx($model,'user_roles');
         echo $form->checkBox($model,'isProMentor',array('style'=>'float:left'));
         ?>
         <p style="float:left; margin-left:5px">Project Mentor</p></br></br>
@@ -57,6 +57,10 @@
         echo $form->checkBox($model,'isDomMentor',array('style'=>'float:left',));
         ?>
         <p style="float:left; margin-left:5px">Domain Mentor</p></br></br>
+        <?php
+        echo $form->checkBox($model,'isMentee',array('style'=>'float:left',));
+        ?>
+        <p style="float:left; margin-left:5px">Mentee</p></br></br>
 
 
     </div>

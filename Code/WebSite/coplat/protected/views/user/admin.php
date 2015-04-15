@@ -46,7 +46,7 @@ $('.asearch-form form').submit(function(){
 <a href=../user/admin_create_user>
 <?php $this->widget('bootstrap.widgets.TbButton', array(
 		'buttonType'=>'button',
-		'label'=>'Add a Mentor',
+		'label'=>'Add User',
 		'icon'=>'plus white',
 		'size'=>'medium',
 		'type'=> 'success',

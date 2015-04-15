@@ -595,70 +595,91 @@ class UserController extends Controller
     	/*if ($this->actionVerifyRegistrationOld() != "") {
     		$this->render('create', array('model'=>$model));
     		 }*/
-    		 $model->attributes=$_POST['User'];
-    		 $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
-    		 $model->biography = "Tell us something about yourself...";
+            $model->attributes=$_POST['User'];
+            $model->pic_url = '/coplat/images/profileimages/default_pic.jpg';
+            $model->biography = "Tell us something about yourself...";
             $model->activation_chain = $this->genRandomString(10);
             $model->activated = 1;
-    		 $error = $this->verifyRegistrationOld();
-    		 if($error==null)
-    		 {
-    		 $model->save(false);
-    		 if($model->isProMentor)
-    		 {
+            $error = $this->verifyRegistrationOld();
+            
+            if (!$model->isProMentor && !$model->isDomMentor && !$model->isPerMentor && !$model->isMentee)
+            {
+               $error = "Please select at least one user role." ;
+            }
+                    
+            if($error==null)
+            {
+                $model->save(false);
+    		if($model->isProMentor)
+    		{
     		 $proMentor = new ProjectMentor;
     		 $proMentor->user_id = $model->id;
     		 $proMentor->max_hours = 0;
     		 $proMentor->max_projects = 0;
     		 $proMentor->save(false);
+    		}
+                
+                if($model->isDomMentor)
+    		{
+                    $domMentor = new DomainMentor();
+                    $domMentor->user_id = $model->id;
+                    $domMentor->max_tickets = 0;
+                    $domMentor->save();
     		 }
-    		 if($model->isDomMentor)
-    		 {
-    		 $domMentor = new DomainMentor();
-    		 $domMentor->user_id = $model->id;
-    		 $domMentor->max_tickets = 0;
-    		 $domMentor->save();
-    		 }
+                 
     		 if($model->isPerMentor)
     		 {
-    		 $perMentor = new PersonalMentor();
-    		 $perMentor->user_id = $model->id;
-    		 $perMentor->max_hours =0 ;
-    		 $perMentor->max_mentees = 0;
-    		 $perMentor->save();
+                    $perMentor = new PersonalMentor();
+                    $perMentor->user_id = $model->id;
+                    $perMentor->max_hours =0 ;
+                    $perMentor->max_mentees = 0;
+                    $perMentor->save();
     		 }
-    		 }
-    		 }
-    		 if(isset($_POST['Roles']))
-    		 {
-    		 $proMentor = ProjectMentor::model()->getProMentor($_COOKIE['UserID']);
-    		 $perMentor = PersonalMentor::model()->getPerMentor($_COOKIE['UserID']);
-    		 $domMentor = DomainMentor::model()->getDomMentor($_COOKIE['UserID']);
-    		 //$model->save(false);
-    		 $user = User::model()->findByPk($_COOKIE['UserID']);
-    		 if($user->isProMentor ==1)
-    		 {
-    		 //$proMentor = new ProjectMentor;
-    		 $proMentor->user_id = $user->id;
-    		 $proMentor->max_hours =$_POST['pjmhours'] ;
-    		 $all = Project::model()->findAll();
-    		 $proMentor->save();
-    		 $count =0;
-    		 foreach ($all as $each)
-    		 	{
-    		 	if(isset($_POST[$each->id.'pjm']))
-    		 {
-    		 $p = Project::model()->findByPk($each->id);
-    		 $p->project_mentor_user_id =$_COOKIE['UserID'];
-    		 $p->save(false);
-    		 $count++;
-    		 }
-    		 }
-    		 $proMentor->max_projects = $count;
-    		 $proMentor->save();
-    		 }
-    		 if($user->isDomMentor ==1)
-    		 {
+                 
+                 if ($model->isMentee())
+                 {
+                     $mentee = new Mentee();
+                     $mentee->user_id = $model->id;
+                     $mentee->personal_mentor_user_id = null;
+                     $mentee->project_id = null;
+                     $mentee->save();
+                 }
+                 
+    	    }
+    	}
+    	
+        if(isset($_POST['Roles']))
+    	{
+            $proMentor = ProjectMentor::model()->getProMentor($_COOKIE['UserID']);
+            $perMentor = PersonalMentor::model()->getPerMentor($_COOKIE['UserID']);
+            $domMentor = DomainMentor::model()->getDomMentor($_COOKIE['UserID']);
+            $mentee  = Mentee::model()->getMentee($_COOKIE['UserID']);
+            //$model->save(false);
+            $user = User::model()->findByPk($_COOKIE['UserID']);
+            if($user->isProMentor ==1)
+            {
+                //$proMentor = new ProjectMentor;
+                $proMentor->user_id = $user->id;
+                $proMentor->max_hours =$_POST['pjmhours'] ;
+                $all = Project::model()->findAll();
+                $proMentor->save();
+                $count =0;
+                foreach ($all as $each)
+                {
+                 if(isset($_POST[$each->id.'pjm']))
+                 {
+                    $p = Project::model()->findByPk($each->id);
+                    $p->project_mentor_user_id =$_COOKIE['UserID'];
+                    $p->save(false);
+                    $count++;
+                 }
+                }
+                $proMentor->max_projects = $count;
+                $proMentor->save();
+            }
+    	
+            if($user->isDomMentor ==1)
+    	    {
     	//UserDomain::model()->deleteAll("user_id = ".$user->id);
     		$domMentor->max_tickets = $_POST['dmmaxtickets'];
     		$domMentor->save();
@@ -702,36 +723,61 @@ class UserController extends Controller
     		 	}
     		 	}
     		 	}
-    		 	}
-    		 	if($user->isPerMentor)
-    		 	{
-    		 		//$perMentor = new PersonalMentor();
-    		 		$perMentor->user_id = $user->id;
-    		 		$perMentor->max_hours =$_POST['pmhours'] ;
-    		 		$all = Mentee::model()->findAll();
-    		 		$perMentor->save();
-    		 		$count =0;
-    		 		foreach ($all as $each)
-    		 		{
-    		 		if(isset($_POST[$each->user_id.'pm']))
-    	{
-    	$p = Mentee::model()->findByPk($each->user_id);
-    	$p->personal_mentor_user_id =$_COOKIE['UserID'];
-    	$p->save(false);
-    	$count++;
-    	}
-    	}
-    	$perMentor->max_mentees = $count;
-    		$perMentor->save();
-    	}
-    				$hasher = new PasswordHash(8, false);
-    				$pw = $this->genRandomString(8);
-    				$user->password = $hasher->HashPassword($pw);
-    			$user->save(false);
-    			$userfullName = $user->fname.' '.$user->lname;
-    			$adminName = User::getCurrentUser();
-    			User::sendConfirmationEmail($userfullName, $user->email,$user->username,$pw,$adminName->fname.' '.$adminName->lname);
     		}
+                
+            if($user->isPerMentor)
+            {
+                //$perMentor = new PersonalMentor();
+                $perMentor->user_id = $user->id;
+                $perMentor->max_hours =$_POST['pmhours'] ;
+                $all = Mentee::model()->findAll();
+                $perMentor->save();
+                $count =0;
+                foreach ($all as $each)
+                {
+                if(isset($_POST[$each->user_id.'pm']))
+                    {
+                    $p = Mentee::model()->findByPk($each->user_id);
+                    $p->personal_mentor_user_id =$_COOKIE['UserID'];
+                    $p->save(false);
+                    $count++;
+                    }
+                }
+                $perMentor->max_mentees = $count;
+                $perMentor->save();
+            }
+    	
+            if ($user->isMentee)
+            {
+              $changed = false;
+              $menteePersonalMentor =  $_POST['mentePersonalMentor'];
+              if (isset($menteePersonalMentor) && $menteePersonalMentor > 0)
+              {
+                 $mentee->personal_mentor_user_id = $menteePersonalMentor; 
+                 $changed = true;
+              }
+              
+              $menteeProject =  $_POST['menteeProject'];
+              if (isset($menteeProject) && $menteeProject > 0 )
+              {
+                 $mentee->project_id = $menteeProject; 
+                 $changed = true;
+              }
+              
+              if ($changed)
+              {
+                  $mentee->save(); 
+              } 
+            }
+            
+            $hasher = new PasswordHash(8, false);
+            $pw = $this->genRandomString(8);
+            $user->password = $hasher->HashPassword($pw);
+            $user->save(false);
+            $userfullName = $user->fname.' '.$user->lname;
+            $adminName = User::getCurrentUser();
+            User::sendConfirmationEmail($userfullName, $user->email,$user->username,$pw,$adminName->fname.' '.$adminName->lname);
+    	}
     		//$error = '';
     			$this->render('admin_create_user',array(
     			'model'=>$model,'error' => $error

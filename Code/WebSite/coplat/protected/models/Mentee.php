@@ -110,4 +110,10 @@ class Mentee extends CActiveRecord
 		}
 		return $mentees;
 	}
+        
+        public static function getMentee($id)
+        {
+          $mentee = Mentee::model()->findBySql("SELECT * FROM mentee WHERE user_id=$id");
+          return $mentee;
+        }
 }

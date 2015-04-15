@@ -183,7 +183,7 @@ class Project extends CActiveRecord
 		return $projects;
 	}
         
-        public function getMenteeProjects($user_id)
+        public static function getMenteeProjects($user_id)
         {
           return Project::model()->findAllBySql("SELECT project.*
                                                 FROM project

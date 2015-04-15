@@ -55,6 +55,7 @@ class User extends CActiveRecord
     public $password2;
     public $vjf_role;
     public $men_role;
+    public $user_roles;
     public $rmj_role;
     /* advanced search variables */
     public $firstField;
@@ -186,6 +187,7 @@ class User extends CActiveRecord
             'isEmployer' => 'Employer',
             'vjf_role' => 'Virtual Job Fair Roles:',
             'men_role' => 'Mentoring Platform Roles:',
+            'user_roles' => 'User Roles:',
             'rmj_role' => 'Remote Mobil Judge Roles:',
             'rmj_role' => 'Remote Mobil Judge Roles:',
             'firstField' => 'Type: ',
@@ -1245,6 +1247,13 @@ class User extends CActiveRecord
                     . '                     FROM user '
                     . '                     INNER JOIN ticket ON user.id = ticket.creator_user_id  '
                     . '                     WHERE  ticket.domain_id = '.$domainID);   
+    }
+    
+    public static function LoadPersonalMentors()
+    {
+        return User::model()->findAllBySql('SELECT DISTINCT user.* '
+                    . '                     FROM user '
+                    . '                     INNER JOIN personal_mentor ON user.id = personal_mentor.user_id  ');   
     }
     
     /*public static function sendMentorApplicationStatusEmail($model, $adminName){    	
