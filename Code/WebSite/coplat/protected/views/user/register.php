@@ -62,35 +62,38 @@ Yii::app()->clientScript->registerScript('register', "
 			valid = false;
         } else 	setValid($('#pass2'), $('#pass2-error'));
 		
-		if($('#emp').val().length < 1){
+		/*if($('#emp').val().length < 1){
 			setInvalid($('#emp'), $('#emp-error'));
 			valid = false;
-		} else setValid($('#emp'), $('#emp-error'));
+		} else*/ setValid($('#emp'), $('#emp-error'));
 		
-		if($('#pos').val().length < 1){
+		/*if($('#pos').val().length < 1){
 			setInvalid($('#pos'), $('#pos-error'));
 			valid = false;
-		} else setValid($('#pos'), $('#pos-error'));
+		} else*/ setValid($('#pos'), $('#pos-error'));
 		
-		if($('#grad').val().length != 4 || !numReg.test($('#grad').val())){
-			setInvalid($('#grad'), $('#grad-error'));
-			valid = false;
-		} else setValid($('#grad'), $('#grad-error'));
+		if(($('#grad').val().length == 4 && numReg.test($('#grad').val())) || $('#grad').val().length == 0){
+                    setValid($('#grad'), $('#grad-error'));
+		} else 
+                {
+                    setInvalid($('#grad'), $('#grad-error'));
+		    valid = false;
+                }
 		
-		if($('#uni').val().length < 1){
+		/*if($('#uni').val().length < 1){
 			setInvalid($('#uni'), $('#uni-error'));
 			valid = false;
-		} else setValid($('#uni'), $('#uni-error'));
+		} else*/ setValid($('#uni'), $('#uni-error'));
 		
-		if($('#fos').val().length < 1){
+		/*if($('#fos').val().length < 1){
 			setInvalid($('#fos'), $('#fos-error'));
 			valid = false;
-		} else setValid($('#fos'), $('#fos-error'));
+		} else*/ setValid($('#fos'), $('#fos-error'));
 		
-		if($('#deg').val() == 'Select'){
+		/*if($('#deg').val() == 'Select'){
 			setInvalid($('#deg'), $('#deg-error'));
 			valid = false;
-		} else setValid($('#deg'), $('#deg-error'));
+		} else*/ setValid($('#deg'), $('#deg-error'));
 
 		return valid;
 	}
