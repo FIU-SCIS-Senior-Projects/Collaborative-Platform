@@ -44,7 +44,7 @@ class UserInfo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, employer, position, job_start, degree, field_of_study, university, grad_year', 'required'),
+			array('user_id', 'required'),
 			array('user_id', 'length', 'max'=>10),
 			array('job_start, grad_year', 'length', 'max'=>4),
 			array('job_start, grad_year', 'numerical', 'integerOnly' => true),
