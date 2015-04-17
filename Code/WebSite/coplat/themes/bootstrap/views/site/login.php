@@ -46,7 +46,7 @@ $this->breadcrumbs=array(
             ?>
         </div>
         <br><br>
-        <div><h4>All mentors login:</h4></div>
+        <div><h4>User login:</h4></div>
 
         <?php
 			$form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(

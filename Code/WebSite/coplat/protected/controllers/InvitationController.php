@@ -118,26 +118,31 @@ class InvitationController extends Controller
 
 		if(isset($_POST['Invitation']))
 		{
-			$user = new User();
+		    $user = new User();
 				
-			$model->attributes=$_POST['Invitation'];
-            $model->administrator_user_id = (int)User::getCurrentUserId();
-            $model->date = date('Y-m-d H:i:s');
-            $model->employer = 0;
-            $model->judge = 0;
-            $model->message = $user->setInvitationEmail($model);
+		    $model->attributes=$_POST['Invitation'];
+                    $model->administrator_user_id = (int)User::getCurrentUserId();
+                    $model->date = date('Y-m-d H:i:s');
+                    $model->employer = 0;
+                    $model->judge = 0;
+                    $model->message = $user->setInvitationEmail($model);
+                    
             
-			if($model->save())
-            {
+		    if($model->save()) //this first save is mostly to get the key
+                    {
+                        $model->message = $user->setInvitationEmail($model);
+                        
 			    //User::sendInvitationEmail($model);
 				//$this->redirect(array('admin','id'=>$model->id));
-				$this->redirect(array('confirm', 'id'=>$model->id));
-            }
+                        if($model->save())
+                        {
+                            $this->redirect(array('confirm', 'id'=>$model->id));
+                        }
+				
+                    }
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		$this->render('create',array('model'=>$model,));
 	}
 
 	/**
