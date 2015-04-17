@@ -308,34 +308,48 @@ class UserController extends Controller
             $pw = $model->password;
             $hasher = new PasswordHash(8, false);
             $model->password = $hasher->HashPassword($model->password);
+            
+            
 
             $error1 = $this->verifyRegistration();
             if($error1==null)
             {
+                
+                //application management
+                $redirectMentorApp = false;
+                $id = $_GET['id'];
+                if (isset($id) && $id > 0 )
+                {
+                    $invitationInfo = Invitation::model()->findByPk($id);
+                    if (isset($invitationInfo))
+                    {
+                        $model->isMentee = $invitationInfo->mentee;   
+                        
+                        if ($invitationInfo->mentor)
+                        {
+                          $redirectMentorApp = true; 
+                        }                        
+                    }
+                }
 
                 $model->save(false);
                 
-                if(isset($_POST['UserInfo'])){
+                if(isset($_POST['UserInfo']))
+                {
                 	// get entered personal info
                 	$infoModel->attributes=$_POST['UserInfo'];
                 	$infoModel->user_id = $model->id;
                 	$infoModel->save(false);
                 }
                 
-                
                 //newUserLogin($model, $pw);
                 $login = new LoginForm;
                 $login->username = $model->username;
                 $login->password = $pw;
                 $login->login();
-                $this->redirect("/coplat/index.php/application/portal");
                 
-                // Confirmation email for registration
-                //$userfullName = $model->fname.' '.$model->lname;
-                //$adminName = User::getCurrentUser();
-                //User::sendConfirmationEmail($userfullName, $model->email,$model->username,$pw,$adminName->fname.' '.$adminName->lname);
                 
-                if($model->isProMentor)
+                 if($model->isProMentor)
                 {
                     $proMentor = new ProjectMentor;
                     $proMentor->user_id = $model->id;
@@ -362,6 +376,22 @@ class UserController extends Controller
 
 
                 }
+                
+                if ($redirectMentorApp)
+                {
+                    $this->redirect("/coplat/index.php/application/portal");
+                }else
+                {
+                    $this->redirect("/coplat/index.php/");
+                }
+                
+                
+                // Confirmation email for registration
+                //$userfullName = $model->fname.' '.$model->lname;
+                //$adminName = User::getCurrentUser();
+                //User::sendConfirmationEmail($userfullName, $model->email,$model->username,$pw,$adminName->fname.' '.$adminName->lname);
+                
+               
             }
         }
         

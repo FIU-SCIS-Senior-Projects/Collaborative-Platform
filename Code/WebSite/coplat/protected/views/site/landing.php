@@ -56,15 +56,27 @@ $this->breadcrumbs=array(
 		interdum sodales. In hac habitasse platea dictumst. </p>
 		<br></br>
 		<div class="offset1 span6">
-			<a style="text-decoration:none" href="/coplat/index.php/user/create">
-				<?php $this->widget('bootstrap.widgets.TbButton', array(
+                    
+                    <?php
+                    
+                      $createParam = "";
+                      if (isset($invId) && $invId > 0)
+                      {
+                         $createParam = "/".$invId;
+                      }
+                    
+                    ?>
+                    
+                    
+		<a style="text-decoration:none" href="/coplat/index.php/user/create<?php echo $createParam ?>">
+		  <?php $this->widget('bootstrap.widgets.TbButton', array(
 	                'buttonType'=>'button',
 	                'type'=>'primary',
-					'size'=>'large',
-					'block'=>'true',
+			'size'=>'large',
+			'block'=>'true',
 	                'label'=>'Sign-Up',
 	            )); ?>
-            </a>
+                </a>
 		</div>
 	</div>
 	
