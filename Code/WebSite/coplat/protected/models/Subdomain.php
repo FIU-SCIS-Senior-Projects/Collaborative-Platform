@@ -174,7 +174,7 @@ class Subdomain extends CActiveRecord
        return $this->domain->name;
     }
     
-    public function getAllSubdomainsInUse()
+    public static function getAllSubdomainsInUse()
     {
        return  SubDomain::model()->findAllBySql("SELECT DISTINCT subdomain.* FROM subdomain INNER JOIN ticket ON ticket.subdomain_id = subdomain.id ORDER BY subdomain.name");
     }

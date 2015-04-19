@@ -6,7 +6,7 @@
         public $numRulesToFind;
         public $uppperBoundMinSupport;
         
-        public function retrieveSubDomainsUsedPerMentee()
+        public static function retrieveSubDomainsUsedPerMentee()
         {
             $subdomainsUsedByMenteeCommand = Yii::app()->db->createCommand();
             $subdomainsUsedByMenteeCommand->distinct = true;
