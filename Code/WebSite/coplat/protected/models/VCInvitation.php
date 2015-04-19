@@ -124,16 +124,16 @@ class VCInvitation extends CActiveRecord
         $moderator = User::model()->findByPk($vc->moderator_id);
         $moderator_name = $moderator->fname . " " . $moderator->lname;
 
-        $btnstyle = "padding:2px 4px;font-size:small;margin-right: 4px;color: #ffffff;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);";
+        $btnstyle = "padding:4px 6px;font-size:small;margin-right: 4px;color: #ffffff;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);";
 
 
-        $accept = CHtml::link('Accept', Yii::app()->createAbsoluteUrl('videoConference/accept/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#5bb75b;"), 'https');
-        $reject = CHtml::link('Reject', Yii::app()->createAbsoluteUrl('videoConference/reject/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#da4f49;"), 'https');
-        $join = CHtml::link('Join Now', Yii::app()->createAbsoluteUrl('videoConference/join/' . $vc->id, array('role' => "button", "class" => "", 'style' => $btnstyle . "background-color:#006dcc;"), 'https'));
-        $subject = CHtml::link($vc->subject, Yii::app()->createAbsoluteUrl('videoConference/' . $vc->id), array('style' => "color: #31708f;"));
+        $accept = CHtml::link('Accept', Yii::app()->createAbsoluteUrl('videoConference/accept/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#5bb75b;"), 'http');
+        $reject = CHtml::link('Reject', Yii::app()->createAbsoluteUrl('videoConference/reject/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#da4f49;"), 'http');
+        $join =   CHtml::link('Join Now', Yii::app()->createAbsoluteUrl('videoConference/join/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#006dcc;"), 'https');
+        $subject = CHtml::link($vc->subject, Yii::app()->createAbsoluteUrl('videoConference/' . $vc->id), array('style' => "color: #31708f;"), 'http');
 
 
-        $html = "Dear " . $invitee_name . ",<br>You have been invited by " . $moderator_name . "to the following video conference:  ";
+        $html = "Dear " . $invitee_name . ",<br><br>You have been invited by " . $moderator_name . " to the following video conference:  <br> ";
 
         $dt = new DateTime($vc->scheduled_for);
         $user_friendly_date = $dt->format("m/d/Y h:i A");

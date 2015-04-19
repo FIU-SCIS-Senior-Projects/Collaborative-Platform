@@ -192,7 +192,7 @@ class VideoConference extends CActiveRecord
         $invitations = VCInvitation::model()->findAllByAttributes(array("videoconference_id" =>$this->id));
         foreach($invitations as $inv){
             $invitee = User::model()->findByAttributes(array("id" => $inv->invitee_id));
-            $str .= "<li>" . $invitee->fname . " " .$invitee->lname . "<li>";
+            $str .= "<li>" . $invitee->fname . " " .$invitee->lname . "</li>";
         }
 
         $str .= "</ul>";
