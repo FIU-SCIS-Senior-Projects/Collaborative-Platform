@@ -150,7 +150,7 @@ class VideoConference extends CActiveRecord
 
 
         $str = "<ul> " .
-                    "<li><span>Moderator:</span>" . $moderator->fname . " " .$moderator->lname . "</li>";
+                    "<li><span style=''>Moderator:</span>" . $moderator->fname . " " .$moderator->lname . "</li>";
 
         $invitations = VCInvitation::model()->findAllByAttributes(array("videoconference_id" =>$this->id));
         foreach($invitations as $inv){
@@ -180,5 +180,23 @@ class VideoConference extends CActiveRecord
 
         return $str;
 
+    }
+
+    public function findParticipantsSimpleHTMLList(){
+        $moderator = User::model()->findByAttributes(array("id" => $this->moderator_id));
+
+
+
+        $str = "<ul> " .
+            "<li><span style='font-weight: bold;margin-right: 6px;'>Moderator:</span>" . $moderator->fname . " " .$moderator->lname . "</li>";
+        $invitations = VCInvitation::model()->findAllByAttributes(array("videoconference_id" =>$this->id));
+        foreach($invitations as $inv){
+            $invitee = User::model()->findByAttributes(array("id" => $inv->invitee_id));
+            $str .= "<li>" . $invitee->fname . " " .$invitee->lname . "<li>";
+        }
+
+        $str .= "</ul>";
+
+        return $str;
     }
 }

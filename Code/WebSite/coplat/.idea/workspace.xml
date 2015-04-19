@@ -59,7 +59,7 @@
       <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-66.875" vertical-offset="2085" max-vertical-offset="7140">
+            <state vertical-scroll-proportion="36.875" vertical-offset="4575" max-vertical-offset="7140">
               <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
               <folding />
             </state>
@@ -91,24 +91,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.375" vertical-offset="1602" max-vertical-offset="2745">
-              <caret line="125" column="61" selection-start-line="125" selection-start-column="12" selection-end-line="125" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="VideoConference.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-45.791668" vertical-offset="1496" max-vertical-offset="2835">
-              <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+            <state vertical-scroll-proportion="-9.5" vertical-offset="2532" max-vertical-offset="3105">
+              <caret line="184" column="50" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="50" />
               <folding>
-                <marker date="1427639740000" expanded="true" signature="4716:4730" placeholder="..." />
-                <marker date="1427639740000" expanded="true" signature="4892:4906" placeholder="..." />
+                <marker date="1429474755000" expanded="true" signature="4725:4739" placeholder="..." />
+                <marker date="1429474755000" expanded="true" signature="4901:4915" placeholder="..." />
+                <marker date="1429474755000" expanded="true" signature="5495:5531" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -117,25 +108,28 @@
       <file leaf-file-name="VCInvitation.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/models/VCInvitation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4764398" vertical-offset="1707" max-vertical-offset="2655">
-              <caret line="132" column="77" selection-start-line="132" selection-start-column="77" selection-end-line="132" selection-end-column="77" />
+            <state vertical-scroll-proportion="0.7643979" vertical-offset="1362" max-vertical-offset="2700">
+              <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
               <folding>
-                <marker date="1429473670000" expanded="true" signature="4837:4886" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4887:5440" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4887:5921" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="4949:4958" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="5002:5067" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="5136:5201" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="5234:5243" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="5258:5294" placeholder="..." />
-                <marker date="1429473670000" expanded="true" signature="5351:5416" placeholder="..." />
+                <marker date="1429477767000" expanded="true" signature="5513:5562" placeholder="..." />
+                <marker date="1429477767000" expanded="true" signature="5563:6159" placeholder="..." />
+                <marker date="1429477767000" expanded="true" signature="5625:5634" placeholder="..." />
+                <marker date="1429477767000" expanded="true" signature="5678:5743" placeholder="..." />
+                <marker date="1429477767000" expanded="true" signature="5812:5877" placeholder="..." />
+                <marker date="1429477767000" expanded="true" signature="5910:5919" placeholder="..." />
+                <marker date="1429477767000" expanded="true" signature="5934:5970" placeholder="..." />
+                <marker date="1429477767000" expanded="true" signature="6027:6092" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.75" vertical-offset="780" max-vertical-offset="2745">
+              <caret line="66" column="23" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -166,13 +160,13 @@
         <option value="$PROJECT_DIR$/themes/bootstrap/cotools/css/theme.css" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/notAllowed.php" />
         <option value="$PROJECT_DIR$/themes/bootstrap/views/layouts/main.php" />
-        <option value="$PROJECT_DIR$/protected/models/VideoConference.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/_form.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/index.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/view.php" />
         <option value="$PROJECT_DIR$/protected/controllers/VideoConferenceController.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/join.php" />
         <option value="$PROJECT_DIR$/protected/views/ticket/view.php" />
+        <option value="$PROJECT_DIR$/protected/models/VideoConference.php" />
         <option value="$PROJECT_DIR$/protected/models/VCInvitation.php" />
       </list>
     </option>
@@ -414,6 +408,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ticket" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coplat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -978,17 +990,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.375" vertical-offset="960" max-vertical-offset="7290">
-          <caret line="100" column="43" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="43" />
-          <folding>
-            <marker date="1429462795000" expanded="true" signature="8033:8051" placeholder="..." />
-            <marker date="1429462795000" expanded="true" signature="8681:8823" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/videoConference/view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.5" vertical-offset="1557" max-vertical-offset="2805">
@@ -996,14 +997,6 @@
           <folding>
             <marker date="1427998719000" expanded="true" signature="3308:3471" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-66.875" vertical-offset="2085" max-vertical-offset="7140">
-          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,45 +1008,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/join.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.375" vertical-offset="960" max-vertical-offset="7290">
+          <caret line="100" column="43" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="43" />
+          <folding>
+            <marker date="1429462795000" expanded="true" signature="8033:8051" placeholder="..." />
+            <marker date="1429462795000" expanded="true" signature="8681:8823" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-45.791668" vertical-offset="1496" max-vertical-offset="2835">
-          <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+        <state vertical-scroll-proportion="-9.5" vertical-offset="2532" max-vertical-offset="3105">
+          <caret line="184" column="50" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="50" />
           <folding>
-            <marker date="1427639740000" expanded="true" signature="4716:4730" placeholder="..." />
-            <marker date="1427639740000" expanded="true" signature="4892:4906" placeholder="..." />
+            <marker date="1429474755000" expanded="true" signature="4725:4739" placeholder="..." />
+            <marker date="1429474755000" expanded="true" signature="4901:4915" placeholder="..." />
+            <marker date="1429474755000" expanded="true" signature="5495:5531" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="36.875" vertical-offset="4575" max-vertical-offset="7140">
+          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.375" vertical-offset="1602" max-vertical-offset="2745">
-          <caret line="125" column="61" selection-start-line="125" selection-start-column="12" selection-end-line="125" selection-end-column="78" />
+        <state vertical-scroll-proportion="-8.75" vertical-offset="780" max-vertical-offset="2745">
+          <caret line="66" column="23" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/VCInvitation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4764398" vertical-offset="1707" max-vertical-offset="2655">
-          <caret line="132" column="77" selection-start-line="132" selection-start-column="77" selection-end-line="132" selection-end-column="77" />
+        <state vertical-scroll-proportion="0.7643979" vertical-offset="1362" max-vertical-offset="2700">
+          <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
           <folding>
-            <marker date="1429473670000" expanded="true" signature="4837:4886" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4887:4889" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4887:5440" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4887:5921" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="4949:4958" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="5002:5067" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="5136:5201" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="5234:5243" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="5258:5294" placeholder="..." />
-            <marker date="1429473670000" expanded="true" signature="5351:5416" placeholder="..." />
+            <marker date="1429477767000" expanded="true" signature="5513:5562" placeholder="..." />
+            <marker date="1429477767000" expanded="true" signature="5563:6159" placeholder="..." />
+            <marker date="1429477767000" expanded="true" signature="5625:5634" placeholder="..." />
+            <marker date="1429477767000" expanded="true" signature="5678:5743" placeholder="..." />
+            <marker date="1429477767000" expanded="true" signature="5812:5877" placeholder="..." />
+            <marker date="1429477767000" expanded="true" signature="5910:5919" placeholder="..." />
+            <marker date="1429477767000" expanded="true" signature="5934:5970" placeholder="..." />
+            <marker date="1429477767000" expanded="true" signature="6027:6092" placeholder="..." />
           </folding>
         </state>
       </provider>
