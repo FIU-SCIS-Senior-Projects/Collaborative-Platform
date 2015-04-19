@@ -161,7 +161,7 @@ class VideoConferenceController extends Controller
                         $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
                     } else {
                         $inviteefullName = $invitee->fname . " " . $invitee->lname;
-                        VCInvitation::sendInvitationEmail($model->id, $model->moderator_id, $inviteefullName, $email);;
+                        VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
                     }
                 }
                 if ($invitationError != "") {
@@ -238,7 +238,7 @@ class VideoConferenceController extends Controller
                         $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
                     } else {
                         $inviteefullName = $invitee->fname . " " . $invitee->lname;
-                        VCInvitation::sendInvitationEmail($model->id, $model->moderator_id, $inviteefullName, $email);;
+                        VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
                     }
                 }
                 if ($invitationError != "") {
@@ -288,8 +288,8 @@ class VideoConferenceController extends Controller
                     } else {
 
                         $inviteefullName = $invitee->fname . " " . $invitee->lname;
-                        $meeting = VideoConference::model()->findByAttributes(array("id" => $vc_id));
-                        VCInvitation::sendInvitationEmail($meeting->id, $meeting->moderator_id, $inviteefullName, $email);;
+                        $vc = VideoConference::model()->findByAttributes(array("id" => $vc_id));
+                        VCInvitation::sendInvitationEmail($vc, $inviteefullName, $email);;
                     }
                 }
                 else{
