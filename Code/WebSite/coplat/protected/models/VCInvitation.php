@@ -124,7 +124,7 @@ class VCInvitation extends CActiveRecord
         $moderator = User::model()->findByPk($vc->moderator_id);
         $moderator_name = $moderator->fname . " " . $moderator->lname;
 
-        $btnstyle = "padding:4px 6px;font-size:small;margin-right: 4px;color: #ffffff;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);";
+        $btnstyle = "padding:4px 6px;font-size:small;margin-right: 4px;color: #ffffff;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);border-radius: 1px;";
 
 
         $accept = CHtml::link('Accept', Yii::app()->createAbsoluteUrl('videoConference/accept/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#5bb75b;"), 'http');
@@ -139,14 +139,14 @@ class VCInvitation extends CActiveRecord
         $user_friendly_date = $dt->format("m/d/Y h:i A");
 
 
-        $html .= "<div style='background-color:#d9edf7;padding:10px;width:400px'>
+        $html .= "<div style='background-color:#d9edf7;margin-top:20px;padding:10px;width:400px;border-radius: 2px;'>
                     %SUBJECT%
                     <p style='margin:0;'>%DATE%</p>
                     <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
                     %PARTICIPANTS%
                     <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
                     <p style='margin:0;'><span style='font-weight: bold;margin-right: 6px;'>Notes:</span>%NOTE%</p>
-                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;margin-bottom: 7px;'>
                     %JOIN%%ACCEPT%%REJECT%
                 </div>";
 
