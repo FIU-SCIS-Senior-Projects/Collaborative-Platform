@@ -119,4 +119,53 @@ class VCInvitation extends CActiveRecord
     }
 
 
+    public static function sendInvitationEmail2($vc, $invitee_name, $invitee_email){
+
+       $moderator = User::model()->findByPk($vc->moderator_id);
+       $moderator_name = $moderator->fname ." ".  $moderator->lname;
+
+        $join = CHtml::link('here', Yii::app()->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'));
+        $accept = CHtml::link('accept', Yii::app()->createAbsoluteUrl('videoConference/accept/' . $vc->id ,array(),'http'));
+        $reject = CHtml::link('reject', Yii::app()->createAbsoluteUrl('videoConference/reject/' . $vc->id ,array(),'http'));
+
+
+        $join = CHtml::link('Join Now', Yii::app()->createAbsoluteUrl('videoConference/join/' . $vc->id, array(), 'https'), array('role' => "button", "class" => "btn btn-primary"));
+        $link = CHtml::link($vc->subject, array('videoConference/' . $vc->id));
+
+
+
+        $html = "You have been invited by ". $moderator_name. "to the following video conference:  ";
+
+        $dt = new DateTime($vc->scheduled_for);
+        $user_friendly_date = $dt->format("m/d/Y h:i A");
+
+
+        $html .= "<div style='background-color:#d9edf7;padding:10px;width:400px'>
+                    %SUBJECT%
+                    <p style='margin:0;'>%DATE%</p>
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
+                    %PARTICIPANTS%
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
+                    <p style='margin:0;'><span style='font-weight: bold;margin-right: 6px;'>Notes:</span>%NOTE%</p>
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
+                </div>";
+
+        $html = str_replace("%SUBJECT%", $vc->subject, $html);
+        $html = str_replace("%DATE%", $user_friendly_date, $html);
+        $html = str_replace("%NOTE%", $vc->notes, $html);
+        $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
+
+
+
+$email = Yii::app()->email;
+$email->to = $invitee_email;
+$email->from = 'Collaborative Platform';
+$email->subject = 'New Video Conference Invitation';
+$email->message = $html;
+$email->send();
+
+
 }
+
+
+

@@ -548,10 +548,18 @@
         </div>
 
 
+
+
         <div class="invitee_emails">
             <div class="row">
-                <label for="invitee-1">Invitee Email</label>
-                <input placeholder="" id="invitee-1" type="email" name="invitees[]">
+                <?php $creatorEmail = User::model()->findByPk($model->creator_user_id)->email; ?>
+                <label for="invitee-1">Creator Email</label>
+                <input placeholder="" value="<?php echo $creatorEmail;?>" id="invitee-1" type="email" name="invitees[]">
+            </div>
+            <div class="row">
+                <?php $assignedToEmail = User::model()->findByPk($model->assign_user_id)->email; ?>
+                <label for="invitee-2">Assigned To Email</label>
+                <input placeholder="" value="<?php echo $assignedToEmail;?>" id="invitee-2" type="email" name="invitees[]">
                 <button type="button" class="btn btn-info add_field_button"><i class="fa fa-plus"></i></button>
             </div>
         </div>
@@ -574,9 +582,14 @@
             var action = form.attr('action');
             var data = form.serialize();
             ajaxGeneric(action, method, data, "#message_box");
+            setTimeout(closeModal, 5000);     //wait 5 seconds
             event.preventDefault(); // Prevent the form from submitting via the browser.
         });
     });
+
+    function closeModal(){
+       $('#myModalScheduleVC').modal('toggle');
+    }
 
 
     function ajaxGeneric(action, method, params, response_target) {
@@ -634,7 +647,7 @@
         var wrapper         = $(".invitee_emails"); //Fields wrapper
         var add_button      = $(".add_field_button"); //Add button ID
 
-        var x = 1; //initlal text box count
+        var x = 2; //initlal text box count
         $(add_button).click(function(e){ //on add input button click
             e.preventDefault();
             if(x < max_fields){ //max input box allowed

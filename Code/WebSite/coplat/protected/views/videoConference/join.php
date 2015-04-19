@@ -247,52 +247,6 @@
         data: true
     };
 
-    /*
-     Alternate Firebase URLs
-     webrtc-signaling.firebaseio.com
-     signaling.firebaseio.com
-     rtcweb.firebaseio.com
-     webrtc.firebaseio.com
-     webrtc-experiment.firebaseio.com
-     muazkh.firebaseio.com
-     muazkhan.firebaseio.com
-
-    var firebaseURL = 'https://webrtc-signaling.firebaseio.com/';
-    var roomFirebase = new Firebase(firebaseURL + rmc.channel + '-session');
-    //alert(firebaseURL + rmc.channel + '-session');
-    roomFirebase.once('value', function (data) {
-        var sessionDescription = data.val();
-
-        // checking for room; if not available "open" otherwise "join"
-        if (sessionDescription == null) {
-            rmc.open({
-                sessionid: rmc.sessionid,
-                captureUserMediaOnDemand: false,
-                dontTransmit: true,
-                onMediaCaptured: function () {
-                    // storing room on server
-                    roomFirebase.set(rmc.sessionDescription);
-                    // if room owner leaves; remove room from the server
-                    //roomFirebase.onDisconnect().remove();
-                }
-            });
-        } else {
-            // you can join with only audio or audio+video
-            var joinWith = {
-                audio: true,
-                video: true,
-                data: true
-            };
-
-            // pure "sessionDescription" object is passed over "join" method
-            // 2nd parameter is optional which allows you customize how to join the session
-            rmc.join(sessionDescription, joinWith);
-            //log("you are joining a room");
-        }
-    });
-
-*/
-
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
@@ -515,9 +469,15 @@
             var action = form.attr('action');
             var data = form.serialize();
             ajaxGeneric(action, method, data, "#message_box");
+            setTimeout(closeModal, 5000);     //wait 5 seconds
             event.preventDefault(); // Prevent the form from submitting via the browser.
         });
     });
+    function closeModal(){
+        $('#lean_overlay').css('display', 'none');
+        $('#invite').css('display', 'none');
+    }
+
 </script>
 
 
