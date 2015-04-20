@@ -116,10 +116,10 @@ class VideoConferenceController extends Controller
             if ($dateopt == "now") {
                 $model->scheduled_for = date("Y-m-d H:i:s");
             } else if ($dateopt == "later") {
-                if(isset($_POST["date"]) && isset($_POST["time"])){
+                if (isset($_POST["date"]) && isset($_POST["time"])) {
                     $format = "m/d/Y H:i a";
-                    $date = DateTime::createFromFormat($format, $_POST['date'] ."  " . strtolower($_POST['time']));
-                    if(!$date) {
+                    $date = DateTime::createFromFormat($format, $_POST['date'] . "  " . strtolower($_POST['time']));
+                    if (!$date) {
                         $model->addError('date', "Wrong format for the date ");
                         $this->render('create', array(
                             'model' => $model,
@@ -128,8 +128,7 @@ class VideoConferenceController extends Controller
                     } else {
                         $model->scheduled_for = $date->format("Y-m-d H:i:s");
                     }
-                }
-                else{
+                } else {
                     $model->addError('date', "Empty date or time");
                     $this->render('create', array(
                         'model' => $model,
@@ -139,7 +138,6 @@ class VideoConferenceController extends Controller
 
 
             }
-
 
             if ($model->save()) {
                 $inviteeEmails = $_POST['invitees']; // Returns an array
@@ -186,9 +184,6 @@ class VideoConferenceController extends Controller
         $model = new VideoConference;
         $invitationError = "";
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
         if (isset($_POST['VideoConference'])) {
             $model->attributes = $_POST['VideoConference'];             //get the rest of the attributes
             $moderator = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
@@ -199,17 +194,16 @@ class VideoConferenceController extends Controller
             if ($dateopt == "now") {
                 $model->scheduled_for = date("Y-m-d H:i:s");
             } else if ($dateopt == "later") {
-                if(isset($_POST["date"]) && isset($_POST["time"])){
+                if (isset($_POST["date"]) && isset($_POST["time"])) {
                     $format = "m/d/Y H:i a";
-                    $date = DateTime::createFromFormat($format, $_POST['date'] ."  " . strtolower($_POST['time']));
-                    if(!$date) {
+                    $date = DateTime::createFromFormat($format, $_POST['date'] . "  " . strtolower($_POST['time']));
+                    if (!$date) {
                         print_r("Wrong format for the date ");
                         exit;
                     } else {
                         $model->scheduled_for = $date->format("Y-m-d H:i:s");
                     }
-                }
-                else{
+                } else {
                     print_r("Empty date or time");
                     exit;
                 }
@@ -258,22 +252,17 @@ class VideoConferenceController extends Controller
 
     public function actionInvite()
     {
-        //print_r("hey");
+
         $message = "";
         $inviteeEmails = $_GET['invitees']; // Returns an array
-       // $flag = false;
 
         foreach ($inviteeEmails as $email) {
-
             $invitee = User::model()->findByAttributes(array('email' => $email));
             if ($invitee == null) {
                 $message .= $email . " does not appear in our records <br>";
                 continue;
             }
 
-            //if($invitee->id == $moderator->id){
-            //    continue;
-            //}
             if (isset($_GET['meeting-id'])) {
                 $vc_id = $_GET['meeting-id'];
                 $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc_id, 'invitee_id' => $invitee->id));
@@ -291,8 +280,7 @@ class VideoConferenceController extends Controller
                         $vc = VideoConference::model()->findByAttributes(array("id" => $vc_id));
                         VCInvitation::sendInvitationEmail($vc, $inviteefullName, $email);;
                     }
-                }
-                else{
+                } else {
                     //print_r($invitation->invitee_id);
                     //print_r($invitation->videoconference_id);
 
@@ -305,26 +293,20 @@ class VideoConferenceController extends Controller
         if ($message == "") {
             $message = "The invitations have successfully been sent.";
         }
-
         print_r($message);
-        /*
-        if($invitationError != ""){
-            Yii::app()->user->setFlash('invitation-error', $invitationError);
-        }
-        $this->redirect(array('view', 'id' => $model->id));
-        */
+
     }
 
-    public function actionAccept($id){
+    public function actionAccept($id)
+    {
 
         $invitee = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
         $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $id, 'invitee_id' => $invitee->id));
-        if($invitation != null){
+        if ($invitation != null) {
             $invitation->status = "Accepted";
             $invitation->save();
             $this->redirect(array('index', 'id' => $id));
-        }
-        else {
+        } else {
             $message = "You are not allowed to accept this meeting invitation";
             $this->render('notAllowed', array("message" => $message));
         }
@@ -332,16 +314,16 @@ class VideoConferenceController extends Controller
 
     }
 
-    public function actionReject($id){
+    public function actionReject($id)
+    {
 
         $invitee = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
         $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $id, 'invitee_id' => $invitee->id));
-        if($invitation != null) {
+        if ($invitation != null) {
             $invitation->status = "Rejected";
             $invitation->save();
             $this->redirect(array('index', 'id' => $id));
-        }
-        else {
+        } else {
             $message = "You are not allowed to reject this meeting invitation";
             $this->render('notAllowed', array("message" => $message));
         }
@@ -381,31 +363,31 @@ class VideoConferenceController extends Controller
      */
     public function actionDelete($id)
     {
-        if(Yii::app()->request->isPostRequest)
-        {
+        if (Yii::app()->request->isPostRequest) {
 
-        $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
-        $meeting = VideoConference::model()->findByPk($id);
+            $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+            $meeting = VideoConference::model()->findByPk($id);
 
-        if ($user->id == $meeting->moderator_id) {
-            $this->loadModel($id)->delete();
-            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-            if (!isset($_GET['ajax']))
-                $this->redirect("../");
-            //$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+            if ($user->id == $meeting->moderator_id) {
+                $this->loadModel($id)->delete();
+                // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+                if (!isset($_GET['ajax']))
+                    $this->redirect("../");
+                //$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+            } else {
+                $message = "You are not allowed to delete this meeting";
+                $this->render('notAllowed', array("message" => $message));
+            }
         } else {
-            $message = "You are not allowed to delete this meeting";
-            $this->render('notAllowed', array("message" => $message));
-        }
-        }else{
-            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
 
         }
 
     }
-        /**
-         * Lists all models.
-         */
+
+    /**
+     * Lists all models.
+     */
     public function actionIndex()
     {
 

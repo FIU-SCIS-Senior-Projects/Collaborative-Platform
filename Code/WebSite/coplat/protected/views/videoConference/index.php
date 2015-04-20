@@ -18,7 +18,7 @@ function accept($vcid){
     );
 }
 
-function reject($vcid){
+ function reject($vcid){
     return CHtml::ajaxLink('Reject',
         Yii::app()->createAbsoluteUrl('videoConference/reject/'.$vcid),
         array(
@@ -33,8 +33,6 @@ function reject($vcid){
         array( 'confirm'=>'Are you sure you want to reject this invitation?', 'role' => "button", "class" => "btn btn-danger")
     );
 }
-
-///* @var $dataProvider CActiveDataProvider */
 
 
 
@@ -111,12 +109,10 @@ $this->menu=array(
 
 
 <?php
-
-
-    $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
-    $vcs = VideoConference::model()->findAllByPk($meetingsId);
-
-    foreach($vcs as $vc){
+function printVCS($meetings, $user){
+    $output = "";
+    foreach($meetings as $vc){
+        echo ("hola");
         $ismoderator  = $user->id == $vc->moderator_id;
         $dt = new DateTime($vc->scheduled_for);
         $user_friendly_date = $dt->format("m/d/Y h:i A");
@@ -133,45 +129,251 @@ $this->menu=array(
             ".
             CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'), array('role' => "button", "class" => "btn btn-primary"));
 
-            if($ismoderator){
-                $html .=   CHtml::ajaxLink('Delete',
-                    Yii::app()->createAbsoluteUrl('videoConference/delete/'.$vc->id),
-                    array(
-                        'type'=>'post',
-                        'data' => array('id' =>$vc->id,'type'=>'delete'),
-                        'update'=>'message',
-                        'success' => 'function(response) {
+        if($ismoderator){
+            $html .=   CHtml::ajaxLink('Delete',
+                Yii::app()->createAbsoluteUrl('videoConference/delete/'.$vc->id),
+                array(
+                    'type'=>'post',
+                    'data' => array('id' =>$vc->id,'type'=>'delete'),
+                    'update'=>'message',
+                    'success' => 'function(response) {
                                 $(".message").html(response);
                                 $("#mbox-'.$vc->id .'").remove();
                                 }',
-                    ),
-                    array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
-                );
+                ),
+                array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
+            );
+        }else{
+            $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
+            if($invitation->status == "Unknown"){
+                $html .= accept($vc->id);
+                $html .= reject($vc->id);
+            }else if($invitation->status == "Accepted"){
+                $html .= reject($vc->id);
             }else{
-                $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
-                if($invitation->status == "Unknown"){
-                    $html .= accept($vc->id);
-                    $html .= reject($vc->id);
-                }else if($invitation->status == "Accepted"){
-                    $html .= reject($vc->id);
-                }else{
-                    $html .= accept($vc->id);
-                }
-
+                $html .= accept($vc->id);
             }
 
+        }
 
 
-            $html .=  "</div>";
+
+        $html .=  "</div>";
         $html = str_replace("%SUBJECT%", $vc->subject, $html);
         $html = str_replace("%DATE%", $user_friendly_date, $html);
         $html = str_replace("%NOTE%", $vc->notes, $html);
         $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
 
-        echo $html;
+        $output .= $html;
     }
+    return $output;
+}
+
+    $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+    $vcs = VideoConference::model()->findAllByPk($meetingsId, array("order" => "scheduled_for DESC"));
+    $past =  array();
+    $todays = array();
+    $futures = array();
+
+    $today = new DateTime();
+    foreach($vcs as $vc){
+        $dt = new DateTime($vc->scheduled_for);
+
+
+       if($dt->format('Y-m-d') == $today->format('Y-m-d')){
+           array_push($todays, $vc);
+       }
+       else if($dt > $today){
+           array_push($futures, $vc);
+       }
+       else{
+           array_push($past, $vc);
+        }
+    }
+
+//    printVCS($todays,$user);
+//    printVCS($futures,$user);
+//    printVCS($past,$user);
 ?>
 
 
+<h3 style="margin:50px 0 20px 0;">Today's Meetings</h3>
+<?php
+foreach($todays as $vc){
+    $ismoderator  = $user->id == $vc->moderator_id;
+    $dt = new DateTime($vc->scheduled_for);
+    $user_friendly_date = $dt->format("m/d/Y h:i A");
 
+    $html = "
+        <div id='mbox-$vc->id' class='mbox info'> " .
+        CHtml::link($vc->subject, array('videoConference/' . $vc->id)) . "
+            <p>%DATE%</p>
+            <hr>
+            %PARTICIPANTS%
+            <hr>
+            <p><span>Notes:</span>%NOTE%</p>
+            <hr>
+            ".
+        CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'), array('role' => "button", "class" => "btn btn-primary"));
+
+    if($ismoderator){
+        $html .=   CHtml::ajaxLink('Delete',
+            Yii::app()->createAbsoluteUrl('videoConference/delete/'.$vc->id),
+            array(
+                'type'=>'post',
+                'data' => array('id' =>$vc->id,'type'=>'delete'),
+                'update'=>'message',
+                'success' => 'function(response) {
+                                $(".message").html(response);
+                                $("#mbox-'.$vc->id .'").remove();
+                                }',
+            ),
+            array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
+        );
+    }else{
+        $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
+        if($invitation->status == "Unknown"){
+            $html .= accept($vc->id);
+            $html .= reject($vc->id);
+        }else if($invitation->status == "Accepted"){
+            $html .= reject($vc->id);
+        }else{
+            $html .= accept($vc->id);
+        }
+
+    }
+
+
+
+    $html .=  "</div>";
+    $html = str_replace("%SUBJECT%", $vc->subject, $html);
+    $html = str_replace("%DATE%", $user_friendly_date, $html);
+    $html = str_replace("%NOTE%", $vc->notes, $html);
+    $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
+
+    echo $html;
+}
+
+
+?>
+<hr>
+<h3 style="margin:50px 0 20px 0;">Upcoming Meetings</h3>
+<?php
+foreach($futures as $vc){
+    $ismoderator  = $user->id == $vc->moderator_id;
+    $dt = new DateTime($vc->scheduled_for);
+    $user_friendly_date = $dt->format("m/d/Y h:i A");
+
+    $html = "
+        <div id='mbox-$vc->id' class='mbox info'> " .
+        CHtml::link($vc->subject, array('videoConference/' . $vc->id)) . "
+            <p>%DATE%</p>
+            <hr>
+            %PARTICIPANTS%
+            <hr>
+            <p><span>Notes:</span>%NOTE%</p>
+            <hr>
+            ".
+        CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'), array('role' => "button", "class" => "btn btn-primary"));
+
+    if($ismoderator){
+        $html .=   CHtml::ajaxLink('Delete',
+            Yii::app()->createAbsoluteUrl('videoConference/delete/'.$vc->id),
+            array(
+                'type'=>'post',
+                'data' => array('id' =>$vc->id,'type'=>'delete'),
+                'update'=>'message',
+                'success' => 'function(response) {
+                                $(".message").html(response);
+                                $("#mbox-'.$vc->id .'").remove();
+                                }',
+            ),
+            array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
+        );
+    }else{
+        $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
+        if($invitation->status == "Unknown"){
+            $html .= accept($vc->id);
+            $html .= reject($vc->id);
+        }else if($invitation->status == "Accepted"){
+            $html .= reject($vc->id);
+        }else{
+            $html .= accept($vc->id);
+        }
+
+    }
+
+
+
+    $html .=  "</div>";
+    $html = str_replace("%SUBJECT%", $vc->subject, $html);
+    $html = str_replace("%DATE%", $user_friendly_date, $html);
+    $html = str_replace("%NOTE%", $vc->notes, $html);
+    $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
+
+    echo $html;
+}
+
+
+?>
+<hr>
+<h3 style="margin:50px 0 20px 0">Past Meetings</h3>
+<?php
+foreach($past as $vc){
+    $ismoderator  = $user->id == $vc->moderator_id;
+    $dt = new DateTime($vc->scheduled_for);
+    $user_friendly_date = $dt->format("m/d/Y h:i A");
+
+    $html = "
+        <div id='mbox-$vc->id' class='mbox info'> " .
+        CHtml::link($vc->subject, array('videoConference/' . $vc->id)) . "
+            <p>%DATE%</p>
+            <hr>
+            %PARTICIPANTS%
+            <hr>
+            <p><span>Notes:</span>%NOTE%</p>
+            <hr>
+            ".
+        CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'), array('role' => "button", "class" => "btn btn-primary"));
+
+    if($ismoderator){
+        $html .=   CHtml::ajaxLink('Delete',
+            Yii::app()->createAbsoluteUrl('videoConference/delete/'.$vc->id),
+            array(
+                'type'=>'post',
+                'data' => array('id' =>$vc->id,'type'=>'delete'),
+                'update'=>'message',
+                'success' => 'function(response) {
+                                $(".message").html(response);
+                                $("#mbox-'.$vc->id .'").remove();
+                                }',
+            ),
+            array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
+        );
+    }else{
+        $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
+        if($invitation->status == "Unknown"){
+            $html .= accept($vc->id);
+            $html .= reject($vc->id);
+        }else if($invitation->status == "Accepted"){
+            $html .= reject($vc->id);
+        }else{
+            $html .= accept($vc->id);
+        }
+
+    }
+
+
+
+    $html .=  "</div>";
+    $html = str_replace("%SUBJECT%", $vc->subject, $html);
+    $html = str_replace("%DATE%", $user_friendly_date, $html);
+    $html = str_replace("%NOTE%", $vc->notes, $html);
+    $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
+
+    echo $html;
+}
+
+
+?>
 
