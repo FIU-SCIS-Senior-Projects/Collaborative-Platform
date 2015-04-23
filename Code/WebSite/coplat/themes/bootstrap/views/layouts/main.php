@@ -82,7 +82,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                             'class' => 'bootstrap.widgets.TbMenu',
                             'url' => array('/reportTicket'),
                         ), 
-                        array('label' => 'Frecuent Mentee Sub-Domains', 'visible' => $currentUserIsAdmin,        //Ticket Report
+                        array('label' => 'Frequent Mentee Sub-Domains', 'visible' => $currentUserIsAdmin,        //Ticket Report
                             'class' => 'bootstrap.widgets.TbMenu',
                             'url' => array('/Analytics/PullFrecuentMenteeSubdomains'),
                         ),  

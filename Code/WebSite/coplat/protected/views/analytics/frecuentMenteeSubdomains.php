@@ -1,5 +1,5 @@
 <?php
-$this->breadcrumbs=array('Frecuent Mentee Sub-Domains');
+$this->breadcrumbs=array('Frequent Mentee Sub-Domains');
 ?>
 <style> 
     .dashItem{ height:100%; width:100%} 
