@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `video_conference` (
   `moderator_id` int(11) unsigned NOT NULL,
   `scheduled_on` datetime NOT NULL, 
   `scheduled_for` datetime,
+  `status` varchar(45) NOT NULL DEFAULT "scheduled",
   `notes` varchar(255)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
