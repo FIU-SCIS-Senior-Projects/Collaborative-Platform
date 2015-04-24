@@ -199,4 +199,18 @@ class VideoConference extends CActiveRecord
 
         return $str;
     }
+
+
+    public  function cancel(){
+        $this->status = "cancelled";
+//
+//        $invitations = VCInvitation::model()->findAllByAttributes(array("videoconference_id" =>$this->id));
+//        foreach($invitations as $inv){
+//            $invitee = User::model()->findByAttributes(array("id" => $inv->invitee_id));
+//
+//        }
+
+
+        return $this->save();
+    }
 }

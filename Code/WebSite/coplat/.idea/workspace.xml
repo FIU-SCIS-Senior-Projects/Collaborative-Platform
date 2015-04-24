@@ -46,12 +46,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VideoConferenceController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.470589" vertical-offset="5214" max-vertical-offset="6870">
-              <caret line="407" column="11" selection-start-line="407" selection-start-column="11" selection-end-line="407" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.6818182" vertical-offset="135" max-vertical-offset="7230">
+              <caret line="35" column="130" selection-start-line="35" selection-start-column="130" selection-end-line="35" selection-end-column="130" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VideoConference.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.083333" vertical-offset="2698" max-vertical-offset="3315">
+              <caret line="204" column="36" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
+              <folding>
+                <marker date="1429904002000" expanded="true" signature="4725:4739" placeholder="..." />
+                <marker date="1429904002000" expanded="true" signature="4901:4915" placeholder="..." />
+                <marker date="1429904002000" expanded="true" signature="5495:5531" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,19 +92,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34554973" vertical-offset="2787" max-vertical-offset="5775">
-              <caret line="199" column="32" selection-start-line="199" selection-start-column="32" selection-end-line="199" selection-end-column="32" />
+            <state vertical-scroll-proportion="-181.875" vertical-offset="315" max-vertical-offset="6405">
+              <caret line="312" column="60" selection-start-line="312" selection-start-column="60" selection-end-line="312" selection-end-column="60" />
               <folding>
-                <element signature="n#style#0;n#h3#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h3#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h3#3;n#!!top" expanded="true" />
-                <marker date="1429497320000" expanded="true" signature="2833:3079" placeholder="..." />
-                <marker date="1429497320000" expanded="true" signature="5844:6086" placeholder="..." />
-                <marker date="1429497320000" expanded="true" signature="7998:8240" placeholder="..." />
-                <marker date="1429497320000" expanded="true" signature="10144:10386" placeholder="..." />
+                <marker date="1429904849000" expanded="true" signature="2891:3137" placeholder="..." />
+                <marker date="1429904849000" expanded="true" signature="5911:6153" placeholder="..." />
+                <marker date="1429904849000" expanded="true" signature="8745:8987" placeholder="..." />
+                <marker date="1429904849000" expanded="true" signature="11569:11811" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -128,8 +139,8 @@
         <option value="$PROJECT_DIR$/protected/views/ticket/view.php" />
         <option value="$PROJECT_DIR$/protected/models/VCInvitation.php" />
         <option value="$PROJECT_DIR$/protected/models/VideoConference.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/VideoConferenceController.php" />
         <option value="$PROJECT_DIR$/protected/views/videoConference/index.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/VideoConferenceController.php" />
       </list>
     </option>
   </component>
@@ -138,10 +149,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP from XAMPP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="2" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="707" />
+    <option name="height" value="706" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -169,6 +179,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -421,7 +432,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane />
       </pane>
@@ -556,7 +566,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2" y="23" width="1280" height="707" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="706" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2103825" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -891,7 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="18622" max-vertical-offset="72015">
           <caret line="1197" column="46" selection-start-line="1197" selection-start-column="46" selection-end-line="1197" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,7 +908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46245733" vertical-offset="1274" max-vertical-offset="1860">
           <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="111" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,9 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.88481677" vertical-offset="8862" max-vertical-offset="10605">
           <caret line="557" column="12" selection-start-line="557" selection-start-column="12" selection-end-line="557" selection-end-column="12" />
-          <folding>
-            <marker date="1429469655000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -917,7 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13089006" vertical-offset="30" max-vertical-offset="3480">
           <caret line="7" column="36" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -925,7 +929,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43515357" vertical-offset="0" max-vertical-offset="586">
           <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -933,7 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30716723" vertical-offset="0" max-vertical-offset="586">
           <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -941,18 +943,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.41361257" vertical-offset="2127" max-vertical-offset="2700">
           <caret line="126" column="144" selection-start-line="126" selection-start-column="144" selection-end-line="126" selection-end-column="144" />
-          <folding>
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429481863000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -960,7 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="7.565445" vertical-offset="0" max-vertical-offset="21450">
           <caret line="289" column="9" selection-start-line="289" selection-start-column="9" selection-end-line="289" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -968,22 +958,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-58.75" vertical-offset="15" max-vertical-offset="7290">
           <caret line="100" column="43" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="43" />
-          <folding>
-            <marker date="1429462795000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429462795000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
+    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/_form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.18324608" vertical-offset="255" max-vertical-offset="3105">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="34" />
-          <folding>
-            <marker date="1429485436000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429485436000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1429485436000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.2670157" vertical-offset="1737" max-vertical-offset="2310">
+          <caret line="126" column="21" selection-start-line="126" selection-start-column="21" selection-end-line="126" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -995,11 +976,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/_form.php">
+    <entry file="file://$PROJECT_DIR$/protected/models/VideoConference.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2670157" vertical-offset="1737" max-vertical-offset="2310">
-          <caret line="126" column="21" selection-start-line="126" selection-start-column="21" selection-end-line="126" selection-end-column="21" />
-          <folding />
+        <state vertical-scroll-proportion="-15.083333" vertical-offset="2698" max-vertical-offset="3315">
+          <caret line="204" column="36" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
+          <folding>
+            <marker date="1429904002000" expanded="true" signature="4725:4739" placeholder="..." />
+            <marker date="1429904002000" expanded="true" signature="4901:4915" placeholder="..." />
+            <marker date="1429904002000" expanded="true" signature="5495:5531" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,27 +998,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
+    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.470589" vertical-offset="5214" max-vertical-offset="6870">
-          <caret line="407" column="11" selection-start-line="407" selection-start-column="11" selection-end-line="407" selection-end-column="11" />
-          <folding />
+        <state vertical-scroll-proportion="-181.875" vertical-offset="315" max-vertical-offset="6405">
+          <caret line="312" column="60" selection-start-line="312" selection-start-column="60" selection-end-line="312" selection-end-column="60" />
+          <folding>
+            <marker date="1429904849000" expanded="true" signature="2891:3137" placeholder="..." />
+            <marker date="1429904849000" expanded="true" signature="5911:6153" placeholder="..." />
+            <marker date="1429904849000" expanded="true" signature="8745:8987" placeholder="..." />
+            <marker date="1429904849000" expanded="true" signature="11569:11811" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/videoConference/index.php">
+    <entry file="file://$PROJECT_DIR$/protected/controllers/VideoConferenceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34554973" vertical-offset="2787" max-vertical-offset="5775">
-          <caret line="199" column="32" selection-start-line="199" selection-start-column="32" selection-end-line="199" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#h3#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h3#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h3#3;n#!!top" expanded="true" />
-            <marker date="1429497320000" expanded="true" signature="2833:3079" placeholder="..." />
-            <marker date="1429497320000" expanded="true" signature="5844:6086" placeholder="..." />
-            <marker date="1429497320000" expanded="true" signature="7998:8240" placeholder="..." />
-            <marker date="1429497320000" expanded="true" signature="10144:10386" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.6818182" vertical-offset="135" max-vertical-offset="7230">
+          <caret line="35" column="130" selection-start-line="35" selection-start-column="130" selection-end-line="35" selection-end-column="130" />
+          <folding />
         </state>
       </provider>
     </entry>

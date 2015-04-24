@@ -90,6 +90,10 @@ $this->menu=array(
         margin-right: 4px;
     }
 
+    .cancelled{
+        background-color: #8c7b2a;
+    }
+
 </style>
 
 
@@ -203,9 +207,8 @@ foreach($todays as $vc){
     $ismoderator  = $user->id == $vc->moderator_id;
     $dt = new DateTime($vc->scheduled_for);
     $user_friendly_date = $dt->format("m/d/Y h:i A");
-
     $html = "
-        <div id='mbox-$vc->id' class='mbox info'> " .
+        <div id='mbox-$vc->id' class='mbox info %MSTATUS%'> " .
         CHtml::link($vc->subject, array('videoConference/' . $vc->id)) . "
             <p>%DATE%</p>
             <hr>
@@ -230,6 +233,18 @@ foreach($todays as $vc){
             ),
             array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
         );
+        $html .=   CHtml::ajaxLink('Cancel',
+            Yii::app()->createAbsoluteUrl('videoConference/cancel/'.$vc->id),
+            array(
+                'type'=>'post',
+                'data' => array('id' =>$vc->id,'type'=>'delete'),
+                'update'=>'message',
+                'success' => 'function(response) {
+                                $(".message").html(response);
+                                }',
+            ),
+            array( 'confirm'=>'Are you sure you want to cancel this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-warning")
+        );
     }else{
         $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
         if($invitation->status == "Unknown"){
@@ -247,6 +262,7 @@ foreach($todays as $vc){
 
     $html .=  "</div>";
     $html = str_replace("%SUBJECT%", $vc->subject, $html);
+    $html = str_replace("%MSTATUS%", $vc->status, $html);
     $html = str_replace("%DATE%", $user_friendly_date, $html);
     $html = str_replace("%NOTE%", $vc->notes, $html);
     $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
@@ -265,7 +281,7 @@ foreach($futures as $vc){
     $user_friendly_date = $dt->format("m/d/Y h:i A");
 
     $html = "
-        <div id='mbox-$vc->id' class='mbox info'> " .
+        <div id='mbox-$vc->id' class='mbox info %MSTATUS%'> " .
         CHtml::link($vc->subject, array('videoConference/' . $vc->id)) . "
             <p>%DATE%</p>
             <hr>
@@ -289,6 +305,18 @@ foreach($futures as $vc){
                                 }',
             ),
             array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
+        );
+        $html .=   CHtml::ajaxLink('Cancel',
+            Yii::app()->createAbsoluteUrl('videoConference/cancel/'.$vc->id),
+            array(
+                'type'=>'post',
+                'data' => array('id' =>$vc->id,'type'=>'post'),
+                'update'=>'message',
+                'success' => 'function(response) {
+                                $(".message").html(response);
+                                }',
+            ),
+            array( 'confirm'=>'Are you sure you want to cancel this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-warning")
         );
     }else{
         $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
@@ -307,6 +335,7 @@ foreach($futures as $vc){
 
     $html .=  "</div>";
     $html = str_replace("%SUBJECT%", $vc->subject, $html);
+    $html = str_replace("%MSTATUS%", $vc->status, $html);
     $html = str_replace("%DATE%", $user_friendly_date, $html);
     $html = str_replace("%NOTE%", $vc->notes, $html);
     $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
@@ -325,7 +354,7 @@ foreach($past as $vc){
     $user_friendly_date = $dt->format("m/d/Y h:i A");
 
     $html = "
-        <div id='mbox-$vc->id' class='mbox info'> " .
+        <div id='mbox-$vc->id' class='mbox info %MSTATUS%'> " .
         CHtml::link($vc->subject, array('videoConference/' . $vc->id)) . "
             <p>%DATE%</p>
             <hr>
@@ -350,6 +379,18 @@ foreach($past as $vc){
             ),
             array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
         );
+        $html .=   CHtml::ajaxLink('Cancel',
+            Yii::app()->createAbsoluteUrl('videoConference/cancel/'.$vc->id),
+            array(
+                'type'=>'post',
+                'data' => array('id' =>$vc->id,'type'=>'delete'),
+                'update'=>'message',
+                'success' => 'function(response) {
+                                $(".message").html(response);
+                                }',
+            ),
+            array( 'confirm'=>'Are you sure you want to cancel this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-warning")
+        );
     }else{
         $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
         if($invitation->status == "Unknown"){
@@ -366,6 +407,7 @@ foreach($past as $vc){
 
 
     $html .=  "</div>";
+    $html = str_replace("%MSTATUS%", $vc->status, $html);
     $html = str_replace("%SUBJECT%", $vc->subject, $html);
     $html = str_replace("%DATE%", $user_friendly_date, $html);
     $html = str_replace("%NOTE%", $vc->notes, $html);

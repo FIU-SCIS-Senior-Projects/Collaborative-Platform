@@ -33,11 +33,11 @@ class VideoConferenceController extends Controller
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject', "createfrommodal"),
+                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject', 'createfrommodal', 'cancel'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete'),
+                'actions' => array('admin', 'delete', 'cancel'),
                 'users' => array('admin'),
             ),
             array('deny',  // deny all users
@@ -376,6 +376,30 @@ class VideoConferenceController extends Controller
                 //$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
             } else {
                 $message = "You are not allowed to delete this meeting";
+                $this->render('notAllowed', array("message" => $message));
+            }
+        } else {
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+
+        }
+
+    }
+
+    public function actionCancel($id)
+    {
+        if (Yii::app()->request->isPostRequest) {
+
+            $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+            $meeting = VideoConference::model()->findByPk($id);
+
+            if ($user->id == $meeting->moderator_id) {
+                $this->loadModel($id)->cancel();
+                // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+                if (!isset($_GET['ajax']))
+                    $this->redirect("../");
+                //$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+            } else {
+                $message = "You are not allowed to cancel this meeting";
                 $this->render('notAllowed', array("message" => $message));
             }
         } else {
