@@ -245,6 +245,7 @@ foreach($todays as $vc){
                     'update'=>'message',
                     'success' => 'function(response) {
                                     $(".message").html(response);
+                                    location.reload();
                                     }',
                 ),
                 array( 'confirm'=>'Are you sure you want to cancel this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-warning")
@@ -325,6 +326,7 @@ foreach($futures as $vc){
                 'update'=>'message',
                 'success' => 'function(response) {
                                 $(".message").html(response);
+                                location.reload();
                                 }',
             ),
             array( 'confirm'=>'Are you sure you want to cancel this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-warning")
@@ -407,6 +409,7 @@ foreach($past as $vc){
                 'update'=>'message',
                 'success' => 'function(response) {
                                 $(".message").html(response);
+                                location.reload();
                                 }',
             ),
             array( 'confirm'=>'Are you sure you want to cancel this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-warning")
