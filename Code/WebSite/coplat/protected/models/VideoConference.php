@@ -203,12 +203,13 @@ class VideoConference extends CActiveRecord
 
     public  function cancel(){
         $this->status = "cancelled";
-//
-//        $invitations = VCInvitation::model()->findAllByAttributes(array("videoconference_id" =>$this->id));
-//        foreach($invitations as $inv){
-//            $invitee = User::model()->findByAttributes(array("id" => $inv->invitee_id));
-//
-//        }
+
+        $invitations = VCInvitation::model()->findAllByAttributes(array("videoconference_id" =>$this->id));
+        foreach($invitations as $inv){
+            $invitee = User::model()->findByAttributes(array("id" => $inv->invitee_id));
+            VCInvitation::sendCancelNotification($this, $invitee->fname . " " . $invitee->lname, $invitee->email);
+
+        }
 
 
         return $this->save();

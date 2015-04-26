@@ -115,66 +115,6 @@ $this->menu=array(
 
 
 <?php
-function printVCS($meetings, $user){
-    $output = "";
-    foreach($meetings as $vc){
-        echo ("hola");
-        $ismoderator  = $user->id == $vc->moderator_id;
-        $dt = new DateTime($vc->scheduled_for);
-        $user_friendly_date = $dt->format("m/d/Y h:i A");
-
-        $html = "
-        <div id='mbox-$vc->id' class='mbox info'> " .
-            CHtml::link($vc->subject, array('videoConference/' . $vc->id)) . "
-            <p>%DATE%</p>
-            <hr>
-            %PARTICIPANTS%
-            <hr>
-            <p><span>Notes:</span>%NOTE%</p>
-            <hr>
-            ".
-            CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'), array('role' => "button", "class" => "btn btn-primary"));
-
-        if($ismoderator){
-            $html .=   CHtml::ajaxLink('Delete',
-                Yii::app()->createAbsoluteUrl('videoConference/delete/'.$vc->id),
-                array(
-                    'type'=>'post',
-                    'data' => array('id' =>$vc->id,'type'=>'delete'),
-                    'update'=>'message',
-                    'success' => 'function(response) {
-                                $(".message").html(response);
-                                $("#mbox-'.$vc->id .'").remove();
-                                }',
-                ),
-                array( 'confirm'=>'Are you sure you want to delete this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-danger")
-            );
-        }else{
-            $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $vc->id, 'invitee_id' => $user->id));
-            if($invitation->status == "Unknown"){
-                $html .= accept($vc->id);
-                $html .= reject($vc->id);
-            }else if($invitation->status == "Accepted"){
-                $html .= reject($vc->id);
-            }else{
-                $html .= accept($vc->id);
-            }
-
-        }
-
-
-
-        $html .=  "</div>";
-        $html = str_replace("%SUBJECT%", $vc->subject, $html);
-        $html = str_replace("%DATE%", $user_friendly_date, $html);
-        $html = str_replace("%NOTE%", $vc->notes, $html);
-        $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
-
-        $output .= $html;
-    }
-    return $output;
-}
-
     $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
     $vcs = VideoConference::model()->findAllByPk($meetingsId, array("order" => "scheduled_for DESC"));
     $past =  array();
@@ -264,15 +204,12 @@ foreach($todays as $vc){
     }
     $html .=  "</div>";
     $html = str_replace("%SUBJECT%", $vc->subject, $html);
-
-
     $html = str_replace("%MSTATUS%", $vc->status, $html);
     if($vc->status == "cancelled"){
         $html = str_replace("%STATUS%", "<p style='font-weight: bold'>Status: Cancelled</p>", $html);
     }else{
         $html = str_replace("%STATUS%", "", $html);
     }
-
     $html = str_replace("%DATE%", $user_friendly_date, $html);
     $html = str_replace("%NOTE%", $vc->notes, $html);
     $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsHTMLList(), $html);
