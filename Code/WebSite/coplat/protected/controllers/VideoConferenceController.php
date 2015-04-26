@@ -358,7 +358,7 @@ class VideoConferenceController extends Controller
 
     /**
      * Deletes a particular video conference model.
-     * Only moderators are
+     * Only moderators are allowed
      * @param integer $id the ID of the model to be deleted
      */
     public function actionDelete($id)
@@ -370,10 +370,9 @@ class VideoConferenceController extends Controller
 
             if ($user->id == $meeting->moderator_id) {
                 $this->loadModel($id)->delete();
-                // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+                // if AJAX request, we should not redirect the browser
                 if (!isset($_GET['ajax']))
                     $this->redirect("../");
-                //$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
             } else {
                 $message = "You are not allowed to delete this meeting";
                 $this->render('notAllowed', array("message" => $message));
@@ -385,6 +384,12 @@ class VideoConferenceController extends Controller
 
     }
 
+
+    /**
+     * Cancels a particular video conference model.
+     * Only moderators are allowed
+     * @param integer $id the ID of the model to be deleted
+     */
     public function actionCancel($id)
     {
         if (Yii::app()->request->isPostRequest) {
@@ -394,10 +399,9 @@ class VideoConferenceController extends Controller
 
             if ($user->id == $meeting->moderator_id) {
                 $this->loadModel($id)->cancel();
-                // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+                // if AJAX request, we should not redirect the browser
                 if (!isset($_GET['ajax']))
                     $this->redirect("../");
-                //$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
             } else {
                 $message = "You are not allowed to cancel this meeting";
                 $this->render('notAllowed', array("message" => $message));

@@ -169,6 +169,52 @@ class VCInvitation extends CActiveRecord
 
 
     }
+
+    public static function sendCancelNotification($vc, $invitee_name, $invitee_email)
+    {
+
+        $moderator = User::model()->findByPk($vc->moderator_id);
+        $moderator_name = $moderator->fname . " " . $moderator->lname;
+
+        $btnstyle = "padding:4px 6px;font-size:small;margin-right: 4px;color: #ffffff;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);border-radius: 1px;";
+
+
+        $subject = CHtml::link($vc->subject, Yii::app()->createAbsoluteUrl('videoConference/' . $vc->id), array('style' => "color: #31708f;"), 'http');
+
+
+        $html = "Dear " . $invitee_name . ",<br><br>The following meeting has been canceled by " . $moderator_name . ":  <br> ";
+
+        $dt = new DateTime($vc->scheduled_for);
+        $user_friendly_date = $dt->format("m/d/Y h:i A");
+
+
+        $html .= "<div style='background-color:#f4ffbc;margin-top:20px;padding:10px;width:400px;border-radius: 2px;'>
+                    <p style='font-weight: bold'>Status: Cancelled</p>
+                    %SUBJECT%
+                    <p style='margin:0;'>%DATE%</p>
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
+                    %PARTICIPANTS%
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
+                    <p style='margin:0;'><span style='font-weight: bold;margin-right: 6px;'>Notes:</span>%NOTE%</p>
+                </div>";
+
+        $html = str_replace("%SUBJECT%", $subject, $html);
+        $html = str_replace("%DATE%", $user_friendly_date, $html);
+        $html = str_replace("%NOTE%", $vc->notes, $html);
+        $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsSimpleHTMLList(), $html);
+
+
+
+        $email = Yii::app()->email;
+        $email->to = $invitee_email;
+        $email->from = 'Collaborative Platform';
+        $email->subject = 'Canceled Video Conference';
+        $email->message = $html;
+        $email->send();
+
+
+    }
+
 }
 
 

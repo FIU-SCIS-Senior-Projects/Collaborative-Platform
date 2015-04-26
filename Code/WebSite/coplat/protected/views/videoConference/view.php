@@ -65,6 +65,7 @@ $this->menu = array(
             width: 500px;
             padding: 15px;
             margin-bottom: 15px;
+            margin-top:30px;
             border-radius: 4px;
         }
 
@@ -101,6 +102,9 @@ $this->menu = array(
             font-size: small;
             margin-right: 4px;
         }
+        .cancelled{
+            background-color: #f4ffbc;
+        }
 
     </style>
 
@@ -117,7 +121,8 @@ $this->menu = array(
     $user_friendly_date = $dt->format("m/d/Y h:i a");
 
     $html = "
-        <div id='mbox-$model->id' class='mbox info'>
+        <div id='mbox-$model->id' class='mbox info %MSTATUS%'>
+             %STATUS%
             <p>%DATE%</p>
             <hr>
             %PARTICIPANTS%
@@ -141,6 +146,20 @@ $this->menu = array(
             ),
             array('confirm' => 'Are you sure you want to delete this conference?', "visible" => $ismoderator, 'role' => "button", "class" => "btn btn-danger")
         );
+        if($model->status != "cancelled")
+            $html .=   CHtml::ajaxLink('Cancel',
+                Yii::app()->createAbsoluteUrl('videoConference/cancel/'.$model->id),
+                array(
+                    'type'=>'post',
+                    'data' => array('id' =>$model->id,'type'=>'post'),
+                    'update'=>'message',
+                    'success' => 'function(response) {
+                                $(".message").html(response);
+                                location.reload();
+                                }',
+                ),
+                array( 'confirm'=>'Are you sure you want to cancel this conference?', "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-warning")
+            );
     }
     else{
             $invitation = VCInvitation::model()->findByAttributes(array('videoconference_id' => $model->id, 'invitee_id' => $user->id));
@@ -155,8 +174,14 @@ $this->menu = array(
 
         }
 
-
     $html .= "</div>";
+    $html = str_replace("%SUBJECT%", $model->subject, $html);
+    $html = str_replace("%MSTATUS%", $model->status, $html);
+    if($model->status == "cancelled"){
+        $html = str_replace("%STATUS%", "<p style='font-weight: bold'>Status: Cancelled</p>", $html);
+    }else{
+        $html = str_replace("%STATUS%", "", $html);
+    }
     $html = str_replace("%SUBJECT%", $model->subject, $html);
     $html = str_replace("%DATE%", $user_friendly_date, $html);
     $html = str_replace("%NOTE%", $model->notes, $html);
@@ -174,11 +199,3 @@ $this->menu = array(
     </div>
 <?php endif; ?>
 
-
-
-
-    <?php
-/*
-    echo CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $model->id, array(), 'https'));
-*/
-    ?>
