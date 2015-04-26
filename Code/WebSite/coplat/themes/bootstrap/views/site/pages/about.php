@@ -46,6 +46,15 @@ $this->breadcrumbs=array(
 </table>
 </br>
 
+<h5>Version 5.0 - 4/26/2015</h5>
+
+<table style="margin-left: 20px">
+    <tr><td style="font-size: 14px; font-weight: bold">Admin Reports and Utilization Dashboard &nbsp;</td><td>Adrian Alfonso</td></tr>
+    <tr><td style="font-size: 14px; font-weight: bold">Collaborative Tools</td><td>Jorge Travieso</td></tr>
+</table>
+
+</br>
+
 
 <h4>Tools and Methodology</h4>
 <table style="margin-left: 20px">
