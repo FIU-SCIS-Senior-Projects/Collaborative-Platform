@@ -903,7 +903,33 @@ class UserController extends Controller
         }
        
                
-        //we can proceed with the deletion
+        //TODO: implement transaction here
+        //we can proceed with the deletion (put transactions here)
+        
+        if (isset($model->projectMentor))
+        {
+            $model->projectMentor->delete();
+        } 
+        
+        if (isset($model->personalMentor))
+        {
+            $model->personalMentor->delete();
+        } 
+        
+        if (isset($model->domainMentor))
+        {
+            $model->domainMentor->delete();
+        }
+        
+        if (isset($model->user_info))
+        {
+            $model->user_info->delete();
+        }        
+	$mentee = Mentee::getMentee($id);
+        if (isset($mentee))
+        {
+           $mentee->delete();
+        }
         $model->delete();
          
          ////soft delete

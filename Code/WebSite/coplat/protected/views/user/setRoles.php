@@ -430,8 +430,11 @@ if($model->isPerMentor==1)
                                     }
                                     $perm = User::model()->findBySql("select * from user where id = $m->personal_mentor_user_id");
 
-
-                                        $PJMname = $pjm->fname.' '.$pjm->lname;
+                                   if (isset($pjm))
+                                   {
+                                       $PJMname = $pjm->fname.' '.$pjm->lname;
+                                   }
+                                   
 
 
 

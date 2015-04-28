@@ -5068,3 +5068,184 @@ Stack trace:
 REQUEST_URI=/coplat/index.php/images/landing/mentor.jpg
 HTTP_REFERER=http://localhost/coplat/index.php/site/landing/29
 ---
+2015/04/28 02:15:00 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`user_info`, CONSTRAINT `user_info` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1025'.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php (913)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/04/28 02:16:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`user_info`, CONSTRAINT `user_info` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1025'' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1745): CDbCommand->execute()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1168): CActiveRecord->deleteByPk('1025')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php(913): CActiveRecord->delete()
+#3 [internal function]: UserController->actionDelete('1025')
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/delete')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/user/delete/1025?ajax=user-grid
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2015/04/28 02:17:05 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`user_info`, CONSTRAINT `user_info` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1025'.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php (914)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/04/28 02:17:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`user_info`, CONSTRAINT `user_info` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1025'' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1745): CDbCommand->execute()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1168): CActiveRecord->deleteByPk('1025')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php(914): CActiveRecord->delete()
+#3 [internal function]: UserController->actionDelete('1025')
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/delete')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/user/delete/1025?ajax=user-grid
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2015/04/28 02:22:23 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`user_info`, CONSTRAINT `user_info` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1025'.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php (914)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/04/28 02:22:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`user_info`, CONSTRAINT `user_info` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1025'' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1745): CDbCommand->execute()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1168): CActiveRecord->deleteByPk('1025')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php(914): CActiveRecord->delete()
+#3 [internal function]: UserController->actionDelete('1025')
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/delete')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/user/delete/1025?ajax=user-grid
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2015/04/28 02:28:16 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`project_mentor`, CONSTRAINT `fk_project_mentor_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1027'.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php (918)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/04/28 02:28:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`project_mentor`, CONSTRAINT `fk_project_mentor_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1027'' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1745): CDbCommand->execute()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1168): CActiveRecord->deleteByPk('1027')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php(918): CActiveRecord->delete()
+#3 [internal function]: UserController->actionDelete('1027')
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/delete')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/user/delete/1027?ajax=user-grid
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
+2015/04/28 02:30:52 [error] [php] Trying to get property of non-object (C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\user\setRoles.php:434)
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): UserController->renderFile()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\user\roles.php(12): UserController->render()
+#3 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): UserController->renderInternal()
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): UserController->renderFile()
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\user\admin_create_user.php(18): UserController->renderPartial()
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(126): require()
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CBaseController.php(95): UserController->renderInternal()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(869): UserController->renderFile()
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(782): UserController->renderPartial()
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php(814): UserController->render()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(49): UserController->actionAdmin_Create_User()
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): UserController->runActionWithFilters()
+#21 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): UserController->run()
+#22 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#24 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CWebApplication->run()
+REQUEST_URI=/coplat/index.php/user/admin_create_user
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\user\setRoles.php (434)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\user\roles.php (12)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\views\user\admin_create_user.php (18)
+2015/04/28 02:34:22 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`personal_mentor`, CONSTRAINT `fk_personal_mentor_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1028'.
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php (926)
+in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php (14)
+2015/04/28 02:34:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`coplat`.`personal_mentor`, CONSTRAINT `fk_personal_mentor_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `user` WHERE `user`.`id`='1028'' in C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1745): CDbCommand->execute()
+#1 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\db\ar\CActiveRecord.php(1168): CActiveRecord->deleteByPk('1028')
+#2 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\protected\controllers\UserController.php(926): CActiveRecord->delete()
+#3 [internal function]: UserController->actionDelete('1028')
+#4 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\web\CWebApplication.php(141): CWebApplication->runController('user/delete')
+#19 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\School\SeniorProject\CoplatV5\Code\WebSite\coplat\index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/coplat/index.php/user/delete/1028?ajax=user-grid
+HTTP_REFERER=http://localhost/coplat/index.php/user/admin
+---
