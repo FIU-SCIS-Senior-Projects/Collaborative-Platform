@@ -439,7 +439,7 @@ class ApplicationController extends Controller
 				if ($domainFlag){
 					// add entry to domain_mentor
 					$domEntry = $this->isNewEntry($user_id, 'domain_mentor');
-					$loaduser->isDomMentor = 1;
+					$loaduser->isDomMentor = true;
 						
 					// add entry to domain_mentor
 					// if it already exists do NOTHING . change here with else statement to perform update
@@ -474,7 +474,7 @@ class ApplicationController extends Controller
 							
 				if ($personalFlag){
 					
-					$loaduser->isPerMentor = 1;
+					$loaduser->isPerMentor = true;
 					
 					$percount = Yii::app()->db->createCommand()->
 									select('count(*)')->
@@ -493,7 +493,7 @@ class ApplicationController extends Controller
 				
 				if ($projectFlag){
 					
-					$loaduser->isProMentor = 1;
+					$loaduser->isProMentor = true;
 					
 					$procount = Yii::app()->db->createCommand()->
 									select('count(*)')->
@@ -509,10 +509,10 @@ class ApplicationController extends Controller
 						$closedOne = true;
 					}	
 				}
-				
-				$loaduser->save();
-				
-				
+                                
+                              $loaduser->password2 = $loaduser->password; //not ideal but the validation is stoping me on save
+			      $loaduser->save('search');
+                             				
 				if ($closedOne) {
                                         $closed->user_id = $user_id;
 					$closed->date = new CDbExpression('NOW()');	

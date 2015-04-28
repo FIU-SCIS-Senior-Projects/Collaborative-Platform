@@ -113,7 +113,9 @@ class User extends CActiveRecord
             array('id, username, password, email, fname, mname, lname, pic_url, activated, activation_chain, 
             		disable, biography, linkedin_id, fiucs_id, google_id, isAdmin, isProMentor, isPerMentor, 
             		isDomMentor, isStudent, isMentee, isJudge, isEmployer, combineRoles, fullName', 'safe', 'on' => 'search'),
-        );
+      
+            array('isProMentor,isDomMentor,isPerMentor,username, password, password2, email, fname, lname ', 'safe', 'on' => 'updaterole'),
+          );
     }
 
 
