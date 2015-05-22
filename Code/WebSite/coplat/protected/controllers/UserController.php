@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <?php
 
 require ('PasswordHash.php');
@@ -317,9 +318,11 @@ class UserController extends Controller
                 
                 //application management
                 $redirectMentorApp = false;
-                $id = $_GET['id'];
-                if (isset($id) && $id > 0 )
+                //
+                //$id = $_GET['id'];
+                if(isset($_GET['id'])&&$_GET['id']>0)
                 {
+                    $id = $_GET['id'];
                     $invitationInfo = Invitation::model()->findByPk($id);
                     if (isset($invitationInfo))
                     {
