@@ -41,9 +41,9 @@ if (Yii::app()->user->isGuest) {
 
 }
 
-if (User::isCurrentUserMentee()) {
-    $cp = false;
-}
+// if (User::isCurrentUserMentee()) {
+//     $cp = false;
+// }
 
 
 
