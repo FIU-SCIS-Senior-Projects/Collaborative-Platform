@@ -142,6 +142,21 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	    /**
+     * Helper method to generate the random password.
+     * @param $length: length of the string.
+     * @return string: contains the generated string.
+     */
+    public static function genRandomString($length) {
+        $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+        $string = "";
+        for ($p = 0; $p < $length; $p++) {
+            $string .= $characters[mt_rand(0, strlen($characters) - 1)];
+        }
+
+        return $string;
+    }
 	
 	public function actionForgotPassword()
 	{
