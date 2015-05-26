@@ -172,14 +172,22 @@
         </div>
 
 
-        <div id="chat-container" class="col-md-2 col-lg-3">
+        <div class="col-md-2 col-lg-3">
 
-
-            <div id="chat-feed">
-                <p class="msg">Welcome to the chat room!</p>
+            <div>
+                <img id="trello-logo" src="http://a1461.phobos.apple.com/us/r30/Purple/v4/ec/df/0c/ecdf0c81-1ab3-978b-b9af-866d232636bc/mzl.wzojsfri.png">
+                <div class="text-center">
+                    <a href="https://trello.com/" target="_blank"><input id="trello-signin" type="button" value="Login to Trello" /></a>
+                </div>
             </div>
-            <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
-            <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
+
+            <div id="chat-container">
+                <div id="chat-feed">
+                    <p class="msg">Welcome to the chat room!</p>
+                </div>
+                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
+                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
+            </div>
 
         </div>
 
