@@ -160,6 +160,44 @@ Tool box
 }
 
 /*
+    Trello Container
+*/
+#trello-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10em;
+    width: 10em;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+#trello-signin > a {
+    text-decoration: none;
+}
+
+#trello-signin {
+    box-shadow: rgb(59, 94, 1) 0px 2px 0px 0px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    height: 51px;
+    position: relative;
+    text-align: center;
+    white-space: pre;
+    width: 160px;
+    word-wrap: break-word;
+    background: rgba(0, 0, 0, 0) linear-gradient(rgb(112, 181, 0) 0px, rgb(100, 162, 0) 100%) repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px none rgb(255, 255, 255);
+    border-radius: 6px 6px 6px 6px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: jaf-facitweb, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0px 0px 16px;
+    outline: rgb(255, 255, 255) none 0px;
+    padding: 9px 3px;
+}
+
+/*
     Chat Room
 */
 
@@ -187,7 +225,7 @@ p.msg {
 
 #chat-container > div {
     width: 100%;
-    margin: 0px 0px 10px 0px;
+    margin: 20px 0px 10px 0px;
 }
 
 #chat-container > textarea {
