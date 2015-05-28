@@ -272,7 +272,7 @@
     var video_status = 0;
 
     function pauseResumeVideo() {
-        rmc.streams.mute({'audio': false, 'video' : true});
+        rmc.streams['rmc'].mute({'video' : true});
         // if(video_status == 0) {
         //     document.getElementById("on-off-video").style.color= 'red';
         //     rmc.removeStream({'video' : true});
