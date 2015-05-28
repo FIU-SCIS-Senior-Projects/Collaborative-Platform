@@ -258,16 +258,17 @@
         audio: true,
         data: true
     };
-    rmc.streams.mute();
 
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
+        rmc.streams.mute();
     });
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
+        rmc.streams.mute();
     });
 
     var video_status = 0;
