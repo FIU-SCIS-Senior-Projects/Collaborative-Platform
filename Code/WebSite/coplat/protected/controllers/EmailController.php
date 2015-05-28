@@ -5,8 +5,8 @@
  * Date: 5/25/2015
  * Time: 5:33 PM
  */
-include '../models/AwayMentor.php';
-include '../../fromework/yiilite.php';
+include '../models/*';
+include '../../fromework/*';
 function establishConnection()
 {
     $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
@@ -43,5 +43,14 @@ function emailListener()
         }
     }
 }
+foreach (glob("../models/*.php") as $filename)
+{
+    include $filename;
+}
+foreach (glob("../../framework/db/ar/*.php") as $filename)
+{
+    include $filename;
+}
 emailListener();
+
 ?>
