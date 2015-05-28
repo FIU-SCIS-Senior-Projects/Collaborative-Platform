@@ -288,6 +288,14 @@
         }
 
     }
+
+    rmc.onmute = function(e) {
+       e.mediaElement.setAttribute('poster', '/coplat/images/cp.jpg');
+    };
+
+    rmc.onunmute = function(e) {
+       e.mediaElement.removeAttribute('poster');
+    };
     // $('#on-off-video').click(function () {
     //     // http://www.rtcmulticonnection.org/docs/mute/
     //     if(video_status == 0) {
