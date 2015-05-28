@@ -164,7 +164,7 @@
         <div id="video-container" style="" class="col-md-2 col-lg-3">
 
             <div class="col-md-offset-5">
-                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" id="on-off-video"></i>'?>
+                <?php echo '<i class="fa fa-video-camera" id="on-off-video"></i>'?>
             </div>
 
         </div>
@@ -277,12 +277,14 @@
                 audio: true,
                 video: true
             });
+            document.getElementById("on-off-video").style.color= 'red';
             video_status = 0;
         } else if (video_status == 0) {
             rmc.mute({
                 audio: true,
                 video: false
             });
+            document.getElementById("on-off-video").style.color= 'gray';
             video_status = 1;
         }
     });
