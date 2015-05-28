@@ -254,10 +254,11 @@
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
-        video: false,
+        video: true,
         audio: true,
         data: true
     };
+    rmc.streams.mute();
 
 
     $('#open-room').click(function () {
