@@ -273,10 +273,18 @@
 
     function pauseResumeVideo() {
         if(video_status == 0) {
+            rmc.mute({
+                audio: true,
+                video: true
+            });
             document.getElementById("on-off-video").style.color= 'red';
             video_status = 1;
         }
         else if(video_status == 1) {
+            rmc.mute({
+                audio: true,
+                video: false
+            });
             document.getElementById("on-off-video").style.color= "gray";
             video_status = 0;
         }
