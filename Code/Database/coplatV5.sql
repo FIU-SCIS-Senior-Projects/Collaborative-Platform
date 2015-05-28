@@ -1135,6 +1135,11 @@ INSERT INTO `user_domain` VALUES (2,7,8,1,8,1,1),(4,8,10,NULL,10,1,1),(5,19,8,1,
 /*!40000 ALTER TABLE `user_domain` ENABLE KEYS */;
 UNLOCK TABLES;
 
+DROP TABLE IF EXISTS Away_Mentor;
+CREATE TABLE away_mentor
+(
+userID int(10)unsigned
+);
 --
 -- Table structure for table `user_info`
 --
