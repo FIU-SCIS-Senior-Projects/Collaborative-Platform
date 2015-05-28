@@ -43,14 +43,15 @@ function emailListener()
         }
     }
 }
-foreach (glob("../models/*.php") as $filename)
-{
-    include $filename;
-}
 foreach (glob("../../framework/db/ar/*.php") as $filename)
 {
     include $filename;
 }
+foreach (glob("../models/*.php") as $filename)
+{
+    include $filename;
+}
+
 emailListener();
 
 ?>
