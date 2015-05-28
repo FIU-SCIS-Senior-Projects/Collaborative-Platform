@@ -292,7 +292,7 @@
     }
 
     rmc.onmute = function(e) {
-       e.mediaElement.setAttribute('poster', '/coplat/images/cp.jpg');
+       e.mediaElement.setAttribute('poster', '/coplat/images/black.jpg');
     };
 
     rmc.onunmute = function(e) {
