@@ -276,7 +276,7 @@
     function pauseResumeVideo() {
         if(video_status == 0) {
             document.getElementById("on-off-video").style.color= 'red';
-            rmc.peers[rmc.userid].hold();
+            rmc.peers['<?php echo rmc.userid ;?>'].hold();
             //rmc.streams.mute();
             video_status = 1;
         }
