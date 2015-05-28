@@ -6,6 +6,7 @@
  * Time: 5:33 PM
  */
 include '../models/AwayMentor.php';
+include '../../fromework/yiilite.php';
 function establishConnection()
 {
     $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
