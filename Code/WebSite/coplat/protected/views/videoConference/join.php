@@ -263,12 +263,12 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        //rmc.streams.mute();
+        rmc.streams.selectFirst({local : true }).mute();
     });
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
-        //rmc.streams.mute();
+        rmc.streams.selectFirst({local : true }).mute();
     });
 
     var video_status = 0;
