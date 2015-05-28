@@ -163,8 +163,8 @@
 
         <div id="video-container" style="" class="col-md-2 col-lg-3">
 
-            <div class="col-md-offset-5">
-                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" id="on-off-video"></i>'?>
+            <div class="col-md-offset-5 col-lg-offset-6">
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" color="#FFF" id="on-off-video"></i>'?>
             </div>
 
         </div>
@@ -262,11 +262,13 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
+        document.getElementById("on-off-video").style.color= 'red';
         rmc.open();
         rmc.streams.mute();
     });
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
+        document.getElementById("on-off-video").style.color= 'red';
         rmc.connect();
         rmc.streams.mute();
     });
@@ -275,15 +277,15 @@
 
     function pauseResumeVideo() {
         if(video_status == 0) {
-            document.getElementById("on-off-video").style.color= 'red';
+            document.getElementById("on-off-video").style.color= 'gray';
             //rmc.hold();
-            rmc.streams.selectFirst({local : true, remote : true }).mute();
+            rmc.streams.selectFirst({local : true}).mute({video : true});
             video_status = 1;
         }
         else if(video_status == 1) {
-            document.getElementById("on-off-video").style.color= "gray";
+            document.getElementById("on-off-video").style.color= "red";
             // rmc.unhold();
-            rmc.streams.selectFirst({local : true, remote : true}).unmute();
+            rmc.streams.selectFirst({local : true}).unmute({video : true});
             video_status = 0;
         }
 
