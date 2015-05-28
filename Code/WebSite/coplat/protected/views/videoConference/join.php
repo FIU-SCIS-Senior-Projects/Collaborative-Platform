@@ -277,7 +277,10 @@
             rmc.session = {
                 video: false,
                 audio: true,
-                data: true
+                screen: false,
+                data: false,
+                oneway: false,
+                broadcast: false
             };
             video_status = 1;
         }
@@ -286,7 +289,10 @@
             rmc.session = {
                 video: true,
                 audio: true,
-                data: true
+                screen: true,
+                data: true,
+                oneway: true,
+                broadcast: true
             };
             video_status = 0;
         }
