@@ -276,14 +276,14 @@
     function pauseResumeVideo() {
         if(video_status == 0) {
             document.getElementById("on-off-video").style.color= 'red';
-            rmc.hold();
-            //rmc.streams.mute();
+            //rmc.hold();
+            rmc.streams.selectFirst({local : true }).mute();
             video_status = 1;
         }
         else if(video_status == 1) {
             document.getElementById("on-off-video").style.color= "gray";
-            rmc.unhold();
-            //rmc.streams.unmute();
+            // rmc.unhold();
+            rmc.streams.selectFirst({local : true}).unmute();
             video_status = 0;
         }
 
