@@ -272,17 +272,16 @@
     var video_status = 0;
 
     function pauseResumeVideo() {
-        connection.streams.mute();
-        // if(video_status == 0) {
-        //     document.getElementById("on-off-video").style.color= 'red';
-        //     rmc.removeStream({'video' : true});
-        //     video_status = 1;
-        // }
-        // else if(video_status == 1) {
-        //     document.getElementById("on-off-video").style.color= "gray";
-        //     rmc.addStream({'video' : true});
-        //     video_status = 0;
-        // }
+        if(video_status == 0) {
+            document.getElementById("on-off-video").style.color= 'red';
+            rmc.streams.mute();
+            video_status = 1;
+        }
+        else if(video_status == 1) {
+            document.getElementById("on-off-video").style.color= "gray";
+            rmc.streams.unmute();
+            video_status = 0;
+        }
 
     }
     // $('#on-off-video').click(function () {
