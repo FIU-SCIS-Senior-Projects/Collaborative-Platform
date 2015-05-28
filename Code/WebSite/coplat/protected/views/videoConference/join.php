@@ -163,6 +163,10 @@
 
         <div id="video-container" style="" class="col-md-2 col-lg-3">
 
+            <div class="col-md-offset-5">
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" id="on-off-video"></i>'?>
+            </div>
+
         </div>
         <div id="cotools-container" class="col-md-8 col-lg-6">
             <div id="cotools-panel">
@@ -174,12 +178,12 @@
 
         <div class="col-md-2 col-lg-3">
 
-            <div>
+            <!-- <div>
                 <img id="trello-logo" src="http://a1461.phobos.apple.com/us/r30/Purple/v4/ec/df/0c/ecdf0c81-1ab3-978b-b9af-866d232636bc/mzl.wzojsfri.png">
                 <div class="text-center">
                     <a href="https://trello.com/" target="_blank"><input id="trello-signin" type="button" value="Login to Trello" /></a>
                 </div>
-            </div>
+            </div> -->
 
             <div id="chat-container">
                 <div id="chat-feed">
@@ -263,6 +267,24 @@
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
+    });
+    
+    var video_status = 0;
+    $('#on-off-video').click(function () {
+        // http://www.rtcmulticonnection.org/docs/mute/
+        if(video_status == 0) {
+            rmc.mute({
+                audio: true,
+                video: true
+            });
+            video_status = 1;
+        } else if (video_status == 1) {
+            rmc.mute({
+                audio: true,
+                video: false
+            });
+            video_status = 0;
+        }
     });
 
 
