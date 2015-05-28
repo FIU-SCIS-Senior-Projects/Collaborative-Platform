@@ -263,12 +263,12 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        rmc.streams.mute();
+        //rmc.streams.mute();
     });
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
-        rmc.streams.mute();
+        //rmc.streams.mute();
     });
 
     var video_status = 0;
@@ -276,12 +276,14 @@
     function pauseResumeVideo() {
         if(video_status == 0) {
             document.getElementById("on-off-video").style.color= 'red';
-            rmc.streams.mute();
+            rmc.peers[rmc.userid].hold();
+            //rmc.streams.mute();
             video_status = 1;
         }
         else if(video_status == 1) {
             document.getElementById("on-off-video").style.color= "gray";
-            rmc.streams.unmute();
+            rmc.peers[rmc.userid].unhold();
+            //rmc.streams.unmute();
             video_status = 0;
         }
 
