@@ -262,15 +262,15 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        document.getElementById("on-off-video").style.color= 'red';
         rmc.open();
-        rmc.streams.mute();
+        rmc.streams.mute({video : true});
+        document.getElementById("on-off-video").style.color= 'red';
     });
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
-        document.getElementById("on-off-video").style.color= 'red';
         rmc.connect();
-        rmc.streams.mute();
+        rmc.streams.mute({video: true});
+        document.getElementById("on-off-video").style.color= 'red';
     });
 
     var video_status = 0;
