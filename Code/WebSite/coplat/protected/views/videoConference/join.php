@@ -263,10 +263,12 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
+        rmc.streams.mute();
     });
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
+        rmc.streams.mute();
     });
 
     var video_status = 0;
@@ -274,30 +276,26 @@
     function pauseResumeVideo() {
         if(video_status == 0) {
             document.getElementById("on-off-video").style.color= 'red';
-            rmc.session = {
-                video: false,
-                audio: true,
-                screen: false,
-                data: false,
-                oneway: false,
-                broadcast: false
-            };
+            //rmc.hold();
+            rmc.streams.selectFirst({local : true, remote : true }).mute();
             video_status = 1;
         }
         else if(video_status == 1) {
             document.getElementById("on-off-video").style.color= "gray";
-            rmc.session = {
-                video: true,
-                audio: true,
-                screen: true,
-                data: true,
-                oneway: true,
-                broadcast: true
-            };
+            // rmc.unhold();
+            rmc.streams.selectFirst({local : true, remote : true}).unmute();
             video_status = 0;
         }
 
     }
+
+    rmc.onmute = function(e) {
+       e.mediaElement.setAttribute('poster', '/coplat/images/cp.jpg');
+    };
+
+    rmc.onunmute = function(e) {
+       e.mediaElement.removeAttribute('poster');
+    };
     // $('#on-off-video').click(function () {
     //     // http://www.rtcmulticonnection.org/docs/mute/
     //     if(video_status == 0) {
