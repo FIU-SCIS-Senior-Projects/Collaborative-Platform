@@ -274,25 +274,12 @@
     function pauseResumeVideo() {
         if(video_status == 0) {
             document.getElementById("on-off-video").style.color= 'red';
-            rmc.session = {
-                video: false,
-                audio: true,
-                screen: false,
-                data: false,
-                oneway: false,
-                broadcast: false
-            };
+            rmc.removeStream({'video' : true});
             video_status = 1;
         }
         else if(video_status == 1) {
             document.getElementById("on-off-video").style.color= "gray";
-            rmc.session = {
-                video: true,
-                audio: true,
-                screen: true,
-                data: true,
-                oneway: true,
-                broadcast: true
+            rmc.addStream({'video' : true});
             };
             video_status = 0;
         }
