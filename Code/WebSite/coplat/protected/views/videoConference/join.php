@@ -272,16 +272,17 @@
     var video_status = 0;
 
     function pauseResumeVideo() {
-        if(video_status == 0) {
-            document.getElementById("on-off-video").style.color= 'red';
-            rmc.removeStream({'video' : true});
-            video_status = 1;
-        }
-        else if(video_status == 1) {
-            document.getElementById("on-off-video").style.color= "gray";
-            rmc.addStream({'video' : true});
-            video_status = 0;
-        }
+        rmc.removeStream({'video' : true});
+        // if(video_status == 0) {
+        //     document.getElementById("on-off-video").style.color= 'red';
+        //     rmc.removeStream({'video' : true});
+        //     video_status = 1;
+        // }
+        // else if(video_status == 1) {
+        //     document.getElementById("on-off-video").style.color= "gray";
+        //     rmc.addStream({'video' : true});
+        //     video_status = 0;
+        // }
 
     }
     // $('#on-off-video').click(function () {
