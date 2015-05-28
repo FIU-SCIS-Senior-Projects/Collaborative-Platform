@@ -5,7 +5,7 @@
  * Date: 5/25/2015
  * Time: 5:33 PM
  */
-include '../model/AwayMentor.php';
+include '../models/AwayMentor.php';
 function establishConnection()
 {
     $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
