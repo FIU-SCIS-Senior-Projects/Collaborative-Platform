@@ -550,9 +550,11 @@ class User extends CActiveRecord
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
         $message = $userfullName . ", has closed the ticket #".$ticket_id;
+
         $html = User::replaceMessage($mentorfullName, $message);
 
         $email->to = $mentor_email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'Ticket #'.$ticket_id.' has been closed.';
         $email->message = $html;
@@ -565,12 +567,13 @@ class User extends CActiveRecord
     {
         /*Query to the User_Domain model */
 
+        $awayMentors = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor");
         if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id", array(":id" => $domain_id));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id AND user_id !=:userID", array(":id" => $domain_id, ":userID" => $awayMentors->userID));
             $subdomain = Subdomain::model()->findByPk($domain_id);
             $validator = $subdomain->validator;
         } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id AND user_id !=:userID", array(":id" => $domain_id, ":userID" => $awayMentors->userID));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
@@ -602,16 +605,18 @@ class User extends CActiveRecord
         return self::$admin; /* Assign the ticket to the admin for reassign */
     }
 
+
     //tito   /*Assign Domain Mentor to a Ticket */
     public static function reassignTicket($domain_id, $sub, $oldMentorId, $tier)
     {
         /*Query to the User_Domain model */
+        $awayMentors = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor");
         if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id and user_id !=:id2", array(":id" => $domain_id, ":id2" => $oldMentorId));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id and user_id !=:id2 AND user_id !=:userID", array(":id" => $domain_id, ":id2" => $oldMentorId, "userID" =>$awayMentors->userID));
             $subdomain = Subdomain::model()->findByPk($domain_id);
             $validator = $subdomain->validator;
         } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id and user_id !=:id2", array(":id" => $domain_id, ":id2" => $oldMentorId));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id and user_id !=:id2 AND user_id !=:userID", array(":id" => $domain_id, ":id2" => $oldMentorId, "userID" =>$awayMentors->userID));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
@@ -671,6 +676,7 @@ class User extends CActiveRecord
         $html = User::replaceMessage($userfullName, $message);
 
         $email->to = $user_email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'Congratulations!';
         $email->message = $html;
@@ -688,6 +694,7 @@ class User extends CActiveRecord
     	$html = User::replaceMessage(($model->fname . ' ' . $model->lname), $message);
     	 
     	$email->to = $model->email;
+        $email->replyTo ='fiucoplat@gmail.com';
     	$email->from = 'Collaborative Platform';
     	$email->subject = 'Your application has been reviewed!';
     	$email->message = $html;
@@ -703,6 +710,7 @@ class User extends CActiveRecord
         $html = User::replaceMessage($adminfullName, $message);
 
         $email->to = $admin_email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'Ticket #'.$ticket_id.' has been rejected.';
         $email->message = $html;
@@ -719,6 +727,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $user->email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'Password Change';
         $email->message = $html;
@@ -735,6 +744,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $user->email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'Your New Password';
         $email->message = $html;
@@ -745,6 +755,7 @@ class User extends CActiveRecord
     {
         $email = Yii::app()->email;
         $email->to = $address;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->message = $message;
         $email->subject = 'Collaborative Platform';
@@ -763,6 +774,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $receive->email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'New Message';
         $email->message = $html;
@@ -779,6 +791,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $receiver_email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->subject = 'Welcome';
         $email->from = 'Collaborative Platform';
         $email->message = $html;
@@ -801,6 +814,7 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $email->to = $domMentor->email;
         $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->subject = 'New Ticket related to ' . $domain->name;
         $email->message = $html;
         $email->send();
@@ -824,6 +838,7 @@ class User extends CActiveRecord
             $email = Yii::app()->email;
             $email->to = $ticket_mentor->email;
             $email->from = 'Collaborative Platform';
+            $email->replyTo ='fiucoplat@gmail.com';
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -835,6 +850,7 @@ class User extends CActiveRecord
             $email = Yii::app()->email;
             $email->to = $ticket_creator->email;
             $email->from = 'Collaborative Platform';
+            $email->replyTo ='fiucoplat@gmail.com';
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -847,6 +863,7 @@ class User extends CActiveRecord
             $email = Yii::app()->email;
             $email->to = $ticket_mentor->email . "," . $ticket_creator->email;
             $email->from = 'Collaborative Platform';
+            $email->replyTo ='fiucoplat@gmail.com';
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -877,9 +894,11 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $email->to = $invitation->email;
         $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->subject = 'We need you.';
         $email->message = $html;
         $email->send();
+
 
     }
     
@@ -890,6 +909,7 @@ class User extends CActiveRecord
     	$email = Yii::app()->email;
     	$email->to = $invitation->email;
     	$email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@gmail.com';
     	$email->subject = 'We need you.';
     	$email->message = $html;
     	$email->send();
@@ -990,6 +1010,7 @@ class User extends CActiveRecord
             $email->from = $email_from;
             $email->subject = $email_subject;
             $email->to = $mentor->email;
+            $email->replyTo ='fiucoplat@gmail.com';
             $email->message = $html;
             $email->send();
 
@@ -1003,6 +1024,7 @@ class User extends CActiveRecord
             $email->from = $email_from;
             $email->subject = $email_subject;
             $email->to = $mentor->email;
+            $email->replyTo ='fiucoplat@gmail.com';
             $email->message = $html;
             $email->send();
 
@@ -1033,6 +1055,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $old_mentor->email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
         $email->message = $html;
@@ -1055,6 +1078,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $old_mentor->email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
         $email->message = $html;
@@ -1074,6 +1098,7 @@ class User extends CActiveRecord
         $html = User::replaceMessage($to, $message);
         $email = Yii::app()->email;
         $email->to = $mentee->email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
         $email->subject = 'Project Meeting';
         $email->message = $html;
@@ -1093,6 +1118,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $user->email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform.';
         $email->subject = 'Your Account has being verified.';
         $email->message = $html;
@@ -1107,6 +1133,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $admin_email;
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform.';
         $email->subject = 'Profile Changed';
         $email->message = $html;
@@ -1122,6 +1149,7 @@ class User extends CActiveRecord
 
         $email->to = $admin_email;
         $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@gmail.com';
         $email->subject = $subject;
         $email->message = $html;
         $email->send();
