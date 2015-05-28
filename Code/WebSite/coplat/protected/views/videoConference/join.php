@@ -268,22 +268,22 @@
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
     });
-    
+
     var video_status = 0;
     $('#on-off-video').click(function () {
         // http://www.rtcmulticonnection.org/docs/mute/
-        if(video_status == 0) {
+        if(video_status == 1) {
             rmc.mute({
                 audio: true,
                 video: true
             });
-            video_status = 1;
-        } else if (video_status == 1) {
+            video_status = 0;
+        } else if (video_status == 0) {
             rmc.mute({
                 audio: true,
                 video: false
             });
-            video_status = 0;
+            video_status = 1;
         }
     });
 
