@@ -254,7 +254,7 @@
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
-        video: true,
+        video: false,
         audio: true,
         data: true
     };
