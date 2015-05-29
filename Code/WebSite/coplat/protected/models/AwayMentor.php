@@ -132,7 +132,7 @@ Class AwayMentor extends CActiveRecord
     {
         return 0;
     }
-    $myfile = fopen("C:/xampp/htdocs/coplat/protected/models/settoAway.txt", "r") or die("Unable to open file!");
+    $myfile = fopen("/var/www/html/CoplatVe5/Code/WebSite/coplat/protected/models/settoAway.txt", "r") or die("Unable to open file!");
     $email=fgets($myfile);
     $subject = fgets($myfile);
     $body = fgets($myfile);
@@ -146,7 +146,7 @@ Class AwayMentor extends CActiveRecord
     public static function readText2()
     {
         $am = new AwayMentor();
-        $myfile = fopen("C:/xampp/htdocs/coplat/protected/models/settoBack.txt", "r") or die("Unable to open file!");
+        $myfile = fopen("/var/www/html/CoplatVe5/Code/WebSite/coplat/protected/models/settoBack.txt", "r") or die("Unable to open file!");
         $email=fgets($myfile);
         $subject = fgets($myfile);
         fclose($myfile);
