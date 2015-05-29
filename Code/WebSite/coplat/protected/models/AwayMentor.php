@@ -54,7 +54,7 @@ Class AwayMentor extends CActiveRecord
                 $ticketcon->actionReassign($aticket->id);
                 $awayMent = User::model()->findAllBySql("SELECT * FROM user WHERE id =:user_Id", array(":user_Id"=>$user_Id));
                 foreach ($awayMent as $bawayMent) {
-                    User::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent - lname, $bawayMent->email, $aticket->subject);
+                    User::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent->lname, $bawayMent->email, $aticket->subject);
                 }
             }
 
