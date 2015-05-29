@@ -42,12 +42,12 @@ Class AwayMentor extends CActiveRecord
     }
     public static function setAsAway($user_Id)
     {
-        if ($user_Id) {
+
             $command = Yii::app()->db->createCommand();
-                $command->insert('away_mentor', array(userID => $user_Id));
+                $command->insert('away_mentor', array("userID" => $user_Id));
                 $command->execute();
 
-            $ftickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id =:userID AND assigned_date >= DATEADD(day, -1, GETDATE())", array(":userID" => $user_Id));//find tickets assigned to this user within last 24 hours
+            $ftickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id =:userID AND assigned_date >= DATE_ADD(day, -1, CURDATE())", array(":userID" => $user_Id));//find tickets assigned to this user within last 24 hours
 
             foreach ($ftickets as $aticket) {
                 $ticketcon = new TicketController($aticket->id);
@@ -58,7 +58,7 @@ Class AwayMentor extends CActiveRecord
                 }
             }
 
-        }
+
     }
 
     /**
@@ -73,17 +73,22 @@ Class AwayMentor extends CActiveRecord
 
     public static function detectOOOmessage($subjectline, $body, $email)
     {
+
         if (stristr($subjectline, "Auto") || stristr($subjectline, "out of office"))
         {
-            if(stristri($body, "out of office"))
+            if(stristr($body, "out of office"))
             {
 
-                    $isAwayAlready = User::model()->findAllBySql("SELECT * FROM user WHERE email =:email INNER JOIN away_mentor ON user.id = away_mentor.userID", array(":email"=>$email));
+                    $isAwayAlready = User::model()->findAllBySql("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email =:email", array(':email' => $email));
 
                 if(!$isAwayAlready)
                     {
-                        foreach($isAwayAlready as $awaym) {
+                        $awayment = User::model()->findAllBySql("Select * from user where email =:email", array (':email' => "adurocruor@gmail.com"));
+
+                        foreach($awayment as $awaym) {
+
                             AwayMentor::setAsAway($awaym->id);
+
                         }
                         return 1;//success
                     }
@@ -97,7 +102,10 @@ Class AwayMentor extends CActiveRecord
     {
         if(stristr($subjectline, "Back in Office"))
         {
-            AwayMentor::setAsNotAway($email);
+            $am = User::model()->findAllBySql("Select * from user where email =:email", array(":email"=>"adurocruor@gmail.com"));
+            foreach($am as $anam) {
+                AwayMentor::setAsNotAway($anam->id);
+            }
         }
     }
 
@@ -115,5 +123,35 @@ Class AwayMentor extends CActiveRecord
         $email->subject = 'Auto Response to Out of Office';
         $email->message = $html;
         $email->send();
+    }
+    public static function readText1()
+    {
+    $am = new AwayMentor();
+    $a1 = AwayMentor::model()->findAllBySql("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email =:email", array(":email"=>"adurocruor@gmail.com") );
+        if($a1)
+    {
+        return 0;
+    }
+    $myfile = fopen("C:/xampp/htdocs/coplat/protected/models/settoAway.txt", "r") or die("Unable to open file!");
+    $email=fgets($myfile);
+    $subject = fgets($myfile);
+    $body = fgets($myfile);
+    fclose($myfile);
+
+    $am->detectOOOmessage($subject, $body, $email);
+
+
+
+    }
+    public static function readText2()
+    {
+        $am = new AwayMentor();
+        $myfile = fopen("C:/xampp/htdocs/coplat/protected/models/settoBack.txt", "r") or die("Unable to open file!");
+        $email=fgets($myfile);
+        $subject = fgets($myfile);
+        fclose($myfile);
+
+        $am->detectB00message($subject, $email);
+
     }
 }

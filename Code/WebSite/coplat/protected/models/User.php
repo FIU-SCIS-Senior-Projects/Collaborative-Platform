@@ -569,11 +569,11 @@ class User extends CActiveRecord
 
         $awayMentors = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor");
         if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id AND user_id !=:userID", array(":id" => $domain_id, ":userID" => $awayMentors->userID));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id and user_id not in (select userID as user_id from away_mentor) ", array(":id" => $domain_id));
             $subdomain = Subdomain::model()->findByPk($domain_id);
             $validator = $subdomain->validator;
         } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id AND user_id !=:userID", array(":id" => $domain_id, ":userID" => $awayMentors->userID));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id and user_id not in (select userID as user_id from away_mentor) ", array(":id" => $domain_id));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
@@ -612,11 +612,11 @@ class User extends CActiveRecord
         /*Query to the User_Domain model */
         $awayMentors = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor");
         if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id and user_id !=:id2 AND user_id !=:userID", array(":id" => $domain_id, ":id2" => $oldMentorId, "userID" =>$awayMentors->userID));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id and user_id !=:id2 and user_id not in (select userID as user_id from away_mentor) ", array(":id" => $domain_id, ":id2" => $oldMentorId));
             $subdomain = Subdomain::model()->findByPk($domain_id);
             $validator = $subdomain->validator;
         } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id and user_id !=:id2 AND user_id !=:userID", array(":id" => $domain_id, ":id2" => $oldMentorId, "userID" =>$awayMentors->userID));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id and user_id !=:id2 and user_id not in (select userID as user_id from away_mentor) ", array(":id" => $domain_id, ":id2" => $oldMentorId));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
