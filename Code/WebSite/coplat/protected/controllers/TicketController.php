@@ -125,16 +125,6 @@ class TicketController extends Controller
     {
         $model = new Ticket;
         // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-        AwayMentor::readText1();
-        //{AwayMentor::readText2();
-          //  $output = "<script>console.log( 'Debug Objects: ' );</script>";
-
-            //echo $output;}
-        //else{$output = "<script>console.log( 'Debug Objects1 ' );</script>";
-
-          //  echo $output;}
-
         /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
 
