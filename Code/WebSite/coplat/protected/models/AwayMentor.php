@@ -29,7 +29,7 @@ Class AwayMentor extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('userID', 'required'),
+            array('userID, tiStamp', 'required'),
             array('userID', 'integerOnly'=>true),
             array('userID', 'safe', 'on'=>'search'),
         );
@@ -44,7 +44,7 @@ Class AwayMentor extends CActiveRecord
     {
 
             $command = Yii::app()->db->createCommand();
-                $command->insert('away_mentor', array("userID" => $user_Id));
+                $command->insert('away_mentor', array("userID" => $user_Id, "tiStamp"=> "@now;"));
                 $command->execute();
 
             $ftickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id =:userID AND assigned_date >= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )", array(":userID" => $user_Id));//find tickets assigned to this user within last 24 hours

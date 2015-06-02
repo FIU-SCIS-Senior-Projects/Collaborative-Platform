@@ -260,6 +260,8 @@ class TicketController extends Controller
     {
         //first load the ticket from the DB in order to extract the old mentor and to make an update
         $model = $this->loadModel($id);
+        $am = new AwayMentor();
+        $am->readText1();
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
