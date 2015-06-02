@@ -44,7 +44,7 @@ Class AwayMentor extends CActiveRecord
     {
 
             $command = Yii::app()->db->createCommand();
-                $command->insert('away_mentor', array("userID" => $user_Id, "tiStamp"=> "@now;"));
+                $command->insert('away_mentor', array("userID" => $user_Id, "tiStamp"=> "NOW()"));
                 $command->execute();
 
             $ftickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id =:userID AND assigned_date >= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )", array(":userID" => $user_Id));//find tickets assigned to this user within last 24 hours
