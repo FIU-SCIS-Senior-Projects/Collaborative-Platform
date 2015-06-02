@@ -128,7 +128,7 @@ class TicketController extends Controller
         $am = new AwayMentor();
         $data = $am->readText1();
 
-        $output = "<script>console.log( 'Debug Objects: ' . $data );</script>";
+        $output = "<script>console.log( 'Debug Objects: " . $data . "');</script>";
 
         echo $output;
         // Uncomment the following line if AJAX validation is needed
