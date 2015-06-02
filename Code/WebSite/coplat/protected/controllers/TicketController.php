@@ -121,11 +121,16 @@ class TicketController extends Controller
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
+
     public function actionCreate()
     {
         $model = new Ticket;
         $am = new AwayMentor();
         $am->readText1();
+
+        $output = "<script>console.log( 'Debug Objects: ' );</script>";
+
+        echo $output;
         // Uncomment the following line if AJAX validation is needed
         /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
