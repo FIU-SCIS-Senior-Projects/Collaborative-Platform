@@ -1138,7 +1138,8 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS Away_Mentor;
 CREATE TABLE away_mentor
 (
-userID int(10)unsigned
+userID int(10)unsigned,
+tiStamp datetime
 );
 --
 -- Table structure for table `user_info`
