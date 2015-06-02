@@ -140,7 +140,7 @@ Class AwayMentor extends CActiveRecord
 
     $am->detectOOOmessage($subject, $body, $email);
 
-
+    return 1;
 
     }
     public static function readText2()
