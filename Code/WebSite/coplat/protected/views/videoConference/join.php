@@ -160,28 +160,80 @@
 
     <div class="row">
 
-        <div id="cotools-container" class="col-md-7 col-lg-5">
+        <div id="cotools-container" class="col-md-5 col-lg-5">
+        
+        <div style="text-align: center;margin: 0 auto;">
+            <div class="btn-group">
+                <button type="button" title="Whiteboard actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a id='show-whiteboard' title="Show the whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show</a>
+                    </li>
+                    <li><a id='reset-whiteboard' title="Clear the whiteboard" href="#"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="btn-group">
+                <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
+                        data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
+                    </li>
+                    <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
+                    <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
+                    <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr/>
+
             <div id="cotools-panel">
 
             </div>
-        </div>
 
-        <div id="cotools-container" class="col-md-7 col-lg-5">
+        </div>
+        
+        <div id="cotools-container" class="col-md-5 col-lg-5">
+
+        <div style="text-align: center;margin: 0 auto;">
+      
+            <div class="btn-group">
+                <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
+                        data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
+                    </li>
+                    <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
+                    <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
+                    <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr/>
+            
             <div id="cotools-panel">
 
             </div>
+
         </div>
 
-        <div class="col-md-2 col-lg-2">
 
-            <div id="chat-container">
+        <div class="col-md-2 col-lg-2" style="margin-top: 34px">
+            <hr/>
+           <div id="chat-container">
                 <div id="chat-feed">
                     <p class="msg">Welcome to the chat room!</p>
                 </div>
                 <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
                 <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
             </div>
-
         </div>
     </div>
 
