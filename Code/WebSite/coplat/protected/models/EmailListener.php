@@ -43,8 +43,7 @@ class EmailListener extends CActiveRecord  //ineed to attach the running of this
 
     public function emailListener()
     {
-        $connection = establishConnection();
-        //develop thread/loop
+        $connection = EmailListener::establishConnection();        //develop thread/loop
         $awayment = new AwayMentor();
         $messagestatus = "UNSEEN";
         $countTo24 = 0;
