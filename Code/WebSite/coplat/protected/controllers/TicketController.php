@@ -126,7 +126,8 @@ class TicketController extends Controller
     {
         $model = new Ticket;
         Yii::import("application.controllers.EmailListener", true);
-        //$em = new EmailListener();
+        $em = new EmailListener();
+        $conect = $em->establishConnection();
         //if($em->getStatus())
         //{
             $output = "<script>console.log( 'yay' );</script>";
