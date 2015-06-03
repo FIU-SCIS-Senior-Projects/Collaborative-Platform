@@ -34,6 +34,9 @@ class EmailListener extends CActiveRecord  //ineed to attach the running of this
     }
     public function establishConnection()
     {
+        $output = "<script>console.log( 'it went in here' );</script>";
+
+        echo $output;
         $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
         $username = 'fiucoplat@gmail.com';
         $password = 'fiuadmin';
