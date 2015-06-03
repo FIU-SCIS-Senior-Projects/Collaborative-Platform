@@ -113,7 +113,7 @@ class EmailListener extends CActiveRecord  //ineed to attach the running of this
     }
     public function getStatus()
     {
-        $am = AwayMentor::model()->findAllBySql("SELECT * FROM email_lisetner");
+        $am = AwayMentor::model()->findAllBySql("SELECT * FROM email_listener");
         if ($am)
         {
             return 1;
