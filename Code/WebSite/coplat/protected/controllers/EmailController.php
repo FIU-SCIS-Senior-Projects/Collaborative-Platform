@@ -5,7 +5,7 @@
  * Date: 5/25/2015
  * Time: 5:33 PM
  */
-class EmailListener
+class EmailListener //ineed to attach the running of this class to some thing to make sure it does, cause it doo
 {
     function establishConnection()
     {
@@ -22,6 +22,7 @@ class EmailListener
         //develop thread/loop
         $awayment = new AwayMentor();
         $messagestatus = "UNSEEN";
+        $countTo24 = 0;
         while (true) {
             $emails = imap_search($connection, $messagestatus);
             if ($emails) {
@@ -35,9 +36,16 @@ class EmailListener
                     if (!$awayment->detectOOOmessage($header->subject, $message, $header->from)) {
                         $awayment->detectB00message($header->subject, $header->from);
                     }
-                    imap_delete($connection, 1);
+                    imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
                 }
                 sleep(600); //do check every 10 minutes
+                $countTo24 = $countTo24 +1;
+                if ($countTo24>=144)
+                {
+                    $countTo24 = 0;
+                    $command = Yii::app()->db->createCommand();
+                    $command->delete('away_mentor', 'tiStamp >= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )');//this might bug the hell out deletes mentors on the away list that were put on over 24 hours ago
+                }
                 if (!imap_ping($connection)) {
                     $connection = establishConnection();
                 }
@@ -56,23 +64,26 @@ class EmailListener
             return 0;//didnt work;
         }
         $pid1 = pcntl_fork();
-        if($pid1 != -1 || 0)
+        if($pid1)
         {
-            $pidtowrite = $pid1 * -1;
-            $command = Yii::app()->db->createCommand();
-            $command->insert('away_mentor', array("userID" => $pidtowrite));//writes to the database letting it know that there SHOULD be a email listener running
-            $command->execute();
-            pcntl_waitpid($pid1, $kidStatus);//will just wait untill child dies
-            $command = Yii::app()->db->createCommand();
-            $command->delete('away_mentor', 'userID=:user_id', array(':user_id' => $pidtowrite));//removes the child pid from the database letting it know that there DEFINETELY ISNT a child process running;
-            $command->execute();
+            if($pid1 >0) {
+                $pidtowrite = $pid1 * -1;
+                $command = Yii::app()->db->createCommand();
+                $command->insert('away_mentor', array("userID" => $pidtowrite));//writes to the database letting it know that there SHOULD be a email listener running
 
-        }
-        else{
+                pcntl_waitpid($pid1, $kidStatus);//will just wait untill child dies
+                $command = Yii::app()->db->createCommand();
+                $command->delete('away_mentor', 'userID=:user_id', array(':user_id' => $pidtowrite));//removes the child pid from the database letting it know that there DEFINETELY ISNT a child process running;
+            }
             if($pid1 = -1)
             {
                 exit();
             }
+        }
+        else{
+            $output = "<script>console.log( 'In grandchild' );</script>";
+
+            echo $output;
             $em= new EmailListener();
             $em->emailListener();
         }

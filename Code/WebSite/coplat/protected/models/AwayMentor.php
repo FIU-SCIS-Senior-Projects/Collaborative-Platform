@@ -38,23 +38,26 @@ Class AwayMentor extends CActiveRecord
     {
         return array(
             'userID' => 'User Id',
+            'tiStamp' => 'Time Stamp',
         );
     }
     public static function setAsAway($user_Id)
     {
+         $output = "<script>console.log( 'Debug Objects: et as away' );</script>";
 
-            $command = Yii::app()->db->createCommand();
-                $command->insert('away_mentor', array("userID" => $user_Id, "tiStamp"=> "NOW()"));
-                $command->execute();
+            echo $output;
+
+        $command = Yii::app()->db->createCommand();
+        $command->insert('away_mentor', array("userID" => $user_Id, "tiStamp"=> new CDbExpression('NOW()')));
 
             $ftickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE assign_user_id =:userID AND assigned_date >= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )", array(":userID" => $user_Id));//find tickets assigned to this user within last 24 hours
 
             foreach ($ftickets as $aticket) {
                 $ticketcon = new TicketController($aticket->id);
                 $ticketcon->actionReassign($aticket->id);
-                $awayMent = User::model()->findAllBySql("SELECT * FROM user WHERE id =:user_Id", array(":user_Id"=>$user_Id));
+                $awayMent = User::model()->findAllBySql("SELECT * FROM user WHERE id =:user_Id", array(":user_id"=>$user_Id));
                 foreach ($awayMent as $bawayMent) {
-                    AwayMentor::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent->lname, $bawayMent->email, $aticket->subject);
+                    User::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent - lname, $bawayMent->email, $aticket->subject);
                 }
             }
 
@@ -78,15 +81,17 @@ Class AwayMentor extends CActiveRecord
         {
             if(stristr($body, "out of office"))
             {
-
-                    $isAwayAlready = User::model()->findAllBySql("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email =:email", array(':email' => $email));
-
+                $isAwayAlready = User::model()->findAllBySql("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email LIKE :email", array(':email' =>   $email  ));
                 if(!$isAwayAlready)
                     {
-                        $awayment = User::model()->findAllBySql("Select * from user where email =:email", array (':email' => "adurocruor@gmail.com"));
 
-                        foreach($awayment as $awaym) {
+                        $awayment = User::model()->findAllBySql("Select * from user where email LIKE :email", array (':email' =>  $email));
+                        //$awayment = User::model()->findAllByAttributes(array('email' => $email));
 
+                            foreach($awayment as $awaym) {
+                            $output = "<script>console.log( 'Debug Objects: in loop' );</script>";
+
+                            echo $output;
                             AwayMentor::setAsAway($awaym->id);
 
                         }
@@ -102,7 +107,7 @@ Class AwayMentor extends CActiveRecord
     {
         if(stristr($subjectline, "Back in Office"))
         {
-            $am = User::model()->findAllBySql("Select * from user where email =:email", array(":email"=>"adurocruor@gmail.com"));
+            $am = User::model()->findAllBySql("Select * from user where email LIKE :email", array(":email"=>$email));
             foreach($am as $anam) {
                 AwayMentor::setAsNotAway($anam->id);
             }
@@ -132,21 +137,22 @@ Class AwayMentor extends CActiveRecord
     {
         return 0;
     }
-    $myfile = fopen("/var/www/html/CoplatVe5/Code/WebSite/coplat/protected/models/settoAway.txt", "r") or die("Unable to open file!");
-    $email=fgets($myfile);
+    $myfile = fopen("C:/xampp/htdocs/coplat/protected/models/settoAway.txt", "r") or die("Unable to open file!");
+    $email= fgets($myfile);
     $subject = fgets($myfile);
     $body = fgets($myfile);
     fclose($myfile);
+        $email = trim(preg_replace('/\s+/', '', $email));
 
-    $am->detectOOOmessage($subject, $body, $email);
+        $am->detectOOOmessage($subject, $body, $email);
 
-    return 1;
+
 
     }
     public static function readText2()
     {
         $am = new AwayMentor();
-        $myfile = fopen("/var/www/html/CoplatVe5/Code/WebSite/coplat/protected/models/settoBack.txt", "r") or die("Unable to open file!");
+        $myfile = fopen("C:/xampp/htdocs/coplat/protected/models/settoBack.txt", "r") or die("Unable to open file!");
         $email=fgets($myfile);
         $subject = fgets($myfile);
         fclose($myfile);
