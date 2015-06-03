@@ -1,11 +1,11 @@
 <<?php
 /**
  * Created by PhpStorm.
- * User: Michael
+ * User: Michael EmailListener.php
  * Date: 5/25/2015
  * Time: 5:33 PM
  */
-class EmailListener //ineed to attach the running of this class to some thing to make sure it does, cause it doo
+class EmailListener extends Controller//ineed to attach the running of this class to some thing to make sure it does, cause it doo
 {
     function establishConnection()
     {
