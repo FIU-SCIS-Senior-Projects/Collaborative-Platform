@@ -125,6 +125,7 @@ class TicketController extends Controller
     public function actionCreate()
     {
         $model = new Ticket;
+        Yii::import("application.controllers.EmailListener", true);
         $em = new EmailListener();
         if($em->getStatus())
         {
