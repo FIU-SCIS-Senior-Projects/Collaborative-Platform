@@ -103,4 +103,3 @@ class EmailListener extends Controller//ineed to attach the running of this clas
     }
 }
 
-?>
