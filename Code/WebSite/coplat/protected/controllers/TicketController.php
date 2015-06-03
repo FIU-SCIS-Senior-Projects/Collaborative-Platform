@@ -143,7 +143,7 @@ class TicketController extends Controller
         $output = "<script>console.log( 'before call' );</script>";
 
                   echo $output;
-        EmailListener::emailListener();
+       //EmailListener::emailListener();
         // Uncomment the following line if AJAX validation is needed
         /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
