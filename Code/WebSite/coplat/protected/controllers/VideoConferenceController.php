@@ -1,4 +1,4 @@
-<?php
+<?php ob_start();
 
 class VideoConferenceController extends Controller
 {
@@ -328,24 +328,61 @@ class VideoConferenceController extends Controller
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id)
-
     {
-        /*
         $model = $this->loadModel($id);
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
+        $invitationError = "";
+        $moderator = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+//
+//        // Uncomment the following line if AJAX validation is needed
+//        $this->performAjaxValidation($model);
+//
         if (isset($_POST['VideoConference'])) {
             $model->attributes = $_POST['VideoConference'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
-        }
+            if ($model->update()) {
+                /* Send email update */
+                $inviteeEmails = $_POST['invitees'];    //emails of all the invitees
+                foreach ($inviteeEmails as $email) {
+                    $invitee = User::model()->findByAttributes(array('email' => $email));
+                    if ($invitee == null) {             //if invitee does not exist, record the error and continue
+                        $invitationError .= $email . " does not appear in our records <br>";
+                        continue;
+                    }                                  //moderator cannot invite him/herself
+                    if ($invitee->id == $moderator->id) {
+                        continue;
+                    }
+                    //else invitee
+                    $invitation = new VCInvitation();
+                    $invitation->invitee_id = $invitee->id;
+                    $invitation->videoconference_id = $model->id;
+                    $invitation->status = "Unknown";
 
+                    //finds out if record already exists on the database
+                    $invitedUser = VCInvitation::model()->exists('invitee_id = :invitee_id AND videoconference_id = :videoconference_id',
+                            array(":invitee_id"=>$invitation->invitee_id, ":videoconference_id"=>$invitation->videoconference_id));
+
+                    //if user not on DB add it and send email. Else just send email.
+                    if(!$invitedUser) {
+                        if(!$invitation->save()) {
+                            $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
+                        } else {
+                            $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                            VCInvitation::sendUpdateNotification($model, $inviteefullName, $email);
+                        }
+                    } else {
+                        $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                        VCInvitation::sendUpdateNotification($model, $inviteefullName, $email);
+                    }
+                }
+                if ($invitationError != "") {          //if there was an error
+                    Yii::app()->user->setFlash('invitation-error', $invitationError);
+                }
+                $this->redirect(array('view', 'id' => $model->id));
+            }
+        }
         $this->render('update', array(
             'model' => $model,
         ));
-        */
+
     }
 
     /**

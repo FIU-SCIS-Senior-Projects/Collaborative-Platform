@@ -163,6 +163,8 @@ foreach($todays as $vc){
         CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'), array('role' => "button", "class" => "btn btn-primary"));
 
     if($ismoderator){
+        $html .=   CHtml::button('Edit', array('submit' => array('videoConference/update/'.$vc->id), "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-info"));
+
         $html .=   CHtml::ajaxLink('Delete',
             Yii::app()->createAbsoluteUrl('videoConference/delete/'.$vc->id),
             array(
@@ -241,6 +243,8 @@ foreach($futures as $vc){
         CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'), array('role' => "button", "class" => "btn btn-primary"));
 
     if($ismoderator){
+        $html .=   CHtml::button('Edit', array('submit' => array('videoConference/update/'.$vc->id), "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-info"));
+
         $html .=   CHtml::ajaxLink('Delete',
             Yii::app()->createAbsoluteUrl('videoConference/delete/'.$vc->id),
             array(

@@ -133,6 +133,8 @@ $this->menu = array(
         CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $model->id, array(), 'https'), array('role' => "button", "class" => "btn btn-primary"));
 
     if ($ismoderator) {
+        $html .=   CHtml::button('Edit', array('submit' => array('videoConference/update/'.$model->id), "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-info"));
+
         $html .= CHtml::ajaxLink('Delete',
             Yii::app()->createAbsoluteUrl('videoConference/delete/' . $model->id),
             array(
