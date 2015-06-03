@@ -5,8 +5,33 @@
  * Date: 5/25/2015
  * Time: 5:33 PM
  */
-class EmailListener extends Controller//ineed to attach the running of this class to some thing to make sure it does, cause it doo
+class EmailListener extends CActiveRecordr//ineed to attach the running of this class to some thing to make sure it does, cause it doo
 {
+    public static function model($className=__CLASS__)
+    {
+        return parent::model($className);
+    }
+    public function tableName()
+    {
+        return 'email_listener';
+    }
+    public function rules()
+    {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('pid', 'required'),
+            array('pid', 'integerOnly'=>true),
+            array('userID', 'safe', 'on'=>'search'),
+        );
+    }
+    public function attributeLabels()
+    {
+        return array(
+            'pid' => 'Process ID',
+
+        );
+    }
     public function establishConnection()
     {
         $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
@@ -44,7 +69,7 @@ class EmailListener extends Controller//ineed to attach the running of this clas
                 {
                     $countTo24 = 0;
                     $command = Yii::app()->db->createCommand();
-                    $command->delete('away_mentor', 'tiStamp >= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )');//this might bug the hell out deletes mentors on the away list that were put on over 24 hours ago
+                    $command->delete('away_mentor', 'tiStamp <= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )');//this might bug the hell out deletes mentors on the away list that were put on over 24 hours ago
                 }
                 if (!imap_ping($connection)) {
                     $connection = establishConnection();
@@ -67,13 +92,12 @@ class EmailListener extends Controller//ineed to attach the running of this clas
         if($pid1)
         {
             if($pid1 >0) {
-                $pidtowrite = $pid1 * -1;
                 $command = Yii::app()->db->createCommand();
-                $command->insert('away_mentor', array("userID" => $pidtowrite));//writes to the database letting it know that there SHOULD be a email listener running
+                $command->insert('email_listener', array("pid" => $pid1));//writes to the database letting it know that there SHOULD be a email listener running
 
                 pcntl_waitpid($pid1, $kidStatus);//will just wait untill child dies
                 $command = Yii::app()->db->createCommand();
-                $command->delete('away_mentor', 'userID=:user_id', array(':user_id' => $pidtowrite));//removes the child pid from the database letting it know that there DEFINETELY ISNT a child process running;
+                $command->delete('email_listener', 'pid=:pid1', array('pid1' => $pid1));//removes the child pid from the database letting it know that there DEFINETELY ISNT a child process running;
             }
             if($pid1 = -1)
             {
@@ -90,7 +114,7 @@ class EmailListener extends Controller//ineed to attach the running of this clas
     }
     public function getStatus()
     {
-        $am = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor WHERE userID < 0");
+        $am = AwayMentor::model()->findAllBySql("SELECT * FROM email_listner");
         if ($am)
         {
             return 1;
