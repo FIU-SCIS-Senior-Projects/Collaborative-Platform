@@ -156,7 +156,7 @@
 <hr/>
 
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-left: 20px; margin-right: 20px">
 
     <div class="row">
 
