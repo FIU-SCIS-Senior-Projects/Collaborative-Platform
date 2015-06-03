@@ -110,34 +110,7 @@
         ";
     }
     ?>
-
-
-    <!-- Single button -->
-    <div class="btn-group">
-        <button type="button" title="Whiteboard actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                aria-expanded="false">
-            <i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a id='show-whiteboard' title="Show the whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show</a>
-            </li>
-            <li><a id='reset-whiteboard' title="Clear the whiteboard" href="#"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear</a>
-            </li>
-        </ul>
-    </div>
-    <div class="btn-group">
-        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
-                data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
-            </li>
-            <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
-            <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
-            <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
-        </ul>
-    </div>
+    
     <div class="btn-group">
         <button type="button" title="Application settings" class="btn btn-primary dropdown-toggle"
                 data-toggle="dropdown" aria-expanded="false">
