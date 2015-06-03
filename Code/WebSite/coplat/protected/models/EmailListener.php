@@ -43,15 +43,27 @@ class EmailListener extends CActiveRecord  //ineed to attach the running of this
 
     public function emailListener()
     {
-        $connection = EmailListener::establishConnection();        //develop thread/loop
+        $output = "<script>console.log( 'just got in' );</script>";
+
+        echo $output;
+        $connection = EmailListener::establishConnection();
+        $output = "<script>console.log( 'set up connection' );</script>";
+
+        echo $output;//develop thread/loop
         $awayment = new AwayMentor();
         $messagestatus = "UNSEEN";
         $countTo24 = 0;
         //     while (true) {
         $emails = imap_search($connection, $messagestatus);
+        $output = "<script>console.log( 'did imap search' );</script>";
+
+        echo $output;
         if ($emails) {
             rsort($emails);
             foreach ($emails as $email_number) {
+                $output = "<script>console.log( 'in loop of emails' );</script>";
+
+                echo $output;
                 $header = imap_fetch_overview($connection, $email_number, 0);
                 $message = imap_fetchbody($connection, $email_number, 1.1);
                 if ($message == "") {
