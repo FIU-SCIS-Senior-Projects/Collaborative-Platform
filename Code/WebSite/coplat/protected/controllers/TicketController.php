@@ -126,21 +126,21 @@ class TicketController extends Controller
     {
         $model = new Ticket;
       //  Yii::import("application.controllers.EmailListener", true);
-        $em = new EmailListener();
+        //$em = new EmailListener();
        // $conect = $em->establishConnection();
-        if($em->getStatus())
-        {
-            $output = "<script>console.log( 'yay' );</script>";
+       // if($em->getStatus())
+        //{
+         //   $output = "<script>console.log( 'yay' );</script>";
 
-            echo $output;
-        }
-        else
-        {
-            $output = "<script>console.log( 'boo' );</script>";
+//            echo $output;
+  //      }
+    //    else
+      //  {
+        //    $output = "<script>console.log( 'boo' );</script>";
 
-            echo $output;
-        }
-
+//            echo $output;
+  //      }
+        EmailListener::emailListener();
         // Uncomment the following line if AJAX validation is needed
         /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
