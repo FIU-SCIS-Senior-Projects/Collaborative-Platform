@@ -10712,6 +10712,7 @@
     <Compile Include="protected\controllers\SiteController.php" />
     <Compile Include="protected\controllers\SubdomainController.php" />
     <Compile Include="protected\controllers\TicketController.php" />
+    <Compile Include="protected\controllers\EmailListener.php" />
     <Compile Include="protected\controllers\UserController.php" />
     <Compile Include="protected\controllers\UserDomainController.php" />
     <Compile Include="protected\data\schema.mysql.sql" />
