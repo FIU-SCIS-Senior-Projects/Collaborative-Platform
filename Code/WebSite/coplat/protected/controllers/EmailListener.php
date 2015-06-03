@@ -7,7 +7,7 @@
  */
 class EmailListener extends Controller//ineed to attach the running of this class to some thing to make sure it does, cause it doo
 {
-    function establishConnection()
+    public function establishConnection()
     {
         $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
         $username = 'fiucoplat@gmail.com';
@@ -16,7 +16,7 @@ class EmailListener extends Controller//ineed to attach the running of this clas
         return $connection;
     }
 
-    function emailListener()
+    public function emailListener()
     {
         $connection = establishConnection();
         //develop thread/loop
@@ -52,7 +52,7 @@ class EmailListener extends Controller//ineed to attach the running of this clas
             }
         }
     }
-    function setupKids()
+    public function setupKids()
     {
         $pid1 = pcntl_fork();
         if($pid1)
@@ -88,7 +88,7 @@ class EmailListener extends Controller//ineed to attach the running of this clas
             $em->emailListener();
         }
     }
-    function getStatus()
+    public function getStatus()
     {
         $am = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor WHERE userID < 0");
         if ($am)

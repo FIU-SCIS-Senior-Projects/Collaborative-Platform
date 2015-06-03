@@ -5,6 +5,7 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 Yii::setPathOfAlias('editable', dirname(__FILE__).'/../extensions/x-editable');
 Yii::setPathOfAlias('booster', dirname(__FILE__).'/../extensions/booster');
 Yii::setPathOfAlias('fiuCustom', dirname(__FILE__).'/../controllers/custom');
+require_once( dirname(__FILE__) . '/../controllers/EmailListener.php');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
