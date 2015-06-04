@@ -377,6 +377,7 @@
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            uibox.style.float = 'left';
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
         }
