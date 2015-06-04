@@ -73,14 +73,14 @@
 
 
 
-<!--<div class="container">-->
-<!--    <ol class="breadcrumb">-->
-<!--        <li><a href="/coplat/index.php">Home</a></li>-->
-<!--        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>-->
-<!--        <li><a href="/coplat/index.php/videoConference/--><?php //echo $model->id; ?><!--">--><?php //echo $model->id; ?><!--</a></li>-->
-<!--        <li class="active">Join</li>-->
-<!--    </ol>-->
-<!--</div>-->
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/coplat/index.php">Home</a></li>
+        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
+        <li><a href="/coplat/index.php/videoConference/<?php echo $model->id; ?>"><?php echo $model->id; ?></a></li>
+        <li class="active">Join</li>
+    </ol>
+</div>
 
 
 <!-- Bootstrap -->
@@ -158,8 +158,16 @@
 
 <div class="container-fluid">
 
+
     <div class="row">
 
+        <div id="video-container" style="" class="col-md-2 col-lg-3">
+
+            <div class="col-md-offset-6 col-lg-offset-7">
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
+            </div>
+
+        </div>
         <div id="cotools-container" class="col-md-8 col-lg-6">
             <div id="cotools-panel">
 
@@ -169,6 +177,13 @@
 
 
         <div class="col-md-2 col-lg-3">
+
+            <!-- <div>
+                <img id="trello-logo" src="http://a1461.phobos.apple.com/us/r30/Purple/v4/ec/df/0c/ecdf0c81-1ab3-978b-b9af-866d232636bc/mzl.wzojsfri.png">
+                <div class="text-center">
+                    <a href="https://trello.com/" target="_blank"><input id="trello-signin" type="button" value="Login to Trello" /></a>
+                </div>
+            </div> -->
 
             <div id="chat-container">
                 <div id="chat-feed">
@@ -180,15 +195,6 @@
 
         </div>
 
-        <div class="span11 row-fluid" style="overflow: auto">
-            <div id="video-container" style="" class="col-md-2 col-lg-3">
-
-                <div class="col-md-offset-6 col-lg-offset-7">
-                    <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
-                </div>
-
-            </div>
-        </div>
 
     </div>
     </section>
@@ -292,6 +298,24 @@
     rmc.onunmute = function(e) {
        e.mediaElement.removeAttribute('poster');
     };
+    // $('#on-off-video').click(function () {
+    //     // http://www.rtcmulticonnection.org/docs/mute/
+    //     if(video_status == 0) {
+    //         rmc.mute({
+    //             audio: true,
+    //             video: true
+    //         });
+    //         document.getElementById("on-off-video").style.color= 'red';
+    //         video_status = 1;
+    //     } else if (video_status == 1) {
+    //         rmc.mute({
+    //             audio: true,
+    //             video: false
+    //         });
+    //         document.getElementById("on-off-video").style.color= 'gray';
+    //         video_status = 0;
+    //     }
+    // });
 
 
     // display a notification box
