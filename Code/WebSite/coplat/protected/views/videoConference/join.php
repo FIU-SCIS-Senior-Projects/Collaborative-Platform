@@ -54,7 +54,7 @@
         $(this).toggleClass('open');
     });
     $(document).ready(function () {
-        var link = $("#select-screen-plugin");
+        var link = $("#select-screen-plugin1");
         if (navigator.userAgent.indexOf("Chrome") != -1) {
             link.attr("href", "https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk");
         }
@@ -133,7 +133,7 @@
 
     <div class="row">
 
-        <div id="cotools-container" class="col-md-5 col-lg-5">
+        <div class="cotools-container col-md-5 col-lg-5">
         
         <div style="text-align: center;margin: 0 auto;">
             <div class="btn-group">
@@ -155,23 +155,23 @@
                     <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
+                    <li><a id='select-screen-plugin1' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
                     </li>
-                    <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
-                    <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
-                    <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
+                    <li><a id='show-screens1' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
+                    <li><a id='share-screen1' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
+                    <li><a id='stop-share-screen1' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
                 </ul>
             </div>
         </div>
         <hr/>
 
-            <div id="cotools-panel">
+            <div id="cotools-panel1">
 
             </div>
 
         </div>
         
-        <div id="cotools-container" class="col-md-5 col-lg-5">
+        <div class="cotools-container col-md-5 col-lg-5">
 
         <div style="text-align: center;margin: 0 auto;">
       
@@ -181,17 +181,16 @@
                     <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
+                    <li><a id='select-screen-plugin2' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
                     </li>
-                    <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
-                    <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
-                    <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
+                    <li><a id='share-screen2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
+                    <li><a id='stop-share-screen2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
                 </ul>
             </div>
         </div>
         <hr/>
             
-            <div id="cotools-panel">
+            <div id="cotools-panel2">
 
             </div>
 
@@ -323,25 +322,6 @@
     rmc.onunmute = function(e) {
        e.mediaElement.removeAttribute('poster');
     };
-    // $('#on-off-video').click(function () {
-    //     // http://www.rtcmulticonnection.org/docs/mute/
-    //     if(video_status == 0) {
-    //         rmc.mute({
-    //             audio: true,
-    //             video: true
-    //         });
-    //         document.getElementById("on-off-video").style.color= 'red';
-    //         video_status = 1;
-    //     } else if (video_status == 1) {
-    //         rmc.mute({
-    //             audio: true,
-    //             video: false
-    //         });
-    //         document.getElementById("on-off-video").style.color= 'gray';
-    //         video_status = 0;
-    //     }
-    // });
-
 
     // display a notification box
     window.addEventListener('beforeunload', function () {
@@ -354,13 +334,24 @@
     }, false);
 
     rmc.onMediaCaptured = function () {
-        $('#share-screen').removeAttr('disabled');
+        $('#share-screen1').removeAttr('disabled');
+        $('#share-screen2').removeAttr('disabled');
         $('#open-room').attr('disabled', 'disabled');
         $('#join-room').attr('disabled', 'disabled');
     };
 
-    //screen sharing
-    $('#share-screen').click(function () {
+    //screen sharing1
+    $('#share-screen1').click(function () {
+        // http://www.rtcmulticonnection.org/docs/addStream/
+        rmc.removeStream('screen');
+        rmc.addStream({
+            screen: true,
+            oneway: true
+        });
+    });
+
+    //screen sharing2
+    $('#share-screen2').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.removeStream('screen');
         rmc.addStream({
@@ -370,11 +361,18 @@
     });
 
     //when the user clicks the stop-share-screen button it removes all the screen
-    $('#stop-share-screen').click(function () {
+    $('#stop-share-screen1').click(function () {
         rmc.removeStream('screen');
-        $('#cotools-panel iframe').show();
-        $('#cotools-panel video').remove();
+        $('#cotools-panel1 iframe').show();
+        $('#cotools-panel1 video').remove();
     });
+
+    $('#stop-share-screen2').click(function () {
+        rmc.removeStream('screen');
+        $('#cotools-panel2 iframe').show();
+        $('#cotools-panel2 video').remove();
+    });
+
 
     //chat
     rmc.onopen = function (event) {
@@ -423,19 +421,20 @@
         }
         if (e.isVideo) {
             var uibox = document.createElement("div");
-            uibox.appendChild(document.createTextNode(e.userid));
-            uibox.className = "userid";
-            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            var box = uibox.appendChild(document.createTextNode(e.userid));
+            box.className = "userid";
+            box.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            box.style.float = 'left';
             document.getElementById('video-container').appendChild(e.mediaElement);
-            document.getElementById('video-container').appendChild(uibox);
+            document.getElementById('video-container').appendChild(box);
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen) {
-            $('#cotools-panel iframe').hide();
-            $('#cotools-panel video').remove();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            $('#cotools-panel1 iframe').hide();
+            $('#cotools-panel1 video').remove();
+            document.getElementById('cotools-panel1').appendChild(e.mediaElement);
         }
 
     };
@@ -480,25 +479,25 @@
             text: true,
             eraser: true
         });
-        CanvasDesigner.appendTo(document.getElementById('cotools-panel'));
+        CanvasDesigner.appendTo(document.getElementById('cotools-panel1'));
     }
     canvasInit();
 
 
     $("#reset-whiteboard").click(function () {
-        $('#cotools-panel iframe').remove();
-        $('#cotools-panel video').hide();
+        $('#cotools-panel1 iframe').remove();
+        $('#cotools-panel1 video').hide();
         canvasInit();
     });
 
     $("#show-whiteboard").click(function () {
-        $('#cotools-panel video').hide();
-        $('#cotools-panel iframe').show();
+        $('#cotools-panel1 video').hide();
+        $('#cotools-panel1 iframe').show();
     });
 
-    $("#show-screens").click(function () {
-        $('#cotools-panel video').show();
-        $('#cotools-panel iframe').hide();
+    $("#show-screens1").click(function () {
+        $('#cotools-panel1 video').show();
+        $('#cotools-panel1 iframe').hide();
     });
 
 

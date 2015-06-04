@@ -148,14 +148,26 @@ Tool box
     Collaborative Tools
 */
 
-#cotools-panel {
+#cotools-panel1 {
     margin-bottom: 20px;
     height: 40em;
     width: 95%;
     border: 2px solid #18536b;
 }
 
-#cotools-container {
+
+#cotools-container1 {
+
+}
+
+#cotools-panel2 {
+    margin-bottom: 20px;
+    height: 40em;
+    width: 95%;
+    border: 2px solid #18536b;
+}
+
+#cotools-container2 {
 
 }
 
@@ -374,7 +386,12 @@ and (orientation: portrait) {
     /* STYLES GO HERE */
 }
 
-#cotools-panel video {
+#cotools-panel1 video {
+    width: 100%;
+    height: auto;
+}
+
+#cotools-panel2 video {
     width: 100%;
     height: auto;
 }
