@@ -125,12 +125,25 @@ class TicketController extends Controller
     public function actionCreate()
     {
         $model = new Ticket;
-        $am = new AwayMentor();
-        $data = $am->readText1();
+      //  Yii::import("application.controllers.EmailListener", true);
+        //$em = new EmailListener();
+       // $conect = $em->establishConnection();
+       // if($em->getStatus())
+        //{
+         //   $output = "<script>console.log( 'yay' );</script>";
 
-        $output = "<script>console.log( 'Debug Objects: " . $data . "');</script>";
+//            echo $output;
+  //      }
+    //    else
+      //  {
+        //    $output = "<script>console.log( 'boo' );</script>";
 
-        echo $output;
+//            echo $output;
+  //      }
+        $output = "<script>console.log( 'before call' );</script>";
+
+                  echo $output;
+       //EmailListener::emailListener();
         // Uncomment the following line if AJAX validation is needed
         /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
