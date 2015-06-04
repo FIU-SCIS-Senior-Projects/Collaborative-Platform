@@ -165,7 +165,7 @@
                     <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?></div>
             </div>
         <!-- </div> -->
-        <div class="span10">
+        <!-- <div class="span10"> -->
             <!-- <div class="row"> -->
                 <div id="cotools-container" class="col-md-5 col-lg-5">
                     <div id="cotools-panel">
@@ -194,7 +194,7 @@
 
                 </div>
             <!-- </div> -->
-        </div>
+        <!-- </div> -->
 
     </div>
     <!-- end of row -->
