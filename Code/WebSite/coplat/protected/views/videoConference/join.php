@@ -73,7 +73,7 @@
 
 
 
-<div class="container">
+<!-- <div class="container">
     <ol class="breadcrumb">
         <li><a href="/coplat/index.php">Home</a></li>
         <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
@@ -81,7 +81,7 @@
         <li class="active">Join</li>
     </ol>
 </div>
-
+ -->
 
 <!-- Bootstrap -->
 <link href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/bootstrap.min.css" rel="stylesheet">
@@ -158,8 +158,8 @@
 
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="span2">
-            <div id="video-container" style="" class="col-md-2 col-lg-3">
+        <div class="col-md-2 col-md-3">
+            <div id="video-container" style="" class="col-md-2 col-lg-2">
 
                 <div class="col-md-offset-6 col-lg-offset-7">
                     <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?></div>
