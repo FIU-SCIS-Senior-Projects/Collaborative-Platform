@@ -375,6 +375,7 @@
         if (e.isVideo) {
             var uibox = document.createElement("div");
             uibox.style.cssFloat = "left";
+            uibox.style.display('inline-block');
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
