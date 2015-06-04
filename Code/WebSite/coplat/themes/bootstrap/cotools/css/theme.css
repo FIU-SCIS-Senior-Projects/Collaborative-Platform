@@ -250,12 +250,8 @@ p.msg {
 
 }
 
-.row-fluid {
-    white-space: nowrap;
-}
-
-.row-fluid #video-container {
-    display: inline;
+.row #video-container {
+    overflow: auto;
 }
 
 #video-container video, #video-container-md video {
