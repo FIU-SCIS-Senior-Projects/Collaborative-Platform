@@ -162,7 +162,7 @@ Tool box
 /*
     Trello Container
 */
-#trello-logo {
+/*#trello-logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -195,7 +195,7 @@ Tool box
     margin: 0px 0px 16px;
     outline: rgb(255, 255, 255) none 0px;
     padding: 9px 3px;
-}
+}*/
 
 /*
     Chat Room
@@ -248,6 +248,14 @@ p.msg {
 
 #video-container {
 
+}
+
+.row-fluid {
+    white-space: nowrap;
+}
+
+.row-fluid #video-container {
+    display: inline;
 }
 
 #video-container video, #video-container-md video {
