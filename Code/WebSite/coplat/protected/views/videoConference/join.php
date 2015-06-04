@@ -180,7 +180,7 @@
 
         </div>
 
-        <div class="span11 row-fluid" style="overflow: auto">
+        <div class="span11 row-fluid row" style="overflow: auto">
             <div id="video-container" style="" class="col-md-2 col-lg-3">
 
                 <div class="col-md-offset-6 col-lg-offset-7">
@@ -381,7 +381,10 @@
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
-            document.getElementById("video-container").style.cssFloat = "left";
+            document.getElementById('video-container').style.cssFloat = "left";
+            document.getElementById('video-container').style.whiteSpace = "nowrap";
+            document.getElementById('video-container').style.display= "left";
+
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
