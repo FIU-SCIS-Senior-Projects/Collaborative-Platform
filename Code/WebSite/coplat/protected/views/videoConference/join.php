@@ -374,12 +374,13 @@
         }
         if (e.isVideo) {
             var uibox = document.createElement("div");
+            uibox.style.cssFloat = "left";
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
-            document.getElementById("video-container").style.cssFloat = "left";
+            //document.getElementById("video-container").style.cssFloat = "left";
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
