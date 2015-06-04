@@ -158,7 +158,7 @@
 
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="col-md-2 col-md-3">
+        <div class="span2" style="width: 100%">
             <div id="video-container" style="" class="col-md-2 col-lg-2">
 
                 <div class="col-md-offset-6 col-lg-offset-7">
