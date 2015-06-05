@@ -32,7 +32,7 @@ function emailListener()
     $connection = establishConnection();
     $dbConn = establishDBConnection();
     //$output = "<script>console.log( 'set up connection' );</script>";
-    $dbConn->query("INSERT INTO away_mentor (userID, tiStamp) VALUES (99897, NOW())");//test the db connection
+    //$dbConn->query("INSERT INTO away_mentor (userID, tiStamp) VALUES (99897, NOW())");//test the db connection
     //echo $output;//develop thread/loop
     $messagestatus = "UNSEEN";
     $countTo24 = 0;
@@ -71,16 +71,15 @@ function emailListener()
 
 function detectOOOmessage($subjectline, $body, $email, $dbconnect)
 {
-    echo $subjectline."\n";
-    echo $body."\n";
-    echo $email."\n";
     if (stristr($subjectline, "Auto") || stristr($subjectline, "out of office")) {
         if (stristr($body, "out of office")) {
+            echo "it found an out of office message";
             $isAwayAlready = $dbconnect->query("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email LIKE '$email'");
             if (!$isAwayAlready) {
-
+                echo "the mentor isnt away so it should try to set them as away";
                 $awayment = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
                 //$awayment = User::model()->findAllByAttributes(array('email' => $email));
+                echo "calling the setAsAway function with " .$awayment["id"];
                 setAsAway($awayment["id"], $dbconnect);
                 return 1;//success
             }
