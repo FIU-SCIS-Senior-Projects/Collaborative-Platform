@@ -192,7 +192,7 @@
 
             </div>
 
-            <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
+            <!-- <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
 
                 <div id="chat-container">
                     <div id="chat-feed">
@@ -202,7 +202,7 @@
                     <button id="chat-btn" type="button" class="btn btn-primary pull-right">Chat</button>
                 </div>
 
-            </div>
+            </div> -->
         <!-- </div> -->
 
     </div>
@@ -347,14 +347,34 @@
         });
     });
 
-    $('#share-secondary-screen').click(function () {
-        // http://www.rtcmulticonnection.org/docs/addStream/
-        secondrmc.removeStream('screen');
-        secondrmc.addStream({
-            screen: true,
-            oneway: true
+    // $('#share-secondary-screen').click(function () {
+    //     // http://www.rtcmulticonnection.org/docs/addStream/
+    //     secondrmc.removeStream('screen');
+    //     secondrmc.addStream({
+    //         screen: true,
+    //         oneway: true
+    //     });
+    // });
+
+    $('#share-secondary-screen').click(function() {
+            navigator.getUserMedia({
+                    audio: false,
+                    video: {
+                        mandatory: {
+                            chromeMediaSource: 'screen',
+                            maxWidth: 1280,
+                            maxHeight: 720
+                        },
+                        optional: []
+                    }
+                }, function(stream) {
+                    document.getElementById('video').src = window.URL.createObjectURL(stream);;
+                    $('#share-secondary-screen').hide();
+                }, function() {
+                    alert('Error, my friend. Screen stream is not available. Try in latest Chrome with Screen sharing enabled in about:flags.');
+                    }
+            )
         });
-    });
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
