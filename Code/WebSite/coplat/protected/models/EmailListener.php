@@ -19,7 +19,7 @@
     {
         $username = 'root';
         $password = '9Qst32+';
-        $dbconn = new mysqli('mysql:host=127.0.0.1;dbname=coplat', $username,$password,"coplat");
+        $dbconn = new mysqli("localhost", $username,$password,"coplat");
         return $dbconn;
     }
 
