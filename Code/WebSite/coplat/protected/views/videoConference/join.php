@@ -281,12 +281,12 @@
         document.getElementById("on-off-video").style.color= 'red';
     });
     $('#join-room').click(function () {
-        if(roomStatus == 1) {
+        //if(roomStatus == 1) {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
             //secondrmc.connect();
             document.getElementById("on-off-video").style.color= 'red';
-        }
+        //}
     });
 
     var video_status = 0;
