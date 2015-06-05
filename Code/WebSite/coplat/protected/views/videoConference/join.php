@@ -172,13 +172,15 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <!-- <div class="span2" style="width: 2"> -->
-            <div id="video-container video-container-md" style="" class="col-md-2 col-lg-2">
+        <div class="col-md-2 col-lg-2">
+            <div id="video-container" style="">
             <div class="row-fluid">
                 <div class="col-md-offset-6 col-lg-offset-7">
                     <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?></div>
             </div>
 
             </div>
+        </div>
         <!-- </div> -->
         <!-- <div class="span10"> -->
         <div class="row-fluid">
