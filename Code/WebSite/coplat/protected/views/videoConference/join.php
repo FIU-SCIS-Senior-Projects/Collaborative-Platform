@@ -183,6 +183,7 @@
             <div id="cotools-panel">
 
             </div>
+            
             <div id="secondary-cotools-panel">
 
             </div>
