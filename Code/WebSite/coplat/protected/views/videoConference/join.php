@@ -285,7 +285,7 @@
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
             //secondrmc.connect();
-            document.getElementById("on-off-video").style.color= 'red';
+            if (roomStatus ==1){ document.getElementById("on-off-video").style.color= 'red';}
         //}
     });
 
