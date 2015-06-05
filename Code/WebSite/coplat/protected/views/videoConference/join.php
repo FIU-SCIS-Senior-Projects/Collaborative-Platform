@@ -171,14 +171,16 @@
 
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="span2" style="width: 2">
+        <!-- <div class="span2" style="width: 2"> -->
             <div id="video-container video-container-md" style="" class="col-md-2 col-lg-2">
-
+            <div class="row">
                 <div class="col-md-offset-6 col-lg-offset-7">
                     <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?></div>
             </div>
-        </div>
-        <div class="span10">
+
+            </div>
+        <!-- </div> -->
+        <!-- <div class="span10"> -->
             <div id="cotools-container" class="col-md-5 col-lg-5">
                 <div id="cotools-panel">
 
@@ -203,7 +205,7 @@
                 </div>
 
             </div> -->
-        </div>
+        <!-- </div> -->
 
     </div>
     <!-- end of row -->
@@ -368,7 +370,7 @@
                         optional: []
                     }
                 }, function(stream) {
-                    document.getElementById('video').src = window.URL.createObjectURL(stream);;
+                    document.getElementById('#cotools-secondary-panel').src = window.URL.createObjectURL(stream);;
                     $('#share-secondary-screen').hide();
                 }, function() {
                     alert('Error, my friend. Screen stream is not available. Try in latest Chrome with Screen sharing enabled in about:flags.');
