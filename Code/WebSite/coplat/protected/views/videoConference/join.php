@@ -195,7 +195,7 @@
             <!-- </div> -->
 
             <!-- <div class="row"> -->
-                <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
+                <!-- <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
 
                     <div id="chat-container">
                         <div id="chat-feed">
@@ -205,7 +205,7 @@
                         <button id="chat-btn" type="button" class="btn btn-primary pull-right">Chat</button>
                     </div>
 
-                </div>
+                </div> -->
             <!-- </div> -->
         <!-- </div> -->
 
@@ -277,7 +277,8 @@
     secondrmc.session = {
         video: true,
         audio: true,
-        data: true
+        data: true,
+        screen: true
     };
 
 
@@ -290,7 +291,6 @@
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
-        secondrmc.connect();
         document.getElementById("on-off-video").style.color= 'red';
     });
 
