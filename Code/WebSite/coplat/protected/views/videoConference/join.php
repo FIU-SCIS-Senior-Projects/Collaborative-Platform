@@ -171,13 +171,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 col-lg-2">
-            <div id="video-container" style="">
 
-                <div class="col-md-offset-6 col-lg-offset-7">
-                    <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
-                </div>
-            </div>
+        <div id="video-container" style="" class="col-md-2 col-lg-2">
+
+            <!-- <div class="col-md-offset-6 col-lg-offset-7"> -->
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
+            <!-- </div> -->
         </div>
         
         <div class="col-md-10 col-lg-10">
