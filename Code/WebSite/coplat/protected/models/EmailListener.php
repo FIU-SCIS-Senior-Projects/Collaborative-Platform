@@ -78,8 +78,9 @@ function detectOOOmessage($subjectline, $body, $email, $dbconnect)
             $isAwayAlready = $dbconnect->query("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email LIKE '$email'");
             //if (!$isAwayAlready) {
                 echo "the mentor isnt away so it should try to set them as away";
-                $awayment = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
+                $awayment1 = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
                 //$awayment = User::model()->findAllByAttributes(array('email' => $email));
+                $awayment = mysql_fetch_assoc($awayment1);
                 echo "calling the setAsAway function with " .$awayment["id"];
                 setAsAway($awayment["id"], $dbconnect);
                 return 1;//success
