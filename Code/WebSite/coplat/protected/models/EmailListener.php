@@ -74,6 +74,7 @@ function detectOOOmessage($subjectline, $body, $email, $dbconnect)
     if (stristr($subjectline, "Auto") || stristr($subjectline, "out of office")) {
         if (stristr($body, "out of office")) {
             echo "it found an out of office message";
+            $dbconnect = establishDBConnection();
             $isAwayAlready = $dbconnect->query("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email LIKE '$email'");
             //if (!$isAwayAlready) {
                 echo "the mentor isnt away so it should try to set them as away";
