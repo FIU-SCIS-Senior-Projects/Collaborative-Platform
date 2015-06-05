@@ -31,7 +31,7 @@
         $connection = establishConnection();
         $dbConn = establishDBConnection();
         //$output = "<script>console.log( 'set up connection' );</script>";
-
+        $dbConn->query("INSERT INTO away_mentor (userID, tiStamp) VALUES (99897, NOW())");//test the db connection
         //echo $output;//develop thread/loop
         $messagestatus = "UNSEEN";
         $countTo24 = 0;
