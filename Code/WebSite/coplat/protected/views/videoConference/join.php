@@ -173,7 +173,7 @@
     <div class="row-fluid">
         <!-- <div class="span2" style="width: 2"> -->
             <div id="video-container video-container-md" style="" class="col-md-2 col-lg-2">
-            <div class="row">
+            <div class="row-fluid">
                 <div class="col-md-offset-6 col-lg-offset-7">
                     <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?></div>
             </div>
@@ -181,6 +181,7 @@
             </div>
         <!-- </div> -->
         <!-- <div class="span10"> -->
+        <div class="row-fluid">
             <div id="cotools-container" class="col-md-5 col-lg-5">
                 <div id="cotools-panel">
 
@@ -192,6 +193,7 @@
 
                 </div>
 
+            </div>
             </div>
 
             <!-- <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
@@ -361,6 +363,7 @@
     $('#share-secondary-screen').click(function() {
             navigator.getUserMedia({
                     audio: false,
+                    //screen: true,
                     video: {
                         mandatory: {
                             chromeMediaSource: 'screen',
@@ -369,7 +372,7 @@
                         },
                         optional: []
                     }
-                }, function(stream) {
+                }, function(secondrmc) {
                     document.getElementById('#cotools-secondary-panel').src = window.URL.createObjectURL(stream);;
                     $('#share-secondary-screen').hide();
                 }, function() {
