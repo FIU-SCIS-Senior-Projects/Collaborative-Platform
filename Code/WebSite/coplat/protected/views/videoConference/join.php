@@ -169,8 +169,8 @@
 <hr/>
 
 
-<div class="container-fluid">
-    <div class="row-fluid">
+<div class="container">
+    <div class="row">
         <!-- <div class="span2" style="width: 2"> -->
         <div class="col-md-2 col-lg-2">
             <div id="video-container" style="">
@@ -183,7 +183,6 @@
         </div>
         <!-- </div> -->
         <!-- <div class="span10"> -->
-        <div class="row-fluid">
             <div id="cotools-container" class="col-md-5 col-lg-5">
                 <div id="cotools-panel">
 
@@ -195,7 +194,6 @@
 
                 </div>
 
-            </div>
             </div>
 
             <!-- <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
