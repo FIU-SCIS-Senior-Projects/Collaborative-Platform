@@ -193,6 +193,14 @@
                 </div>
             </div>
 
+            <div id="chat-container" class="col-md-6 col-lg-6">
+                <!-- <div id="chat-feed">
+                    <p class="msg">Welcome to the chat room!</p>
+                </div>
+                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
+                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button> -->
+            </div>
+
         </div>
 
     </div>
@@ -581,14 +589,3 @@
     }
 
 </script>
-
-<!-- <div id="chat-container" class="col-md-6 col-lg-6">
-                <div id="chat-feed">
-                    <p class="msg">Welcome to the chat room!</p>
-                </div>
-                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
-                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
-            </div> -->
-
-
-
