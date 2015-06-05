@@ -36,19 +36,18 @@
         $messagestatus = "UNSEEN";
         $countTo24 = 0;
         while (true) {
+            echo "in check loop";
             $emails = imap_search($connection, $messagestatus);
             if ($emails) {
                 rsort($emails);
                 foreach ($emails as $email_number) {
-                    $output = "<script>console.log( 'in loop of emails' );</script>";
-
-                    echo $output;
-                    $header = imap_fetch_overview($connection, $email_number, 0);
+                    echo "in email loop";
+                    $header = imap_headerinfo($connection, $email_number);
                     $message = imap_fetchbody($connection, $email_number, 1.1);
                     if ($message == "") {
                         $message = imap_fetchbody($connection, $email_number, 1);
                     }
-                    if (!detectOOOmessage($header->subject, $message, $header->from, $dbConn)) {
+                    if (!detectOOOmessage($header->subject, $message, $header->fromaddress, $dbConn)) {
                        detectB00message($header->subject, $header->from, $dbConn);
                     }
                     imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
