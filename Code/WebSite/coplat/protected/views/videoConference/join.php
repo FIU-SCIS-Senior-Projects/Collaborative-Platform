@@ -277,8 +277,7 @@
     secondrmc.session = {
         video: true,
         audio: true,
-        data: true,
-        screen: true
+        data: true
     };
 
 
@@ -354,7 +353,7 @@
 
     $('#share-secondary-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
-        secondrmc.removeStream('screen');
+        //secondrmc.removeStream('screen');
         secondrmc.addStream({
             screen: true,
             oneway: true
