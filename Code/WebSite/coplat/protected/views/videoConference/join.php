@@ -251,7 +251,9 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.leanModal.min.js"></script>
 
 
-
+<script>
+    var roomStatus = 0;
+</script>
 
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
@@ -274,7 +276,6 @@
         data: true
     };
 
-    var roomStatus = 0;
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
