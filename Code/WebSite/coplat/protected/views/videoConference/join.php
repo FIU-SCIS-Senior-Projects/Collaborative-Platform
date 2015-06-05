@@ -152,6 +152,19 @@
     </button>
 
 
+    <div class="btn-group">
+        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <!-- <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li> -->
+            <li><a id='share-secondary-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
+            <li><a id='stop-secondary-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
+        </ul>
+    </div>
+
+
 </div>
 <hr/>
 
@@ -250,9 +263,16 @@
     // https://github.com/muaz-khan/RTCMultiConnection
 
     var rmc = new RTCMultiConnection();
+    var secondrmc = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
+        video: true,
+        audio: true,
+        data: true
+    };
+
+    secondrmc.session = {
         video: true,
         audio: true,
         data: true
@@ -262,13 +282,13 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        rmc.streams.mute({video : true});
+        secondrmc.open();
         document.getElementById("on-off-video").style.color= 'red';
     });
     $('#join-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
-        rmc.streams.mute({video: true});
+        secondrmc.connect();
         document.getElementById("on-off-video").style.color= 'red';
     });
 
@@ -297,25 +317,6 @@
     rmc.onunmute = function(e) {
        e.mediaElement.removeAttribute('poster');
     };
-    // $('#on-off-video').click(function () {
-    //     // http://www.rtcmulticonnection.org/docs/mute/
-    //     if(video_status == 0) {
-    //         rmc.mute({
-    //             audio: true,
-    //             video: true
-    //         });
-    //         document.getElementById("on-off-video").style.color= 'red';
-    //         video_status = 1;
-    //     } else if (video_status == 1) {
-    //         rmc.mute({
-    //             audio: true,
-    //             video: false
-    //         });
-    //         document.getElementById("on-off-video").style.color= 'gray';
-    //         video_status = 0;
-    //     }
-    // });
-
 
     // display a notification box
     window.addEventListener('beforeunload', function () {
@@ -333,6 +334,12 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
+    secondrmc.onMediaCaptured = function () {
+        $('#share-secondary-screen').removeAttr('disabled');
+        $('#open-room').attr('disabled', 'disabled');
+        $('#join-room').attr('disabled', 'disabled');
+    };
+
     //screen sharing
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
@@ -343,11 +350,26 @@
         });
     });
 
+    $('#share-secondary-screen').click(function () {
+        // http://www.rtcmulticonnection.org/docs/addStream/
+        secondrmc.removeStream('screen');
+        secondrmc.addStream({
+            screen: true,
+            oneway: true
+        });
+    });
+
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
         rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
+    });
+
+    $('#stop-secondary-share-screen').click(function () {
+        secondrmc.removeStream('screen');
+        $('#secondary-cotools-panel iframe').show();
+        $('#secondary-cotools-panel video').remove();
     });
 
     //chat
@@ -384,6 +406,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
+        secondrmc.leave();
         setTimeout("location.href = '../';",2000);
     });
 
@@ -413,6 +436,14 @@
         }
 
     };
+
+    secondrmc.onstream = function (e) {
+        if (e.isScreen) {
+            $('#cotools-secondary-panel iframe').hide();
+            $('#cotools-secondary-panel').remove();
+            document.getElementById('cotools-secondary-panel').appendChild(e.mediaElement);
+        }
+    }
 
     //receiving a message from
     rmc.onmessage = function (event) {
