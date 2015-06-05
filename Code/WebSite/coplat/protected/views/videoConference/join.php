@@ -196,7 +196,7 @@
 
             </div>
 
-            <!-- <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
+            <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
 
                 <div id="chat-container">
                     <div id="chat-feed">
@@ -206,7 +206,7 @@
                     <button id="chat-btn" type="button" class="btn btn-primary pull-right">Chat</button>
                 </div>
 
-            </div> -->
+            </div>
         <!-- </div> -->
 
     </div>
@@ -428,7 +428,6 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
-        secondrmc.leave();
         setTimeout("location.href = '../';",2000);
     });
 
