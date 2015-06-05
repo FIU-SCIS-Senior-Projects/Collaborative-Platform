@@ -174,9 +174,9 @@
 
         <div id="video-container" style="" class="col-md-2 col-lg-2">
 
-            <!-- <div class="col-md-offset-6 col-lg-offset-7"> -->
+            <div class="col-md-offset-6 col-lg-offset-7">
                 <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
-            <!-- </div> -->
+            </div>
         </div>
         
         <div class="col-md-10 col-lg-10">
@@ -266,17 +266,21 @@
         data: true
     };
 
-
+    var roomStatus = 0;
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
         secondrmc.open();
+        roomStatus = 1;
         document.getElementById("on-off-video").style.color= 'red';
     });
     $('#join-room').click(function () {
-        // http://www.rtcmulticonnection.org/docs/connect/
-        rmc.connect();
-        document.getElementById("on-off-video").style.color= 'red';
+        if(roomStatus === 1) {
+            // http://www.rtcmulticonnection.org/docs/connect/
+            rmc.connect();
+            secondrmc.connect();
+            document.getElementById("on-off-video").style.color= 'red';
+        }
     });
 
     var video_status = 0;
@@ -414,6 +418,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
+        roomStatus = 0;
         setTimeout("location.href = '../';",2000);
     });
 
