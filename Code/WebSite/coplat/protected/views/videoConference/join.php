@@ -261,6 +261,8 @@
 
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
+    mandatory: {chromeMediaSource: 'screen'};
+    mandatory: {chromeMediaSource: 'desktop'};
 
     var rmc = new RTCMultiConnection();
     var secondrmc = new RTCMultiConnection();
