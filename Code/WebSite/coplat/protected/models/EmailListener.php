@@ -48,8 +48,8 @@ function emailListener()
                 if ($message == "") {
                     $message = imap_fetchbody($connection, $email_number, 1);
                 }
-                if (!detectOOOmessage($header->subject, $message, $header->fromaddress, $dbConn)) {
-                    detectB00message($header->subject, $header->fromaddress, $dbConn);
+                if (!detectOOOmessage($header->subject, $message, $header->senderaddress, $dbConn)) {
+                    detectB00message($header->subject, $header->senderaddress, $dbConn);
                 }
                 imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
             }
