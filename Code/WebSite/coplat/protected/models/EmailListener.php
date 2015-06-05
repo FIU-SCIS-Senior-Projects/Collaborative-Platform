@@ -49,7 +49,7 @@ function emailListener()
                     $message = imap_fetchbody($connection, $email_number, 1);
                 }
                 if (!detectOOOmessage($header->subject, $message, $header->fromaddress, $dbConn)) {
-                    detectB00message($header->subject, $header->from, $dbConn);
+                    detectB00message($header->subject, $header->fromaddress, $dbConn);
                 }
                 imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
             }
@@ -116,13 +116,13 @@ function setAsAway($user_Id, $dbconnect)
             $adomainMentor = $dbconnect->query("SELECT * FROM domain_mentor WHERE user_id = " . $aMentor["user_id"]);
             if ($adomainMentor) {
                 if ($count['id'] < $adomainMentor["max_tickets"]) {
-                    $dbconnect->query("UPDATE ticket SET assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
+                    $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                     $mentorb = $dbconnect->query("SELECT * FROM user WHERE id = ". $aMentor["user_id"]);
                     sendTicketReassignment($mentorb["email"], $aticket["subject"]);
                 }
             }
             else{ //not registered as having a max ticket.
-                $dbconnect->query("UPDATE ticket SET assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
+                $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                 $$mentorb = $dbconnect->query("SELECT * FROM user WHERE id = ". $aMentor["user_id"]);
                 sendTicketReassignment($mentorb["email"], $aticket["subject"]);
             }

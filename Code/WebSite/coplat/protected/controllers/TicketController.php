@@ -121,30 +121,12 @@ class TicketController extends Controller
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-
     public function actionCreate()
     {
         $model = new Ticket;
-      //  Yii::import("application.controllers.EmailListener", true);
-        //$em = new EmailListener();
-       // $conect = $em->establishConnection();
-       // if($em->getStatus())
-        //{
-         //   $output = "<script>console.log( 'yay' );</script>";
-
-//            echo $output;
-  //      }
-    //    else
-      //  {
-        //    $output = "<script>console.log( 'boo' );</script>";
-
-//            echo $output;
-  //      }
-        $output = "<script>console.log( 'before call' );</script>";
-
-                  echo $output;
-       //EmailListener::emailListener();
         // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+
         /*Post for Domain and Subdomain */
         if (isset($_POST['domain'])) {
 
@@ -255,11 +237,9 @@ class TicketController extends Controller
                       User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
 
                    $this->redirect(array('view', 'id' => $model->id));
-                 }
-
-
+                 } 
             }
-
+     
             
         }
         $this->render('create', array(
@@ -280,7 +260,6 @@ class TicketController extends Controller
     {
         //first load the ticket from the DB in order to extract the old mentor and to make an update
         $model = $this->loadModel($id);
-
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
