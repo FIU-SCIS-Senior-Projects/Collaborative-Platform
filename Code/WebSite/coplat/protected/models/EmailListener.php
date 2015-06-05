@@ -49,8 +49,8 @@ function emailListener()
                     $message = imap_fetchbody($connection, $email_number, 1);
                 }
                 $emailaddress = substr($header->senderaddress, stripos($header->senderaddress, "<")+1, stripos($header->senderaddress, ">")- (stripos($header->senderaddress, ">")+1));
-                if (!detectOOOmessage($header->subject, $message, $emailaddress, $dbConn)) {
-                    detectB00message($header->subject, $emailaddress, $dbConn);
+                if (!detectOOOmessage($header->subject, $message, $emailaddress)) {
+                    detectB00message($header->subject, $emailaddress);
                 }
                 imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
             }
@@ -69,7 +69,7 @@ function emailListener()
     }
 }
 
-function detectOOOmessage($subjectline, $body, $email, $dbconnect)
+function detectOOOmessage($subjectline, $body, $email)
 {
     if (stristr($subjectline, "Auto") || stristr($subjectline, "out of office")) {
         if (stristr($body, "out of office")) {
@@ -80,9 +80,9 @@ function detectOOOmessage($subjectline, $body, $email, $dbconnect)
                 echo "the mentor isnt away so it should try to set them as away";
                 $awayment1 = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
                 //$awayment = User::model()->findAllByAttributes(array('email' => $email));
-                $awayment = mysql_fetch_assoc($awayment1);
+                $awayment = $awayment1->fetch_assoc();
                 echo "calling the setAsAway function with " .$awayment["id"];
-                setAsAway($awayment["id"], $dbconnect);
+                setAsAway($awayment["id"]);
                 return 1;//success
             //}
             return 0;//is
@@ -91,22 +91,25 @@ function detectOOOmessage($subjectline, $body, $email, $dbconnect)
     return 0;
 }
 
-function detectB00message($subjectline, $email, $dbconnect)
+function detectB00message($subjectline, $email)
 {
+    $dbconnect = establishDBConnection();
     if (stristr($subjectline, "Back in Office")) {
-        $awayment = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
+        $awayment1 = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
+        $awayment = $awayment1->fetch_assoc();
         $dbconnect->query("DELETE FROM away_mentor WHERE userID =" . $awayment["id"] . "limit 1");
 
     }
 }
 
-function setAsAway($user_Id, $dbconnect)
+function setAsAway($user_Id)
 {
+    $dbconnect = establishDBConnection();
     $dbconnect->query("INSERT INTO away_mentor (userID, tiStamp) VALUES ($user_Id, NOW())");
 
     $ticketSubs = "";
     $ftickets = $dbconnect->query("SELECT * FROM ticket WHERE assign_user_id = $user_Id AND assigned_date >= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )");//find tickets assigned to this user within last 24 hours
-    while ($aticket = mysql_fetch_assoc($ftickets)) {
+    while ($aticket = $ftickets->fetch_assoc()) {
         //reassign the tickets
         if (!is_null($aticket["subdomain_id"])) {
             $possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . "AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
@@ -115,19 +118,23 @@ function setAsAway($user_Id, $dbconnect)
             $possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
         }
-        while ($aMentor = mysql_fetch_assoc($possibleMentors)) {
-            $count = $dbconnect->query("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id = " . $aMentor["user_id"]);
-            $adomainMentor = $dbconnect->query("SELECT * FROM domain_mentor WHERE user_id = " . $aMentor["user_id"]);
+        while ($aMentor = $possibleMentors->fetch_assoc()) {
+            $count1 = $dbconnect->query("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id = " . $aMentor["user_id"]);
+            $adomainMentor1 = $dbconnect->query("SELECT * FROM domain_mentor WHERE user_id = " . $aMentor["user_id"]);
+            $count = $count1 ->fetch_assoc();
+            $adomainMentor = $adomainMentor1->fetch_assoc();
             if ($adomainMentor) {
                 if ($count['id'] < $adomainMentor["max_tickets"]) {
                     $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
-                    $mentorb = $dbconnect->query("SELECT * FROM user WHERE id = ". $aMentor["user_id"]);
+                    $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = ". $aMentor["user_id"]);
+                    $mentorb = $mentorb1->fetch_assoc();
                     sendTicketReassignment($mentorb["email"], $aticket["subject"]);
                 }
             }
             else{ //not registered as having a max ticket.
                 $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
-                $$mentorb = $dbconnect->query("SELECT * FROM user WHERE id = ". $aMentor["user_id"]);
+                $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = ". $aMentor["user_id"]);
+                $mentorb = $mentorb1->fetch_assoc();
                 sendTicketReassignment($mentorb["email"], $aticket["subject"]);
             }
         }
@@ -137,7 +144,8 @@ function setAsAway($user_Id, $dbconnect)
         //    User::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent - lname, $bawayMent->email, $aticket->subject);
         //}
     }
-    $mentor = $dbconnect->query("SELECT * FROM user WHERE id = $user_Id");
+    $mentor2 = $dbconnect->query("SELECT * FROM user WHERE id = $user_Id");
+    $mentor = $mentor2->fetch_assoc();
     sendTicketCancelEmail($mentor["email"],$ticketSubs);
 
 }
