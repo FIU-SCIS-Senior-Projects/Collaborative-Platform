@@ -171,46 +171,34 @@
 
 <div class="container-fluid">
     <div class="row">
-        <!-- <div class="span2" style="width: 2"> -->
 
-            <div id="video-container" style="" class="col-md-2 col-lg-2">
-        
-                <div class="col-md-offset-6 col-lg-offset-7">
-                    <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
-                </div>
+        <div id="video-container" style="" class="col-md-2 col-lg-2">
+
+            <div class="col-md-offset-6 col-lg-offset-7">
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
+            </div>
+
+        </div>
+        <div id="cotools-container" class="col-md-10 col-lg-10">
+            <div id="cotools-panel">
+
+            </div>
+            <div id="secondary-cotools-panel">
 
             </div>
 
-        <!-- </div> -->
-        <!-- <div class="span10"> -->
-            <div id="cotools-container" class="col-md-5 col-lg-5">
-                <div id="cotools-panel">
-
+            <div id="chat-container">
+                <div id="chat-feed">
+                    <p class="msg">Welcome to the chat room!</p>
                 </div>
-
-            </div>
-            <div id="secondary-cotools-container" class="col-md-5 col-lg-5">
-                <div id="secondary-cotools-panel">
-
-                </div>
-
+                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
+                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
             </div>
 
-            <div class="col-md-4 col-lg-5 col-md-offset-3 col-lg-offset-2">
-
-                <div id="chat-container">
-                    <div id="chat-feed">
-                        <p class="msg">Welcome to the chat room!</p>
-                    </div>
-                    <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
-                    <button id="chat-btn" type="button" class="btn btn-primary pull-right">Chat</button>
-                </div>
-
-            </div>
-        <!-- </div> -->
+        </div>
 
     </div>
-    <!-- end of row -->
+    <!-- end of main row -->
 </div>
 
 <div id="invite">
