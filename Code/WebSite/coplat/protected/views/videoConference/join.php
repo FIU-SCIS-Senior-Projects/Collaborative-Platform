@@ -73,7 +73,7 @@
 
 
 
-<!-- <div class="container">
+<div class="container">
     <ol class="breadcrumb">
         <li><a href="/coplat/index.php">Home</a></li>
         <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
@@ -81,7 +81,7 @@
         <li class="active">Join</li>
     </ol>
 </div>
- -->
+
 
 <!-- Bootstrap -->
 <link href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/bootstrap.min.css" rel="stylesheet">
@@ -152,48 +152,40 @@
     </button>
 
 
-    <div class="btn-group">
-        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
-                data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <!-- <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li> -->
-            <li><a id='share-secondary-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
-            <li><a id='stop-secondary-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
-        </ul>
-    </div>
-
-
 </div>
 <hr/>
 
 
 <div class="container-fluid">
+
+
     <div class="row">
 
-        <div id="video-container" style="" class="col-md-2 col-lg-2">
+        <div id="video-container" style="" class="col-md-2 col-lg-3">
 
             <div class="col-md-offset-6 col-lg-offset-7">
                 <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
             </div>
+
         </div>
-        
-        <div class="col-md-10 col-lg-10">
+        <div id="cotools-container" class="col-md-8 col-lg-6">
+            <div id="cotools-panel">
 
-            <div id="cotools-container" class="col-md-6 col-lg-6">
-                <div id="cotools-panel">
-
-                </div>
             </div>
 
-            <div id="cotools-container" class="col-md-6 col-lg-6">
-                <div id="secondary-cotools-panel">
+        </div>
 
+
+        <div class="col-md-2 col-lg-3">
+
+            <!-- <div>
+                <img id="trello-logo" src="http://a1461.phobos.apple.com/us/r30/Purple/v4/ec/df/0c/ecdf0c81-1ab3-978b-b9af-866d232636bc/mzl.wzojsfri.png">
+                <div class="text-center">
+                    <a href="https://trello.com/" target="_blank"><input id="trello-signin" type="button" value="Login to Trello" /></a>
                 </div>
-            </div>
+            </div> -->
 
-            <div id="chat-container" class="col-md-6 col-lg-6">
+            <div id="chat-container">
                 <div id="chat-feed">
                     <p class="msg">Welcome to the chat room!</p>
                 </div>
@@ -203,8 +195,10 @@
 
         </div>
 
+
     </div>
-    <!-- end of main row -->
+    </section>
+    <!-- end of row -->
 </div>
 
 <div id="invite">
@@ -251,13 +245,12 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.leanModal.min.js"></script>
 
 
+
+
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
-    mandatory: {chromeMediaSource: 'screen'};
-    mandatory: {chromeMediaSource: 'desktop'};
 
     var rmc = new RTCMultiConnection();
-    var secondrmc = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -266,27 +259,18 @@
         data: true
     };
 
-    secondrmc.session = {
-        video: true,
-        audio: true,
-        data: true
-    };
 
-    var roomStatus = 0;
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        secondrmc.open();
-        roomStatus = 1;
+        rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
     $('#join-room').click(function () {
-        //if(roomStatus == 1) {
-            // http://www.rtcmulticonnection.org/docs/connect/
-            rmc.connect();
-            //secondrmc.connect();
-            if (roomStatus ==1){ document.getElementById("on-off-video").style.color= 'red';}
-        //}
+        // http://www.rtcmulticonnection.org/docs/connect/
+        rmc.connect();
+        rmc.streams.mute({video: true});
+        document.getElementById("on-off-video").style.color= 'red';
     });
 
     var video_status = 0;
@@ -314,6 +298,25 @@
     rmc.onunmute = function(e) {
        e.mediaElement.removeAttribute('poster');
     };
+    // $('#on-off-video').click(function () {
+    //     // http://www.rtcmulticonnection.org/docs/mute/
+    //     if(video_status == 0) {
+    //         rmc.mute({
+    //             audio: true,
+    //             video: true
+    //         });
+    //         document.getElementById("on-off-video").style.color= 'red';
+    //         video_status = 1;
+    //     } else if (video_status == 1) {
+    //         rmc.mute({
+    //             audio: true,
+    //             video: false
+    //         });
+    //         document.getElementById("on-off-video").style.color= 'gray';
+    //         video_status = 0;
+    //     }
+    // });
+
 
     // display a notification box
     window.addEventListener('beforeunload', function () {
@@ -323,17 +326,10 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
-        roomStatus = 0;
     }, false);
 
     rmc.onMediaCaptured = function () {
         $('#share-screen').removeAttr('disabled');
-        $('#open-room').attr('disabled', 'disabled');
-        $('#join-room').attr('disabled', 'disabled');
-    };
-
-    secondrmc.onMediaCaptured = function () {
-        $('#share-secondary-screen').removeAttr('disabled');
         $('#open-room').attr('disabled', 'disabled');
         $('#join-room').attr('disabled', 'disabled');
     };
@@ -348,47 +344,11 @@
         });
     });
 
-    // $('#share-secondary-screen').click(function () {
-    //     // http://www.rtcmulticonnection.org/docs/addStream/
-    //     secondrmc.removeStream('screen');
-    //     secondrmc.addStream({
-    //         screen: true,
-    //         oneway: true
-    //     });
-    // });
-
-    $('#share-secondary-screen').click(function() {
-            navigator.getUserMedia({
-                    audio: false,
-                    //screen: true,
-                    video: {
-                        mandatory: {
-                            chromeMediaSource: 'screen',
-                            maxWidth: 1280,
-                            maxHeight: 720
-                        },
-                        optional: []
-                    }
-                }, function(secondrmc) {
-                    document.getElementById('#cotools-secondary-panel').src = window.URL.createObjectURL(stream);;
-                    $('#share-secondary-screen').hide();
-                }, function() {
-                    alert('Error, my friend. Screen stream is not available. Try in latest Chrome with Screen sharing enabled in about:flags.');
-                    }
-            )
-        });
-
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
         rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
-    });
-
-    $('#stop-secondary-share-screen').click(function () {
-        secondrmc.removeStream('screen');
-        $('#secondary-cotools-panel iframe').show();
-        $('#secondary-cotools-panel video').remove();
     });
 
     //chat
@@ -425,7 +385,6 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
-        roomStatus = 0;
         setTimeout("location.href = '../';",2000);
     });
 
@@ -455,14 +414,6 @@
         }
 
     };
-
-    secondrmc.onstream = function (e) {
-        if (e.isScreen) {
-            $('#cotools-secondary-panel iframe').hide();
-            $('#cotools-secondary-panel').remove();
-            document.getElementById('cotools-secondary-panel').appendChild(e.mediaElement);
-        }
-    }
 
     //receiving a message from
     rmc.onmessage = function (event) {
@@ -588,3 +539,7 @@
     }
 
 </script>
+
+
+
+

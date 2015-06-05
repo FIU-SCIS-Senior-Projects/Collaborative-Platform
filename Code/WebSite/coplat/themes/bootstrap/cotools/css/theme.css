@@ -150,36 +150,19 @@ Tool box
 
 #cotools-panel {
     margin-bottom: 20px;
-    height: 70vh;
-    min-height: 25em;
-    max-height: 35em;
+    height: 600px;
     width: 100%;
     border: 2px solid #18536b;
-    float: left;
 }
 
 #cotools-container {
 
 }
 
-#secondary-cotools-panel {
-    margin-bottom: 20px;
-    height: 70vh;
-    min-height: 25em;
-    max-height: 35em;
-    width: 100%;
-    border: 2px solid #18536b;
-    float: left;
-}
-
-#secondary-cotools-container {
-
-}
 /*
     Trello Container
 */
-
-/*#trello-logo {
+#trello-logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -212,11 +195,12 @@ Tool box
     margin: 0px 0px 16px;
     outline: rgb(255, 255, 255) none 0px;
     padding: 9px 3px;
-}*/
+}
 
 /*
     Chat Room
 */
+
 #chat-container {
     border-radius: 4px;
 }
@@ -225,9 +209,8 @@ Tool box
     border: solid slategray 1px;
     padding: 10px 15px;
     background-color: #f2f2f2;
-    height: 15em;
+    height: 250px;
     overflow-y: auto;
-    border-radius: 4px;
 }
 
 p.msg {
@@ -242,13 +225,12 @@ p.msg {
 
 #chat-container > div {
     width: 100%;
-    /*margin: 10px 0px 10px 0px;*/
+    margin: 20px 0px 10px 0px;
 }
 
 #chat-container > textarea {
-    height: 55px;
+    height: 40px;
     width: 80%;
-    margin-top: 10px;
 }
 
 #chat-container textarea:hover {
@@ -258,23 +240,14 @@ p.msg {
 #chat-btn {
     height: 40px;
     width: 18%;
-    font-size: 15px;
-    margin-top: 15px;
 }
 
 /*
     video container
 */
-/*.row-fluid{
-    white-space: nowrap;
-}
-.row-fluid .col-lg-3 {
-    display: inline-block;
-}*/
 
 #video-container {
-    height: 100%;
-    overflow: auto;
+
 }
 
 #video-container video, #video-container-md video {
@@ -395,11 +368,6 @@ and (orientation: portrait) {
 }
 
 #cotools-panel video {
-    width: 100%;
-    height: auto;
-}
-
-#secondary-cotools-panel video {
     width: 100%;
     height: auto;
 }
