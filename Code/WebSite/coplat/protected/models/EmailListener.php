@@ -70,7 +70,9 @@ function emailListener()
 
 function detectOOOmessage($subjectline, $body, $email, $dbconnect)
 {
-
+    echo $subjectline."\n";
+    echo $body."\n";
+    echo $email."\n";
     if (stristr($subjectline, "Auto") || stristr($subjectline, "out of office")) {
         if (stristr($body, "out of office")) {
             $isAwayAlready = $dbconnect->query("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email LIKE '$email'");
