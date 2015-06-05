@@ -112,7 +112,7 @@ function setAsAway($user_Id)
     while ($aticket = $ftickets->fetch_assoc()) {
         //reassign the tickets
         if (!is_null($aticket["subdomain_id"])) {
-            $sql = "SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . "AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ";
+            $sql = "SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ";
             //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . "AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
         } else {
