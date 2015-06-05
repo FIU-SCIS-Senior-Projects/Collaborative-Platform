@@ -48,7 +48,7 @@ function emailListener()
                 if ($message == "") {
                     $message = imap_fetchbody($connection, $email_number, 1);
                 }
-                $emailaddress = substr($header->senderaddress, stripos($header->senderaddress, "<")+1, stripos($header->senderaddress, ">")- (stripos($header->senderaddress, ">")+2));
+                $emailaddress = substr($header->senderaddress, stripos($header->senderaddress, "<")+1, stripos($header->senderaddress, ">")- (stripos($header->senderaddress, ">")+1));
                 if (!detectOOOmessage($header->subject, $message, $emailaddress, $dbConn)) {
                     detectB00message($header->subject, $emailaddress, $dbConn);
                 }
