@@ -252,10 +252,6 @@
 
 
 <script>
-    var roomStatus = 0;
-</script>
-
-<script>
     // https://github.com/muaz-khan/RTCMultiConnection
     mandatory: {chromeMediaSource: 'screen'};
     mandatory: {chromeMediaSource: 'desktop'};
@@ -276,6 +272,7 @@
         data: true
     };
 
+    var roomStatus = 0;
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
@@ -287,7 +284,7 @@
         if(roomStatus == 1) {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
-            secondrmc.connect();
+            //secondrmc.connect();
             document.getElementById("on-off-video").style.color= 'red';
         }
     });
@@ -326,6 +323,7 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
+        roomStatus = 0;
     }, false);
 
     rmc.onMediaCaptured = function () {
