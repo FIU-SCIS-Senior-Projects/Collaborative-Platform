@@ -181,13 +181,13 @@
         </div>
         <div class="col-md-10 col-lg-10">
 
-            <div id="cotools-container" class="col-md-5 col-lg-5">
+            <div id="cotools-container" class="col-md-6 col-lg-6">
                 <div id="cotools-panel">
 
                 </div>
             </div>
 
-            <div id="cotools-container" class="col-md-5 col-lg-5">
+            <div id="cotools-container" class="col-md-6 col-lg-6">
                 <div id="secondary-cotools-panel">
 
                 </div>
