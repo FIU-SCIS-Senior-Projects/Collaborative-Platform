@@ -120,7 +120,12 @@ function setAsAway($user_Id)
             //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
         }
+        echo $sql;
         $possibleMentors = $dbconnect->query($sql);
+        if ($possibleMentors->num_rows<0)
+        {
+            echo"no result";
+        }
         while ($aMentor = $possibleMentors->fetch_assoc()) {
             $count1 = $dbconnect->query("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id = " . $aMentor["user_id"]);
             $adomainMentor1 = $dbconnect->query("SELECT * FROM domain_mentor WHERE user_id = " . $aMentor["user_id"]);
