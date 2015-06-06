@@ -259,18 +259,23 @@
         data: true
     };
 
-
+    var room_status = 0; //room closed
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
         rmc.streams.mute({video : true});
+        room_status = 1; //room opened
         document.getElementById("on-off-video").style.color= 'red';
     });
+
     $('#join-room').click(function () {
-        // http://www.rtcmulticonnection.org/docs/connect/
-        rmc.connect();
-        rmc.streams.mute({video: true});
-        document.getElementById("on-off-video").style.color= 'red';
+        if(room_status == 1) {
+            // http://www.rtcmulticonnection.org/docs/connect/
+            rmc.connect();
+            rmc.streams.mute({video: true});
+            document.getElementById("on-off-video").style.color= 'red';
+        }
+        console.log("Waiting for meeting organizer");
     });
 
     var video_status = 0;
@@ -298,25 +303,6 @@
     rmc.onunmute = function(e) {
        e.mediaElement.removeAttribute('poster');
     };
-    // $('#on-off-video').click(function () {
-    //     // http://www.rtcmulticonnection.org/docs/mute/
-    //     if(video_status == 0) {
-    //         rmc.mute({
-    //             audio: true,
-    //             video: true
-    //         });
-    //         document.getElementById("on-off-video").style.color= 'red';
-    //         video_status = 1;
-    //     } else if (video_status == 1) {
-    //         rmc.mute({
-    //             audio: true,
-    //             video: false
-    //         });
-    //         document.getElementById("on-off-video").style.color= 'gray';
-    //         video_status = 0;
-    //     }
-    // });
-
 
     // display a notification box
     window.addEventListener('beforeunload', function () {
@@ -355,6 +341,7 @@
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
         document.getElementById('input-text-chat').disabled = false;
+        room_status = 1;
     };
 
     document.getElementById('input-text-chat').onkeyup = function (e) {
