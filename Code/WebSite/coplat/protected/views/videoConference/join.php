@@ -475,6 +475,7 @@
 
 
     function getCookie() {
+        setCookie(room_status);
         var cname = "set-room-status=";
         console.log("document . cookie has: " + document.cookie);
         var ca = document.cookie.split(';');
