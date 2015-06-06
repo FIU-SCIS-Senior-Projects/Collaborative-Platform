@@ -468,6 +468,30 @@
         $('#cotools-panel iframe').hide();
     });
 
+    function setCookie(value) {
+        document.cookie = "set-room-status=" + value + ";
+        return true;
+    }
+
+
+    function getCookie() {
+        var cname = "set-room-status=";
+        var ca = document.cookie.split(';');
+        console.log("initial value of ca: " + ca);
+        for (var i=0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            console.log("out of loop");
+            console.log("value of c: " + c);
+            if (c.indexOf(cname) == 0) {
+                console.log("success");
+                return c.substring(cname.length, c.length);
+            }
+        }
+        console.log("returning null");
+        return null;
+    }
+
 
 </script>
 
@@ -528,31 +552,6 @@
     function closeModal(){
         $('#lean_overlay').css('display', 'none');
         $('#invite').css('display', 'none');
-    }
-
-
-    function setCookie(value) {
-        document.cookie = "set-room-status=" + value + ";
-        return true;
-    }
-
-
-    function getCookie() {
-        var cname = "set-room-status=";
-        var ca = document.cookie.split(';');
-        console.log("initial value of ca: " + ca);
-        for (var i=0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1);
-            console.log("out of loop");
-            console.log("value of c: " + c);
-            if (c.indexOf(cname) == 0) {
-                console.log("success");
-                return c.substring(cname.length, c.length);
-            }
-        }
-        console.log("returning null");
-        return null;
     }
 </script>
 
