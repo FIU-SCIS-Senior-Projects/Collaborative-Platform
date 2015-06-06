@@ -469,7 +469,7 @@
     });
 
     function setCookie(value) {
-        document.cookie = "set-room-status=" + value +", ";
+        document.cookie = "set-room-status=" + value +"; ";
         console.log(document.cookie);
     }
 
@@ -477,7 +477,7 @@
     function getCookie() {
         var cname = "set-room-status=";
         console.log("document . cookie has: " + document.cookie);
-        var ca = document.cookie.split(',');
+        var ca = document.cookie.split(';');
         console.log("initial value of ca: " );
         for (var i=0; i < ca.length; i++) {
             var c = ca[i];
