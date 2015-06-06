@@ -278,6 +278,7 @@
             document.getElementById("on-off-video").style.color= 'red';
         }
         console.log("Waiting for meeting organizer");
+        console.log("Status = " + status + "\nRoom_status = " + room_status);
     });
 
     var video_status = 0;
@@ -344,6 +345,8 @@
         //alert('Text chat has been opened between you and ' + event.userid);
         document.getElementById('input-text-chat').disabled = false;
         /*$room_status = 1;*/
+        room_status = 1; //room opened
+        setCookie(room_status);
     };
 
     document.getElementById('input-text-chat').onkeyup = function (e) {
