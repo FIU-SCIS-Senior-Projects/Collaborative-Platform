@@ -262,9 +262,9 @@
     var room_status = 0; //room closed
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
+        room_status = 1; //room opened
         rmc.open();
         rmc.streams.mute({video : true});
-        room_status = 1; //room opened
         document.getElementById("on-off-video").style.color= 'red';
     });
 
