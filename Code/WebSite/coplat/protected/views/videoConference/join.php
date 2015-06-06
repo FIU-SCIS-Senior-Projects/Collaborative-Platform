@@ -259,17 +259,19 @@
         data: true
     };
 
-    $room_status = 0; //room closed
+    var room_status = 0; //room closed
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        $room_status = 1; //room opened
+        room_status = 1; //room opened
+        setCookie(room_status);
         rmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
 
     $('#join-room').click(function () {
-        if($room_status == 1) {
+        var status = getCookie();
+        if(status == 1 || room_status ==1) {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
             rmc.streams.mute({video: true});
@@ -341,7 +343,7 @@
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
         document.getElementById('input-text-chat').disabled = false;
-        $room_status = 1;
+        /*$room_status = 1;*/
     };
 
     document.getElementById('input-text-chat').onkeyup = function (e) {
@@ -525,8 +527,26 @@
         $('#invite').css('display', 'none');
     }
 
-</script>
 
+    function setCookie(value) {
+        document.cookie = "set-room-status=" + value + "; path=/";
+        return true;
+    }
+
+
+    function getCookie() {
+        var cname = "set-room-status=";
+        var ca = document.cookie.split(';');
+        for (var i=0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(cname) == 0) {
+                return c.substring(cname.length, c.length);
+            }
+        }
+        return null;
+    }
+</script>
 
 
 
