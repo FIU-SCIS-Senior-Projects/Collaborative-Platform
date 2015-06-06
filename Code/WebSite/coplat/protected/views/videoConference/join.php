@@ -259,17 +259,17 @@
         data: true
     };
 
-    var room_status = 0; //room closed
+    $room_status = 0; //room closed
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        room_status = 1; //room opened
+        $room_status = 1; //room opened
         rmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
 
     $('#join-room').click(function () {
-        if(room_status == 1) {
+        if($room_status == 1) {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
             rmc.streams.mute({video: true});
@@ -341,7 +341,7 @@
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
         document.getElementById('input-text-chat').disabled = false;
-        room_status = 1;
+        $room_status = 1;
     };
 
     document.getElementById('input-text-chat').onkeyup = function (e) {
