@@ -532,7 +532,7 @@
 
 
     function setCookie(value) {
-        document.cookie = "set-room-status=" + value + "; path=/";
+        document.cookie = "set-room-status=" + value + ";
         return true;
     }
 
@@ -543,7 +543,7 @@
         console.log("initial value of ca: " + ca);
         for (var i=0; i < ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            while (c.charAt(0)==' ') c = c.substring(1);
             console.log("out of loop");
             console.log("value of c: " + c);
             if (c.indexOf(cname) == 0) {
