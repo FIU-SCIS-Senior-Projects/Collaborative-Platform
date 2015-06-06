@@ -533,6 +533,7 @@
 
     function setCookie(value) {
         document.cookie = "set-room-status=" + value + "; path=/";
+        console.log("set-room-status=" + value + "; path=/");
         return true;
     }
 
