@@ -544,6 +544,7 @@
             var c = ca[i];
             while (c.charAt(0)==' ') c = c.substring(1,c.length);
             console.log("out of loop");
+            console.log("value of c: " + c);
             if (c.indexOf(cname) == 0) {
                 console.log("success");
                 return c.substring(cname.length, c.length);
