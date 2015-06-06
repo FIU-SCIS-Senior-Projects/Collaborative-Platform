@@ -469,7 +469,7 @@
     });
 
     function setCookie(value) {
-        document.cookie = "set-room-status=" + value + ";
+        document.cookie = "set-room-status=" + value +";";
         return true;
     }
 
