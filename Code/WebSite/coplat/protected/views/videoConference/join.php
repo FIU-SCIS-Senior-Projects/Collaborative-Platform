@@ -533,7 +533,6 @@
 
     function setCookie(value) {
         document.cookie = "set-room-status=" + value + "; path=/";
-        console.log("set-room-status=" + value + "; path=/");
         return true;
     }
 
@@ -544,10 +543,13 @@
         for (var i=0; i < ca.length; i++) {
             var c = ca[i];
             while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            console.log("out of loop");
             if (c.indexOf(cname) == 0) {
+                console.log("success");
                 return c.substring(cname.length, c.length);
             }
         }
+        console.log("returning null");
         return null;
     }
 </script>
