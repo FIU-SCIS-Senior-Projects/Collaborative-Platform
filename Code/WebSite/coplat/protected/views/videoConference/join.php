@@ -274,6 +274,7 @@
 //        server_room_status = '<%=room_status%>';
 //        setCookie(room_status);
 //        console.log(myHidden.value);
+        this.async : true;
         rmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
