@@ -268,7 +268,7 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         room_status = 1; //room opened
-        server_room_status = <%:room_status%>
+        server_room_status = <%:room_status%>;
 //        setCookie(room_status);
             console.log(myHidden.value);
         rmc.open();
