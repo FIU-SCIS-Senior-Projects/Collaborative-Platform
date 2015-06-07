@@ -303,7 +303,7 @@
     $('#join-room').click(function () {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
-            //secrmc.connect();
+            secrmc.connect();
             rmc.streams.mute({video: true});
             document.getElementById("on-off-video").style.color= 'red';
     });
