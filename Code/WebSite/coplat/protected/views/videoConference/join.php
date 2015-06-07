@@ -447,8 +447,8 @@
 
     secrmc.onstream = function (e) {
        if (e.isScreen) {
-            //$('#cotools-panel-2 iframe').hide();
-            //$('#cotools-panel-2 video').remove();
+            $('#cotools-panel-2 iframe').hide();
+            $('#cotools-panel-2 video').remove();
             document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
         }
 
@@ -513,6 +513,11 @@
     $("#show-screens").click(function () {
         $('#cotools-panel video').show();
         $('#cotools-panel iframe').hide();
+    });
+
+    $("#show-screens-2").click(function () {
+        $('#cotools-panel-2 video').show();
+        $('#cotools-panel-2 iframe').hide();
     });
 
 </script>
