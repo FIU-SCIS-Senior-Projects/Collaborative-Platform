@@ -270,17 +270,13 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        $.ajax({
-            type: 'POST',
-            url: "https://cp-dev.cis.fiu.edu/coplat/videoConference/invite",
-            data: invite,
-            success: function() {
-                alert("Success");
-            },
-            error: function() {
-                alert("Error");
-            }
-        });
+        var form = $(this);
+        var method = form.attr('method');
+        var action = form.attr('action');
+        var data = form.serialize();
+        ajaxGeneric(action, method, data, "#message_box");
+        setTimeout(closeModal, 5000);     //wait 5 seconds
+        event.preventDefault();
 
         room_status = 1; //room opened
         document.getElementById("myServerVariable").value = room_status;
