@@ -267,12 +267,13 @@
         videoconference_id: 1111,/*$('#meeting_id').val(),*/
         invetee_id: 3333
     };
+    var _baseUrl = "<?= base_url() ?>";
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         $.ajax({
             type: 'POST',
-            url: $(this).attr('action'),
+            url: _baseUrl + "VideoConference/Invite",
             data: invite,
             success: function() {
                 alert("Success");
