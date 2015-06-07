@@ -213,7 +213,7 @@
 
         </div>
         <form id="invitation-form" class="form-horizontal" method="get" action="../invite">
-            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>">
+            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>" id="meeting_id">
             <div class="invitee_emails">
                 <div class="form-group">
                         <label class="control-label col-md-2" for="invitee-1">Email 1</label>
@@ -261,9 +261,27 @@
     };
 
     var room_status = 0; //room closed
+//    var $invite = $('#invitation-form');
+
+    var invite = {
+        videoconference_id = $('#meeting_id').val(),
+        invetee_id = 0,
+    };
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: invite,
+            success: function() {
+                alert("Success");
+            },
+            error: function() {
+                alert("Error");
+            }
+        });
+
 
         room_status = 1; //room opened
         document.getElementById("myServerVariable").value = room_status;
@@ -271,7 +289,7 @@
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
-    
+
     $('#join-room').click(function () {
         console.log("myServerVariable has the value: " + document.getElementById("myServerVariable").value);
         if(document.getElementById("myServerVariable").value == 1) {
