@@ -270,32 +270,16 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        var form = $(this);
-        var method = form.attr('method');
-        var action = form.attr('action');
-        var data = form.serialize();
-        ajaxGeneric(action, method, data, "#message_box");
-        setTimeout(closeModal, 5000);     //wait 5 seconds
-        event.preventDefault();
-
-        room_status = 1; //room opened
-        document.getElementById("myServerVariable").value = room_status;
         rmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
 
     $('#join-room').click(function () {
-        console.log("myServerVariable has the value: " + document.getElementById("myServerVariable").value);
-        if(document.getElementById("myServerVariable").value == 1) {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
             rmc.streams.mute({video: true});
             document.getElementById("on-off-video").style.color= 'red';
-        } else {
-            console.log("Waiting for meeting organizer");
-        }
-
     });
 
     var video_status = 0;
