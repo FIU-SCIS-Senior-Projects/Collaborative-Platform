@@ -264,8 +264,8 @@
 //    var $invite = $('#invitation-form');
 
     var invite = {
-        videoconference_id = $('#meeting_id').val(),
-        invetee_id = 0,
+        videoconference_id: $('#meeting_id').val(),
+        invetee_id: 0,
     };
 
     $('#open-room').click(function () {
@@ -281,7 +281,6 @@
                 alert("Error");
             }
         });
-
 
         room_status = 1; //room opened
         document.getElementById("myServerVariable").value = room_status;
