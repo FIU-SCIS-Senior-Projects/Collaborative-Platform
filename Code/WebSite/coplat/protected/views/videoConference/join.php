@@ -114,6 +114,7 @@
 
     <!-- Single button -->
     <div class="btn-group">
+        <input type="hidden" id="myServerVariable" runat="server" />
         <button type="button" title="Whiteboard actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                 aria-expanded="false">
             <i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard <span class="caret"></span>
@@ -260,25 +261,34 @@
     };
 
     var room_status = 0; //room closed
+    var server_room_status = <%=room_status%>;
+    var myHidden = document.getElementById("<%=myServerVariable%>");
+    myHidden.value = server_room_status;
+
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         room_status = 1; //room opened
-        setCookie(room_status);
+        server_room_status = <%=room_status%>
+//        setCookie(room_status);
+            console.log(myHidden.value);
         rmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
 
     $('#join-room').click(function () {
-        var status = getCookie();
-        if(status == 1 || room_status ==1) {
+        myHidden = document.getElementById("<%=myServerVariable%>");
+
+//        var status = getCookie();
+        if(myHidden.value == 1 || room_status ==1) {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
             rmc.streams.mute({video: true});
             document.getElementById("on-off-video").style.color= 'red';
         }
         console.log("Waiting for meeting organizer");
-        console.log("Status = " + status + "\nRoom_status = " + room_status);
+//        console.log("Status = " + status + "\nRoom_status = " + room_status);
+        console.log(myHidden.value);
     });
 
     var video_status = 0;
