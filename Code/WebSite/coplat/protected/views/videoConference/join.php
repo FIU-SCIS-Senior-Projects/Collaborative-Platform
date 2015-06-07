@@ -264,8 +264,8 @@
 //    var $invite = $('#invitation-form');
 
     var invite = {
-        videoconference_id: $('#meeting_id').val(),
-        invetee_id: 0,
+        videoconference_id: 1111,/*$('#meeting_id').val(),*/
+        invetee_id: 3333
     };
 
     $('#open-room').click(function () {
