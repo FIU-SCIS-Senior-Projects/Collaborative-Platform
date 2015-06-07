@@ -272,8 +272,8 @@
     };
 
     secrmc.session = {
-        video: false,
-        audio: false,
+        video: true,
+        audio: true,
         data: true
     };
 
