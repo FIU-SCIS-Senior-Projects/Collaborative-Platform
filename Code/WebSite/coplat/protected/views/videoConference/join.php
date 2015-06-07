@@ -272,7 +272,7 @@
         // http://www.rtcmulticonnection.org/docs/open/
         $.ajax({
             type: 'POST',
-            url: "https://cp-dev.cis.fiu.edu/coplat/index.php/videoConference/invite",
+            url: "https://cp-dev.cis.fiu.edu/coplat/videoConference/invite",
             data: invite,
             success: function() {
                 alert("Success");
