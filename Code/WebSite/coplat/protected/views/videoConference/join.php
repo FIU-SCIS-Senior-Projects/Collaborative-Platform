@@ -213,7 +213,7 @@
 
         </div>
         <form id="invitation-form" class="form-horizontal" method="get" action="../invite">
-            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>" id="meeting_id">
+            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>" id="meetingID">
             <div class="invitee_emails">
                 <div class="form-group">
                         <label class="control-label col-md-2" for="invitee-1">Email 1</label>
@@ -260,15 +260,15 @@
         data: true
     };
 
-    var room_status = 0; //room closed
-//    var $invite = $('#invitation-form');
-
-    var invite = {
-        videoconference_id: 1111,/*$('#meeting_id').val(),*/
-        invetee_id: 3333
-    };
-
     $('#open-room').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: "../invite",
+            data: {
+                videoconference_id: $('#meetingID').val(),
+                invitee_id: 1111
+            }
+        });
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
         rmc.streams.mute({video : true});
@@ -345,9 +345,6 @@
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
         document.getElementById('input-text-chat').disabled = false;
-        /*$room_status = 1;*/
-        room_status = 1; //room opened
-        setCookie(room_status);
     };
 
     document.getElementById('input-text-chat').onkeyup = function (e) {
@@ -468,33 +465,6 @@
         $('#cotools-panel video').show();
         $('#cotools-panel iframe').hide();
     });
-
-    function setCookie(value) {
-        document.cookie = "set-room-status=" + value +"; ";
-        console.log(document.cookie);
-    }
-
-
-    function getCookie() {
-        setCookie(room_status);
-        var cname = "set-room-status=";
-        console.log("document . cookie has: " + document.cookie);
-        var ca = document.cookie.split(';');
-        console.log("initial value of ca: " );
-        for (var i=0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1);
-            console.log("out of loop");
-            console.log("value of c: " + c);
-            if (c.indexOf(cname) == 0) {
-                console.log("success");
-                return c.substring(cname.length, c.length);
-            }
-        }
-        console.log("returning null");
-        return null;
-    }
-
 
 </script>
 
