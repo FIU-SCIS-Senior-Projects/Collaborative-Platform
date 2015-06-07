@@ -278,9 +278,9 @@
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
-
+    var test = document.getElementById("myServerVariable").value;
     $('#join-room').click(function () {
-        console.log(document.getElementById("myServerVariable").value);
+        console.log("server variable = " + document.getElementById("myServerVariable").value);
 //        myHidden = document.getElementById("<%=myServerVariable%>");
 //        var status = getCookie();
         if(document.getElementById("myServerVariable").value == 1 || room_status ==1) {
