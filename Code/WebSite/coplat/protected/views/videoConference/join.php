@@ -267,6 +267,12 @@
             data: {
                 videoconference_id: $('#meetingID').val(),
                 invitee_id: 1111
+            },
+            success: function() {
+                alert("success!");
+            },
+            error: function() {
+                alert("fail");
             }
         });
         // http://www.rtcmulticonnection.org/docs/open/
