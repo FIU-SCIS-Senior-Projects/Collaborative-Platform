@@ -159,6 +159,17 @@ Tool box
 
 }
 
+#cotools-panel-2 {
+    margin-bottom: 20px;
+    height: 600px;
+    width: 100%;
+    border: 2px solid #18536b;
+}
+
+#cotools-container-2 {
+
+}
+
 /*
     Trello Container
 */
@@ -368,6 +379,11 @@ and (orientation: portrait) {
 }
 
 #cotools-panel video {
+    width: 100%;
+    height: auto;
+}
+
+#cotools-panel-2 video {
     width: 100%;
     height: auto;
 }

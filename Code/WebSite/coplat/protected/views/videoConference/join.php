@@ -149,6 +149,17 @@
                     People</a></li>
         </ul>
     </div>
+    <div class="btn-group">
+        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing-R <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
+            <li><a id='share-screen-2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
+            <li><a id='stop-share-screen-2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
+        </ul>
+    </div>
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
@@ -176,15 +187,14 @@
 
         </div>
 
+        <div id="cotools-container-2" class="col-md-8 col-lg-6">
+            <div id="cotools-panel-2">
+
+            </div>
+
+        </div>
 
         <div class="col-md-2 col-lg-3">
-
-            <!-- <div>
-                <img id="trello-logo" src="http://a1461.phobos.apple.com/us/r30/Purple/v4/ec/df/0c/ecdf0c81-1ab3-978b-b9af-866d232636bc/mzl.wzojsfri.png">
-                <div class="text-center">
-                    <a href="https://trello.com/" target="_blank"><input id="trello-signin" type="button" value="Login to Trello" /></a>
-                </div>
-            </div> -->
 
             <div id="chat-container">
                 <div id="chat-feed">
@@ -252,6 +262,7 @@
     // https://github.com/muaz-khan/RTCMultiConnection
 
     var rmc = new RTCMultiConnection();
+    var secrmc = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -260,24 +271,31 @@
         data: true
     };
 
+    secrmc.session = {
+        video: false,
+        audio: false,
+        data: true
+    };
+
     $('#open-room').click(function () {
-        $.ajax({
-            type: 'POST',
-            url: "../invite",
-            data: {
-                videoconference_id: $('#meetingID').val(),
-                invitee_id: 1111,
-                status: "Accepted"
-            },
-            success: function() {
-                alert("success!");
-            },
-            error: function() {
-                alert("fail");
-            }
-        });
+//        $.ajax({
+//            type: 'POST',
+//            url: "../invite",
+//            data: {
+//                videoconference_id: $('#meetingID').val(),
+//                invitee_id: 1111,
+//                status: "Accepted"
+//            },
+//            success: function() {
+//                alert("success!");
+//            },
+//            error: function() {
+//                alert("fail");
+//            }
+//        });
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
+        secrmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
@@ -285,6 +303,7 @@
     $('#join-room').click(function () {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
+            secrmc.connect();
             rmc.streams.mute({video: true});
             document.getElementById("on-off-video").style.color= 'red';
     });
@@ -323,6 +342,7 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
+        secrmc.leave();
     }, false);
 
     rmc.onMediaCaptured = function () {
@@ -331,8 +351,21 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
+    secrmc.onMediaCaptured = function () {
+        $('#share-screen-2').removeAttr('disabled');
+    };
+
     //screen sharing
     $('#share-screen').click(function () {
+        // http://www.rtcmulticonnection.org/docs/addStream/
+        rmc.removeStream('screen');
+        rmc.addStream({
+            screen: true,
+            oneway: true
+        });
+    });
+
+    $('#share-screen-2').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.removeStream('screen');
         rmc.addStream({
