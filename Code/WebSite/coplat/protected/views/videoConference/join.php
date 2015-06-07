@@ -262,7 +262,7 @@
 
     $('#open-room').click(function () {
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: "../invite",
             data: {
                 videoconference_id: $('#meetingID').val(),
