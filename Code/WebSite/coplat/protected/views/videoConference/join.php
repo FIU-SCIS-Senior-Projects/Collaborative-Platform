@@ -295,7 +295,7 @@
 //        });
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        secrmc.open();
+        //secrmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
@@ -441,6 +441,15 @@
             $('#cotools-panel iframe').hide();
             $('#cotools-panel video').remove();
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
+        }
+
+    };
+
+    secrmc.onstream = function (e) {
+       if (e.isScreen) {
+            //$('#cotools-panel-2 iframe').hide();
+            //$('#cotools-panel-2 video').remove();
+            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
         }
 
     };
