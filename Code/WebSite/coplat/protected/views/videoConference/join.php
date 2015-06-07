@@ -283,7 +283,7 @@
         console.log("server variable = " + document.getElementById("myServerVariable").value);
 //        myHidden = document.getElementById("<%=myServerVariable%>");
 //        var status = getCookie();
-        if(document.getElementById("myServerVariable").value == 1 || room_status ==1) {
+        if(document.getElementById("myServerVariable").value == 1 || room_status == 1 || test == 1) {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
             rmc.streams.mute({video: true});
