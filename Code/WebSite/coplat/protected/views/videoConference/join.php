@@ -261,26 +261,28 @@
     };
 
     var room_status = 0; //room closed
-    var server_room_status = '<%=room_status%>';
-    var myHidden = document.getElementById("<%=myServerVariable%>");
-    myHidden.value = server_room_status;
+
+//    var server_room_status = '<%=room_status%>';
+//    var myHidden = document.getElementById("<%=myServerVariable%>");
+//    myHidden.value = server_room_status;
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         room_status = 1; //room opened
-        server_room_status = '<%=room_status%>';
+        document.getElementById("myServerVariable").value = room_status;
+        console.log("server variable = " + document.getElementById("myServerVariable").value);
+//        server_room_status = '<%=room_status%>';
 //        setCookie(room_status);
-            console.log(myHidden.value);
+//        console.log(myHidden.value);
         rmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
 
     $('#join-room').click(function () {
-        myHidden = document.getElementById("<%=myServerVariable%>");
-
+//        myHidden = document.getElementById("<%=myServerVariable%>");
 //        var status = getCookie();
-        if(myHidden.value == 1 || room_status ==1) {
+        if(document.getElementById("myServerVariable").value == 1 || room_status ==1) {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
             rmc.streams.mute({video: true});
@@ -288,7 +290,7 @@
         }
         console.log("Waiting for meeting organizer");
 //        console.log("Status = " + status + "\nRoom_status = " + room_status);
-        console.log(myHidden.value);
+//        console.log(myHidden.value);
     });
 
     var video_status = 0;
