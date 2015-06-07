@@ -266,7 +266,8 @@
             url: "../invite",
             data: {
                 videoconference_id: $('#meetingID').val(),
-                invitee_id: 1111
+                invitee_id: 1111,
+                status: "Accepted"
             },
             success: function() {
                 alert("success!");
