@@ -271,7 +271,7 @@
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
-
+    
     $('#join-room').click(function () {
         console.log("myServerVariable has the value: " + document.getElementById("myServerVariable").value);
         if(document.getElementById("myServerVariable").value == 1) {
