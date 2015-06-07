@@ -280,6 +280,7 @@
     });
 
     $('#join-room').click(function () {
+        console.log(document.getElementById("myServerVariable").value);
 //        myHidden = document.getElementById("<%=myServerVariable%>");
 //        var status = getCookie();
         if(document.getElementById("myServerVariable").value == 1 || room_status ==1) {
@@ -287,8 +288,9 @@
             rmc.connect();
             rmc.streams.mute({video: true});
             document.getElementById("on-off-video").style.color= 'red';
+        } else {
+            console.log("Waiting for meeting organizer");
         }
-        console.log("Waiting for meeting organizer");
 //        console.log("Status = " + status + "\nRoom_status = " + room_status);
 //        console.log(myHidden.value);
     });
