@@ -272,7 +272,7 @@
     };
 
     secrmc.session = {
-        video: true,
+        video: false,
         audio: true,
         data: true
     };
@@ -295,7 +295,7 @@
 //        });
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        //secrmc.open();
+        secrmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
@@ -303,7 +303,7 @@
     $('#join-room').click(function () {
             // http://www.rtcmulticonnection.org/docs/connect/
             rmc.connect();
-            secrmc.connect();
+            //secrmc.connect();
             rmc.streams.mute({video: true});
             document.getElementById("on-off-video").style.color= 'red';
     });
@@ -381,6 +381,12 @@
         $('#cotools-panel video').remove();
     });
 
+    $('#stop-share-screen-2').click(function () {
+        secrmc.removeStream('screen');
+        $('#cotools-panel-2 iframe').show();
+        $('#cotools-panel-2 video').remove();
+    });
+
     //chat
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
@@ -415,6 +421,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
+        secrmc.leave();
         setTimeout("location.href = '../';",2000);
     });
 
