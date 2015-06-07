@@ -434,6 +434,13 @@
             // alert("the stream is remote");
         }
         if (e.isVideo) {
+            navigator.getMedia = (navigator.getUserMedia);
+            navigator.getMedia({video: true}, function() {
+                alert("user has a webcam");
+            }, function() {
+                alert("user doesn't");
+            });
+
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
