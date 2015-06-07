@@ -367,8 +367,8 @@
 
     $('#share-screen-2').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
-        rmc.removeStream('screen');
-        rmc.addStream({
+        secrmc.removeStream('screen');
+        secrmc.addStream({
             screen: true,
             oneway: true
         });
