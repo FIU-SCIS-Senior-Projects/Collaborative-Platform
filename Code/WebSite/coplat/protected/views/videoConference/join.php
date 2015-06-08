@@ -307,14 +307,16 @@
 
     $('#join-room').click(function () {
         rmc.onCustomMessage = function(message) {
-          //if(message.roomOpened &&)
-            alert("room is = " + message.roomOpened + "\nConference ID = " + message.roomID);
+          if(message.roomOpened && message.roomID == $('#meetingID').val()) {
+              rmc.connect();
+              //secrmc.connect();
+              rmc.streams.mute({video: true});
+              document.getElementById("on-off-video").style.color= 'red';
+          }
+            //alert("room is = " + message.roomOpened + "\nConference ID = " + message.roomID);
         };
             // http://www.rtcmulticonnection.org/docs/connect/
-            rmc.connect();
-            //secrmc.connect();
-            rmc.streams.mute({video: true});
-            document.getElementById("on-off-video").style.color= 'red';
+
     });
 
     var video_status = 0;
