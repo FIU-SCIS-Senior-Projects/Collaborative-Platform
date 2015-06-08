@@ -294,11 +294,12 @@
 //            }
 //        });
         // http://www.rtcmulticonnection.org/docs/open/
-        rmc.open();
+
         rmc.sendCustomMessage({
             roomOpened: true,
             roomID: $('#meetingID').val()
         });
+        rmc.open();
 
         //secrmc.open();
         rmc.streams.mute({video : true});
@@ -308,11 +309,11 @@
     $('#join-room').click(function () {
         rmc.onCustomMessage = function(message) {
             alert("room is = " + message.roomOpened + "\nConference ID = " + message.roomID);
-          if(message.roomOpened && message.roomID == $('#meetingID').val()) {
-              rmc.connect();
-              //secrmc.connect();
-              rmc.streams.mute({video: true});
-          }
+//          if(message.roomOpened && message.roomID == $('#meetingID').val()) {
+//              rmc.connect();
+//              //secrmc.connect();
+//              rmc.streams.mute({video: true});
+//          }
             //alert("room is = " + message.roomOpened + "\nConference ID = " + message.roomID);
         };
         document.getElementById("on-off-video").style.color= 'red';
