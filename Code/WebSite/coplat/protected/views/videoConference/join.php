@@ -187,12 +187,12 @@
 
         </div>
 
-        <div id="cotools-container-2" class="col-md-8 col-lg-6">
-            <div id="cotools-panel-2">
-
-            </div>
-
-        </div>
+<!--        <div id="cotools-container-2" class="col-md-8 col-lg-6">-->
+<!--            <div id="cotools-panel-2">-->
+<!---->
+<!--            </div>-->
+<!---->
+<!--        </div>-->
 
         <div class="col-md-2 col-lg-3">
 
@@ -262,7 +262,7 @@
     // https://github.com/muaz-khan/RTCMultiConnection
 
     var rmc = new RTCMultiConnection();
-    var secrmc = new RTCMultiConnection();
+    //var secrmc = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -271,11 +271,11 @@
         data: true
     };
 
-    secrmc.session = {
-        video: false,
-        audio: true,
-        data: true
-    };
+//    secrmc.session = {
+//        video: false,
+//        audio: true,
+//        data: true
+//    };
 
     $('#open-room').click(function () {
 //        $.ajax({
@@ -295,7 +295,7 @@
 //        });
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        secrmc.open();
+        //secrmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
@@ -342,7 +342,7 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
-        secrmc.leave();
+        //secrmc.leave();
     }, false);
 
     rmc.onMediaCaptured = function () {
@@ -351,9 +351,9 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
-    secrmc.onMediaCaptured = function () {
-        $('#share-screen-2').removeAttr('disabled');
-    };
+//    secrmc.onMediaCaptured = function () {
+//        $('#share-screen-2').removeAttr('disabled');
+//    };
 
     //screen sharing
     $('#share-screen').click(function () {
@@ -365,14 +365,14 @@
         });
     });
 
-    $('#share-screen-2').click(function () {
-        // http://www.rtcmulticonnection.org/docs/addStream/
-        secrmc.removeStream('screen');
-        secrmc.addStream({
-            screen: true,
-            oneway: true
-        });
-    });
+//    $('#share-screen-2').click(function () {
+//        // http://www.rtcmulticonnection.org/docs/addStream/
+//        secrmc.removeStream('screen');
+//        secrmc.addStream({
+//            screen: true,
+//            oneway: true
+//        });
+//    });
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
@@ -381,11 +381,11 @@
         $('#cotools-panel video').remove();
     });
 
-    $('#stop-share-screen-2').click(function () {
-        secrmc.removeStream('screen');
-        $('#cotools-panel-2 iframe').show();
-        $('#cotools-panel-2 video').remove();
-    });
+//    $('#stop-share-screen-2').click(function () {
+//        secrmc.removeStream('screen');
+//        $('#cotools-panel-2 iframe').show();
+//        $('#cotools-panel-2 video').remove();
+//    });
 
     //chat
     rmc.onopen = function (event) {
@@ -421,7 +421,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
-        secrmc.leave();
+        //secrmc.leave();
         setTimeout("location.href = '../';",2000);
     });
 
@@ -452,14 +452,14 @@
 
     };
 
-    secrmc.onstream = function (e) {
-       if (e.isScreen) {
-            $('#cotools-panel-2 iframe').hide();
-            $('#cotools-panel-2 video').remove();
-            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-        }
-
-    };
+//    secrmc.onstream = function (e) {
+//       if (e.isScreen) {
+//            $('#cotools-panel-2 iframe').hide();
+//            $('#cotools-panel-2 video').remove();
+//            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+//        }
+//
+//    };
 
     //receiving a message from
     rmc.onmessage = function (event) {
@@ -522,10 +522,10 @@
         $('#cotools-panel iframe').hide();
     });
 
-    $("#show-screens-2").click(function () {
-        $('#cotools-panel-2 video').show();
-        $('#cotools-panel-2 iframe').hide();
-    });
+//    $("#show-screens-2").click(function () {
+//        $('#cotools-panel-2 video').show();
+//        $('#cotools-panel-2 iframe').hide();
+//    });
 
 </script>
 
