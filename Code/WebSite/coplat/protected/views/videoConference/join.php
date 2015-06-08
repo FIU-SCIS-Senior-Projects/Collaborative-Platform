@@ -299,8 +299,8 @@
         rmc.sendCustomMessage({
             roomOpened: true,
             roomID: $('#meetingID').val()
-        });
-        console.log("sent room = " + message.roomOpened + "\nConference ID = " + message.roomID);
+            console.log("sent room = true" + "\nConference ID = " + ('#meetingID').val());
+    });
 
         //secrmc.open();
         rmc.streams.mute({video : true});
