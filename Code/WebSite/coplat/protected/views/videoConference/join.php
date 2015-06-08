@@ -312,11 +312,12 @@
           if(message.roomOpened && message.roomID == $('#meetingID').val()) {
                 console.log("JOINING!!!");
               document.getElementById("on-off-video").style.color= 'red';
-              rmc.connect();
 
           }
             alert("room is = " + message.roomOpened + "\nConference ID = " + message.roomID);
         };
+        rmc.connect();
+
         //secrmc.connect();
 
         // http://www.rtcmulticonnection.org/docs/connect/
