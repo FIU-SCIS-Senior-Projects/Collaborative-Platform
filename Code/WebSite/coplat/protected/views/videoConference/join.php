@@ -312,11 +312,12 @@
               rmc.connect();
               //secrmc.connect();
               rmc.streams.mute({video: true});
-              document.getElementById("on-off-video").style.color= 'red';
           }
             //alert("room is = " + message.roomOpened + "\nConference ID = " + message.roomID);
         };
-            // http://www.rtcmulticonnection.org/docs/connect/
+        document.getElementById("on-off-video").style.color= 'red';
+
+        // http://www.rtcmulticonnection.org/docs/connect/
 
     });
 
