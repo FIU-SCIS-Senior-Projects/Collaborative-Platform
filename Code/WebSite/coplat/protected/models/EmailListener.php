@@ -36,7 +36,6 @@ function emailListener()
     //echo $output;//develop thread/loop
     $messagestatus = "UNSEEN";
     $countTo24 = 0;
-    while (true) {
         echo "in check loop";
         $emails = imap_search($connection, $messagestatus);
         if ($emails) {
@@ -55,18 +54,12 @@ function emailListener()
                 imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
             }
         }
-        sleep(600); //do check every 10 minutes
-        $countTo24 = $countTo24 + 1;
-        if ($countTo24 >= 144) {
-            $countTo24 = 0;
-            $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY)");//delete mentors that have been away for more than 24 hours from the away list
-            //$command = Yii::app()->db->createCommand();
-            //   $command->delete('away_mentor', 'tiStamp <= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )');//this might bug the hell out deletes mentors on the away list that were put on over 24 hours ago
+
+        $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");//delete mentors that have been away for more than 24 hours from the away list
+        while (mysql_affected_rows()>0)
+        {
+            $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");
         }
-        if (!imap_ping($connection)) {
-            $connection = establishConnection();
-        }
-    }
 }
 
 function detectOOOmessage($subjectline, $body, $email)
@@ -124,26 +117,29 @@ function setAsAway($user_Id)
         $possibleMentors = $dbconnect->query($sql);
         if ($possibleMentors->num_rows<0)
         {
-            echo"no result";
+            $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//no possible mentor found assign to admin for manual assign.
         }
-        while ($aMentor = $possibleMentors->fetch_assoc()) {
-            $count1 = $dbconnect->query("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id = " . $aMentor["user_id"]);
-            $adomainMentor1 = $dbconnect->query("SELECT * FROM domain_mentor WHERE user_id = " . $aMentor["user_id"]);
-            $count = $count1 ->fetch_assoc();
-            $adomainMentor = $adomainMentor1->fetch_assoc();
-            if ($adomainMentor) {
-                if ($count['id'] < $adomainMentor["max_tickets"]) {
+        else {
+            while ($aMentor = $possibleMentors->fetch_assoc()) {
+                $count1 = $dbconnect->query("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id = " . $aMentor["user_id"]);
+                $adomainMentor1 = $dbconnect->query("SELECT * FROM domain_mentor WHERE user_id = " . $aMentor["user_id"]);
+                $count = $count1->fetch_assoc();
+                $adomainMentor = $adomainMentor1->fetch_assoc();
+                if ($adomainMentor) {
+                    if ($count['id'] < $adomainMentor["max_tickets"]) {
+                        $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
+                        $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
+                        $mentorb = $mentorb1->fetch_assoc();
+                        sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                        break;
+                    }
+                } else { //not registered as having a max ticket.
                     $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
-                    $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = ". $aMentor["user_id"]);
+                    $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                     $mentorb = $mentorb1->fetch_assoc();
                     sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                    break;
                 }
-            }
-            else{ //not registered as having a max ticket.
-                $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
-                $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = ". $aMentor["user_id"]);
-                $mentorb = $mentorb1->fetch_assoc();
-                sendTicketReassignment($mentorb["email"], $aticket["subject"]);
             }
         }
         $ticketSubs = $ticketSubs . $aticket["subject"] . ", ";
@@ -169,8 +165,8 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
-    $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-    echo "Email sent!<br />";
+    //$a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
+    echo "Email sent 3!<br />";
 }
 function sendTicketReassignment($toEmail, $subjectl)
 {
@@ -182,10 +178,98 @@ function sendTicketReassignment($toEmail, $subjectl)
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
-    $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-    echo "Email sent!<br />";
+  //  $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
+    echo "Email sent 1!<br />";
 }
+function checkPriorityElapseTickets()
+{
+    //ADD IN IF ITS BEEN REASSIGNED >3 TIMES ASSIGN TO ADMIN FOR MANUAL REASSIGN
+    $dbconnect = establishDBConnection();
+    $prio = $dbconnect->query("Select * FROM priority");
+    while ($prios = $prio->fetch_assoc())
+    {
+        switch ($prios["id"])
+        {
+            case 1:
+                $high = $prios["reassignHours"] * -1;
+                break;
+            case 2:
+                $med = $prios["reassignHours"] * -1;
+                break;
+            case 3:
+                $low = $prios["reassignHours"] * -1;
+                break;
+        }
+    }
+    $ticketr = $dbconnect->query("Select * FROM ticket where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5) ");
+    //select all tickets without a ticket event 5 or MAYBE 8 (ask juan) over their respective priorities VERY COMPLICATED SQL query
+    // reassign tickets
+    if($ticketr->num_rows>0) {
+        while ($aticket = $ticketr->fetch_assoc()) {
+            echo "a ticket was found and is going to be reassigned ". $aticket["subject"]."\n";
+            $mentor = $dbconnect->query("Select * from user WHERE id = ".$aticket["assign_user_id"]);
+            $aMentor = $mentor->fetch_assoc();
+            sendTicketCancelOutOfTime($aMentor["email"], $aticket["subject"]);
+            $dbconnect->query("INSERT INTO previous_mentors (user_id, ticket_id) VALUES(".$aMentor["id"] .", ".$aticket["id"]. ")");
+            if (!is_null($aticket["subdomain_id"])) {
+                $sql = "SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select user_id as user_id from previous_mentors where ticket_id = ". $aticket["id"].")";
+                //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . "AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
-emailListener();
+            } else {
+                $sql = "SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select user_id as user_id from previous_mentors where ticket_id = ". $aticket["id"].")";
+                //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
+
+            }
+            //echo $sql;
+            $possibleMentors = $dbconnect->query($sql);
+            if ($possibleMentors->num_rows<=0)
+            {
+              $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//no possible mentor found assign to admin for manual assign.
+            }
+            else {
+                while ($aMentor = $possibleMentors->fetch_assoc()) {
+                    $count1 = $dbconnect->query("SELECT COUNT(id) as `id` FROM ticket WHERE assign_user_id = " . $aMentor["user_id"]);
+                    $adomainMentor1 = $dbconnect->query("SELECT * FROM domain_mentor WHERE user_id = " . $aMentor["user_id"]);
+                    $count = $count1->fetch_assoc();
+                    $adomainMentor = $adomainMentor1->fetch_assoc();
+                    if ($adomainMentor) {
+                        if ($count['id'] < $adomainMentor["max_tickets"]) {
+                            $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
+                            $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
+                            $mentorb = $mentorb1->fetch_assoc();
+                            sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                            break;
+                        }
+                    } else { //not registered as having a max ticket.
+                        $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
+                        $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
+                        $mentorb = $mentorb1->fetch_assoc();
+                        sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                        break;
+                    }
+                }
+            }
+            echo "a went through entire thing ticket should be reassigned\n";
+        }
+    }
+}
+function sendTicketCancelOutOfTime($toEmail, $subjectLine)
+{
+    $subject = "Out of Office Response";
+    $body = "Due to the inactivity on the ticket $subjectLine, the ticket has been reassigned.\n\nThank you for all your help making Collaborative Platform great";
+    $headers = "From: fiucoplat@gmail.com\r\n".
+        "Reply-To: fiucoplat@gmail.com\r\n";
+    $cc = null;
+    $bcc = null;
+    $return_path = "fiucoplat@gmail.com";
+//send the email using IMAP
+   // $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
+    echo "Email sent 2!<br />";
+}
+//need to come up with a table for previous mentors--done
+//WHEN ASSIGNING TICKETS TO MENTORS JOIN WITH TICKET ONLY WITH ID AND ASSIGNED DATE AND SORT BY ASSIGNED DATE. DONE WOO.
+//emailListener();
+checkPriorityElapseTickets();
+
 ?>
 
