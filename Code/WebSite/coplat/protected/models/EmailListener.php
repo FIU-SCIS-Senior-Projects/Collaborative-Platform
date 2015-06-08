@@ -206,7 +206,7 @@ function checkPriorityElapseTickets()
     // reassign tickets
     if($ticketr->num_rows>0) {
         while ($aticket = $ticketr->fetch_assoc()) {
-            echo "a ticket was found and is going to be reassigned";
+            echo "a ticket was found and is going to be reassigned ". $aticket["subject"]."\n";
             $mentor = $dbconnect->query("Select * from user WHERE id = ".$aticket["assign_user_id"]);
             $aMentor = $mentor->fetch_assoc();
             sendTicketCancelOutOfTime($aMentor["email"], $aticket["subject"]);
@@ -249,7 +249,7 @@ function checkPriorityElapseTickets()
                     }
                 }
             }
-            echo "a went through entire thing ticket should be reassigned";
+            echo "a went through entire thing ticket should be reassigned\n";
         }
     }
 }
