@@ -163,8 +163,8 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
-    $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-    echo "Email sent!<br />";
+    //$a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
+    echo "Email sent 3!<br />";
 }
 function sendTicketReassignment($toEmail, $subjectl)
 {
@@ -176,8 +176,8 @@ function sendTicketReassignment($toEmail, $subjectl)
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
-    $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-    echo "Email sent!<br />";
+  //  $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
+    echo "Email sent 1!<br />";
 }
 function checkPriorityElapseTickets()
 {
@@ -259,8 +259,8 @@ function sendTicketCancelOutOfTime($toEmail, $subjectLine)
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
-    $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-    echo "Email sent!<br />";
+   // $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
+    echo "Email sent 2!<br />";
 }
 //need to come up with a table for previous mentors--done
 //WHEN ASSIGNING TICKETS TO MENTORS JOIN WITH TICKET ONLY WITH ID AND ASSIGNED DATE AND SORT BY ASSIGNED DATE. DONE WOO.
