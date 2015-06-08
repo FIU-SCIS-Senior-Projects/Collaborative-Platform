@@ -310,11 +310,8 @@
     $('#join-room').click(function () {
         rmc.onCustomMessage = function(message) {
           if(message.roomOpened && message.roomID == $('#meetingID').val()) {
-                console.log("JOINING!!!");
               document.getElementById("on-off-video").style.color= 'red';
-
           }
-            alert("room is = " + message.roomOpened + "\nConference ID = " + message.roomID);
         };
         rmc.connect();
 
