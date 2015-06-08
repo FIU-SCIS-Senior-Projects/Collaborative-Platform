@@ -36,7 +36,6 @@ function emailListener()
     //echo $output;//develop thread/loop
     $messagestatus = "UNSEEN";
     $countTo24 = 0;
-    while (true) {
         echo "in check loop";
         $emails = imap_search($connection, $messagestatus);
         if ($emails) {
@@ -55,18 +54,12 @@ function emailListener()
                 imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
             }
         }
-        sleep(600); //do check every 10 minutes
-        $countTo24 = $countTo24 + 1;
-        if ($countTo24 >= 144) {
-            $countTo24 = 0;
-            $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY)");//delete mentors that have been away for more than 24 hours from the away list
-            //$command = Yii::app()->db->createCommand();
-            //   $command->delete('away_mentor', 'tiStamp <= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )');//this might bug the hell out deletes mentors on the away list that were put on over 24 hours ago
+
+        $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");//delete mentors that have been away for more than 24 hours from the away list
+        while (mysql_affected_rows()>0)
+        {
+            $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");
         }
-        if (!imap_ping($connection)) {
-            $connection = establishConnection();
-        }
-    }
 }
 
 function detectOOOmessage($subjectline, $body, $email)
@@ -269,6 +262,8 @@ function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 }
 //need to come up with a table for previous mentors--done
 //WHEN ASSIGNING TICKETS TO MENTORS JOIN WITH TICKET ONLY WITH ID AND ASSIGNED DATE AND SORT BY ASSIGNED DATE. DONE WOO.
-emailListener();
+//emailListener();
+checkPriorityElapseTickets();
+
 ?>
 
