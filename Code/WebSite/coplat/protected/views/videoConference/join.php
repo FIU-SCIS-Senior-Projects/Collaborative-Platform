@@ -309,9 +309,9 @@
 
     $('#join-room').click(function () {
         rmc.onCustomMessage = function(message) {
-//          if(message.roomOpened && message.roomID == $('#meetingID').val()) {
-
-//          }
+          if(message.roomOpened && message.roomID == $('#meetingID').val()) {
+                console.log("JOINING!!!");
+          }
             alert("room is = " + message.roomOpened + "\nConference ID = " + message.roomID);
         };
         rmc.connect();
