@@ -131,12 +131,14 @@ function setAsAway($user_Id)
                         $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                         $mentorb = $mentorb1->fetch_assoc();
                         sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                        break;
                     }
                 } else { //not registered as having a max ticket.
                     $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                     $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                     $mentorb = $mentorb1->fetch_assoc();
                     sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                    break;
                 }
             }
         }
@@ -236,12 +238,14 @@ function checkPriorityElapseTickets()
                             $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                             $mentorb = $mentorb1->fetch_assoc();
                             sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                            break;
                         }
                     } else { //not registered as having a max ticket.
                         $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                         $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                         $mentorb = $mentorb1->fetch_assoc();
                         sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                        break;
                     }
                 }
             }
