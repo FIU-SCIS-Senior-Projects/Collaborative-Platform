@@ -436,7 +436,7 @@
     $('#disconnect').click(function () {
         rmc.leave();
         //secrmc.leave();
-        setTimeout("location.href = '../';",2000);
+        setTimeout("location.href = '../';",4000);
     });
 
     //to know the stream type
@@ -498,12 +498,7 @@
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
-        var username = true;
-        //while(username) {
-        for(var i = 0; i<2; i++) {
-            $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
-        }
-        //}
+        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
     };
 
 
