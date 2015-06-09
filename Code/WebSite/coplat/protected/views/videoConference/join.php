@@ -503,7 +503,7 @@
     rmc.onleave = function (e) {
         //document.getElementById($('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, ''))).remove();
         $("uibox-" + e.userid.substring(e.userid.indexOf('(')+1, e.userid.indexOf(')'))).remove();
-        console.log("========== Removing id: " + e.id + "============");
+        console.log("========== Removing id: " + e.userid.substring(e.userid.indexOf('(')+1, e.userid.indexOf(')')) + "============");
 
         //$('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
     };
