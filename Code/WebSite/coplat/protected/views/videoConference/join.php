@@ -149,17 +149,17 @@
                     People</a></li>
         </ul>
     </div>
-<!--    <div class="btn-group">-->
-<!--        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"-->
-<!--                data-toggle="dropdown" aria-expanded="false">-->
-<!--            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing-R <span class="caret"></span>-->
-<!--        </button>-->
-<!--        <ul class="dropdown-menu" role="menu">-->
-<!--            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>-->
-<!--            <li><a id='share-screen-2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>-->
-<!--            <li><a id='stop-share-screen-2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>-->
-<!--        </ul>-->
-<!--    </div>-->
+    <div class="btn-group">
+        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing-R <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
+            <li><a id='share-screen-2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
+            <li><a id='stop-share-screen-2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
+        </ul>
+    </div>
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
@@ -203,6 +203,15 @@
                 <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
                 <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
             </div>
+
+            <div id="cotools-container-2" class="col-md-8 col-lg-6">
+                <div id="cotools-panel-2">
+
+                </div>
+
+            </div>
+
+
 
         </div>
 
@@ -254,6 +263,7 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.leanModal.min.js"></script>
+<script type='text/javascript' src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
 
 
 
@@ -379,14 +389,28 @@
         });
     });
 
-//    $('#share-screen-2').click(function () {
-//        // http://www.rtcmulticonnection.org/docs/addStream/
+    $('#share-screen-2').click(function () {
+        // http://www.rtcmulticonnection.org/docs/addStream/
+        getScreenId(function (error, sourceId, screen_constraints) {
+            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+            // sourceId == null || 'string' || 'firefox'
+
+            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+            navigator.getUserMedia(screen_constraints, function (stream) {
+                document.querySelector('video').src = URL.createObjectURL(stream);
+            }, function (error) {
+                console.error(error);
+            });
+        });
+
+
+
 //        secrmc.removeStream('screen');
 //        secrmc.addStream({
 //            screen: true,
 //            oneway: true
 //        });
-//    });
+    });
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
@@ -544,10 +568,10 @@
         $('#cotools-panel iframe').hide();
     });
 
-//    $("#show-screens-2").click(function () {
-//        $('#cotools-panel-2 video').show();
-//        $('#cotools-panel-2 iframe').hide();
-//    });
+    $("#show-screens-2").click(function () {
+        $('#cotools-panel-2 video').show();
+        $('#cotools-panel-2 iframe').hide();
+    });
 
 </script>
 
