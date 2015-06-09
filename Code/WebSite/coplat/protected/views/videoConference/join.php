@@ -451,7 +451,8 @@
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
-            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            uibox.id = "uibox-" + e.userid;
+//            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
         }
@@ -498,8 +499,9 @@
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
-        document.getElementById($('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, ''))).remove();
+        //document.getElementById($('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, ''))).remove();
         //$('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
+        $("#" + "uibox-" + e.userid.remove();
     };
 
 
