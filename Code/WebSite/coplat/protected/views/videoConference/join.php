@@ -451,8 +451,8 @@
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
-            alert(e.userid);
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            alert(uibox.id);
             //uibox.id = "uibox-"
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
