@@ -435,6 +435,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
+        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
         //secrmc.leave();
         setTimeout("location.href = '../';",2000);
     });
