@@ -89,7 +89,7 @@ function detectB00message($subjectline, $email)
     if (stristr($subjectline, "Back in Office")) {
         $awayment1 = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
         $awayment = $awayment1->fetch_assoc();
-        $dbconnect->query("DELETE FROM away_mentor WHERE userID =" . $awayment["id"] . "limit 1");
+        $dbconnect->query("DELETE FROM away_mentor WHERE userID =" . $awayment["id"] . " limit 1");
 
     }
 }
