@@ -434,7 +434,8 @@
 
     //end of chat
     $('#disconnect').click(function () {
-        rmc.leave();
+        //rmc.leave();
+        rmc.close();
         //secrmc.leave();
         setTimeout("location.href = '../';",2000);
     });
