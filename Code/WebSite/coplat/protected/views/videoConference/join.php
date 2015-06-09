@@ -501,7 +501,7 @@
     rmc.onleave = function (e) {
         //document.getElementById($('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, ''))).remove();
         //$('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
-        $("#" + "uibox-" + e.userid.remove();
+        $("#" + "uibox-" + e.userid.remove());
     };
 
 
