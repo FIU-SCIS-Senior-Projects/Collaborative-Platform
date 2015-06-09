@@ -357,7 +357,7 @@
     window.addEventListener('unload', function () {
         rmc.leave();
         //secrmc.leave();
-    }, false);
+    }, true);
 
     rmc.onMediaCaptured = function () {
         $('#share-screen').removeAttr('disabled');
