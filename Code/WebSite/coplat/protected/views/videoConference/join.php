@@ -204,12 +204,12 @@
                 <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
             </div>
 
-            <div id="cotools-container-2" class="col-md-8 col-lg-6">
+<!--            <div id="cotools-container-2" class="col-md-8 col-lg-6">-->
                 <div id="cotools-panel-2">
 
                 </div>
 
-            </div>
+<!--            </div>-->
 
 
 
