@@ -436,7 +436,7 @@
     $('#disconnect').click(function () {
         rmc.leave();
         //secrmc.leave();
-        setTimeout("location.href = '../';",4000);
+        //setTimeout("location.href = '../';",000);
     });
 
     //to know the stream type
