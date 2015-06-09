@@ -405,7 +405,7 @@
 
         getScreenStream(function(stream) {
             // if you're NOT using RTCMultiConnection, just skip below line
-            rmc.addStream(stream);
+            $('#cotools-panel-2').attachExternalStream(stream);
         });
 
 //        getScreenId(function (error, sourceId, screen_constraints) {
