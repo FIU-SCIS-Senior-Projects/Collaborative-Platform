@@ -566,7 +566,7 @@
 
 
         <div class="row buttons">
-            <?php echo CHtml::submitButton("Schedule", array('class' => 'btn btn-primary')); ?>
+            <?php echo CHtml::submitButton("Schedule", array('class' => 'btn btn-primary', 'id' => 'btnSubmit')); ?>
         </div>
 
         </form>
@@ -584,6 +584,10 @@
             ajaxGeneric(action, method, data, "#message_box");
             setTimeout(closeModal, 5000);     //wait 5 seconds
             event.preventDefault(); // Prevent the form from submitting via the browser.
+        });
+
+        $('#btnSubmit').click(function() {
+            <?php TicketEvents::recordEvent(5,$model->id, null, null , null); ?>;
         });
     });
 
