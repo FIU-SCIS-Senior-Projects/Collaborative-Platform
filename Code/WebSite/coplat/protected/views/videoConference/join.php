@@ -403,10 +403,10 @@
     $('#share-screen-2').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
 
-addStream        getScreenStream(function(stream) {
-            // if you're NOT using RTCMultiConnection, just skip below line
-            $('#cotools-panel-2').attachExternalStream(stream);
-        });
+//        getScreenStream(function(stream) {
+//            // if you're NOT using RTCMultiConnection, just skip below line
+//            $('#cotools-panel-2').attachExternalStream(stream);
+//        });
 
         getScreenId(function (error, sourceId, screen_constraints) {
             // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
