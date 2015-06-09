@@ -206,7 +206,7 @@
 
 <!--            <div id="cotools-container-2" class="col-md-8 col-lg-6">-->
                 <div id="cotools-panel-2">
-
+                    <video controls="" autoplay=""></video>
                 </div>
 
 <!--            </div>-->
@@ -389,36 +389,36 @@
         });
     });
 
-    function getScreenStream(callback) {
-        getScreenId(function (error, sourceId, screen_constraints) {
-            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-            navigator.getUserMedia(screen_constraints, function (stream) {
-                callback(stream);
-            }, function (error) {
-                console.error(error);
-            });
-        });
-    }
-
-    $('#share-screen-2').click(function () {
-        // http://www.rtcmulticonnection.org/docs/addStream/
-
-        getScreenStream(function(stream) {
-            // if you're NOT using RTCMultiConnection, just skip below line
-            $('#cotools-panel-2').attachExternalStream(stream);
-        });
-
+//    function getScreenStream(callback) {
 //        getScreenId(function (error, sourceId, screen_constraints) {
-//            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
-//            // sourceId == null || 'string' || 'firefox'
-//
 //            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
 //            navigator.getUserMedia(screen_constraints, function (stream) {
-//                document.querySelector('video').src = URL.createObjectURL(stream);
+//                callback(stream);
 //            }, function (error) {
 //                console.error(error);
 //            });
 //        });
+//    }
+
+    $('#share-screen-2').click(function () {
+        // http://www.rtcmulticonnection.org/docs/addStream/
+
+addStream        getScreenStream(function(stream) {
+            // if you're NOT using RTCMultiConnection, just skip below line
+            $('#cotools-panel-2').attachExternalStream(stream);
+        });
+
+        getScreenId(function (error, sourceId, screen_constraints) {
+            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+            // sourceId == null || 'string' || 'firefox'
+
+            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+            navigator.getUserMedia(screen_constraints, function (stream) {
+                document.querySelector('video').src = URL.createObjectURL(stream);
+            }, function (error) {
+                console.error(error);
+            });
+        });
 
 
 
