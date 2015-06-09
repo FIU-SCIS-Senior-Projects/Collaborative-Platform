@@ -500,11 +500,9 @@
     rmc.onleave = function (e) {
         var username = true;
         //while(username) {
+        for(var i = 0; i<2; i++) {
             $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
-            var content = document.body.textContent || document.body.innerText;
-            var hasText = content.indexOf($('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, ''))) !== -1;
-            if(hasText)
-                alert("Found it!!!");
+        }
         //}
     };
 
