@@ -504,7 +504,7 @@
         //$("span[id='#uibox-user1']").remove();
         //$('#uibox-user1').remove();
         //$("#uibox-" + e.userid.substring(e.userid.indexOf('(')+1, e.userid.indexOf(')'))).remove();
-        console.log("========== Removing id: #uibox-" + e.userid.replace(/ |\(|\)/g, '') + "============");
+        console.log("========== Removing id: #uibox-" + e.userid.replace(/ |\(|\)/g, '') + " ============");
 
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
     };
