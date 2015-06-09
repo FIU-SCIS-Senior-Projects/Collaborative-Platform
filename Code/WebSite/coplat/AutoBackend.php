@@ -104,11 +104,11 @@ function setAsAway($user_Id)
     while ($aticket = $ftickets->fetch_assoc()) {
         //reassign the tickets
         if (!is_null($aticket["subdomain_id"])) {
-            $sql = "SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ";
+            $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) order by assigned_date ASC   ";
             //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . "AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
         } else {
-            $sql = "SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ";
+            $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) order by assigned_date ASC  ";
             //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
         }
@@ -211,11 +211,11 @@ function checkPriorityElapseTickets()
             sendTicketCancelOutOfTime($aMentor["email"], $aticket["subject"]);
             $dbconnect->query("INSERT INTO previous_mentors (user_id, ticket_id) VALUES(".$aMentor["id"] .", ".$aticket["id"]. ")");
             if (!is_null($aticket["subdomain_id"])) {
-                $sql = "SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select user_id as user_id from previous_mentors where ticket_id = ". $aticket["id"].")";
+                $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select user_id as user_id from previous_mentors where ticket_id = ". $aticket["id"].") order by assigned_date ASC   ";
                 //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . "AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
             } else {
-                $sql = "SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select user_id as user_id from previous_mentors where ticket_id = ". $aticket["id"].")";
+                $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id  WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select user_id as user_id from previous_mentors where ticket_id = ". $aticket["id"].") order by assigned_date ASC   ";
                 //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
             }
