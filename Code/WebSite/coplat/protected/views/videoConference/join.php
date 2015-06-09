@@ -244,6 +244,7 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.1.11.2.min.js"></script>
+<script>$.widget.bridge('uitooltip', $.ui.tooltip);</script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
 <!-- Remote
@@ -547,7 +548,9 @@
 
 <!-- General Site Scripts -->
 <script>
-
+    $(function () {
+        $('[data-toggle="uitooltip"]').tooltip()
+    });
 
     $('.dropdown-toggle').dropdown();
 
