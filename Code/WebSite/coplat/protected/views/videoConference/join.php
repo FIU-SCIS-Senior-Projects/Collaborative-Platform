@@ -206,7 +206,7 @@
 
 <!--            <div id="cotools-container-2" class="col-md-8 col-lg-6">-->
                 <div id="cotools-panel-2">
-                    <video controls="" autoplay=""></video>
+<!--                    <video controls="" autoplay=""></video>-->
                 </div>
 
 <!--            </div>-->
@@ -414,7 +414,7 @@
 
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
             navigator.getUserMedia(screen_constraints, function (stream) {
-                document.querySelector('video').src = URL.createObjectURL(stream);
+                document.querySelector('#cotools-panel-2').src = URL.createObjectURL(stream);
             }, function (error) {
                 console.error(error);
             });
