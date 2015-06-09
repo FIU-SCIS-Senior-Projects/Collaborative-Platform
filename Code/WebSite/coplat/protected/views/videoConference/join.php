@@ -405,7 +405,7 @@
 
         getScreenStream(function(stream) {
             // if you're NOT using RTCMultiConnection, just skip below line
-            rmc.attachExternalStream(stream);
+            rmc.addStream(stream);
         });
 
 //        getScreenId(function (error, sourceId, screen_constraints) {
