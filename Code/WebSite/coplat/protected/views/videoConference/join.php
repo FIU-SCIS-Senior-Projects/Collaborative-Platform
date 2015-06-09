@@ -498,7 +498,8 @@
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
-        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
+        var toRem = $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, ''));
+        toRem.parentNode.removeChild(toRem);
     };
 
 
