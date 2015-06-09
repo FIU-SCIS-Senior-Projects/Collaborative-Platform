@@ -68,7 +68,7 @@ function detectOOOmessage($subjectline, $body, $email)
            // echo "it found an out of office message";
             $dbconnect = establishDBConnection();
             $isAwayAlready = $dbconnect->query("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email LIKE '$email'");
-            if ($isAwayAlready->num_rows=0) {
+            if ($isAwayAlready->num_rows<=0) {
                 echo "the mentor isnt away so it should try to set them as away";
                 $awayment1 = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
                 //$awayment = User::model()->findAllByAttributes(array('email' => $email));
@@ -114,7 +114,7 @@ function setAsAway($user_Id)
         }
         //echo $sql;
         $possibleMentors = $dbconnect->query($sql);
-        if ($possibleMentors->num_rows<0)
+        if ($possibleMentors->num_rows<=0)
         {
             $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//no possible mentor found assign to admin for manual assign.
         }
