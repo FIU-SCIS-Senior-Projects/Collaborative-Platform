@@ -210,7 +210,10 @@ class TicketEvents extends CActiveRecord
                 case EventType::Event_Opened_By_Mentor:
                     $description = 'Viewed by Mentor';
                     break;
-                        
+
+                case EventType::Event_Meeting_Scheduled:
+                    $description ='Meeting Scheduled';
+                    break;
                 
             }
                            

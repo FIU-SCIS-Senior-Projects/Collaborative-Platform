@@ -587,7 +587,7 @@
         });
 
         $('#btnSubmit').click(function() {
-            <?php TicketEvents::recordEvent(5,$model->id, null, null , null); ?>;
+            <?php TicketEvents::recordEvent(10,$model->id, null, null , null); ?>;
         });
     });
 
