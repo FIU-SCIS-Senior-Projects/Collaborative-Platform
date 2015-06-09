@@ -434,8 +434,7 @@
 
     //end of chat
     $('#disconnect').click(function () {
-        //rmc.leave();
-        rmc.close();
+        rmc.leave();
         //secrmc.leave();
         setTimeout("location.href = '../';",2000);
     });
@@ -499,7 +498,14 @@
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
-        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
+        var username = true;
+        //while(username) {
+            $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
+            var content = document.body.textContent || document.body.innerText;
+            var hasText = content.indexOf($('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, ''))) !== -1;
+            if(hasText)
+                alert("Found it!!!");
+        //}
     };
 
 
