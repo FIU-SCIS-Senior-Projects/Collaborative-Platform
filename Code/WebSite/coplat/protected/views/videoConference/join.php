@@ -71,16 +71,14 @@
 </script>
 
 
-
-
-<div class="container">
-    <ol class="breadcrumb">
-        <li><a href="/coplat/index.php">Home</a></li>
-        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
-        <li><a href="/coplat/index.php/videoConference/<?php echo $model->id; ?>"><?php echo $model->id; ?></a></li>
-        <li class="active">Join</li>
-    </ol>
-</div>
+<!--<div class="container">-->
+<!--    <ol class="breadcrumb">-->
+<!--        <li><a href="/coplat/index.php">Home</a></li>-->
+<!--        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>-->
+<!--        <li><a href="/coplat/index.php/videoConference/--><?php //echo $model->id; ?><!--">--><?php //echo $model->id; ?><!--</a></li>-->
+<!--        <li class="active">Join</li>-->
+<!--    </ol>-->
+<!--</div>-->
 
 
 <!-- Bootstrap -->
