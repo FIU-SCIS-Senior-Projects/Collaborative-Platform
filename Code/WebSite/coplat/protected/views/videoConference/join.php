@@ -447,17 +447,17 @@
         document.getElementById('input-text-chat').disabled = false;
     };
 
-    document.getElementById('input-text-chat').onkeyup = function (e) {
-        if (e.keyCode != 13) return; // if it is not Enter-key
-        var value = this.value.replace(/^\s+|\s+$/g, '');
-        if (!value.length) return; // if empty-spaces
-        appendMsg("You", value);
-        rmc.send({
-            type: 'chat',
-            content: value
-        });
-        this.value = '';
-    };
+//    document.getElementById('input-text-chat').onkeyup = function (e) {
+//        if (e.keyCode != 13) return; // if it is not Enter-key
+//        var value = this.value.replace(/^\s+|\s+$/g, '');
+//        if (!value.length) return; // if empty-spaces
+//        appendMsg("You", value);
+//        rmc.send({
+//            type: 'chat',
+//            content: value
+//        });
+//        this.value = '';
+//    };
 
     $("#chat-btn").click(function () {
         var input = document.getElementById('input-text-chat');
