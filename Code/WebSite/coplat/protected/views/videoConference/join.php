@@ -396,7 +396,7 @@
 
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
             navigator.getUserMedia(screen_constraints, function (rmc) {
-                document.querySelector('#secVid').src = URL.createObjectURL(rmc);
+                document.querySelector('#secVid video').src = URL.createObjectURL(rmc);
             }, function (error) {
                 console.error(error);
             });
@@ -466,8 +466,9 @@
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
-            uibox.id = "uibox-" + e.userid.substring(e.userid.indexOf('(')+1, e.userid.indexOf(')'));
+            //uibox.id = "uibox-" + e.userid.substring(e.userid.indexOf('(')+1, e.userid.indexOf(')'));
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            uibox.style.cssText = 'display: inline-block; float: left';
             //console.log("========== Adding id: " + uibox.id + "============");
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
@@ -515,12 +516,7 @@
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
-        //document.getElementById($('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, ''))).remove();
-        //$("span[id='#uibox-user1']").remove();
-        //$('#uibox-user1').remove();
-        //$("#uibox-" + e.userid.substring(e.userid.indexOf('(')+1, e.userid.indexOf(')'))).remove();
-        console.log("========== Removing id: #uibox-" + e.userid.replace(/ |\(|\)/g, '') + " ============");
-
+//        console.log("========== Removing id: #uibox-" + e.userid.replace(/ |\(|\)/g, '') + " ============");
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
     };
 
