@@ -264,7 +264,7 @@ p.msg {
 }
 
 #video-container {
-    float: left;
+    display: inline-block;
     width: 200px;
     height: 200px;
     margin: 1em;
@@ -275,7 +275,7 @@ p.msg {
     width: 95%; /*95*/
     margin-bottom: 7px;
     height: auto;
-    float: left;
+    display: inline-block;
 
 }
 
