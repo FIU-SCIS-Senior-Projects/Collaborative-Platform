@@ -186,7 +186,7 @@
 <!---->
 <!--        </div>-->
 
-        <div class="col-md-12 col-lg-12">
+        <div class="col-md-6 col-lg-6">
 
 <!--            <div id="chat-container">-->
 <!--                <div id="chat-feed">-->
@@ -207,7 +207,7 @@
 
         </div>
 
-        <div style="display: inline-block" id="video-container" style="" class="col-md-4 col-lg-4">
+        <div style="display: inline-block" id="video-container" style="" class="col-md-12 col-lg-12">
 
             <div class="col-md-offset-6 col-lg-offset-7">
                 <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
