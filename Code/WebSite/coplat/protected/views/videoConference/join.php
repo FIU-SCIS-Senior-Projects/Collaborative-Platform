@@ -378,23 +378,20 @@
 
 
     $('#share-screen-2').click(function () {
-        rmc.addStream({
-            screen: true,
-            oneway: true
-        });
+
         // http://www.rtcmulticonnection.org/docs/addStream/
-//        getScreenId(function (error, sourceId, screen_constraints) {
-//            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
-//            // sourceId == null || 'string' || 'firefox'
-//
-//            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-//            navigator.getUserMedia(screen_constraints, function (rmc) {
-//                //document.querySelector('#secVid video').src = URL.createObjectURL(rmc);
-//                document.getElementById('cotools-panel-2').appendChild(event.mediaElement);
-//            }, function (error) {
-//                console.error(error);
-//            });
-//        });
+        getScreenId(function (error, sourceId, screen_constraints) {
+            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+            // sourceId == null || 'string' || 'firefox'
+
+            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+            navigator.getUserMedia(screen_constraints, function (rmc) {
+                //document.querySelector('#secVid video').src = URL.createObjectURL(rmc);
+                document.getElementById('cotools-panel-2').appendChild(event.mediaElement);
+            }, function (error) {
+                console.error(error);
+            });
+        });
     });
 
     //when the user clicks the stop-share-screen button it removes all the screen
