@@ -380,12 +380,12 @@
     });
 
 
-    $('#share-screen-2').click(function () {
-        right = 1;
-        rmc.addStream({
-            screen: true,
-            oneway: true
-        });
+//    $('#share-screen-2').click(function () {
+//        right = 1;
+//        rmc.addStream({
+//            screen: true,
+//            oneway: true
+//        });
 
 
         // http://www.rtcmulticonnection.org/docs/addStream/
@@ -477,21 +477,22 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen) {
-            if(left == 1) {
+//            if(left == 1) {
+//
+//            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+//                $('#cotools-panel iframe').hide();
+//                $('#cotools-panel video').remove();
+//                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
+//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+//            }
+//
+//            else if (right == 1) {
+//                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+//            }
 
-            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
-                $('#cotools-panel iframe').hide();
-                $('#cotools-panel video').remove();
-                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
-                document.getElementById('cotools-panel').appendChild(e.mediaElement);
-            }
-
-            else if (right == 1) {
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-            }
-
-
-            //document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            $('#cotools-panel iframe').hide();
+            $('#cotools-panel video').remove();
+            document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
 
     };
