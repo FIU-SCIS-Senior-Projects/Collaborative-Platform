@@ -200,11 +200,21 @@ function checkPriorityElapseTickets()
                 break;
         }
     }
-    $ticketr = $dbconnect->query("Select * FROM ticket where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5 or event_type_id = 10) ");
+    $ticketr = $dbconnect->query("Select * FROM ticket t where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5) AND  not exists (Select null from (video_conference inner join vc_invitation on id = videoconference_id) where t.assign_user_id = moderator_id and t.creator_user_id = invitee_id and subject like CONCAT(t.subject,' - Ticket #',t.id)) ");
     //select all tickets without a ticket event 5 or MAYBE 8 (ask juan) over their respective priorities VERY COMPLICATED SQL query
     // reassign tickets
     if($ticketr->num_rows>0) {
         while ($aticket = $ticketr->fetch_assoc()) {
+            $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from previous_mentors where ticket_id = ".$aticket["id"]);
+            if($toManyReassign->num_rows>0)
+            {
+                $reassigns = $toManyReassign->fetch_assoc();
+                if($reassigns["count"] >=3)
+                {
+                    $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//give to admin for manual reassign
+                    continue;
+                }
+            }
             //echo "a ticket was found and is going to be reassigned ". $aticket["subject"]."\n";
             $mentor = $dbconnect->query("Select * from user WHERE id = ".$aticket["assign_user_id"]);
             $aMentor = $mentor->fetch_assoc();
