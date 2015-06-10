@@ -172,7 +172,7 @@
     <div class="row">
         <div id="video-container" style="" class="col-md-2 col-lg-2">
 
-            <div class="col-md-offset-5 col-lg-offset-5">
+            <div class="col-md-offset-6 col-lg-offset-7">
                 <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
             </div>
 
@@ -192,7 +192,7 @@
 
         </div>
 
-        <div class="col-md-6 col-lg-6">
+<!--        <div class="col-md-6 col-lg-6">-->
 
 <!--            <div id="chat-container">-->
 <!--                <div id="chat-feed">-->
@@ -202,7 +202,7 @@
 <!--                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>-->
 <!--            </div>-->
 
-        </div>
+<!--        </div>-->
 
     </div>
     </section>
