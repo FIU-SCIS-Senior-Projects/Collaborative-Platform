@@ -170,15 +170,15 @@
 
 
     <div class="row">
-        <div id="video-container" style="" class="col-md-12 col-lg-12">
+        <div id="video-container" style="" class="col-md-2 col-lg-2">
 
-            <div class="col-md-offset-6 col-lg-offset-7">
+            <div class="col-md-offset-5 col-lg-offset-5">
                 <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
             </div>
 
         </div>
 
-        <div id="cotools-container" class="col-md-6 col-lg-6">
+        <div id="cotools-container" class="col-md-5 col-lg-5">
             <div id="cotools-panel">
 
             </div>

@@ -9,7 +9,6 @@
 video {
     height: 100px;
     width: auto;
-    display: inline-block;
 }
 
 .btn .caret {
@@ -227,7 +226,6 @@ p.msg {
 */
 
 #video-container {
-    display: inline-block;
     width: 200px;
     height: 200px;
     margin: 1em;
@@ -238,7 +236,6 @@ p.msg {
     width: 95%; /*95*/
     margin-bottom: 7px;
     height: auto;
-    display: inline-block;
 
 }
 
@@ -301,7 +298,6 @@ and (min-width: 1224px) {
         width: 80%;
         margin: 0 0 7px 10px;
         height: auto;
-        display: inline-block;
 
     }
 
@@ -319,7 +315,6 @@ and (min-width: 1824px) {
         width: 65%;
         height: auto;
         margin: 0 0 7px 90px;
-        display: inline-block;
     }
 
     .userid {
