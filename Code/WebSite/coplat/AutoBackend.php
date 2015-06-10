@@ -205,6 +205,7 @@ function checkPriorityElapseTickets()
     // reassign tickets
     if($ticketr->num_rows>0) {
         while ($aticket = $ticketr->fetch_assoc()) {
+            echo "found a ticket";
             $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from previous_mentors where ticket_id = ".$aticket["id"]);
             if($toManyReassign->num_rows>0)
             {
