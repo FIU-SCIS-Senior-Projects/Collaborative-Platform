@@ -141,7 +141,7 @@ function setAsAway($user_Id)
                 }
             }
         }
-        $ticketSubs = $ticketSubs . $aticket["subject"] . ", ";
+        $ticketSubs = $ticketSubs . $aticket["subject"] . ",\n ";
         // do this outside the loop  $awayMent = User::model()->findAllBySql("SELECT * FROM user WHERE id =:user_Id", array(":user_id"=>$user_Id));
         // foreach ($awayMent as $bawayMent) {
         //    User::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent - lname, $bawayMent->email, $aticket->subject);
@@ -155,9 +155,7 @@ function setAsAway($user_Id)
 function sendTicketCancelEmail($toEmail, $subjectlines)
 {
     $subject = "Out of Office Response";
-    $body = "Collaborative Platform received an Automated Out of office response from this email.\n
-             We have set you as out of office and you will no longer be assigned tickets automatically, The tickets : " . $subjectlines . "
-             Have been reassigned to another mentor\n If this was done in error or you are back in office send an email to fiucoplat@gmail.com\n with \"Back in office\" in the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
+    $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@gmail.com with:\n\n\"Back in office\"\n\nin the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
     $headers = "From: fiucoplat@gmail.com\r\n".
         "Reply-To: fiucoplat@gmail.com\r\n";
     $cc = null;
@@ -170,7 +168,7 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
 function sendTicketReassignment($toEmail, $subjectl)
 {
     $subject = "Ticket Assigned";
-    $body = "Collaborative Platform has assigned you a new ticket " . $subjectl . "that was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
+    $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectl . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
     $headers = "From: fiucoplat@gmail.com\r\n".
         "Reply-To: fiucoplat@gmail.com\r\n";
     $cc = null;
@@ -266,7 +264,7 @@ function checkPriorityElapseTickets()
 function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 {
     $subject = "Reassign Due to Inactivity";
-    $body = "Due to the inactivity on the ticket $subjectLine, the ticket has been reassigned.\n\nThank you for all your help making Collaborative Platform great";
+    $body = "Due to the inactivity on the ticket:\n\n$subjectLine \n\nhas been reassigned.\n\nThank you for all your help making Collaborative Platform great";
     $headers = "From: fiucoplat@gmail.com\r\n".
         "Reply-To: fiucoplat@gmail.com\r\n";
     $cc = null;
