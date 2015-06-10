@@ -9,7 +9,6 @@
 video {
     height: 100px;
     width: auto;
-    margin: auto 0px;
 }
 
 .btn .caret {
@@ -349,7 +348,7 @@ and (orientation: portrait) {
 #cotools-panel video {
     width: 100%;
     height: auto;
-    margin: auto 0px;
+    margin-top: 25px;
 }
 
 #cotools-panel-2 video {
