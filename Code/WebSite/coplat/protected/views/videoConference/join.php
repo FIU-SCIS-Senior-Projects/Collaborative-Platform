@@ -413,7 +413,7 @@
     $('#stop-share-screen-2').click(function () {
         secrmc.removeStream('screen');
         $('#cotools-panel-2 video').remove();
-//    });
+    });
 
     //chat
     rmc.onopen = function (event) {
