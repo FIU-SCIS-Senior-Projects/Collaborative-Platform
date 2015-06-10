@@ -258,8 +258,10 @@ p.msg {
 */
 
 #video-container {
-    height: 100px;
-    width: 100px;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 1em;
 }
 
 #video-container video, #video-container-md video {
