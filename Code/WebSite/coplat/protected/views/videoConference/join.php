@@ -171,14 +171,8 @@
 
     <div class="row">
 
-        <div id="video-container" style="" class="col-md-4 col-lg-4">
 
-            <div class="col-md-offset-6 col-lg-offset-7">
-                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
-            </div>
-
-        </div>
-        <div id="cotools-container" class="col-md-8 col-lg-6">
+        <div id="cotools-container" class="col-md-6 col-lg-6">
             <div id="cotools-panel">
 
             </div>
@@ -192,7 +186,7 @@
 <!---->
 <!--        </div>-->
 
-        <div class="col-md-2 col-lg-3">
+        <div class="col-md-6 col-lg-6">
 
 <!--            <div id="chat-container">-->
 <!--                <div id="chat-feed">-->
@@ -210,6 +204,14 @@
 <!--            </div>-->
 
 
+
+        </div>
+
+        <div id="video-container" style="" class="col-md-4 col-lg-4">
+
+            <div class="col-md-offset-6 col-lg-offset-7">
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
+            </div>
 
         </div>
 
