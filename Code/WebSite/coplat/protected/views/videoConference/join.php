@@ -185,12 +185,12 @@
 
         </div>
 
-<!--        <div id="cotools-container-2" class="col-md-8 col-lg-6">-->
-<!--            <div id="cotools-panel-2">-->
-<!---->
-<!--            </div>-->
-<!---->
-<!--        </div>-->
+        <div id="cotools-container-2" class="col-md-5 col-lg-5">
+            <div id="cotools-panel-2">
+
+            </div>
+
+        </div>
 
         <div class="col-md-6 col-lg-6">
 
@@ -201,15 +201,6 @@
 <!--                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>-->
 <!--                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>-->
 <!--            </div>-->
-
-<!--            <div id="cotools-container-2" class="col-md-8 col-lg-6">-->
-                <div id="cotools-panel-2">
-<!--                    <video id="secVid" controls="" autoplay=""></video>-->
-                </div>
-
-<!--            </div>-->
-
-
 
         </div>
 
