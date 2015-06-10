@@ -207,7 +207,7 @@
 
         </div>
 
-        <div id="video-container" style="" class="col-md-4 col-lg-4">
+        <div id="video-container" class="clearfix" style="" class="col-md-4 col-lg-4">
 
             <div class="col-md-offset-6 col-lg-offset-7">
                 <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
