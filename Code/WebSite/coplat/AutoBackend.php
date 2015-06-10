@@ -55,10 +55,10 @@ function emailListener()
         }
 
         $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");//delete mentors that have been away for more than 24 hours from the away list
-        while (mysql_affected_rows()>0)
-        {
-            $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");
-        }
+       // while (mysql_affected_rows()>0)
+       // {
+         //   $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");
+  //      }
 }
 
 function detectOOOmessage($subjectline, $body, $email)
