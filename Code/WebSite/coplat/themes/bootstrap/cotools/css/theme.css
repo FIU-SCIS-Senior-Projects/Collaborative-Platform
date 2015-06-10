@@ -226,7 +226,7 @@ p.msg {
 */
 
 #video-container {
-    height: 100%;
+    height: 56em%;
     overflow: auto;
 }
 
@@ -239,7 +239,7 @@ p.msg {
 }
 
 .userid {
-    display: block;
+    display: inline-block;
     text-align: center;
     border-bottom: 1px solid #000020;
     padding: 0px 10px 10px 10px;
@@ -346,7 +346,7 @@ and (orientation: portrait) {
 }
 
 #cotools-panel video {
-    width: 100%;
+    width: 50%;
     height: auto;
 }
 
