@@ -54,10 +54,10 @@ function emailListener()
             }
         }
 
-        $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");//delete mentors that have been away for more than 24 hours from the away list
+        $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(NOW(), INTERVAL -1 DAY) limit 1");//delete mentors that have been away for more than 24 hours from the away list
        // while (mysql_affected_rows()>0)
        // {
-         //   $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY) limit 1");
+         //   $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(NOW(), INTERVAL -1 DAY) limit 1");
   //      }
 }
 
@@ -100,7 +100,7 @@ function setAsAway($user_Id)
     $dbconnect->query("INSERT INTO away_mentor (userID, tiStamp) VALUES ($user_Id, NOW())");
 
     $ticketSubs = "";
-    $ftickets = $dbconnect->query("SELECT * FROM ticket WHERE assign_user_id = $user_Id AND assigned_date >= DATE_ADD(CURRENT_DATE , INTERVAL -1 DAY )");//find tickets assigned to this user within last 24 hours
+    $ftickets = $dbconnect->query("SELECT * FROM ticket WHERE assign_user_id = $user_Id AND assigned_date >= DATE_ADD(NOW() , INTERVAL -1 DAY )");//find tickets assigned to this user within last 24 hours
     while ($aticket = $ftickets->fetch_assoc()) {
         //reassign the tickets
         if (!is_null($aticket["subdomain_id"])) {
@@ -141,7 +141,7 @@ function setAsAway($user_Id)
                 }
             }
         }
-        $ticketSubs = $ticketSubs . $aticket["subject"] . ", ";
+        $ticketSubs = $ticketSubs . $aticket["subject"] . ",\n ";
         // do this outside the loop  $awayMent = User::model()->findAllBySql("SELECT * FROM user WHERE id =:user_Id", array(":user_id"=>$user_Id));
         // foreach ($awayMent as $bawayMent) {
         //    User::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent - lname, $bawayMent->email, $aticket->subject);
@@ -155,9 +155,7 @@ function setAsAway($user_Id)
 function sendTicketCancelEmail($toEmail, $subjectlines)
 {
     $subject = "Out of Office Response";
-    $body = "Collaborative Platform received an Automated Out of office response from this email.\n
-             We have set you as out of office and you will no longer be assigned tickets automatically, The tickets : " . $subjectlines . "
-             Have been reassigned to another mentor\n If this was done in error or you are back in office send an email to fiucoplat@gmail.com\n with \"Back in office\" in the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
+    $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@gmail.com with:\n\n\"Back in office\"\n\nin the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
     $headers = "From: fiucoplat@gmail.com\r\n".
         "Reply-To: fiucoplat@gmail.com\r\n";
     $cc = null;
@@ -170,7 +168,7 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
 function sendTicketReassignment($toEmail, $subjectl)
 {
     $subject = "Ticket Assigned";
-    $body = "Collaborative Platform has assigned you a new ticket " . $subjectl . "that was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
+    $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectl . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
     $headers = "From: fiucoplat@gmail.com\r\n".
         "Reply-To: fiucoplat@gmail.com\r\n";
     $cc = null;
@@ -200,11 +198,12 @@ function checkPriorityElapseTickets()
                 break;
         }
     }
-    $ticketr = $dbconnect->query("Select * FROM ticket t where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5) AND  not exists (Select null from (video_conference inner join vc_invitation on id = videoconference_id) where t.assign_user_id = moderator_id and t.creator_user_id = invitee_id and subject like CONCAT(t.subject,' - Ticket #',t.id)) ");
+    $ticketr = $dbconnect->query("Select * FROM ticket t where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5) AND  not exists (Select null from (video_conference inner join vc_invitation on id = videoconference_id) where t.assign_user_id = moderator_id and t.creator_user_id = invitee_id and subject like CONCAT(t.subject,' - Ticket #',t.id)) ");
     //select all tickets without a ticket event 5 or MAYBE 8 (ask juan) over their respective priorities VERY COMPLICATED SQL query
     // reassign tickets
     if($ticketr->num_rows>0) {
         while ($aticket = $ticketr->fetch_assoc()) {
+            echo "found a ticket";
             $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from previous_mentors where ticket_id = ".$aticket["id"]);
             if($toManyReassign->num_rows>0)
             {
@@ -265,7 +264,7 @@ function checkPriorityElapseTickets()
 function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 {
     $subject = "Reassign Due to Inactivity";
-    $body = "Due to the inactivity on the ticket $subjectLine, the ticket has been reassigned.\n\nThank you for all your help making Collaborative Platform great";
+    $body = "Due to the inactivity on the ticket:\n\n$subjectLine \n\nhas been reassigned.\n\nThank you for all your help making Collaborative Platform great";
     $headers = "From: fiucoplat@gmail.com\r\n".
         "Reply-To: fiucoplat@gmail.com\r\n";
     $cc = null;
