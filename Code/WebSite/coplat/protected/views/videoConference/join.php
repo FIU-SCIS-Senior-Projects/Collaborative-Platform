@@ -482,13 +482,13 @@
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
                 //document.getElementById('cotools-panel').setAttribute('has-screen', true);
-                document.getElementById('cotools-panel').appendChild(e.mediaElement);
                 left = 0;
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
             }
 
             else if (right == 1) {
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 right = 0;
+                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
             }
 
 
