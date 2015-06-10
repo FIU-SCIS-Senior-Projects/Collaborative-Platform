@@ -206,7 +206,7 @@
 <!--        </div>-->
 
     </div>
-    </section>
+<!--    </section>-->
     <!-- end of row -->
 </div>
 
