@@ -40,7 +40,7 @@ function emailListener()
         if ($emails) {
             rsort($emails);
             foreach ($emails as $email_number) {
-                echo "in email loop";
+               // echo "in email loop";
                 $header = imap_headerinfo($connection, $email_number);
                 $message = imap_fetchbody($connection, $email_number, 1.1);
                 if ($message == "") {
@@ -69,11 +69,11 @@ function detectOOOmessage($subjectline, $body, $email)
             $dbconnect = establishDBConnection();
             $isAwayAlready = $dbconnect->query("SELECT * FROM user  INNER JOIN away_mentor ON user.id = away_mentor.userID WHERE email LIKE '$email'");
             if ($isAwayAlready->num_rows<=0) {
-                echo "the mentor isnt away so it should try to set them as away";
+              //  echo "the mentor isnt away so it should try to set them as away";
                 $awayment1 = $dbconnect->query("SELECT * FROM user WHERE email LIKE '$email'");
                 //$awayment = User::model()->findAllByAttributes(array('email' => $email));
                 $awayment = $awayment1->fetch_assoc();
-                echo "calling the setAsAway function with " .$awayment["id"];
+             //   echo "calling the setAsAway function with " .$awayment["id"];
                 setAsAway($awayment["id"]);
                 return 1;//success
             }
@@ -165,7 +165,7 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
     $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-    echo "Email sent 3!<br />";
+   // echo "Email sent 3!<br />";
 }
 function sendTicketReassignment($toEmail, $subjectl)
 {
@@ -178,7 +178,7 @@ function sendTicketReassignment($toEmail, $subjectl)
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
     $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-    echo "Email sent 1!<br />";
+ //   echo "Email sent 1!<br />";
 }
 function checkPriorityElapseTickets()
 {
@@ -200,11 +200,21 @@ function checkPriorityElapseTickets()
                 break;
         }
     }
-    $ticketr = $dbconnect->query("Select * FROM ticket where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5 or event_type_id = 10) ");
+    $ticketr = $dbconnect->query("Select * FROM ticket t where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(CURRENT_DATE, INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5) AND  not exists (Select null from (video_conference inner join vc_invitation on id = videoconference_id) where t.assign_user_id = moderator_id and t.creator_user_id = invitee_id and subject like CONCAT(t.subject,' - Ticket #',t.id)) ");
     //select all tickets without a ticket event 5 or MAYBE 8 (ask juan) over their respective priorities VERY COMPLICATED SQL query
     // reassign tickets
     if($ticketr->num_rows>0) {
         while ($aticket = $ticketr->fetch_assoc()) {
+            $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from previous_mentors where ticket_id = ".$aticket["id"]);
+            if($toManyReassign->num_rows>0)
+            {
+                $reassigns = $toManyReassign->fetch_assoc();
+                if($reassigns["count"] >=3)
+                {
+                    $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//give to admin for manual reassign
+                    continue;
+                }
+            }
             //echo "a ticket was found and is going to be reassigned ". $aticket["subject"]."\n";
             $mentor = $dbconnect->query("Select * from user WHERE id = ".$aticket["assign_user_id"]);
             $aMentor = $mentor->fetch_assoc();
@@ -219,7 +229,7 @@ function checkPriorityElapseTickets()
                 //$possibleMentors = $dbconnect->query("SELECT * FROM user_domain WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) ");
 
             }
-            echo $sql;
+            //echo $sql;
             $possibleMentors = $dbconnect->query($sql);
             if ($possibleMentors->num_rows<=0)
             {
@@ -248,13 +258,13 @@ function checkPriorityElapseTickets()
                     }
                 }
             }
-            echo "a went through entire thing ticket should be reassigned\n";
+          //  echo "a went through entire thing ticket should be reassigned\n";
         }
     }
 }
 function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 {
-    $subject = "Out of Office Response";
+    $subject = "Reassign Due to Inactivity";
     $body = "Due to the inactivity on the ticket $subjectLine, the ticket has been reassigned.\n\nThank you for all your help making Collaborative Platform great";
     $headers = "From: fiucoplat@gmail.com\r\n".
         "Reply-To: fiucoplat@gmail.com\r\n";
@@ -263,7 +273,7 @@ function sendTicketCancelOutOfTime($toEmail, $subjectLine)
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
     $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-    echo "Email sent 2!<br />";
+ //   echo "Email sent 2!<br />";
 }
 //need to come up with a table for previous mentors--done
 //WHEN ASSIGNING TICKETS TO MENTORS JOIN WITH TICKET ONLY WITH ID AND ASSIGNED DATE AND SORT BY ASSIGNED DATE. DONE WOO.

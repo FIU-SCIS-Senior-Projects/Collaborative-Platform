@@ -566,7 +566,7 @@
 
 
         <div class="row buttons">
-            <?php echo CHtml::submitButton("Schedule", array('class' => 'btn btn-primary', 'id' => 'btnSubmit')); ?>
+            <?php echo CHtml::submitButton("Schedule", array('class' => 'btn btn-primary')); ?>
         </div>
 
         </form>
@@ -586,9 +586,7 @@
             event.preventDefault(); // Prevent the form from submitting via the browser.
         });
 
-        $('#btnSubmit').click(function() {
-            <?php TicketEvents::recordEvent(5,$model->id, null, null , null); ?>;
-        });
+
     });
 
     function closeModal(){
