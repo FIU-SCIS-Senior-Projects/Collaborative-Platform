@@ -386,7 +386,7 @@
 
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
             navigator.getUserMedia(screen_constraints, function (rmc) {
-                document.querySelector('cotools-panel-2').src = URL.createObjectURL(rmc);
+                document.querySelector('cotools-panel-2 video').src = URL.createObjectURL(rmc);
                 //document.getElementById('cotools-panel-2').appendChild(event.mediaElement);
             }, function (error) {
                 console.error(error);
