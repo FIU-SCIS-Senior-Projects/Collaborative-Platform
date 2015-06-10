@@ -1,49 +1,3 @@
-#wrapper {
-    width: 920px;
-    height: auto;
-    margin: 0 auto;
-}
-#contentID {
-    width: 300px;
-    height: 300px;
-    float: left;
-    margin-right: 5%;
-}
-
-.clear{
-    clear: both;
-}
-
-@media (max-width:555px) {
-    #wrapper{
-        width: 100%;
-        height: auto;
-    }
-    #contentID {
-        width: 100%;
-        height: auto;
-        float: none;
-    }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
     Quick Fixes and Previous CSS Overrides
 */
@@ -197,9 +151,12 @@ Tool box
 
 #cotools-panel {
     margin-bottom: 20px;
-    height: 600px;
+    height: 70vh;
+    min-height: 25em;
+    max-height: 35em;
     width: 100%;
     border: 2px solid #18536b;
+    float: left;
 }
 
 #cotools-container {
@@ -208,51 +165,16 @@ Tool box
 
 #cotools-panel-2 {
     margin-bottom: 20px;
-    height: 600px;
+    height: 70vh;
+    min-height: 25em;
+    max-height: 35em;
     width: 100%;
     border: 2px solid #18536b;
+    float: left;
 }
 
 #cotools-container-2 {
 
-}
-
-/*
-    Trello Container
-*/
-#trello-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 10em;
-    width: 10em;
-    border-radius: 20px;
-    margin-bottom: 10px;
-}
-
-#trello-signin > a {
-    text-decoration: none;
-}
-
-#trello-signin {
-    box-shadow: rgb(59, 94, 1) 0px 2px 0px 0px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    height: 51px;
-    position: relative;
-    text-align: center;
-    white-space: pre;
-    width: 160px;
-    word-wrap: break-word;
-    background: rgba(0, 0, 0, 0) linear-gradient(rgb(112, 181, 0) 0px, rgb(100, 162, 0) 100%) repeat scroll 0% 0% / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    border-radius: 6px 6px 6px 6px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: jaf-facitweb, 'Helvetica Neue', Arial, sans-serif;
-    margin: 0px 0px 16px;
-    outline: rgb(255, 255, 255) none 0px;
-    padding: 9px 3px;
 }
 
 /*

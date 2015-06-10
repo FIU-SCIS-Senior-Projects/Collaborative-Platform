@@ -170,7 +170,13 @@
 
 
     <div class="row">
+        <div id="video-container" style="" class="col-md-12 col-lg-12">
 
+            <div class="col-md-offset-6 col-lg-offset-7">
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
+            </div>
+
+        </div>
 
         <div id="cotools-container" class="col-md-6 col-lg-6">
             <div id="cotools-panel">
@@ -206,15 +212,6 @@
 
 
         </div>
-
-        <div style="display: inline-block" id="video-container" style="" class="col-md-12 col-lg-12">
-
-            <div class="col-md-offset-6 col-lg-offset-7">
-                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
-            </div>
-
-        </div>
-
 
     </div>
     </section>
@@ -466,20 +463,16 @@
             // alert("the stream is remote");
         }
         if (e.isVideo) {
-            var content = "<div id='contentID' style='display: inline-block;'></div>";
-            $('#video-container').append(e.mediaElement);
-            $('#video-container').append(content);
-
-//            var uibox = document.createElement("div");
-//            uibox.appendChild(document.createTextNode(e.userid));
-//            uibox.className = "userid";
-//            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-//            uibox.style.cssText = 'display: inline-block;';
-//            e.mediaElement.style.cssText = 'display: inline-block;';
-//            //console.log("========== Adding id: " + uibox.id + "============");
-//            document.getElementById('video-container').appendChild(e.mediaElement);
-//            document.getElementById('video-container').appendChild(uibox);
-//            //uibox.style.cssText = 'display: inline-block;';
+            var uibox = document.createElement("div");
+            uibox.appendChild(document.createTextNode(e.userid));
+            uibox.className = "userid";
+            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            uibox.style.cssText = 'display: inline-block;';
+            e.mediaElement.style.cssText = 'display: inline-block;';
+            //console.log("========== Adding id: " + uibox.id + "============");
+            document.getElementById('video-container').appendChild(e.mediaElement);
+            document.getElementById('video-container').appendChild(uibox);
+            //uibox.style.cssText = 'display: inline-block;';
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
