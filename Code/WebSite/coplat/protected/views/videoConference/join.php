@@ -476,7 +476,7 @@
             //console.log("========== Adding id: " + uibox.id + "============");
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
-            uibox.style.cssText = 'display: inline-block; float: left';
+            uibox.style.cssText = 'display: inline-block;';
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
