@@ -444,7 +444,7 @@
     //chat
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
-        document.getElementById('input-text-chat').disabled = false;
+        //document.getElementById('input-text-chat').disabled = false;
     };
 
 //    document.getElementById('input-text-chat').onkeyup = function (e) {
