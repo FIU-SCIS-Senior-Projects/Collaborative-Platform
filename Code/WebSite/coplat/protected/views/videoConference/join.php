@@ -411,7 +411,7 @@
     });
 
     $('#stop-share-screen-2').click(function () {
-        secrmc.removeStream('screen');
+        rmc.removeStream('screen');
         $('#cotools-panel-2 video').remove();
     });
 
