@@ -204,7 +204,7 @@
 
 <!--            <div id="cotools-container-2" class="col-md-8 col-lg-6">-->
                 <div id="cotools-panel-2">
-                    <video controls="" autoplay=""></video>
+                    <video id="secVid" controls="" autoplay=""></video>
                 </div>
 
 <!--            </div>-->
@@ -386,7 +386,7 @@
             oneway: true
         });
     });
-    
+
 
     $('#share-screen-2').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
@@ -396,7 +396,7 @@
 
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
             navigator.getUserMedia(screen_constraints, function (rmc) {
-                document.querySelector('video').src = URL.createObjectURL(rmc);
+                document.querySelector('#secVid').src = URL.createObjectURL(rmc);
             }, function (error) {
                 console.error(error);
             });
