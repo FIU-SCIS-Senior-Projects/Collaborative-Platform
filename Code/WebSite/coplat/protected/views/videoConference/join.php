@@ -366,10 +366,13 @@
 //        $('#share-screen-2').removeAttr('disabled');
 //    };
 
+    var left = 0;
+    var right = 0;
     //screen sharing
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
-        rmc.removeStream('screen');
+        //rmc.removeStream('screen');
+        left = 1;
         rmc.addStream({
             screen: true,
             oneway: true
@@ -378,20 +381,26 @@
 
 
     $('#share-screen-2').click(function () {
+        right = 1;
+        rmc.addStream({
+            screen: true,
+            oneway: true
+        });
+
 
         // http://www.rtcmulticonnection.org/docs/addStream/
-        getScreenId(function (error, sourceId, screen_constraints) {
-            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
-            // sourceId == null || 'string' || 'firefox'
-
-            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-            navigator.getUserMedia(screen_constraints, function (rmc) {
-                document.querySelector('secVid').src = URL.createObjectURL(rmc);
-                //document.getElementById('cotools-panel-2').appendChild(event.mediaElement);
-            }, function (error) {
-                console.error(error);
-            });
-        });
+//        getScreenId(function (error, sourceId, screen_constraints) {
+//            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+//            // sourceId == null || 'string' || 'firefox'
+//
+//            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+//            navigator.getUserMedia(screen_constraints, function (rmc) {
+//                document.querySelector('secVid').src = URL.createObjectURL(rmc);
+//                //document.getElementById('cotools-panel-2').appendChild(event.mediaElement);
+//            }, function (error) {
+//                console.error(error);
+//            });
+//        });
     });
 
     //when the user clicks the stop-share-screen button it removes all the screen
@@ -467,17 +476,19 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen) {
+            if(left == 1) {
 
-            if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').setAttribute('has-screen', true);
+                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel').appendChild(e.mediaElement);
-
+                left = 0;
             }
 
-            else {
+            else if (right == 1) {
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                right = 0;
             }
 
 
