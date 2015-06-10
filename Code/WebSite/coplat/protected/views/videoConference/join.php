@@ -194,13 +194,13 @@
 
         <div class="col-md-2 col-lg-3">
 
-            <div id="chat-container">
-                <div id="chat-feed">
-                    <p class="msg">Welcome to the chat room!</p>
-                </div>
-                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
-                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
-            </div>
+<!--            <div id="chat-container">-->
+<!--                <div id="chat-feed">-->
+<!--                    <p class="msg">Welcome to the chat room!</p>-->
+<!--                </div>-->
+<!--                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>-->
+<!--                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>-->
+<!--            </div>-->
 
 <!--            <div id="cotools-container-2" class="col-md-8 col-lg-6">-->
                 <div id="cotools-panel-2">
