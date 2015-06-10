@@ -264,7 +264,7 @@ function checkPriorityElapseTickets()
 }
 function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 {
-    $subject = "Out of Office Response";
+    $subject = "Reassign Due to Inactivity";
     $body = "Due to the inactivity on the ticket $subjectLine, the ticket has been reassigned.\n\nThank you for all your help making Collaborative Platform great";
     $headers = "From: fiucoplat@gmail.com\r\n".
         "Reply-To: fiucoplat@gmail.com\r\n";
