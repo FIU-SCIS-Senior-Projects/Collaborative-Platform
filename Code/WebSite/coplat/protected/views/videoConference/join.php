@@ -466,6 +466,7 @@
         }
         if (e.isVideo) {
             var uibox = document.createElement("div");
+            uibox.style.cssText = 'display: inline-block; float: left';
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
             //uibox.id = "uibox-" + e.userid.substring(e.userid.indexOf('(')+1, e.userid.indexOf(')'));
