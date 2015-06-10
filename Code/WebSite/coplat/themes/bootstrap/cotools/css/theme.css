@@ -1,3 +1,49 @@
+#wrapper {
+    width: 920px;
+    height: auto;
+    margin: 0 auto;
+}
+#contentID {
+    width: 300px;
+    height: 300px;
+    float: left;
+    margin-right: 5%;
+}
+
+.clear{
+    clear: both;
+}
+
+@media (max-width:555px) {
+    #wrapper{
+        width: 100%;
+        height: auto;
+    }
+    #contentID {
+        width: 100%;
+        height: auto;
+        float: none;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
     Quick Fixes and Previous CSS Overrides
 */
