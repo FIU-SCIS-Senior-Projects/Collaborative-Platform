@@ -467,6 +467,7 @@
         }
         if (e.isVideo) {
             var content = "<div id='contentID' style='display: inline-block;'></div>";
+            $('#video-container').append(e.mediaElement);
             $('#video-container').append(content);
 
 //            var uibox = document.createElement("div");
