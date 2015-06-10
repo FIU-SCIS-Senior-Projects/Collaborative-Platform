@@ -410,10 +410,9 @@
         $('#cotools-panel video').remove();
     });
 
-//    $('#stop-share-screen-2').click(function () {
-//        secrmc.removeStream('screen');
-//        $('#cotools-panel-2 iframe').show();
-//        $('#cotools-panel-2 video').remove();
+    $('#stop-share-screen-2').click(function () {
+        secrmc.removeStream('screen');
+        $('#cotools-panel-2 video').remove();
 //    });
 
     //chat
