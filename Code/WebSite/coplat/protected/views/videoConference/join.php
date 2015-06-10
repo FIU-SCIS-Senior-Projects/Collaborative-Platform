@@ -408,11 +408,13 @@
         rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
+        left = 0;
     });
 
     $('#stop-share-screen-2').click(function () {
         rmc.removeStream('screen');
         $('#cotools-panel-2 video').remove();
+        right = 0;
     });
 
     //chat
@@ -481,12 +483,10 @@
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
                 //document.getElementById('cotools-panel').setAttribute('has-screen', true);
-                left = 0;
                 document.getElementById('cotools-panel').appendChild(e.mediaElement);
             }
 
             else if (right == 1) {
-                right = 0;
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
             }
 
