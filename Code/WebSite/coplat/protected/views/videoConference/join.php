@@ -466,16 +466,19 @@
             // alert("the stream is remote");
         }
         if (e.isVideo) {
-            var uibox = document.createElement("div");
-            uibox.appendChild(document.createTextNode(e.userid));
-            uibox.className = "userid";
-            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-            uibox.style.cssText = 'display: inline-block;';
-            e.mediaElement.style.cssText = 'display: inline-block;';
-            //console.log("========== Adding id: " + uibox.id + "============");
-            document.getElementById('video-container').appendChild(e.mediaElement);
-            document.getElementById('video-container').appendChild(uibox);
-            //uibox.style.cssText = 'display: inline-block;';
+            var content = "<div id='contentID' style='display: inline-block;'></div>";
+            $('#video-container').append(content);
+
+//            var uibox = document.createElement("div");
+//            uibox.appendChild(document.createTextNode(e.userid));
+//            uibox.className = "userid";
+//            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+//            uibox.style.cssText = 'display: inline-block;';
+//            e.mediaElement.style.cssText = 'display: inline-block;';
+//            //console.log("========== Adding id: " + uibox.id + "============");
+//            document.getElementById('video-container').appendChild(e.mediaElement);
+//            document.getElementById('video-container').appendChild(uibox);
+//            //uibox.style.cssText = 'display: inline-block;';
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
