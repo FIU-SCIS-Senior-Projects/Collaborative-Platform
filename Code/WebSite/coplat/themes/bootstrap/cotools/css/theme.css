@@ -256,12 +256,6 @@ p.msg {
 /*
     video container
 */
-.clearfix:after {
-    content: " ";
-    display: block;
-    height: 0;
-    clear: both;
-}
 
 #video-container {
     display: inline-block;
