@@ -467,16 +467,15 @@
         }
         if (e.isVideo) {
             var uibox = document.createElement("div");
-            //uibox.style.cssText = 'display: inline-block; float: left';
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
-            //uibox.id = "uibox-" + e.userid.substring(e.userid.indexOf('(')+1, e.userid.indexOf(')'));
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-            //uibox.style.cssText = 'display: inline-block; float: left';
+            uibox.style.cssText = 'display: inline-block;';
+            e.mediaElement.style.cssText = 'display: inline-block;';
             //console.log("========== Adding id: " + uibox.id + "============");
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
-            uibox.style.cssText = 'display: inline-block;';
+            //uibox.style.cssText = 'display: inline-block;';
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
