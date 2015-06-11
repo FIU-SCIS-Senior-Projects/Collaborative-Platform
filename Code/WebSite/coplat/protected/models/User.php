@@ -556,6 +556,7 @@ class User extends CActiveRecord
         $email->to = $mentor_email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'Ticket #'.$ticket_id.' has been closed.';
         $email->message = $html;
         $email->send();
@@ -677,6 +678,7 @@ class User extends CActiveRecord
 
         $email->to = $user_email;
         $email->replyTo ='fiucoplat@gmail.com';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->from = 'Collaborative Platform';
         $email->subject = 'Congratulations!';
         $email->message = $html;
@@ -696,7 +698,8 @@ class User extends CActiveRecord
     	$email->to = $model->email;
         $email->replyTo ='fiucoplat@gmail.com';
     	$email->from = 'Collaborative Platform';
-    	$email->subject = 'Your application has been reviewed!';
+        $email->returnPath = "fiucoplat@gmail.com";
+        $email->subject = 'Your application has been reviewed!';
     	$email->message = $html;
     	$email->send();
     }
@@ -712,6 +715,7 @@ class User extends CActiveRecord
         $email->to = $admin_email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'Ticket #'.$ticket_id.' has been rejected.';
         $email->message = $html;
         $email->send();
@@ -728,6 +732,7 @@ class User extends CActiveRecord
         $email = Yii::app()->email;
         $email->to = $user->email;
         $email->replyTo ='fiucoplat@gmail.com';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->from = 'Collaborative Platform';
         $email->subject = 'Password Change';
         $email->message = $html;
@@ -746,6 +751,7 @@ class User extends CActiveRecord
         $email->to = $user->email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'Your New Password';
         $email->message = $html;
         $email->send();
@@ -757,6 +763,7 @@ class User extends CActiveRecord
         $email->to = $address;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->message = $message;
         $email->subject = 'Collaborative Platform';
         $email->send();
@@ -776,6 +783,7 @@ class User extends CActiveRecord
         $email->to = $receive->email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'New Message';
         $email->message = $html;
         $email->send();
@@ -793,6 +801,7 @@ class User extends CActiveRecord
         $email->to = $receiver_email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->subject = 'Welcome';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->from = 'Collaborative Platform';
         $email->message = $html;
 
@@ -815,6 +824,7 @@ class User extends CActiveRecord
         $email->to = $domMentor->email;
         $email->from = 'Collaborative Platform';
         $email->replyTo ='fiucoplat@gmail.com';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'New Ticket related to ' . $domain->name;
         $email->message = $html;
         $email->send();
@@ -839,6 +849,7 @@ class User extends CActiveRecord
             $email->to = $ticket_mentor->email;
             $email->from = 'Collaborative Platform';
             $email->replyTo ='fiucoplat@gmail.com';
+            $email->returnPath = "fiucoplat@gmail.com";
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -851,6 +862,7 @@ class User extends CActiveRecord
             $email->to = $ticket_creator->email;
             $email->from = 'Collaborative Platform';
             $email->replyTo ='fiucoplat@gmail.com';
+            $email->returnPath = "fiucoplat@gmail.com";
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -864,6 +876,7 @@ class User extends CActiveRecord
             $email->to = $ticket_mentor->email . "," . $ticket_creator->email;
             $email->from = 'Collaborative Platform';
             $email->replyTo ='fiucoplat@gmail.com';
+            $email->returnPath = "fiucoplat@gmail.com";
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -895,6 +908,7 @@ class User extends CActiveRecord
         $email->to = $invitation->email;
         $email->from = 'Collaborative Platform';
         $email->replyTo ='fiucoplat@gmail.com';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'We need you.';
         $email->message = $html;
         $email->send();
@@ -910,7 +924,8 @@ class User extends CActiveRecord
     	$email->to = $invitation->email;
     	$email->from = 'Collaborative Platform';
         $email->replyTo ='fiucoplat@gmail.com';
-    	$email->subject = 'We need you.';
+        $email->returnPath = "fiucoplat@gmail.com";
+        $email->subject = 'We need you.';
     	$email->message = $html;
     	$email->send();
     	
@@ -1011,6 +1026,7 @@ class User extends CActiveRecord
             $email->subject = $email_subject;
             $email->to = $mentor->email;
             $email->replyTo ='fiucoplat@gmail.com';
+            $email->returnPath = "fiucoplat@gmail.com";
             $email->message = $html;
             $email->send();
 
@@ -1022,6 +1038,7 @@ class User extends CActiveRecord
             $html = User::replaceMessage($to, $message);
             $email = Yii::app()->email;
             $email->from = $email_from;
+            $email->returnPath = "fiucoplat@gmail.com";
             $email->subject = $email_subject;
             $email->to = $mentor->email;
             $email->replyTo ='fiucoplat@gmail.com';
@@ -1057,6 +1074,7 @@ class User extends CActiveRecord
         $email->to = $old_mentor->email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
         $email->message = $html;
         $email->send();
@@ -1080,6 +1098,7 @@ class User extends CActiveRecord
         $email->to = $old_mentor->email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
         $email->message = $html;
         $email->send();
@@ -1100,6 +1119,7 @@ class User extends CActiveRecord
         $email->to = $mentee->email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'Project Meeting';
         $email->message = $html;
         $email->send();
@@ -1120,6 +1140,7 @@ class User extends CActiveRecord
         $email->to = $user->email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform.';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'Your Account has being verified.';
         $email->message = $html;
         $email->send();
@@ -1135,7 +1156,8 @@ class User extends CActiveRecord
         $email->to = $admin_email;
         $email->replyTo ='fiucoplat@gmail.com';
         $email->from = 'Collaborative Platform.';
-        $email->subject = 'Profile Changed';
+        $email->returnPath = "fiucoplat@gmail.com";
+       $email->subject = 'Profile Changed';
         $email->message = $html;
         $email->send();
     }
@@ -1150,6 +1172,7 @@ class User extends CActiveRecord
         $email->to = $admin_email;
         $email->from = 'Collaborative Platform';
         $email->replyTo ='fiucoplat@gmail.com';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = $subject;
         $email->message = $html;
         $email->send();

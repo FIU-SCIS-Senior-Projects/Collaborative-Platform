@@ -164,6 +164,7 @@ class VCInvitation extends CActiveRecord
         $email->to = $invitee_email;
         $email->from = 'Collaborative Platform';
         $email->replyTo ='fiucoplat@gmail.com';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'New Video Conference Invitation';
         $email->message = $html;
         $email->send();
@@ -210,6 +211,7 @@ class VCInvitation extends CActiveRecord
         $email->to = $invitee_email;
         $email->from = 'Collaborative Platform';
         $email->replyTo ='fiucoplat@gmail.com';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'Canceled Video Conference';
         $email->message = $html;
         $email->send();
@@ -262,6 +264,7 @@ class VCInvitation extends CActiveRecord
         $email = Yii::app()->email;
         $email->to = $invitee_email;
         $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@gmail.com";
         $email->replyTo ='fiucoplat@gmail.com';
         $email->subject = 'Video Conference Invitation Update';
         $email->message = $html;
