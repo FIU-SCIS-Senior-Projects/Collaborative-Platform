@@ -258,7 +258,7 @@
     // https://github.com/muaz-khan/RTCMultiConnection
 
     var rmc = new RTCMultiConnection();
-    //var secrmc = new RTCMultiConnection();
+    var sec = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -267,11 +267,12 @@
         data: true
     };
 
-//    secrmc.session = {
-//        video: false,
-//        audio: true,
-//        data: true
-//    };
+    sec.session = {
+        video: true,
+        audio: true,
+        data: true
+    };
+
 
     $('#open-room').click(function () {
 //        $.ajax({
@@ -312,7 +313,7 @@
           }
         };
         rmc.connect();
-        //secrmc.connect();
+        sec.connect();
 
         // http://www.rtcmulticonnection.org/docs/connect/
 
