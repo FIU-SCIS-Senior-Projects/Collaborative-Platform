@@ -185,7 +185,7 @@
 
         <div id="cotools-container-2" class="col-md-6 col-lg-5">
             <div id="cotools-panel-2">
-
+                <video controls="" autoplay=""></video>
             </div>
 
         </div>
