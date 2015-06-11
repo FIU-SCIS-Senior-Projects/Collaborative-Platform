@@ -400,8 +400,8 @@
 
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
             navigator.getUserMedia(screen_constraints, function (sec) {
-                //document.querySelector('secVid').src = URL.createObjectURL(rmc);
-                document.getElementById('cotools-panel-2 video').appendChild(this.mediaElement);
+                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
+//                document.getElementById('video').appendChild(this.mediaElement);
             }, function (error) {
                 console.error(error);
             });
