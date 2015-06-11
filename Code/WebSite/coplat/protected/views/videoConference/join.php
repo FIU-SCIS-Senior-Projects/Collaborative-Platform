@@ -313,7 +313,7 @@
           }
         };
         rmc.connect();
-
+        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
