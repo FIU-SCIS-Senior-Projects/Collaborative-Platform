@@ -313,6 +313,7 @@
           }
         };
         rmc.connect();
+        document.getElementById("join-room").remove();
         //secrmc.connect();
 
         // http://www.rtcmulticonnection.org/docs/connect/
