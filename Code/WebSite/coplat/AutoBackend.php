@@ -300,8 +300,8 @@ function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 }
 //need to come up with a table for previous mentors--done
 //WHEN ASSIGNING TICKETS TO MENTORS JOIN WITH TICKET ONLY WITH ID AND ASSIGNED DATE AND SORT BY ASSIGNED DATE. DONE WOO.
-//emailListener();
-///checkPriorityElapseTickets();
-sendTicketCancelEmail("adurocruor@gmail.com", "stuff\nand\nthings");
+emailListener();
+checkPriorityElapseTickets();
+//sendTicketCancelEmail("adurocruor@gmail.com", "stuff\nand\nthings");
 ?>
 
