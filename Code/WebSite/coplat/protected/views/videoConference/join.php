@@ -386,18 +386,10 @@
 
 
     $('#share-screen-2').click(function () {
-        //right = 1;
-        sec.addStream({
-            screen: true,
-            oneway: true
-        });
 
-
-        // http://www.rtcmulticonnection.org/docs/addStream/
-        getScreenId(function (error, sourceId, screen_constraints) {
-            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
-            // sourceId == null || 'string' || 'firefox'
-
+        sourceId = null; // remove old capture screen
+        getScreenConstraints(function(error, screen_constraints) {
+            // invoke navigator.getUserMedia here
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
             navigator.getUserMedia(screen_constraints, function (sec) {
                 document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
@@ -406,6 +398,27 @@
                 console.error(error);
             });
         });
+
+        //right = 1;
+//        sec.addStream({
+//            screen: true,
+//            oneway: true
+//        });
+//
+//
+//        // http://www.rtcmulticonnection.org/docs/addStream/
+//        getScreenId(function (error, sourceId, screen_constraints) {
+//            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+//            // sourceId == null || 'string' || 'firefox'
+//
+//            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+//            navigator.getUserMedia(screen_constraints, function (sec) {
+//                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
+////                document.getElementById('video').appendChild(this.mediaElement);
+//            }, function (error) {
+//                console.error(error);
+//            });
+//        });
     });
 
     //when the user clicks the stop-share-screen button it removes all the screen
@@ -511,19 +524,8 @@
     };
 
     sec.onstream = function (s) {
-        if (s.type == 'local') {
-            // alert("the stream is local");
-        }
-        if (s.type == 'remote') {
-            // alert("the stream is remote");
-        }
-        if (s.isVideo) {
-            //video
-        }
-        else if (s.isAudio) {
-            //audio
-        }
-        else if (s.isScreen) {
+        if (s.isScreen) {
+
 //            if(left == 1) {
 //
 //            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
