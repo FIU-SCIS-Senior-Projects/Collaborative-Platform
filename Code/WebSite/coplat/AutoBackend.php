@@ -175,7 +175,7 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
-    if( $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path))
+    if( $a = mail($toEmail, $subject, $body, $headers))
     {    echo "Email sent 3!<br />";}
     else{echo "didnt sent";}
 }
@@ -300,8 +300,8 @@ function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 }
 //need to come up with a table for previous mentors--done
 //WHEN ASSIGNING TICKETS TO MENTORS JOIN WITH TICKET ONLY WITH ID AND ASSIGNED DATE AND SORT BY ASSIGNED DATE. DONE WOO.
-emailListener();
-checkPriorityElapseTickets();
-
+//emailListener();
+///checkPriorityElapseTickets();
+sendTicketCancelEmail("adurocruor@gmail.com", "stuff\nand\nthings");
 ?>
 
