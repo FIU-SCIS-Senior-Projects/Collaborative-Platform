@@ -268,7 +268,7 @@
     };
 
     sec.session = {
-        video: false,
+        video: true,
         audio: true,
         data: true
     };
@@ -292,7 +292,7 @@
 //        });
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-
+        sec.open();
         rmc.sendCustomMessage({
             roomOpened: true,
             roomID: $('#meetingID').val()
@@ -313,7 +313,6 @@
           }
         };
         rmc.connect();
-        sec.connect();
 
         // http://www.rtcmulticonnection.org/docs/connect/
 
