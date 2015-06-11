@@ -211,8 +211,8 @@ class TicketEvents extends CActiveRecord
                     $description = 'Viewed by Mentor';
                     break;
 
-                case EventType::Event_Meeting_Scheduled:
-                    $description ='Meeting Scheduled';
+                case EventType::Event_Ticket_Reassigned:
+                    $description ='Reassigned to a new Mentor';
                     break;
                 
             }
