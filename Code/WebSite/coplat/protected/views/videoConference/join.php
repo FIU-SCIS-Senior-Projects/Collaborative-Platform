@@ -379,12 +379,12 @@
     });
 
 
-//    $('#share-screen-2').click(function () {
-//        right = 1;
-//        rmc.addStream({
-//            screen: true,
-//            oneway: true
-//        });
+    $('#share-screen-2').click(function () {
+        //right = 1;
+        sec.addStream({
+            screen: true,
+            oneway: true
+        });
 
 
         // http://www.rtcmulticonnection.org/docs/addStream/
@@ -411,7 +411,7 @@
     });
 
     $('#stop-share-screen-2').click(function () {
-        rmc.removeStream('screen');
+        sec.removeStream('screen');
         $('#cotools-panel-2 video').remove();
         right = 0;
     });
@@ -497,6 +497,43 @@
         }
 
     };
+
+    sec.onstream = function (e) {
+        if (e.type == 'local') {
+            // alert("the stream is local");
+        }
+        if (e.type == 'remote') {
+            // alert("the stream is remote");
+        }
+        if (e.isVideo) {
+            //video
+        }
+        else if (e.isAudio) {
+            //audio
+        }
+        else if (e.isScreen) {
+//            if(left == 1) {
+//
+//            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+//                $('#cotools-panel iframe').hide();
+//                $('#cotools-panel video').remove();
+//                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
+//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+//            }
+//
+//            else if (right == 1) {
+//                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+//            }
+
+            $('#cotools-panel-2 iframe').hide();
+            alert("iframe removed");
+            $('#cotools-panel-2 video').remove();
+            alert("video removed");
+            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+        }
+
+    };
+
 
 //    secrmc.onstream = function (e) {
 //       if (e.isScreen) {
