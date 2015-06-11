@@ -268,7 +268,7 @@
     };
 
     sec.session = {
-        video: true,
+        video: false,
         audio: true,
         data: true
     };
