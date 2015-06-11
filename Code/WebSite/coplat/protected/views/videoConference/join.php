@@ -471,7 +471,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
             //uibox.style.cssText = 'display: inline-block;';
-            $('join-room').fadeOut();
+            $('join-room').parent().fadeOut();
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
