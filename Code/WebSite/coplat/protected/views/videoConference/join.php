@@ -400,7 +400,7 @@
 //                console.error(error);
 //            });
 //        });
-//    });
+    });
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
