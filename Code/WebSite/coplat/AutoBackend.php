@@ -131,7 +131,7 @@ function setAsAway($user_Id)
                 if ($adomainMentor) {
                     if ($count['id'] < $adomainMentor["max_tickets"]) {
                        // echo"this mentor can be assigned new tickets";
-                        $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket[id].", NOW(), ".$aticket["assign_user_id"].", ".$aMentor["user_id"].", null, 5)");
+                        $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", ".$aMentor["user_id"].", null, 5)");
                         $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                         $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                         $mentorb = $mentorb1->fetch_assoc();
@@ -141,7 +141,7 @@ function setAsAway($user_Id)
                     }
                 } else { //not registered as having a max cket.
                  //   echo"mentor available not on assigned ticket";
-                    $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket[id].", NOW(), ".$aticket["assign_user_id"].", ".$aMentor["user_id"].", null, 5)");
+                    $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", ".$aMentor["user_id"].", null, 5)");
                     $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                     $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                     $mentorb = $mentorb1->fetch_assoc();
@@ -219,7 +219,7 @@ function checkPriorityElapseTickets()
                 $reassigns = $toManyReassign->fetch_assoc();
                 if($reassigns["count"] >=3)
                 {
-                    $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket[id].", NOW(), ".$aticket["assign_user_id"].", 5, null, 5)");
+                    $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", 5, null, 5)");
                     $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//give to admin for manual reassign
 
                     continue;
@@ -243,7 +243,7 @@ function checkPriorityElapseTickets()
             $possibleMentors = $dbconnect->query($sql);
             if ($possibleMentors->num_rows<=0)
             {
-                $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket[id].", NOW(), ".$aticket["assign_user_id"].", 5, null, 5)");
+                $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", 5, null, 5)");
                 $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//no possible mentor found assign to admin for manual assign.
             }
             else {
@@ -254,7 +254,7 @@ function checkPriorityElapseTickets()
                     $adomainMentor = $adomainMentor1->fetch_assoc();
                     if ($adomainMentor) {
                         if ($count['id'] < $adomainMentor["max_tickets"]) {
-                            $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket[id].", NOW(), ".$aticket["assign_user_id"].", ".$aMentor["user_id"].", null, 5)");
+                            $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", ".$aMentor["user_id"].", null, 5)");
                             $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                             $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                             $mentorb = $mentorb1->fetch_assoc();
@@ -262,7 +262,7 @@ function checkPriorityElapseTickets()
                             break;
                         }
                     } else { //not registered as having a max ticket.
-                        $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket[id].", NOW(), ".$aticket["assign_user_id"].", ".$aMentor["user_id"].", null, 5)");
+                        $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", ".$aMentor["user_id"].", null, 5)");
                         $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                         $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                         $mentorb = $mentorb1->fetch_assoc();
