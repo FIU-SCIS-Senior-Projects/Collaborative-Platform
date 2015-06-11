@@ -541,7 +541,7 @@
 //            alert("iframe removed");
 //            $('#cotools-panel-2 video').remove();
 //            alert("video removed");
-//            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
+            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
         }
 
     };
