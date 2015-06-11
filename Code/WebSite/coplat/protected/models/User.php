@@ -822,7 +822,7 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $domMentor->email;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platfor <fiucoplat@gmail.com>';
         $email->replyTo ='fiucoplat@gmail.com';
         $email->returnPath = "fiucoplat@gmail.com";
         $email->subject = 'New Ticket related to ' . $domain->name;
