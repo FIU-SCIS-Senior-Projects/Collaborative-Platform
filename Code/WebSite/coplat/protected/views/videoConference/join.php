@@ -361,6 +361,12 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
+    sec.onMediaCaptured = function () {
+        $('#share-screen-2').removeAttr('disabled');
+        $('#open-room').attr('disabled', 'disabled');
+        $('#join-room').attr('disabled', 'disabled');
+    };
+
 //    secrmc.onMediaCaptured = function () {
 //        $('#share-screen-2').removeAttr('disabled');
 //    };
@@ -412,6 +418,7 @@
 
     $('#stop-share-screen-2').click(function () {
         sec.removeStream('screen');
+        $('#cotools-panel-2 iframe').show();
         $('#cotools-panel-2 video').remove();
         right = 0;
     });
@@ -450,7 +457,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
-        //secrmc.leave();
+        sec.leave();
         setTimeout("location.href = '../';",1000);
     });
 
@@ -498,20 +505,20 @@
 
     };
 
-    sec.onstream = function (e) {
-        if (e.type == 'local') {
+    sec.onstream = function (s) {
+        if (s.type == 'local') {
             // alert("the stream is local");
         }
-        if (e.type == 'remote') {
+        if (s.type == 'remote') {
             // alert("the stream is remote");
         }
-        if (e.isVideo) {
+        if (s.isVideo) {
             //video
         }
-        else if (e.isAudio) {
+        else if (s.isAudio) {
             //audio
         }
-        else if (e.isScreen) {
+        else if (s.isScreen) {
 //            if(left == 1) {
 //
 //            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
@@ -529,7 +536,7 @@
             alert("iframe removed");
             $('#cotools-panel-2 video').remove();
             alert("video removed");
-            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
         }
 
     };
