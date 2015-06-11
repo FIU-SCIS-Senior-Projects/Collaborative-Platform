@@ -172,7 +172,7 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
     $return_path = "fiucoplat@gmail.com";
 //send the email using IMAP
     $a = imap_mail($toEmail, $subject, $body, $headers, $cc, $bcc, $return_path);
-   // echo "Email sent 3!<br />";
+    echo "Email sent 3!<br />";
 }
 function sendTicketReassignment($toEmail, $subjectl)
 {
