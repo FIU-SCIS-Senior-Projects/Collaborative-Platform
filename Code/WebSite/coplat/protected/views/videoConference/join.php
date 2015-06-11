@@ -529,19 +529,19 @@
 //            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
 //                $('#cotools-panel iframe').hide();
 //                $('#cotools-panel video').remove();
-//                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
-//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
 //            }
 //
 //            else if (right == 1) {
 //                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
 //            }
 
-            $('#cotools-panel-2 iframe').hide();
-            alert("iframe removed");
-            $('#cotools-panel-2 video').remove();
-            alert("video removed");
-            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
+//            $('#cotools-panel-2 iframe').hide();
+//            alert("iframe removed");
+//            $('#cotools-panel-2 video').remove();
+//            alert("video removed");
+//            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
         }
 
     };
