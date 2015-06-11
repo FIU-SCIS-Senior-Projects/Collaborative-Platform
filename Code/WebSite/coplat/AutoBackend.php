@@ -165,8 +165,10 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
 {
     $subject = "Out of Office Response";
     $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@gmail.com with:\n\n\"Back in office\"\n\nin the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
-    $headers = "From: fiucoplat@gmail.com\r\n".
-        "Reply-To: fiucoplat@gmail.com\r\n";
+    $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
+        'Reply-To: fiucoplat@gmail.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
     $cc = null;
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
@@ -178,8 +180,10 @@ function sendTicketReassignment($toEmail, $subjectl)
 {
     $subject = "Ticket Assigned";
     $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectl . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
-    $headers = "From: fiucoplat@gmail.com\r\n".
-        "Reply-To: fiucoplat@gmail.com\r\n";
+    $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
+        'Reply-To: fiucoplat@gmail.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
     $cc = null;
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
@@ -279,8 +283,10 @@ function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 {
     $subject = "Reassign Due to Inactivity";
     $body = "Due to the inactivity on the ticket:\n\n$subjectLine \n\nhas been reassigned.\n\nThank you for all your help making Collaborative Platform great";
-    $headers = "From: fiucoplat@gmail.com\r\n".
-        "Reply-To: fiucoplat@gmail.com\r\n";
+    $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
+        'Reply-To: fiucoplat@gmail.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
     $cc = null;
     $bcc = null;
     $return_path = "fiucoplat@gmail.com";
