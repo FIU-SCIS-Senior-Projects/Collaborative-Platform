@@ -429,6 +429,11 @@
         //document.getElementById('input-text-chat').disabled = false;
     };
 
+    rmc.onopen = function (event) {
+        //alert('Text chat has been opened between you and ' + event.userid);
+        //document.getElementById('input-text-chat').disabled = false;
+    };
+
 //    document.getElementById('input-text-chat').onkeyup = function (e) {
 //        if (e.keyCode != 13) return; // if it is not Enter-key
 //        var value = this.value.replace(/^\s+|\s+$/g, '');
