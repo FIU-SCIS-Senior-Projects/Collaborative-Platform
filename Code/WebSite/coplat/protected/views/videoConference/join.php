@@ -112,7 +112,6 @@
 
     <!-- Single button -->
     <div class="btn-group">
-        <?php echo '<input type="hidden" id="myServerVariable" runat="server" />'; ?>
         <button type="button" title="Whiteboard actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                 aria-expanded="false">
             <i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard <span class="caret"></span>
@@ -313,7 +312,6 @@
           }
         };
         rmc.connect();
-        document.getElementById("join-room").remove();
         //secrmc.connect();
 
         // http://www.rtcmulticonnection.org/docs/connect/
@@ -473,6 +471,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
             //uibox.style.cssText = 'display: inline-block;';
+            $('join-room').fadeOut();
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
