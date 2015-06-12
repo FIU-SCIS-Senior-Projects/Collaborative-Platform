@@ -430,7 +430,7 @@
 
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
             navigator.getUserMedia(screen_constraints, function (stream) {
-                document.querySelector('video').src = URL.createObjectURL(stream);
+                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
             }, function (error) {
                 console.error(error);
             });
