@@ -382,9 +382,6 @@
             screen: true,
             oneway: true
         });
-        rmc.sendCustomMessage({
-            screenToShare: 'right'
-        });
 //
 //
 //        // http://www.rtcmulticonnection.org/docs/addStream/
@@ -429,6 +426,10 @@
             }, function (error) {
                 console.error(error);
             });
+        });
+
+        rmc.sendCustomMessage({
+            screenToShare: 'right'
         });
 
 
