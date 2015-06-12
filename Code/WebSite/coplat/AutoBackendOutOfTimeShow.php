@@ -254,7 +254,7 @@ function checkPriorityElapseTickets()
                 break;
         }
     }
-    $ticketr = $dbconnect->query("Select * FROM ticket t where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(NOW(), INTERVAL -2 MINUTE)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5 and event_performed_by_user_id = t.assign_user_id) AND  not exists (Select null from (video_conference inner join vc_invitation on id = videoconference_id) where t.assign_user_id = moderator_id and t.creator_user_id = invitee_id and subject like CONCAT(t.subject,' - Ticket #',t.id)) ");
+    $ticketr = $dbconnect->query("Select * FROM ticket t where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(NOW(), INTERVAL -1 MINUTE)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5 and event_performed_by_user_id = t.assign_user_id) AND  not exists (Select null from (video_conference inner join vc_invitation on id = videoconference_id) where t.assign_user_id = moderator_id and t.creator_user_id = invitee_id and subject like CONCAT(t.subject,' - Ticket #',t.id)) ");
     //select all tickets without a ticket event 5 or MAYBE 8 (ask juan) over their respective priorities VERY COMPLICATED SQL query
     // reassign tickets
     if($ticketr->num_rows>0) {
