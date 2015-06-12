@@ -388,7 +388,8 @@
     $('#share-screen-2').click(function () {
         sec.addStream({
             screen: true,
-            oneway: true
+            oneway: true,
+            video: true
         });
 //
 //
