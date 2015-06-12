@@ -1,0 +1,2 @@
+MAILTO=fiucoplat@gmail.com
+*/2 * * * * php /var/www/html/CoplatVe5/Code/WebSite/coplat/AutoBackendOutOfTimeShow.php >/dev/null
