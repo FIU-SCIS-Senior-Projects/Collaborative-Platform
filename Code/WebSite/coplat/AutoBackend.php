@@ -119,7 +119,7 @@ function setAsAway($user_Id)
     $ticketSubs = "";
     $ftickets = $dbconnect->query("SELECT * FROM ticket WHERE assign_user_id = $user_Id AND assigned_date >= DATE_ADD(NOW() , INTERVAL -1 DAY )");//find tickets assigned to this user within last 24 hours
     while ($aticket = $ftickets->fetch_assoc()) {
-        echo "a ticket is being looked at from kimora hideki";
+      //  echo "a ticket is being looked at from kimora hideki";
         if (!is_null($aticket["subdomain_id"])) {
             $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) order by assigned_date ASC   ";
             }
@@ -191,8 +191,8 @@ function setAsAway($user_Id)
  */
 function sendTicketCancelEmail($toEmail, $subjectlines)
 {
-    echo"\n";
-    echo $toEmail .  $subjectlines;
+   // echo"\n";
+   // echo $toEmail .  $subjectlines;
     $subject = "Out of Office Response";
     $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@gmail.com with:\n\n\"Back in office\"\n\nin the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
@@ -253,7 +253,7 @@ function checkPriorityElapseTickets()
                 break;
         }
     }
-    $ticketr = $dbconnect->query("Select * FROM ticket t where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5) AND  not exists (Select null from (video_conference inner join vc_invitation on id = videoconference_id) where t.assign_user_id = moderator_id and t.creator_user_id = invitee_id and subject like CONCAT(t.subject,' - Ticket #',t.id)) ");
+    $ticketr = $dbconnect->query("Select * FROM ticket t where (status != 'Close' and status != 'Reject' and assign_user_id != 5) AND ((priority_id = 1 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $high HOUR)) OR (priority_id = 2 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $med HOUR)) OR (priority_id = 3 AND assigned_date <= DATE_ADD(NOW(), INTERVAL $low HOUR))) AND id NOT IN (SELECT ticket_id as id FROM ticket_events where event_type_id = 5 and event_performed_by_user_id = t.assign_user_id) AND  not exists (Select null from (video_conference inner join vc_invitation on id = videoconference_id) where t.assign_user_id = moderator_id and t.creator_user_id = invitee_id and subject like CONCAT(t.subject,' - Ticket #',t.id)) ");
     //select all tickets without a ticket event 5 or MAYBE 8 (ask juan) over their respective priorities VERY COMPLICATED SQL query
     // reassign tickets
     if($ticketr->num_rows>0) {
