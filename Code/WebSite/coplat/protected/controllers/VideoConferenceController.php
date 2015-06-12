@@ -338,6 +338,33 @@ class VideoConferenceController extends Controller
 //
         if (isset($_POST['VideoConference'])) {
             $model->attributes = $_POST['VideoConference'];
+            $model->scheduled_on = date("Y-m-d H:i:s");                 //now date
+
+            $dateopt = $_POST['dateopt'];
+            if ($dateopt == "now") {                                    //if scheduled for now, use now datetime
+                $model->scheduled_for = date("Y-m-d H:i:s");
+            } else if ($dateopt == "later") {                           //else get the date and validate it
+                if (isset($_POST["date"]) && isset($_POST["time"])) {
+                    $format = "m/d/Y H:i a";
+                    $date = DateTime::createFromFormat($format, $_POST['date'] . "  " . strtolower($_POST['time']));
+                    if (!$date) {
+                        $model->addError('date', "Wrong format for the date ");
+                        $this->render('create', array(
+                            'model' => $model,
+                        ));
+                        exit;
+                    } else {
+                        $model->scheduled_for = $date->format("Y-m-d H:i:s");
+                    }
+                } else {
+                    $model->addError('date', "Empty date or time");
+                    $this->render('create', array(
+                        'model' => $model,
+                    ));
+                    exit;
+                }
+            }
+
             if ($model->update()) {
                 /* Send email update */
                 $inviteeEmails = $_POST['invitees'];    //emails of all the invitees
