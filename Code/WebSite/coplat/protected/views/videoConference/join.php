@@ -511,6 +511,9 @@
             rmc.onCustomMessage = function(message) {
                 console.log("************************* Messsge received ************************");
                 console.log(message);
+                $('#cotools-panel iframe').hide();
+                $('#cotools-panel video').remove();
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
             };
 
 //            if(left == 1) {
@@ -526,9 +529,9 @@
 //                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
 //            }
 
-            $('#cotools-panel iframe').hide();
-            $('#cotools-panel video').remove();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+//            $('#cotools-panel iframe').hide();
+//            $('#cotools-panel video').remove();
+//            document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
 
     };
