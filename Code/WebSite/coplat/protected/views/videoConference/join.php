@@ -543,7 +543,10 @@
     };
 
     sec.onstream = function (s) {
-        if (s.isScreen) {
+        if(s.isVideo) {
+            alert("VIDEO");
+        }
+        else if (s.isScreen) {
 
 //            if(left == 1) {
 //
