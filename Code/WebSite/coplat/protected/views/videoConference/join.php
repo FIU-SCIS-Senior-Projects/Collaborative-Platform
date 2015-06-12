@@ -275,13 +275,28 @@
 
 
     $('#open-room').click(function () {
+//        $.ajax({
+//            type: 'POST',
+//            url: "../invite",
+//            data: {
+//                videoconference_id: $('#meetingID').val(),
+//                invitee_id: 1111,
+//                status: "Accepted"
+//            },
+//            success: function() {
+//                alert("success!");
+//            },
+//            error: function() {
+//                alert("fail");
+//            }
+//        });
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
         sec.open();
         rmc.sendCustomMessage({
             roomOpened: true,
             roomID: $('#meetingID').val()
-        });
+    });
         console.log("sent room = true" + "\nConference ID = " + $('#meetingID').val());
 
         //secrmc.open();
@@ -366,21 +381,14 @@
             screen: true,
             oneway: true
         });
-        rmc.sendCustomMessage({
-            screenToShare: 'left'
-        });
     });
 
 
     $('#share-screen-2').click(function () {
-//        sec.addStream({
-//            screen: true,
-//            oneway: true,
-//            video: true
-//        });
-        rmc.addStream({
+        sec.addStream({
             screen: true,
-            oneway: true
+            oneway: true,
+            video: true
         });
 //
 //
@@ -426,10 +434,6 @@
             }, function (error) {
                 console.error(error);
             });
-        });
-
-        rmc.sendCustomMessage({
-            screenToShare: 'right'
         });
 
 
@@ -530,54 +534,41 @@
 //            else if (right == 1) {
 //                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
 //            }
-            console.log("=============== about to receive custom message ====================");
-            rmc.onCustomMessage = function(message) {
-                console.log("=============== Message received with screen value of: " + message.screenToShare + "===============");
-                if(message.screenToShare == "left") {
-                    $('#cotools-panel iframe').hide();
-                    $('#cotools-panel video').remove();
-                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
-                }
-                else if(message.screenToShare == "right") {
-                    $('#cotools-panel-2 video').remove();
-                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                }
-            };
 
-//            $('#cotools-panel iframe').hide();
-//            $('#cotools-panel video').remove();
-//            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            $('#cotools-panel iframe').hide();
+            $('#cotools-panel video').remove();
+            document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
 
     };
 
-//    sec.onstream = function (s) {
-//        if(s.isVideo) {
-//            alert("VIDEO");
-//        }
-//        else if (s.isScreen) {
+    sec.onstream = function (s) {
+        if(s.isVideo) {
+            alert("VIDEO");
+        }
+        else if (s.isScreen) {
+
+//            if(left == 1) {
 //
-////            if(left == 1) {
-////
-////            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
-////                $('#cotools-panel iframe').hide();
-////                $('#cotools-panel video').remove();
-////                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-////                document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-////            }
-////
-////            else if (right == 1) {
-////                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-////            }
+//            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+//                $('#cotools-panel iframe').hide();
+//                $('#cotools-panel video').remove();
+//                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+//                document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
+//            }
 //
-////            $('#cotools-panel-2 iframe').hide();
-////            alert("iframe removed");
-////            $('#cotools-panel-2 video').remove();
-////            alert("video removed");
-//            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-//        }
-//
-//    };
+//            else if (right == 1) {
+//                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+//            }
+
+//            $('#cotools-panel-2 iframe').hide();
+//            alert("iframe removed");
+//            $('#cotools-panel-2 video').remove();
+//            alert("video removed");
+            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
+        }
+
+    };
 
 
 //    secrmc.onstream = function (e) {
