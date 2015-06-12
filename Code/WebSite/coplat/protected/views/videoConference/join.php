@@ -386,10 +386,10 @@
 
 
     $('#share-screen-2').click(function () {
-//        sec.addStream({
-//            screen: true,
-//            oneway: true
-//        });
+        sec.addStream({
+            screen: true,
+            oneway: true
+        });
 //
 //
 //        // http://www.rtcmulticonnection.org/docs/addStream/
