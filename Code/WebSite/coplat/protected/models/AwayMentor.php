@@ -123,7 +123,7 @@ Class AwayMentor extends CActiveRecord
         $html = User::replaceMessage($mentorname, $message);
 
         $email->to = $mentoremail;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platform <fiucoplat@gmail.com>';
         $email->replyTo ='fiucoplat@gmail.com';
         $email->subject = 'Auto Response to Out of Office';
         $email->message = $html;
