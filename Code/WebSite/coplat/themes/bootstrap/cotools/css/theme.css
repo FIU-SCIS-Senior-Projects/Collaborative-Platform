@@ -228,14 +228,16 @@ p.msg {
 #video-container {
     height: 40em;
     overflow: auto;
+    float: left;
 }
 
 #video-container video, #video-container-md video {
     /*position: absolute; */
-    width: 95%; /*95*/
+    /*width: 95%; *//*95*/
     margin-bottom: 7px;
     height: auto;
-    float: right;
+    /*float: right;*/
+    float: left;
 }
 
 .userid {
@@ -245,7 +247,7 @@ p.msg {
     padding: 0px 10px 10px 10px;
     width: 90%;
     /*float: right;*/
-    display: inline-block;
+    float: left;
 }
 
 @media only screen
