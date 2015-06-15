@@ -297,7 +297,7 @@
               document.getElementById("on-off-video").style.color= 'red';
           }
         };
-        connection.join(rmc);
+        rmc.join();
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
