@@ -226,6 +226,7 @@ p.msg {
 */
 .row-fluid {
     height: 20px;
+    overflow: auto;
 }
 
 #video-container {
