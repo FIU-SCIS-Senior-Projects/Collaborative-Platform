@@ -226,7 +226,7 @@ p.msg {
 */
 .row-fluid {
     height: 5em;
-    width: 20em;
+    width: 90%;
     overflow: auto;
 }
 
@@ -238,7 +238,7 @@ p.msg {
 
 #video-container video, #video-container-md video {
     /*position: absolute; */
-    /*width: 95%; *//*95*/
+    width: 95%;
     margin-bottom: 7px;
     height: auto;
     /*float: right;*/
