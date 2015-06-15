@@ -363,16 +363,18 @@
         rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
+
+        rmc.sendCustomMessage({
+            pos: "left",
+            roomID: $('#meetingID').val()
+        });
         
         rmc.addStream({
             screen: true,
             oneway: true
         });
 
-        rmc.sendCustomMessage({
-            pos: "left",
-            roomID: $('#meetingID').val()
-        });
+
     });
 
 
