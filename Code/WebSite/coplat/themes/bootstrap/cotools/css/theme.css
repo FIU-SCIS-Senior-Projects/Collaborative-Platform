@@ -239,13 +239,13 @@ p.msg {
 }
 
 .userid {
-    display: block;
+    /*display: block;*/
     text-align: center;
     border-bottom: 1px solid #000020;
     padding: 0px 10px 10px 10px;
     width: 90%;
-    float: right;
-
+    /*float: right;*/
+    display: inline-block;
 }
 
 @media only screen
