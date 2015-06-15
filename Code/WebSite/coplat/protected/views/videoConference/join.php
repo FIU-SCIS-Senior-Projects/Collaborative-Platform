@@ -297,7 +297,7 @@
               document.getElementById("on-off-video").style.color= 'red';
           }
         };
-        rmc.join();
+        rmc.connect();
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
@@ -514,17 +514,18 @@
             rmc.onCustomMessage = function(message) {
                 if(message.pos == "left"){
                     alert("share left screen");
+                    $('#cotools-panel iframe').hide();
+                    $('#cotools-panel video').remove();
+                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
                 }
 
                 if(message.pos == "right") {
                     alert("share right screen");
                 }
-                console.log("************************* Messsge received ************************");
+                //console.log("************************* Messsge received ************************");
 
-                console.log(message);
-                $('#cotools-panel iframe').hide();
-                $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                //console.log(message);
+
             };
 
 //            if(left == 1) {
