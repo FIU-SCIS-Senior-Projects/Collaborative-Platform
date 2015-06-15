@@ -299,12 +299,13 @@ and (min-width: 1224px) {
         width: 80%;
         margin: 0 0 7px 10px;
         height: auto;
-
+        float: left;
     }
 
     .userid {
         width: 80%;
         margin-left: 10px;
+        float: left;
     }
 }
 
@@ -316,11 +317,13 @@ and (min-width: 1824px) {
         width: 65%;
         height: auto;
         margin: 0 0 7px 90px;
+        float: left;
     }
 
     .userid {
         width: 65%;
         margin-left: 90px;
+        float: left;
     }
 }
 
