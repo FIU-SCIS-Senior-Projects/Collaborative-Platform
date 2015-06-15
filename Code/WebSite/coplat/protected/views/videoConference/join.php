@@ -378,9 +378,7 @@
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
         rmc.removeStream('screen');
-        $('#cotools-panel iframe').show();
-        $('#cotools-panel video').remove();
-        
+
         rmc.addStream({
             screen: true,
             oneway: true
@@ -391,8 +389,7 @@
     $('#share-screen-2').click(function () {
         sec.addStream({
             screen: true,
-            oneway: true,
-            video: true
+            oneway: true
         });
 //
 //
