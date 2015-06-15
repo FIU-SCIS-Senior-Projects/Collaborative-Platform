@@ -313,7 +313,6 @@
           }
         };
         rmc.connect();
-        sec.join();
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
@@ -378,8 +377,6 @@
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
-        //rmc.removeStream('screen');
-
         rmc.addStream({
             screen: true,
             oneway: true
@@ -390,7 +387,8 @@
     $('#share-screen-2').click(function () {
         sec.addStream({
             screen: true,
-            oneway: true
+            oneway: true,
+            video: true
         });
 //
 //
