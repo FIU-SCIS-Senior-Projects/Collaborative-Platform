@@ -360,6 +360,10 @@
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
+        rmc.removeStream('screen');
+        $('#cotools-panel iframe').show();
+        $('#cotools-panel video').remove();
+        
         rmc.addStream({
             screen: true,
             oneway: true
@@ -417,6 +421,8 @@
 //                console.error(error);
 //            });
 //        });
+        rmc.removeStream('screen');
+        $('#cotools-panel-2 video').remove();
 
         rmc.addStream({
             screen: true,
@@ -438,8 +444,7 @@
     });
 
     $('#stop-share-screen-2').click(function () {
-        sec.removeStream('screen');
-        $('#cotools-panel-2 iframe').show();
+        rmc.removeStream('screen');
         $('#cotools-panel-2 video').remove();
     });
 
