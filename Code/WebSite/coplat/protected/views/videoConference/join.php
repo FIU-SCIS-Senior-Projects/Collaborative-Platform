@@ -277,7 +277,7 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        sec.open();
+        //sec.open();
         rmc.sendCustomMessage({
             roomOpened: true,
             roomID: $('#meetingID').val()
@@ -297,7 +297,7 @@
               document.getElementById("on-off-video").style.color= 'red';
           }
         };
-        rmc.connect();
+        connection.join(rmc);
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
