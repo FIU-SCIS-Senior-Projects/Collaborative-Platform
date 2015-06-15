@@ -356,8 +356,6 @@
 //        $('#share-screen-2').removeAttr('disabled');
 //    };
 
-    var left = 0;
-    var right = 0;
     //screen sharing
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
@@ -367,7 +365,10 @@
             oneway: true
         });
 
-        rmc.sendCustomMessage("left");
+        rmc.sendCustomMessage({
+            pos: "left",
+            roomID: $('#meetingID').val()
+        });
     });
 
 
@@ -421,7 +422,11 @@
             screen: true,
             oneway: true
         });
-        rmc.sendCustomMessage("right");
+
+        rmc.sendCustomMessage({
+            pos: "right",
+            roomID: $('#meetingID').val()
+        });
 
     });
 
@@ -430,14 +435,12 @@
         rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
-        left = 0;
     });
 
     $('#stop-share-screen-2').click(function () {
         sec.removeStream('screen');
         $('#cotools-panel-2 iframe').show();
         $('#cotools-panel-2 video').remove();
-        right = 0;
     });
 
     //chat
@@ -509,7 +512,15 @@
         else if (e.isScreen) {
             console.log("**********************  SCREEN  ********************");
             rmc.onCustomMessage = function(message) {
+                if(message.pos == "left"){
+                    alert("share left screen");
+                }
+
+                if(message.pos == "right") {
+                    alert("share right screen");
+                }
                 console.log("************************* Messsge received ************************");
+
                 console.log(message);
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
