@@ -199,7 +199,7 @@
     <div class="row-fluid">
         <div id="video-container" style="" class="col-md-2 col-lg-2">
 
-            <div style="margin-left: 90px" >
+            <div style="margin-left: 80px" >
                 <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
             </div>
 
@@ -514,7 +514,7 @@
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-            uibox.style.cssText = 'float: left';
+//            uibox.style.cssText = 'float: left';
             //console.log("========== Adding id: " + uibox.id + "============");
             //document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
