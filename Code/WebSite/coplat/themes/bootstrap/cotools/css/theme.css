@@ -226,10 +226,9 @@ p.msg {
 */
 .row-fluid {
     background-color: green;
-    height: 20em;
+    height: 15em;
     width: 30%;
-    overflow: auto;
-    overflow-x: scroll;
+    overflow: scroll;
     overflow-y: hidden;
 }
 
