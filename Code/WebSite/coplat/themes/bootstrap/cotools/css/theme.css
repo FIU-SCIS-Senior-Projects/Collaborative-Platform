@@ -228,7 +228,7 @@ p.msg {
     background-color: green;
     height: 15em;
     width: 30em;
-    overflow-x: scroll;
+    overflow: auto;
     white-space: nowrap;
 }
 
