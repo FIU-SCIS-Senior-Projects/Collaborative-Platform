@@ -232,6 +232,7 @@ p.msg {
 
 #video-container {
     height: 200px;
+    width: 50em;
     overflow: auto;
     display: inline-block;
     vertical-align: top;
@@ -240,9 +241,9 @@ p.msg {
 
 #video-container video, #video-container-md video {
     /*position: absolute; */
-    width: 95%;
+    width: 200px;
     margin-bottom: 7px;
-    height: auto;
+    height: 200px;
     /*float: right;*/
     display: inline-block;
     vertical-align: top;
