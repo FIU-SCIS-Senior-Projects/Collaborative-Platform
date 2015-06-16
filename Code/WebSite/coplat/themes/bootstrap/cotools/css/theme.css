@@ -154,7 +154,7 @@ Tool box
     height: 72vh;
     min-height: 25em;
     max-height: 40em;
-    width: 95%;
+    width: 100%;
     border: 2px solid #18536b;
     float: left;
 }
@@ -165,11 +165,11 @@ Tool box
 
 #cotools-panel-2 {
     margin-bottom: 20px;
-    margin-right: 10px;
+    margin-right: 20px;
     height: 72vh;
     min-height: 25em;
     max-height: 40em;
-    width: 95%;
+    width: 100%;
     border: 2px solid #18536b;
     float: left;
 }
