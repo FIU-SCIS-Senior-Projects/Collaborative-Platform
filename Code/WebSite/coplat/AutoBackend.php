@@ -128,7 +128,7 @@ function setAsAway($user_Id)
     $ticketSubs = "";
     $hoursForTickets = $dbconnect->query("Select setting from reassign_rules where rule_id  = 3")->fetch_assoc()["setting"];
     $hoursForTickets = $hoursForTickets * -1;
-    $ftickets = $dbconnect->query("SELECT * FROM ticket WHERE assign_user_id = $user_Id AND assigned_date >= DATE_ADD(NOW() , INTERVAL $hoursForTickets DAY ) and assigned_project_id is null");//find tickets assigned to this user within last 24 hours
+    $ftickets = $dbconnect->query("SELECT * FROM ticket WHERE assign_user_id = $user_Id AND assigned_date >= DATE_ADD(NOW() , INTERVAL $hoursForTickets HOUR ) and assigned_project_id is null");//find tickets assigned to this user within last 24 hours
     while ($aticket = $ftickets->fetch_assoc()) {
       //  echo "a ticket is being looked at from kimora hideki";
         if (!is_null($aticket["subdomain_id"])) {
