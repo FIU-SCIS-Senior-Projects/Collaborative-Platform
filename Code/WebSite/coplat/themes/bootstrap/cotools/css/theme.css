@@ -233,6 +233,7 @@ p.msg {
 #video-container {
     height: 40em;
     overflow: auto;
+    width: 100%
     display: inline-block;
     vertical-align: top;
     background-color: green;
