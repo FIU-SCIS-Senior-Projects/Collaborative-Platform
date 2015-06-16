@@ -232,8 +232,9 @@ p.msg {
 
 #video-container {
     height: 300px;
-    width: 100%;
-    overflow: auto;
+    width: 60em;
+    overflow-x: scroll;
+    overflow-y: hidden;
     display: inline-block;
     /*vertical-align: top;*/
 }
