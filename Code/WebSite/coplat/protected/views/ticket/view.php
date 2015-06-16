@@ -241,7 +241,7 @@
                 <tbody>
                     <tr>
                         <td><?php echo $event->id; ?></td>
-                        <td><?php echo date("M d, Y h:m A", strtotime($event->event_recorded_date)) ?></td>
+                        <td><?php echo date("M d, Y g:i A", strtotime($event->event_recorded_date)) ?></td>
                         <td><?php echo $event->getEventDescription() ?></td>                    
                         <td><?php echo $event->eventPerformedByUser->getFullName() ?></td>
                     </tr>
