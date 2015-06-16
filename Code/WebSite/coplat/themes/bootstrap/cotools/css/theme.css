@@ -227,14 +227,14 @@ p.msg {
 .row-fluid {
     background-color: green;
     height: 10em;
-    width: 50%;
+    width: 30%;
     overflow: auto;
     overflow-x: scroll;
     overflow-y: hidden;
 }
 
 #video-container {
-    height: 400px;
+    height: 100%;
     width: 100%;
     display: inline-block;
     /*vertical-align: top;*/
@@ -312,7 +312,7 @@ and (min-width: 1224px) {
     #video-container video, #video-container-md video {
         /*position: absolute; */
         /*width: 80%;*/
-        margin: 0 20px 0 20px;
+        margin: 0 20px 20px 20px;
         height: auto;
         /*display: inline-block;*/
     }
@@ -333,7 +333,7 @@ and (min-width: 1824px) {
         /*position: absolute; */
         width: 65%;
         height: auto;
-        margin: 0 auto;
+        margin: 0 auto 20px auto;
         display: inline-block;
     }
 
