@@ -231,9 +231,8 @@ p.msg {
 }
 
 #video-container {
-    height: 40em;
+    height: 3em;
     overflow: auto;
-    width: 50em;
     display: inline-block;
     vertical-align: top;
     background-color: green;
