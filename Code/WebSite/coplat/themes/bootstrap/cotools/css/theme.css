@@ -317,7 +317,7 @@ and (min-width: 1224px) {
     .userid {
         /*float: left;*/
         /*width: 80%;*/
-        /*margin-left: 10px;*/
+        margin-left: 10px;
         /*display: inline-block;*/
     }
 }
@@ -335,7 +335,7 @@ and (min-width: 1824px) {
 
     .userid {
         /*width: 65%;*/
-        /*margin-left: 90px;*/
+        margin-left: 90px;
         /*display: inline-block;*/
     }
 }
