@@ -153,7 +153,7 @@ Tool box
     height: 75vh;
     min-height: 25em;
     max-height: 48em;
-    width: 95%;
+    width: 100%;
     border: 2px solid #18536b;
     float: left;
 }
@@ -167,7 +167,7 @@ Tool box
     height: 75vh;
     min-height: 25em;
     max-height: 48em;
-    width: 95%;
+    width: 100%;
     border: 2px solid #18536b;
     float: left;
 }
@@ -225,7 +225,6 @@ p.msg {
     video container
 */
 .row-fluid {
-    background-color: green;
     height: 13em;
     width: 80%;
     overflow: auto;
