@@ -225,16 +225,16 @@ p.msg {
     video container
 */
 .row-fluid {
-    height: 12em;
-    width: 90%;
+    height: 10em;
+    width: 50%;
     overflow: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 #video-container {
     height: 300px;
     width: 60em;
-    overflow-x: scroll;
-    overflow-y: hidden;
     display: inline-block;
     /*vertical-align: top;*/
 }
