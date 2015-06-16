@@ -227,7 +227,7 @@ p.msg {
 .row-fluid {
     height: 12em;
     width: 90%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 #video-container {
@@ -240,7 +240,7 @@ p.msg {
 #video-container video, #video-container-md video {
     /*position: absolute; */
     width: 95%;
-    margin-bottom: 7px;
+    /*margin-bottom: 7px;*/
     height: auto;
     /*float: right;*/
     display: inline-block;
@@ -307,14 +307,14 @@ and (min-width: 1224px) {
     #video-container video, #video-container-md video {
         /*position: absolute; */
         width: 80%;
-        margin: 0 0 7px 10px;
+        /*margin: 0 0 7px 10px;*/
         height: auto;
         display: inline-block;
     }
 
     .userid {
         width: 80%;
-        margin-left: 10px;
+        /*margin-left: 10px;*/
         display: inline-block;
     }
 }
