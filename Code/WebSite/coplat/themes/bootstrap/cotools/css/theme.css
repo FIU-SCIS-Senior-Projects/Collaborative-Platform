@@ -253,7 +253,8 @@ p.msg {
     /*display: block;*/
     text-align: center;
     border-bottom: 1px solid #000020;
-    padding: 0px 10px 10px 10px;
+    margin-top: 10px;
+    /*padding: 0px 10px 10px 10px;*/
     /*width: 90%;*/
     /*float: right;*/
     /*display: inline-block;*/
