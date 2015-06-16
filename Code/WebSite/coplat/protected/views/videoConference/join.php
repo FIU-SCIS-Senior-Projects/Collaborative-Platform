@@ -196,7 +196,7 @@
 <!--        </div>-->
 
     </div>
-    <div class="row-fluid">
+    <div class="row row-fluid">
         <div id="video-container" style="" class="col-md-2 col-lg-2">
 
             <div style="margin-left: 80px" >
