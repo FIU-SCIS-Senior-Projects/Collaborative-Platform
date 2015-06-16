@@ -512,7 +512,8 @@
             var uibox = e.mediaElement;
             //document.createElement("div");
             //uibox.appendChild(e.mediaElement);
-            uibox.appendText(e.userid);
+            var uid = document.createTextNode(e.userid);
+            uibox.appendChild(uid);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
 //            uibox.style.cssText = 'display: block';
