@@ -150,10 +150,11 @@ Tool box
 
 #cotools-panel {
     margin-bottom: 20px;
-    height: 75vh;
+    margin-left: 10px;
+    height: 72vh;
     min-height: 25em;
-    max-height: 48em;
-    width: 100%;
+    max-height: 46em;
+    width: 95%;
     border: 2px solid #18536b;
     float: left;
 }
@@ -164,10 +165,11 @@ Tool box
 
 #cotools-panel-2 {
     margin-bottom: 20px;
-    height: 75vh;
+    margin-right: 10px;
+    height: 72vh;
     min-height: 25em;
-    max-height: 48em;
-    width: 100%;
+    max-height: 46em;
+    width: 95%;
     border: 2px solid #18536b;
     float: left;
 }
