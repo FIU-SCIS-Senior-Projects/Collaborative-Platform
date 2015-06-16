@@ -153,7 +153,8 @@ Tool box
     margin-left: 20px;
     height: 64vh;
     min-height: 20em;
-    max-height: 30em;
+    max-height: 35em;
+    max-width: 45em;
     width: 100%;
     border: 2px solid #18536b;
     float: left;
@@ -168,7 +169,8 @@ Tool box
     margin-right: 20px;
     height: 64vh;
     min-height: 20em;
-    max-height: 30em;
+    max-height: 35em;
+    max-width: 45em;
     width: 100%;
     border: 2px solid #18536b;
     float: left;
@@ -374,16 +376,16 @@ and (orientation: portrait) {
     width: 100%;
     height: auto;
     position: relative;
-    /*top: 50%;*/
-    /*transform: translateY(-50%);*/
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #cotools-panel-2 video {
     width: 100%;
     height: auto;
     position: relative;
-    /*top: 50%;*/
-    /*transform: translateY(-50%);*/
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .volume_bar {
