@@ -232,7 +232,7 @@ p.msg {
 
 #video-container {
     height: 200px;
-    width: 50em;
+    width: 100%;
     overflow: auto;
     display: inline-block;
     vertical-align: top;
@@ -255,7 +255,7 @@ p.msg {
     text-align: center;
     border-bottom: 1px solid #000020;
     padding: 0px 10px 10px 10px;
-    width: 90%;
+    /*width: 90%;*/
     /*float: right;*/
     display: inline-block;
     vertical-align: top;
@@ -308,14 +308,14 @@ and (orientation: portrait) {
 and (min-width: 1224px) {
     #video-container video, #video-container-md video {
         /*position: absolute; */
-        width: 80%;
+        /*width: 80%;*/
         margin: 0 0 7px 10px;
         height: auto;
         display: inline-block;
     }
 
     .userid {
-        width: 80%;
+        /*width: 80%;*/
         margin-left: 10px;
         display: inline-block;
     }
