@@ -509,14 +509,12 @@
             // alert("the stream is remote");
         }
         if (e.isVideo) {
-            var uibox = document.createTextNode(e.userid);
+            var uibox = document.createElement("div");
+            uibox.appendChild(document.createTextNode(e.userid));
             uibox.appendChild(e.mediaElement);
-            //document.createElement("div");
-            //uibox.appendChild(e.mediaElement);
-//            var uid = document.createTextNode(e.userid);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-//            uibox.style.cssText = 'display: block';
+//            uibox.style.cssText = 'float: left';
             //console.log("========== Adding id: " + uibox.id + "============");
             //document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
