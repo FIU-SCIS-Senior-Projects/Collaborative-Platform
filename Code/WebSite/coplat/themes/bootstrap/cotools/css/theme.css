@@ -225,6 +225,7 @@ p.msg {
     video container
 */
 .row-fluid {
+    background-color: green;
     height: 10em;
     width: 50%;
     overflow: auto;
@@ -233,8 +234,8 @@ p.msg {
 }
 
 #video-container {
-    height: 300px;
-    width: 60em;
+    height: 400px;
+    width: 100%;
     display: inline-block;
     /*vertical-align: top;*/
 }
