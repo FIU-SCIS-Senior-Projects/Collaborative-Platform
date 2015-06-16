@@ -225,15 +225,16 @@ p.msg {
     video container
 */
 .row-fluid {
-    height: 10em;
+    height: 12em;
     width: 90%;
-    overflow: auto;
+    overflow: hidden;
 }
 
 #video-container {
     height: 40em;
     overflow: auto;
     display: inline-block;
+    vertical-align: top;
 }
 
 #video-container video, #video-container-md video {
@@ -243,6 +244,8 @@ p.msg {
     height: auto;
     /*float: right;*/
     display: inline-block;
+    vertical-align: top;
+
 }
 
 .userid {
@@ -253,6 +256,8 @@ p.msg {
     /*width: 90%;*/
     /*float: right;*/
     display: inline-block;
+    vertical-align: top;
+
 }
 
 @media only screen
