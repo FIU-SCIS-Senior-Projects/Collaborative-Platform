@@ -199,7 +199,7 @@
     <div class="row-fluid">
         <div id="video-container" style="" class="col-md-2 col-lg-2">
 
-            <div style="margin-left: 110px" >
+            <div style="margin-left: 90px" >
                 <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
             </div>
 
