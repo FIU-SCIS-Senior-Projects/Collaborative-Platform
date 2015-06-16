@@ -228,8 +228,8 @@ p.msg {
     background-color: green;
     height: 15em;
     width: 30%;
-    overflow: scroll;
-    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
 }
 
 #video-container {
