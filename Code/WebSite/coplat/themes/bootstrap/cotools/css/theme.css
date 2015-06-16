@@ -226,8 +226,8 @@ p.msg {
 */
 .row-fluid {
     background-color: green;
-    height: 15em;
-    width: 30em;
+    height: 13em;
+    width: 80%;
     overflow: auto;
     white-space: nowrap;
 }
@@ -236,7 +236,7 @@ p.msg {
     height: 100%;
     width: 100%;
     display: inline-block;
-    overflow-x: scroll;
+    overflow: auto;
     white-space: nowrap;
     /*vertical-align: top;*/
 }
