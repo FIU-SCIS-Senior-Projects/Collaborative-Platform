@@ -169,21 +169,14 @@
 
 
     <div class="row">
-        <div id="video-container" style="" class="col-md-2 col-lg-2">
-
-            <div class="col-md-offset-6 col-lg-offset-7">
-                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
-            </div>
-
-        </div>
-        <div id="cotools-container" class="col-md-6 col-lg-5">
+        <div id="cotools-container" class="col-md-6 col-lg-6">
             <div id="cotools-panel">
 
             </div>
 
         </div>
 
-        <div id="cotools-container-2" class="col-md-6 col-lg-5">
+        <div id="cotools-container-2" class="col-md-6 col-lg-6">
             <div id="cotools-panel-2">
                 <video controls="" autoplay=""></video>
             </div>
@@ -202,6 +195,15 @@
 
 <!--        </div>-->
 
+    </div>
+    <div class="row row-fluid">
+        <div id="video-container" style="" class="col-md-2 col-lg-2">
+
+            <div style="margin-left: 80px" >
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
+            </div>
+
+        </div>
     </div>
 <!--    </section>-->
     <!-- end of row -->
@@ -377,7 +379,6 @@
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
-        left = 1;
         rmc.addStream({
             screen: true,
             oneway: true
@@ -386,39 +387,59 @@
 
 
     $('#share-screen-2').click(function () {
+        sec.addStream({
+            screen: true,
+            oneway: true,
+            video: true
+        });
+//
+//
+//        // http://www.rtcmulticonnection.org/docs/addStream/
+//        getScreenId(function (error, sourceId, screen_constraints) {
+//            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+//            navigator.getUserMedia(screen_constraints, function (sec) {
+//                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
+//            }, function (error) {
+//                console.error(error);
+//            });
+//        });
 
-        sourceId = null; // remove old capture screen
-        getScreenConstraints(function(error, screen_constraints) {
-            // invoke navigator.getUserMedia here
+
+        getScreenId(function (error, sourceId, screen_constraints) {
+            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+            // sourceId == null || 'string' || 'firefox'
+
+            if(sourceId && sourceId != 'firefox') {
+                screen_constraints = {
+                    video: {
+                        mandatory: {
+                            chromeMediaSource: 'screen',
+                            maxWidth: 1920,
+                            maxHeight: 1080,
+                            minAspectRatio: 1.77
+                        }
+                    }
+                };
+
+                if (error === 'permission-denied') return alert('Permission is denied.');
+                if (error === 'not-chrome') return alert('Please use chrome.');
+
+                if (!error && sourceId) {
+                    screen_constraints.video.mandatory.chromeMediaSource = 'desktop';
+                    screen_constraints.video.mandatory.chromeMediaSourceId = sourceId;
+                }
+            }
+
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-            navigator.getUserMedia(screen_constraints, function (sec) {
-                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
-//                document.getElementById('video').appendChild(this.mediaElement);
+            navigator.getUserMedia(screen_constraints, function (stream) {
+                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
             }, function (error) {
                 console.error(error);
             });
         });
 
-        //right = 1;
-//        sec.addStream({
-//            screen: true,
-//            oneway: true
-//        });
-//
-//
-//        // http://www.rtcmulticonnection.org/docs/addStream/
-//        getScreenId(function (error, sourceId, screen_constraints) {
-//            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
-//            // sourceId == null || 'string' || 'firefox'
-//
-//            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-//            navigator.getUserMedia(screen_constraints, function (sec) {
-//                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
-////                document.getElementById('video').appendChild(this.mediaElement);
-//            }, function (error) {
-//                console.error(error);
-//            });
-//        });
+
+
     });
 
     //when the user clicks the stop-share-screen button it removes all the screen
@@ -490,12 +511,15 @@
         if (e.isVideo) {
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
+            uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            uibox.style.cssText = 'float: left';
+            e.mediaElement.style.cssText = 'display: block';
             //console.log("========== Adding id: " + uibox.id + "============");
-            document.getElementById('video-container').appendChild(e.mediaElement);
+            //document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
-            //uibox.style.cssText = 'display: inline-block;';
+
             $('#join-room').fadeOut(600);
 //            document.getElementById("join-room").remove();
         }
@@ -524,7 +548,10 @@
     };
 
     sec.onstream = function (s) {
-        if (s.isScreen) {
+        if(s.isVideo) {
+            alert("VIDEO");
+        }
+        else if (s.isScreen) {
 
 //            if(left == 1) {
 //

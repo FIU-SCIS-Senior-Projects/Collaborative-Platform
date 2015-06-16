@@ -150,10 +150,12 @@ Tool box
 
 #cotools-panel {
     margin-bottom: 20px;
-    height: 75vh;
-    min-height: 25em;
-    max-height: 48em;
-    width: 95%;
+    margin-left: 20px;
+    height: 64vh;
+    min-height: 20em;
+    max-height: 35em;
+    max-width: 56em;
+    width: 100%;
     border: 2px solid #18536b;
     float: left;
 }
@@ -164,10 +166,12 @@ Tool box
 
 #cotools-panel-2 {
     margin-bottom: 20px;
-    height: 75vh;
-    min-height: 25em;
-    max-height: 48em;
-    width: 95%;
+    margin-right: 20px;
+    height: 64vh;
+    min-height: 20em;
+    max-height: 35em;
+    max-width: 56em;
+    width: 100%;
     border: 2px solid #18536b;
     float: left;
 }
@@ -224,27 +228,44 @@ p.msg {
 /*
     video container
 */
+.row-fluid {
+    height: 13em;
+    width: 80%;
+    overflow: auto;
+    white-space: nowrap;
+}
 
 #video-container {
-    height: 40em;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
     overflow: auto;
+    white-space: nowrap;
+    /*vertical-align: top;*/
 }
 
 #video-container video, #video-container-md video {
     /*position: absolute; */
-    width: 95%; /*95*/
+    width: 150px;
     margin-bottom: 7px;
-    height: auto;
-    float: right;
+    height: 150px;
+    /*margin-left: 10px;*/
+    /*float: right;*/
+    /*display: inline-block;*/
+    /*vertical-align: top;*/
+
 }
 
 .userid {
-    display: block;
+    /*display: block;*/
     text-align: center;
-    border-bottom: 1px solid #000020;
-    padding: 0px 10px 10px 10px;
-    width: 90%;
-    float: right;
+    /*border-bottom: 1px solid #000020;*/
+    margin-top: 5px;
+    /*padding: 0px 10px 10px 10px;*/
+    /*width: 90%;*/
+    /*float: right;*/
+    /*display: inline-block;*/
+    /*vertical-align: top;*/
 
 }
 
@@ -294,15 +315,18 @@ and (orientation: portrait) {
 and (min-width: 1224px) {
     #video-container video, #video-container-md video {
         /*position: absolute; */
-        width: 80%;
-        margin: 0 0 7px 10px;
+        /*width: 80%;*/
+        margin: 0 20px 20px 20px;
         height: auto;
-
+        /*display: inline-block;*/
     }
 
     .userid {
-        width: 80%;
-        margin-left: 10px;
+        /*float: left;*/
+        /*width: 80%;*/
+        /*margin-left: 10px;*/
+        margin: 0 auto;
+        /*display: inline-block;*/
     }
 }
 
@@ -313,12 +337,15 @@ and (min-width: 1824px) {
         /*position: absolute; */
         width: 65%;
         height: auto;
-        margin: 0 0 7px 90px;
+        margin: 0 auto 20px auto;
+        display: inline-block;
     }
 
     .userid {
-        width: 65%;
-        margin-left: 90px;
+        /*width: 65%;*/
+        /*margin-left: 90px;*/
+        margin: 0 auto;
+        /*display: inline-block;*/
     }
 }
 
