@@ -31,6 +31,7 @@ $('.search-form form').submit(function(){
 ?>
 
 <h1>Manage Tickets</h1> <a href="../priority/admin"><button type="button" class="btn btn-primary">Manage Priorities</button><br>
+    <a href="../reassignRules/admin"><button type="button" class="btn btn-primary">Manage Reassign Rules</button><br>
 
 <!-- <p> -->
 <!-- You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b> -->

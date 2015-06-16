@@ -61,8 +61,9 @@ function emailListener()
                 imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
             }
         }
-
-        $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(NOW(), INTERVAL -1 DAY) limit 1");//delete mentors that have been away for more than 24 hours from the away list
+    $daysAway = $dbConn->query("Select setting from reassign_rules where rule_id  = 2")->fetch_assoc()["setting"];
+    $daysAway = $daysAway * -1;
+        $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(NOW(), INTERVAL $daysAway DAY) limit 10");//delete mentors that have been away for more than 24 hours from the away list
 }
 /*
  * Scans the subject and body of the email received and if it meets criteria for being a out of office message
@@ -125,7 +126,9 @@ function setAsAway($user_Id)
     $dbconnect->query("INSERT INTO away_mentor (userID, tiStamp) VALUES ($user_Id, NOW())");
 
     $ticketSubs = "";
-    $ftickets = $dbconnect->query("SELECT * FROM ticket WHERE assign_user_id = $user_Id AND assigned_date >= DATE_ADD(NOW() , INTERVAL -1 DAY ) and assigned_project_id is null");//find tickets assigned to this user within last 24 hours
+    $hoursForTickets = $dbconnect->query("Select setting from reassign_rules where rule_id  = 3")->fetch_assoc()["setting"];
+    $hoursForTickets = $hoursForTickets * -1;
+    $ftickets = $dbconnect->query("SELECT * FROM ticket WHERE assign_user_id = $user_Id AND assigned_date >= DATE_ADD(NOW() , INTERVAL $hoursForTickets DAY ) and assigned_project_id is null");//find tickets assigned to this user within last 24 hours
     while ($aticket = $ftickets->fetch_assoc()) {
       //  echo "a ticket is being looked at from kimora hideki";
         if (!is_null($aticket["subdomain_id"])) {
@@ -269,8 +272,9 @@ function checkPriorityElapseTickets()
             $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from ticket_events where ticket_id = ".$aticket["id"]. " and event_type_id = 10");
             if($toManyReassign->num_rows>0)
             {
+                $tomanyCount = $dbconnect->query("SELECT setting from reassign_rules where rule_id = 1")->fetch_assoc()["setting"];
                 $reassigns = $toManyReassign->fetch_assoc();
-                if($reassigns["count"] >=3)
+                if($reassigns["count"] >= $tomanyCount)
                 {
                     $mentor = $dbconnect->query("Select * from user WHERE id = ".$aticket["assign_user_id"]);
                     $aMentor = $mentor->fetch_assoc();
