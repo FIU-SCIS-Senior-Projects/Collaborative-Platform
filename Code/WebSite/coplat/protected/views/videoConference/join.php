@@ -514,7 +514,7 @@
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-//            uibox.style.cssText = 'float: left';
+            uibox.style.cssText = 'float: left';
             //console.log("========== Adding id: " + uibox.id + "============");
             //document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
