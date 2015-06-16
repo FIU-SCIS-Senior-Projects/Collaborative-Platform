@@ -513,7 +513,7 @@
             //document.createElement("div");
             //uibox.appendChild(e.mediaElement);
             var uid = document.createTextNode(e.userid);
-            uibox.appendChild(uid);
+            uibox.iframeAppend(uid);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
 //            uibox.style.cssText = 'display: block';
