@@ -515,7 +515,7 @@
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
             uibox.style.cssText = 'display: block';
-//            e.mediaElement.style.cssText = 'display: block';
+            e.mediaElement.style.cssText = 'display: block';
             //console.log("========== Adding id: " + uibox.id + "============");
             //document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
