@@ -266,7 +266,7 @@ function checkPriorityElapseTickets()
     // reassign tickets
     if($ticketr->num_rows>0) {
         while ($aticket = $ticketr->fetch_assoc()) {
-            $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from previous_mentors where ticket_id = ".$aticket["id"]);
+            $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from ticket_events where ticket_id = ".$aticket["id"]. " and event_type_id = 10");
             if($toManyReassign->num_rows>0)
             {
                 $reassigns = $toManyReassign->fetch_assoc();
@@ -284,12 +284,11 @@ function checkPriorityElapseTickets()
             $mentor = $dbconnect->query("Select * from user WHERE id = ".$aticket["assign_user_id"]);
             $aMentor = $mentor->fetch_assoc();
             sendTicketCancelOutOfTime($aMentor["email"], $aticket["subject"]);
-            $dbconnect->query("INSERT INTO previous_mentors (user_id, ticket_id) VALUES(".$aMentor["id"] .", ".$aticket["id"]. ")");
             if (!is_null($aticket["subdomain_id"])) {
-                $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select user_id as user_id from previous_mentors where ticket_id = ". $aticket["id"].") order by assigned_date ASC   ";
+                $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select old_value as user_id from ticket_events where ticket_id = ". $aticket["id"]." and event_type_id = 10) order by assigned_date ASC   ";
                 }
             else {
-                $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id  WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select user_id as user_id from previous_mentors where ticket_id = ". $aticket["id"].") order by assigned_date ASC   ";
+                $sql = "SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id  WHERE domain_id = " . $aticket["domain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id = " . $aticket["domain_id"] . " AND subdomain_id = " . $aticket["subdomain_id"] . " AND tier_team = 1 AND user_id not in (select userID as user_id from away_mentor) AND user_id not in (select old_value as user_id from ticket_events where ticket_id = ". $aticket["id"]." and event_type_id = 10) order by assigned_date ASC   ";
             }
             $possibleMentors = $dbconnect->query($sql);
             if ($possibleMentors->num_rows<=0)
