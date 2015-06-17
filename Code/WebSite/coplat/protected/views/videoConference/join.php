@@ -554,11 +554,11 @@
     };
 
     rmc.onstreamended = function(e) {
-        rmc.removeStream({
-            screen: true
-        });
-        
-        $('#cotools-panel video').remove();
+//        rmc.removeStream({
+//            screen: true
+//        });
+
+        //$('#cotools-panel video').remove();
         $('#cotools-panel iframe').show();
     };
 
