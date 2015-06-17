@@ -27,11 +27,13 @@ $dbConnect = establishDBConnection();
         'Content-type: text/html; charset=utf-8' . "\r\n".
         'Reply-To: fiucoplat@gmail.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
-
+    echo "subject click ".$subjectClick."\n";
+    echo "link ".$link."\n";
 //send the email using IMAP
     if( $a = mail($toEmail, $subject, $body, $headers))
-    {  //  echo "Email sent 3!<br />";
+    {  echo "Email sent 3!<br />";
     }
+    else{echo "email not sent\n";}
 }
 sendTicketReassignment();
 echo "find";
