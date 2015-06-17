@@ -222,8 +222,10 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
 function sendTicketReassignment($toEmail, $subjectl, $ticket_id)
 {
 
+
     $subject = "Ticket Assigned";
-    $subjectClick = CHtml::link($subjectl, 'http://'. serverName . '/coplat/index.php/ticket/view/'.$ticket_id);
+    $linkAddress = "http://".serverName."index.php/ticket/view/".$ticket_id;
+    $subjectClick = "<a href='$linkAddress'>$subjectl</a>";
     $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectClick . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
     $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
         'Reply-To: fiucoplat@gmail.com' . "\r\n" .
