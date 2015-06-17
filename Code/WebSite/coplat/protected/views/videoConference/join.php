@@ -269,6 +269,11 @@
         data: true
     };
 
+    scr.session = {
+        video: false, 
+        audio: false
+    };
+
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
