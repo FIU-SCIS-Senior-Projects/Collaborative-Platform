@@ -270,8 +270,8 @@
     };
 
     scr.session = {
-        video: false,
-        audio: false
+        screen: true,
+        oneway: true
     };
 
 
@@ -475,7 +475,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
-        sec.leave();
+        rmc.leave();
         setTimeout("location.href = '../';",1000);
     });
 
