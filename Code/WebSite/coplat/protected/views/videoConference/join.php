@@ -363,8 +363,8 @@
     //screen sharing
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
-        //rmc.removeStream('screen');
-        rmc.streams.stop('screen');
+        rmc.removeStream('screen');
+        //rmc.streams.stop('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
         //e.mediaElement.parentNode.removeChild(e.mediaElement);
@@ -375,10 +375,6 @@
             oneway: true
         });
     });
-
-    rmc.onstreamended = function(e) {
-      alert("screen sharing ended!");
-    };
 
     $('#share-screen-2').click(function () {
         sec.addStream({
