@@ -379,6 +379,10 @@
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
+        rmc.removeStream({
+            screen: true
+        });
+        
         rmc.addStream({
             screen: true,
             oneway: true
@@ -447,6 +451,7 @@
         rmc.removeStream({
             screen: true
         });
+
         $('#cotools-panel video').remove();
         $('#cotools-panel iframe').show();
     });
@@ -551,7 +556,6 @@
     rmc.onstreamended = function(e) {
         $('#cotools-panel video').remove();
         $('#cotools-panel iframe').show();
-        e.mediaElement.parentNode.removeChild(e.mediaElement);
     };
 
     sec.onstream = function (s) {
