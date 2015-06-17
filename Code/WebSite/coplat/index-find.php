@@ -21,8 +21,7 @@ $dbConnect = establishDBConnection();
     $toEmail = "adurocruor@gmail.com";
 
     $subject = "Ticket Assigned";
-    $linkAddress = "http://".serverName."index.php/ticket/view/".$ticket_id;
-    $subjectClick = "<a href='$linkAddress'>$subjectl</a>";
+    $subectClick = $subjectl;
     $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectClick . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
     $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
         'Reply-To: fiucoplat@gmail.com' . "\r\n" .
