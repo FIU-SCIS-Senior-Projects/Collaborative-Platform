@@ -19,11 +19,12 @@ $dbConnect = establishDBConnection();
     $ticket_id = $query["id"];
     $subjectl = $query["subject"];
     $toEmail = "adurocruor@gmail.com";
-
+    $link = "http://cp-dev.cis.fiu.edu/coplat/index.php/ticket/view/".$ticket_id;
     $subject = "Ticket Assigned";
-    $subectClick = $subjectl;
+    $subjectClick = "<a href='". $link. "'>" .$subjectl. "</a>\n\n";
     $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectClick . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
     $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
+        'Content-type: text/html; charset=utf-8' . "\r\n".
         'Reply-To: fiucoplat@gmail.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
