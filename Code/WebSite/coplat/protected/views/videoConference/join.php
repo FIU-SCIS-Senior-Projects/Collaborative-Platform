@@ -270,7 +270,7 @@
     };
 
     scr.session = {
-        video: false, 
+        video: false,
         audio: false
     };
 
@@ -509,10 +509,11 @@
     };
 
     scr.onstream = function(e) {
-        $('#cotools-panel iframe').hide();
-        $('#cotools-panel video').remove();
-        document.getElementById('cotools-panel').appendChild(e.mediaElement);
-
+        if (e.isScreen) {
+            $('#cotools-panel iframe').hide();
+            $('#cotools-panel video').remove();
+            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+        }
     };
 
 //    sec.onstream = function (s) {
