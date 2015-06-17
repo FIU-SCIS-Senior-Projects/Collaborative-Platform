@@ -447,9 +447,8 @@
         rmc.removeStream({
             screen: true
         });
-        $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
-        left = 0;
+        $('#cotools-panel iframe').show();
     });
 
     $('#stop-share-screen-2').click(function () {
@@ -549,9 +548,11 @@
 
     };
 
-//    rmc.onstreamended = function(e) {
-//        e.mediaElement.parentNode.removeChild(e.mediaElement);
-//    };
+    rmc.onstreamended = function(e) {
+        $('#cotools-panel video').remove();
+        $('#cotools-panel iframe').show();
+        e.mediaElement.parentNode.removeChild(e.mediaElement);
+    };
 
     sec.onstream = function (s) {
         if(s.isVideo) {
