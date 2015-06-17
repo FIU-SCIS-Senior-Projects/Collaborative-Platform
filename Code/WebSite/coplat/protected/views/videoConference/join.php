@@ -369,6 +369,7 @@
         $('#cotools-panel video').remove();
 
         rmc.addStream({
+            data: true,
             screen: true,
             oneway: true
         });
