@@ -269,15 +269,11 @@
         data: true
     };
 
-    scr.session = {
-        screen: true,
-        oneway: true
-    };
-
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
+        scr.open();
         rmc.sendCustomMessage({
             roomOpened: true,
             roomID: $('#meetingID').val()
@@ -298,6 +294,7 @@
           }
         };
         rmc.connect();
+        scr.connect();
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
@@ -355,12 +352,11 @@
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
-        scr.open();
-        scr.connect();
-//        scr.addStream({
-//            screen: true,
-//            oneway: true
-//        });
+
+        scr.addStream({
+            screen: true,
+            oneway: true
+        });
     });
 
 
