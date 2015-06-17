@@ -171,6 +171,7 @@
     <div class="row">
         <div id="cotools-container" class="col-md-6 col-lg-6">
             <div id="cotools-panel">
+                <video controls="" autoplay=""></video>
 
             </div>
 
@@ -363,11 +364,11 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
-    sec.onMediaCaptured = function () {
-        $('#share-screen-2').removeAttr('disabled');
-        $('#open-room').attr('disabled', 'disabled');
-        $('#join-room').attr('disabled', 'disabled');
-    };
+//    sec.onMediaCaptured = function () {
+//        $('#share-screen-2').removeAttr('disabled');
+//        $('#open-room').attr('disabled', 'disabled');
+//        $('#join-room').attr('disabled', 'disabled');
+//    };
 
 //    secrmc.onMediaCaptured = function () {
 //        $('#share-screen-2').removeAttr('disabled');
@@ -545,6 +546,10 @@
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
 
+    };
+
+    rmc.onstreamended = function(e) {
+        e.mediaElement.parentNode.removeChild(e.mediaElement);
     };
 
     sec.onstream = function (s) {
