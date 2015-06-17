@@ -37,4 +37,4 @@ $dbConnect = establishDBConnection();
 }
 //sendTicketReassignment();
 //echo "find";
-phpinfor();
+phpinfo();
