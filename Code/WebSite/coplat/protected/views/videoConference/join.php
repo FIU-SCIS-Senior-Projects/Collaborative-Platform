@@ -558,7 +558,7 @@
 //            screen: true
 //        });
 
-        //$('#cotools-panel video').remove();
+        $('#cotools-panel video').remove();
         $('#cotools-panel iframe').show();
     };
 
