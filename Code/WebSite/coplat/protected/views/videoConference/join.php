@@ -260,7 +260,7 @@
     // https://github.com/muaz-khan/RTCMultiConnection
 
     var rmc = new RTCMultiConnection();
-    var scr = new RTCMultiConnection();
+    var sec = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -269,16 +269,17 @@
         data: true
     };
 
-    scr.session = {
-        screen: true,
-        oneway: true
+    sec.session = {
+        video: true,
+        audio: true,
+        data: true
     };
 
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        scr.open();
+        sec.open();
         rmc.sendCustomMessage({
             roomOpened: true,
             roomID: $('#meetingID').val()
@@ -299,7 +300,6 @@
           }
         };
         rmc.connect();
-        scr.connect();
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
@@ -339,7 +339,6 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
-        scr.leave();
         //secrmc.leave();
     }, true);
 
@@ -349,28 +348,35 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
+    sec.onMediaCaptured = function () {
+        $('#share-screen-2').removeAttr('disabled');
+        $('#open-room').attr('disabled', 'disabled');
+        $('#join-room').attr('disabled', 'disabled');
+    };
+
 //    secrmc.onMediaCaptured = function () {
 //        $('#share-screen-2').removeAttr('disabled');
 //    };
 
+    var left = 0;
+    var right = 0;
     //screen sharing
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
-
-        scr.addStream({
+        rmc.addStream({
             screen: true,
             oneway: true
         });
     });
 
 
-//    $('#share-screen-2').click(function () {
-//        sec.addStream({
-//            screen: true,
-//            oneway: true,
-//            video: true
-//        });
+    $('#share-screen-2').click(function () {
+        sec.addStream({
+            screen: true,
+            oneway: true,
+            video: true
+        });
 //
 //
 //        // http://www.rtcmulticonnection.org/docs/addStream/
@@ -384,57 +390,57 @@
 //        });
 
 
-//        getScreenId(function (error, sourceId, screen_constraints) {
-//            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
-//            // sourceId == null || 'string' || 'firefox'
-//
-//            if(sourceId && sourceId != 'firefox') {
-//                screen_constraints = {
-//                    video: {
-//                        mandatory: {
-//                            chromeMediaSource: 'screen',
-//                            maxWidth: 1920,
-//                            maxHeight: 1080,
-//                            minAspectRatio: 1.77
-//                        }
-//                    }
-//                };
-//
-//                if (error === 'permission-denied') return alert('Permission is denied.');
-//                if (error === 'not-chrome') return alert('Please use chrome.');
-//
-//                if (!error && sourceId) {
-//                    screen_constraints.video.mandatory.chromeMediaSource = 'desktop';
-//                    screen_constraints.video.mandatory.chromeMediaSourceId = sourceId;
-//                }
-//            }
-//
-//            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-//            navigator.getUserMedia(screen_constraints, function (stream) {
-//                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
-//            }, function (error) {
-//                console.error(error);
-//            });
-//        });
-//
-//
-//
-//    });
+        getScreenId(function (error, sourceId, screen_constraints) {
+            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+            // sourceId == null || 'string' || 'firefox'
 
-    //when the user clicks the stop-share-screen button it removes all the screen
-    $('#stop-share-screen').click(function () {
-        scr.close();
-        $('#cotools-panel iframe').show();
-        $('#cotools-panel video').remove();
+            if(sourceId && sourceId != 'firefox') {
+                screen_constraints = {
+                    video: {
+                        mandatory: {
+                            chromeMediaSource: 'screen',
+                            maxWidth: 1920,
+                            maxHeight: 1080,
+                            minAspectRatio: 1.77
+                        }
+                    }
+                };
+
+                if (error === 'permission-denied') return alert('Permission is denied.');
+                if (error === 'not-chrome') return alert('Please use chrome.');
+
+                if (!error && sourceId) {
+                    screen_constraints.video.mandatory.chromeMediaSource = 'desktop';
+                    screen_constraints.video.mandatory.chromeMediaSourceId = sourceId;
+                }
+            }
+
+            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+            navigator.getUserMedia(screen_constraints, function (stream) {
+                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
+            }, function (error) {
+                console.error(error);
+            });
+        });
+
+
 
     });
 
-//    $('#stop-share-screen-2').click(function () {
-//        sec.removeStream('screen');
-//        $('#cotools-panel-2 iframe').show();
-//        $('#cotools-panel-2 video').remove();
-//        right = 0;
-//    });
+    //when the user clicks the stop-share-screen button it removes all the screen
+    $('#stop-share-screen').click(function () {
+        rmc.removeStream(screen);
+        $('#cotools-panel iframe').show();
+        $('#cotools-panel video').remove();
+        left = 0;
+    });
+
+    $('#stop-share-screen-2').click(function () {
+        sec.removeStream('screen');
+        $('#cotools-panel-2 iframe').show();
+        $('#cotools-panel-2 video').remove();
+        right = 0;
+    });
 
     //chat
     rmc.onopen = function (event) {
@@ -475,7 +481,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
-        rmc.leave();
+        sec.leave();
         setTimeout("location.href = '../';",1000);
     });
 
@@ -505,44 +511,54 @@
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
+        else if (e.isScreen) {
+//            if(left == 1) {
+//
+//            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+//                $('#cotools-panel iframe').hide();
+//                $('#cotools-panel video').remove();
+//                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
+//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+//            }
+//
+//            else if (right == 1) {
+//                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+//            }
 
-    };
-
-    scr.onstream = function(e) {
-        if (e.isScreen) {
             $('#cotools-panel iframe').hide();
             $('#cotools-panel video').remove();
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
+
     };
 
-//    sec.onstream = function (s) {
-//        if(s.isVideo) {
-//            alert("VIDEO");
-//        }
-//        else if (s.isScreen) {
+    sec.onstream = function (s) {
+        if(s.isVideo) {
+            alert("VIDEO");
+        }
+        else if (s.isScreen) {
+
+//            if(left == 1) {
 //
-////            if(left == 1) {
-////
-////            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
-////                $('#cotools-panel iframe').hide();
-////                $('#cotools-panel video').remove();
-////                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-////                document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-////            }
-////
-////            else if (right == 1) {
-////                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-////            }
+//            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+//                $('#cotools-panel iframe').hide();
+//                $('#cotools-panel video').remove();
+//                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+//                document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
+//            }
 //
-////            $('#cotools-panel-2 iframe').hide();
-////            alert("iframe removed");
-////            $('#cotools-panel-2 video').remove();
-////            alert("video removed");
-//            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-//        }
-//
-//    };
+//            else if (right == 1) {
+//                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+//            }
+
+//            $('#cotools-panel-2 iframe').hide();
+//            alert("iframe removed");
+//            $('#cotools-panel-2 video').remove();
+//            alert("video removed");
+            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
+        }
+
+    };
 
 
 //    secrmc.onstream = function (e) {
