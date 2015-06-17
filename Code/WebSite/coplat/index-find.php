@@ -18,7 +18,7 @@ $dbConnect = establishDBConnection();
     $query = $dbConnect->query("SELECT * from ticket where id = 87")->fetch_assoc();
     $ticket_id = $query["id"];
     $subjectl = $query["subject"];
-    $toEmail = "adurocruor@gmail.com";
+    $toEmail = "mmach059@fiu.edu";
     $link = "http://cp-dev.cis.fiu.edu/coplat/index.php/ticket/view/".$ticket_id;
     $subject = "Ticket Assigned";
     $subjectClick = "<a href='". $link. "'>" .$subjectl. "</a>\n\n";
