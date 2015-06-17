@@ -243,10 +243,10 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
-<!-- Remote
+
 <script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
 <script type='text/javascript' src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>
--->
+
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/RTCMultiConnection.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
