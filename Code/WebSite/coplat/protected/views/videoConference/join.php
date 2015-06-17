@@ -364,11 +364,13 @@
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
-        rmc.streams.stop('screen');
-        rmc.addStream({
-            screen: true,
-            oneway: true
-        });
+        for(var i = 0; i < 2; i ++) {
+            rmc.streams.stop('screen');
+            rmc.addStream({
+                screen: true,
+                oneway: true
+            });
+        }
     });
 
 
