@@ -547,7 +547,7 @@
 //            }
 
             $('#cotools-panel iframe').hide();
-            //$('#cotools-panel video').remove();
+            $('#cotools-panel video').remove();
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
 
