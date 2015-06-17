@@ -554,9 +554,9 @@
     };
 
     rmc.onstreamended = function(e) {
-//        rmc.removeStream({
-//            screen: true
-//        });
+        rmc.removeStream({
+            screen: true
+        });
 
         $('#cotools-panel video').remove();
         $('#cotools-panel iframe').show();
