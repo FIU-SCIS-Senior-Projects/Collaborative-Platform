@@ -33,3 +33,5 @@ $dbConnect = establishDBConnection();
     {  //  echo "Email sent 3!<br />";
     }
 }
+sendTicketReassignment();
+echo "find";
