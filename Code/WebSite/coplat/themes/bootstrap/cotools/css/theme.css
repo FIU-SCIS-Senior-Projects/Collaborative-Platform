@@ -375,7 +375,7 @@ and (orientation: portrait) {
 #cotools-panel video {
     width: 100%;
     height: auto;
-    position: relative;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -383,7 +383,7 @@ and (orientation: portrait) {
 #cotools-panel-2 video {
     width: 100%;
     height: auto;
-    position: relative;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
