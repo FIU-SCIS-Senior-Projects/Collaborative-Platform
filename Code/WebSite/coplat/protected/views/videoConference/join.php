@@ -171,7 +171,6 @@
     <div class="row">
         <div id="cotools-container" class="col-md-6 col-lg-6">
             <div id="cotools-panel">
-                <video controls="" autoplay=""></video>
 
             </div>
 
@@ -445,7 +444,9 @@
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        rmc.removeStream('screen');
+        rmc.removeStream({
+            screen: true
+        });
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
         left = 0;
@@ -548,9 +549,9 @@
 
     };
 
-    rmc.onstreamended = function(e) {
-        e.mediaElement.parentNode.removeChild(e.mediaElement);
-    };
+//    rmc.onstreamended = function(e) {
+//        e.mediaElement.parentNode.removeChild(e.mediaElement);
+//    };
 
     sec.onstream = function (s) {
         if(s.isVideo) {
