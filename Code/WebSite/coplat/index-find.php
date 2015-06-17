@@ -35,5 +35,6 @@ $dbConnect = establishDBConnection();
     }
     else{echo "email not sent\n";}
 }
-sendTicketReassignment();
-echo "find";
+//sendTicketReassignment();
+//echo "find";
+phpinfor();
