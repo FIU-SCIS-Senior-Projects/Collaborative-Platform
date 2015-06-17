@@ -367,6 +367,7 @@
         rmc.streams.stop('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
+        //e.mediaElement.parentNode.removeChild(e.mediaElement);
 
         rmc.addStream({
             data: true,
@@ -375,6 +376,9 @@
         });
     });
 
+    rmc.onstreamended = function(e) {
+      alert("screen sharing ended!");
+    };
 
     $('#share-screen-2').click(function () {
         sec.addStream({
