@@ -234,7 +234,7 @@ class TicketController extends Controller
                  if ($saved) {
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
                     if($isNewTicket)
-                      User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id, $model->id);
+                      User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id, $model->id, $model->subject, $model->description);
 
                    $this->redirect(array('view', 'id' => $model->id));
                  } 

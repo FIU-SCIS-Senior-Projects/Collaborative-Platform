@@ -808,15 +808,15 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain, $ticket_id)
+    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain, $ticket_id, $subject, $description)
     {
         $creator = User::model()->find("id=:id", array(':id' => $creator_id));
         $domMentor = User::model()->find("id=:id", array(':id' => $assign_id));
         $domain = Domain::model()->find("id=:id", array(':id' => $ticket_domain));
 
-        $link = CHtml::link('Click here to view ticket', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/view/'.$ticket_id);
+        $link = CHtml::link($subject, 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/view/'.$ticket_id);
 
-        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/>".$link." for more information.\nPlease make a comment on the ticket before the ticket is reassigned";
+        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/>Subject: ".$link.".\nDescription: " .$description. "\n\nPlease make a comment on the ticket before the ticket is reassigned";
         $name = $domMentor->fname . ' ' . $domMentor->lname;
         $html = User::replaceMessage($name, $message);
 
