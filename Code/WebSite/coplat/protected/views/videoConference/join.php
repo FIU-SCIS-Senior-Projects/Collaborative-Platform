@@ -281,7 +281,7 @@
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
-        rmc.onCustomMessage = function(message) {
+        avdConnection.onCustomMessage = function(message) {
           if(message.roomOpened && message.roomID == $('#meetingID').val()) {
               document.getElementById("on-off-video").style.color= 'red';
           }
