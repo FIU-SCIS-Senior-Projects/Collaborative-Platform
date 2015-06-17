@@ -382,7 +382,7 @@
         rmc.removeStream({
             screen: true
         });
-        
+
         rmc.addStream({
             screen: true,
             oneway: true
@@ -554,6 +554,10 @@
     };
 
     rmc.onstreamended = function(e) {
+        rmc.removeStream({
+            screen: true
+        });
+        
         $('#cotools-panel video').remove();
         $('#cotools-panel iframe').show();
     };

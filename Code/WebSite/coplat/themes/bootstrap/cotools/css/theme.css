@@ -376,16 +376,16 @@ and (orientation: portrait) {
     width: 100%;
     height: auto;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
 }
 
 #cotools-panel-2 video {
     width: 100%;
     height: auto;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
 }
 
 .volume_bar {
