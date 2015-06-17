@@ -429,7 +429,7 @@
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        rmc.removeStream({scree: true});
+        rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
         left = 0;
