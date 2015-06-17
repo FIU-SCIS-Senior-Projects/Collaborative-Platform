@@ -816,7 +816,7 @@ class User extends CActiveRecord
 
         $link = CHtml::link($subject, 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/view/'.$ticket_id);
 
-        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/>Subject: ".$link.".\nDescription: " .$description. "\n\nPlease make a comment on the ticket before the ticket is reassigned";
+        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/>Subject: ".$link.".<br/>Description: " .$description. "<br/><br/>Please make a comment on the ticket before the ticket is reassigned";
         $name = $domMentor->fname . ' ' . $domMentor->lname;
         $html = User::replaceMessage($name, $message);
 

@@ -224,7 +224,7 @@ function sendTicketReassignment($toEmail, $subjectl, $ticket_id)
 
 
     $subject = "Ticket Assigned";
-    $linkAddress = "http://".serverName."index.php/ticket/view/".$ticket_id;
+    $linkAddress = "http://".serverName."/index.php/ticket/view/".$ticket_id;
     $subjectClick = "<a href='$linkAddress'>$subjectl</a>";
     $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectl . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
     $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
