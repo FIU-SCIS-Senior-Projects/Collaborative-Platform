@@ -50,6 +50,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'setting',
 		array(
 			'class'=>'CButtonColumn',
+            'template'=>'{view}{update}',
 		),
 	),
 )); ?>
+<p>Can i type stuff here does that work?</p>
