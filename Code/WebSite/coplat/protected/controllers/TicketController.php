@@ -338,7 +338,6 @@ class TicketController extends Controller
             } else {
                 $response['url'] = "/coplat/index.php/home/userHome";
             }
-            echo "got in here";
         }
 
     }

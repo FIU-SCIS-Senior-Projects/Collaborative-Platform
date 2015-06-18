@@ -9,9 +9,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List ReassignRules', 'url'=>array('index')),
-	array('label'=>'Create ReassignRules', 'url'=>array('create')),
-	array('label'=>'View ReassignRules', 'url'=>array('view', 'id'=>$model->rule_id)),
+//	array('label'=>'List ReassignRules', 'url'=>array('index')),
+//	array('label'=>'Create ReassignRules', 'url'=>array('create')),
+//	array('label'=>'View ReassignRules', 'url'=>array('view', 'id'=>$model->rule_id)),
 	array('label'=>'Manage ReassignRules', 'url'=>array('admin')),
 );
 ?>
