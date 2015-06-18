@@ -32,11 +32,11 @@ class TicketController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
+                'actions' => array('create', 'update', 'download','reassign', 'reject', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem', 'viewModal'),
+                'actions' => array('admin', 'delete', 'download','reassign','reject', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem', 'viewModal'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
