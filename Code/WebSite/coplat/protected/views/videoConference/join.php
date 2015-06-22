@@ -368,7 +368,7 @@
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
         //e.mediaElement.parentNode.removeChild(e.mediaElement);
-        //rmc.keepStreamsOpened = true;
+        rmc.keepStreamsOpened = true;
 
         rmc.addStream({
             //data: true,
