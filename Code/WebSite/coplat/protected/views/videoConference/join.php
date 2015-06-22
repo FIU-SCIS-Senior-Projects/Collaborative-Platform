@@ -268,11 +268,7 @@
         audio: true,
         data: true
     };
-
-    sec.session = {
-        screen: true,
-        oneway: true
-    };
+    
 
 
     $('#open-room').click(function () {
