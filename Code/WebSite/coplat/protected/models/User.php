@@ -808,15 +808,19 @@ class User extends CActiveRecord
         $email->send();
     }
 
-    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain)
+    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain, $ticket_id)
     {
+        $ticket = Ticket::model()->findByPk($ticket_id);
+        $subject = $ticket->subject;
+        $description = $ticket->description;
+        $priority = Priority::model()->findByPk($ticket->priority_id);
         $creator = User::model()->find("id=:id", array(':id' => $creator_id));
         $domMentor = User::model()->find("id=:id", array(':id' => $assign_id));
         $domain = Domain::model()->find("id=:id", array(':id' => $ticket_domain));
 
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-
-        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/>".$link." for more information.\nPlease make a comment on the ticket before the ticket is reassigned";
+        $link = CHtml::link($subject, 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/view/'.$ticket_id);
+        $linkReject = CHtml::link("REJECT TICKET", 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/reject/'.$ticket_id);
+        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/><b>Subject:</b> ".$link.".<br/><b>Description:</b><br>" .$description. "<br/><br/>The ticket creator stated that this ticket is of ". $priority->description . " priority if no comments or scheduled meetings are made within ". $priority->reassignHours ." hours the ticket will be reassigned <br/><br/> Please make a comment on the ticket before the ticket is reassigned. Thank You<br/><br/>If you are unable to work on this ticket click here:<br/>".$linkReject;
         $name = $domMentor->fname . ' ' . $domMentor->lname;
         $html = User::replaceMessage($name, $message);
 

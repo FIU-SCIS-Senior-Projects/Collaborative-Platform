@@ -9,6 +9,7 @@
  * Sets up the connection to look at the emails on the gmail account fiucoplat@gmail.com
  * and returns the connection
  */
+DEFINE ("serverName", "cp-dev.cis.fiu.edu");
 function establishConnection()
 {
     $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
@@ -162,7 +163,7 @@ function setAsAway($user_Id)
                         $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                         $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                         $mentorb = $mentorb1->fetch_assoc();
-                        sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                        sendTicketReassignment($mentorb["email"], $aticket["subject"], $aticket["id"]);
                         $assigned =1;
                         // echo"assinged new ticket to mentor";
                         break;
@@ -172,7 +173,7 @@ function setAsAway($user_Id)
                     $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                     $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                     $mentorb = $mentorb1->fetch_assoc();
-                    sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                    sendTicketReassignment($mentorb["email"], $aticket["subject"], $aticket["id"]);
                     $assigned=1;
                     break;
                 }
@@ -218,10 +219,13 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
 /*
  * Sends the information of the ticket that has been reassigned to the new mentor
  */
-function sendTicketReassignment($toEmail, $subjectl)
+function sendTicketReassignment($toEmail, $subjectl, $ticket_id)
 {
 
+
     $subject = "Ticket Assigned";
+    $linkAddress = "http://".serverName."/index.php/ticket/view/".$ticket_id;
+    $subjectClick = "<a href='$linkAddress'>$subjectl</a>";
     $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectl . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
     $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
         'Reply-To: fiucoplat@gmail.com' . "\r\n" .
@@ -311,7 +315,7 @@ function checkPriorityElapseTickets()
                             $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                             $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                             $mentorb = $mentorb1->fetch_assoc();
-                            sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                            sendTicketReassignment($mentorb["email"], $aticket["subject"], $aticket["id"]);
                             $assinged = 1;
                             break;
                         }
@@ -319,7 +323,7 @@ function checkPriorityElapseTickets()
                         $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = " . $aMentor["user_id"] . " WHERE id = " . $aticket["id"]);
                         $mentorb1 = $dbconnect->query("SELECT * FROM user WHERE id = " . $aMentor["user_id"]);
                         $mentorb = $mentorb1->fetch_assoc();
-                        sendTicketReassignment($mentorb["email"], $aticket["subject"]);
+                        sendTicketReassignment($mentorb["email"], $aticket["subject"], $aticket["id"]);
                         $assinged = 1;
                         break;
                     }

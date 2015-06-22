@@ -32,11 +32,11 @@ class TicketController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
+                'actions' => array('create', 'update', 'download','reassign', 'reject', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'download','reassign', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem', 'viewModal'),
+                'actions' => array('admin', 'delete', 'download','reassign','reject', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem', 'viewModal'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
@@ -234,11 +234,12 @@ class TicketController extends Controller
                  if ($saved) {
                     /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
                     if($isNewTicket)
-                      User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id);
+                      User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id, $model->id);
 
                    $this->redirect(array('view', 'id' => $model->id));
                  } 
             }
+
      
             
         }
@@ -256,6 +257,90 @@ class TicketController extends Controller
      */
 
        //tito
+    public function actionReject($id)
+    {
+
+
+        /*Retrieve ticket Details */
+        $model = Ticket::model()->findByPk($id);
+
+        $old_mentor = $model->assign_user_id;
+        $current_user = User::model()->getCurrentUserId();
+        if ($old_mentor == $current_user) {
+            $this->render("reject");
+            //begin collecting all the data
+            $tier = 1;
+            if ($model->isEscalated != null) {
+                $tier = 2;
+            }
+
+            $boolean = true; /* Identify is the subdomain was specified by the user */
+            if ($model->subdomain_id == null) {
+                $boolean = false;
+                $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier);
+            } else {
+                $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier);
+            }
+
+
+            $recordStatusChangeFromRejectToPending = false;
+            /*Change the status of the ticket to Pending from Reject */
+            if ($model->status == Ticket::Status_Reject) {
+                $model->status = Ticket::Status_Pending;
+                $recordStatusChangeFromRejectToPending = true;
+            }
+            $model->assigned_date = new CDbExpression('NOW()'); /* Get the current date and time */
+
+
+            //Save all the ticket with it's transactions
+            $saved = true;
+            $trans = Yii::app()->db->beginTransaction();
+            try {
+                //save the ticket
+                $model->save();
+
+                //save the Reassign event
+                TicketEvents::recordEvent(EventType::Event_AssignedOrReasignedToUser,
+                    $model->id,
+                    $old_mentor,
+                    $model->assign_user_id,
+                    NULL);
+
+
+                if ($recordStatusChangeFromRejectToPending) {
+                    TicketEvents::recordEvent(EventType::Event_Status_Changed,
+                        $model->id,
+                        Ticket::Status_Reject,
+                        Ticket::Status_Pending,
+                        NULL);
+                }
+
+
+                $trans->commit();
+            } catch (Exception $e) {
+                $trans->rollback();
+                Yii::log("Error occurred while saving the ticket or its events. Rolling back... . Failure reason as reported in exception: " . $e->getMessage(), CLogger::LEVEL_ERROR, __METHOD__);
+                $saved = false;
+            }
+
+
+            //prepare the response
+            $response = array();
+            if ($saved) {
+                /*If save if true send Notification the the Domain Mentor who was assigned the ticket */
+                User::sendStatusReassignedEmailNotificationToOldMentor($model->id, $old_mentor, User::model()->getCurrentUserId());
+
+                if (User::isCurrentUserAdmin()) {
+                    $response['url'] = "/coplat/index.php/home/adminHome";
+                } else {
+                    $response['url'] = "/coplat/index.php/home/userHome";
+                }
+            } else {
+                $response['url'] = "/coplat/index.php/home/userHome";
+            }
+        }
+
+    }
     public function actionReassign($id)//when mentors select in assign: automatically reassignment
     {
         //first load the ticket from the DB in order to extract the old mentor and to make an update
@@ -818,7 +903,8 @@ class TicketController extends Controller
             // if($send)
             User::sendTicketAssignedEmailNotification($modelNew->creator_user_id,
                                                       $modelNew->assign_user_id,
-                                                      $modelNew->domain_id);
+                                                      $modelNew->domain_id,
+                                                      $modelNew->id);
 
             // $this->redirect(array('view', 'id' => $modelNew->id));
 
