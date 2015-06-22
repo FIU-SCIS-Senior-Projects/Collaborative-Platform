@@ -384,6 +384,7 @@ and (orientation: portrait) {
 #cotools-panel-2 video {
     width: 100%;
     height: auto;
+    max-height: 36em;
     position: relative;
     /*top: 50%;*/
     /*transform: translateY(-50%);*/
