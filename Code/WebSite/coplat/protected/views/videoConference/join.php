@@ -243,10 +243,10 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
-<!-- Remote
+
 <script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
 <script type='text/javascript' src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>
--->
+
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/RTCMultiConnection.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
@@ -270,9 +270,8 @@
     };
 
     sec.session = {
-        video: true,
-        audio: true,
-        data: true
+        screen: true,
+        oneway: true
     };
 
 
@@ -285,9 +284,6 @@
             roomID: $('#meetingID').val()
     });
         console.log("sent room = true" + "\nConference ID = " + $('#meetingID').val());
-
-        //secrmc.open();
-        rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
 
@@ -300,7 +296,7 @@
           }
         };
         rmc.connect();
-//        sec.connect();
+        sec.join();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
@@ -339,7 +335,6 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
-        //secrmc.leave();
     }, true);
 
     rmc.onMediaCaptured = function () {
