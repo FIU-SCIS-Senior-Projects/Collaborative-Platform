@@ -268,7 +268,12 @@
         audio: true,
         data: true
     };
-    
+
+    sec.session = {
+        video: true,
+        audio: true,
+        data: true
+    };
 
 
     $('#open-room').click(function () {
@@ -295,7 +300,7 @@
           }
         };
         rmc.connect();
-        sec.connect();
+//        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
