@@ -506,7 +506,9 @@
         else if (e.isScreen) {
             rmc.onCustomMessage = function(message) {
                 if(message == "left") {
-                    alert("left");
+                    $('#cotools-panel iframe').hide();
+                    $('#cotools-panel video').remove();
+                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
                 }
                 else if(message == "right") {
                     alert("right");
@@ -525,9 +527,7 @@
 //                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
 //            }
 
-            $('#cotools-panel iframe').hide();
-            $('#cotools-panel video').remove();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+
         }
 
     };
