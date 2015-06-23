@@ -269,12 +269,6 @@
         data: true
     };
 
-    sec.session = {
-        video: false,
-        audio: false,
-        data: true
-    };
-
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
@@ -299,7 +293,7 @@
           }
         };
         rmc.connect();
-        sec.join();
+        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
