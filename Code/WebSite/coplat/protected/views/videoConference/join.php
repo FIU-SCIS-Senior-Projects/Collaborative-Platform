@@ -504,14 +504,14 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen) {
+            var l = 0;
+            var r = 0;
             rmc.onCustomMessage = function(message) {
                 if(message == "left") {
-                    $('#cotools-panel iframe').hide();
-                    $('#cotools-panel video').remove();
-                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                    l = 1;
                 }
                 else if(message == "right") {
-                    alert("right");
+                    r = 1;
                 }
             };
 //            if(left == 1) {
@@ -526,8 +526,14 @@
 //            else if (right == 1) {
 //                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
 //            }
-
-
+            if(l == 1) {
+                $('#cotools-panel iframe').hide();
+                $('#cotools-panel video').remove();
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            }
+            else if(r == 1) {
+                alert("right sharing");
+            }
         }
 
     };
