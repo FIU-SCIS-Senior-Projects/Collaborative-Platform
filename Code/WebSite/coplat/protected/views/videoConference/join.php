@@ -505,7 +505,12 @@
         }
         else if (e.isScreen) {
             rmc.onCustomMessage = function(message) {
-                alert(message);
+                if(message == "left") {
+                    alert("left");
+                }
+                else if(message == "right") {
+                    alert("right");
+                }
             };
 //            if(left == 1) {
 //
