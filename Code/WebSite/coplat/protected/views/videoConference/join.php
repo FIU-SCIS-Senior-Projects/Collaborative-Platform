@@ -289,7 +289,7 @@
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
         //rmc.onCustomMessage = function(message) {
           //if(message.roomOpened && message.roomID == $('#meetingID').val()) {
-              document.getElementById("on-off-video").style.color= 'red';
+
           //}
         //};
         rmc.connect();
@@ -494,6 +494,7 @@
             // alert("the stream is remote");
         }
         if (e.isVideo) {
+            document.getElementById("on-off-video").style.color= 'red';
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.appendChild(e.mediaElement);
