@@ -281,7 +281,7 @@
         console.log("sent room = true" + "\nConference ID = " + $('#meetingID').val());
 
         rmc.streams.mute({video : true});
-        document.getElementById("on-off-video").style.color= 'red';
+        //document.getElementById("on-off-video").style.color= 'red';
     });
 
     $('#join-room').click(function () {
