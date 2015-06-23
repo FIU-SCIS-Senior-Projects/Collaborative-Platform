@@ -243,10 +243,10 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
-<!---->
-<!--<script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>-->
-<!--<script type='text/javascript' src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>-->
-<!---->
+
+<script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
+<script type='text/javascript' src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>
+
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/RTCMultiConnection.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
@@ -343,15 +343,12 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
-    sec.onMediaCaptured = function () {
-        $('#share-screen-2').removeAttr('disabled');
-        $('#open-room').attr('disabled', 'disabled');
-        $('#join-room').attr('disabled', 'disabled');
-    };
-
-//    secrmc.onMediaCaptured = function () {
+//    sec.onMediaCaptured = function () {
 //        $('#share-screen-2').removeAttr('disabled');
+//        $('#open-room').attr('disabled', 'disabled');
+//        $('#join-room').attr('disabled', 'disabled');
 //    };
+
 
     var left = 0;
     var right = 0;
@@ -372,61 +369,61 @@
         });
     });
 
-    $('#share-screen-2').click(function () {
-        sec.addStream({
-            screen: true,
-            oneway: true,
-            video: true
-        });
+//    $('#share-screen-2').click(function () {
+//        sec.addStream({
+//            screen: true,
+//            oneway: true,
+//            video: true
+//        });
+////
+////
+////        // http://www.rtcmulticonnection.org/docs/addStream/
+////        getScreenId(function (error, sourceId, screen_constraints) {
+////            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+////            navigator.getUserMedia(screen_constraints, function (sec) {
+////                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
+////            }, function (error) {
+////                console.error(error);
+////            });
+////        });
 //
 //
-//        // http://www.rtcmulticonnection.org/docs/addStream/
 //        getScreenId(function (error, sourceId, screen_constraints) {
+//            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+//            // sourceId == null || 'string' || 'firefox'
+//
+//            if(sourceId && sourceId != 'firefox') {
+//                screen_constraints = {
+//                    video: {
+//                        mandatory: {
+//                            chromeMediaSource: 'screen',
+//                            maxWidth: 1920,
+//                            maxHeight: 1080,
+//                            minAspectRatio: 1.77
+//                        }
+//                    }
+//                };
+//
+//                if (error === 'permission-denied') return alert('Permission is denied.');
+//                if (error === 'not-chrome') return alert('Please use chrome.');
+//
+//                if (!error && sourceId) {
+//                    screen_constraints.video.mandatory.chromeMediaSource = 'desktop';
+//                    screen_constraints.video.mandatory.chromeMediaSourceId = sourceId;
+//                }
+//            }
+//
 //            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-//            navigator.getUserMedia(screen_constraints, function (sec) {
-//                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
+//            navigator.getUserMedia(screen_constraints, function (stream) {
+//                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
 //            }, function (error) {
 //                console.error(error);
 //            });
 //        });
-
-
-        getScreenId(function (error, sourceId, screen_constraints) {
-            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
-            // sourceId == null || 'string' || 'firefox'
-
-            if(sourceId && sourceId != 'firefox') {
-                screen_constraints = {
-                    video: {
-                        mandatory: {
-                            chromeMediaSource: 'screen',
-                            maxWidth: 1920,
-                            maxHeight: 1080,
-                            minAspectRatio: 1.77
-                        }
-                    }
-                };
-
-                if (error === 'permission-denied') return alert('Permission is denied.');
-                if (error === 'not-chrome') return alert('Please use chrome.');
-
-                if (!error && sourceId) {
-                    screen_constraints.video.mandatory.chromeMediaSource = 'desktop';
-                    screen_constraints.video.mandatory.chromeMediaSourceId = sourceId;
-                }
-            }
-
-            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-            navigator.getUserMedia(screen_constraints, function (stream) {
-                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
-            }, function (error) {
-                console.error(error);
-            });
-        });
-
-
-
-    });
+//
+//
+//
+//    });
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
@@ -437,12 +434,12 @@
         //left = 0;
     });
 
-    $('#stop-share-screen-2').click(function () {
-        sec.removeStream('screen');
-        $('#cotools-panel-2 iframe').show();
-        $('#cotools-panel-2 video').remove();
-        right = 0;
-    });
+//    $('#stop-share-screen-2').click(function () {
+//        sec.removeStream('screen');
+//        $('#cotools-panel-2 iframe').show();
+//        $('#cotools-panel-2 video').remove();
+//        right = 0;
+//    });
 
     //chat
     rmc.onopen = function (event) {
@@ -450,10 +447,10 @@
         //document.getElementById('input-text-chat').disabled = false;
     };
 
-    rmc.onopen = function (event) {
-        //alert('Text chat has been opened between you and ' + event.userid);
-        //document.getElementById('input-text-chat').disabled = false;
-    };
+//    rmc.onopen = function (event) {
+//        //alert('Text chat has been opened between you and ' + event.userid);
+//        //document.getElementById('input-text-chat').disabled = false;
+//    };
 
 //    document.getElementById('input-text-chat').onkeyup = function (e) {
 //        if (e.keyCode != 13) return; // if it is not Enter-key
@@ -467,17 +464,17 @@
 //        this.value = '';
 //    };
 
-    $("#chat-btn").click(function () {
-        var input = document.getElementById('input-text-chat');
-        var value = input.value.replace(/^\s+|\s+$/g, '');
-        if (!value.length) return; // if empty-spaces
-        appendMsg("You", value);
-        rmc.send({
-            type: 'chat',
-            content: value
-        });
-        input.value = '';
-    });
+//    $("#chat-btn").click(function () {
+//        var input = document.getElementById('input-text-chat');
+//        var value = input.value.replace(/^\s+|\s+$/g, '');
+//        if (!value.length) return; // if empty-spaces
+//        appendMsg("You", value);
+//        rmc.send({
+//            type: 'chat',
+//            content: value
+//        });
+//        input.value = '';
+//    });
 
 
     //end of chat
@@ -573,24 +570,24 @@
 //    };
 
     //receiving a message from
-    rmc.onmessage = function (event) {
-        if (event.data.type == "chat") {
-            //alert('Target user (' + event.userid + ') said: ' + event.data.content);
-            //$("#chat-feed").append("<p>Hello</p>");
-            appendMsg(event.userid, event.data.content);
-        }
-        else {
-
-            CanvasDesigner.syncData(event.data);
-        }
-    };
-
-    function appendMsg(user, msg) {
-
-        var $cont = $("#chat-feed");
-        $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
-    }
+//    rmc.onmessage = function (event) {
+//        if (event.data.type == "chat") {
+//            //alert('Target user (' + event.userid + ') said: ' + event.data.content);
+//            //$("#chat-feed").append("<p>Hello</p>");
+//            appendMsg(event.userid, event.data.content);
+//        }
+//        else {
+//
+//            CanvasDesigner.syncData(event.data);
+//        }
+//    };
+//
+//    function appendMsg(user, msg) {
+//
+//        var $cont = $("#chat-feed");
+//        $cont[0].scrollTop = $cont[0].scrollHeight;
+//        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+//    }
 
 
     //removes the div containing the userid of the user who is leaving
@@ -634,10 +631,10 @@
         $('#cotools-panel iframe').hide();
     });
 
-    $("#show-screens-2").click(function () {
-        $('#cotools-panel-2 video').show();
-        $('#cotools-panel-2 iframe').hide();
-    });
+//    $("#show-screens-2").click(function () {
+//        $('#cotools-panel-2 video').show();
+//        $('#cotools-panel-2 iframe').hide();
+//    });
 
 </script>
 
