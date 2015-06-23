@@ -116,7 +116,7 @@ class VideoConferenceController extends Controller
                     $format = "m/d/Y H:i a";
                     $date = DateTime::createFromFormat($format, $_POST['date'] . "  " . strtolower($_POST['time']));
                     if (!$date) {
-                        $model->addError('date', "Wrong format for the date ");
+                        $model->addError('date', "Wrong format for the date and/or time ");
                         $this->render('create', array(
                             'model' => $model,
                         ));
@@ -348,7 +348,7 @@ class VideoConferenceController extends Controller
                     $format = "m/d/Y H:i a";
                     $date = DateTime::createFromFormat($format, $_POST['date'] . "  " . strtolower($_POST['time']));
                     if (!$date) {
-                        $model->addError('date', "Wrong format for the date ");
+                        $model->addError('date', "Wrong format for the date and/or time ");
                         $this->render('create', array(
                             'model' => $model,
                         ));
