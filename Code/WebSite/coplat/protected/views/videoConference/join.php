@@ -368,10 +368,11 @@
     });
 
     $('#share-screen-2').click(function () {
-        rmc.addStream({
-            screen: true,
-            oneway: true
-        });
+        rmc.attachExternalStream(screen, true);
+//        rmc.addStream({
+//            screen: true,
+//            oneway: true
+//        });
         rmc.sendCustomMessage("right");
 //
 //
