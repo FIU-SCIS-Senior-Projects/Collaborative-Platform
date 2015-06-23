@@ -269,17 +269,11 @@
         data: true
     };
 
-    sec.session = {
-        video: true,
-        audio: true,
-        data: true
-    };
-
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        sec.open();
+        //sec.open();
         rmc.sendCustomMessage({
             roomOpened: true,
             roomID: $('#meetingID').val()
@@ -378,6 +372,12 @@
     });
 
     $('#share-screen-2').click(function () {
+        sec.session = {
+            screen: true,
+            oneway: true
+        };
+        sec.open();
+
         sec.addStream({
             screen: true,
             oneway: true,
