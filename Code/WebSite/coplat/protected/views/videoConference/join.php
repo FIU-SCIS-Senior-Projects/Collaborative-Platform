@@ -386,14 +386,14 @@
 //
 //
 //        // http://www.rtcmulticonnection.org/docs/addStream/
-//        getScreenId(function (error, sourceId, screen_constraints) {
-//            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
-//            navigator.getUserMedia(screen_constraints, function (sec) {
-//                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
-//            }, function (error) {
-//                console.error(error);
-//            });
-//        });
+        getScreenId(function (error, sourceId, screen_constraints) {
+            navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+            navigator.getUserMedia(screen_constraints, function (sec) {
+                document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(sec);
+            }, function (error) {
+                console.error(error);
+            });
+        });
 
 
 //        getScreenId(function (error, sourceId, screen_constraints) {
