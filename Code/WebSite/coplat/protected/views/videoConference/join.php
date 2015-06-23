@@ -299,7 +299,7 @@
           }
         };
         rmc.connect();
-        sec.connect();
+        sec.join();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
