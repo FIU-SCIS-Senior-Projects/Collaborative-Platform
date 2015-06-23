@@ -376,7 +376,7 @@
             connection.attachExternalStream(stream, true);
         }, function(error) {
             alert(JSON.stringify(error));
-            );
+        });
 //        rmc.addStream({
 //            screen: true,
 //            oneway: true
