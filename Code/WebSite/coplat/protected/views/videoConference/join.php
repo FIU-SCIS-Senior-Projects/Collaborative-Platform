@@ -270,8 +270,8 @@
     };
 
     sec.session = {
-        video: true,
-        audio: true,
+        video: false,
+        audio: false,
         data: true
     };
 
@@ -286,7 +286,6 @@
     });
         console.log("sent room = true" + "\nConference ID = " + $('#meetingID').val());
 
-        //secrmc.open();
         rmc.streams.mute({video : true});
         document.getElementById("on-off-video").style.color= 'red';
     });
@@ -300,7 +299,7 @@
           }
         };
         rmc.connect();
-//        sec.connect();
+        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
