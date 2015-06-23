@@ -243,10 +243,10 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
-<!-- Remote
+
 <script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
 <script type='text/javascript' src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>
--->
+
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/RTCMultiConnection.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
@@ -277,21 +277,6 @@
 
 
     $('#open-room').click(function () {
-//        $.ajax({
-//            type: 'POST',
-//            url: "../invite",
-//            data: {
-//                videoconference_id: $('#meetingID').val(),
-//                invitee_id: 1111,
-//                status: "Accepted"
-//            },
-//            success: function() {
-//                alert("success!");
-//            },
-//            error: function() {
-//                alert("fail");
-//            }
-//        });
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
         sec.open();
@@ -379,12 +364,18 @@
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
+        rmc.streams.stop('screen');
+        $('#cotools-panel iframe').show();
+        $('#cotools-panel video').remove();
+        //e.mediaElement.parentNode.removeChild(e.mediaElement);
+        rmc.keepStreamsOpened = true;
+
         rmc.addStream({
+            //data: true,
             screen: true,
             oneway: true
         });
     });
-
 
     $('#share-screen-2').click(function () {
         sec.addStream({
@@ -444,10 +435,11 @@
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        rmc.removeStream('screen');
+        rmc.streams.stop('screen');
+        //rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
-        left = 0;
+        //left = 0;
     });
 
     $('#stop-share-screen-2').click(function () {
