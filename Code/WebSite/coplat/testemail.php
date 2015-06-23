@@ -9,7 +9,7 @@ function establishConnection()
     return $connection;
 }
 
-$path    = '/lclhome/mmach059/Maildir/new';
+$path    = '/home/fiucoplat/Maildir/new';
 $files = scandir($path);
 foreach ($files as $afile)
 {
