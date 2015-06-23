@@ -1,5 +1,5 @@
 <?php
-$path    = '/home/fiucoplat/Maildir/cur';
+$path    = '/home/mmach059/Maildir/new';
 $files = scandir($path);
 foreach ($files as $afile)
 {
