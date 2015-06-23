@@ -269,28 +269,38 @@
         data: true
     };
 
+    sec.session = {
+        video: true,
+        audio: true,
+        data: true
+    };
+
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        //sec.open();
-//        rmc.sendCustomMessage({
-//            roomOpened: true,
-//            roomID: $('#meetingID').val()
-//        });
+        sec.open();
+        rmc.sendCustomMessage({
+            roomOpened: true,
+            roomID: $('#meetingID').val()
+    });
         console.log("sent room = true" + "\nConference ID = " + $('#meetingID').val());
+
+        //secrmc.open();
+        rmc.streams.mute({video : true});
+        document.getElementById("on-off-video").style.color= 'red';
     });
 
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
-        //rmc.onCustomMessage = function(message) {
-          //if(message.roomOpened && message.roomID == $('#meetingID').val()) {
-
-          //}
-        //};
+        rmc.onCustomMessage = function(message) {
+          if(message.roomOpened && message.roomID == $('#meetingID').val()) {
+              document.getElementById("on-off-video").style.color= 'red';
+          }
+        };
         rmc.connect();
-        //sec.connect();
+        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
@@ -338,17 +348,18 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
-//    sec.onMediaCaptured = function () {
-//        $('#share-screen-2').removeAttr('disabled');
-//        $('#open-room').attr('disabled', 'disabled');
-//        $('#join-room').attr('disabled', 'disabled');
-//    };
+    sec.onMediaCaptured = function () {
+        $('#share-screen-2').removeAttr('disabled');
+        $('#open-room').attr('disabled', 'disabled');
+        $('#join-room').attr('disabled', 'disabled');
+    };
 
 //    secrmc.onMediaCaptured = function () {
 //        $('#share-screen-2').removeAttr('disabled');
 //    };
 
-
+    var left = 0;
+    var right = 0;
     //screen sharing
     $('#share-screen').click(function () {
         // http://www.rtcmulticonnection.org/docs/addStream/
@@ -364,24 +375,14 @@
             screen: true,
             oneway: true
         });
-        rmc.sendCustomMessage("left");
     });
 
     $('#share-screen-2').click(function () {
-        navigator.webkitGetUserMedia({
-            video: {
-                chromeMediaSource: 'screen'
-            }
-        }, function(stream) {
-            connection.attachExternalStream(stream, true);
-        }, function(error) {
-            alert(JSON.stringify(error));
+        sec.addStream({
+            screen: true,
+            oneway: true,
+            video: true
         });
-//        rmc.addStream({
-//            screen: true,
-//            oneway: true
-//        });
-        rmc.sendCustomMessage("right");
 //
 //
 //        // http://www.rtcmulticonnection.org/docs/addStream/
@@ -438,12 +439,14 @@
         //rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
+        //left = 0;
     });
 
     $('#stop-share-screen-2').click(function () {
         sec.removeStream('screen');
         $('#cotools-panel-2 iframe').show();
         $('#cotools-panel-2 video').remove();
+        right = 0;
     });
 
     //chat
@@ -452,6 +455,10 @@
         //document.getElementById('input-text-chat').disabled = false;
     };
 
+    rmc.onopen = function (event) {
+        //alert('Text chat has been opened between you and ' + event.userid);
+        //document.getElementById('input-text-chat').disabled = false;
+    };
 
 //    document.getElementById('input-text-chat').onkeyup = function (e) {
 //        if (e.keyCode != 13) return; // if it is not Enter-key
@@ -481,7 +488,7 @@
     //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
-        //sec.leave();
+        sec.leave();
         setTimeout("location.href = '../';",1000);
     });
 
@@ -494,7 +501,6 @@
             // alert("the stream is remote");
         }
         if (e.isVideo) {
-            document.getElementById("on-off-video").style.color= 'red';
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.appendChild(e.mediaElement);
@@ -513,16 +519,6 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen) {
-            var l = 0;
-            var r = 0;
-            rmc.onCustomMessage = function(message) {
-                if(message == "left") {
-                    l = 1;
-                }
-                else if(message == "right") {
-                    r = 1;
-                }
-            };
 //            if(left == 1) {
 //
 //            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
@@ -535,23 +531,17 @@
 //            else if (right == 1) {
 //                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
 //            }
-            if(l == 1) {
-                rmc.keepStreamsOpened = true;
-                $('#cotools-panel iframe').hide();
-                $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').appendChild(e.mediaElement);
-            }
-            else if(r == 1) {
-                rmc.keepStreamsOpened = true;
-                alert("right sharing");
-            }
+
+            $('#cotools-panel iframe').hide();
+            $('#cotools-panel video').remove();
+            document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
 
     };
 
     sec.onstream = function (s) {
         if(s.isVideo) {
-            alert("VIDEO");
+            //alert("VIDEO");
         }
         else if (s.isScreen) {
 
