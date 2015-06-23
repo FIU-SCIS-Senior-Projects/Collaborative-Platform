@@ -826,9 +826,9 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $domMentor->email;
-        $email->from = 'Collaborative Platform <fiucoplat@gmail.com>';
-        $email->replyTo ='fiucoplat@gmail.com';
-        $email->returnPath = "fiucoplat@gmail.com";
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'New Ticket related to ' . $domain->name;
         $email->message = $html;
         $email->send();
