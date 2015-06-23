@@ -274,10 +274,10 @@
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
         sec.open();
-        rmc.sendCustomMessage({
-            roomOpened: true,
-            roomID: $('#meetingID').val()
-    });
+//        rmc.sendCustomMessage({
+//            roomOpened: true,
+//            roomID: $('#meetingID').val()
+//        });
         console.log("sent room = true" + "\nConference ID = " + $('#meetingID').val());
 
         rmc.streams.mute({video : true});
@@ -287,13 +287,13 @@
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
-        rmc.onCustomMessage = function(message) {
-          if(message.roomOpened && message.roomID == $('#meetingID').val()) {
+        //rmc.onCustomMessage = function(message) {
+          //if(message.roomOpened && message.roomID == $('#meetingID').val()) {
               document.getElementById("on-off-video").style.color= 'red';
-          }
-        };
+          //}
+        //};
         rmc.connect();
-        sec.connect();
+        //sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
