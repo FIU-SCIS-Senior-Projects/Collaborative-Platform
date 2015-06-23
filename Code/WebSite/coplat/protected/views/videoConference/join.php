@@ -368,7 +368,15 @@
     });
 
     $('#share-screen-2').click(function () {
-        rmc.attachExternalStream(screen, true);
+        navigator.webkitGetUserMedia({
+            video: {
+                chromeMediaSource: 'screen'
+            }
+        }, function(stream) {
+            connection.attachExternalStream(stream, true);
+        }, function(error) {
+            alert(JSON.stringify(error));
+        };
 //        rmc.addStream({
 //            screen: true,
 //            oneway: true
