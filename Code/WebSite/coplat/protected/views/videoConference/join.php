@@ -282,18 +282,18 @@
 
         //secrmc.open();
         rmc.streams.mute({video : true});
-        document.getElementById("on-off-video").style.color= 'red';
     });
 
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
-        rmc.onCustomMessage = function(message) {
-          if(message.roomOpened && message.roomID == $('#meetingID').val()) {
-              document.getElementById("on-off-video").style.color= 'red';
-          }
-        };
+
         rmc.connect();
+        rmc.onCustomMessage = function(message) {
+            if(message == "R") {
+                sec.connect();
+            }
+        };
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
@@ -377,12 +377,6 @@
             oneway: true
         };
         sec.open();
-
-        sec.addStream({
-            screen: true,
-            oneway: true,
-            video: true
-        });
 //
 //
 //        // http://www.rtcmulticonnection.org/docs/addStream/
@@ -424,6 +418,7 @@
             navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
             navigator.getUserMedia(screen_constraints, function (stream) {
                 document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
+                sec.sendCustomMessage("R");
             }, function (error) {
                 console.error(error);
             });
@@ -511,6 +506,7 @@
             //console.log("========== Adding id: " + uibox.id + "============");
             //document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
+            document.getElementById("on-off-video").style.color= 'red';
 
             $('#join-room').fadeOut(600);
 //            document.getElementById("join-room").remove();
