@@ -527,11 +527,13 @@
 //                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
 //            }
             if(l == 1) {
+                rmc.keepStreamsOpened = true;
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
                 document.getElementById('cotools-panel').appendChild(e.mediaElement);
             }
             else if(r == 1) {
+                rmc.keepStreamsOpened = true;
                 alert("right sharing");
             }
         }
