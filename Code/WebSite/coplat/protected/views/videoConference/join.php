@@ -300,7 +300,7 @@
           }
         };
         rmc.connect();
-//        sec.connect();
+        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
     });
