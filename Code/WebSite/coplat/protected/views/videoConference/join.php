@@ -380,8 +380,8 @@
     $('#share-screen-2').click(function () {
         sec.addStream({
             screen: true,
-            oneway: true,
-            video: true
+            oneway: true
+            //video: true
         });
 //
 //
@@ -544,7 +544,7 @@
             //alert("VIDEO");
         }
         else if (s.isScreen) {
-
+        console.log("screen");
 //            if(left == 1) {
 //
 //            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
