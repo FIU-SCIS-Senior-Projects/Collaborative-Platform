@@ -357,7 +357,6 @@
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
         //e.mediaElement.parentNode.removeChild(e.mediaElement);
-        rmc.sendCustomMessage("left");
         rmc.keepStreamsOpened = true;
 
         rmc.addStream({
@@ -365,14 +364,15 @@
             screen: true,
             oneway: true
         });
+        rmc.sendCustomMessage("left");
     });
 
     $('#share-screen-2').click(function () {
-        rmc.sendCustomMessage("right");
         rmc.addStream({
             screen: true,
             oneway: true
         });
+        rmc.sendCustomMessage("right");
 //
 //
 //        // http://www.rtcmulticonnection.org/docs/addStream/
