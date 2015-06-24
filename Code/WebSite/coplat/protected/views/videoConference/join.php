@@ -272,22 +272,22 @@
     sec.session = {
         video: false,
         audio: false,
-        data: false
+        data: false,
+        screen: true,
+        oneway: true
     };
 
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        sec.open();
-        //secrmc.open();
+//        sec.open();
     });
 
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
         rmc.connect();
-//        sec.connect();
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
@@ -366,6 +366,7 @@
     });
 
     $('#share-screen-2').click(function () {
+        sec.open();
         sec.connect();
         //document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
 
