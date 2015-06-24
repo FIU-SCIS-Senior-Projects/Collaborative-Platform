@@ -38,7 +38,7 @@ foreach ($files as $afile)
                     $from = substr($from, stripos($from, "<"));
                 }
                 $from = str_replace(array("<", ">"," ","\n","\r"),"", $from);
-                $fromisSset = 1;
+                $fromisSet = 1;
             }
             if(strstr($line,"Subject: ") && $subjectisSet == 0)
             {
