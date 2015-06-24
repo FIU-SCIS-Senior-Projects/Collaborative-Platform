@@ -20,7 +20,7 @@ foreach ($files as $afile)
     $isbody = 0;
     while($line = fgets($file))
     {
-        echo $line . "\n\n";
+        //echo $line . "\n\n";
         if($isbody == 1)
         {
             $body = $body . $line;
