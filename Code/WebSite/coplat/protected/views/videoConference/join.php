@@ -270,9 +270,11 @@
     };
 
     sec.session = {
-        video: true,
-        audio: true,
-        data: true
+        video: false,
+        audio: false,
+        data: true,
+        screen: true,
+        oneway: true
     };
 
 
@@ -287,6 +289,7 @@
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
         rmc.connect();
+        sec.connect();
 //        sec.connect();
         // http://www.rtcmulticonnection.org/docs/connect/
 
