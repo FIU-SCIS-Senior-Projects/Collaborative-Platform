@@ -527,10 +527,6 @@
     };
 
     sec.onstream = function (s) {
-        if(s.isVideo) {
-            alert("VIDEO");
-        }
-        else if (s.isScreen) {
 
 //            if(left == 1) {
 //
@@ -550,10 +546,12 @@
 //            $('#cotools-panel-2 video').remove();
 //            alert("video removed");
             document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-        }
 
     };
 
+    sec.onNewSession = function(session) {
+        session.join({screen: true, oneway: true});
+    };
 
 //    secrmc.onstream = function (e) {
 //       if (e.isScreen) {
