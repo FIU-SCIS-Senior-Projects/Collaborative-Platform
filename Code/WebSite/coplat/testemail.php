@@ -25,7 +25,7 @@ foreach ($files as $afile)
             $body = $body . $line;
         }
         else{
-            if(stristr($line,"from"))
+            if(strstr($line,"From: "))
             {
                 $from = $line;
                 $from = substr($from, stripos($from, ":")+2);
@@ -34,7 +34,7 @@ foreach ($files as $afile)
                   $from = substr($from, stripos($from, "<")+1, stripos($from, ">")- (stripos($from, ">")+1));
                 }
             }
-            if(stristr($line,"subject"))
+            if(strstr($line,"Subject: "))
             {
                 $subject = $line;
             }
