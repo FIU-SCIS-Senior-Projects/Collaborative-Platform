@@ -372,6 +372,8 @@
             oneway: true
         };
         sec.open();
+        rmc.sendCustomMessage("R");
+
 //
 //
 //        // http://www.rtcmulticonnection.org/docs/addStream/
