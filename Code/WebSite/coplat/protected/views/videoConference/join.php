@@ -476,7 +476,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
+            if(document.getElementById('cotools-panel-2').getAttribute('has-screen') == false) {
                 $('#cotools-panel-2 video').remove();
                 document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
 
