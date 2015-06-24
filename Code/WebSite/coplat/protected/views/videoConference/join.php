@@ -178,7 +178,7 @@
 
         <div id="cotools-container-2" class="col-md-6 col-lg-6">
             <div id="cotools-panel-2">
-                <video controls="" autoplay=""></video>
+
             </div>
 
         </div>
@@ -292,6 +292,7 @@
         rmc.onCustomMessage = function(message) {
             if(message == "R") {
                 sec.connect();
+                console.log("================== CONNECTING ========================");
             }
         };
 //        sec.connect();
@@ -532,7 +533,7 @@
 
     sec.onstream = function (s) {
         if(s.isVideo) {
-            alert("VIDEO");
+            //alert("VIDEO");
         }
         else if (s.isScreen) {
 
@@ -553,6 +554,7 @@
 //            alert("iframe removed");
 //            $('#cotools-panel-2 video').remove();
 //            alert("video removed");
+            alert("SCREEN!!!");
             document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
         }
 
