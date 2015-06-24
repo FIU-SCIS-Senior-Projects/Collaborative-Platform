@@ -18,6 +18,8 @@ foreach ($files as $afile)
     $subject = "";
     $body = "";
     $isbody = 0;
+    $fromisSet = 0;
+    $subjectisSet = 0;
     while($line = fgets($file))
     {
         //echo $line . "\n\n";
@@ -26,9 +28,9 @@ foreach ($files as $afile)
             $body = $body . $line;
         }
 
-            if(strstr($line,"From: "))
+            if(strstr($line,"From: ") && strstr($line,"<") && $fromisSet == 0)
             {
-                echo $line;
+             //   echo $line;
                 $from = $line;
                 $from = substr($from, stripos($from, ":")+2);
                 if(stristr($from, "<"))
@@ -36,11 +38,13 @@ foreach ($files as $afile)
                     $from = substr($from, stripos($from, "<"));
                 }
                 $from = str_replace(array("<", ">"," ","\n","\r"),"", $from);
+                $fromisSset = 1;
             }
-            if(strstr($line,"Subject: "))
+            if(strstr($line,"Subject: ") && $subjectisSet == 0)
             {
                 echo $line;
                 $subject = $line;
+                $subjectisSet =1;
             }
             if(stristr($line,"content-type: "))
             {
