@@ -368,6 +368,8 @@
 
     $('#share-screen-2').click(function () {
         sec.session = {
+            video: false,
+            audio: false,
             screen: true,
             oneway: true
         };
