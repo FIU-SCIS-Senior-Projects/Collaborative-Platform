@@ -360,7 +360,7 @@
 
             rmc.addStream({
                 //data: true,
-                id: 'r',
+                Stream-id: 'r',
                 screen: true,
                 oneway: true
             });
