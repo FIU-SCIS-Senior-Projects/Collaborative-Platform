@@ -6,13 +6,13 @@
  * Time: 5:33 PM
  */
 /*
- * Sets up the connection to look at the emails on the gmail account fiucoplat@gmail.com
+ * Sets up the connection to look at the emails on the gmail account fiucoplat@cp-dev.cs.fiu.edu
  * and returns the connection
  */
 function establishConnection()
 {
     $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-    $username = 'fiucoplat@gmail.com';//<script cf-hash="f9e31" type="text/javascript">
+    $username = 'fiucoplat@cp-dev.cs.fiu.edu';//<script cf-hash="f9e31" type="text/javascript">
     ///* <![CDATA[ */!function(){try{var t="currentScript"in document?document.currentScript:function(){for(var t=document.getElementsByTagName("script"),e=t.length;e--;)if(t[e].getAttribute("cf-hash"))return t[e]}();if(t&&t.previousSibling){var e,r,n,i,c=t.previousSibling,a=c.getAttribute("data-cfemail");if(a){for(e="",r=parseInt(a.substr(0,2),16),n=2;a.length-n;n+=2)i=parseInt(a.substr(n,2),16)^r,e+=String.fromCharCode(i);e=document.createTextNode(e),c.parentNode.replaceChild(e,c)}}}catch(u){}}();/* ]]> */</script>';
     $password = 'fiuadmin';
     $connection = imap_open($hostname, $username, $password);
@@ -195,9 +195,9 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
    // echo"\n";
    // echo $toEmail .  $subjectlines;
     $subject = "Out of Office Response";
-    $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@gmail.com with:\n\n\"Back in office\"\n\nin the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
-    $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
-        'Reply-To: fiucoplat@gmail.com' . "\r\n" .
+    $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@cp-dev.cs.fiu.edu with:\n\n\"Back in office\"\n\nin the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
+    $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
+        'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP
@@ -214,8 +214,8 @@ function sendTicketReassignment($toEmail, $subjectl)
 
     $subject = "Ticket Assigned";
     $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectl . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
-    $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
-        'Reply-To: fiucoplat@gmail.com' . "\r\n" .
+    $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
+        'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP
@@ -338,8 +338,8 @@ function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 {
     $subject = "Reassign Due to Inactivity";
     $body = "Due to the inactivity on the ticket:\n\n$subjectLine \n\nhas been reassigned.\n\nThank you for all your help making Collaborative Platform great";
-    $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
-        'Reply-To: fiucoplat@gmail.com' . "\r\n" .
+    $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
+        'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP

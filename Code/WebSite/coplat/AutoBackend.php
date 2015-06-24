@@ -6,19 +6,11 @@
  * Time: 5:33 PM
  */
 /*
- * Sets up the connection to look at the emails on the gmail account fiucoplat@gmail.com
+ * Sets up the connection to look at the emails on the gmail account fiucoplat@cp-dev.cs.fiu.edu
  * and returns the connection
  */
-DEFINE ("serverName", "cp-dev.cis.fiu.edu");
-function establishConnection()
-{
-    $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-    $username = 'fiucoplat@gmail.com';//<script cf-hash="f9e31" type="text/javascript">
-    ///* <![CDATA[ */!function(){try{var t="currentScript"in document?document.currentScript:function(){for(var t=document.getElementsByTagName("script"),e=t.length;e--;)if(t[e].getAttribute("cf-hash"))return t[e]}();if(t&&t.previousSibling){var e,r,n,i,c=t.previousSibling,a=c.getAttribute("data-cfemail");if(a){for(e="",r=parseInt(a.substr(0,2),16),n=2;a.length-n;n+=2)i=parseInt(a.substr(n,2),16)^r,e+=String.fromCharCode(i);e=document.createTextNode(e),c.parentNode.replaceChild(e,c)}}}catch(u){}}();/* ]]> */</script>';
-    $password = 'fiuadmin';
-    $connection = imap_open($hostname, $username, $password);
-    return $connection;
-}
+DEFINE ("serverName", "cp-dev.cis.fiu.edu/coplat");
+
 /*
  * Sets up the connection to the database that is running serverside
  * and returns the connection
@@ -40,28 +32,65 @@ function establishDBConnection()
 function emailListener()
 {
 
-    $connection = establishConnection();
+   // $connection = establishConnection();
     $dbConn = establishDBConnection();
 
-    $messagestatus = "UNSEEN";
-
-        $emails = imap_search($connection, $messagestatus);
-        if ($emails) {
-            rsort($emails);
-            foreach ($emails as $email_number) {
-               // echo "in email loop";
-                $header = imap_headerinfo($connection, $email_number);
-                $message = imap_fetchbody($connection, $email_number, 1.1);
-                if ($message == "") {
-                    $message = imap_fetchbody($connection, $email_number, 1);
-                }
-                $emailaddress = substr($header->senderaddress, stripos($header->senderaddress, "<")+1, stripos($header->senderaddress, ">")- (stripos($header->senderaddress, ">")+1));
-                if (!detectOOOmessage($header->subject, $message, $emailaddress)) {
-                    detectBIOmessage($header->subject, $emailaddress);
-                }
-                imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
+    $path    = '/home/fiucoplat/Maildir/new';
+    $files = scandir($path);
+    foreach ($files as $afile)
+    {
+        $file = fopen($path."/".$afile,"r");
+        $from = "";
+        $subject = "";
+        $body = "";
+        $isbody = 0;
+        $fromisSet = 0;
+        $subjectisSet = 0;
+        while($line = fgets($file))
+        {
+            //echo $line . "\n\n";
+            if($isbody == 1)
+            {
+                $body = $body . $line;
             }
+
+            if(strstr($line,"From: ") && strstr($line,"<") && $fromisSet == 0)
+            {
+                //   echo $line;
+                $from = $line;
+                $from = substr($from, stripos($from, ":")+2);
+                if(stristr($from, "<"))
+                {
+                    $from = substr($from, stripos($from, "<"));
+                }
+                $from = str_replace(array("<", ">"," ","\n","\r"),"", $from);
+                $fromisSet = 1;
+            }
+            if(strstr($line,"Subject: ") && $subjectisSet == 0)
+            {
+                //  echo $line;
+                $subject = $line;
+                $subjectisSet =1;
+            }
+            if(stristr($line,"content-type: "))
+            {
+                $isbody = 1;
+            }
+
+
         }
+        //echo "\n\n\nPARSED INFORMATION \n\n\nfrom:".$from."99\n";
+        //echo "subject: ".$subject."\n";
+        //echo "body: ".$body."\n";
+        fclose($file);
+        if(strlen($body)>5) {
+            if(!detectOOOmessage($subject, $body, $from))
+            {
+                detectBIOmessage($subject, $from);
+            }
+            unlink($path . "/" . $afile);
+        }
+    }
     $daysAway = $dbConn->query("Select setting from reassign_rules where rule_id  = 2")->fetch_assoc()["setting"];
     $daysAway = $daysAway * -1;
         $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(NOW(), INTERVAL $daysAway DAY) limit 10");//delete mentors that have been away for more than 24 hours from the away list
@@ -145,7 +174,7 @@ function setAsAway($user_Id)
         if ($possibleMentors->num_rows<=0)
         {
            // echo "no possible mentors should assign tickets to admin";
-            $ticketSubs = $ticketSubs . $aticket["subject"] . ",\n";
+            $ticketSubs = $ticketSubs . $aticket["subject"] . ",<br/>";
             $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", null, null, 5)");
             $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//no possible mentor found assign to admin for manual assign.
         }
@@ -181,12 +210,12 @@ function setAsAway($user_Id)
             }
             if($assigned != 1)
             {
-                $ticketSubs = $ticketSubs . $aticket["subject"] . ",\n";
+                $ticketSubs = $ticketSubs . $aticket["subject"] . ",<br/>";
                 $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", 5, null, 5)");
                 $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//give to admin for manual reassign
             }
         }
-        $ticketSubs = $ticketSubs . $aticket["subject"] . ",\n ";
+        $ticketSubs = $ticketSubs . $aticket["subject"] . ",<br/> ";
         // do this outside the loop  $awayMent = User::model()->findAllBySql("SELECT * FROM user WHERE id =:user_Id", array(":user_id"=>$user_Id));
         // foreach ($awayMent as $bawayMent) {
         //    User::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent - lname, $bawayMent->email, $aticket->subject);
@@ -194,20 +223,23 @@ function setAsAway($user_Id)
     }
     $mentor2 = $dbconnect->query("SELECT * FROM user WHERE id = $user_Id");
     $mentor = $mentor2->fetch_assoc();
-    sendTicketCancelEmail($mentor["email"],$ticketSubs);
+    sendTicketCancelEmail($mentor["email"],$ticketSubs, $user_Id);
 
 }
 /*
  * Sends the list of removed emails to the mentors email address
  */
-function sendTicketCancelEmail($toEmail, $subjectlines)
+function sendTicketCancelEmail($toEmail, $subjectlines, $user_Id)
 {
    // echo"\n";
    // echo $toEmail .  $subjectlines;
     $subject = "Out of Office Response";
-    $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@gmail.com with:\n\n\"Back in office\"\n\nin the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
+    $removelink = "http://".serverName."/index.php/awayMentor/remove/".$user_Id;
+    $removeClick = "<a href='$removelink'>'Click Here'</a>";
+    $body = "Collaborative Platform received an Automated Out of office response from this email.<br/><br/>We have set you as out of office and you will no longer be assigned tickets automatically.<br/>The tickets : <br/><br/>" . $subjectlines . "<br/><br/>Have been reassigned to another mentor<br/><br/>If this was done in error or you are back in office send an email to fiucoplat@cp-dev.cs.fiu.edu with:<br/><br/>\"Back in office\"<br/><br/>in the subject, or ".$removeClick.", and the system will take you off of the away list or, otherwise the system will take you off of the away list automatically after 24 hours<br/><br/>Thank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
+        'Content-type: text/html; charset=iso-8859-1' . "\r\n".
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP
@@ -222,13 +254,18 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
 function sendTicketReassignment($toEmail, $subjectl, $ticket_id)
 {
 
-
+    $dbcon = establishDBConnection();
+    $ticket = $dbcon->query("Select * from ticket where id = $ticket_id")->fetch_assoc();
+    $priority = $dbcon->query(("Select * from priority where id = ".$ticket["priority_id"]))->fetch_assoc();
     $subject = "Ticket Assigned";
     $linkAddress = "http://".serverName."/index.php/ticket/view/".$ticket_id;
-    $subjectClick = "<a href='$linkAddress'>$subjectl</a>";
-    $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectl . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
+    $rejectAddress = "http://".serverName."/index.php/ticket/reject/".$ticket_id;
+    $rejectClick = "<a href='$rejectAddress'>'Click Here to reject the ticket'</a>";
+    $subjectClick = "<a href='$linkAddress'>'Click Here'</a>";
+    $body = "Collaborative Platform has assigned you a new ticket.<br/><br/>Subject: " . $subjectl . "<br/><br/>Description: ".$ticket["description"]."<br/><br/>that was previously assigned to another mentor. Due to the ".$priority["description"]." priority of the ticket please make a comment on or schedule a meeting with the ticket creator within ".$priority["reassignHours"]." hours<br/><br/>".$subjectClick." to view the ticket.<br/><br/> Thank you for Making Collaborative Platform Great<br/><br/>If for any reason you are unable to work on the ticket ".$rejectClick;
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
+        'Content-type: text/html; charset=iso-8859-1' . "\r\n".
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP
@@ -345,9 +382,10 @@ function checkPriorityElapseTickets()
 function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 {
     $subject = "Reassign Due to Inactivity";
-    $body = "Due to the inactivity on the ticket:\n\n$subjectLine \n\nhas been reassigned.\n\nThank you for all your help making Collaborative Platform great";
+    $body = "Due to the inactivity on the ticket:<br/><br/>$subjectLine <br/><br/>has been reassigned.<br/><br/>Thank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
+        'Content-type: text/html; charset=iso-8859-1' . "\r\n".
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP

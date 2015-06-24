@@ -23,9 +23,9 @@ $dbConnect = establishDBConnection();
     $subject = "Ticket Assigned";
     $subjectClick = "<a href='". $link. "'>" .$subjectl. "</a>\n\n";
     $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectClick . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
-    $headers = 'From: Collaborative Platform <fiucoplat@gmail.com>' . "\r\n" .
+    $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Content-type: text/html; charset=utf-8' . "\r\n".
-        'Reply-To: fiucoplat@gmail.com' . "\r\n" .
+        'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
     echo "subject click ".$subjectClick."\n";
     echo "link ".$link."\n";
