@@ -367,6 +367,8 @@
     });
 
     $('#share-screen-2').click(function () {
+        sec.close();
+        
         sec.session = {
             video: false,
             audio: false,
@@ -437,7 +439,7 @@
     });
 
     $('#stop-share-screen-2').click(function () {
-        sec.removeStream('screen');
+        sec.close();
         $('#cotools-panel-2 iframe').show();
         $('#cotools-panel-2 video').remove();
         right = 0;
