@@ -20,11 +20,12 @@ foreach ($files as $afile)
     $isbody = 0;
     while($line = fgets($file))
     {
+        echo $line . "\n\n";
         if($isbody == 1)
         {
             $body = $body . $line;
         }
-        else{
+
             if(strstr($line,"From: "))
             {
                 $from = $line;
@@ -42,10 +43,10 @@ foreach ($files as $afile)
             {
                 $isbody = 1;
             }
-        }
+
 
     }
-    echo "from:".$from."99\n";
+    echo "\n\n\nPARSED INFORMATION \n\n\nfrom:".$from."99\n";
     echo "subject: ".$subject."\n";
     echo "body: ".$body."\n";
 }
