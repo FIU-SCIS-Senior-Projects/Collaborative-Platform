@@ -397,7 +397,7 @@
     $('#stop-share-screen-2').click(function () {
         document.getElementById('cotools-panel-2').setAttribute('has-screen', null);
         alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
-        rmc.streams.stop(rStId);
+        rmc.streams.stop('screen');
         //rmc.removeStream(rStId);
 
         console.log("===================== REMOVE " + rStId + " ========================");
