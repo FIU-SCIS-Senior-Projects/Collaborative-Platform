@@ -445,7 +445,7 @@
     $('#stop-share-screen').click(function () {
         document.getElementById('cotools-panel').setAttribute('has-screen', false);
 //        rmc.streams.stop('screen');
-        //rmc.removeStream('screen');
+        rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
         //left = 0;
