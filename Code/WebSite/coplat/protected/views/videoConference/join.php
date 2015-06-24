@@ -350,19 +350,35 @@
     var right = 0;
     //screen sharing
     $('#share-screen').click(function () {
+        var selection = promp("Screen?");
+        if (selection == "r") {
+            rmc.streams.stop('screen');
+            $('#cotools-panel iframe').show();
+            $('#cotools-panel video').remove();
+            //e.mediaElement.parentNode.removeChild(e.mediaElement);
+            rmc.keepStreamsOpened = true;
+
+            rmc.addStream({
+                //data: true,
+                screen: true,
+                oneway: true
+            });
+        }
+        else if (selection == "l") {
+            rmc.streams.stop('screen');
+            $('#cotools-panel-2 video').remove();
+            //e.mediaElement.parentNode.removeChild(e.mediaElement);
+            rmc.keepStreamsOpened = true;
+
+            rmc.addStream({
+                //data: true,
+                screen: true,
+                oneway: true
+            });
+        }
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
-        rmc.streams.stop('screen');
-        $('#cotools-panel iframe').show();
-        $('#cotools-panel video').remove();
-        //e.mediaElement.parentNode.removeChild(e.mediaElement);
-        rmc.keepStreamsOpened = true;
 
-        rmc.addStream({
-            //data: true,
-            screen: true,
-            oneway: true
-        });
     });
 
     $('#share-screen-2').click(function () {
