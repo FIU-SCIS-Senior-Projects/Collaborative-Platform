@@ -44,7 +44,6 @@ class HomeController extends Controller
         );
     }
 
-
     public function actionuserHome()
     {
         /** @var User $username */

@@ -6,14 +6,14 @@
  * Time: 5:33 PM
  */
 /*
- * Sets up the connection to look at the emails on the gmail account fiucoplat@gmail.com
+ * Sets up the connection to look at the emails on the gmail account fiucoplat@cp-dev.cs.fiu.edu
  * and returns the connection
  */
 DEFINE ("serverName", "cp-dev.cis.fiu.edu");
 function establishConnection()
 {
     $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-    $username = 'fiucoplat@gmail.com';//<script cf-hash="f9e31" type="text/javascript">
+    $username = 'fiucoplat@cp-dev.cs.fiu.edu';//<script cf-hash="f9e31" type="text/javascript">
     ///* <![CDATA[ */!function(){try{var t="currentScript"in document?document.currentScript:function(){for(var t=document.getElementsByTagName("script"),e=t.length;e--;)if(t[e].getAttribute("cf-hash"))return t[e]}();if(t&&t.previousSibling){var e,r,n,i,c=t.previousSibling,a=c.getAttribute("data-cfemail");if(a){for(e="",r=parseInt(a.substr(0,2),16),n=2;a.length-n;n+=2)i=parseInt(a.substr(n,2),16)^r,e+=String.fromCharCode(i);e=document.createTextNode(e),c.parentNode.replaceChild(e,c)}}}catch(u){}}();/* ]]> */</script>';
     $password = 'fiuadmin';
     $connection = imap_open($hostname, $username, $password);
@@ -43,25 +43,62 @@ function emailListener()
     $connection = establishConnection();
     $dbConn = establishDBConnection();
 
-    $messagestatus = "UNSEEN";
-
-        $emails = imap_search($connection, $messagestatus);
-        if ($emails) {
-            rsort($emails);
-            foreach ($emails as $email_number) {
-               // echo "in email loop";
-                $header = imap_headerinfo($connection, $email_number);
-                $message = imap_fetchbody($connection, $email_number, 1.1);
-                if ($message == "") {
-                    $message = imap_fetchbody($connection, $email_number, 1);
-                }
-                $emailaddress = substr($header->senderaddress, stripos($header->senderaddress, "<")+1, stripos($header->senderaddress, ">")- (stripos($header->senderaddress, ">")+1));
-                if (!detectOOOmessage($header->subject, $message, $emailaddress)) {
-                    detectBIOmessage($header->subject, $emailaddress);
-                }
-                imap_delete($connection, 1); //this might bug out but should delete the top message that was just parsed
+    $path    = '/home/fiucoplat/Maildir/new';
+    $files = scandir($path);
+    foreach ($files as $afile)
+    {
+        $file = fopen($path."/".$afile,"r");
+        $from = "";
+        $subject = "";
+        $body = "";
+        $isbody = 0;
+        $fromisSet = 0;
+        $subjectisSet = 0;
+        while($line = fgets($file))
+        {
+            //echo $line . "\n\n";
+            if($isbody == 1)
+            {
+                $body = $body . $line;
             }
+
+            if(strstr($line,"From: ") && strstr($line,"<") && $fromisSet == 0)
+            {
+                //   echo $line;
+                $from = $line;
+                $from = substr($from, stripos($from, ":")+2);
+                if(stristr($from, "<"))
+                {
+                    $from = substr($from, stripos($from, "<"));
+                }
+                $from = str_replace(array("<", ">"," ","\n","\r"),"", $from);
+                $fromisSet = 1;
+            }
+            if(strstr($line,"Subject: ") && $subjectisSet == 0)
+            {
+                //  echo $line;
+                $subject = $line;
+                $subjectisSet =1;
+            }
+            if(stristr($line,"content-type: "))
+            {
+                $isbody = 1;
+            }
+
+
         }
+        //echo "\n\n\nPARSED INFORMATION \n\n\nfrom:".$from."99\n";
+        //echo "subject: ".$subject."\n";
+        //echo "body: ".$body."\n";
+        fclose($file);
+        if(strlen($body)>5) {
+            if(!detectOOOmessage($subject, $body, $from))
+            {
+                detectBIOmessage($subject, $from);
+            }
+            unlink($path . "/" . $afile);
+        }
+    }
     $daysAway = $dbConn->query("Select setting from reassign_rules where rule_id  = 2")->fetch_assoc()["setting"];
     $daysAway = $daysAway * -1;
         $dbConn->query("DELETE FROM away_mentor WHERE tiStamp <= DATE_ADD(NOW(), INTERVAL $daysAway DAY) limit 10");//delete mentors that have been away for more than 24 hours from the away list
@@ -194,18 +231,20 @@ function setAsAway($user_Id)
     }
     $mentor2 = $dbconnect->query("SELECT * FROM user WHERE id = $user_Id");
     $mentor = $mentor2->fetch_assoc();
-    sendTicketCancelEmail($mentor["email"],$ticketSubs);
+    sendTicketCancelEmail($mentor["email"],$ticketSubs, $user_Id);
 
 }
 /*
  * Sends the list of removed emails to the mentors email address
  */
-function sendTicketCancelEmail($toEmail, $subjectlines)
+function sendTicketCancelEmail($toEmail, $subjectlines, $user_Id)
 {
    // echo"\n";
    // echo $toEmail .  $subjectlines;
     $subject = "Out of Office Response";
-    $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@gmail.com with:\n\n\"Back in office\"\n\nin the subject and the system will take you off of the away list, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
+    $removelink = "http://".serverName."/index.php/awayMentor/remove/".$user_Id;
+    $removeClick = "<a href='$removelink'>'Click Here'</a>";
+    $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@cp-dev.cs.fiu.edu with:\n\n\"Back in office\"\n\nin the subject, or ".$removeClick.", and the system will take you off of the away list or, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
@@ -222,11 +261,15 @@ function sendTicketCancelEmail($toEmail, $subjectlines)
 function sendTicketReassignment($toEmail, $subjectl, $ticket_id)
 {
 
-
+    $dbcon = establishDBConnection();
+    $ticket = $dbcon->query("Select * from ticket where id = $ticket_id")->fetch_assoc();
+    $priority = $dbcon->query(("Select * from priority where id = ".$ticket["priority_id"]))->fetch_assoc();
     $subject = "Ticket Assigned";
     $linkAddress = "http://".serverName."/index.php/ticket/view/".$ticket_id;
-    $subjectClick = "<a href='$linkAddress'>$subjectl</a>";
-    $body = "Collaborative Platform has assigned you a new ticket:\n\n" . $subjectl . "\n\nthat was previously assigned to another mentor.\n Thank you for Making Collaborative Platform Great";
+    $rejectAddress = "http://".serverName."/index.php/ticket/reject/".$ticket_id;
+    $rejectClick = "<a href='$rejectAddress'>'Click Here to reject the ticket'</a>";
+    $subjectClick = "<a href='$linkAddress'>'Click Here'</a>";
+    $body = "Collaborative Platform has assigned you a new ticket.\n\nSubject: " . $subjectl . "\n\nDescription: ".$ticket["description"]."\n\nthat was previously assigned to another mentor. Due to the ".$priority["description"]." priority of the ticket please make a comment on or schedule a meeting with the ticket creator within ".$priority["reassignHours"]." hours\n\n".$subjectClick." to view the ticket.\n\n Thank you for Making Collaborative Platform Great\n\nIf for any reason you are unable to work on the ticket ".$rejectClick;
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();

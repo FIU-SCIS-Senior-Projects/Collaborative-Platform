@@ -28,6 +28,22 @@ Yii::app()->clientScript->registerScript('register', "
 ?>
 
 <div><h2><?php echo $user->fname; ?> <?php echo $user->lname; ?> Dashboard</h2></div>
+    <?php
+    if (User::isCurrentUserAway())
+    {
+    echo "You are away<br>";
+        echo CHtml::button('I\'m Back!!', array('submit' => array('/awayMentor/remove/'.User::getCurrentUserId())));
+
+       // echo CHtml::ajaxButton('I am a button', CController::createUrl('HomeController/actionRemoveFromAway'), array( ), array('id'=>User::getCurrentUserId()));
+
+       //echo CHtml::ajaxButton('I\'m Back!!',Yii::app()->createUrl('HomeController/actionRemoveFromAway',array('id'=>User::getCurrentUserId())));
+        //echo CHtml::submitButton('CSV Report', array('submit'=>'HomeController/actionRemoveFromAway'));
+       //echo CHtml::ajaxButton('ButtonName',Yii::app()->createUrl('HomeController/actionRemoveFromAway');
+         //   array(
+           //     'type'=>'POST',
+             //   'data'=> User::getCurrentUserId(),
+            //),array('class'=>'HomeController',));
+    } ?>
 <br>
     <table style="width:auto;">
         <tr>
