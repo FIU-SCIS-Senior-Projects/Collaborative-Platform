@@ -28,6 +28,7 @@ foreach ($files as $afile)
 
             if(strstr($line,"From: "))
             {
+                echo $line;
                 $from = $line;
                 $from = substr($from, stripos($from, ":")+2);
                 if(stristr($from, "<"))
@@ -38,6 +39,7 @@ foreach ($files as $afile)
             }
             if(strstr($line,"Subject: "))
             {
+                echo $line;
                 $subject = $line;
             }
             if(stristr($line,"content-type: "))
