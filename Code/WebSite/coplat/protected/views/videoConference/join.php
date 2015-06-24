@@ -360,6 +360,7 @@
 
             rmc.addStream({
                 //data: true,
+                id: r,
                 screen: true,
                 oneway: true
             });
@@ -445,7 +446,7 @@
     $('#stop-share-screen').click(function () {
         document.getElementById('cotools-panel').setAttribute('has-screen', false);
 //        rmc.streams.stop('screen');
-        rmc.removeStream('screen');
+        //rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
         //left = 0;
@@ -557,15 +558,15 @@
 
     };
 
-//    rmc.onstreamended = function (e) {
-//        if (!document.getElementById('cotools-panel').getAttribute('has-screen')) {
-//            $('#cotools-panel iframe').show();
-//            $('#cotools-panel video').remove();
-//        }
-//        if (!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-//
-//        }
-//    };
+    rmc.onstreamended = function (e) {
+        if (!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+            $('#cotools-panel iframe').show();
+            $('#cotools-panel video').remove();
+        }
+        if (!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
+
+        }
+    };
 
 //    sec.onstream = function (s) {
 //
