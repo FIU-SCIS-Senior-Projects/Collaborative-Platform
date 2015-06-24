@@ -395,7 +395,7 @@
     });
 
     $('#stop-share-screen-2').click(function () {
-        document.getElementById('cotools-panel-2').setAttribute('has-screen', false);
+        document.getElementById('cotools-panel-2').setAttribute('has-screen', null);
         alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
         rmc.streams.stop(rStId);
         rmc.removeStream(rStId);
@@ -477,9 +477,9 @@
         }
         else if (e.isScreen || e.stream.isScreen) {
             alert("Before: " + document.getElementById('cotools-panel-2').getAttribute('has-screen'));
-            if(document.getElementById('cotools-panel-2').getAttribute('has-screen') == false) {
+            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
                 $('#cotools-panel-2 video').remove();
-                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                document.getElementById('cotools-panel-2').setAttribute('has-screen', 1);
 
                 alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
 
