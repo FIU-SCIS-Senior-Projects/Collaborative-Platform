@@ -146,17 +146,17 @@
                     People</a></li>
         </ul>
     </div>
-    <div class="btn-group">
-        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
-                data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing-R <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-<!--            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>-->
-<!--            <li><a id='share-screen-2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>-->
-            <li><a id='stop-share-screen-2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
-        </ul>
-    </div>
+<!--    <div class="btn-group">-->
+<!--        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"-->
+<!--                data-toggle="dropdown" aria-expanded="false">-->
+<!--            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing-R <span class="caret"></span>-->
+<!--        </button>-->
+<!--        <ul class="dropdown-menu" role="menu">-->
+<!--<!--            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>-->-->
+<!--<!--            <li><a id='share-screen-2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>-->-->
+<!--            <li><a id='stop-share-screen-2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
