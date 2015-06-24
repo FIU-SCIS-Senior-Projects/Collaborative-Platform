@@ -463,7 +463,7 @@
 //        rmc.send({
 //            type: 'chat',
 //            content: value
-//        });
+//        }); 
 //        this.value = '';
 //    };
 
