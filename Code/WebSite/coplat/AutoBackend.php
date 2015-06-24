@@ -174,7 +174,7 @@ function setAsAway($user_Id)
         if ($possibleMentors->num_rows<=0)
         {
            // echo "no possible mentors should assign tickets to admin";
-            $ticketSubs = $ticketSubs . $aticket["subject"] . ",\n";
+            $ticketSubs = $ticketSubs . $aticket["subject"] . ",<br/>";
             $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", null, null, 5)");
             $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//no possible mentor found assign to admin for manual assign.
         }
@@ -210,12 +210,12 @@ function setAsAway($user_Id)
             }
             if($assigned != 1)
             {
-                $ticketSubs = $ticketSubs . $aticket["subject"] . ",\n";
+                $ticketSubs = $ticketSubs . $aticket["subject"] . ",<br/>";
                 $dbconnect->query("insert into ticket_events (event_type_id, ticket_id, event_recorded_date, old_value, new_value, comment, event_performed_by_user_id) values (10, ".$aticket["id"].", NOW(), ".$aticket["assign_user_id"].", 5, null, 5)");
                 $dbconnect->query("UPDATE ticket SET assigned_date = NOW(), assign_user_id = 5 WHERE id = ".$aticket["id"]);//give to admin for manual reassign
             }
         }
-        $ticketSubs = $ticketSubs . $aticket["subject"] . ",\n ";
+        $ticketSubs = $ticketSubs . $aticket["subject"] . ",<br/> ";
         // do this outside the loop  $awayMent = User::model()->findAllBySql("SELECT * FROM user WHERE id =:user_Id", array(":user_id"=>$user_Id));
         // foreach ($awayMent as $bawayMent) {
         //    User::model()->sendEmailTicketCancelOutOfOffice($bawayMent->fname . " " . $bawayMent - lname, $bawayMent->email, $aticket->subject);
@@ -236,7 +236,7 @@ function sendTicketCancelEmail($toEmail, $subjectlines, $user_Id)
     $subject = "Out of Office Response";
     $removelink = "http://".serverName."/index.php/awayMentor/remove/".$user_Id;
     $removeClick = "<a href='$removelink'>'Click Here'</a>";
-    $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@cp-dev.cs.fiu.edu with:\n\n\"Back in office\"\n\nin the subject, or ".$removeClick.", and the system will take you off of the away list or, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
+    $body = "Collaborative Platform received an Automated Out of office response from this email.<br/><br/>We have set you as out of office and you will no longer be assigned tickets automatically.<br/>The tickets : <br/><br/>" . $subjectlines . "<br/><br/>Have been reassigned to another mentor<br/><br/>If this was done in error or you are back in office send an email to fiucoplat@cp-dev.cs.fiu.edu with:<br/><br/>\"Back in office\"<br/><br/>in the subject, or ".$removeClick.", and the system will take you off of the away list or, otherwise the system will take you off of the away list automatically after 24 hours<br/><br/>Thank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'Content-type: text/html; charset=iso-8859-1' . "\r\n".
@@ -262,7 +262,7 @@ function sendTicketReassignment($toEmail, $subjectl, $ticket_id)
     $rejectAddress = "http://".serverName."/index.php/ticket/reject/".$ticket_id;
     $rejectClick = "<a href='$rejectAddress'>'Click Here to reject the ticket'</a>";
     $subjectClick = "<a href='$linkAddress'>'Click Here'</a>";
-    $body = "Collaborative Platform has assigned you a new ticket.\n\nSubject: " . $subjectl . "\n\nDescription: ".$ticket["description"]."\n\nthat was previously assigned to another mentor. Due to the ".$priority["description"]." priority of the ticket please make a comment on or schedule a meeting with the ticket creator within ".$priority["reassignHours"]." hours\n\n".$subjectClick." to view the ticket.\n\n Thank you for Making Collaborative Platform Great\n\nIf for any reason you are unable to work on the ticket ".$rejectClick;
+    $body = "Collaborative Platform has assigned you a new ticket.<br/><br/>Subject: " . $subjectl . "<br/><br/>Description: ".$ticket["description"]."<br/><br/>that was previously assigned to another mentor. Due to the ".$priority["description"]." priority of the ticket please make a comment on or schedule a meeting with the ticket creator within ".$priority["reassignHours"]." hours<br/><br/>".$subjectClick." to view the ticket.<br/><br/> Thank you for Making Collaborative Platform Great<br/><br/>If for any reason you are unable to work on the ticket ".$rejectClick;
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'Content-type: text/html; charset=iso-8859-1' . "\r\n".
@@ -382,7 +382,7 @@ function checkPriorityElapseTickets()
 function sendTicketCancelOutOfTime($toEmail, $subjectLine)
 {
     $subject = "Reassign Due to Inactivity";
-    $body = "Due to the inactivity on the ticket:\n\n$subjectLine \n\nhas been reassigned.\n\nThank you for all your help making Collaborative Platform great";
+    $body = "Due to the inactivity on the ticket:<br/><br/>$subjectLine <br/><br/>has been reassigned.<br/><br/>Thank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'Content-type: text/html; charset=iso-8859-1' . "\r\n".
