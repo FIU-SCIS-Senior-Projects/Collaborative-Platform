@@ -352,11 +352,11 @@
     $('#share-screen').click(function () {
 //        var selection = prompt("Screen?");
 //        if (selection == "r") {
-            //rmc.streams.stop('screen');
+            rmc.streams.stop('screen');
 //            $('#cotools-panel iframe').show();
-//            $('#cotools-panel video').remove();
+            $('#cotools-panel video').remove();
             //e.mediaElement.parentNode.removeChild(e.mediaElement);
-            //rmc.keepStreamsOpened = true;
+            rmc.keepStreamsOpened = true;
 
             rmc.addStream({
                 //data: true,
