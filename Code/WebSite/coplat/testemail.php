@@ -32,14 +32,14 @@ foreach ($files as $afile)
                 $from = substr($from, stripos($from, ":")+2);
                 if(stristr($from, "<"))
                 {
-                  $from = substr($from, stripos($from, "<")+1, stripos($from, ">")- (stripos($from, ">")+1));
+                  $from = substr($from, stripos($from, "<")+1, stripos($from, ">")- (stripos($from, ">")+2));
                 }
             }
             if(strstr($line,"Subject: "))
             {
                 $subject = $line;
             }
-            if(stristr($line,"content-type"))
+            if(stristr($line,"content-type: "))
             {
                 $isbody = 1;
             }
