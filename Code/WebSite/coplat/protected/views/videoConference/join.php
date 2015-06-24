@@ -521,7 +521,17 @@
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        else if (e.isScreen) {
+        else if (e.isScreen || e.stream.isScreen) {
+            if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+                $('#cotools-panel iframe').hide();
+                $('#cotools-panel video').remove();
+                document.getElementById('cotools-panel').setAttribute('has-screen', true);
+                document.getElementById('cotools-panel').appendChild(event.mediaElement);
+            }
+
+            else {
+                document.getElementById('cotools-panel-2').appendChild(event.mediaElement);
+            }
 //            if(left == 1) {
 //
 //            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
@@ -535,9 +545,9 @@
 //                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
 //            }
 
-            $('#cotools-panel iframe').hide();
-            $('#cotools-panel video').remove();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+//            $('#cotools-panel iframe').hide();
+//            $('#cotools-panel video').remove();
+//            document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
 
     };
