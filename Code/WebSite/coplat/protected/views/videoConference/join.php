@@ -350,32 +350,32 @@
     var right = 0;
     //screen sharing
     $('#share-screen').click(function () {
-        var selection = prompt("Screen?");
-        if (selection == "r") {
-            rmc.streams.stop('screen');
+//        var selection = prompt("Screen?");
+//        if (selection == "r") {
+            //rmc.streams.stop('screen');
             $('#cotools-panel iframe').show();
             $('#cotools-panel video').remove();
             //e.mediaElement.parentNode.removeChild(e.mediaElement);
-            rmc.keepStreamsOpened = true;
+            //rmc.keepStreamsOpened = true;
 
             rmc.addStream({
                 //data: true,
                 screen: true,
                 oneway: true
             });
-        }
-        else if (selection == "l") {
-            rmc.streams.stop('screen');
-            $('#cotools-panel-2 video').remove();
-            //e.mediaElement.parentNode.removeChild(e.mediaElement);
-            rmc.keepStreamsOpened = true;
-
-            rmc.addStream({
-                //data: true,
-                screen: true,
-                oneway: true
-            });
-        }
+//        }
+//        else if (selection == "l") {
+//            rmc.streams.stop('screen');
+//            $('#cotools-panel-2 video').remove();
+//            //e.mediaElement.parentNode.removeChild(e.mediaElement);
+//            rmc.keepStreamsOpened = true;
+//
+//            rmc.addStream({
+//                //data: true,
+//                screen: true,
+//                oneway: true
+//            });
+//        }
         // http://www.rtcmulticonnection.org/docs/addStream/
         //rmc.removeStream('screen');
 
@@ -526,11 +526,11 @@
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
                 document.getElementById('cotools-panel').setAttribute('has-screen', true);
-                document.getElementById('cotools-panel').appendChild(event.mediaElement);
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
             }
 
             else {
-                document.getElementById('cotools-panel-2').appendChild(event.mediaElement);
+                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
             }
 //            if(left == 1) {
 //
