@@ -398,7 +398,7 @@
         document.getElementById('cotools-panel-2').setAttribute('has-screen', null);
         alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
         rmc.streams.stop(rStId);
-        rmc.removeStream(rStId);
+        //rmc.removeStream(rStId);
 
         console.log("===================== REMOVE " + rStId + " ========================");
 
