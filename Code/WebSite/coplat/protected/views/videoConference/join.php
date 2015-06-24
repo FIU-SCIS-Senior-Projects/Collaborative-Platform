@@ -286,7 +286,7 @@
         rmc.onCustomMessage = function(message) {
             if(message == "R") {
                 console.log("================== CONNECTING ========================");
-                sec.connect();
+                sec.join();
             }
         };
 //        sec.connect();
