@@ -9,7 +9,7 @@
  * Sets up the connection to look at the emails on the gmail account fiucoplat@cp-dev.cs.fiu.edu
  * and returns the connection
  */
-DEFINE ("serverName", "cp-dev.cis.fiu.edu");
+DEFINE ("serverName", "cp-dev.cis.fiu.edu/coplat");
 
 /*
  * Sets up the connection to the database that is running serverside
