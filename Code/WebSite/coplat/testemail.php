@@ -42,7 +42,7 @@ foreach ($files as $afile)
             }
             if(strstr($line,"Subject: ") && $subjectisSet == 0)
             {
-                echo $line;
+              //  echo $line;
                 $subject = $line;
                 $subjectisSet =1;
             }
@@ -56,5 +56,9 @@ foreach ($files as $afile)
     echo "\n\n\nPARSED INFORMATION \n\n\nfrom:".$from."99\n";
     echo "subject: ".$subject."\n";
     echo "body: ".$body."\n";
+    fclose($file);
+    if(strlen($body)>5) {
+        unlink($path . "/" . $afile);
+    }
 }
 ?>
