@@ -385,7 +385,7 @@
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
         document.getElementById('cotools-panel').setAttribute('has-screen', false);
-        rmc.streams.stop(lStId);
+        //rmc.streams.stop(lStId);
         console.log("===================== REMOVE " + lStId + " ========================");
 //        rmc.streams.stop('screen');
         //rmc.removeStream('screen');
@@ -397,8 +397,8 @@
     $('#stop-share-screen-2').click(function () {
         document.getElementById('cotools-panel-2').setAttribute('has-screen', false);
         //alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
-        rmc.streams.stop(rStId);
-        rmc.removeStream(rStId);
+//        rmc.streams.stop(rStId);
+//        rmc.removeStream(rStId);
 
         console.log("===================== REMOVE " + rStId + " ========================");
 
