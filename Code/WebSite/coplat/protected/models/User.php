@@ -471,6 +471,23 @@ class User extends CActiveRecord
     {
         return $this->isStudent;
     }
+    public static function isCurrentUserAway()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        $away = AwayMentor::model()->findByPk($user->id);
+        if (is_null($away))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
 
     public static function isCurrentUserAdmin()
     {    
