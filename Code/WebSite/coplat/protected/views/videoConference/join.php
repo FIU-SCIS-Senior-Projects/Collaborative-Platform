@@ -384,7 +384,7 @@
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        document.getElementById('cotools-panel').setAttribute('has-screen', 0);
+        document.getElementById('cotools-panel').setAttribute('has-screen', false);
         rmc.streams.stop(lStId);
         console.log("===================== REMOVE " + lStId + " ========================");
 //        rmc.streams.stop('screen');
@@ -395,8 +395,11 @@
     });
 
     $('#stop-share-screen-2').click(function () {
-        document.getElementById('cotools-panel-2').setAttribute('has-screen', 0);
+        document.getElementById('cotools-panel-2').setAttribute('has-screen', false);
+        alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
+        rmc.streams.stop(rStId);
         rmc.removeStream(rStId);
+
         console.log("===================== REMOVE " + rStId + " ========================");
 
         //sec.removeStream('screen');
@@ -475,7 +478,10 @@
         else if (e.isScreen || e.stream.isScreen) {
             if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
                 $('#cotools-panel-2 video').remove();
-                document.getElementById('cotools-panel-2').setAttribute('has-screen', 1);
+                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+
+                alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
+
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 rStId = e.streamid;
                 console.log("===================== ADD " + rStId + " ========================");
