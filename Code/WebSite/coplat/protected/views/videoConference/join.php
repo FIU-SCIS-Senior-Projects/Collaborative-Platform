@@ -350,7 +350,7 @@
     var right = 0;
     //screen sharing
     $('#share-screen').click(function () {
-        var selection = promp("Screen?");
+        var selection = prompt("Screen?");
         if (selection == "r") {
             rmc.streams.stop('screen');
             $('#cotools-panel iframe').show();
