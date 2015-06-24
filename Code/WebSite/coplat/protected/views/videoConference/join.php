@@ -367,7 +367,7 @@
 
     $('#share-screen-2').click(function () {
         sec.open();
-        sec.connect();
+//        sec.connect();
         //document.querySelector('#cotools-panel-2 video').src = URL.createObjectURL(stream);
 
 //        sec.addStream({
@@ -442,11 +442,6 @@
     });
 
     //chat
-    rmc.onopen = function (event) {
-        //alert('Text chat has been opened between you and ' + event.userid);
-        //document.getElementById('input-text-chat').disabled = false;
-    };
-
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
         //document.getElementById('input-text-chat').disabled = false;
@@ -632,6 +627,7 @@
     });
 
     $("#show-screens-2").click(function () {
+        sec.connect();
         $('#cotools-panel-2 video').show();
         $('#cotools-panel-2 iframe').hide();
     });
