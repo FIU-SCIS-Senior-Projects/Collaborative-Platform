@@ -21,11 +21,7 @@
 		<?php echo $form->error($model,'userID'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'tiStamp'); ?>
-		<?php echo $form->textField($model,'tiStamp'); ?>
-		<?php echo $form->error($model,'tiStamp'); ?>
-	</div>
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

@@ -30,19 +30,21 @@ class AwayMentor extends CActiveRecord
 	/**
 	 * @return array validation rules for model attributes.
 	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('userID', 'required'),
-			array('userID', 'numerical', 'integerOnly'=>true),
-			array('tiStamp', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('userID, tiStamp', 'safe', 'on'=>'search'),
-		);
-	}
+    public function rules()
+    {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('userID', 'required'),
+            array('userID', 'numerical', 'integerOnly'=>true),
+            array('tiStamp', 'default',
+                'value'=>new CDbExpression('NOW()'),
+                'setOnEmpty'=>false,'on'=>'insert'),
+            // The following rule is used by search().
+            // Please remove those attributes that should not be searched.
+            array('userID, tiStamp', 'safe', 'on'=>'search'),
+        );
+    }
 
 	/**
 	 * @return array relational rules.
