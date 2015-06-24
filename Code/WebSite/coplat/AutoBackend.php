@@ -239,6 +239,7 @@ function sendTicketCancelEmail($toEmail, $subjectlines, $user_Id)
     $body = "Collaborative Platform received an Automated Out of office response from this email.\n\nWe have set you as out of office and you will no longer be assigned tickets automatically.\nThe tickets : \n\n" . $subjectlines . "\n\nHave been reassigned to another mentor\n\nIf this was done in error or you are back in office send an email to fiucoplat@cp-dev.cs.fiu.edu with:\n\n\"Back in office\"\n\nin the subject, or ".$removeClick.", and the system will take you off of the away list or, otherwise the system will take you off of the away list automatically after 24 hours\n\nThank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
+        'Content-type: text/html; charset=iso-8859-1' . "\r\n".
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP
@@ -264,6 +265,7 @@ function sendTicketReassignment($toEmail, $subjectl, $ticket_id)
     $body = "Collaborative Platform has assigned you a new ticket.\n\nSubject: " . $subjectl . "\n\nDescription: ".$ticket["description"]."\n\nthat was previously assigned to another mentor. Due to the ".$priority["description"]." priority of the ticket please make a comment on or schedule a meeting with the ticket creator within ".$priority["reassignHours"]." hours\n\n".$subjectClick." to view the ticket.\n\n Thank you for Making Collaborative Platform Great\n\nIf for any reason you are unable to work on the ticket ".$rejectClick;
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
+        'Content-type: text/html; charset=iso-8859-1' . "\r\n".
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP
@@ -383,6 +385,7 @@ function sendTicketCancelOutOfTime($toEmail, $subjectLine)
     $body = "Due to the inactivity on the ticket:\n\n$subjectLine \n\nhas been reassigned.\n\nThank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
+        'Content-type: text/html; charset=iso-8859-1' . "\r\n".
         'X-Mailer: PHP/' . phpversion();
 
 //send the email using IMAP
