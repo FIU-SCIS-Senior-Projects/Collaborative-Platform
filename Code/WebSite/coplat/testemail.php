@@ -30,10 +30,7 @@ foreach ($files as $afile)
             {
                 $from = $line;
                 $from = substr($from, stripos($from, ":")+2);
-                if(stristr($from, "<"))
-                {
-                  $from = substr($from, stripos($from, "<")+1, stripos($from, ">")- (stripos($from, ">")+2));
-                }
+                $from = str_replace(array("<", ">"," ","\n", "\r"),"", $from);
             }
             if(strstr($line,"Subject: "))
             {
