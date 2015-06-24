@@ -152,7 +152,7 @@
             <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing-R <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
+<!--            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>-->
 <!--            <li><a id='share-screen-2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>-->
             <li><a id='stop-share-screen-2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
         </ul>
@@ -352,9 +352,9 @@
     $('#share-screen').click(function () {
 //        var selection = prompt("Screen?");
 //        if (selection == "r") {
-            //rmc.streams.stop('screen');
+            rmc.streams.stop('screen');
 //            $('#cotools-panel iframe').show();
-            //$('#cotools-panel video').remove();
+            $('#cotools-panel video').remove();
             //e.mediaElement.parentNode.removeChild(e.mediaElement);
             rmc.keepStreamsOpened = true;
 
@@ -384,26 +384,23 @@
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        //document.getElementById('cotools-panel').setAttribute('has-screen', false);
-        //rmc.streams.stop(lStId);
-        rmc.keepStreamsOpened = true;
-        //console.log("===================== REMOVE " + lStId + " ========================");
+        document.getElementById('cotools-panel').setAttribute('has-screen', false);
+        rmc.streams.stop(lStId);
+        console.log("===================== REMOVE " + lStId + " ========================");
 //        rmc.streams.stop('screen');
         //rmc.removeStream('screen');
-        $('#cotools-panel video').remove();
         $('#cotools-panel iframe').show();
+        $('#cotools-panel video').remove();
         //left = 0;
     });
 
     $('#stop-share-screen-2').click(function () {
-        document.getElementById('cotools-panel-2').setAttribute('has-screen', null);
-        alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
-        rmc.keepStreamsOpened = true;
+        document.getElementById('cotools-panel-2').setAttribute('has-screen', false);
+        //alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
+        rmc.streams.stop(rStId);
+        rmc.removeStream(rStId);
 
-        //rmc.streams.stop('screen');
-        //rmc.removeStream(rStId);
-
-        //console.log("===================== REMOVE " + rStId + " ========================");
+        console.log("===================== REMOVE " + rStId + " ========================");
 
         //sec.removeStream('screen');
         //$('#cotools-panel-2 iframe').show();
@@ -479,12 +476,11 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            alert("Before: " + document.getElementById('cotools-panel-2').getAttribute('has-screen'));
-            if(document.getElementById('cotools-panel-2').getAttribute('has-screen') == null) {
+            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
                 $('#cotools-panel-2 video').remove();
-                document.getElementById('cotools-panel-2').setAttribute('has-screen', 1);
+                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
 
-                alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
+                //alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
 
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 rStId = e.streamid;
