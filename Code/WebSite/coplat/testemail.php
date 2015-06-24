@@ -38,7 +38,7 @@ foreach ($files as $afile)
             {
                 $subject = $line;
             }
-            if(stristri($line,"content-type"))
+            if(stristr($line,"content-type"))
             {
                 $isbody = 1;
             }
