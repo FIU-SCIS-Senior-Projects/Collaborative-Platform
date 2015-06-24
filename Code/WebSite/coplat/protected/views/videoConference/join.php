@@ -353,8 +353,8 @@
 //        var selection = prompt("Screen?");
 //        if (selection == "r") {
             //rmc.streams.stop('screen');
-            $('#cotools-panel iframe').show();
-            $('#cotools-panel video').remove();
+//            $('#cotools-panel iframe').show();
+//            $('#cotools-panel video').remove();
             //e.mediaElement.parentNode.removeChild(e.mediaElement);
             //rmc.keepStreamsOpened = true;
 
@@ -443,7 +443,8 @@
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        rmc.streams.stop('screen');
+        document.getElementById('cotools-panel').setAttribute('has-screen', false);
+//        rmc.streams.stop('screen');
         //rmc.removeStream('screen');
         $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
@@ -451,10 +452,11 @@
     });
 
     $('#stop-share-screen-2').click(function () {
-        sec.removeStream('screen');
-        $('#cotools-panel-2 iframe').show();
+
+        //sec.removeStream('screen');
+        //$('#cotools-panel-2 iframe').show();
         $('#cotools-panel-2 video').remove();
-        right = 0;
+        //right = 0;
     });
 
     //chat
@@ -530,6 +532,7 @@
             }
 
             else {
+                $('#cotools-panel-2 video').remove();
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
             }
 //            if(left == 1) {
@@ -552,32 +555,32 @@
 
     };
 
-    sec.onstream = function (s) {
-
-//            if(left == 1) {
+//    sec.onstream = function (s) {
 //
-//            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
-//                $('#cotools-panel iframe').hide();
-//                $('#cotools-panel video').remove();
-//                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-//            }
+////            if(left == 1) {
+////
+////            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
+////                $('#cotools-panel iframe').hide();
+////                $('#cotools-panel video').remove();
+////                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+////                document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
+////            }
+////
+////            else if (right == 1) {
+////                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+////            }
 //
-//            else if (right == 1) {
-//                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//            }
+////            $('#cotools-panel-2 iframe').hide();
+////            alert("iframe removed");
+////            $('#cotools-panel-2 video').remove();
+////            alert("video removed");
+//            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
+//
+//    };
 
-//            $('#cotools-panel-2 iframe').hide();
-//            alert("iframe removed");
-//            $('#cotools-panel-2 video').remove();
-//            alert("video removed");
-            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-
-    };
-
-    sec.onNewSession = function(session) {
-        session.join({screen: true, oneway: true});
-    };
+//    sec.onNewSession = function(session) {
+//        session.join({screen: true, oneway: true});
+//    };
 
 //    secrmc.onstream = function (e) {
 //       if (e.isScreen) {
