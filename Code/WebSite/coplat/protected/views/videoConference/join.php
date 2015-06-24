@@ -352,9 +352,9 @@
     $('#share-screen').click(function () {
 //        var selection = prompt("Screen?");
 //        if (selection == "r") {
-            rmc.streams.stop('screen');
+            //rmc.streams.stop('screen');
 //            $('#cotools-panel iframe').show();
-            $('#cotools-panel video').remove();
+            //$('#cotools-panel video').remove();
             //e.mediaElement.parentNode.removeChild(e.mediaElement);
             rmc.keepStreamsOpened = true;
 
@@ -384,23 +384,26 @@
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        document.getElementById('cotools-panel').setAttribute('has-screen', false);
-        rmc.streams.stop(lStId);
-        console.log("===================== REMOVE " + lStId + " ========================");
+        //document.getElementById('cotools-panel').setAttribute('has-screen', false);
+        //rmc.streams.stop(lStId);
+        rmc.keepStreamsOpened = true;
+        //console.log("===================== REMOVE " + lStId + " ========================");
 //        rmc.streams.stop('screen');
         //rmc.removeStream('screen');
-        $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
+        $('#cotools-panel iframe').show();
         //left = 0;
     });
 
     $('#stop-share-screen-2').click(function () {
         document.getElementById('cotools-panel-2').setAttribute('has-screen', null);
         alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
-        //rmc.streams.stop('screen');
-        rmc.removeStream(rStId);
+        rmc.keepStreamsOpened = true;
 
-        console.log("===================== REMOVE " + rStId + " ========================");
+        //rmc.streams.stop('screen');
+        //rmc.removeStream(rStId);
+
+        //console.log("===================== REMOVE " + rStId + " ========================");
 
         //sec.removeStream('screen');
         //$('#cotools-panel-2 iframe').show();
