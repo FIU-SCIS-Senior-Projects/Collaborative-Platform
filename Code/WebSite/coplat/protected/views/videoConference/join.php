@@ -274,12 +274,6 @@
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
         //sec.open();
-        rmc.sendCustomMessage({
-            roomOpened: true,
-            roomID: $('#meetingID').val()
-    });
-        console.log("sent room = true" + "\nConference ID = " + $('#meetingID').val());
-
         //secrmc.open();
         rmc.streams.mute({video : true});
     });
@@ -291,8 +285,8 @@
         rmc.connect();
         rmc.onCustomMessage = function(message) {
             if(message == "R") {
-                sec.connect();
                 console.log("================== CONNECTING ========================");
+                sec.connect();
             }
         };
 //        sec.connect();
