@@ -53,7 +53,7 @@ $('.asearch-form form').submit(function(){
 
 		));?>
 </a><br/><br/>
-
+<a href="../awayMentor/admin"><button type="button" class="btn btn-primary">Manage Away Mentors</button><br>
 <?php echo CHtml::link('Basic Search','#',array('class'=>'bsearch-button')); ?><!--
 <br/>
 
