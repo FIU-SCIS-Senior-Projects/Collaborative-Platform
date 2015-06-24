@@ -14,9 +14,39 @@ $files = scandir($path);
 foreach ($files as $afile)
 {
  $file = fopen($path."/".$afile,"r");
+    $from = "";
+    $subject = "";
+    $body = "";
+    $isbody = 0;
     while($line = fgets($file))
     {
-        echo $line;
+        if($isbody == 1)
+        {
+            $body = $body . $line;
+        }
+        else{
+            if(stristr($line,"from"))
+            {
+                $from = $line;
+                $from = substr($from, stripos($from, ":")+2);
+                if(stristr($from, "<"))
+                {
+                  $from = substr($from, stripos($from, "<")+1, stripos($from, ">")- (stripos($from, ">")+1));
+                }
+            }
+            if(stristr($line,"subject"))
+            {
+                $subject = $line;
+            }
+            if(stristri($line,"content-type"))
+            {
+                $isbody = 1;
+            }
+        }
+
     }
+    echo "from:".$from."99\n";
+    echo "subject: ".$subject."\n";
+    echo "body: ".$body."\n";
 }
 ?>
