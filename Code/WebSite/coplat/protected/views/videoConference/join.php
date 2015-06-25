@@ -474,14 +474,13 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            if(/*!document.getElementById('cotools-panel-2').getAttribute('has-screen')*/ presenter == 0) {
+            if(presenter == 0) {
                 $('#cotools-panel-2 video').remove();
                 //document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
 
                 //alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
 
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                presenter = 1;
 //                rStId = e.streamid;
 //                console.log("===================== ADD " + rStId + " ========================");
             }
