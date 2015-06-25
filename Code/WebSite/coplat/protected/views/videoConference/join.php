@@ -481,6 +481,7 @@
                 //alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
 
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                presenter = 1;
 //                rStId = e.streamid;
 //                console.log("===================== ADD " + rStId + " ========================");
             }
