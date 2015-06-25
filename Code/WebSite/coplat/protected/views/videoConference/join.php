@@ -281,16 +281,14 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-//        sec.open();
     });
 
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
-        rmc.connect();
-//        sec.connect();
-        // http://www.rtcmulticonnection.org/docs/connect/
 
+        // http://www.rtcmulticonnection.org/docs/connect/
+        rmc.connect();
     });
 
     var video_status = 0;
@@ -327,7 +325,6 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
-        //secrmc.leave();
     }, true);
 
     rmc.onMediaCaptured = function () {
@@ -342,68 +339,26 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
-//    secrmc.onMediaCaptured = function () {
-//        $('#share-screen-2').removeAttr('disabled');
-//    };
-
-
     //screen sharing
     $('#share-screen').click(function () {
-//        var selection = prompt("Screen?");
-//        if (selection == "r") {
-            rmc.streams.stop('screen');
-//            $('#cotools-panel iframe').show();
-            $('#cotools-panel video').remove();
-            //e.mediaElement.parentNode.removeChild(e.mediaElement);
-            rmc.keepStreamsOpened = true;
+        rmc.streams.stop('screen');
+        $('#cotools-panel video').remove();
+        rmc.keepStreamsOpened = true;
 
-            rmc.addStream({
-                //data: true,
-                screen: true,
-                oneway: true
-            });
-//        }
-//        else if (selection == "l") {
-//            rmc.streams.stop('screen');
-//            $('#cotools-panel-2 video').remove();
-//            //e.mediaElement.parentNode.removeChild(e.mediaElement);
-//            rmc.keepStreamsOpened = true;
-//
-//            rmc.addStream({
-//                //data: true,
-//                screen: true,
-//                oneway: true
-//            });
-//        }
         // http://www.rtcmulticonnection.org/docs/addStream/
-        //rmc.removeStream('screen');
-
+        rmc.addStream({
+            //data: true,
+            screen: true,
+            oneway: true
+        });
     });
 
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        //rmc.streams.stop(lStId);
-//        rmc.streams.stop('screen');
-        //rmc.removeStream('screen');
         $('#cotools-panel video').remove();
         $('#cotools-panel iframe').show();
-        //left = 0;
     });
-
-//    $('#stop-share-screen-2').click(function () {
-//        document.getElementById('cotools-panel-2').setAttribute('has-screen', false);
-//        //alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
-////        rmc.streams.stop(rStId);
-////        rmc.removeStream(rStId);
-//
-//        console.log("===================== REMOVE " + rStId + " ========================");
-//
-//        //sec.removeStream('screen');
-//        //$('#cotools-panel-2 iframe').show();
-//        $('#cotools-panel-2 video').remove();
-//        //right = 0;
-//    });
 
     //chat
     rmc.onopen = function (event) {
@@ -434,17 +389,13 @@
         });
         input.value = '';
     });
-
-
     //end of chat
+
     $('#disconnect').click(function () {
         rmc.leave();
-        sec.leave();
         setTimeout("location.href = '../';",1000);
     });
 
-    var rStId;
-    var lStId;
     var presenter = 0;
     //to know the stream type
     rmc.onstream = function (e) {
@@ -467,7 +418,6 @@
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
-//            document.getElementById("join-room").remove();
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
@@ -475,91 +425,17 @@
         else if (e.isScreen || e.stream.isScreen) {
             if(presenter == 0) {
                 $('#cotools-panel-2 video').remove();
-                //document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-
-                //alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
-
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
-                document.getElementById("share-screen").remove();
-                document.getElementById("stop-share-screen").remove();
-//                rStId = e.streamid;
-//                console.log("===================== ADD " + rStId + " ========================");
-            }
-
-            else {
+            } else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
                 //document.getElementById('cotools-panel').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//                lStId = e.streamid;
-//                console.log("===================== ADD " + lStId + " ========================");
             }
-//            if(left == 1) {
-//
-//            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
-//                $('#cotools-panel iframe').hide();
-//                $('#cotools-panel video').remove();
-//                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
-//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//            }
-//
-//            else if (right == 1) {
-//                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//            }
-
-//            $('#cotools-panel iframe').hide();
-//            $('#cotools-panel video').remove();
-//            document.getElementById('cotools-panel').appendChild(e.mediaElement);
         }
 
     };
-
-//    rmc.onstreamended = function (e) {
-//        if (!document.getElementById('cotools-panel').getAttribute('has-screen')) {
-//            $('#cotools-panel iframe').show();
-//            $('#cotools-panel video').remove();
-//        }
-//        if (!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-//
-//        }
-//    };
-
-//    sec.onstream = function (s) {
-//
-////            if(left == 1) {
-////
-////            //if(!document.getElementById('cotools-panel').getAttribute('has-screen')) {
-////                $('#cotools-panel iframe').hide();
-////                $('#cotools-panel video').remove();
-////                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-////                document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-////            }
-////
-////            else if (right == 1) {
-////                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-////            }
-//
-////            $('#cotools-panel-2 iframe').hide();
-////            alert("iframe removed");
-////            $('#cotools-panel-2 video').remove();
-////            alert("video removed");
-//            document.getElementById('cotools-panel-2').appendChild(s.mediaElement);
-//
-//    };
-
-//    sec.onNewSession = function(session) {
-//        session.join({screen: true, oneway: true});
-//    };
-
-//    secrmc.onstream = function (e) {
-//       if (e.isScreen) {
-//            $('#cotools-panel-2 iframe').hide();
-//            $('#cotools-panel-2 video').remove();
-//            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//        }
-//
-//    };
 
     //receiving a message from
     rmc.onmessage = function (event) {
@@ -590,7 +466,6 @@
 
 
     //Whiteboard Section
-
     function canvasInit() {
 
         CanvasDesigner.addSyncListener(function (data) {
