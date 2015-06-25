@@ -481,6 +481,8 @@
 
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
+                document.getElementById("share-screen").remove();
+                document.getElementById("stop-share-screen").remove();
 //                rStId = e.streamid;
 //                console.log("===================== ADD " + rStId + " ========================");
             }
