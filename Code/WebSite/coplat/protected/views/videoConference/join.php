@@ -445,7 +445,7 @@
 
     var rStId;
     var lStId;
-
+    var presenter = 0;
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -467,7 +467,6 @@
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
-            var presenter = 0;
 //            document.getElementById("join-room").remove();
         }
         else if (e.isAudio) {
@@ -481,6 +480,7 @@
                 //alert(document.getElementById('cotools-panel-2').getAttribute('has-screen'));
 
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                presenter = 1;
 //                rStId = e.streamid;
 //                console.log("===================== ADD " + rStId + " ========================");
             }
