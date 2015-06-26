@@ -630,11 +630,11 @@ class User extends CActiveRecord
         /*Query to the User_Domain model */
         $awayMentors = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor");
         if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE subdomain_id =:id and user_id !=:id2 and user_id not in (select userID as user_id from away_mentor) order by assigned_date ASC  ", array(":id" => $domain_id, ":id2" => $oldMentorId));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE subdomain_id =:id and user_id !=:id2 and user_id not in (select userID as user_id from away_mentor) and user_id not in (select old_value as user_id from ticket_events where ticket_id = ". $aticket["id"]." and event_type_id = 3) order by assigned_date ASC  ", array(":id" => $domain_id, ":id2" => $oldMentorId));
             $subdomain = Subdomain::model()->findByPk($domain_id);
             $validator = $subdomain->validator;
         } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id =:id and user_id !=:id2 and user_id not in (select userID as user_id from away_mentor) order by assigned_date ASC ", array(":id" => $domain_id, ":id2" => $oldMentorId));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id =:id and user_id !=:id2 and user_id not in (select userID as user_id from away_mentor) and user_id not in (select old_value as user_id from ticket_events where ticket_id = ". $aticket["id"]." and event_type_id = 3) order by assigned_date ASC ", array(":id" => $domain_id, ":id2" => $oldMentorId));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
