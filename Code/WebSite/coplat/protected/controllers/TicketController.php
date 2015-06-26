@@ -277,9 +277,9 @@ class TicketController extends Controller
             $boolean = true; /* Identify is the subdomain was specified by the user */
             if ($model->subdomain_id == null) {
                 $boolean = false;
-                $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier);
+                $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier, $id);
             } else {
-                $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier);
+                $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier, $id);
             }
 
 
@@ -338,6 +338,7 @@ class TicketController extends Controller
             } else {
                 $response['url'] = "/coplat/index.php/home/userHome";
             }
+            //
             //Yii::app()->request->redirect(Yii::app()->homeURL);
         }
         else{
@@ -369,10 +370,10 @@ class TicketController extends Controller
                 $boolean = true; /* Identify is the subdomain was specified by the user */
                 if ($model->subdomain_id == null) {
                     $boolean = false;
-                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier );
+                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier, $id );
                 }
                 else{
-                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier );
+                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier, $id );
                 }
             }
 
