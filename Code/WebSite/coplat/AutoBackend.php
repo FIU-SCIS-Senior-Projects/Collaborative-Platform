@@ -248,10 +248,12 @@ function sendTicketCancelEmail($toEmail, $subjectlines, $user_Id)
 {
    // echo"\n";
    // echo $toEmail .  $subjectlines;
+    $dbcon = establishDBConnection();
+    $rule = $dbcon->query("Select * from reassign_rules where rule_id = 2")->fetch_assoc();
     $subject = "Out of Office Response";
     $removelink = "http://".serverName."/index.php/awayMentor/remove/".$user_Id;
     $removeClick = "<a href='$removelink'>'Click Here'</a>";
-    $body = "Collaborative Platform received an Automated Out of office response from this email.<br/><br/>We have set you as out of office and you will no longer be assigned tickets automatically.<br/>The tickets : <br/><br/>" . $subjectlines . "<br/><br/>Have been reassigned to another mentor<br/><br/>If this was done in error or you are back in office send an email to fiucoplat@cp-dev.cs.fiu.edu with:<br/><br/>\"Back in office\"<br/><br/>in the subject, or ".$removeClick.", and the system will take you off of the away list or, otherwise the system will take you off of the away list automatically after 24 hours<br/><br/>Thank you for all your help making Collaborative Platform great";
+    $body = "Collaborative Platform received an Automated Out of office response from this email.<br/><br/>We have set you as out of office and you will no longer be assigned tickets automatically.<br/>The tickets : <br/><br/>" . $subjectlines . "<br/><br/>Have been reassigned to another mentor<br/><br/>If this was done in error or you are back in office send an email to fiucoplat@cp-dev.cs.fiu.edu with:<br/><br/>\"Back in office\"<br/><br/>in the subject, or ".$removeClick.", and the system will take you off of the away list or, otherwise the system will take you off of the away list automatically after ".$rule["setting"]." days<br/><br/>Thank you for all your help making Collaborative Platform great";
     $headers = 'From: Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>' . "\r\n" .
         'Reply-To: fiucoplat@cp-dev.cs.fiu.edu' . "\r\n" .
         'Content-type: text/html; charset=iso-8859-1' . "\r\n".

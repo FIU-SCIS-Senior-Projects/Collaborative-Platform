@@ -273,13 +273,21 @@ class TicketController extends Controller
             if ($model->isEscalated != null) {
                 $tier = 2;
             }
-
-            $boolean = true; /* Identify is the subdomain was specified by the user */
-            if ($model->subdomain_id == null) {
-                $boolean = false;
-                $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier, $id);
-            } else {
-                $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier, $id);
+            $rule = ReassignRules::model()->findByPk(2);
+            $count = TicketEvents::model()->findAllBySql("Select COUNT(id) as 'id' from ticket_events where event_type_id = 3 and ticket_id =:tid", array(":tid" => $id));
+            if ($count->id >= $rule->setting)
+            {
+                //reassign to system admin to many reassigns.
+                $model->assign_user_id =  5;
+            }
+            else {
+                $boolean = true; /* Identify is the subdomain was specified by the user */
+                if ($model->subdomain_id == null) {
+                    $boolean = false;
+                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier, $id);
+                } else {
+                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier, $id);
+                }
             }
 
 
