@@ -224,8 +224,8 @@
 
                 <form action="#" method="post">
                     <fieldset>
-                        <input type="text" placeholder="Type your message..." autofocus>
-                        <input type="hidden">
+                        <input id="input-text-area" type="text" placeholder="Type your message..." autofocus>
+                        <input id="sendmsg" type="hidden">
                     </fieldset>
                 </form>
             </div> <!-- end chat -->
@@ -410,20 +410,20 @@
 
 
 
-//    document.getElementById('input-text-chat').onkeyup = function (e) {
-//        if (e.keyCode != 13) return; // if it is not Enter-key
-//        var value = this.value.replace(/^\s+|\s+$/g, '');
-//        if (!value.length) return; // if empty-spaces
-//        appendMsg("You", value);
-//        rmc.send({
-//            type: 'chat',
-//            content: value
-//        });
-//        this.value = '';
-//    };
+    document.getElementById('input-text-area').onkeyup = function (e) {
+        if (e.keyCode != 13) return; // if it is not Enter-key
+        var value = this.value.replace(/^\s+|\s+$/g, '');
+        if (!value.length) return; // if empty-spaces
+        appendMsg("You", value);
+        rmc.send({
+            type: 'chat',
+            content: value
+        });
+        this.value = '';
+    };
 
-    $("#chat-btn").click(function () {
-        var input = document.getElementById('input-text-chat');
+    $("#sendmsg").click(function () {
+        var input = document.getElementById('input-text-area');
         var value = input.value.replace(/^\s+|\s+$/g, '');
         if (!value.length) return; // if empty-spaces
         appendMsg("You", value);
@@ -496,9 +496,9 @@
 
     function appendMsg(user, msg) {
 
-        var $cont = $("#chat-feed");
+        var $cont = $("#chat-history");
         $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+        $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
     }
 
 
