@@ -338,6 +338,7 @@ class TicketController extends Controller
             } else {
                 $response['url'] = "/coplat/index.php/home/userHome";
             }
+            User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id, $model->id);
             //
             //Yii::app()->request->redirect(Yii::app()->homeURL);
         }
