@@ -219,7 +219,7 @@
 
             <div class="chat">
                 <div class="chat-history">
-
+                    <p>Welcome to the chat room!</p>
                 </div> <!-- end chat-history -->
 
                     <fieldset>
