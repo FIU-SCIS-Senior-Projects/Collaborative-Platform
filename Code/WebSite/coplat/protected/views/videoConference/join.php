@@ -222,12 +222,11 @@
 
                 </div> <!-- end chat-history -->
 
-                <form action="#" method="post">
                     <fieldset>
                         <input id="input-text-area" type="text" placeholder="Type your message..." autofocus>
                         <input id="sendmsg" type="hidden">
                     </fieldset>
-                </form>
+                
             </div> <!-- end chat -->
         </div> <!-- end live-chat -->
 
