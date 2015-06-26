@@ -5,4 +5,4 @@
  * Date: 6/18/2015
  * Time: 8:16 AM
  */
-echo "Thank you your ticket has been reassigned";
+echo "Thank you your ticket has been reassigned.\n You will be redirected to your homepage shortly";

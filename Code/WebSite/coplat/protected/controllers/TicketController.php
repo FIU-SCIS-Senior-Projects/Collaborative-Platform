@@ -338,6 +338,10 @@ class TicketController extends Controller
             } else {
                 $response['url'] = "/coplat/index.php/home/userHome";
             }
+            Yii::app()->request->redirect(Yii::app()->homeURL);
+        }
+        else{
+            Yii::app()->request->redirect(Yii::app()->homeURL);
         }
 
     }
