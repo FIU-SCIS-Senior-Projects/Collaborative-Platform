@@ -565,13 +565,6 @@
         $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
         });
-
-        function appendMsg(user, msg) {
-
-            var $cont = $("#chat-history");
-            $cont[0].scrollTop = $cont[0].scrollHeight;
-            $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
-        }
     });
 </script>
 
@@ -590,6 +583,13 @@
     function closeModal(){
         $('#lean_overlay').css('display', 'none');
         $('#invite').css('display', 'none');
+    }
+
+    function appendMsg(user, msg) {
+
+        var $cont = $("#chat-history");
+        $cont[0].scrollTop = $cont[0].scrollHeight;
+        $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
     }
 </script>
 
