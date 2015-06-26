@@ -527,15 +527,6 @@
 
 </script>
 
-<script>
-    function appendMsg(user, msg) {
-
-        var $cont = $("#chat-history");
-        $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
-    }
-</script>
-
 <!-- General Site Scripts -->
 <script>
     $(function () {
@@ -574,6 +565,13 @@
         $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
         });
+
+        function appendMsg(user, msg) {
+
+            var $cont = $("#chat-history");
+            $cont[0].scrollTop = $cont[0].scrollHeight;
+            $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
+        }
     });
 </script>
 

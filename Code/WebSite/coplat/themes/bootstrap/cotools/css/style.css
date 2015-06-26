@@ -29,7 +29,7 @@ h4, h5 {
     margin: 0;
 }
 
-#live-chat p { margin: 0; }
+#live-chat > p { margin: 0; }
 
 .clearfix { *zoom: 1; } /* For IE 6/7 */
 .clearfix:before, .clearfix:after {
