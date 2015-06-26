@@ -393,7 +393,7 @@
     //chat
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
-        //document.getElementById('input-text-chat').disabled = false;
+        document.getElementById('input-text-area').disabled = false;
     };
 
 
@@ -417,17 +417,7 @@
         this.value = '';
     };
 
-    $("#sendmsg").click(function () {
-        var input = document.getElementById('input-text-area');
-        var value = input.value.replace(/^\s+|\s+$/g, '');
-        if (!value.length) return; // if empty-spaces
-        appendMsg("You", value);
-        rmc.send({
-            type: 'chat',
-            content: value
-        });
-        input.value = '';
-    });
+
     //end of chat
 
     $('#disconnect').click(function () {
@@ -489,14 +479,6 @@
         }
     };
 
-    function appendMsg(user, msg) {
-
-        var $cont = $("#chat-history");
-        //$cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
-    }
-
-
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
 //        console.log("========== Removing id: #uibox-" + e.userid.replace(/ |\(|\)/g, '') + " ============");
@@ -545,6 +527,14 @@
 
 </script>
 
+<script>
+    function appendMsg(user, msg) {
+
+        var $cont = $("#chat-history");
+        $cont[0].scrollTop = $cont[0].scrollHeight;
+        $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
+    }
+</script>
 
 <!-- General Site Scripts -->
 <script>
