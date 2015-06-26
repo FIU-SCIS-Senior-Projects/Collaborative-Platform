@@ -405,10 +405,6 @@
 
     });
 
-
-
-
-
     document.getElementById('input-text-area').onkeyup = function (e) {
         if (e.keyCode != 13) return; // if it is not Enter-key
         var value = this.value.replace(/^\s+|\s+$/g, '');
@@ -496,7 +492,7 @@
     function appendMsg(user, msg) {
 
         var $cont = $("#chat-history");
-        $cont[0].scrollTop = $cont[0].scrollHeight;
+        //$cont[0].scrollTop = $cont[0].scrollHeight;
         $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
     }
 
