@@ -86,6 +86,10 @@
 
 <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/theme.css">
 
+<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/style.css">
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -204,6 +208,33 @@
             </div>
 
         </div>
+
+
+        <div id="live-chat">
+            <header class="clearfix">
+                <h4>Your Username</h4>
+
+                <span class="chat-message-counter">3</span>
+            </header>
+
+            <div class="chat">
+                <div class="chat-history">
+
+                </div> <!-- end chat-history -->
+
+                <form action="#" method="post">
+                    <fieldset>
+                        <input type="text" placeholder="Type your message..." autofocus>
+                        <input type="hidden">
+                    </fieldset>
+                </form>
+            </div> <!-- end chat -->
+        </div> <!-- end live-chat -->
+
+
+
+
+
     </div>
 <!--    </section>-->
     <!-- end of row -->
@@ -255,7 +286,7 @@
 
 
 
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
 
@@ -365,6 +396,19 @@
         //alert('Text chat has been opened between you and ' + event.userid);
         //document.getElementById('input-text-chat').disabled = false;
     };
+
+
+
+    $('#live-chat header').on('click', function() {
+
+        $('.chat').slideToggle(300, 'swing');
+        $('.chat-message-counter').fadeToggle(300, 'swing');
+
+    });
+
+
+
+
 
 //    document.getElementById('input-text-chat').onkeyup = function (e) {
 //        if (e.keyCode != 13) return; // if it is not Enter-key
