@@ -273,7 +273,8 @@ class TicketController extends Controller
             if ($model->isEscalated != null) {
                 $tier = 2;
             }
-            $rule = ReassignRules::model()->findByPk(2);
+            $rule = ReassignRules::model()->findBySql("Select * from reassign_rules where rule_id =2");
+
             $count = TicketEvents::model()->findAllBySql("Select COUNT(id) as 'id' from ticket_events where event_type_id = 3 and ticket_id =:tid", array(":tid" => $id));
             if ($count->id >= $rule->setting)
             {
