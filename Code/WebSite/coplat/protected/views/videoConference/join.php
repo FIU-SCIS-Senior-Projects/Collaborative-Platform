@@ -226,7 +226,7 @@
                         <input id="input-text-area" type="text" placeholder="Type your message..." autofocus>
                         <input id="sendmsg" type="hidden">
                     </fieldset>
-                
+
             </div> <!-- end chat -->
         </div> <!-- end live-chat -->
 
@@ -285,7 +285,7 @@
 
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
 
