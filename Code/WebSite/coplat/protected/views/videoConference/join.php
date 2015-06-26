@@ -86,10 +86,6 @@
 
 <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/theme.css">
 
-<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/style.css">
-
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -210,30 +206,8 @@
         </div>
 
 
-        <div id="live-chat">
-            <header class="clearfix">
-                <h4>Your Username</h4>
 
-                <span class="chat-message-counter">3</span>
-            </header>
-
-            <div class="chat">
-                <div class="chat-history">
-                    <p>Welcome to the chat room!</p>
-                </div> <!-- end chat-history -->
-
-                    <fieldset>
-                        <input id="input-text-area" type="text" placeholder="Type your message..." autofocus>
-                        <input id="sendmsg" type="hidden">
-                    </fieldset>
-
-            </div> <!-- end chat -->
-        </div> <!-- end live-chat -->
-
-
-
-
-
+        
     </div>
 <!--    </section>-->
     <!-- end of row -->
@@ -285,7 +259,7 @@
 
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
 
@@ -393,31 +367,32 @@
     //chat
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
-        document.getElementById('input-text-area').disabled = false;
+        //document.getElementById('input-text-chat').disabled = false;
     };
 
+//    document.getElementById('input-text-chat').onkeyup = function (e) {
+//        if (e.keyCode != 13) return; // if it is not Enter-key
+//        var value = this.value.replace(/^\s+|\s+$/g, '');
+//        if (!value.length) return; // if empty-spaces
+//        appendMsg("You", value);
+//        rmc.send({
+//            type: 'chat',
+//            content: value
+//        });
+//        this.value = '';
+//    };
 
-
-    $('#live-chat header').on('click', function() {
-
-        $('.chat').slideToggle(300, 'swing');
-        $('.chat-message-counter').fadeToggle(300, 'swing');
-
-    });
-
-    document.getElementById('input-text-area').onkeyup = function (e) {
-        if (e.keyCode != 13) return; // if it is not Enter-key
-        var value = this.value.replace(/^\s+|\s+$/g, '');
+    $("#chat-btn").click(function () {
+        var input = document.getElementById('input-text-chat');
+        var value = input.value.replace(/^\s+|\s+$/g, '');
         if (!value.length) return; // if empty-spaces
         appendMsg("You", value);
         rmc.send({
             type: 'chat',
             content: value
         });
-        this.value = '';
-    };
-
-
+        input.value = '';
+    });
     //end of chat
 
     $('#disconnect').click(function () {
@@ -479,6 +454,14 @@
         }
     };
 
+    function appendMsg(user, msg) {
+
+        var $cont = $("#chat-feed");
+        $cont[0].scrollTop = $cont[0].scrollHeight;
+        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+    }
+
+
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
 //        console.log("========== Removing id: #uibox-" + e.userid.replace(/ |\(|\)/g, '') + " ============");
@@ -526,6 +509,7 @@
     });
 
 </script>
+
 
 <!-- General Site Scripts -->
 <script>
@@ -583,13 +567,6 @@
     function closeModal(){
         $('#lean_overlay').css('display', 'none');
         $('#invite').css('display', 'none');
-    }
-
-    function appendMsg(user, msg) {
-
-        var $cont = $("#chat-history");
-        $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
     }
 </script>
 
