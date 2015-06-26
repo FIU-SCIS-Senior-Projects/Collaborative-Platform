@@ -324,7 +324,7 @@ function checkPriorityElapseTickets()
     // reassign tickets
     if($ticketr->num_rows>0) {
         while ($aticket = $ticketr->fetch_assoc()) {
-            $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from ticket_events where ticket_id = ".$aticket["id"]. " and event_type_id = 10");
+            $toManyReassign = $dbconnect->query("SELECT count(ticket_id) as count from ticket_events where ticket_id = ".$aticket["id"]. " and event_type_id = 3");
             if($toManyReassign->num_rows>0)
             {
                 $tomanyCount = $dbconnect->query("SELECT setting from reassign_rules where rule_id = 1")->fetch_assoc()["setting"];
