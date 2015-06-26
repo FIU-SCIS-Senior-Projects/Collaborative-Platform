@@ -276,7 +276,7 @@ class TicketController extends Controller
             $rule = ReassignRules::model()->findBySql("Select * from reassign_rules where rule_id =1");
 
             $count = TicketEvents::model()->findAllBySql("Select COUNT(id) as 'id' from ticket_events where event_type_id = 3 and ticket_id =:tid", array(":tid" => $id));
-            if ($count->id >= $rule->setting)
+            if (1 >= $rule->setting)
             {
                 //reassign to system admin to many reassigns.
                 $model->assign_user_id =  5;
