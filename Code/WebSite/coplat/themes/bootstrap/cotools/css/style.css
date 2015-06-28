@@ -20,7 +20,7 @@ h4, h5 {
     min-height: 1px;
 }
 
-.chat input {
+.chat textarea {
 	border: 0;
 	color: inherit;
     font-family: inherit;
@@ -79,12 +79,13 @@ h4, h5 {
 	padding: 24px;
 }
 
-#live-chat input[type="text"] {
+#input-text-area[type="text"] {
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	padding: 8px;
 	outline: none;
 	width: 234px;
+	margin-left: 2em;
 }
 
 .chat-message-counter {

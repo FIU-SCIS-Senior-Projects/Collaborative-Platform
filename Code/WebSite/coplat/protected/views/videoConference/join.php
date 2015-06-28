@@ -210,7 +210,7 @@
 
         <div id="live-chat">
             <header class="clearfix">
-                <h4>Your Username</h4>
+                <h4 id="username"></h4>
                 <span class="chat-message-counter">3</span>
             </header>
 
@@ -442,6 +442,7 @@
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
+            document.getElementById("username").innerHTML = "test";
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
@@ -478,7 +479,7 @@
 
         var $cont = $("#chat-h");
         $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+        $cont.append("<p><span>" + user + ":  </span> " + msg + " </p>");
     }
 
 
