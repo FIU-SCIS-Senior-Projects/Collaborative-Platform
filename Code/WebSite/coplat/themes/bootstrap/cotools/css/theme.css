@@ -184,46 +184,46 @@ Tool box
     Chat Room
 */
 
-#chat-container {
-    border-radius: 4px;
-}
+/*#chat-container {*/
+    /*border-radius: 4px;*/
+/*}*/
 
-#chat-feed {
-    border: solid slategray 1px;
-    padding: 10px 15px;
-    background-color: #f2f2f2;
-    height: 250px;
-    overflow-y: auto;
-}
+/*#chat-feed {*/
+    /*border: solid slategray 1px;*/
+    /*padding: 10px 15px;*/
+    /*background-color: #f2f2f2;*/
+    /*height: 250px;*/
+    /*overflow-y: auto;*/
+/*}*/
 
-p.msg {
-    font-size: 0.94em;
-    color: #000000;
-}
+/*p.msg {*/
+    /*font-size: 0.94em;*/
+    /*color: #000000;*/
+/*}*/
 
 .msg span {
     font-weight: bold;
     color: blue;
 }
 
-#chat-container > div {
-    width: 100%;
-    margin: 20px 0px 10px 0px;
-}
+/*#chat-container > div {*/
+    /*width: 100%;*/
+    /*margin: 20px 0px 10px 0px;*/
+/*}*/
 
-#chat-container > textarea {
-    height: 40px;
-    width: 80%;
-}
+/*#chat-container > textarea {*/
+    /*height: 40px;*/
+    /*width: 80%;*/
+/*}*/
 
-#chat-container textarea:hover {
-    border: solid #00438a 1px;
-}
+/*#chat-container textarea:hover {*/
+    /*border: solid #00438a 1px;*/
+/*}*/
 
-#chat-btn {
-    height: 40px;
-    width: 18%;
-}
+/*#chat-btn {*/
+    /*height: 40px;*/
+    /*width: 18%;*/
+/*}*/
 
 /*
     video container

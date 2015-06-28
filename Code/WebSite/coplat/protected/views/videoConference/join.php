@@ -210,7 +210,7 @@
 
         <div id="live-chat">
             <header class="clearfix">
-                <h4><?php echo $user->username ?></h4>
+                <h4><?php echo $user->fname . ' ' .$user->lname .' ('. $user->username .')'?></h4>
                 <span class="chat-message-counter">3</span>
             </header>
 
