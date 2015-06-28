@@ -17,6 +17,7 @@ h4, h5 {
     font-size: 100%;
     line-height: normal;
     /*margin: 0;*/
+    margin-left: 2em;
 }
 
 #live-chat > p { margin: 0; }
@@ -101,11 +102,14 @@ h4, h5 {
 }
 
 .chat-history {
-	font: 100%/1.5em "Droid Sans", sans-serif;
 	height: 252px;
 	padding: 8px 24px;
 	overflow-y: scroll;
+}
+
+#chat-h {
 	word-wrap: break-word;
+	font: 100%/1.5em "Droid Sans", sans-serif;	
 }
 
 .chat-message {
