@@ -216,7 +216,7 @@
 
             <div class="chat">
                 <div class="chat-history">
-
+                    <p>Welcome to the chat room!</p>
                 </div> <!-- end chat-history -->
                 <textarea id="input-text-area" type="text" placeholder="Type your message..." disabled></textarea>
                 <input type="hidden">
@@ -464,7 +464,7 @@
     //receiving a message from
     rmc.onmessage = function (event) {
         if (event.data.type == "chat") {
-            alert('Target user (' + event.userid + ') said: ' + event.data.content);
+            //alert('Target user (' + event.userid + ') said: ' + event.data.content);
             //$("#chat-feed").append("<p>Hello</p>");
             appendMsg(event.userid, event.data.content);
         }
