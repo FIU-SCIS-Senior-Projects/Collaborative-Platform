@@ -273,13 +273,22 @@ class TicketController extends Controller
             if ($model->isEscalated != null) {
                 $tier = 2;
             }
+            $rule = ReassignRules::model()->findBySql("Select * from reassign_rules where rule_id =1");
 
-            $boolean = true; /* Identify is the subdomain was specified by the user */
-            if ($model->subdomain_id == null) {
-                $boolean = false;
-                $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier);
-            } else {
-                $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier);
+            $count = TicketEvents::model()->findBySql("Select COUNT(id) as 'id' from ticket_events where event_type_id = 3 and ticket_id =:tid", array(":tid" => $id));
+            if ($count->id >= $rule->setting) 
+            {
+                //reassign to system admin to many reassigns.
+                $model->assign_user_id =  5;
+            }
+            else {
+                $boolean = true; /* Identify is the subdomain was specified by the user */
+                if ($model->subdomain_id == null) {
+                    $boolean = false;
+                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier, $id);
+                } else {
+                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier, $id);
+                }
             }
 
 
@@ -338,6 +347,12 @@ class TicketController extends Controller
             } else {
                 $response['url'] = "/coplat/index.php/home/userHome";
             }
+            User::sendTicketAssignedEmailNotification($model->creator_user_id,$model->assign_user_id, $model->domain_id, $model->id);
+            //
+            //Yii::app()->request->redirect(Yii::app()->homeURL);
+        }
+        else{
+            Yii::app()->request->redirect(Yii::app()->homeURL);
         }
 
     }
@@ -365,10 +380,10 @@ class TicketController extends Controller
                 $boolean = true; /* Identify is the subdomain was specified by the user */
                 if ($model->subdomain_id == null) {
                     $boolean = false;
-                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier );
+                    $model->assign_user_id = User::reassignTicket($model->domain_id, $boolean, $old_mentor, $tier, $id );
                 }
                 else{
-                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier );
+                    $model->assign_user_id = User::reassignTicket($model->subdomain_id, $boolean, $old_mentor, $tier, $id );
                 }
             }
 
