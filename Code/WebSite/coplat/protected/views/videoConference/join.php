@@ -476,9 +476,9 @@
 
     function appendMsg(user, msg) {
 
-        // var $cont = $("#chat-history");
-        // $cont[0].scrollTop = $cont[0].scrollHeight;
-        $("#chat-h").append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+        var $cont = $("#chat-h");
+        $cont[0].scrollTop = $cont[0].scrollHeight;
+        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
     }
 
 
