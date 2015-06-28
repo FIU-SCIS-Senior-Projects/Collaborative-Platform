@@ -98,19 +98,21 @@ h4, h5 {
 
 .chat {
 	background: #B4D3FF;	
-	word-wrap: break-word;
 	/*color: #9a9a9a;*/
 }
 
 .chat-history {
 	height: 252px;
 	padding: 8px 24px;
-	width: 30px;
+	width: 234px;
 	overflow-y: scroll;
-	word-wrap: break-all;
 	font: 100%/1.5em "Droid Sans", sans-serif;
 }
 
+#chat-h {
+	width: 50px;
+
+}
 
 .chat-message {
 	margin: 16px 0;
