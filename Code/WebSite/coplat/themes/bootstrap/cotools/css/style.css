@@ -33,7 +33,7 @@ h4, h5 {
 
 #live-chat {
 	/*font: 100%/1.5em "Droid Sans", sans-serif;*/
-	bottom: 6%;
+	bottom: 5%;
 	font-size: 12px;
 	right: 24px;
 	position: fixed;
@@ -47,6 +47,8 @@ h4, h5 {
 	cursor: pointer;
 	padding: 16px 24px;
 	height: 30px;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 #live-chat h4:before {
@@ -75,7 +77,7 @@ h4, h5 {
 	width: 234px;
 	height: 15px;
 	margin-left: 2em;
-	/*margin-bottom: 7%;*/
+	margin-bottom: 12%;
 }
 
 .chat-message-counter {
