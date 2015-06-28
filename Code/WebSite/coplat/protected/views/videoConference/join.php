@@ -11,14 +11,6 @@
 
 ?>
 <script>
-    function appendMsg(user, msg) {
-
-        var $cont = $("#chat-history");
-        $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
-    }
-</script>
-<script>
     //https://gist.github.com/mathiasbynens/298591
     $.fn.toggleAttr = function (attr, attr1, attr2) {
         return this.each(function () {
@@ -482,12 +474,12 @@
         }
     };
 
-    // function appendMsg(user, msg) {
+    function appendMsg(user, msg) {
 
-    //     var $cont = $("#chat-history");
-    //     $cont[0].scrollTop = $cont[0].scrollHeight;
-    //     $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
-    // }
+        // var $cont = $("#chat-history");
+        // $cont[0].scrollTop = $cont[0].scrollHeight;
+        $("#chat-history").append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+    }
 
 
     //removes the div containing the userid of the user who is leaving
