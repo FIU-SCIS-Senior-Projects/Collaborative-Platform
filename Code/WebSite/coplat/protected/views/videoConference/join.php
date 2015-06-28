@@ -215,7 +215,7 @@
             </header>
 
             <div class="chat">
-                <div class="chat-history">
+                <div class="chat-history" id="chat-h">
                     <p>Welcome to the chat room!</p>
                 </div> <!-- end chat-history -->
                 <textarea id="input-text-area" type="text" placeholder="Type your message..." disabled></textarea>
@@ -478,7 +478,7 @@
 
         // var $cont = $("#chat-history");
         // $cont[0].scrollTop = $cont[0].scrollHeight;
-        $("#chat-history").append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+        $("#chat-h").append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
     }
 
 
