@@ -464,7 +464,7 @@
     //receiving a message from
     rmc.onmessage = function (event) {
         if (event.data.type == "chat") {
-            //alert('Target user (' + event.userid + ') said: ' + event.data.content);
+            alert('Target user (' + event.userid + ') said: ' + event.data.content);
             //$("#chat-feed").append("<p>Hello</p>");
             appendMsg(event.userid, event.data.content);
         }
