@@ -82,11 +82,11 @@
 
 
 <!-- Bootstrap -->
+<link href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/theme.css">
 <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/style.css">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -277,7 +277,8 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.leanModal.min.js"></script>
 <script type='text/javascript' src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
 
-
+<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/style.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
 
 
 <script>
