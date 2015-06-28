@@ -46,7 +46,7 @@ h4, h5 {
 	color: #fff;
 	cursor: pointer;
 	padding: 16px 24px;
-	height: 40px;
+	height: 50px;
 }
 
 #live-chat h4:before {
@@ -74,7 +74,8 @@ h4, h5 {
 	outline: none;
 	width: 234px;
 	height: 15px;
-	margin-left: 2em;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 2em;
 	height: 40px;
 }
@@ -106,11 +107,8 @@ h4, h5 {
 	padding: 8px 24px;
 	width: 234px;
 	overflow-y: scroll;
-}
-
-#chat-h {
 	word-wrap: break-word;
-	font: 100%/1.5em "Droid Sans", sans-serif;	
+	font: 100%/1.5em "Droid Sans", sans-serif;
 }
 
 .chat-message {
