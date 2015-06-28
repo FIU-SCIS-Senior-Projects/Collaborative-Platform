@@ -107,6 +107,7 @@ h4, h5 {
 	padding: 8px 24px;
 	width: 20px;
 	overflow-y: scroll;
+	overflow: none;
 	word-wrap: break-word;
 	font: 100%/1.5em "Droid Sans", sans-serif;
 }
