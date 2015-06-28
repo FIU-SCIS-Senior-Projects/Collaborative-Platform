@@ -110,8 +110,8 @@ h4, h5 {
 }
 
 #chat-h {
-	width: 200px;
-
+	width: 234px;
+	word-wrap: break-word;
 }
 
 .chat-message {
