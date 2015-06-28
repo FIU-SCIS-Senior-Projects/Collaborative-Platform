@@ -480,7 +480,7 @@
 
         var $cont = $("#chat-h");
         $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p><hr>");
     }
 
 
