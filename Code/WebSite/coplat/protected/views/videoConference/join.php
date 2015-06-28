@@ -469,8 +469,8 @@
             //alert('Target user (' + event.userid + ') said: ' + event.data.content);
             //$("#chat-feed").append("<p>Hello</p>");
             var username = event.userid;
-            usernsme = username.substring(username.indexOf('(')+1, username.indexOf(')'));
-            appendMsg(event.userid, event.data.content);
+            username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
+            appendMsg(username, event.data.content);
         }
         else {
 
