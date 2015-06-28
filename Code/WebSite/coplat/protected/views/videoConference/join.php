@@ -71,17 +71,15 @@
 </script>
 
 
+<!--<div class="container">-->
+<!--    <ol class="breadcrumb">-->
+<!--        <li><a href="/coplat/index.php">Home</a></li>-->
+<!--        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>-->
+<!--        <li><a href="/coplat/index.php/videoConference/--><?php //echo $model->id; ?><!--">--><?php //echo $model->id; ?><!--</a></li>-->
+<!--        <li class="active">Join</li>-->
+<!--    </ol>-->
+<!--</div>-->
 
-
-<!-- <div class="container">
-    <ol class="breadcrumb">
-        <li><a href="/coplat/index.php">Home</a></li>
-        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
-        <li><a href="/coplat/index.php/videoConference/<?php echo $model->id; ?>"><?php echo $model->id; ?></a></li>
-        <li class="active">Join</li>
-    </ol>
-</div>
- -->
 
 <!-- Bootstrap -->
 <link href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/bootstrap.min.css" rel="stylesheet">
@@ -148,21 +146,19 @@
                     People</a></li>
         </ul>
     </div>
+<!--    <div class="btn-group">-->
+<!--        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"-->
+<!--                data-toggle="dropdown" aria-expanded="false">-->
+<!--            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing-R <span class="caret"></span>-->
+<!--        </button>-->
+<!--        <ul class="dropdown-menu" role="menu">-->
+<!--            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>-->
+<!--            <li><a id='share-screen-2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>-->
+<!--            <li><a id='stop-share-screen-2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
-
-
-    <div class="btn-group">
-        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"
-                data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <!-- <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li> -->
-            <li><a id='share-secondary-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
-            <li><a id='stop-secondary-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
-        </ul>
-    </div>
 
 
 </div>
@@ -170,41 +166,51 @@
 
 
 <div class="container-fluid">
+
+
     <div class="row">
+        <div id="cotools-container" class="col-md-6 col-lg-6">
+            <div id="cotools-panel">
 
-        <div id="video-container" style="" class="col-md-2 col-lg-2">
-
-            <div class="col-md-offset-6 col-lg-offset-7">
-                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
-            </div>
-        </div>
-        
-        <div class="col-md-10 col-lg-10">
-
-            <div id="cotools-container" class="col-md-6 col-lg-6">
-                <div id="cotools-panel">
-
-                </div>
-            </div>
-
-            <div id="cotools-container" class="col-md-6 col-lg-6">
-                <div id="secondary-cotools-panel">
-
-                </div>
-            </div>
-
-            <div id="chat-container" class="col-md-6 col-lg-6">
-                <div id="chat-feed">
-                    <p class="msg">Welcome to the chat room!</p>
-                </div>
-                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
-                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
             </div>
 
         </div>
+
+        <div id="cotools-container-2" class="col-md-6 col-lg-6">
+            <div id="cotools-panel-2">
+
+            </div>
+
+        </div>
+
+<!--        <div class="col-md-6 col-lg-6">-->
+
+<!--            <div id="chat-container">-->
+<!--                <div id="chat-feed">-->
+<!--                    <p class="msg">Welcome to the chat room!</p>-->
+<!--                </div>-->
+<!--                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>-->
+<!--                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>-->
+<!--            </div>-->
+
+<!--        </div>-->
 
     </div>
-    <!-- end of main row -->
+    <div class="row row-fluid">
+        <div id="video-container" style="" class="col-md-2 col-lg-2">
+
+            <div style="margin-left: 80px" >
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
+            </div>
+
+        </div>
+
+
+
+        
+    </div>
+<!--    </section>-->
+    <!-- end of row -->
 </div>
 
 <div id="invite">
@@ -218,7 +224,7 @@
 
         </div>
         <form id="invitation-form" class="form-horizontal" method="get" action="../invite">
-            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>">
+            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>" id="meetingID">
             <div class="invitee_emails">
                 <div class="form-group">
                         <label class="control-label col-md-2" for="invitee-1">Email 1</label>
@@ -241,23 +247,24 @@
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
-<!-- Remote
+
 <script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
 <script type='text/javascript' src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>
--->
+
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/RTCMultiConnection.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.leanModal.min.js"></script>
+<script type='text/javascript' src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
+
+
 
 
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
-    mandatory: {chromeMediaSource: 'screen'};
-    mandatory: {chromeMediaSource: 'desktop'};
 
     var rmc = new RTCMultiConnection();
-    var secondrmc = new RTCMultiConnection();
+    var sec = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -266,27 +273,26 @@
         data: true
     };
 
-    secondrmc.session = {
-        video: true,
-        audio: true,
-        data: true
+    sec.session = {
+        video: false,
+        audio: false,
+        data: false,
+        screen: true,
+        oneway: true
     };
 
-    var roomStatus = 0;
+
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        secondrmc.open();
-        roomStatus = 1;
-        document.getElementById("on-off-video").style.color= 'red';
     });
+
     $('#join-room').click(function () {
-        //if(roomStatus == 1) {
-            // http://www.rtcmulticonnection.org/docs/connect/
-            rmc.connect();
-            //secondrmc.connect();
-            if (roomStatus ==1){ document.getElementById("on-off-video").style.color= 'red';}
-        //}
+        document.getElementById("join-room").disabled = true;
+        document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
+
+        // http://www.rtcmulticonnection.org/docs/connect/
+        rmc.connect();
     });
 
     var video_status = 0;
@@ -323,8 +329,7 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
-        roomStatus = 0;
-    }, false);
+    }, true);
 
     rmc.onMediaCaptured = function () {
         $('#share-screen').removeAttr('disabled');
@@ -332,82 +337,50 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
-    secondrmc.onMediaCaptured = function () {
-        $('#share-secondary-screen').removeAttr('disabled');
+    sec.onMediaCaptured = function () {
+        $('#share-screen-2').removeAttr('disabled');
         $('#open-room').attr('disabled', 'disabled');
         $('#join-room').attr('disabled', 'disabled');
     };
 
     //screen sharing
     $('#share-screen').click(function () {
+        rmc.streams.stop('screen');
+        $('#cotools-panel video').remove();
+        rmc.keepStreamsOpened = true;
+
         // http://www.rtcmulticonnection.org/docs/addStream/
-        rmc.removeStream('screen');
         rmc.addStream({
+            //data: true,
             screen: true,
             oneway: true
         });
     });
 
-    // $('#share-secondary-screen').click(function () {
-    //     // http://www.rtcmulticonnection.org/docs/addStream/
-    //     secondrmc.removeStream('screen');
-    //     secondrmc.addStream({
-    //         screen: true,
-    //         oneway: true
-    //     });
-    // });
-
-    $('#share-secondary-screen').click(function() {
-            navigator.getUserMedia({
-                    audio: false,
-                    //screen: true,
-                    video: {
-                        mandatory: {
-                            chromeMediaSource: 'screen',
-                            maxWidth: 1280,
-                            maxHeight: 720
-                        },
-                        optional: []
-                    }
-                }, function(secondrmc) {
-                    document.getElementById('#cotools-secondary-panel').src = window.URL.createObjectURL(stream);;
-                    $('#share-secondary-screen').hide();
-                }, function() {
-                    alert('Error, my friend. Screen stream is not available. Try in latest Chrome with Screen sharing enabled in about:flags.');
-                    }
-            )
-        });
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        rmc.removeStream('screen');
-        $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
-    });
-
-    $('#stop-secondary-share-screen').click(function () {
-        secondrmc.removeStream('screen');
-        $('#secondary-cotools-panel iframe').show();
-        $('#secondary-cotools-panel video').remove();
+        $('#cotools-panel iframe').show();
     });
 
     //chat
     rmc.onopen = function (event) {
         //alert('Text chat has been opened between you and ' + event.userid);
-        document.getElementById('input-text-chat').disabled = false;
+        //document.getElementById('input-text-chat').disabled = false;
     };
 
-    document.getElementById('input-text-chat').onkeyup = function (e) {
-        if (e.keyCode != 13) return; // if it is not Enter-key
-        var value = this.value.replace(/^\s+|\s+$/g, '');
-        if (!value.length) return; // if empty-spaces
-        appendMsg("You", value);
-        rmc.send({
-            type: 'chat',
-            content: value
-        });
-        this.value = '';
-    };
+//    document.getElementById('input-text-chat').onkeyup = function (e) {
+//        if (e.keyCode != 13) return; // if it is not Enter-key
+//        var value = this.value.replace(/^\s+|\s+$/g, '');
+//        if (!value.length) return; // if empty-spaces
+//        appendMsg("You", value);
+//        rmc.send({
+//            type: 'chat',
+//            content: value
+//        });
+//        this.value = '';
+//    };
 
     $("#chat-btn").click(function () {
         var input = document.getElementById('input-text-chat');
@@ -420,15 +393,14 @@
         });
         input.value = '';
     });
-
-
     //end of chat
+
     $('#disconnect').click(function () {
         rmc.leave();
-        roomStatus = 0;
-        setTimeout("location.href = '../';",2000);
+        setTimeout("location.href = '../';",1000);
     });
 
+    var presenter = 0;
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -440,29 +412,34 @@
         if (e.isVideo) {
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
+            uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-            document.getElementById('video-container').appendChild(e.mediaElement);
+            uibox.style.cssText = 'float: left';
+            e.mediaElement.style.cssText = 'display: block';
+            //console.log("========== Adding id: " + uibox.id + "============");
+            //document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
+            document.getElementById("on-off-video").style.color= 'red';
+            $('#join-room').fadeOut(600);
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        else if (e.isScreen) {
-            $('#cotools-panel iframe').hide();
-            $('#cotools-panel video').remove();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+        else if (e.isScreen || e.stream.isScreen) {
+            if(presenter == 0) {
+                $('#cotools-panel-2 video').remove();
+                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                presenter = 1;
+            } else {
+                $('#cotools-panel iframe').hide();
+                $('#cotools-panel video').remove();
+                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            }
         }
 
     };
-
-    secondrmc.onstream = function (e) {
-        if (e.isScreen) {
-            $('#cotools-secondary-panel iframe').hide();
-            $('#cotools-secondary-panel').remove();
-            document.getElementById('cotools-secondary-panel').appendChild(e.mediaElement);
-        }
-    }
 
     //receiving a message from
     rmc.onmessage = function (event) {
@@ -487,12 +464,12 @@
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
+//        console.log("========== Removing id: #uibox-" + e.userid.replace(/ |\(|\)/g, '') + " ============");
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
     };
 
 
     //Whiteboard Section
-
     function canvasInit() {
 
         CanvasDesigner.addSyncListener(function (data) {
@@ -525,6 +502,11 @@
         $('#cotools-panel iframe').hide();
     });
 
+    $("#show-screens-2").click(function () {
+        sec.connect();
+        $('#cotools-panel-2 video').show();
+        $('#cotools-panel-2 iframe').hide();
+    });
 
 </script>
 
@@ -532,7 +514,7 @@
 <!-- General Site Scripts -->
 <script>
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="uitooltip"]').tooltip()
     });
 
     $('.dropdown-toggle').dropdown();
@@ -586,5 +568,7 @@
         $('#lean_overlay').css('display', 'none');
         $('#invite').css('display', 'none');
     }
-
 </script>
+
+
+
