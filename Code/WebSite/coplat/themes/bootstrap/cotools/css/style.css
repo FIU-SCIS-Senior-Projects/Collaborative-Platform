@@ -46,6 +46,7 @@ h4, h5 {
 	color: #fff;
 	cursor: pointer;
 	padding: 16px 24px;
+	height: 30px;
 }
 
 #live-chat h4:before {
@@ -74,7 +75,7 @@ h4, h5 {
 	width: 234px;
 	height: 15px;
 	margin-left: 2em;
-	margin-bottom: 7%;
+	/*margin-bottom: 7%;*/
 }
 
 .chat-message-counter {
