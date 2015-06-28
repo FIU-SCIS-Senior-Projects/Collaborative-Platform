@@ -577,7 +577,7 @@
 
 <script>
     $(document).ready(function() {
-        $('.chat').slideToggle(300, 'swing');
+        $('.chat').slideToggle(1, 'swing');
         $('#invitation-form').submit(function(event) {
             var form = $(this);
             var method = form.attr('method');
