@@ -482,11 +482,7 @@
 
         var $cont = $("#chat-h");
         $cont[0].scrollTop = $cont[0].scrollHeight;
-        // var username = user;
-        // if(user !== "You") {
-        //     usernsme = user.substring(user.indexOf('(')+1, user.indexOf(')'));
-        // }
-        $cont.append("<p class='msg' style='width: 230px'><span>" + user + ":  </span> " + msg + " </p>");
+        $cont.append("<p class='msg' style='width: 230px;'><span>" + user + ":  </span> " + msg + " </p>");
     }
 
 
