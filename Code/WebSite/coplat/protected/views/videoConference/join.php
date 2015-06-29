@@ -486,7 +486,7 @@
         // if(user !== "You") {
         //     usernsme = user.substring(user.indexOf('(')+1, user.indexOf(')'));
         // }
-        $cont.append("<p class='msg' id='chat-p'><span>" + user + ":  </span> " + msg + " </p>");
+        $cont.append("<p class='msg' style='width: 230px'><span>" + user + ":  </span> " + msg + " </p>");
     }
 
 
