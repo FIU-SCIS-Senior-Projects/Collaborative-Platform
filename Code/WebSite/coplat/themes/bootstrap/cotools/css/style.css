@@ -135,3 +135,7 @@ h4, h5 {
 	float: right;
 	font-size: 10px;
 }
+
+div {
+	text-overflow: clip;
+}
