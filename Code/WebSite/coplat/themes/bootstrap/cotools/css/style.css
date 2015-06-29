@@ -121,7 +121,7 @@ h4, h5 {
 #chat-p {
 	width: 150px;
 	background-color: #fff;
-	word-break: break-word;
+	word-wrap: break-word;
 }
 
 .chat-message {
