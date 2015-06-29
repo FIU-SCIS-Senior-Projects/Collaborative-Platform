@@ -109,6 +109,7 @@ h4, h5 {
 	overflow-x: hidden;
 	font: 100%/1.5em "Droid Sans", sans-serif;
 	word-wrap: break-word;
+	text-overflow: string;
 }
 
 #chat-h {
