@@ -109,18 +109,16 @@ h4, h5 {
 	overflow-x: hidden;
 	font: 100%/1.5em "Droid Sans", sans-serif;
 	word-wrap: break-word;
-	text-overflow: string;
 }
 
 #chat-h {
 	margin-left: 7px;
 	width: 249px;
 	background: red;
-	text-overflow: string;
 }
 
 #chat-p {
-	width: 150px;
+	width:200px;
 	background-color: #fff;
 	word-wrap: break-word;
 	text-overflow: string;
@@ -134,8 +132,4 @@ h4, h5 {
 .chat-time {
 	float: right;
 	font-size: 10px;
-}
-
-div {
-	text-overflow: string;
 }
