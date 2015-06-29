@@ -232,7 +232,7 @@ Tool box
     height: 13em;
     width: 80%;
     overflow: auto;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
 #video-container {
