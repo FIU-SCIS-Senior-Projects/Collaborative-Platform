@@ -119,10 +119,9 @@ h4, h5 {
 }
 
 #chat-p {
-	width:200px;
+	width:210px;
 	background-color: #fff;
 	word-wrap: break-word;
-	text-overflow: string;
 }
 
 .chat-message {
