@@ -109,13 +109,14 @@ h4, h5 {
 	overflow-x: hidden;
 	font: 100%/1.5em "Droid Sans", sans-serif;
 	word-wrap: break-word;
-
+	text-overflow: clip;
 }
 
 #chat-h {
 	margin-left: 7px;
 	width: 249px;
 	background: red;
+	text-overflow: clip;
 }
 
 #chat-p {
