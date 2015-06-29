@@ -119,6 +119,8 @@ h4, h5 {
 }
 
 #chat-p {
+	overflow-x: hidden;
+	
 	width: 150px;
 	background-color: #fff;
 	word-break: break-word;
