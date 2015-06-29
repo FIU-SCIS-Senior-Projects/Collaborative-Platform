@@ -102,9 +102,9 @@ h4, h5 {
 }
 
 .chat-history {
-	height: 20px;
+	height: 240px;
 	padding: 8px 0px 20px 0px;
-	width: 234px;
+	width: 220px;
 	overflow-y: auto;
 	/*overflow-x: hidden;*/
 	font: 100%/1.5em "Droid Sans", sans-serif;
