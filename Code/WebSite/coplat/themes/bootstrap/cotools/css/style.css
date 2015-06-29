@@ -122,6 +122,7 @@ h4, h5 {
 	width: 150px;
 	background-color: #fff;
 	word-wrap: break-word;
+	text-overflow: clip;
 }
 
 .chat-message {
