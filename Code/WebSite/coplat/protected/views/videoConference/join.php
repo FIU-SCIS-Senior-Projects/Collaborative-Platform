@@ -267,6 +267,7 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
+        presenter = 0;
     });
 
     $('#join-room').click(function () {
