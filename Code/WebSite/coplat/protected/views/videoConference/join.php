@@ -301,13 +301,11 @@
     };
 
     rmc.onspeaking = function(e) {
-        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).style.border = '1px solid red';
-//        e.mediaElement.style.border = '1px solid red';
+        e.mediaElement.style.border = '1px solid red';
     };
 
     rmc.onsilence = function (e) {
-        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).style.border = '';
-//        e.mediaElement.style.border = '';
+        e.mediaElement.style.border = '';
     };
 
     // display a notification box
