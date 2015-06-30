@@ -16,11 +16,10 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'userID'); ?>
-		<?php echo $form->textField($model,'userID'); ?>
-		<?php echo $form->error($model,'userID'); ?>
+		<?php echo $form->labelEx($model,'user_search'); ?>
+		<?php echo $form->textField($model,'user_search'); ?>
+		<?php echo $form->error($model,'user_search'); ?>
 	</div>
-
 
 
 	<div class="row buttons">
