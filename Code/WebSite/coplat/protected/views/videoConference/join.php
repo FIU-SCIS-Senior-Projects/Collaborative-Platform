@@ -396,12 +396,16 @@
                     $('#cotools-panel-2 video').remove();
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                     e.mediaElement.id = "right";
-                } else if(e.mediaElement.id == "left") {
+                    alert("R mediaelement with id: " + e.mediaElement.id);
+                }
+                else if(e.mediaElement.id == "left") {
                     $('#cotools-panel video').remove();
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                    alert("L mediaelement with id: " + e.mediaElement.id);
                 } else {
                     $('#cotools-panel-2 video').remove();
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    alert("None");
                 }
                 presenter = 1;
             } else {
