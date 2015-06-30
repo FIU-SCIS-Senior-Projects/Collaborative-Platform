@@ -71,16 +71,6 @@
 </script>
 
 
-<!--<div class="container">-->
-<!--    <ol class="breadcrumb">-->
-<!--        <li><a href="/coplat/index.php">Home</a></li>-->
-<!--        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>-->
-<!--        <li><a href="/coplat/index.php/videoConference/--><?php //echo $model->id; ?><!--">--><?php //echo $model->id; ?><!--</a></li>-->
-<!--        <li class="active">Join</li>-->
-<!--    </ol>-->
-<!--</div>-->
-
-
 <!-- Bootstrap -->
 <link href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/bootstrap.min.css" rel="stylesheet">
 
@@ -148,17 +138,6 @@
                     People</a></li>
         </ul>
     </div>
-<!--    <div class="btn-group">-->
-<!--        <button type="button" title="Screen sharing actions" class="btn btn-primary dropdown-toggle"-->
-<!--                data-toggle="dropdown" aria-expanded="false">-->
-<!--            <i class="fa fa-desktop"></i>&nbsp;&nbsp;Screen Sharing-R <span class="caret"></span>-->
-<!--        </button>-->
-<!--        <ul class="dropdown-menu" role="menu">-->
-<!--            <li><a id='show-screens-2' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>-->
-<!--            <li><a id='share-screen-2' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>-->
-<!--            <li><a id='stop-share-screen-2' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>-->
-<!--        </ul>-->
-<!--    </div>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
@@ -185,18 +164,6 @@
 
         </div>
 
-<!--        <div class="col-md-6 col-lg-6">-->
-
-<!--            <div id="chat-container">-->
-<!--                <div id="chat-feed">-->
-<!--                    <p class="msg">Welcome to the chat room!</p>-->
-<!--                </div>-->
-<!--                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>-->
-<!--                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-
     </div>
     <div class="row row-fluid">
         <div id="video-container" style="" class="col-md-2 col-lg-2">
@@ -222,11 +189,6 @@
                 <input type="hidden">
             </div> <!-- end chat -->
         </div> <!-- end live-chat -->
-
-
-
-
-
         
     </div>
 <!--    </section>-->
@@ -259,8 +221,6 @@
         </form>
     </div>
 </div>
-
-<!--<div id="video-container"></div>-->
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -321,13 +281,11 @@
     function pauseResumeVideo() {
         if(video_status == 0) {
             document.getElementById("on-off-video").style.color= 'gray';
-            //rmc.hold();
             rmc.streams.selectFirst({local : true}).mute({video : true});
             video_status = 1;
         }
         else if(video_status == 1) {
             document.getElementById("on-off-video").style.color= "red";
-            // rmc.unhold();
             rmc.streams.selectFirst({local : true}).unmute({video : true});
             video_status = 0;
         }
@@ -387,7 +345,6 @@
 
     //chat
     rmc.onopen = function (event) {
-        //alert('Text chat has been opened between you and ' + event.userid);
         document.getElementById('input-text-area').disabled = false;
     };
 
@@ -402,19 +359,6 @@
        });
        this.value = '';
    };
-
-    // $("#chat-btn").click(function () {
-    //     var input = document.getElementById('input-text-chat');
-    //     var value = input.value.replace(/^\s+|\s+$/g, '');
-    //     if (!value.length) return; // if empty-spaces
-    //     appendMsg("You", value);
-    //     rmc.send({
-    //         type: 'chat',
-    //         content: value
-    //     });
-    //     input.value = '';
-    // });
-    //end of chat
 
     $('#disconnect').click(function () {
         rmc.leave();
@@ -438,12 +382,9 @@
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
             uibox.style.cssText = 'float: left';
             e.mediaElement.style.cssText = 'display: block';
-            //console.log("========== Adding id: " + uibox.id + "============");
-            //document.getElementById('video-container').appendChild(e.mediaElement);
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
-            // document.getElementById("username").innerHTML = "test";
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
@@ -456,7 +397,6 @@
             } else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
-                //document.getElementById('cotools-panel').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel').appendChild(e.mediaElement);
             }
         }
@@ -466,8 +406,6 @@
     //receiving a message from
     rmc.onmessage = function (event) {
         if (event.data.type == "chat") {
-            //alert('Target user (' + event.userid + ') said: ' + event.data.content);
-            //$("#chat-feed").append("<p>Hello</p>");
             var username = event.userid;
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
@@ -487,7 +425,6 @@
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
-//        console.log("========== Removing id: #uibox-" + e.userid.replace(/ |\(|\)/g, '') + " ============");
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
     };
 

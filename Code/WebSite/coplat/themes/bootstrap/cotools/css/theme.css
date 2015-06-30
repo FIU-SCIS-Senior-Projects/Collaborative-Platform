@@ -119,8 +119,6 @@ http://leanmodal.finelysliced.com.au/#
 }
 
 
-
-
 /*
 
 Tool box
@@ -184,46 +182,10 @@ Tool box
     Chat Room
 */
 
-/*#chat-container {*/
-    /*border-radius: 4px;*/
-/*}*/
-
-/*#chat-feed {*/
-    /*border: solid slategray 1px;*/
-    /*padding: 10px 15px;*/
-    /*background-color: #f2f2f2;*/
-    /*height: 250px;*/
-    /*overflow-y: auto;*/
-/*}*/
-
-/*p.msg {*/
-    /*font-size: 0.94em;*/
-    /*color: #000000;*/
-/*}*/
-
 .msg span {
     font-weight: bold;
     color: blue;
 }
-
-/*#chat-container > div {*/
-    /*width: 100%;*/
-    /*margin: 20px 0px 10px 0px;*/
-/*}*/
-
-/*#chat-container > textarea {*/
-    /*height: 40px;*/
-    /*width: 80%;*/
-/*}*/
-
-/*#chat-container textarea:hover {*/
-    /*border: solid #00438a 1px;*/
-/*}*/
-
-/*#chat-btn {*/
-    /*height: 40px;*/
-    /*width: 18%;*/
-/*}*/
 
 /*
     video container
@@ -245,28 +207,14 @@ Tool box
 }
 
 #video-container video, #video-container-md video {
-    /*position: absolute; */
     width: 150px;
     margin-bottom: 7px;
     height: 150px;
-    /*margin-left: 10px;*/
-    /*float: right;*/
-    /*display: inline-block;*/
-    /*vertical-align: top;*/
-
 }
 
 .userid {
-    /*display: block;*/
     text-align: center;
-    /*border-bottom: 1px solid #000020;*/
     margin-top: 5px;
-    /*padding: 0px 10px 10px 10px;*/
-    /*width: 90%;*/
-    /*float: right;*/
-    /*display: inline-block;*/
-    /*vertical-align: top;*/
-
 }
 
 @media only screen
@@ -314,19 +262,12 @@ and (orientation: portrait) {
 @media only screen
 and (min-width: 1224px) {
     #video-container video, #video-container-md video {
-        /*position: absolute; */
-        /*width: 80%;*/
         margin: 0 20px 20px 20px;
         height: auto;
-        /*display: inline-block;*/
     }
 
     .userid {
-        /*float: left;*/
-        /*width: 80%;*/
-        /*margin-left: 10px;*/
         margin: 0 auto;
-        /*display: inline-block;*/
     }
 }
 
@@ -334,7 +275,6 @@ and (min-width: 1224px) {
 @media only screen
 and (min-width: 1824px) {
     #video-container video, #video-container-md video {
-        /*position: absolute; */
         width: 65%;
         height: auto;
         margin: 0 auto 20px auto;
@@ -342,10 +282,7 @@ and (min-width: 1824px) {
     }
 
     .userid {
-        /*width: 65%;*/
-        /*margin-left: 90px;*/
         margin: 0 auto;
-        /*display: inline-block;*/
     }
 }
 
@@ -377,8 +314,6 @@ and (orientation: portrait) {
     height: auto;
     max-height: 100%;
     position: relative;
-    /*top: 50%;*/
-    /*transform: translateY(-50%);*/
 }
 
 #cotools-panel-2 video {
@@ -386,8 +321,6 @@ and (orientation: portrait) {
     height: auto;
     max-height: 100%;
     position: relative;
-    /*top: 50%;*/
-    /*transform: translateY(-50%);*/
 }
 
 .volume_bar {
