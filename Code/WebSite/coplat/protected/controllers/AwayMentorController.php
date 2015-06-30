@@ -36,7 +36,7 @@ class AwayMentorController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','remove','index','view','create','update'),
+				'actions'=>array('admin','delete','remove','index','view','create','update', 'add'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -69,9 +69,21 @@ class AwayMentorController extends Controller
 
 		if(isset($_POST['AwayMentor']))
 		{
-			$model->attributes=$_POST['AwayMentor'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->userID));
+            $userName = $_POST['AwayMentor']['user_search'];
+            $output = "<script>console.log( 'Debug Objects: " . $userName . "' );</script>";
+
+            echo $output;
+            $user = User::model()->findAllBySql("Select * from user where username =:unam", array(":unam"=>$userName));
+            foreach($user as $amentor)
+            {
+                $output = "<script>console.log( 'Debug Objects: " . $amentor->id . "' );</script>";
+                echo $output;
+                $model->userID=$amentor->id;
+                if($model->save())
+                    $this->redirect(array('view','id'=>$model->userID));
+            }
+
+
 		}
 
 		$this->render('create',array(
@@ -107,6 +119,14 @@ class AwayMentorController extends Controller
     {
     AwayMentor::model()->deleteByPk($id);
         Yii::app()->request->redirect(Yii::app()->homeURL);
+    }
+    public function actionAdd($id)
+    {
+        $model = new AwayMentor();
+        $model->userID = $id;
+        $model->tiStamp= new CDbExpression('NOW()');
+        $model->save();
+        $this->redirect('/coplat/index.php/AwayMentor/admin');
     }
 	/**
 	 * Deletes a particular model.

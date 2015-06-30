@@ -376,7 +376,7 @@ class User extends CActiveRecord
     	$users = array();
     	foreach($dataProvider->getData() as $user){
     		$temp = array();
-    		
+
     		$temp["id"] = $user->id;
     		$temp["name"] = $user->getFullName();
     		if (isset($user->university_id) && $user->university_id > 0)
@@ -471,6 +471,15 @@ class User extends CActiveRecord
     {
         return $this->isStudent;
     }
+
+    public static function isCurrentUserAdmin()
+    {    
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        return $user->isAdmin;
+    }
     public static function isCurrentUserAway()
     {
         $username = Yii::app()->user->name;
@@ -488,16 +497,18 @@ class User extends CActiveRecord
         }
 
     }
-
-    public static function isCurrentUserAdmin()
-    {    
-        $username = Yii::app()->user->name;
-        $user = User::model()->find("username=:username", array(':username' => $username));
-        if ($user == null)
+    public static function isThisUserAway($id)
+    {
+        $away = AwayMentor::model()->findByPk($id);
+        if (is_null($away))
+        {
             return false;
-        return $user->isAdmin;
+        }
+        else
+        {
+            return true;
+        }
     }
-
     public static function isCurrentUserMentee()
     {
         $username = Yii::app()->user->name;
@@ -1362,7 +1373,7 @@ class User extends CActiveRecord
     	$html = User::replaceMessage(($model->fname . ' ' . $model->lname), $message);
     	 
    	$email->to = $model->email;
-   	$email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+   	$email->from = 'Collaborative Platform <fiucoplat@gmail.com>';
     	$email->subject = 'Your application has been reviewed!';
     	$email->message = $html;
    	$email->send();

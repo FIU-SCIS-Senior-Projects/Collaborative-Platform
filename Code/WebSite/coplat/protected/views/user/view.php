@@ -14,8 +14,7 @@ if(User::isCurrentUserAdmin())
 <div style =" width: 1000px;">
 
 <div id="leftup">
-
-    <div id="container" class="my-box-container3" style="height: 300px;" >
+        <div id="container" class="my-box-container3" style="height: 300px;" >
         <div class="titlebox"><h3><?php echo ucfirst($model->fname) ." " . ucfirst($model->lname)?></h3></div>
         <div  id="profileImage">
             <br><img style="width:150px; height:205px;" src="<?php echo $model->pic_url ?>" />

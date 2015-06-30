@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List AwayMentor', 'url'=>array('index')),
-	array('label'=>'Create AwayMentor', 'url'=>array('create')),
+    array('label'=>'Create AwayMentor', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -46,9 +46,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'userID',
+        array('name'=>'user_search','value'=>'$data->user->username'),
 		'tiStamp',
-		array(
+       	array(
 			'class'=>'CButtonColumn',
+            'template'=>'{view}{delete}',
 		),
 	),
 )); ?>

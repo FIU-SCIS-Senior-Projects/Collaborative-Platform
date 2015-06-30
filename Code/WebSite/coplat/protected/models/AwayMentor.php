@@ -9,6 +9,7 @@
  */
 class AwayMentor extends CActiveRecord
 {
+    public $user_search;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -30,21 +31,21 @@ class AwayMentor extends CActiveRecord
 	/**
 	 * @return array validation rules for model attributes.
 	 */
-    public function rules()
-    {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
-        return array(
-            array('userID', 'required'),
-            array('userID', 'numerical', 'integerOnly'=>true),
-            array('tiStamp', 'default',
-                'value'=>new CDbExpression('NOW()'),
-                'setOnEmpty'=>false,'on'=>'insert'),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('userID, tiStamp', 'safe', 'on'=>'search'),
-        );
-    }
+	public function rules()
+{
+    // NOTE: you should only define rules for those attributes that
+    // will receive user inputs.
+    return array(
+        array('userID', 'numerical', 'integerOnly'=>true),
+        array('tiStamp', 'default',
+            'value'=>new CDbExpression('NOW()'),
+            'setOnEmpty'=>false,'on'=>'insert'),
+        // The following rule is used by search().
+        // Please remove those attributes that should not be searched.
+        array('userID, tiStamp, user_search', 'safe', 'on'=>'search'),
+
+    );
+}
 
 	/**
 	 * @return array relational rules.
@@ -53,7 +54,7 @@ class AwayMentor extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array(
+		return array('user'    => array(self::BELONGS_TO, 'User',    'userID'),
 		);
 	}
 
@@ -65,6 +66,7 @@ class AwayMentor extends CActiveRecord
 		return array(
 			'userID' => 'User',
 			'tiStamp' => 'Time Stamp',
+            'user_search' => 'User Name',
 		);
 	}
 
@@ -78,12 +80,22 @@ class AwayMentor extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('userID',$this->userID);
+        $criteria->with = array( 'user' );
+        $criteria->compare('userID',$this->userID);
+        $criteria->compare( 'user.username', $this->user_search, true );
 		$criteria->compare('tiStamp',$this->tiStamp,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'sort'=>array(
+                'attributes'=>array(
+                    'user_search'=>array(
+                        'asc'=>'user.username',
+                        'desc'=>'user.username DESC',
+                    ),
+                    '*',
+                ),
+            ),
 		));
 	}
 }
