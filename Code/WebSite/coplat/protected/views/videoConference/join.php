@@ -246,6 +246,7 @@
 
     var rmc = new RTCMultiConnection();
     var sec = new RTCMultiConnection();
+    var presenter;
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -270,8 +271,8 @@
 
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
-        document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
-
+        document.getElementById("join-room").innerHTML = 'Waiting for organizer...';
+        presenter = 0;
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
     });
@@ -365,7 +366,6 @@
         setTimeout("location.href = '../';",1000);
     });
 
-    var presenter = 0;
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
