@@ -300,6 +300,14 @@
        e.mediaElement.removeAttribute('poster');
     };
 
+    rmc.onspeaking = function(e) {
+        e.mediaElement.style.border = '1px solid red';
+    };
+
+    rmc.onsilence = function (e) {
+        e.mediaElement.style.border = '';
+    };
+
     // display a notification box
     window.addEventListener('beforeunload', function () {
         return 'Do you want to leave?';
