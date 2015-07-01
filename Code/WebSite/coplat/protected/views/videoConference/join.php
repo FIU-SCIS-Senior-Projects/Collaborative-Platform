@@ -246,8 +246,6 @@
 
     var rmc = new RTCMultiConnection();
     var sec = new RTCMultiConnection();
-    var presenter;
-    var presentationId;
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -267,23 +265,15 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        presenter = 0;
         rmc.open();
     });
 
     $('#join-room').click(function () {
-        presenter = 0;
         document.getElementById("join-room").disabled = true;
-        document.getElementById("join-room").innerHTML = 'Waiting for organizer...';
+        document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
+
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
-        rmc.onCustomMessage = function(message) {
-            if(presenter == 0) {
-                //alert("Received: " + message);
-                presentationId = message;
-            }
-            presenter = 1;
-        };
     });
 
     var video_status = 0;
@@ -375,6 +365,7 @@
         setTimeout("location.href = '../';",1000);
     });
 
+    var presenter = 0;
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -399,15 +390,10 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            alert("media element is: " + e.mediaElement.id);
-            if(presenter == 0 || e.mediaElement.id == presentationId) {
-                alert("right");
-                    $('#cotools-panel-2 video').remove();
-                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                    presenter = 1;
-                    //alert(e.mediaElement.id);
-                    rmc.sendCustomMessage(e.mediaElement.id);
-
+            if(presenter == 0) {
+                $('#cotools-panel-2 video').remove();
+                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                presenter = 1;
             } else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
