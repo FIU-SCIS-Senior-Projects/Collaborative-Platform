@@ -140,8 +140,8 @@
         <?php
         if ( (User::isCurrentUserAdmin() && $model->status == 'Pending') || 
               (User::isCurrentUserDomMentor() && $model->status == 'Pending' && 
-               $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId()== $model->assign_user_id  && 
-               User::getCurrentUserId() != $model->creator_user_id ))
+               $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId()== $model->assign_user_id ) ||
+               User::getCurrentUserId() == $model->creator_user_id )
         {
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Re Assign',
