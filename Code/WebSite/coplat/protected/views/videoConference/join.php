@@ -399,7 +399,7 @@
                 presenter = 1;
                 var rID = document.getElementById('cotools-panel-2').childNodes[1].id;
 
-                alert("Child node: " + rID  + "  Media ID: " + e.mediaElement.streamid);
+                alert("Child node: " + rID  + "  Media ID: " + e.streamid);
 
             } else {
                 setTimeout(function(){
