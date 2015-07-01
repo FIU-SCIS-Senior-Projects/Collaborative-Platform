@@ -280,7 +280,7 @@
             if(presenter == 0) {
                 alert("Received: " + message.id);
                 $('#cotools-panel-2 video').remove();
-                document.getElementById('cotools-panel-2').appendChild(message.obj);
+                document.getElementById('cotools-panel-2').appendChild(message.obj.mediaElement);
             }
             presenter = 1;
         };
