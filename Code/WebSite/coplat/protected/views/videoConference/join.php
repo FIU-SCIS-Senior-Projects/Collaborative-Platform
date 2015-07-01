@@ -247,6 +247,7 @@
     var rmc = new RTCMultiConnection();
     var sec = new RTCMultiConnection();
     var presenter;
+    var presentationId;
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -278,9 +279,8 @@
         rmc.connect();
         rmc.onCustomMessage = function(message) {
             if(presenter == 0) {
-                alert("Received: " + message.id);
-                $('#cotools-panel-2 video').remove();
-                document.getElementById('cotools-panel-2').appendChild(message.obj.mediaElement);
+                //alert("Received: " + message);
+                presentationId = message;
             }
             presenter = 1;
         };
@@ -399,16 +399,15 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-
+            alert("media element is: " + e.mediaElement)
             if(presenter == 0) {
-                $('#cotools-panel-2 video').remove();
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                presenter = 1;
-                alert(e.mediaElement.id);
-                rmc.sendCustomMessage({
-                    id: e.mediaElement.id,
-                    obj: e.mediaElement
-                });
+                if (e.mediaElement.id == presentationId || e.mediaElement == null) {
+                    $('#cotools-panel-2 video').remove();
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    presenter = 1;
+                    //alert(e.mediaElement.id);
+                    rmc.sendCustomMessage(e.mediaElement.id);
+                }
             } else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
