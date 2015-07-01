@@ -274,6 +274,9 @@
 
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
+        rmc.onCustomMessage = function(message) {
+            Ri = message;
+        };
     });
 
     var video_status = 0;
@@ -368,6 +371,7 @@
     });
 
     var presenter = 0;
+    var Ri = "";
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -393,22 +397,39 @@
         }
         else if (e.isScreen || e.stream.isScreen) {
 
-            if(presenter == 0 && document.getElementById('cotools-panel-2').childNodes.length <= 1) {
-                alert(document.getElementById('cotools-panel-2').childNodes.length);
-//                e.streamid == rID) {
-                $('#cotools-panel-2 video').remove();
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                presenter = 1;
-//                var rID = document.getElementById('cotools-panel-2').childNodes[1].id;
+            if(presenter == 0) {
+                if(Ri == "") {   //no presenter
+                    //present
+                    //send id
+                    $('#cotools-panel-2 video').remove();
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    presenter = 1;
+                    rmc.sendCustomMessage(e.streamid);
+                }
+                else {      //presenter present
+                    if(e.streamid == Ri) {
+                        $('#cotools-panel-2 video').remove();
+                        document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                        presenter = 1;
+                    }
+                    else {
+                        $('#cotools-panel iframe').hide();
+                        $('#cotools-panel video').remove();
+                        document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                    }
 
-                //alert("Child node: " + rID  + "  Media ID: " + e.streamid);
+                }
+//                document.getElementById('cotools-panel-2').childNodes.length <= 1) {
+                //alert(document.getElementById('cotools-panel-2').childNodes.length);
+//                e.streamid == rID) {
+
 
             } else {
-                setTimeout(function(){
+//                setTimeout(function(){
                     $('#cotools-panel iframe').hide();
                     $('#cotools-panel video').remove();
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
-                }, 200);
+//                }, 200);
 
             }
         }
