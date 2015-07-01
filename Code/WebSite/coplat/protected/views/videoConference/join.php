@@ -335,8 +335,8 @@
             screen: true,
             oneway: true
         });
-        this.streamid = "999";
-        alert("Before:"+ this.streamid);
+//        this.streamid = "999";
+//        alert("Before:"+ this.streamid);
     });
 
 
@@ -394,7 +394,7 @@
         }
         else if (e.isScreen || e.stream.isScreen) {
             alert(e.streamid);
-            if(presenter == 0 && e.streamid == '999') {
+            if(presenter == 0) {
                 alert("right!");
                 $('#cotools-panel-2 video').remove();
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
