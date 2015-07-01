@@ -331,7 +331,6 @@
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.addStream({
             //data: true,
-            streamid: '999',
             screen: true,
             oneway: true
         });
