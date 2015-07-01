@@ -399,7 +399,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            alert("media element is: " + e.mediaElement)
+            alert("media element is: " + e.mediaElement.id)
             if(presenter == 0) {
                 if (e.mediaElement.id == presentationId || e.mediaElement == null) {
                     $('#cotools-panel-2 video').remove();
