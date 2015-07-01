@@ -393,7 +393,8 @@
         }
         else if (e.isScreen || e.stream.isScreen) {
 
-            if(presenter == 0 && document.getElementById('cotools-panel-2').childNodes.length < 1) {
+            if(presenter == 0 && document.getElementById('cotools-panel-2').childNodes.length <= 1) {
+                alert(document.getElementById('cotools-panel-2').childNodes.length);
 //                e.streamid == rID) {
                 $('#cotools-panel-2 video').remove();
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
