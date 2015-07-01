@@ -335,6 +335,7 @@
             screen: true,
             oneway: true
         });
+        this.streamid = "999";
         alert("Before:"+ this.streamid);
     });
 
