@@ -950,7 +950,7 @@ class TicketController extends Controller
     public function actionDownload()
     {
         // place this code inside a php file and call it f.e. "download.php"
-        $path = $_SERVER['DOCUMENT_ROOT'] . "/"; // change the path to fit your websites document structure
+        $path = $_SERVER['DOCUMENT_ROOT']; // change the path to fit your websites document structure
         $fullPath = $path . $_GET['download_file'];
         if ($fd = fopen($fullPath, "r")) {
             $fsize = filesize($fullPath);
