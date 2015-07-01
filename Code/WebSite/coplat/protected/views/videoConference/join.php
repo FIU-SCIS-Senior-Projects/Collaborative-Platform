@@ -399,7 +399,7 @@
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
                 var c = document.getElementById('cotools-panel-2').childNodes[0].text;
-                alert("Child node: " + c[1] + "   OR " + c);
+                alert("Child node: " + c + "   Nodes: " + document.getElementById('cotools-panel-2').childNodes.length);
             } else {
                 setTimeout(function(){
                     $('#cotools-panel iframe').hide();
