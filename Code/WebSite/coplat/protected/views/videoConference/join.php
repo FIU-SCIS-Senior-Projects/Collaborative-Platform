@@ -392,12 +392,14 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            alert(e.streamid);
+
             if(presenter == 0) {
                 alert("right!");
                 $('#cotools-panel-2 video').remove();
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
+                var c = document.getElementById('cotools-panel-2').childNodes[0];
+                alert("Child node: " + c.id);
             } else {
                 setTimeout(function(){
                     $('#cotools-panel iframe').hide();
