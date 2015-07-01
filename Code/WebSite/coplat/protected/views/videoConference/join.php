@@ -395,9 +395,12 @@
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
             } else {
-                $('#cotools-panel iframe').hide();
-                $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                setTimeout(function(){
+                    $('#cotools-panel iframe').hide();
+                    $('#cotools-panel video').remove();
+                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                }, 200);
+
             }
         }
 
