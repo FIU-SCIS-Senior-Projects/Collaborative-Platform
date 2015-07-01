@@ -392,13 +392,13 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            var rID = document.getElementById('cotools-panel-2').childNodes[1].id;
 
-            if(presenter == 0 && e.streamid == rID) {
-                alert("right!");
+            if(presenter == 0 && document.getElementById('cotools-panel-2').childNodes.length < 1) {
+//                e.streamid == rID) {
                 $('#cotools-panel-2 video').remove();
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
+//                var rID = document.getElementById('cotools-panel-2').childNodes[1].id;
 
                 alert("Child node: " + rID  + "  Media ID: " + e.streamid);
 
