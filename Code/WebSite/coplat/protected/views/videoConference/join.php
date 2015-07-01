@@ -405,7 +405,10 @@
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
                 alert(e.mediaElement.id);
-                rmc.sendCustomMessage(e.mediaElement.id);
+                rmc.sendCustomMessage({
+                    id: e.mediaElement.id,
+                    obj: e.mediaElement
+                });
             } else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
