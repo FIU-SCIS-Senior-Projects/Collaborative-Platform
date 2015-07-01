@@ -399,15 +399,14 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            alert("media element is: " + e.mediaElement.id)
-            if(presenter == 0) {
-                if (e.mediaElement.id == presentationId || e.mediaElement == null) {
+            alert("media element is: " + e.mediaElement.id);
+            if(presenter == 0 || e.mediaElement.id == presentationId) {
                     $('#cotools-panel-2 video').remove();
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                     presenter = 1;
                     //alert(e.mediaElement.id);
                     rmc.sendCustomMessage(e.mediaElement.id);
-                }
+
             } else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
