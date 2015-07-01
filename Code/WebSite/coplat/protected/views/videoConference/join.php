@@ -278,6 +278,9 @@
         rmc.connect();
         rmc.onCustomMessage = function(message) {
             alert("Received: " + message);
+            $('#cotools-panel-2 video').remove();
+            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+            presenter = 1;
         };
     });
 
