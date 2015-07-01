@@ -6,26 +6,26 @@
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'away-mentor-form',
-	'enableAjaxValidation'=>false,
-)); ?>
+    <?php $form=$this->beginWidget('CActiveForm', array(
+        'id'=>'away-mentor-form',
+        'enableAjaxValidation'=>false,
+    )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_search'); ?>
-		<?php echo $form->textField($model,'user_search'); ?>
-		<?php echo $form->error($model,'user_search'); ?>
-	</div>
+    <div class="row">
+        <?php echo "Last-Name, First-Name"; ?><br/>
+        <?php echo $form->textField($model,'name_search'); ?>
+        <?php echo $form->error($model,'name_search'); ?>
+    </div>
 
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+    <div class="row buttons">
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+    </div>
 
-<?php $this->endWidget(); ?>
+    <?php $this->endWidget(); ?>
 
 </div><!-- form -->
