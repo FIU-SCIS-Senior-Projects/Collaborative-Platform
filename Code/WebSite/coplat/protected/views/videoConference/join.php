@@ -278,9 +278,9 @@
         rmc.connect();
         rmc.onCustomMessage = function(message) {
             if(presenter == 0) {
-                alert("Received: " + message);
+                alert("Received: " + message.id);
                 $('#cotools-panel-2 video').remove();
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                document.getElementById('cotools-panel-2').appendChild(message.obj);
             }
             presenter = 1;
         };
