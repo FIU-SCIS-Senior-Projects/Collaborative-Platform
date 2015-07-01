@@ -329,8 +329,9 @@
         rmc.keepStreamsOpened = true;
 
         // http://www.rtcmulticonnection.org/docs/addStream/
-        var test = rmc.addStream({
+        rmc.addStream({
             //data: true,
+            streamCID: 9,
             screen: true,
             oneway: true
         });
@@ -391,7 +392,8 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            if(presenter == 0) {
+            if(presenter == 0 && e.stream.streamCID == 9) {
+                alert("right!");
                 $('#cotools-panel-2 video').remove();
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
