@@ -394,7 +394,7 @@
                 $('#cotools-panel-2 video').remove();
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 presenter = 1;
-            } else {
+            } if (presenter == 1) {
                 setTimeout(function(){
                     $('#cotools-panel iframe').hide();
                     $('#cotools-panel video').remove();
