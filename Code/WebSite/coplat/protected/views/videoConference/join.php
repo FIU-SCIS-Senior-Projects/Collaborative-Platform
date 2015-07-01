@@ -401,6 +401,7 @@
         else if (e.isScreen || e.stream.isScreen) {
             alert("media element is: " + e.mediaElement.id);
             if(presenter == 0 || e.mediaElement.id == presentationId) {
+                alert("right");
                     $('#cotools-panel-2 video').remove();
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                     presenter = 1;
