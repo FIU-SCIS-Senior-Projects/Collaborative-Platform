@@ -324,6 +324,7 @@
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.addStream({
             //data: true,
+            video: false,
             screen: true,
             oneway: true
         });
