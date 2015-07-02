@@ -401,7 +401,7 @@
             };
             //alert("Stream id: " + e.streamid + "   Ri: " + Ri);
             setTimeout(function(){
-                if(presenter == 0) {
+                //if(presenter == 0) {
                     if(Ri == "") {   //no presenter
                         //present
                         //send id
@@ -428,14 +428,14 @@
     //                e.streamid == rID) {
 
 
-                } else {
+                //} else {
     //                setTimeout(function(){
                         $('#cotools-panel iframe').hide();
                         $('#cotools-panel video').remove();
                         document.getElementById('cotools-panel').appendChild(e.mediaElement);
     //                }, 200);
 
-                }
+                //}
             }, 2000);
         }
 
