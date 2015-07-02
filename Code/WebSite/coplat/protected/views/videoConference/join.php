@@ -268,7 +268,6 @@
         rmc.open();
         rmc.onCustomMessage = function(message) {
             Ri = message;
-            alert("message received");
         };
     });
 
@@ -400,7 +399,6 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            alert("Ri has the value of: " + Ri);
             if(presenter == 0) {
                 if(Ri == "") {   //no presenter
                     //present
