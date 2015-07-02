@@ -362,8 +362,6 @@
 
     var presenter = 0;
     var Ri = "";
-    var screens = [];
-    var i = 0;
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -389,63 +387,34 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            screens[i] = e;
-            i++;
-            setTimeout(function(){ handleStreams();}, 2000);
 
-//            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-//                if(Ri == "") {
-//                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                    rmc.sendCustomMessage(e.streamid);
-//
-//                }
-//                else if (Ri == e.streamid) {
-//                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                    rmc.sendCustomMessage(e.streamid);
-//                }
-//                else {
-//                    $('#cotools-panel iframe').hide();
-//                    $('#cotools-panel video').remove();
-//                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//                }
-//            }
-//
-//            else {
-//                $('#cotools-panel iframe').hide();
-//                $('#cotools-panel video').remove();
-//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//            }
+            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
+                if(Ri == "") {
+                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    rmc.sendCustomMessage(e.streamid);
+
+                }
+                else if (Ri == e.streamid) {
+                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    rmc.sendCustomMessage(e.streamid);
+                }
+                else {
+                    $('#cotools-panel iframe').hide();
+                    $('#cotools-panel video').remove();
+                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                }
+            }
+
+            else {
+                $('#cotools-panel iframe').hide();
+                $('#cotools-panel video').remove();
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            }
         }
 
     };
-
-    function handleStreams() {
-        if (Ri == "") {
-            document.getElementById('cotools-panel-2').appendChild(screens[0].mediaElement);
-            rmc.sendCustomMessage(screens[0].streamid);
-        }
-        else {
-            if(Ri == screens[0].streamid) {
-                document.getElementById('cotools-panel-2').appendChild(screens[0].mediaElement);
-            }
-            else {
-                $('#cotools-panel iframe').hide();
-                $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').appendChild(screens[0].mediaElement);
-            }
-
-            if(Ri == screens[1].streamid) {
-                document.getElementById('cotools-panel-2').appendChild(screens[1].mediaElement);
-            }
-            else {
-                $('#cotools-panel iframe').hide();
-                $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').appendChild(screens[1].mediaElement);
-            }
-        }
-    }
 
     //receiving a message from
     rmc.onmessage = function (event) {
