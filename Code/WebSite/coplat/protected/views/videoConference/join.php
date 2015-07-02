@@ -402,7 +402,7 @@
             //alert("Stream id: " + e.streamid + "   Ri: " + Ri);
             //setTimeout(function(){
                 //if(presenter == 0) {
-                    if(Ri == "" && presenter == 0) {   //no presenter
+                    if(Ri == "") {   //no presenter
                         //present
                         //send id
                         $('#cotools-panel-2 video').remove();
