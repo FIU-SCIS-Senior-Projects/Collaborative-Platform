@@ -374,6 +374,7 @@
             // alert("the stream is remote");
         }
         if (e.isVideo || e.stream.isVideo) {
+            alert("Stream Type: VIDEO");
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.appendChild(e.mediaElement);
@@ -390,6 +391,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
+            alert("Stream Type: SCREEN");
 //            screens[i] = e;
 //            i++;
             setTimeout(function(){ handleStreams(e);}, 2000);
