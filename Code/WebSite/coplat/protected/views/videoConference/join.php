@@ -394,7 +394,7 @@
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
-            alert(e.streamid);
+//            alert(e.streamid);
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
