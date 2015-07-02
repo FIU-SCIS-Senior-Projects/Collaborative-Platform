@@ -383,7 +383,7 @@
         if (e.type == 'remote') {
             // alert("the stream is remote");
         }
-        if (e.isVideo) {
+        if (e.isVideo || e.stream.isVideo) {
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.appendChild(e.mediaElement);
@@ -462,6 +462,7 @@
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
+        Ri = "";
     };
 
 
