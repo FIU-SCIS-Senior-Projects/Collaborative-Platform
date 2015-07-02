@@ -396,42 +396,43 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-
-            if(presenter == 0) {
-                if(Ri == "") {   //no presenter
-                    //present
-                    //send id
-                    $('#cotools-panel-2 video').remove();
-                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                    presenter = 1;
-                    rmc.sendCustomMessage(e.streamid);
-                }
-                else {      //presenter present
-                    if(e.streamid == Ri) {
+            setTimeout(function(){
+                if(presenter == 0) {
+                    if(Ri == "") {   //no presenter
+                        //present
+                        //send id
                         $('#cotools-panel-2 video').remove();
                         document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                         presenter = 1;
+                        rmc.sendCustomMessage(e.streamid);
                     }
-                    else {
+                    else {      //presenter present
+                        if(e.streamid == Ri) {
+                            $('#cotools-panel-2 video').remove();
+                            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                            presenter = 1;
+                        }
+                        else {
+                            $('#cotools-panel iframe').hide();
+                            $('#cotools-panel video').remove();
+                            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                        }
+
+                    }
+    //                document.getElementById('cotools-panel-2').childNodes.length <= 1) {
+                    //alert(document.getElementById('cotools-panel-2').childNodes.length);
+    //                e.streamid == rID) {
+
+    
+                } else {
+    //                setTimeout(function(){
                         $('#cotools-panel iframe').hide();
                         $('#cotools-panel video').remove();
                         document.getElementById('cotools-panel').appendChild(e.mediaElement);
-                    }
+    //                }, 200);
 
                 }
-//                document.getElementById('cotools-panel-2').childNodes.length <= 1) {
-                //alert(document.getElementById('cotools-panel-2').childNodes.length);
-//                e.streamid == rID) {
-
-
-            } else {
-//                setTimeout(function(){
-                    $('#cotools-panel iframe').hide();
-                    $('#cotools-panel video').remove();
-                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//                }, 200);
-
-            }
+            }, 3000);
         }
 
     };
