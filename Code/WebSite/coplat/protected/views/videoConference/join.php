@@ -400,7 +400,7 @@
                 Ri = message;
             };
             //alert("Stream id: " + e.streamid + "   Ri: " + Ri);
-            setTimeout(function(){
+            //setTimeout(function(){
                 //if(presenter == 0) {
                     if(Ri == "" && presenter == 0) {   //no presenter
                         //present
@@ -436,7 +436,7 @@
     //                }, 200);
 
                 //}
-            }, 2000);
+           // }, 2000);
         }
 
     };
