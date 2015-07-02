@@ -396,7 +396,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         setTimeout(function(){
-            else if (e.isScreen || e.stream.isScreen) {
+             if (e.isScreen || e.stream.isScreen) {
                 if(presenter == 0) {
                     if(Ri == "") {   //no presenter
                         //present
