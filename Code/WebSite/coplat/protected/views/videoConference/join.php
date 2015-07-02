@@ -399,7 +399,7 @@
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        else if (e.isScreen || e.stream.isScreen) {
+        else if ((e.isScreen || e.stream.isScreen) && (!(e.isVideo || e.stream.isVideo))) {
             if(presenter == 0) {
                 if(Ri == "") {   //no presenter
                     //present
