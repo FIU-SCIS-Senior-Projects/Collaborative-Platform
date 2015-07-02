@@ -331,12 +331,17 @@
                 <input style ="display:none" type = "text" id = "file" value='<?php /*echo $model->file;*/ ?>'</input> -->
         <?php
         //Logic to identified is a subdomain is being specified
-        $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE activated =:activated and (isAdmin =:isAdmin or isDomMentor=:isDomMentor and id!=:userid)", 
-                                                 array(':activated' => 1, ':isAdmin' => 1, ':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
+        if(User::isCurrentUserAdmin()) {
+            $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE activated =:activated and (isAdmin =:isAdmin or isDomMentor=:isDomMentor and id!=:userid)",
+                array(':activated' => 1, ':isAdmin' => 1, ':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
+        }
+        else{
+            $userDomain = User::model()->findAllBySql("Select * from user where id = 22");
+        }
         $data = array();
         //tito
         foreach ($userDomain as $mod) {
-            $data[$mod->id] = $mod->fname . ' ' . $mod->lname;
+                  $data[$mod->id] = $mod->fname . ' ' . $mod->lname;
         }
         ?>
         <?php echo $form->labelEx($mod, 'Domain Mentor'); ?>
