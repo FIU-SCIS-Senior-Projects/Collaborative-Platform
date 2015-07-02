@@ -138,6 +138,7 @@
                     People</a></li>
         </ul>
     </div>
+    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
@@ -386,9 +387,24 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
+
             if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                if(Ri == "") {
+                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    rmc.sendCustomMessage(e.streamid);
+
+                }
+                else if (Ri == e.streamid) {
+                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    rmc.sendCustomMessage(e.streamid);
+                }
+                else {
+                    $('#cotools-panel iframe').hide();
+                    $('#cotools-panel video').remove();
+                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                }
             }
 
             else {
