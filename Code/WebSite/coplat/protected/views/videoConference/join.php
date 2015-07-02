@@ -374,7 +374,7 @@
             // alert("the stream is remote");
         }
         if (e.isVideo || e.stream.isVideo) {
-            alert("Stream Type: VIDEO");
+            console.log("************************ Stream Type: VIDEO - From: " + e.userid + " ******************************");
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.appendChild(e.mediaElement);
@@ -391,7 +391,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            alert("Stream Type: SCREEN");
+            console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
 //            screens[i] = e;
 //            i++;
             setTimeout(function(){ handleStreams(e);}, 2000);
