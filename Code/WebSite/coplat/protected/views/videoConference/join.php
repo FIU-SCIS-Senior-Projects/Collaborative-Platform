@@ -423,26 +423,26 @@
 
     function handleStreams() {
         if (Ri == "") {
-            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+            document.getElementById('cotools-panel-2').appendChild(screens[0].mediaElement);
             rmc.sendCustomMessage(e.streamid);
         }
         else {
             if(Ri == screens[0].streamid) {
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                document.getElementById('cotools-panel-2').appendChild(screens[0].mediaElement);
             }
             else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                document.getElementById('cotools-panel').appendChild(screens[0].mediaElement);
             }
 
             if(Ri == screens[1].streamid) {
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                document.getElementById('cotools-panel-2').appendChild(screens[1].mediaElement);
             }
             else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                document.getElementById('cotools-panel').appendChild(screens[1].mediaElement);
             }
         }
     }
