@@ -428,7 +428,7 @@
                 rmc.sendCustomMessage(screens[0].streamid);
             }
 
-            else {
+            else if(screens.length == 2){
                 if (Ri == screens[0].streamid) {
                     document.getElementById('cotools-panel-2').appendChild(screens[0].mediaElement);
                 }
@@ -451,7 +451,7 @@
         else {
                 $('#cotools-panel iframe').hide();
                 $('#cotools-panel video').remove();
-                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                document.getElementById('cotools-panel').appendChild(screens[1].mediaElement);
             }
     }
 
