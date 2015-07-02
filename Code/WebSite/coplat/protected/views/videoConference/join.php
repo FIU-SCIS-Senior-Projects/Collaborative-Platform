@@ -395,8 +395,8 @@
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        else if (e.isScreen || e.stream.isScreen) {
-            setTimeout(function(){
+        setTimeout(function(){
+            else if (e.isScreen || e.stream.isScreen) {
                 if(presenter == 0) {
                     if(Ri == "") {   //no presenter
                         //present
@@ -423,7 +423,7 @@
                     //alert(document.getElementById('cotools-panel-2').childNodes.length);
     //                e.streamid == rID) {
 
-    
+
                 } else {
     //                setTimeout(function(){
                         $('#cotools-panel iframe').hide();
@@ -432,8 +432,8 @@
     //                }, 200);
 
                 }
-            }, 3000);
-        }
+            }
+        }, 3000);
 
     };
 
