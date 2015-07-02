@@ -274,9 +274,9 @@
 
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.connect();
-        rmc.onCustomMessage = function(message) {
-            Ri = message;
-        };
+
+
+
     });
 
     var video_status = 0;
@@ -396,7 +396,10 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            alert("Stream id: " + e.streamid + "   Ri: " + Ri);
+            rmc.onCustomMessage = function(message) {
+                Ri = message;
+            };
+            //alert("Stream id: " + e.streamid + "   Ri: " + Ri);
             setTimeout(function(){
                 if(presenter == 0) {
                     if(Ri == "") {   //no presenter
