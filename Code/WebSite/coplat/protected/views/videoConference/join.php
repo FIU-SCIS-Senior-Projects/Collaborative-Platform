@@ -395,8 +395,9 @@
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        setTimeout(function(){
-             if (e.isScreen || e.stream.isScreen) {
+        else if (e.isScreen || e.stream.isScreen) {
+            alert("Stream id: " + e.streamid + "   Ri: " + Ri);
+            setTimeout(function(){
                 if(presenter == 0) {
                     if(Ri == "") {   //no presenter
                         //present
@@ -432,8 +433,8 @@
     //                }, 200);
 
                 }
-            }
-        }, 3000);
+            }, 2000);
+        }
 
     };
 
