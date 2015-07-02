@@ -424,7 +424,7 @@
     function handleStreams() {
         if (Ri == "") {
             document.getElementById('cotools-panel-2').appendChild(screens[0].mediaElement);
-            rmc.sendCustomMessage(e.streamid);
+            rmc.sendCustomMessage(screens[0].streamid);
         }
         else {
             if(Ri == screens[0].streamid) {
