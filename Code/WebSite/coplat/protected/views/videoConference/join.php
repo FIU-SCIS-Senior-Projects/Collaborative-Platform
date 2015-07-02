@@ -138,7 +138,7 @@
                     People</a></li>
         </ul>
     </div>
-    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>
+<!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
