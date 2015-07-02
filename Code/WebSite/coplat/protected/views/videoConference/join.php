@@ -254,6 +254,7 @@
     };
 
 
+
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
@@ -313,7 +314,6 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
-
     //screen sharing
     $('#share-screen').click(function () {
         rmc.streams.stop('screen');
@@ -359,71 +359,7 @@
         setTimeout("location.href = '../';",1000);
     });
 
-    var presenter = 0;
-    var Ri = "";
-    //to know the stream type
-    rmc.onstream = function (e) {
-        if (e.type == 'local') {
-            // alert("the stream is local");
-        }
-        if (e.type == 'remote') {
-            // alert("the stream is remote");
-        }
-        if (e.isVideo || e.stream.isVideo) {
-            var uibox = document.createElement("div");
-            uibox.appendChild(document.createTextNode(e.userid));
-            uibox.appendChild(e.mediaElement);
-            uibox.className = "userid";
-            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-            uibox.style.cssText = 'float: left';
-            e.mediaElement.style.cssText = 'display: block';
-            document.getElementById('video-container').appendChild(uibox);
-            document.getElementById("on-off-video").style.color= 'red';
-            $('#join-room').fadeOut(600);
-//            alert(e.streamid);
-        }
-        else if (e.isAudio) {
-            document.getElementById('video-container').appendChild(e.mediaElement);
-        }
-        else if ((e.isScreen || e.stream.isScreen) && (!(e.isVideo || e.stream.isVideo))) {
-            if(presenter == 0) {
-                if(Ri == "") {   //no presenter
-                    //present
-                    //send id
-                    $('#cotools-panel-2 video').remove();
-                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                    presenter = 1;
-                    rmc.sendCustomMessage(e.streamid);
-                }
-                else {      //presenter present
-                    if(e.streamid == Ri) {
-                        $('#cotools-panel-2 video').remove();
-                        document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                        presenter = 1;
-                    }
-                    else {
-                        $('#cotools-panel iframe').hide();
-                        $('#cotools-panel video').remove();
-                        document.getElementById('cotools-panel').appendChild(e.mediaElement);
-                    }
 
-                }
-//                document.getElementById('cotools-panel-2').childNodes.length <= 1) {
-                //alert(document.getElementById('cotools-panel-2').childNodes.length);
-//                e.streamid == rID) {
-
-
-            } else {
-//                setTimeout(function(){
-                    $('#cotools-panel iframe').hide();
-                    $('#cotools-panel video').remove();
-                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//                }, 200);
-
-            }
-        }
-
-    };
 
     //receiving a message from
     rmc.onmessage = function (event) {
@@ -556,4 +492,88 @@
 </script>
 
 
+<script>
+    $(document).ready(function() {
 
+
+
+
+        var presenter = 0;
+        var Ri = "";
+        //to know the stream type
+        rmc.onstream = function (e) {
+            if (e.type == 'local') {
+                // alert("the stream is local");
+            }
+            if (e.type == 'remote') {
+                // alert("the stream is remote");
+            }
+            if (e.isVideo || e.stream.isVideo) {
+                var uibox = document.createElement("div");
+                uibox.appendChild(document.createTextNode(e.userid));
+                uibox.appendChild(e.mediaElement);
+                uibox.className = "userid";
+                uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+                uibox.style.cssText = 'float: left';
+                e.mediaElement.style.cssText = 'display: block';
+                document.getElementById('video-container').appendChild(uibox);
+                document.getElementById("on-off-video").style.color= 'red';
+                $('#join-room').fadeOut(600);
+//            alert(e.streamid);
+            }
+            else if (e.isAudio) {
+                document.getElementById('video-container').appendChild(e.mediaElement);
+            }
+            else if ((e.isScreen || e.stream.isScreen) && (!(e.isVideo || e.stream.isVideo))) {
+                if(presenter == 0) {
+                    if(Ri == "") {   //no presenter
+                        //present
+                        //send id
+                        $('#cotools-panel-2 video').remove();
+                        document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                        presenter = 1;
+                        rmc.sendCustomMessage(e.streamid);
+                    }
+                    else {      //presenter present
+                        if(e.streamid == Ri) {
+                            $('#cotools-panel-2 video').remove();
+                            document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                            presenter = 1;
+                        }
+                        else {
+                            $('#cotools-panel iframe').hide();
+                            $('#cotools-panel video').remove();
+                            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                        }
+
+                    }
+//                document.getElementById('cotools-panel-2').childNodes.length <= 1) {
+                    //alert(document.getElementById('cotools-panel-2').childNodes.length);
+//                e.streamid == rID) {
+
+
+                } else {
+//                setTimeout(function(){
+                    $('#cotools-panel iframe').hide();
+                    $('#cotools-panel video').remove();
+                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
+//                }, 200);
+
+                }
+            }
+
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+    });
+</script>
