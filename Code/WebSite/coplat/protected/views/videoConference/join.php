@@ -385,42 +385,14 @@
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        else if ((e.isScreen || e.stream.isScreen) && (!(e.isVideo || e.stream.isVideo))) {
-            console.log("****************************************** " + e.streamid + " = " + Ri + "*****************************************");
-            if(presenter == 0) {
-                if(Ri == "") {   //no presenter
-                    //present
-                    //send id
-                    $('#cotools-panel-2 video').remove();
-                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                    presenter = 1;
-                    rmc.sendCustomMessage(e.streamid);
-                }
-                else {      //presenter present
-                    if(e.streamid == Ri) {
-                        $('#cotools-panel-2 video').remove();
-                        document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                        presenter = 1;
-                    }
-                    else {
-                        $('#cotools-panel iframe').hide();
-                        $('#cotools-panel video').remove();
-                        document.getElementById('cotools-panel').appendChild(e.mediaElement);
-                    }
+        else if (e.isScreen || e.stream.isScreen) {
+            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
+                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+            }
 
-                }
-//                document.getElementById('cotools-panel-2').childNodes.length <= 1) {
-                //alert(document.getElementById('cotools-panel-2').childNodes.length);
-//                e.streamid == rID) {
-
-
-            } else {
-//                setTimeout(function(){
-                    $('#cotools-panel iframe').hide();
-                    $('#cotools-panel video').remove();
-                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//                }, 200);
-
+            else {
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
             }
         }
 
