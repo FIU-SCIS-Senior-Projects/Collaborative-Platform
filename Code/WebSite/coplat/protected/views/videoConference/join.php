@@ -424,6 +424,7 @@
     function handleStreams(e) {
         if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
             if (Ri == "") {
+                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 rmc.sendCustomMessage(e.streamid);
             }
