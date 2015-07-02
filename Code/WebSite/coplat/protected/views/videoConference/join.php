@@ -266,6 +266,10 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
+        rmc.onCustomMessage = function(message) {
+            Ri = message;
+            alert("message received");
+        };
     });
 
     $('#join-room').click(function () {
