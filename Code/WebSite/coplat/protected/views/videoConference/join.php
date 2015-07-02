@@ -245,21 +245,12 @@
     // https://github.com/muaz-khan/RTCMultiConnection
 
     var rmc = new RTCMultiConnection();
-    var sec = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
         video: true,
         audio: true,
         data: true
-    };
-
-    sec.session = {
-        video: false,
-        audio: false,
-        data: false,
-        screen: true,
-        oneway: true
     };
 
 
@@ -322,11 +313,6 @@
         $('#join-room').attr('disabled', 'disabled');
     };
 
-    sec.onMediaCaptured = function () {
-        $('#share-screen-2').removeAttr('disabled');
-        $('#open-room').attr('disabled', 'disabled');
-        $('#join-room').attr('disabled', 'disabled');
-    };
 
     //screen sharing
     $('#share-screen').click(function () {
