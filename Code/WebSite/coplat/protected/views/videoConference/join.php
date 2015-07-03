@@ -452,11 +452,15 @@
     }
 
     //receiving a message from
+    var messages = 0;
     rmc.onmessage = function (event) {
         if (event.data.type == "chat") {
             var username = event.userid;
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
+            messages++;
+            $('.chat-message-counter').show();
+
         }
         else {
 
@@ -519,8 +523,8 @@
     $('#live-chat header').on('click', function() {
 
         $('.chat').slideToggle(300, 'swing');
-        //$('.chat-message-counter').fadeToggle(300, 'swing');
-
+        $('.chat-message-counter').fadeOut(300);
+        messages = 0;
     });
 
     $(function () {
