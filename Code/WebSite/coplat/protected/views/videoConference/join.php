@@ -459,7 +459,7 @@
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
             messages++;
-            if(!$('#count').hasClass('mm-opened')) {
+            if(!open) {
                 $('#count').text(messages);
                 $('.chat-message-counter').show();
             }
@@ -522,11 +522,15 @@
 
 <!-- General Site Scripts -->
 <script>
+    var open = false;
     $('#live-chat header').on('click', function() {
 
         $('.chat').slideToggle(300, 'swing');
         $('.chat-message-counter').fadeOut(300);
         messages = 0;
+        if(open) {
+            open = false;
+        } else open = true;
     });
 
     $(function () {
