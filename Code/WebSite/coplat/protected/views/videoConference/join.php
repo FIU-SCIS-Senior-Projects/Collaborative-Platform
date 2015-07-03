@@ -459,10 +459,10 @@
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
             messages++;
-            //if(!$('#count').hasClass('mm-opened')) {
+            if(!$('#count').hasClass('mm-opened')) {
                 $('#count').text(messages);
                 $('.chat-message-counter').show();
-            //}
+            }
         }
         else {
 
