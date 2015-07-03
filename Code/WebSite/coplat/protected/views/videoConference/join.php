@@ -179,7 +179,7 @@
         <div id="live-chat">
             <header class="clearfix">
                 <h4><?php echo $user->fname . ' ' .$user->lname .' ('. $user->username .')'?></h4>
-                <span class="chat-message-counter">3</span>
+                <span class="chat-message-counter" id="count"></span>
             </header>
 
             <div class="chat">
@@ -459,6 +459,7 @@
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
             messages++;
+            $('.chat-message-counter').innerHTML = messages;
             $('.chat-message-counter').show();
 
         }
