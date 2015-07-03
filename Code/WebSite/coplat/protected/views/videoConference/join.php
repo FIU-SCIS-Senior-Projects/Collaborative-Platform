@@ -459,7 +459,7 @@
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
             messages++;
-            $('#count').innerHTML = messages;
+            $('#count').value = messages;
             $('.chat-message-counter').show();
 
         }
