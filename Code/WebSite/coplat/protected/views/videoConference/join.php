@@ -458,8 +458,8 @@
             var username = event.userid;
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
-            messages++;
             if(!open) {
+                messages++;
                 $('#count').text(messages);
                 $('.chat-message-counter').show();
             }
@@ -530,7 +530,11 @@
         messages = 0;
         if(open) {
             open = false;
-        } else open = true;
+            alert("Close: " + open);
+        } else {
+            open = true;
+            alert("Open: " + open);
+        }
     });
 
     $(function () {
