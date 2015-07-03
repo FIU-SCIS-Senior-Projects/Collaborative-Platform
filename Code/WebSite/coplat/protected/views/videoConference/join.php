@@ -530,10 +530,8 @@
         messages = 0;
         if(open) {
             open = false;
-            alert("Close: " + open);
         } else {
             open = true;
-            alert("Open: " + open);
         }
     });
 
