@@ -460,7 +460,7 @@
             appendMsg(username, event.data.content);
             messages++;
             //if(!$('#count').hasClass('mm-opened')) {
-                $('#count').text = 2;
+                $('#count').text(2);
                 $('.chat-message-counter').show();
             //}
         }
