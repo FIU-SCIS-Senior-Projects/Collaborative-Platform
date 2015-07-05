@@ -138,7 +138,7 @@
                     People</a></li>
         </ul>
     </div>
-<!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
+    <!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
@@ -179,7 +179,7 @@
         <div id="live-chat">
             <header class="clearfix">
                 <h4><?php echo $user->fname . ' ' .$user->lname .' ('. $user->username .')'?></h4>
-                <span class="chat-message-counter" id="count"></span>
+                <span class="chat-message-counter">3</span>
             </header>
 
             <div class="chat">
@@ -190,9 +190,9 @@
                 <input type="hidden">
             </div> <!-- end chat -->
         </div> <!-- end live-chat -->
-        
+
     </div>
-<!--    </section>-->
+    <!--    </section>-->
     <!-- end of row -->
 </div>
 
@@ -210,11 +210,11 @@
             <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>" id="meetingID">
             <div class="invitee_emails">
                 <div class="form-group">
-                        <label class="control-label col-md-2" for="invitee-1">Email 1</label>
-                        <div class="col-md-8">
-                            <input placeholder="Invitee email" class="form-control" id="invitee-1" type="email" name="invitees[]">
-                            <a href="#" class="add_field_button">&nbsp;&nbsp;<i class="fa fa-plus"></i></a>
-                        </div>
+                    <label class="control-label col-md-2" for="invitee-1">Email 1</label>
+                    <div class="col-md-8">
+                        <input placeholder="Invitee email" class="form-control" id="invitee-1" type="email" name="invitees[]">
+                        <a href="#" class="add_field_button">&nbsp;&nbsp;<i class="fa fa-plus"></i></a>
+                    </div>
 
                 </div>
             </div>
@@ -245,31 +245,47 @@
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
 
-    var rmc = new RTCMultiConnection();
-
-    rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
-    rmc.session = {
+    //    var rmc = new RTCMultiConnection();
+    var CHANNEL_ID = "MYCHANNEL-" + window.RMCDefaultChannel;
+    var ROOM_ID = "MYROOM";
+    var SESSION = {
         video: true,
         audio: true,
         data: true
     };
+    var rmc = undefined;
+
+    var USER_ID = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
 
 
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        rmc.open();
+        rmc = new RTCMultiConnection(CHANNEL_ID);
+        rmc.userid = USER_ID;
+        rmc.session = SESSION;
+        rmc.open({
+            dontTransmit: true,
+            sessionid: ROOM_ID
+        });
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
     });
 
     $('#join-room').click(function () {
+        rmc = new RTCMultiConnection(CHANNEL_ID);
+
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
 
         // http://www.rtcmulticonnection.org/docs/connect/
-        rmc.connect();
+        rmc.join({
+            sessionid: ROOM_ID,
+            userid = USER_ID,
+            session: SESSION
+            });
+        //rmc.connect();
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
@@ -292,11 +308,11 @@
     }
 
     rmc.onmute = function(e) {
-       e.mediaElement.setAttribute('poster', '/coplat/images/black.png');
+        e.mediaElement.setAttribute('poster', '/coplat/images/black.png');
     };
 
     rmc.onunmute = function(e) {
-       e.mediaElement.removeAttribute('poster');
+        e.mediaElement.removeAttribute('poster');
     };
 
     // display a notification box
@@ -324,7 +340,6 @@
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.addStream({
             //data: true,
-            video: false,
             screen: true,
             oneway: true
         });
@@ -344,17 +359,17 @@
         document.getElementById('input-text-area').disabled = false;
     };
 
-   document.getElementById('input-text-area').onkeyup = function (e) {
-       if (e.keyCode != 13) return; // if it is not Enter-key
-       var value = this.value.replace(/^\s+|\s+$/g, '');
-       if (!value.length) return; // if empty-spaces
-       appendMsg("You", value);
-       rmc.send({
-           type: 'chat',
-           content: value
-       });
-       this.value = '';
-   };
+    document.getElementById('input-text-area').onkeyup = function (e) {
+        if (e.keyCode != 13) return; // if it is not Enter-key
+        var value = this.value.replace(/^\s+|\s+$/g, '');
+        if (!value.length) return; // if empty-spaces
+        appendMsg("You", value);
+        rmc.send({
+            type: 'chat',
+            content: value
+        });
+        this.value = '';
+    };
 
     $('#disconnect').click(function () {
         rmc.leave();
@@ -363,8 +378,6 @@
 
     var presenter = 0;
     var Ri = "";
-    var screens = [];
-    var i = 0;
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -374,7 +387,6 @@
             // alert("the stream is remote");
         }
         if (e.isVideo || e.stream.isVideo) {
-            console.log("************************ Stream Type: VIDEO - From: " + e.userid + " ******************************");
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.appendChild(e.mediaElement);
@@ -391,78 +403,41 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
-//            screens[i] = e;
-//            i++;
-            setTimeout(function(){ handleStreams(e);}, 2000);
 
-//            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-//                if(Ri == "") {
-//                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                    rmc.sendCustomMessage(e.streamid);
-//
-//                }
-//                else if (Ri == e.streamid) {
-//                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                    rmc.sendCustomMessage(e.streamid);
-//                }
-//                else {
-//                    $('#cotools-panel iframe').hide();
-//                    $('#cotools-panel video').remove();
-//                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//                }
-//            }
-//
-//            else {
-//                $('#cotools-panel iframe').hide();
-//                $('#cotools-panel video').remove();
-//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//            }
-        }
-
-    };
-
-    function handleStreams(e) {
-        if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-            if (Ri == "") {
-                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                rmc.sendCustomMessage(e.streamid);
-            }
-            else {
-                if(e.streamid == Ri) {
-                    alert("Stream ids are equal");
+            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
+                if(Ri == "") {
+                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    rmc.sendCustomMessage(e.streamid);
+
+                }
+                else if (Ri == e.streamid) {
+                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    rmc.sendCustomMessage(e.streamid);
                 }
                 else {
-                    alert("ids are NOT equal");
                     $('#cotools-panel iframe').hide();
                     $('#cotools-panel video').remove();
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
                 }
             }
+
+            else {
+                $('#cotools-panel iframe').hide();
+                $('#cotools-panel video').remove();
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            }
         }
-        else {
-            $('#cotools-panel iframe').hide();
-            $('#cotools-panel video').remove();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
-        }
-    }
+
+    };
 
     //receiving a message from
-    var messages = 0;
     rmc.onmessage = function (event) {
         if (event.data.type == "chat") {
             var username = event.userid;
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
-            if(!open) {
-                messages++;
-                $('#count').text(messages);
-                $('.chat-message-counter').show();
-            }
         }
         else {
 
@@ -522,17 +497,11 @@
 
 <!-- General Site Scripts -->
 <script>
-    var open = false;
     $('#live-chat header').on('click', function() {
 
         $('.chat').slideToggle(300, 'swing');
-        $('.chat-message-counter').fadeOut(300);
-        messages = 0;
-        if(open) {
-            open = false;
-        } else {
-            open = true;
-        }
+        //$('.chat-message-counter').fadeToggle(300, 'swing');
+
     });
 
     $(function () {
@@ -559,11 +528,11 @@
                 $(wrapper).append(
                     '<div class="form-group">' +
 
-                            '<label class="control-label col-md-2" for="invitee-'+x+'">Email ' + x + '</label>' +
-                            ' <div class="col-md-8">'+
-                            '<input placeholder="" type="email" class="form-control" id="invitee-' + x + '" name="invitees[]"/>' +
-                            '<a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a>' +
-                            '</div>' +
+                    '<label class="control-label col-md-2" for="invitee-'+x+'">Email ' + x + '</label>' +
+                    ' <div class="col-md-8">'+
+                    '<input placeholder="" type="email" class="form-control" id="invitee-' + x + '" name="invitees[]"/>' +
+                    '<a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a>' +
+                    '</div>' +
                     '</div>'); //add input box
             }
         });
