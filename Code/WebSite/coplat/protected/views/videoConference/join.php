@@ -266,10 +266,10 @@
 
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
-        document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
+        document.getElementById("join-room").innerHTML = 'Waiting for organizer...';
 
         // http://www.rtcmulticonnection.org/docs/connect/
-        rmc.connect();
+        rmc.join();
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
