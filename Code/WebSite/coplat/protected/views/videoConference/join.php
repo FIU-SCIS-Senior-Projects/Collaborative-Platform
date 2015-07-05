@@ -326,9 +326,9 @@
             //data: true,
             video: false,
             screen: true,
-            oneway: true,
-            mes: 'test'
+            oneway: true
         });
+        rmc.sendCustomMessage("right!");
 //        this.streamid = "999";
 //        alert("Before:"+ this.streamid);
     });
@@ -395,7 +395,9 @@
             console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
 //            screens[i] = e;
 //            i++;
-            alert(e.stream.mes);
+            rmc.onCustomMessage = function(msg) {
+                alert(msg);
+            };
             setTimeout(function(){ handleStreams(e);}, 2000);
 
 //            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
