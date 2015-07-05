@@ -326,7 +326,8 @@
             //data: true,
             video: false,
             screen: true,
-            oneway: true
+            oneway: true,
+            streamid: 'test'
         });
 //        this.streamid = "999";
 //        alert("Before:"+ this.streamid);
@@ -394,6 +395,7 @@
             console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
 //            screens[i] = e;
 //            i++;
+            alert(e.stream.streamid);
             setTimeout(function(){ handleStreams(e);}, 2000);
 
 //            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
@@ -433,11 +435,11 @@
             }
             else {
                 if(e.streamid == Ri) {
-                    alert("Stream ids are equal");
+//                    alert("Stream ids are equal");
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 }
                 else {
-                    alert("ids are NOT equal");
+//                    alert("ids are NOT equal");
                     $('#cotools-panel iframe').hide();
                     $('#cotools-panel video').remove();
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
