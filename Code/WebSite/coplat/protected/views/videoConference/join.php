@@ -253,7 +253,7 @@
         audio: true,
         data: true
     };
-    var rmc;
+    var rmc = new RTCMultiConnection(CHANNEL_ID);
 
     var USER_ID = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
 
@@ -261,7 +261,6 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        rmc = new RTCMultiConnection(CHANNEL_ID);
         rmc.userid = USER_ID;
         rmc.session = SESSION;
         rmc.open({
@@ -274,7 +273,6 @@
     });
 
     $('#join-room').click(function () {
-        rmc = new RTCMultiConnection(CHANNEL_ID);
 
         document.getElementById("join-room").disabled = true;
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
