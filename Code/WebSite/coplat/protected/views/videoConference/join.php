@@ -378,6 +378,7 @@
             uibox.appendChild(document.createTextNode(e.userid));
 
             if(!rmc.DetectRTC.hasWebcam) {
+                alert("user does not have a webcam");
                 e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.jpeg');
             }
             uibox.appendChild(e.mediaElement);
