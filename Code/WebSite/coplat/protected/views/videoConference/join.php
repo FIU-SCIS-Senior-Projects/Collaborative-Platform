@@ -259,9 +259,7 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-        rmc.onCustomMessage = function(message) {
-            Ri = message;
-        };
+
     });
 
     $('#join-room').click(function () {
@@ -270,9 +268,7 @@
 
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.join();
-        rmc.onCustomMessage = function(message) {
-            Ri = message;
-        };
+
     });
 
     var video_status = 0;
@@ -433,7 +429,7 @@
             if (Ri == "") {
                 document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                rmc.sendCustomMessage(e.streamid);
+//                rmc.sendCustomMessage(e.streamid);
             }
             else {
                 if(e.streamid == Ri) {
