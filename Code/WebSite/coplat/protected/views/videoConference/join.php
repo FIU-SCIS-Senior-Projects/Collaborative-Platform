@@ -395,32 +395,8 @@
             console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
 //            screens[i] = e;
 //            i++;
-            setTimeout(function(){ handleStreams(e);}, 2000);
+            handleStreams(e);
 
-//            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-//                if(Ri == "") {
-//                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                    rmc.sendCustomMessage(e.streamid);
-//
-//                }
-//                else if (Ri == e.streamid) {
-//                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                    rmc.sendCustomMessage(e.streamid);
-//                }
-//                else {
-//                    $('#cotools-panel iframe').hide();
-//                    $('#cotools-panel video').remove();
-//                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//                }
-//            }
-//
-//            else {
-//                $('#cotools-panel iframe').hide();
-//                $('#cotools-panel video').remove();
-//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//            }
         }
 
     };
