@@ -391,8 +391,8 @@
             console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
 //            screens[i] = e;
 //            i++;
-            rmc.onCustomMessage = function(msg) {
-                alert(msg);
+            rmc.onCustomMessage = function(message) {
+                alert(message);
             };
             setTimeout(function(){ handleStreams(e);}, 2000);
 
