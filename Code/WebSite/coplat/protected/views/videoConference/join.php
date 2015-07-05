@@ -253,7 +253,7 @@
         audio: true,
         data: true
     };
-    var rmc = undefined;
+    var rmc;
 
     var USER_ID = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
 
