@@ -138,7 +138,7 @@
                     People</a></li>
         </ul>
     </div>
-<!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
+    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Present</button>
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
@@ -179,7 +179,7 @@
         <div id="live-chat">
             <header class="clearfix">
                 <h4><?php echo $user->fname . ' ' .$user->lname .' ('. $user->username .')'?></h4>
-                <span class="chat-message-counter" id="count"></span>
+                <span class="chat-message-counter">3</span>
             </header>
 
             <div class="chat">
@@ -190,7 +190,7 @@
                 <input type="hidden">
             </div> <!-- end chat -->
         </div> <!-- end live-chat -->
-
+        
     </div>
 <!--    </section>-->
     <!-- end of row -->
@@ -244,8 +244,7 @@
 
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
-
-    var rmc = new RTCMultiConnection("VC-" + window.RMCDefaultChannel);
+    var rmc = new RTCMultiConnection();
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -259,16 +258,20 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         rmc.open();
-
+        rmc.onCustomMessage = function(message) {
+            Ri = message;
+        };
     });
 
     $('#join-room').click(function () {
         document.getElementById("join-room").disabled = true;
-        document.getElementById("join-room").innerHTML = 'Waiting for organizer...';
+        document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
 
         // http://www.rtcmulticonnection.org/docs/connect/
-        rmc.join();
-
+        rmc.connect();
+        rmc.onCustomMessage = function(message) {
+            Ri = message;
+        };
     });
 
     var video_status = 0;
@@ -320,11 +323,9 @@
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.addStream({
             //data: true,
-            video: false,
             screen: true,
             oneway: true
         });
-        rmc.sendCustomMessage("right!");
 //        this.streamid = "999";
 //        alert("Before:"+ this.streamid);
     });
@@ -360,8 +361,6 @@
 
     var presenter = 0;
     var Ri = "";
-    var screens = [];
-    var i = 0;
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -371,7 +370,6 @@
             // alert("the stream is remote");
         }
         if (e.isVideo || e.stream.isVideo) {
-            console.log("************************ Stream Type: VIDEO - From: " + e.userid + " ******************************");
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
             uibox.appendChild(e.mediaElement);
@@ -388,81 +386,41 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
-//            screens[i] = e;
-//            i++;
-            rmc.onCustomMessage = function(message) {
-                alert(message);
-            };
-            setTimeout(function(){ handleStreams(e);}, 2000);
 
-//            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-//                if(Ri == "") {
-//                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                    rmc.sendCustomMessage(e.streamid);
-//
-//                }
-//                else if (Ri == e.streamid) {
-//                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                    rmc.sendCustomMessage(e.streamid);
-//                }
-//                else {
-//                    $('#cotools-panel iframe').hide();
-//                    $('#cotools-panel video').remove();
-//                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//                }
-//            }
-//
-//            else {
-//                $('#cotools-panel iframe').hide();
-//                $('#cotools-panel video').remove();
-//                document.getElementById('cotools-panel').appendChild(e.mediaElement);
-//            }
-        }
-
-    };
-
-    function handleStreams(e) {
-        if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
-            if (Ri == "") {
-                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
-                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-//                rmc.sendCustomMessage(e.streamid);
-            }
-            else {
-                if(e.streamid == Ri) {
-//                    alert("Stream ids are equal");
+            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
+                if(Ri == "") {
+                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    rmc.sendCustomMessage(e.streamid);
+
+                }
+                else if (Ri == e.streamid) {
+                    document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    rmc.sendCustomMessage(e.streamid);
                 }
                 else {
-//                    alert("ids are NOT equal");
                     $('#cotools-panel iframe').hide();
                     $('#cotools-panel video').remove();
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
                 }
             }
+
+            else {
+                $('#cotools-panel iframe').hide();
+                $('#cotools-panel video').remove();
+                document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            }
         }
-        else {
-            $('#cotools-panel iframe').hide();
-            $('#cotools-panel video').remove();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
-        }
-    }
+
+    };
 
     //receiving a message from
-    var messages = 0;
     rmc.onmessage = function (event) {
         if (event.data.type == "chat") {
             var username = event.userid;
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
-            if(!open) {
-                messages++;
-                $('#count').text(messages);
-                $('.chat-message-counter').show();
-            }
         }
         else {
 
@@ -522,17 +480,11 @@
 
 <!-- General Site Scripts -->
 <script>
-    var open = false;
     $('#live-chat header').on('click', function() {
 
         $('.chat').slideToggle(300, 'swing');
-        $('.chat-message-counter').fadeOut(300);
-        messages = 0;
-        if(open) {
-            open = false;
-        } else {
-            open = true;
-        }
+        //$('.chat-message-counter').fadeToggle(300, 'swing');
+
     });
 
     $(function () {
