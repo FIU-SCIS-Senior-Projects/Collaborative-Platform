@@ -377,11 +377,12 @@
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
 
-            if(rmc.DetectRTC.hasWebcam) {
-                uibox.appendChild(e.mediaElement);
-                //alert("user does not have a webcam");
-                //e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.jpeg');
-            }
+//            if(rmc.DetectRTC.hasWebcam) {
+//                //alert("user does not have a webcam");
+//                //e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.jpeg');
+//            }
+
+            uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
             uibox.style.cssText = 'float: left';
@@ -389,6 +390,9 @@
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
+            if(!rmc.DetectRTC.hasWebcam) {
+                $('#uibox-' + e.userid).prepend('<img id="nwcImage" src="/coplat/images/noWebcam.jpeg" />');
+            }
 //            alert(e.streamid);
         }
         else if (e.isAudio) {
