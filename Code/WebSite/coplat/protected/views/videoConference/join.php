@@ -377,10 +377,10 @@
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
 
-            if(!rmc.DetectRTC.hasWebcam) {
-                alert("user does not have a webcam");
-                //e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.jpeg');
-            }
+//            if(!rmc.DetectRTC.hasWebcam) {
+//                alert("user does not have a webcam");
+//                //e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.jpeg');
+//            }
             uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
