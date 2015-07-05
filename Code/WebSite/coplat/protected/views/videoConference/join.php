@@ -327,7 +327,7 @@
             video: false,
             screen: true,
             oneway: true,
-            streamid: 'test'
+            mes: 'test'
         });
 //        this.streamid = "999";
 //        alert("Before:"+ this.streamid);
@@ -395,7 +395,7 @@
             console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
 //            screens[i] = e;
 //            i++;
-            alert(e.stream.streamid);
+            alert(e.stream.mes);
             setTimeout(function(){ handleStreams(e);}, 2000);
 
 //            if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
