@@ -282,7 +282,7 @@
         // http://www.rtcmulticonnection.org/docs/connect/
         rmc.join({
             sessionid: ROOM_ID,
-            userid = USER_ID,
+            userid: USER_ID,
             session: SESSION
             });
         //rmc.connect();
