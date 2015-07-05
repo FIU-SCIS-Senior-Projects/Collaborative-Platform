@@ -374,9 +374,12 @@
             // alert("the stream is remote");
         }
         if (e.isVideo || e.stream.isVideo) {
-            console.log("************************ Stream Type: VIDEO - From: " + e.userid + " ******************************");
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
+
+            if(!rmc.DetectRTC.hasWebcam) {
+                e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.jpeg');
+            }
             uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
