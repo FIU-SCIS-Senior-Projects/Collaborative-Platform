@@ -330,6 +330,12 @@
 //        alert("Before:"+ this.streamid);
     });
 
+    $('#present').click(function () {
+        rmc.addStream({
+            screen: true,
+            oneway: true
+        });
+    });
 
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
