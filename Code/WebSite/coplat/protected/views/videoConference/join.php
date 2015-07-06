@@ -376,6 +376,12 @@
         if (e.isVideo || e.stream.isVideo) {
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
+
+            if(!rmc.DetectRTC.hasWebcam) {
+                document.getElementById("on-off-video").remove();
+                e.mediaElement = webkitURL.createObjectURL(e.stream);
+            }
+
             uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
@@ -383,9 +389,7 @@
             e.mediaElement.style.cssText = 'display: block';
             document.getElementById('video-container').appendChild(uibox);
 
-            if(!rmc.DetectRTC.hasWebcam) {
-                document.getElementById("on-off-video").remove();
-            }
+
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
         }
@@ -393,11 +397,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            if(rmc.DetectRTC.hasWebcam) {
-                rmc.waitUntilRemoteStreamStartsFlowing = true;
-            } else {
-                rmc.waitUntilRemoteStreamStartsFlowing = false;
-            }
+            rmc.waitUntilRemoteStreamStartsFlowing = true;
             handleStreams(e);
         }
     };
