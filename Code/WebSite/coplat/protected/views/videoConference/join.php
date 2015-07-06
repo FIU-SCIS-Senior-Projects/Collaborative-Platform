@@ -380,11 +380,12 @@
             uibox.style.cssText = 'float: left';
             e.mediaElement.style.cssText = 'display: block';
             document.getElementById('video-container').appendChild(uibox);
+
+            if(!rmc.DetectRTC.hasWebcam) {
+                document.getElementById("on-off-video").remove();
+            }
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
-            rmc.streams.selectFirst({local : true}).mute({video : true});
-
-//            alert(e.streamid);
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
@@ -553,11 +554,6 @@
 <script>
     $(document).ready(function() {
         $('.chat').slideToggle(1, 'swing');
-
-        //if(!rmc.DetectRTC.hasWebcam) {
-//            rmc.streams.selectFirst({local : true}).mute({video : true});
-        //}
-
         $('#invitation-form').submit(function(event) {
             var form = $(this);
             var method = form.attr('method');
