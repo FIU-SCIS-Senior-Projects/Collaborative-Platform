@@ -390,8 +390,9 @@
             $('#join-room').fadeOut(600);
             //if(!rmc.DetectRTC.hasWebcam) {
 
+            e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.png');
 
-                $('#uibox-' + "<?php echo $user->fname .''.$user->lname .''. $user->username .''?>").append('<img id="nwcImage" src="/coplat/images/noWebcam.png" />');
+           
             //}
 //            alert(e.streamid);
         }
