@@ -388,11 +388,11 @@
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
-            if(!rmc.DetectRTC.hasWebcam) {
+            //if(!rmc.DetectRTC.hasWebcam) {
 
 
                 $('#uibox-' + "<?php echo $user->fname .''.$user->lname .''. $user->username .''?>").append('<img id="nwcImage" src="/coplat/images/noWebcam.png" />');
-            }
+            //}
 //            alert(e.streamid);
         }
         else if (e.isAudio) {
