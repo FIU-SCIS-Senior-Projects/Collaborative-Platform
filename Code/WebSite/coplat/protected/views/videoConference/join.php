@@ -258,6 +258,8 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
+        var presenter = 0;
+        var Ri = "";
         rmc.open();
         rmc.onCustomMessage = function(message) {
             Ri = message;
@@ -269,6 +271,8 @@
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
 
         // http://www.rtcmulticonnection.org/docs/connect/
+        var presenter = 0;
+        var Ri = "";
         rmc.connect();
         rmc.onCustomMessage = function(message) {
             Ri = message;
@@ -359,8 +363,8 @@
         setTimeout("location.href = '../';",1000);
     });
 
-    var presenter = 0;
-    var Ri = "";
+//    var presenter = 0;
+//    var Ri = "";
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
