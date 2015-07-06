@@ -393,7 +393,9 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            rmc.waitUntilRemoteStreamStartsFlowing = true;
+            if(!rmc.DetectRTC.hasWebcam) {
+                rmc.waitUntilRemoteStreamStartsFlowing = true;
+            }
             handleStreams(e);
         }
     };
