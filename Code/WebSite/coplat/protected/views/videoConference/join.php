@@ -363,8 +363,6 @@
 
     var presenter = 0;
     var Ri = "";
-    var screens = [];
-    var i = 0;
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -391,7 +389,7 @@
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
             if(!rmc.DetectRTC.hasWebcam) {
-                alert(<?php echo $user->id ?> + "\n" + e.userid);
+                alert((<?php echo $user->fname . ' ' .$user->lname .' ('. $user->username .')'?>).replace(/ |\(|\)/g, '') + "\n" + e.userid.replace(/ |\(|\)/g, ''));
                 $('#uibox-' + <?php echo $user->id ?>).prepend('<img id="nwcImage" src="/coplat/images/noWebcam.png" />');
             }
 //            alert(e.streamid);
