@@ -278,7 +278,7 @@
             Ri = message;
         };
         if(!rmc.DetectRTC.hasWebcam) {
-            rmc.addstream({
+            rmc.addStream({
                 video: false
             });
         }
