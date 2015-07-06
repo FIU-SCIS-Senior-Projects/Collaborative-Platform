@@ -441,7 +441,9 @@ class User extends CActiveRecord
     {
         return $this->isProMentor;
     }
-
+    public function getLastCommaFirst() {
+        return $this->lname.', ' . $this->fname;
+    }
     public function isPerMentor()
     {
         return $this->isPerMentor;
