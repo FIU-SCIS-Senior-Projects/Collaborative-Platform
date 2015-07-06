@@ -259,6 +259,16 @@ class ApplicationController extends Controller
 						$mentee->user_id = $actualPick->user_id; // mentee id
 						$mentee->personal_mentor_id = $user_id; // mentor id
 						$mentee->save();
+                        $trans = Yii::app()->db->beginTransaction();
+                        $menter = Mentee::model()->findByPk($actualPick->user_id);
+                        if (is_null($menter))
+                        {
+                            $menter = Mentee('add_new');
+                            $menter->user_id = $actualPick->user_id;
+                        }
+                        $menter->personal_mentor_user_id = $user_id;
+                        $menter->save();
+                        $trans->commit();
 						
 					}
 					
@@ -953,6 +963,16 @@ class ApplicationController extends Controller
 						$mentee->user_id = $actualPick->user_id; // mentee id
 						$mentee->personal_mentor_id = $user->id; // mentor id
 						$mentee->save();
+                        $trans = Yii::app()->db->beginTransaction();
+                        $menter = Mentee::model()->findByPk($actualPick->user_id);
+                        if (is_null($menter))
+                        {
+                            $menter = Mentee('add_new');
+                            $menter->user_id = $actualPick->user_id;
+                        }
+                        $menter->personal_mentor_user_id = $user->id;
+                        $menter->save();
+                        $trans->commit();
 		
 					}
 						
