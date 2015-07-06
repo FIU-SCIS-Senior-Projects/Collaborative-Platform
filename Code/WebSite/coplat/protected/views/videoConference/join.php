@@ -393,7 +393,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            if(!rmc.DetectRTC.hasWebcam) {
+            if(rmc.DetectRTC.hasWebcam) {
                 rmc.waitUntilRemoteStreamStartsFlowing = true;
             }
             handleStreams(e);
