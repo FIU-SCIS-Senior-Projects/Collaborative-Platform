@@ -277,6 +277,11 @@
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
+        if(!rmc.DetectRTC.hasWebcam) {
+            rmc.addstream({
+                video: false;
+            });
+        }
     });
 
     var video_status = 0;
@@ -393,7 +398,7 @@
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
         else if (e.isScreen || e.stream.isScreen) {
-            rmc.waitUntilRemoteStreamStartsFlowing = true;
+           // rmc.waitUntilRemoteStreamStartsFlowing = true;
             handleStreams(e);
         }
     };
