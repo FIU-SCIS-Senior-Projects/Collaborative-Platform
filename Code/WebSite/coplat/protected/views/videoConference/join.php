@@ -391,7 +391,7 @@
             if(!rmc.DetectRTC.hasWebcam) {
 
 
-                $('#uibox-' + "<?php echo $user->fname .''.$user->lname .''. $user->username .''?>").prepend('<img id="nwcImage" src="/coplat/images/noWebcam.png" />');
+                $('#uibox-' + "<?php echo $user->fname .''.$user->lname .''. $user->username .''?>").append('<img id="nwcImage" src="/coplat/images/noWebcam.png" />');
             }
 //            alert(e.streamid);
         }
