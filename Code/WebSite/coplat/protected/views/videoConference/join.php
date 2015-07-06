@@ -291,9 +291,9 @@
 
     }
 
-    if(!rmc.DetectRTC.hasWebcam) {
+    //if(!rmc.DetectRTC.hasWebcam) {
         rmc.streams.selectFirst({local : true}).mute({video : true});
-    }
+   // }
 
     rmc.onmute = function(e) {
        e.mediaElement.setAttribute('poster', '/coplat/images/black.png');
