@@ -68,9 +68,9 @@ class AwayMentorController extends Controller
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if(isset($_POST['AwayMentor']))
+        if(isset($_POST['name_search']))
         {
-            $userName = $_POST['AwayMentor']['name_search'];
+            $userName = $_POST['name_search'];
             $lname = substr($userName, 0, stripos($userName, ","));
             $fname = substr($userName, stripos($userName, ",")+2);
             $output = "<script>console.log( 'Debug Objects: " . $lname." ".$fname . "' );</script>";
@@ -88,11 +88,17 @@ class AwayMentorController extends Controller
 
 
         }
+        else{
+            $output = "<script>console.log( 'Dsfebug Objects: ". implode($_POST) ."' );</script>";
+
+            echo $output;
+        }
 
         $this->render('create',array(
             'model'=>$model,
         ));
     }
+
 
     /**
      * Updates a particular model.
