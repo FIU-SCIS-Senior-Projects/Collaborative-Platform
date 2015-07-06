@@ -395,6 +395,8 @@
         else if (e.isScreen || e.stream.isScreen) {
             if(rmc.DetectRTC.hasWebcam) {
                 rmc.waitUntilRemoteStreamStartsFlowing = true;
+            } else {
+                rmc.waitUntilRemoteStreamStartsFlowing = false;
             }
             handleStreams(e);
         }
