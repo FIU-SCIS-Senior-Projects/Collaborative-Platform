@@ -553,10 +553,10 @@
     $(document).ready(function() {
         $('.chat').slideToggle(1, 'swing');
 
-        if(!rmc.DetectRTC.hasWebcam) {
+        //if(!rmc.DetectRTC.hasWebcam) {
             rmc.streams.selectFirst({local : true}).mute({video : true});
-        }
-        
+        //}
+
         $('#invitation-form').submit(function(event) {
             var form = $(this);
             var method = form.attr('method');
