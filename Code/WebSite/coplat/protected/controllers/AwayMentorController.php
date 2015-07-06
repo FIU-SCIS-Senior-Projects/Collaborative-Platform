@@ -68,9 +68,9 @@ class AwayMentorController extends Controller
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if(isset($_POST['AwayMentor']))
+        if(isset($_POST['name_search']))
         {
-            $userName = $_POST['AwayMentor']['name_search'];
+            $userName = $_POST['name_search'];
             $lname = substr($userName, 0, stripos($userName, ","));
             $fname = substr($userName, stripos($userName, ",")+2);
             $output = "<script>console.log( 'Debug Objects: " . $lname." ".$fname . "' );</script>";
@@ -88,11 +88,52 @@ class AwayMentorController extends Controller
 
 
         }
+        else{
+            $output = "<script>console.log( 'Dsfebug Objects: ". implode($_POST) ."' );</script>";
+
+            echo $output;
+        }
 
         $this->render('create',array(
             'model'=>$model,
         ));
     }
+    public function actionFindUserName() {
+        $q = $_GET['term'];
+        if (isset($q)) {
+            $criteria = new CDbCriteria;
+            //condition to find your data, using q as the parameter field
+            if (strstr($q, ","))
+            {
+                $q1 = substr($q, stripos($q, ",")+1);
+                $q = substr($q, 0, stripos($q, ","));
+            }
+            else{
+                $q1 = $q;
+            }
+            $criteria->condition = "lname LIKE :q OR fname LIKE :q1";
+            $criteria->order = 'lname'; // correct order-by field
+            $criteria->limit = 10; // probably a good idea to limit the results
+            // with trailing wildcard only; probably a good idea for large volumes of data
+            $criteria->params = array(':q' => trim($q) . '%', ':q1'=>trim($q1).'%');
+            $Users = User::model()->findAll($criteria);
+
+            if (!empty($Users)) {
+                $out = array();
+                foreach ($Users as $p) {
+                    $out[] = array(
+                        // expression to give the string for the autoComplete drop-down
+                        'label' => $p->LastCommaFirst,
+                        'value' => $p->LastCommaFirst,
+                        'id' => $p->id, // return value from autocomplete
+                    );
+                }
+                echo CJSON::encode($out);
+                Yii::app()->end();
+            }
+        }
+    }
+
 
     /**
      * Updates a particular model.
