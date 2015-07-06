@@ -247,6 +247,7 @@
 
     var rmc = new RTCMultiConnection();
     var presenter;
+    var Ri;
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -258,7 +259,7 @@
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         presenter = 0;
-        var Ri = "";
+        Ri = "";
         rmc.open();
         rmc.onCustomMessage = function(message) {
             Ri = message;
@@ -271,7 +272,7 @@
 
         // http://www.rtcmulticonnection.org/docs/connect/
         presenter = 0;
-        var Ri = "";
+        Ri = "";
         rmc.connect();
         rmc.onCustomMessage = function(message) {
             Ri = message;
