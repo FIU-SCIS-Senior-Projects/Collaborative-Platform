@@ -255,8 +255,6 @@
         data: true
     };
 
-
-
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
         presenter = 0;
@@ -401,22 +399,22 @@
 
     function handleStreams(e) {
         if(presenter == 0) {
-            if (Ri == "") {
+            if (Ri == "" || e.streamid == Ri) {
                 document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 rmc.sendCustomMessage(e.streamid);
                 presenter = 1;
             }
             else {
-                if(e.streamid == Ri) {
-                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
-                    presenter = 1;
-                }
-                else {
+//                if(e.streamid == Ri) {
+//                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+//                    presenter = 1;
+//                }
+//                else {
                     $('#cotools-panel iframe').hide();
                     $('#cotools-panel video').remove();
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
-                }
+//                }
             }
         }
         else {
