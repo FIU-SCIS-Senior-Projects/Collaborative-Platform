@@ -389,9 +389,9 @@
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
             if(!rmc.DetectRTC.hasWebcam) {
-                alert("<?php echo $user->fname .''.$user->lname .''. $user->username .''?>" + "\n" + e.userid.replace(/ |\(|\)/g, ''));
+             
 
-                $('#uibox-' + <?php echo $user->id ?>).prepend('<img id="nwcImage" src="/coplat/images/noWebcam.png" />');
+                $("#uibox-<?php echo $user->fname .''.$user->lname .''. $user->username .''?>").prepend('<img id="nwcImage" src="/coplat/images/noWebcam.png" />');
             }
 //            alert(e.streamid);
         }
