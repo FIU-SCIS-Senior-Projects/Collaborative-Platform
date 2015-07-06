@@ -277,11 +277,6 @@
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
-        if(!rmc.DetectRTC.hasWebcam) {
-            rmc.addStream({
-                video: false
-            });
-        }
     });
 
     var video_status = 0;
