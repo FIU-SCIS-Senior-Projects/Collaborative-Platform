@@ -389,8 +389,8 @@
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
             if(!rmc.DetectRTC.hasWebcam) {
-                alert("-" + <?php echo $user->fname.''.$user->lname.''.$user->username ;?> + "-");
                 alert("-" +  e.userid.replace(/ |\(|\)/g, '') + "-");
+                alert("-" + <?php echo $user->fname.''.$user->lname.''.$user->username ;?> + "-");
 
                 $('#uibox-' + <?php echo $user->id ?>).prepend('<img id="nwcImage" src="/coplat/images/noWebcam.png" />');
             }
