@@ -328,8 +328,6 @@
             screen: true,
             oneway: true
         });
-//        this.streamid = "999";
-//        alert("Before:"+ this.streamid);
     });
 
 
@@ -392,13 +390,8 @@
         }
         else if (e.isScreen || e.stream.isScreen) {
             rmc.waitUntilRemoteStreamStartsFlowing = true;
-            console.log("************************ Stream Type: SCREEN - From: " + e.userid + " ******************************");
-//            screens[i] = e;
-//            i++;
             handleStreams(e);
-
         }
-
     };
 
     function handleStreams(e) {
@@ -410,11 +403,9 @@
             }
             else {
                 if(e.streamid == Ri) {
-//                    alert("Stream ids are equal");
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 }
                 else {
-//                    alert("ids are NOT equal");
                     $('#cotools-panel iframe').hide();
                     $('#cotools-panel video').remove();
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
