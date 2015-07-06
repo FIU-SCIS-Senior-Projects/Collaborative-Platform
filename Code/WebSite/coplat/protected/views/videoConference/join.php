@@ -276,12 +276,6 @@
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
-        if(!rmc.DetectRTC.hasWebcam) {
-            rmc.addStream({
-                video: true,
-                audio: true
-            });
-        }
     });
 
     var video_status = 0;
@@ -404,11 +398,12 @@
     };
 
     function handleStreams(e) {
-        if(presenter == 0) {
+        //if(presenter == 0) {
             if (Ri == "" || e.streamid == Ri) {
-                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                //document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 rmc.sendCustomMessage(e.streamid);
+                Ri = e.streamid;
                 presenter = 1;
             }
             else {
@@ -422,12 +417,12 @@
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
 //                }
             }
-        }
-        else {
-            $('#cotools-panel iframe').hide();
-            $('#cotools-panel video').remove();
-            document.getElementById('cotools-panel').appendChild(e.mediaElement);
-        }
+        //}
+//        else {
+//            $('#cotools-panel iframe').hide();
+//            $('#cotools-panel video').remove();
+//            document.getElementById('cotools-panel').appendChild(e.mediaElement);
+//        }
     }
 
     //receiving a message from
