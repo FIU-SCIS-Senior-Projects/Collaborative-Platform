@@ -388,12 +388,10 @@
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
-            //if(!rmc.DetectRTC.hasWebcam) {
 
-            e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.png');
-
-           
-            //}
+            if(!rmc.DetectRTC.hasWebcam) {
+                e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.png');
+            }
 //            alert(e.streamid);
         }
         else if (e.isAudio) {
