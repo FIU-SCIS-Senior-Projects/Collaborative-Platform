@@ -279,7 +279,7 @@
         };
         if(!rmc.DetectRTC.hasWebcam) {
             rmc.addstream({
-                video: false;
+                video: false
             });
         }
     });
