@@ -291,6 +291,10 @@
 
     }
 
+    if(!rmc.DetectRTC.hasWebcam) {
+        rmc.streams.selectFirst({local : true}).mute({video : true});
+    }
+
     rmc.onmute = function(e) {
        e.mediaElement.setAttribute('poster', '/coplat/images/black.png');
     };
@@ -374,12 +378,6 @@
         if (e.isVideo || e.stream.isVideo) {
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
-
-//            if(rmc.DetectRTC.hasWebcam) {
-//                //alert("user does not have a webcam");
-//                //e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.jpeg');
-//            }
-
             uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
@@ -389,9 +387,6 @@
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
 
-            if(!rmc.DetectRTC.hasWebcam) {
-                e.mediaElement.setAttribute('poster', '/coplat/images/noWebcam.png');
-            }
 //            alert(e.streamid);
         }
         else if (e.isAudio) {
