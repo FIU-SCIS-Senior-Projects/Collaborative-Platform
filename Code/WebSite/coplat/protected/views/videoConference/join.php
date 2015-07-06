@@ -382,6 +382,7 @@
             document.getElementById('video-container').appendChild(uibox);
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
+            rmc.streams.selectFirst({local : true}).mute({video : true});
 
 //            alert(e.streamid);
         }
@@ -554,7 +555,7 @@
         $('.chat').slideToggle(1, 'swing');
 
         //if(!rmc.DetectRTC.hasWebcam) {
-            rmc.streams.selectFirst({local : true}).mute({video : true});
+//            rmc.streams.selectFirst({local : true}).mute({video : true});
         //}
 
         $('#invitation-form').submit(function(event) {
