@@ -246,6 +246,7 @@
     // https://github.com/muaz-khan/RTCMultiConnection
 
     var rmc = new RTCMultiConnection();
+    var presenter;
 
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
@@ -258,7 +259,7 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
-        var presenter = 0;
+        presenter = 0;
         var Ri = "";
         rmc.open();
         rmc.onCustomMessage = function(message) {
@@ -271,7 +272,7 @@
         document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
 
         // http://www.rtcmulticonnection.org/docs/connect/
-        var presenter = 0;
+        presenter = 0;
         var Ri = "";
         rmc.connect();
         rmc.onCustomMessage = function(message) {
@@ -399,15 +400,17 @@
     };
 
     function handleStreams(e) {
-        if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
+        if(presenter == 0) {
             if (Ri == "") {
                 document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 rmc.sendCustomMessage(e.streamid);
+                presenter = 1;
             }
             else {
                 if(e.streamid == Ri) {
                     document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                    presenter = 1;
                 }
                 else {
                     $('#cotools-panel iframe').hide();
@@ -453,6 +456,7 @@
     rmc.onleave = function (e) {
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
         Ri = "";
+        presenter = 0;
     };
 
 
