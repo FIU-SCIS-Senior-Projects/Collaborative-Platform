@@ -279,6 +279,18 @@
         };
     });
 
+    rmc.onNewSession = function(session) {
+        console.log("=========== onNewSession event fired with ");
+      if(rmc.DetectRTC.hasWebcam) {
+          session.join({audio: true, video: true});
+          console.log("WEBCAM");
+      } else if(!rmc.DetectRTC.hasWebcam) {
+          session.join({audio: true});
+          console.log("NO WEBCAM");
+      }
+
+    };
+
     var video_status = 0;
 
     function pauseResumeVideo() {
