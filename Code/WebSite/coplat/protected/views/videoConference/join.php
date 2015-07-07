@@ -395,9 +395,9 @@
             e.mediaElement.style.cssText = 'display: block';
             document.getElementById('video-container').appendChild(uibox);
 
-            if(!rmc.DetectRTC.hasWebcam) {
-                document.getElementById("on-off-video").remove();
-            }
+//            if(!rmc.DetectRTC.hasWebcam) {
+//                document.getElementById("on-off-video").remove();
+//            }
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
         }
