@@ -138,7 +138,7 @@
                     People</a></li>
         </ul>
     </div>
-<!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
+    <!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
@@ -190,9 +190,9 @@
                 <input type="hidden">
             </div> <!-- end chat -->
         </div> <!-- end live-chat -->
-        
+
     </div>
-<!--    </section>-->
+    <!--    </section>-->
     <!-- end of row -->
 </div>
 
@@ -210,11 +210,11 @@
             <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>" id="meetingID">
             <div class="invitee_emails">
                 <div class="form-group">
-                        <label class="control-label col-md-2" for="invitee-1">Email 1</label>
-                        <div class="col-md-8">
-                            <input placeholder="Invitee email" class="form-control" id="invitee-1" type="email" name="invitees[]">
-                            <a href="#" class="add_field_button">&nbsp;&nbsp;<i class="fa fa-plus"></i></a>
-                        </div>
+                    <label class="control-label col-md-2" for="invitee-1">Email 1</label>
+                    <div class="col-md-8">
+                        <input placeholder="Invitee email" class="form-control" id="invitee-1" type="email" name="invitees[]">
+                        <a href="#" class="add_field_button">&nbsp;&nbsp;<i class="fa fa-plus"></i></a>
+                    </div>
 
                 </div>
             </div>
@@ -247,12 +247,10 @@
 
     var rmc = new RTCMultiConnection();
     var Ri;
-    var haswc = rmc.DetectRTC.hasWebcam;
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
-
     rmc.session = {
         video: true,
-        audio: haswc,
+        audio: true,
         data: true
     };
 
@@ -263,7 +261,6 @@
         //var presenter = 0;
         Ri = "";
         rmc.open();
-
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
@@ -277,7 +274,6 @@
         //var presenter = 0;
         Ri = "";
         rmc.connect();
-
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
@@ -300,11 +296,11 @@
     }
 
     rmc.onmute = function(e) {
-       e.mediaElement.setAttribute('poster', '/coplat/images/black.png');
+        e.mediaElement.setAttribute('poster', '/coplat/images/black.png');
     };
 
     rmc.onunmute = function(e) {
-       e.mediaElement.removeAttribute('poster');
+        e.mediaElement.removeAttribute('poster');
     };
 
     // display a notification box
@@ -332,7 +328,7 @@
         // http://www.rtcmulticonnection.org/docs/addStream/
         rmc.addStream({
             //data: true,
-            video: false,
+            video: true,
             screen: true,
             oneway: true
         });
@@ -350,25 +346,25 @@
         document.getElementById('input-text-area').disabled = false;
     };
 
-   document.getElementById('input-text-area').onkeyup = function (e) {
-       if (e.keyCode != 13) return; // if it is not Enter-key
-       var value = this.value.replace(/^\s+|\s+$/g, '');
-       if (!value.length) return; // if empty-spaces
-       appendMsg("You", value);
-       rmc.send({
-           type: 'chat',
-           content: value
-       });
-       this.value = '';
-   };
+    document.getElementById('input-text-area').onkeyup = function (e) {
+        if (e.keyCode != 13) return; // if it is not Enter-key
+        var value = this.value.replace(/^\s+|\s+$/g, '');
+        if (!value.length) return; // if empty-spaces
+        appendMsg("You", value);
+        rmc.send({
+            type: 'chat',
+            content: value
+        });
+        this.value = '';
+    };
 
     $('#disconnect').click(function () {
         rmc.leave();
         setTimeout("location.href = '../';",1000);
     });
 
-//    var presenter = 0;
-//    var Ri = "";
+    //    var presenter = 0;
+    //    var Ri = "";
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -535,11 +531,11 @@
                 $(wrapper).append(
                     '<div class="form-group">' +
 
-                            '<label class="control-label col-md-2" for="invitee-'+x+'">Email ' + x + '</label>' +
-                            ' <div class="col-md-8">'+
-                            '<input placeholder="" type="email" class="form-control" id="invitee-' + x + '" name="invitees[]"/>' +
-                            '<a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a>' +
-                            '</div>' +
+                    '<label class="control-label col-md-2" for="invitee-'+x+'">Email ' + x + '</label>' +
+                    ' <div class="col-md-8">'+
+                    '<input placeholder="" type="email" class="form-control" id="invitee-' + x + '" name="invitees[]"/>' +
+                    '<a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a>' +
+                    '</div>' +
                     '</div>'); //add input box
             }
         });
