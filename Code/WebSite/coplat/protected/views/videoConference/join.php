@@ -374,28 +374,20 @@
             // alert("the stream is remote");
         }
         if (e.isVideo || e.stream.isVideo) {
-
-                var uibox = document.createElement("div");
-                uibox.appendChild(document.createTextNode(e.userid));
-                uibox.appendChild(e.mediaElement);
-                uibox.className = "userid";
-                uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-                uibox.style.cssText = 'float: left';
-                e.mediaElement.style.cssText = 'display: block';
-                document.getElementById('video-container').appendChild(uibox);
-                document.getElementById("on-off-video").style.color = 'red';
+            var uibox = document.createElement("div");
+            uibox.appendChild(document.createTextNode(e.userid));
+            uibox.appendChild(e.mediaElement);
+            uibox.className = "userid";
+            uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
+            uibox.style.cssText = 'float: left';
+            e.mediaElement.style.cssText = 'display: block';
+            document.getElementById('video-container').appendChild(uibox);
 
             if(!rmc.DetectRTC.hasWebcam) {
                 document.getElementById("on-off-video").remove();
-                var nwVid = document.createElement("video");
-                nwVid.poster = "/coplat/images/noWebcam.png";
-                nwVid.autoplay = true;
-                document.getElementById('video-container').appendChild(nwVid);
-
             }
-
+            document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
-
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
