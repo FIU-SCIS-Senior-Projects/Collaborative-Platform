@@ -379,10 +379,13 @@
 
             if(!rmc.DetectRTC.hasWebcam) {
                 document.getElementById("on-off-video").remove();
-                e.mediaElement = webkitURL.createObjectURL(e.stream);
+                var nwVid = document.createElement("video");
+                nwVid.src = "/coplat/images/noWebcam.png";
+                nwVid.autoplay = true;
+                uibox.appendChild(nwVid);
+            } else {
+                uibox.appendChild(e.mediaElement);
             }
-
-            uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
             uibox.style.cssText = 'float: left';
