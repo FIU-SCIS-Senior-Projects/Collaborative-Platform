@@ -380,7 +380,7 @@
             if(!rmc.DetectRTC.hasWebcam) {
                 document.getElementById("on-off-video").remove();
                 var nwVid = document.createElement("video");
-                nwVid.src = "/coplat/images/noWebcam.png";
+                nwVid.poster = "/coplat/images/noWebcam.png";
                 nwVid.autoplay = true;
                 uibox.appendChild(nwVid);
             } else {
@@ -395,6 +395,7 @@
 
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
+
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
