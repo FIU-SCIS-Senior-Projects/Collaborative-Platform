@@ -248,11 +248,11 @@
     var rmc = new RTCMultiConnection();
     var Ri;
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
-    rmc.session = {
-        video: true,
-        audio: true,
-        data: true
-    };
+//    rmc.session = {
+//        video: true,
+//        audio: true,
+//        data: true
+//    };
 
 
 
@@ -261,6 +261,21 @@
         //var presenter = 0;
         Ri = "";
         rmc.open();
+
+        if(rmc.DetectRTC.hasWebcam) {
+            rmc.addStream({
+                video: true,
+                audio: true,
+                data: true
+            });
+        } else {
+            rmc.addStream({
+                video: false,
+                audio: true,
+                data: true
+            });
+        }
+
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
@@ -274,6 +289,21 @@
         //var presenter = 0;
         Ri = "";
         rmc.connect();
+
+        if(rmc.DetectRTC.hasWebcam) {
+            rmc.addStream({
+                video: true,
+                audio: true,
+                data: true
+            });
+        } else {
+            rmc.addStream({
+                video: false,
+                audio: true,
+                data: true
+            });
+        }
+
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
