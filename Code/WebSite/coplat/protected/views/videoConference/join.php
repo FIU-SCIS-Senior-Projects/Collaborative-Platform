@@ -376,13 +376,13 @@
         if (e.isVideo || e.stream.isVideo) {
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
-            alert(e.userid.replace(/ |\(|\)/g, ''));
+
             if(!rmc.DetectRTC.hasWebcam) {
                 document.getElementById("on-off-video").remove();
                 var nwVid = document.createElement("video");
                 nwVid.poster = "/coplat/images/noWebcam.png";
                 nwVid.autoplay = true;
-                uibox.appendChild(nwVid);
+                $('#user2useruser2').appendChild(nwVid);
             } else {
                 uibox.appendChild(e.mediaElement);
             }
