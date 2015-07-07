@@ -382,7 +382,7 @@
                 var nwVid = document.createElement("video");
                 nwVid.poster = "/coplat/images/noWebcam.png";
                 nwVid.autoplay = true;
-                $('#user2useruser2').appendChild(nwVid);
+                $('#user2useruser2').prepend(nwVid);
             }
 
             uibox.appendChild(e.mediaElement);
