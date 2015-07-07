@@ -262,19 +262,11 @@
         Ri = "";
         rmc.open();
 
-        if(rmc.DetectRTC.hasWebcam) {
             rmc.addStream({
                 video: true,
                 audio: true,
                 data: true
             });
-        } else {
-            rmc.addStream({
-                video: false,
-                audio: true,
-                data: true
-            });
-        }
 
         rmc.onCustomMessage = function(message) {
             Ri = message;
