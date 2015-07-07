@@ -416,7 +416,7 @@
                 document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 rmc.sendCustomMessage(e.streamid);
-                document.log("************************** Message sent: " + e.streamid + " **********************************");
+                console.log("************************** Message sent: " + e.streamid + " **********************************");
             }
             else {
                 if(e.streamid == Ri) {
