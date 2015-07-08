@@ -306,7 +306,7 @@ class ProjectMeetingController extends Controller
         /*Get all tickets for his mentees */
         $tickets = array();
         foreach($pmentee as  $id=>$menteeTickets){
-            $myTickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE creator_user_id=:id and assign_user_id!=:id2",
+            $myTickets = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE creator_user_id=:id and assign_user_id!=:id2 order by id desc",
                 array(':id'=>$menteeTickets->id, ':id2'=>User::getCurrentUserId()));
             if(is_array($myTickets)) {
                 $tickets = array_merge($tickets, $myTickets);
