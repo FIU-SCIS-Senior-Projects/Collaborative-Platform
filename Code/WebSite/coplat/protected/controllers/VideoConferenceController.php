@@ -134,32 +134,43 @@ class VideoConferenceController extends Controller
             }
 
             if ($model->save()) {                       //if we can save the date
-                $inviteeEmails = $_POST['invitees'];    //emails of all the invitees
-                foreach ($inviteeEmails as $email) {
-                    $invitee = User::model()->findByAttributes(array('email' => $email));
-                    if ($invitee == null) {             //if invitee does not exist, record the error and continue
-                        $invitationError .= $email . " does not appear in our records <br>";
-                        continue;
-                    }                                  //moderator cannot invite him/herself
-                    if ($invitee->id == $moderator->id) {
-                        continue;
+                $inviteeList = $_POST['invitees'];    //emails of all the invitees
+                    foreach($inviteeList as $username) {
+                        $lname = substr($username, 0, stripos($username, ","));
+                        $fname = substr($username, stripos($username, ",")+2);
+
+                        $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam"=>$fname, ":lnam"=>$lname));
+
+                        foreach($user as $invitee) {
+                            $email = $invitee->email;
+
+                            if ($email == null) {             //if invitee does not exist, record the error and continue
+                                $invitationError .= $username . " does not appear in our records <br>";
+                                continue;
+                            }                                  //moderator cannot invite him/herself
+                            if ($invitee->id == $moderator->id) {
+                                continue;
+                            }
+
+                            $invitation = new VCInvitation();
+                            $invitation->invitee_id = $invitee->id;
+                            $invitation->videoconference_id = $model->id;
+                            $invitation->status = "Unknown";
+
+                            if (!$invitation->save()) {        //an error occurred
+                                $invitationError .= "An error occurred upon saving the invitation to " . $username . "error";
+                            } else {
+                                $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                                VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
+                            }
+
+                        }
+
+                        if ($invitationError != "") {          //if there was an error
+                            Yii::app()->user->setFlash('invitation-error', $invitationError);
+                        }
                     }
-                                                       //else invitee
-                    $invitation = new VCInvitation();
-                    $invitation->invitee_id = $invitee->id;
-                    $invitation->videoconference_id = $model->id;
-                    $invitation->status = "Unknown";
-                    if (!$invitation->save()) {        //an error occurred
-                        $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
-                    } else {
-                        $inviteefullName = $invitee->fname . " " . $invitee->lname;
-                        VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
-                    }
-                }
-                if ($invitationError != "") {          //if there was an error
-                    Yii::app()->user->setFlash('invitation-error', $invitationError);
-                }
-                $this->redirect(array('view', 'id' => $model->id));
+                    $this->redirect(array('view', 'id' => $model->id));
             }
         }
         $this->render('create', array(
