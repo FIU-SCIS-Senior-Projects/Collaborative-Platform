@@ -263,7 +263,6 @@
         rmc.open();
         rmc.onCustomMessage = function(message) {
             Ri = message;
-            console.log("************************* Message received: " + message + "\nValue of Ri: " + Ri + " *******************************************");
         };
     });
 
@@ -274,24 +273,20 @@
         // http://www.rtcmulticonnection.org/docs/connect/
         //var presenter = 0;
         Ri = "";
-        rmc.connect();
+        rmc.join();
         rmc.onCustomMessage = function(message) {
             Ri = message;
-            console.log("************************ Message received: " + message + "\nValue of Ri: " + Ri + " ************************");
         };
     });
 
-    rmc.onNewSession = function(session) {
-        console.log("=========== onNewSession event fired with ");
-      if(rmc.DetectRTC.hasWebcam) {
-          session.join({audio: true, video: true});
-          console.log("WEBCAM");
-      } else if(!rmc.DetectRTC.hasWebcam) {
-          session.join({audio: true});
-          console.log("NO WEBCAM");
-      }
-
-    };
+//    rmc.onNewSession = function(session) {
+//      if(rmc.DetectRTC.hasWebcam) {
+//          session.join({audio: true, video: true});
+//      } else if(!rmc.DetectRTC.hasWebcam) {
+//          session.join({audio: true});
+//      }
+//
+//    };
 
     var video_status = 0;
 
@@ -306,7 +301,6 @@
             rmc.streams.selectFirst({local : true}).unmute({video : true});
             video_status = 0;
         }
-
     }
 
     rmc.onmute = function(e) {
@@ -375,8 +369,6 @@
         setTimeout("location.href = '../';",1000);
     });
 
-    //    var presenter = 0;
-    //    var Ri = "";
     //to know the stream type
     rmc.onstream = function (e) {
         if (e.type == 'local') {
@@ -394,10 +386,6 @@
             uibox.style.cssText = 'float: left';
             e.mediaElement.style.cssText = 'display: block';
             document.getElementById('video-container').appendChild(uibox);
-
-//            if(!rmc.DetectRTC.hasWebcam) {
-//                document.getElementById("on-off-video").remove();
-//            }
             document.getElementById("on-off-video").style.color= 'red';
             $('#join-room').fadeOut(600);
         }
@@ -416,7 +404,6 @@
                 document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
                 document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
                 rmc.sendCustomMessage(e.streamid);
-                console.log("************************** Message sent: " + e.streamid + " **********************************");
             }
             else {
                 if(e.streamid == Ri) {
