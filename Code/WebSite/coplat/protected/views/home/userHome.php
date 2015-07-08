@@ -99,7 +99,7 @@ Yii::app()->clientScript->registerScript('register', "
 
         </tr>
     </table>
-<div><h3>My To Do</h3></div>
+<div><h3>My To Do: Tickets with the newest event are on the top</h3></div>
 <br/>
 <a id="proposalButton" style="text-decoration:none" href="/coplat/index.php/application/approve">
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
