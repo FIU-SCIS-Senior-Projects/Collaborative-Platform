@@ -313,7 +313,7 @@ class ProjectMeetingController extends Controller
             }
         }
         function cmp($a, $b) {
-            return $a["id"] - $b["id"];
+            return $b["id"] - $a["id"];
         }
         usort($tickets, "cmp");
 
