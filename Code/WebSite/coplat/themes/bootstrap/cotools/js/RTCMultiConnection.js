@@ -273,7 +273,7 @@ connection.rtcConfiguration
             }
 
             if (!session || !session.userid || !session.sessionid) {
-                error('missing arguments', arguments);
+                //error('missing arguments', arguments);
 
                 var error = 'Invalid data passed over "connection.join" method.';
                 connection.onstatechange({
