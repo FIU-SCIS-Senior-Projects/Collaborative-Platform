@@ -50,7 +50,7 @@ class HomeController extends Controller
         $username = Yii::app()->user->name;
         $user = User::model()->find("username=:username", array(':username' => $username));
 
-        $TicketsO = Ticket::model()->findAllBySql("SELECT * FROM ticket WHERE (assign_user_id=:id or creator_user_id=:id)
+        $TicketsO = Ticket::model()->findAllBySql("SELECT * FROM ticket left join (select ticket_id, event_recorded_date from ticket_events order by event_recorded_date desc)x on ticket.id = ticket_id WHERE (assign_user_id=:id or creator_user_id=:id)
         and (status=:pending or status=:reject)", array(":id" => $user->id,":pending"=>'pending', ":reject"=>'reject' ));
 
 

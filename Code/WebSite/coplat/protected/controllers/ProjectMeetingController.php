@@ -457,7 +457,10 @@ class ProjectMeetingController extends Controller
                 $tickets = array_merge($tickets, $myTickets);
             }
         }
-
+        function cmp($a, $b) {
+            return $b["id"] - $a["id"];
+        }
+        usort($tickets, "cmp");
         /** @var User $usermentee */
 
         /* End Return all the mentees for the project mentor */
