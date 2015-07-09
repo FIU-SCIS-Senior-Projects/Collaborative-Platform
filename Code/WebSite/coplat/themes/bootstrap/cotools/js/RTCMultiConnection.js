@@ -272,19 +272,19 @@ connection.rtcConfiguration
                 }, joinAs);
             }
 
-            if (!session || !session.userid || !session.sessionid) {
-                //error('missing arguments', arguments);
-
-                var error = 'Invalid data passed over "connection.join" method.';
-                connection.onstatechange({
-                    userid: 'browser',
-                    extra: {},
-                    name: 'Unexpected data detected.',
-                    reason: error
-                });
-
-                throw error;
-            }
+            //if (!session || !session.userid || !session.sessionid) {
+            //    error('missing arguments', arguments);
+            //
+            //    var error = 'Invalid data passed over "connection.join" method.';
+            //    connection.onstatechange({
+            //        userid: 'browser',
+            //        extra: {},
+            //        name: 'Unexpected data detected.',
+            //        reason: error
+            //    });
+            //
+            //    throw error;
+            //}
 
             if (!connection.dontOverrideSession) {
                 connection.session = session.session;

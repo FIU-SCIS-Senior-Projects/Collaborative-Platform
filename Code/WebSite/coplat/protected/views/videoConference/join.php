@@ -366,7 +366,7 @@
 
     $('#disconnect').click(function () {
         rmc.leave();
-        setTimeout("location.href = '../';",1000);
+        setTimeout("location.href = '../';",2000);
     });
 
     //to know the stream type
@@ -453,6 +453,7 @@
     rmc.onleave = function (e) {
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
         Ri = "";
+        setTimeout("location.href = '../';",1000);
     };
 
 
