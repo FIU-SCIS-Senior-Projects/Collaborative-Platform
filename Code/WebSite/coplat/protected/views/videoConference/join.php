@@ -365,7 +365,7 @@
     };
 
     $('#disconnect').click(function () {
-        rmc.disconnect();
+        rmc.leave();
         setTimeout("location.href = '../';",1500);
     });
 
@@ -450,11 +450,11 @@
 
 
     //removes the div containing the userid of the user who is leaving
-//    rmc.onleave = function (e) {
-//        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
-//        Ri = "";
-//        //setTimeout("location.href = '../';",1000);
-//    };
+    rmc.onleave = function (e) {
+        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
+        Ri = "";
+        //setTimeout("location.href = '../';",1000);
+    };
 
     rmc.ondisconnected = function(event) {
         $('#' + "uibox-" + event.userid.replace(/ |\(|\)/g, '')).remove();
