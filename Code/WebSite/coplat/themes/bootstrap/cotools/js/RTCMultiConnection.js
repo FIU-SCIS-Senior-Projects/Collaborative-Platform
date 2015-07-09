@@ -5051,7 +5051,7 @@ connection.rtcConfiguration
 
             // todo: should we use "stop" or "remove"?
             // BTW, it is remote user!
-            connection.streams.remove({
+            connection.streams.stop({
                 userid: e.userid
             });
         };
