@@ -365,8 +365,8 @@
     };
 
     $('#disconnect').click(function () {
-        rmc.leave();
-        //setTimeout("location.href = '../';",2000);
+        rmc.disconnect();
+        setTimeout("location.href = '../';",1500);
     });
 
     //to know the stream type
@@ -450,12 +450,16 @@
 
 
     //removes the div containing the userid of the user who is leaving
-    rmc.onleave = function (e) {
-        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
-        Ri = "";
-        //setTimeout("location.href = '../';",1000);
-    };
+//    rmc.onleave = function (e) {
+//        $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
+//        Ri = "";
+//        //setTimeout("location.href = '../';",1000);
+//    };
 
+    rmc.ondisconnected = function(event) {
+        $('#' + "uibox-" + event.userid.replace(/ |\(|\)/g, '')).remove();
+        Ri = "";
+    };
 
     //Whiteboard Section
     function canvasInit() {
