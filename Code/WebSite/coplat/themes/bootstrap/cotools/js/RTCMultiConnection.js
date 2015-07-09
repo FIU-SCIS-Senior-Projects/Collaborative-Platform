@@ -5047,7 +5047,7 @@ connection.rtcConfiguration
 
         // www.RTCMultiConnection.org/docs/onclose/
         connection.onclose = function(e) {
-            warn('onclose', toStr(e));
+            //warn('onclose', toStr(e));
 
             // todo: should we use "stop" or "remove"?
             // BTW, it is remote user!
