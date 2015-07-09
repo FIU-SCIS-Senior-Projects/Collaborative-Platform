@@ -453,7 +453,7 @@
     rmc.onleave = function (e) {
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
         Ri = "";
-        setTimeout("location.href = '../';",1000);
+        //setTimeout("location.href = '../';",1000);
     };
 
 
