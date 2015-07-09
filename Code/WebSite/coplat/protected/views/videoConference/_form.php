@@ -150,6 +150,7 @@
 
     <div class="row buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
+        <a href="index"><button type="button" class="btn btn-warning">Cancel</button>
     </div>
 
     <?php $this->endWidget(); ?>
