@@ -5048,7 +5048,7 @@ connection.rtcConfiguration
         // www.RTCMultiConnection.org/docs/onclose/
         connection.onclose = function(e) {
             //warn('onclose', toStr(e));
-
+            $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
             // todo: should we use "stop" or "remove"?
             // BTW, it is remote user!
             connection.streams.stop({
