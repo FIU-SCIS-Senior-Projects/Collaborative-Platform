@@ -135,13 +135,14 @@ class VideoConferenceController extends Controller
 
             if ($model->save()) {                       //if we can save the date
                 $inviteeList = $_POST['invitees'];    //emails of all the invitees
-                    foreach($inviteeList as $username) {
+                foreach($inviteeList as $username) {
+                    if ($username != null) {
                         $lname = substr($username, 0, stripos($username, ","));
-                        $fname = substr($username, stripos($username, ",")+2);
+                        $fname = substr($username, stripos($username, ",") + 2);
 
-                        $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam"=>$fname, ":lnam"=>$lname));
+                        $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam" => $fname, ":lnam" => $lname));
 
-                        foreach($user as $invitee) {
+                        foreach ($user as $invitee) {
                             $email = $invitee->email;
 
                             if ($email == null) {             //if invitee does not exist, record the error and continue
@@ -170,7 +171,8 @@ class VideoConferenceController extends Controller
                             Yii::app()->user->setFlash('invitation-error', $invitationError);
                         }
                     }
-                    $this->redirect(array('view', 'id' => $model->id));
+                }
+                $this->redirect(array('view', 'id' => $model->id));
             }
         }
         $this->render('create', array(
