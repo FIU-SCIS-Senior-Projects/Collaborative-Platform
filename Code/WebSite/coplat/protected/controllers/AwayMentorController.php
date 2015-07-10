@@ -79,7 +79,7 @@ class AwayMentorController extends Controller
             echo $output;
             $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam"=>$fname, ":lnam"=>$lname));
             if($user == null) {
-                 $mentorError .= $lname. ", ". $fname. " is not a mentor. <br>";
+                 $mentorError .= $lname. " ". $fname. " is not a mentor. <br>";
                  Yii::app()->user->setFlash('invitation-error', $mentorError);
             }
             
