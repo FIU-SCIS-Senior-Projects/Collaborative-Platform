@@ -142,14 +142,14 @@ class VideoConferenceController extends Controller
 
                         $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam" => $fname, ":lnam" => $lname));
                         if($user == null) {
-                            $invitationError .= $username . " does not appear in our records <br>";
+                            $invitationError .= $username . " does not appear in our records. <br>";
                         }
                         
                         foreach ($user as $invitee) {
                             $email = $invitee->email;
 
                             if ($email == null) {             //if invitee does not exist, record the error and continue
-                                $invitationError .= $username . " does not appear in our records <br>";
+                                $invitationError .= $username . " does not appear in our records. <br>";
                                 continue;
                             }                                  //moderator cannot invite him/herself
                             if ($invitee->id == $moderator->id) {
@@ -162,7 +162,7 @@ class VideoConferenceController extends Controller
                             $invitation->status = "Unknown";
 
                             if (!$invitation->save()) {        //an error occurred
-                                $invitationError .= "An error occurred upon saving the invitation to " . $username . "error";
+                                $invitationError .= "An error occurred upon sending the invitation to " . $username . ".";
                             } else {
                                 $inviteefullName = $invitee->fname . " " . $invitee->lname;
                                 VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
@@ -225,7 +225,7 @@ class VideoConferenceController extends Controller
                 foreach ($inviteeEmails as $email) {
                     $invitee = User::model()->findByAttributes(array('email' => $email));
                     if ($invitee == null) {
-                        $invitationError .= $email . " does not appear in our records <br>";
+                        $invitationError .= $email . " does not appear in our records. <br>";
                         continue;
                     }
                     if ($invitee->id == $moderator->id) {
@@ -237,7 +237,7 @@ class VideoConferenceController extends Controller
                     $invitation->videoconference_id = $model->id;
                     $invitation->status = "Unknown";
                     if (!$invitation->save()) {                                         //an error occurred
-                        $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
+                        $invitationError .= "An error occurred upon sending the invitation to " . $email . ".";
                     } else {
                         $inviteefullName = $invitee->fname . " " . $invitee->lname;
                         VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
@@ -391,14 +391,14 @@ class VideoConferenceController extends Controller
                         
                         $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam" => $fname, ":lnam" => $lname));
                         if($user == null) {
-                            $invitationError .= $username . " does not appear in our records <br>";
+                            $invitationError .= $username . " does not appear in our records. <br>";
                         }
                         
                         foreach ($user as $invitee) {
                             $email = $invitee->email;
                             
                             if ($email == null) {             //if invitee does not exist, record the error and continue
-                                $invitationError .= $username . " does not appear in our records <br>";
+                                $invitationError .= $username . " does not appear in our records. <br>";
                                 continue;
                             }                                  //moderator cannot invite him/herself
                             if ($invitee->id == $moderator->id) {
