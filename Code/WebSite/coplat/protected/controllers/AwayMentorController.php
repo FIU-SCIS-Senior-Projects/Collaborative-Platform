@@ -73,10 +73,16 @@ class AwayMentorController extends Controller
             $userName = $_POST['name_search'];
             $lname = substr($userName, 0, stripos($userName, ","));
             $fname = substr($userName, stripos($userName, ",")+2);
+            $mentorError = "";
             $output = "<script>console.log( 'Debug Objects: " . $lname." ".$fname . "' );</script>";
             
             echo $output;
             $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam"=>$fname, ":lnam"=>$lname));
+            if($user == null) {
+                 $mentorError .= $lname. ", ". $fname. " is not a mentor. <br>";
+                 Yii::app()->user->setFlash('invitation-error', $mentorError);
+            }
+            
             foreach($user as $amentor)
             {
                 if($amentor->isPerMentor == 1 || $amentor->isProMentor == 1 || $amentor->isDomMentor == 1 ) { //MANDY if this isnt true tell the user it wasnt a mentor
