@@ -34,15 +34,6 @@ Yii::app()->clientScript->registerScript('register', "
     echo "You are away<br>";
         echo CHtml::button('I\'m Back!!', array('submit' => array('/awayMentor/remove/'.User::getCurrentUserId())));
 
-       // echo CHtml::ajaxButton('I am a button', CController::createUrl('HomeController/actionRemoveFromAway'), array( ), array('id'=>User::getCurrentUserId()));
-
-       //echo CHtml::ajaxButton('I\'m Back!!',Yii::app()->createUrl('HomeController/actionRemoveFromAway',array('id'=>User::getCurrentUserId())));
-        //echo CHtml::submitButton('CSV Report', array('submit'=>'HomeController/actionRemoveFromAway'));
-       //echo CHtml::ajaxButton('ButtonName',Yii::app()->createUrl('HomeController/actionRemoveFromAway');
-         //   array(
-           //     'type'=>'POST',
-             //   'data'=> User::getCurrentUserId(),
-            //),array('class'=>'HomeController',));
     } ?>
 <br>
     <table style="width:auto;">
@@ -99,7 +90,7 @@ Yii::app()->clientScript->registerScript('register', "
 
         </tr>
     </table>
-<div><h3>My To Do: Tickets with the newest event are on the top</h3></div>
+<div><h3>My To Do</h3></div>
 <br/>
 <a id="proposalButton" style="text-decoration:none" href="/coplat/index.php/application/approve">
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -111,94 +102,57 @@ Yii::app()->clientScript->registerScript('register', "
             </a>
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
 <div id="fullcontent">
-
-    <div>
-        <div class="span4" style="width: 800px; margin-left: 0px">
-            <ul class="nav nav-tabs">
-                <li><a href="#open" data-toggle="tab">Open</a></li>
-                <li><a href="#close" data-toggle="tab">Close</a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active" id="open">
-                    <table cellpadding="0" cellspacing="0" border="0"
-                           class="table table-striped table-bordered table-fixed-header"
-                           id="#mytable1" width="100%" style="table-layout:fixed; background-color:  #EEE">
-
-                        <thead class="header">
-                        <tr>
-                            <th width="5%">No</th>
-                            <th width="15%">Creator Name</th>
-                            <th width="13%">Domain</th>
-                            <th width="42%">Subject</th>
-                            <th width="15%">Created Date</th>
-                            <th width="10%">Status</th>
-                        </tr>
-                        </thead>
-                        <?php if ($TicketsO == null) {
-                            echo "No tickets";
-                        } else {
-                            ?>
-                            <?php foreach ($TicketsO as $Ticket) {
-                                $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
-                                $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
-                                <tbody>
-                                <tr id="<?php echo $Ticket->id ?>" class="triggerTicketClick">
-                                    <td width="5%"><?php echo $Ticket->id; ?></td>
-                                    <td width="15%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
-                                    <td width="13%"><?php echo $domain->name; ?></td>
-                                    <td width="42%"><?php echo $Ticket->subject; ?></td>
-                                    <td width="15%"><?php echo date("M d, Y", strtotime($Ticket->created_date)); ?></td>
-                                    <td width="10%"><?php echo $Ticket->status ?></td>
-                                </tr>
-                                </tbody>
-                            <?php
-                            }
-                        }
-                        ?>
-                    </table>
-                </div>
-                <div class="tab-pane" id="close">
-                    <table cellpadding="0" cellspacing="0" border="0"
-                           class="table table-striped table-bordered table-fixed-header"
-                           id="#mytable2" width="100%" style="table-layout:fixed; background-color:  #EEE">
-
-                        <thead class="header">
-                        <tr>
-                            <th width="5%">No</th>
-                            <th width="15%">Creator Name</th>
-                            <th width="13%">Domain</th>
-                            <th width="42%">Subject</th>
-                            <th width="15%">Created Date</th>
-                            <th width="10%">Status</th>
-                        </tr>
-                        </thead>
-                        <?php if ($TicketsC == null) {
-                            echo "No tickets";
-                        } else {
-                            ?>
-                            <?php foreach ($TicketsC as $Ticket) {
-                                $domain = Domain::model()->findBySql("SELECT * FROM domain WHERE id=:id", array(":id" => $Ticket->domain_id));
-                                $creator = User::model()->find("id=:id", array(":id" => $Ticket->creator_user_id)); ?>
-                                <tbody>
-                                <tr id="<?php echo $Ticket->id ?>" class="triggerTicketClick">
-                                    <td width="5%"><?php echo $Ticket->id; ?></td>
-                                    <td width="15%"><?php echo $creator->fname . ' ' . $creator->lname; ?></td>
-                                    <td width="13%"><?php echo $domain->name; ?></td>
-                                    <td width="42%"><?php echo $Ticket->subject; ?></td>
-                                    <td width="15%"><?php echo date("M d, Y", strtotime($Ticket->created_date)); ?></td>
-                                    <td width="10%"><?php echo $Ticket->status ?></td>
-                                </tr>
-                                </tbody>
-                            <?php
-                            }
-                        }
-                        ?>
-                    </table>
-
-                </div>
-            </div>
-
-        </div>
+    <?php $model1= Ticket::model();
+    $this->widget('zii.widgets.grid.CGridView', array(
+        'id'=>'away-mentor-grid',
+        'dataProvider'=>$model1->searchToDo(User::getCurrentUserId()),
+                'columns'=>array(
+            'id',
+            'subject',
+            array('name'=>'created_date','value'=>'$data->getCreatedDateToString()'),
+            array('name'=>'domainName','value'=>'$data->getDomainID()'),
+            array('name'=>'Created By','value'=>'$data->getCompiledCreatorID()'),
+            array('name'=>'Assigned To','value'=>'$data->getCompiledAssignedID()'),
+            array('name'=>'assigned_date','value'=>'$data->getAssignedDateToString()'),
+            'status',
+            array('name'=>'Last Activity','value'=>'$data->getLatestActivityDate()'),
+            //array('name'=>'Done By','value'=>'$data->getAssignedDateToString()'),
+            array(
+                'class'=>'CButtonColumn',
+                'template'=>'{view}',
+                'buttons'=>array(
+                    'view'=>array(
+                        'url'=>'Yii::app()->createUrl("ticket/view", array("id"=>$data->id))',)
+                ),
+            ),
+        ),
+    )); ?>
+    <div><h3>Closed Tickets</h3></div>
+    <?php $model1= Ticket::model();
+    $this->widget('zii.widgets.grid.CGridView', array(
+        'id'=>'away-mentor-grid',
+        'dataProvider'=>$model1->searchClosed(User::getCurrentUserId()),
+        'columns'=>array(
+            'id',
+            'subject',
+            array('name'=>'created_date','value'=>'$data->getCreatedDateToString()'),
+            array('name'=>'domainName','value'=>'$data->getDomainID()'),
+            array('name'=>'Created By','value'=>'$data->getCompiledCreatorID()'),
+            array('name'=>'Assigned To','value'=>'$data->getCompiledAssignedID()'),
+            array('name'=>'assigned_date','value'=>'$data->getAssignedDateToString()'),
+            'status',
+            array('name'=>'Last Activity','value'=>'$data->getLatestActivityDate()'),
+            //array('name'=>'Done By','value'=>'$data->getAssignedDateToString()'),
+            array(
+                'class'=>'CButtonColumn',
+                'template'=>'{view}',
+                'buttons'=>array(
+                    'view'=>array(
+                        'url'=>'Yii::app()->createUrl("ticket/view", array("id"=>$data->id))',)
+                ),
+            ),
+        ),
+    )); ?>
 
         <div class="span2" style="margin-left: 30px">
             <!-- Cancel Button -->
