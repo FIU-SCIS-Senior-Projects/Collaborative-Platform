@@ -79,7 +79,7 @@ class AwayMentorController extends Controller
             $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam"=>$fname, ":lnam"=>$lname));
             foreach($user as $amentor)
             {
-                if($amentor->isPerMentor == 1 || $amentor->isProMentor == 1 || $amentor->isDomMentor == 1 ) {
+                if($amentor->isPerMentor == 1 || $amentor->isProMentor == 1 || $amentor->isDomMentor == 1 ) { //MANDY if this isnt true tell the user it wasnt a mentor
                     $away_already = AwayMentor::model()->findByPk($amentor->id);
                     if (is_null($away_already)) {
                         $output = "<script>console.log( 'Debug Objects: " . $amentor->id . "' );</script>";
@@ -88,7 +88,7 @@ class AwayMentorController extends Controller
                         if ($model->save())
                             $this->redirect(array('admin'));
                     } else {
-                        break;
+                        break; //MANDY if this occurs Tell the tell the user they are already on the list.
                     }
                 }
 
