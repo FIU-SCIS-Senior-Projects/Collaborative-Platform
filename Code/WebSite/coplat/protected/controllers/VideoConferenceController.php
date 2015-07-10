@@ -387,6 +387,10 @@ class VideoConferenceController extends Controller
                         $fname = substr($username, stripos($username, ",") + 2);
                         
                         $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam" => $fname, ":lnam" => $lname));
+                        if($user == null) {
+                            $invitationError .= $username . " does not appear in our records <br>";
+                        }
+                        
                         foreach ($user as $invitee) {
                             $email = $invitee->email;
                             
