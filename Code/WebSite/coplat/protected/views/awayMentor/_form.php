@@ -23,7 +23,7 @@
             'name'=>'name_search',
             'value'=>$model->name_search,
 
-            'source'=>Yii::app()->createUrl('/AwayMentor/FindUserName'),// <- path to controller which returns dynamic data
+            'source'=>Yii::app()->createUrl('/AwayMentor/MikeFindUserName'),// <- path to controller which returns dynamic data
             // additional javascript options for the autocomplete plugin
             'options'=>array(
                 'minLength'=>'1', // min chars to start search
@@ -69,7 +69,7 @@
 
         <script>
             $( "#name_search" ).autocomplete({
-                source: './FindUserName'
+                source: './MikeFindUserName'
             });
         </script>
 
