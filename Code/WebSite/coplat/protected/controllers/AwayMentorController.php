@@ -88,6 +88,8 @@ class AwayMentorController extends Controller
                         if ($model->save())
                             $this->redirect(array('admin'));
                     } else {
+                        $notAMentor = $amentor->getLastCommaFirst() . " is already on the Away Mentor list <br>";
+                        Yii::app()->user->setFlash('invitation-error', $notAMentor);
                         break; //MANDY if this occurs Tell the tell the user they are already on the list.
                     }
                 }
