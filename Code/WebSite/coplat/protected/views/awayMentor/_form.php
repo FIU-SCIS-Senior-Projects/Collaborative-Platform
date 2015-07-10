@@ -77,10 +77,3 @@
     </body>
     </html>
 </div><!-- form -->
-
-<?php if (Yii::app()->user->hasFlash('invitation-error')): ?>
-    <h3>There was an error: </h3>
-    <div style="margin-top:20px;" class="error-message">
-        <?php echo Yii::app()->user->getFlash('invitation-error'); ?>
-    </div>
-<?php endif; ?>
