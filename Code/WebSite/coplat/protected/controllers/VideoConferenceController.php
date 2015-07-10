@@ -420,10 +420,11 @@ class VideoConferenceController extends Controller
                                 VCInvitation::sendUpdateNotification($model, $inviteefullName, $email);
                             }
                         }
+                        if ($invitationError != "") {          //if there was an error
+                            Yii::app()->user->setFlash('invitation-error', $invitationError);
+                        }
                     }
-                }
-                if ($invitationError != "") {          //if there was an error
-                    Yii::app()->user->setFlash('invitation-error', $invitationError);
+                
                 }
                 $this->redirect(array('view', 'id' => $model->id));
             }
