@@ -390,7 +390,7 @@ class VideoConferenceController extends Controller
                         foreach ($user as $invitee) {
                             $email = $invitee->email;
                             
-                            if ($invitee == null) {             //if invitee does not exist, record the error and continue
+                            if ($user == null) {             //if invitee does not exist, record the error and continue
                                 $invitationError .= $username . " does not appear in our records <br>";
                                 continue;
                             }                                  //moderator cannot invite him/herself
