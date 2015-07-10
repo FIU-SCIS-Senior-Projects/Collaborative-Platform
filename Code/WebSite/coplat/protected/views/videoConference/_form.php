@@ -63,7 +63,7 @@
         var add_button      = $(".add_field_button"); //Add button ID
 
         $("#invitee-1").autocomplete({
-            source: './../AwayMentor/FindUserName'
+            source: './../../../../../coplat/index.php/AwayMentor/FindUserName'
         });
 
         var x = 1; //initlal text box count
@@ -74,7 +74,7 @@
                 $(wrapper).append('<div class="row"><label for="invitee-'+x+'">Invitee '+x+' </label><input placeholder="" type="text" id="invitee-' + x + '" name="invitees[]"/><a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a></div>'); //add input box
 
                 $("#invitee-"+x).autocomplete({
-                    source: './../AwayMentor/FindUserName'
+                    source: './../../../../../coplat/index.php/AwayMentor/FindUserName'
                 });
             }
         });
@@ -150,7 +150,7 @@
 
     <div class="row buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
-        <a href="index"><button type="button" class="btn btn-warning">Cancel</button>
+        <a href="../../../../coplat/index.php/videoConference/index"><button type="button" class="btn btn-warning">Cancel</button>
     </div>
 
     <?php $this->endWidget(); ?>
