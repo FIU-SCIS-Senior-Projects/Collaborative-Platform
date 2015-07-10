@@ -78,12 +78,19 @@ class AwayMentorController extends Controller
             echo $output;
             $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam"=>$fname, ":lnam"=>$lname));
             foreach($user as $amentor)
-            {
-                $output = "<script>console.log( 'Debug Objects: " . $amentor->id . "' );</script>";
-                echo $output;
-                $model->userID=$amentor->id;
-                if($model->save())
-                    $this->redirect(array('admin'));
+            {   
+                $away_already = AwayMentor::model()->findByPk($amentor->id);
+                if(is_null($away_already)) {
+                    $output = "<script>console.log( 'Debug Objects: " . $amentor->id . "' );</script>";
+                    echo $output;
+                    $model->userID = $amentor->id;
+                    if ($model->save())
+                        $this->redirect(array('admin'));
+                }
+                else
+                {
+                    break;
+                }
             }
 
 
