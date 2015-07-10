@@ -95,6 +95,7 @@ class AwayMentorController extends Controller
                 else {  //not a mentor
                     $notAMentor = $amentor->getLastCommaFirst() . " is not a mentor <br>";
                     Yii::app()->user->setFlash('invitation-error', $notAMentor);
+                    continue;
                 }
                 //*** ADDED ***
             }
