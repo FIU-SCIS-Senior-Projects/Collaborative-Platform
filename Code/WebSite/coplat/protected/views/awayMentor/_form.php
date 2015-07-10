@@ -16,7 +16,7 @@
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
-        <?php echo "Last-Name, First-Name*"; ?><br/>
+        <?php echo "Last-Name, First-Name "; ?><font color="red">*</font><br/>
 
         <?php
         $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
