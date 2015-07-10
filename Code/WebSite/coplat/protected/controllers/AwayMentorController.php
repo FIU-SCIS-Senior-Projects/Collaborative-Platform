@@ -74,7 +74,6 @@ class AwayMentorController extends Controller
             $lname = substr($userName, 0, stripos($userName, ","));
             $fname = substr($userName, stripos($userName, ",")+2);
             $output = "<script>console.log( 'Debug Objects: " . $lname." ".$fname . "' );</script>";
-            $invitationError = "";
             
             echo $output;
             $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam"=>$fname, ":lnam"=>$lname));
@@ -92,17 +91,13 @@ class AwayMentorController extends Controller
                         break; //MANDY if this occurs Tell the tell the user they are already on the list.
                     }
                 }
-                else {
-                    $notMentor = $amentor->getLastCommaFirst();
-                    $invitationError .= $notMentor . " is not a mentor <br>";
-                    continue;
+                // *** ADDED ***
+                else {  //not a mentor
+                    $notAMentor = $amentor->getLastCommaFirst() . " is not a mentor <br>";
+                    Yii::app()->user->setFlash('invitation-error', $notAMentor);
                 }
-
+                //*** ADDED ***
             }
-            if ($invitationError != "") {          //if there was an error
-                Yii::app()->user->setFlash('invitation-error', $invitationError);
-            }
-
         }
         else{
             $output = "<script>console.log( 'Dsfebug Objects: ". implode($_POST) ."' );</script>";
