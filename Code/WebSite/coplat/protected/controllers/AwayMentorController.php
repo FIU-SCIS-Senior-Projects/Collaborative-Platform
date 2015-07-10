@@ -154,7 +154,7 @@ class AwayMentorController extends Controller
             else{
                 $q1 = $q;
             }
-            $criteria->condition = "lname LIKE :q OR fname LIKE :q1 and (isPerMentor = 1 or isProMentor = 1 or isDomMentor = 1)";
+            $criteria->condition = "(lname LIKE :q OR fname LIKE :q1) and (isPerMentor = 1 or isProMentor = 1 or isDomMentor = 1)";
             $criteria->order = 'lname'; // correct order-by field
             $criteria->limit = 10; // probably a good idea to limit the results
             // with trailing wildcard only; probably a good idea for large volumes of data
