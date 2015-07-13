@@ -129,11 +129,11 @@
         </ul>
     </div>
 
-    <button class='btn btn-primary'>
-        <a id='invite-user' rel="leanModal" name="invite" title="Invite people to the meeting" href="#invite" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;Invite
-            People</a>
+    <button type='button' class='btn btn-primary'>
+        <a style="text-decoration: none" id='invite-user' rel="leanModal" name="invite" title="Invite people to the meeting" href="#invite" href="#">
+            <i class="fa fa-plus"></i>&nbsp;&nbsp;Invite People</a>
     </button>
-    
+
     <!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
