@@ -128,16 +128,12 @@
             <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
         </ul>
     </div>
-    <div class="btn-group">
-        <button type="button" title="Application settings" class="btn btn-primary dropdown-toggle"
-                data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a id='invite-user' rel="leanModal" name="invite" title="Invite people to the meeting" href="#invite" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;Invite
-                    People</a></li>
-        </ul>
-    </div>
+
+    <button class='btn btn-primary'>
+        <a id='invite-user' rel="leanModal" name="invite" title="Invite people to the meeting" href="#invite" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;Invite
+            People</a>
+    </button>
+    
     <!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
@@ -261,6 +257,7 @@
         //var presenter = 0;
         Ri = "";
         rmc.open();
+        $('#open-room').fadeOut(600);
         rmc.onCustomMessage = function(message) {
             Ri = message;
         };
@@ -279,17 +276,8 @@
         };
     });
 
-//    rmc.onNewSession = function(session) {
-//      if(rmc.DetectRTC.hasWebcam) {
-//          session.join({audio: true, video: true});
-//      } else if(!rmc.DetectRTC.hasWebcam) {
-//          session.join({audio: true});
-//      }
-//
-//    };
 
     var video_status = 0;
-
     function pauseResumeVideo() {
         if(video_status == 0) {
             document.getElementById("on-off-video").style.color= 'gray';
