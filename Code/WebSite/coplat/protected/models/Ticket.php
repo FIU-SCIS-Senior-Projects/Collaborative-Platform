@@ -43,6 +43,8 @@ class Ticket extends CActiveRecord
     public $assignedName;
     public $domainName;
     public $subDomainName;
+    public $createdDateToString;
+    public $assignedDateToString;
     
 	/**
 	 * Returns the static model of the specified AR class.
@@ -192,9 +194,81 @@ class Ticket extends CActiveRecord
         				),
         		),
         )); 
-    } 
-	
-	public function getCompiledCreatorID()
+    }
+    public function getCreatedDateToString()
+    {
+        return date("M d, Y", strtotime($this->created_date));
+    }
+    public function getAssignedDateToString()
+    {
+        return date("M d, Y", strtotime($this->assigned_date));
+    }
+    public function getLatestActivityDate()
+    {
+        $latestTicketEvent = TicketEvents::model()->findBySql("select max(event_recorded_date) as event_recorded_date, description as id  from (select event_type_id, event_recorded_date from ticket_events where ticket_id = ". $this->id ." and (event_type_id != 9 and event_type_id !=8) order by event_recorded_date desc)x left join event_type on event_type.id = event_type_id; ");
+        return "" . $latestTicketEvent->id . " " . date("M d, Y", strtotime($latestTicketEvent->event_recorded_date));
+    }
+    public function searchClosed($id)
+    {
+        return new CActiveDataProvider($this, array(
+            'criteria'=>array(
+                'condition'=>'(assign_user_id ='.$id.' or creator_user_id = '.$id.') and (status Like "close")',
+                'with' => array( 'creatorUser', 'assignUser', 'domain', 'ticketEvents' ),
+            ),
+            'sort'=>array(
+                'defaultOrder'=>'t.id ASC',
+                'attributes'=>array(
+                    '*',
+                    'Created By'=>array(
+                        'asc'=>'creatorUser.lname',
+                        'desc'=>'creatorUser.lname DESC',
+                    ),
+                    'Assigned To'=>array(
+                        'asc'=>'assignUser.lname',
+                        'desc'=>'assignUser.lname DESC',
+                    ),
+                    'domainName'=>array(
+                        'asc'=>'domain.name',
+                        'desc'=>'domain.name DESC',
+                    ),
+                ),
+            ),
+        ));
+
+    }
+
+    public function searchToDo($id)
+    {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
+
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>array(
+                'condition'=>'(assign_user_id ='.$id.' or creator_user_id = '.$id.') and (status Like "pending" or status like "reject")',
+                'with' => array( 'creatorUser', 'assignUser', 'domain', 'ticketEvents' ),
+            ),
+            'sort'=>array(
+                'defaultOrder'=>'t.id ASC',
+                'attributes'=>array(
+                    '*',
+                    'Created By'=>array(
+                        'asc'=>'creatorUser.lname',
+                        'desc'=>'creatorUser.lname DESC',
+                    ),
+                    'Assigned To'=>array(
+                        'asc'=>'assignUser.lname',
+                        'desc'=>'assignUser.lname DESC',
+                    ),
+                    'domainName'=>array(
+                        'asc'=>'domain.name',
+                        'desc'=>'domain.name DESC',
+                    ),
+                ),
+            ),
+        ));
+    }
+    public function getCompiledCreatorID()
 	{
 		
 		return (/*$this->creator_user_id . ' ' .*/

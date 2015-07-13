@@ -73,20 +73,40 @@ class AwayMentorController extends Controller
             $userName = $_POST['name_search'];
             $lname = substr($userName, 0, stripos($userName, ","));
             $fname = substr($userName, stripos($userName, ",")+2);
+            $mentorError = "";
             $output = "<script>console.log( 'Debug Objects: " . $lname." ".$fname . "' );</script>";
-
+            
             echo $output;
             $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam"=>$fname, ":lnam"=>$lname));
+            if($user == null) {
+                 $mentorError .= $lname. " ". $fname. " is not a mentor. <br>";
+                 Yii::app()->user->setFlash('invitation-error', $mentorError);
+            }
+            
             foreach($user as $amentor)
             {
-                $output = "<script>console.log( 'Debug Objects: " . $amentor->id . "' );</script>";
-                echo $output;
-                $model->userID=$amentor->id;
-                if($model->save())
-                    $this->redirect(array('admin'));
+                if($amentor->isPerMentor == 1 || $amentor->isProMentor == 1 || $amentor->isDomMentor == 1 ) { //MANDY if this isnt true tell the user it wasnt a mentor
+                    $away_already = AwayMentor::model()->findByPk($amentor->id);
+                    if (is_null($away_already)) {
+                        $output = "<script>console.log( 'Debug Objects: " . $amentor->id . "' );</script>";
+                        echo $output;
+                        $model->userID = $amentor->id;
+                        if ($model->save())
+                            $this->redirect(array('admin'));
+                    } else {
+                        $notAMentor = $amentor->getLastCommaFirst() . " is already on the Away Mentor list. <br>";
+                        Yii::app()->user->setFlash('invitation-error', $notAMentor);
+                        break; //MANDY if this occurs Tell the tell the user they are already on the list.
+                    }
+                }
+                // *** ADDED ***
+                else {  //not a mentor
+                    $notAMentor = $amentor->getLastCommaFirst() . " is not a mentor. <br>";
+                    Yii::app()->user->setFlash('invitation-error', $notAMentor);
+                    continue;
+                }
+                //*** ADDED ***
             }
-
-
         }
         else{
             $output = "<script>console.log( 'Dsfebug Objects: ". implode($_POST) ."' );</script>";
@@ -133,7 +153,41 @@ class AwayMentorController extends Controller
             }
         }
     }
+    public function actionMikeFindUserName() {
+        $q = $_GET['term'];
+        if (isset($q)) {
+            $criteria = new CDbCriteria;
+            //condition to find your data, using q as the parameter field
+            if (strstr($q, ","))
+            {
+                $q1 = substr($q, stripos($q, ",")+1);
+                $q = substr($q, 0, stripos($q, ","));
+            }
+            else{
+                $q1 = $q;
+            }
+            $criteria->condition = "(lname LIKE :q OR fname LIKE :q1) and (isPerMentor = 1 or isProMentor = 1 or isDomMentor = 1)";
+            $criteria->order = 'lname'; // correct order-by field
+            $criteria->limit = 10; // probably a good idea to limit the results
+            // with trailing wildcard only; probably a good idea for large volumes of data
+            $criteria->params = array(':q' => trim($q) . '%', ':q1'=>trim($q1).'%');
+            $Users = User::model()->findAll($criteria);
 
+            if (!empty($Users)) {
+                $out = array();
+                foreach ($Users as $p) {
+                    $out[] = array(
+                        // expression to give the string for the autoComplete drop-down
+                        'label' => $p->LastCommaFirst,
+                        'value' => $p->LastCommaFirst,
+                        'id' => $p->id, // return value from autocomplete
+                    );
+                }
+                echo CJSON::encode($out);
+                Yii::app()->end();
+            }
+        }
+    }
 
     /**
      * Updates a particular model.

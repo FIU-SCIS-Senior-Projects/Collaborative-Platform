@@ -16,14 +16,14 @@
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
-        <?php echo "Last-Name, First-Name"; ?><br/>
+        <?php echo "Last-Name, First-Name "; ?><font color="red">*</font><br/>
 
         <?php
         $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
             'name'=>'name_search',
             'value'=>$model->name_search,
 
-            'source'=>Yii::app()->createUrl('/AwayMentor/FindUserName'),// <- path to controller which returns dynamic data
+            'source'=>Yii::app()->createUrl('/AwayMentor/MikeFindUserName'),// <- path to controller which returns dynamic data
             // additional javascript options for the autocomplete plugin
             'options'=>array(
                 'minLength'=>'1', // min chars to start search
@@ -57,7 +57,7 @@
 
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
     </div>
 
     <?php $this->endWidget(); ?>
@@ -69,7 +69,7 @@
 
         <script>
             $( "#name_search" ).autocomplete({
-                source: './FindUserName'
+                source: './MikeFindUserName'
             });
         </script>
 
@@ -77,3 +77,48 @@
     </body>
     </html>
 </div><!-- form -->
+
+<style>
+        .error-message {
+            background-color: #f2dede;
+            border-radius: 3px;
+            padding: 10px;
+        }
+        div.mbox {
+            width: 500px;
+            padding: 15px;
+            margin-bottom: 15px;
+            margin-top:30px;
+            border-radius: 4px;
+        }
+        .mbox p {
+            margin: 0px 0px 0px;
+        }
+        a.mbox {
+            color: #31708f;
+        }
+        .mbox span {
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        .mbox ul {
+            margin: 0;
+        }
+        .mbox hr {
+            border-top: 1px solid #19536c;
+            border-bottom: 0px;
+            margin: 5px 0px;
+        }
+        .ui-tooltip {
+            padding: 3px;
+            font-size: smaller;
+        }
+        .mbox button, .mbox .btn{
+            padding: 2px 4px;
+            font-size: small;
+            margin-right: 4px;
+        }
+        .cancelled{
+            background-color: #f4ffbc;
+        }
+    </style>
