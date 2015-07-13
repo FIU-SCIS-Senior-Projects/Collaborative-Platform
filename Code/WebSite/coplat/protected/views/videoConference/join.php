@@ -405,6 +405,8 @@
                     $('#cotools-panel iframe').hide();
                     $('#cotools-panel video').remove();
                     document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                    screenWhiteboard = 1;
+                    document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show Whiteboard</a>';
                 }
             }
         }
@@ -412,6 +414,8 @@
             $('#cotools-panel iframe').hide();
             $('#cotools-panel video').remove();
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            screenWhiteboard = 1;
+            document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show Whiteboard</a>';
         }
     }
 
@@ -488,8 +492,7 @@
             $('#cotools-panel video').hide();
             $('#cotools-panel iframe').show();
             screenWhiteboard = 0;
-            document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Show Screen</a>'
-            screenWhiteboard = 0;
+            document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Show Screen</a>';
         }
     });
 
