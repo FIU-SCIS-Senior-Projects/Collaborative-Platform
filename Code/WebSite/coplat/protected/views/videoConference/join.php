@@ -100,9 +100,14 @@
         ";
     }
     ?>
-
+<!--    fa-share-->
 
     <!-- Single button -->
+    <div class="btn-group">
+        <button type="button" title="toggleSW" class="btn btn-primary">
+            <a style="text-decoration: none; color: white" id='toggleSW' title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Show Screen</a>
+        </button>
+    </div>
     <div class="btn-group">
         <button type="button" title="Whiteboard actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                 aria-expanded="false">
@@ -249,7 +254,6 @@
         audio: true,
         data: true
     };
-
 
 
     $('#open-room').click(function () {
@@ -470,6 +474,23 @@
         $('#cotools-panel iframe').remove();
         $('#cotools-panel video').hide();
         canvasInit();
+    });
+
+    var screenWhiteboard = 0;
+    $('#toggleSW').click(function() {
+        if(screenWhiteboard == 0) {
+            $('#cotools-panel video').show();
+            $('#cotools-panel iframe').hide();
+            screenWhiteboard = 1;
+            document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show Whiteboard</a>';
+        }
+        else {
+            $('#cotools-panel video').hide();
+            $('#cotools-panel iframe').show();
+            screenWhiteboard = 0;
+            document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Show Screen</a>'
+            screenWhiteboard = 0;
+        }
     });
 
     $("#show-whiteboard").click(function () {
