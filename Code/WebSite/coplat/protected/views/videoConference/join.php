@@ -129,7 +129,7 @@
         </ul>
     </div>
 
-    <button type='button' class='btn btn-primary' href="#invite" href="#">
+    <button type='button' class='btn btn-primary'>
         <a style="text-decoration: none; color: white" id='invite-user' rel="leanModal" name="invite" title="Invite people to the meeting" href="#invite" href="#">
             <i class="fa fa-plus"></i>&nbsp;&nbsp;Invite People</a>
     </button>
