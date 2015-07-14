@@ -18,6 +18,7 @@
 
 <script>
     $(document).ready(function() {
+        alert("before check");
         var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
         connection.DetectRTC.screen.getChromeExtensionStatus(extensionid, function (status) {
             if (status == 'installed-enabled') {
