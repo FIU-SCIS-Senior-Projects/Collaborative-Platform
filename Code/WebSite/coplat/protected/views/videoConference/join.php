@@ -10,6 +10,42 @@
 /* @var $model VideoConference */
 
 ?>
+
+<div id="dialog" title="Install Extension">
+    <p>In order to share your screen, please install the 'Screen Capturing' extension available
+        <a id="scExtension" href="">here</a>.</p>
+</div>
+
+<script>
+    var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
+    connection.DetectRTC.screen.getChromeExtensionStatus(extensionid, function(status) {
+        if(status == 'installed-enabled') {
+            alert("GOOD TO GO");
+        }
+
+        if(status == 'installed-disabled') {
+            alert("In order to share your screen, please enable the 'Screen Capturing' extension.");
+        }
+
+        if(status == 'not-installed') {
+            var link = $("#scExtension");
+            if (navigator.userAgent.indexOf("Chrome") != -1) {
+                link.attr("href", "https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk");
+            }
+            else if (navigator.userAgent.indexOf("Firefox") != -1) {
+                link.attr("href", "https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi");
+            }
+            else {
+                alert("The browser you are using is unsupported. Please use Google Chrome");
+            }
+
+            $(function() {
+                $( "#dialog" ).dialog();
+            });
+        }
+    });
+</script>
+
 <script>
     //https://gist.github.com/mathiasbynens/298591
     $.fn.toggleAttr = function (attr, attr1, attr2) {
@@ -493,15 +529,15 @@
         }
     });
 
-    $("#show-whiteboard").click(function () {
-        $('#cotools-panel video').hide();
-        $('#cotools-panel iframe').show();
-    });
-
-    $("#show-screens").click(function () {
-        $('#cotools-panel video').show();
-        $('#cotools-panel iframe').hide();
-    });
+//    $("#show-whiteboard").click(function () {
+//        $('#cotools-panel video').hide();
+//        $('#cotools-panel iframe').show();
+//    });
+//
+//    $("#show-screens").click(function () {
+//        $('#cotools-panel video').show();
+//        $('#cotools-panel iframe').hide();
+//    });
 
 </script>
 
