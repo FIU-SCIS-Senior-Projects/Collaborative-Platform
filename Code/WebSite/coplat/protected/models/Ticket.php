@@ -251,6 +251,43 @@ class Ticket extends CActiveRecord
         ));
 
     }
+    public function searchAssignedClosed($id)
+    {
+        return new CActiveDataProvider($this, array(
+            'criteria'=>array(
+                'condition'=>'(assign_user_id ='.$id.') and (status Like "close")',
+                'with' => array( 'creatorUser', 'assignUser', 'domain', 'ticketEvents' ),
+                'join' => 'left join (select max(event_recorded_date) as event_recorded_date, ticket_id from (select * from ticket_events where (event_type_id != 8 and event_type_id !=9))x group by ticket_id)le on t.id = ticket_id'
+            ),
+            'sort'=>array(
+                'defaultOrder'=>'t.id ASC',
+                'attributes'=>array(
+                    '*',
+                    'Created By'=>array(
+                        'asc'=>'creatorUser.lname',
+                        'desc'=>'creatorUser.lname DESC',
+                    ),
+                    'Assigned To'=>array(
+                        'asc'=>'assignUser.lname',
+                        'desc'=>'assignUser.lname DESC',
+                    ),
+                    'domainName'=>array(
+                        'asc'=>'domain.name',
+                        'desc'=>'domain.name DESC',
+                    ),
+                    'Last Activity'=>array(
+                        'asc'=>'le.event_recorded_date',
+                        'desc'=>'le.event_recorded_date DESC',
+                    ),
+                    'Priority'=>array(
+                        'asc'=>'t.priority_id',
+                        'desc'=>'t.priority_id DESC',
+                    ),
+                ),
+            ),
+        ));
+
+    }
 
     public function searchMyQuestions($id)
     {
@@ -261,6 +298,42 @@ class Ticket extends CActiveRecord
         return new CActiveDataProvider($this, array(
             'criteria'=>array(
                 'condition'=>'(creator_user_id ='.$id. ') and (status Like "pending" or status like "reject")',
+                'with' => array( 'creatorUser', 'assignUser', 'domain', 'ticketEvents' ),
+                'join' => 'left join (select max(event_recorded_date) as event_recorded_date, ticket_id from (select * from ticket_events where (event_type_id != 8 and event_type_id !=9))x group by ticket_id)le on t.id = ticket_id'
+            ),
+            'sort'=>array(
+                'defaultOrder'=>'t.id ASC',
+                'attributes'=>array(
+                    '*',
+                    'Created By'=>array(
+                        'asc'=>'creatorUser.lname',
+                        'desc'=>'creatorUser.lname DESC',
+                    ),
+                    'Assigned To'=>array(
+                        'asc'=>'assignUser.lname',
+                        'desc'=>'assignUser.lname DESC',
+                    ),
+                    'domainName'=>array(
+                        'asc'=>'domain.name',
+                        'desc'=>'domain.name DESC',
+                    ),
+                    'Last Activity'=>array(
+                        'asc'=>'le.event_recorded_date',
+                        'desc'=>'le.event_recorded_date DESC',
+                    ),
+                ),
+            ),
+        ));
+    }
+    public function searchMyClosedQuestions($id)
+    {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
+
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>array(
+                'condition'=>'(creator_user_id ='.$id. ') and (status Like "close")',
                 'with' => array( 'creatorUser', 'assignUser', 'domain', 'ticketEvents' ),
                 'join' => 'left join (select max(event_recorded_date) as event_recorded_date, ticket_id from (select * from ticket_events where (event_type_id != 8 and event_type_id !=9))x group by ticket_id)le on t.id = ticket_id'
             ),
