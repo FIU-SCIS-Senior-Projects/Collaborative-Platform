@@ -598,7 +598,7 @@ class User extends CActiveRecord
     {
         /*Query to the User_Domain model */
 
-        $awayMentors = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor");
+
         if ($sub) {
             $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE subdomain_id =:id and user_id not in (select userID as user_id from away_mentor) order by assigned_date asc", array(":id" => $domain_id));
             $subdomain = Subdomain::model()->findByPk($domain_id);

@@ -246,19 +246,21 @@ class ApplicationController extends Controller
 // PERSONAL PICKS ACCEPT
 				$mypicks = $_POST['personal_picks_accept'];
                 // add entry to personal_mentor
-                $personalEntry = $this->isNewEntry($user_id, 'personal_mentor');
+                if ($mypicks != '') {
+                    $personalEntry = $this->isNewEntry($user_id, 'personal_mentor');
 
-                // if it already exists do NOTHING . change here with else statement to perform update
-                if ($personalEntry < 1){
-                    // add entry to personal_mentor
-                    $pementor = new PersonalMentor('add_new');
-                    $pementor->user_id = $user_id;
-                    $pementor->max_hours = $persApp->max_hours;
-                    $pementor->max_mentees = $persApp->max_amount;
-                    $pementor->save();
-                } // else UPDATE
+                    // if it already exists do NOTHING . change here with else statement to perform update
+                    if ($personalEntry < 1) {
+                        // add entry to personal_mentor
+                        $pementor = new PersonalMentor('add_new');
+                        $pementor->user_id = $user_id;
+                        $pementor->max_hours = $persApp->max_hours;
+                        $pementor->max_mentees = $persApp->max_amount;
+                        $pementor->save();
+                    } // else UPDATE
 
-                $personalFlag = true;
+                    $personalFlag = true;
+                }
                 //$loaduser->isPerMentor = 1;
 				if ($mypicks != ''){
 					$mypicks = explode(',', $mypicks);
