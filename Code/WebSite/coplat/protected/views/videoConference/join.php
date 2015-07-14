@@ -24,7 +24,7 @@
                 alert("GOOD TO GO");
             }
 
-            alert("status not working");
+            alert(status);
 
 //            if (status == 'installed-disabled') {
 //                alert("In order to share your screen, please enable the 'Screen Capturing' extension.");
