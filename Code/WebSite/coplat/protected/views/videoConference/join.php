@@ -15,7 +15,7 @@
     $(document).ready(function() {
         var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
         rmc.DetectRTC.screen.getChromeExtensionStatus(extensionid, function (status) {
-
+            console.log(status);
             if (status == 'not-installed') {
                 var chrome_ext = "https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk";
                 var firefox_ext = "https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi";
