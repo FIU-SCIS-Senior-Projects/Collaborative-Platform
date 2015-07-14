@@ -208,12 +208,13 @@ class Ticket extends CActiveRecord
         $latestTicketEvent = TicketEvents::model()->findBySql("select max(event_recorded_date) as event_recorded_date, description as id  from (select event_type_id, event_recorded_date from ticket_events where ticket_id = ". $this->id ." and (event_type_id != 9 and event_type_id !=8) order by event_recorded_date desc)x left join event_type on event_type.id = event_type_id; ");
         return "" . $latestTicketEvent->id . " " . date("M d, Y", strtotime($latestTicketEvent->event_recorded_date));
     }
-    public function searchClosed($id)
+    public function searchAssigned($id)
     {
         return new CActiveDataProvider($this, array(
             'criteria'=>array(
-                'condition'=>'(assign_user_id ='.$id.' or creator_user_id = '.$id.') and (status Like "close")',
+                'condition'=>'(assign_user_id ='.$id.') and (status Like "pending" or status like "reject")',
                 'with' => array( 'creatorUser', 'assignUser', 'domain', 'ticketEvents' ),
+                'join' => 'left join (select max(event_recorded_date) as event_recorded_date, ticket_id from (select * from ticket_events where (event_type_id != 8 and event_type_id !=9))x group by ticket_id)le on t.id = ticket_id'
             ),
             'sort'=>array(
                 'defaultOrder'=>'t.id ASC',
@@ -230,6 +231,10 @@ class Ticket extends CActiveRecord
                     'domainName'=>array(
                         'asc'=>'domain.name',
                         'desc'=>'domain.name DESC',
+                    ),
+                    'Last Activity'=>array(
+                        'asc'=>'le.event_recorded_date',
+                        'desc'=>'le.event_recorded_date DESC',
                     ),
                 ),
             ),
@@ -237,7 +242,7 @@ class Ticket extends CActiveRecord
 
     }
 
-    public function searchToDo($id)
+    public function searchMyQuestions($id)
     {
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
@@ -245,8 +250,9 @@ class Ticket extends CActiveRecord
 
         return new CActiveDataProvider($this, array(
             'criteria'=>array(
-                'condition'=>'(assign_user_id ='.$id.' or creator_user_id = '.$id.') and (status Like "pending" or status like "reject")',
+                'condition'=>'(creator_user_id ='.$id. ') and (status Like "pending" or status like "reject")',
                 'with' => array( 'creatorUser', 'assignUser', 'domain', 'ticketEvents' ),
+                'join' => 'left join (select max(event_recorded_date) as event_recorded_date, ticket_id from (select * from ticket_events where (event_type_id != 8 and event_type_id !=9))x group by ticket_id)le on t.id = ticket_id'
             ),
             'sort'=>array(
                 'defaultOrder'=>'t.id ASC',
@@ -263,6 +269,10 @@ class Ticket extends CActiveRecord
                     'domainName'=>array(
                         'asc'=>'domain.name',
                         'desc'=>'domain.name DESC',
+                    ),
+                    'Last Activity'=>array(
+                        'asc'=>'le.event_recorded_date',
+                        'desc'=>'le.event_recorded_date DESC',
                     ),
                 ),
             ),

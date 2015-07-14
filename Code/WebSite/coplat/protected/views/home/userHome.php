@@ -90,7 +90,7 @@ Yii::app()->clientScript->registerScript('register', "
 
         </tr>
     </table>
-<div><h3>My To Do</h3></div>
+<div><h3>My Questions</h3></div>
 <br/>
 <a id="proposalButton" style="text-decoration:none" href="/coplat/index.php/application/approve">
 				<?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -104,17 +104,12 @@ Yii::app()->clientScript->registerScript('register', "
 <div id="fullcontent">
     <?php $model1= Ticket::model();
     $this->widget('zii.widgets.grid.CGridView', array(
-        'id'=>'away-mentor-grid',
-        'dataProvider'=>$model1->searchToDo(User::getCurrentUserId()),
+        'id'=>'My_questions',
+        'dataProvider'=>$model1->searchMyQuestions(User::getCurrentUserId()),
                 'columns'=>array(
-            'id',
             'subject',
-            array('name'=>'created_date','value'=>'$data->getCreatedDateToString()'),
-            array('name'=>'domainName','value'=>'$data->getDomainID()'),
-            array('name'=>'Created By','value'=>'$data->getCompiledCreatorID()'),
+            //array('name'=>'created_date','value'=>'$data->getCreatedDateToString()'),
             array('name'=>'Assigned To','value'=>'$data->getCompiledAssignedID()'),
-            array('name'=>'assigned_date','value'=>'$data->getAssignedDateToString()'),
-            'status',
             array('name'=>'Last Activity','value'=>'$data->getLatestActivityDate()'),
             //array('name'=>'Done By','value'=>'$data->getAssignedDateToString()'),
             array(
@@ -127,28 +122,51 @@ Yii::app()->clientScript->registerScript('register', "
             ),
         ),
     )); ?>
-    <div><h3>Closed Tickets</h3></div>
-    <?php $model1= Ticket::model();
+
+    <?php
+    if (User::isCurrentUserDomMentor()) { ?>
+        <h3>Assigned Questions</h3>
+        <?php
+        $model3 = Ticket::model();
+        $this->widget('zii.widgets.grid.CGridView', array(
+            'id' => 'Assigned_tickets',
+            'dataProvider' => $model3->searchAssigned(User::getCurrentUserId()),
+            'columns' => array(
+                'subject',
+                array('name' => 'created_date', 'value' => '$data->getCreatedDateToString()'),
+                //array('name'=>'domainName','value'=>'$data->getDomainID()'),
+                array('name' => 'Created By', 'value' => '$data->getCompiledCreatorID()'),
+                //array('name'=>'Assigned To','value'=>'$data->getCompiledAssignedID()'),
+                // array('name'=>'assigned_date','value'=>'$data->getAssignedDateToString()'),
+                // 'status',
+                array('name' => 'Last Activity', 'value' => '$data->getLatestActivityDate()'),
+                //array('name'=>'Done By','value'=>'$data->getAssignedDateToString()'),
+                array(
+                    'class' => 'CButtonColumn',
+                    'template' => '{view}',
+                    'buttons' => array(
+                        'view' => array(
+                            'url' => 'Yii::app()->createUrl("ticket/view", array("id"=>$data->id))',)
+                    ),
+                ),
+            ),
+        ));
+    }
+    ?>
+    <h3>Upcoming Meetings</h3>
+    <?php $model2= VideoConference::model();
     $this->widget('zii.widgets.grid.CGridView', array(
-        'id'=>'away-mentor-grid',
-        'dataProvider'=>$model1->searchClosed(User::getCurrentUserId()),
+        'id'=>'upcomingVc',
+        'dataProvider'=>$model2->searchUpcoming(User::getCurrentUserId()),
         'columns'=>array(
-            'id',
             'subject',
-            array('name'=>'created_date','value'=>'$data->getCreatedDateToString()'),
-            array('name'=>'domainName','value'=>'$data->getDomainID()'),
-            array('name'=>'Created By','value'=>'$data->getCompiledCreatorID()'),
-            array('name'=>'Assigned To','value'=>'$data->getCompiledAssignedID()'),
-            array('name'=>'assigned_date','value'=>'$data->getAssignedDateToString()'),
-            'status',
-            array('name'=>'Last Activity','value'=>'$data->getLatestActivityDate()'),
-            //array('name'=>'Done By','value'=>'$data->getAssignedDateToString()'),
+            array('name'=>'scheduled_for','value'=>'$data->getDateToString()'),
             array(
                 'class'=>'CButtonColumn',
                 'template'=>'{view}',
                 'buttons'=>array(
                     'view'=>array(
-                        'url'=>'Yii::app()->createUrl("ticket/view", array("id"=>$data->id))',)
+                        'url'=>'Yii::app()->createUrl("videoConference/join", array("id"=>$data->id))',)
                 ),
             ),
         ),
