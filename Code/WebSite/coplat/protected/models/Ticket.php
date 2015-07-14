@@ -199,6 +199,12 @@ class Ticket extends CActiveRecord
     {
         return date("M d, Y", strtotime($this->created_date));
     }
+    public function getPriorityString()
+    {
+        $prio = Priority::model()->findByPk($this->priority_id);
+        return $prio->description;
+
+    }
     public function getAssignedDateToString()
     {
         return date("M d, Y", strtotime($this->assigned_date));
@@ -235,6 +241,10 @@ class Ticket extends CActiveRecord
                     'Last Activity'=>array(
                         'asc'=>'le.event_recorded_date',
                         'desc'=>'le.event_recorded_date DESC',
+                    ),
+                    'Priority'=>array(
+                        'asc'=>'t.priority_id',
+                        'desc'=>'t.priority_id DESC',
                     ),
                 ),
             ),

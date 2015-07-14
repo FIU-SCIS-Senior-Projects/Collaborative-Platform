@@ -101,16 +101,16 @@ Yii::app()->clientScript->registerScript('register', "
 	            )); ?>
             </a>
 <!-- <div style="margin-top = 0px; height: 300px; width: 1000px; overflow-y: scroll; border-radius: 5px;"> -->
-<div id="fullcontent">
+<div id = "fullcontent"t>
     <?php $model1= Ticket::model();
     $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'My_questions',
         'dataProvider'=>$model1->searchMyQuestions(User::getCurrentUserId()),
                 'columns'=>array(
-            'subject',
+            array('name'=>'subject','value'=>'$data->subject', 'htmlOptions'=>array('width'=>'120px')),
             //array('name'=>'created_date','value'=>'$data->getCreatedDateToString()'),
-            array('name'=>'Assigned To','value'=>'$data->getCompiledAssignedID()'),
-            array('name'=>'Last Activity','value'=>'$data->getLatestActivityDate()'),
+          //  array('name'=>'Assigned To','value'=>'$data->getCompiledAssignedID()'),
+            array('name'=>'Last Activity','value'=>'$data->getLatestActivityDate()', 'htmlOptions'=>array('width'=>'40px')),
             //array('name'=>'Done By','value'=>'$data->getAssignedDateToString()'),
             array(
                 'class'=>'CButtonColumn',
@@ -132,14 +132,15 @@ Yii::app()->clientScript->registerScript('register', "
             'id' => 'Assigned_tickets',
             'dataProvider' => $model3->searchAssigned(User::getCurrentUserId()),
             'columns' => array(
-                'subject',
                 array('name' => 'created_date', 'value' => '$data->getCreatedDateToString()'),
-                //array('name'=>'domainName','value'=>'$data->getDomainID()'),
-                array('name' => 'Created By', 'value' => '$data->getCompiledCreatorID()'),
+                'subject',
+                array('name' => 'Last Activity', 'value' => '$data->getLatestActivityDate()'),
+                array('name'=>'Priority','value'=>'$data->getPriorityString()'),
+               // array('name' => 'Created By', 'value' => '$data->getCompiledCreatorID()'),
                 //array('name'=>'Assigned To','value'=>'$data->getCompiledAssignedID()'),
                 // array('name'=>'assigned_date','value'=>'$data->getAssignedDateToString()'),
                 // 'status',
-                array('name' => 'Last Activity', 'value' => '$data->getLatestActivityDate()'),
+
                 //array('name'=>'Done By','value'=>'$data->getAssignedDateToString()'),
                 array(
                     'class' => 'CButtonColumn',
