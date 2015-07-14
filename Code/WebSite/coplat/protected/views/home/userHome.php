@@ -146,10 +146,10 @@ Yii::app()->clientScript->registerScript('register', "
             ), true)));
     $this->widget('CTabView', array('tabs'=>$MyTabs, ));
      ?>
-
+    <br/>
     <?php
     if (User::isCurrentUserDomMentor()) { ?>
-        <h3>Assigned Questions</h3>
+        <h3>Assigned Questions</h3> <br/>
         <?php
         $model3 = Ticket::model();
         $AssignedTabs = array(
@@ -207,6 +207,7 @@ Yii::app()->clientScript->registerScript('register', "
         $this->widget('CTabView', array('tabs'=>$AssignedTabs, ));
     }
     ?>
+     <br/>
     <h3>Upcoming Meetings</h3>
     <?php $model2= VideoConference::model();
     $this->widget('zii.widgets.grid.CGridView', array(
