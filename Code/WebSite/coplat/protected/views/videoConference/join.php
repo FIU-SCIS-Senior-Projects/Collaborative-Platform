@@ -426,7 +426,7 @@
             var username = event.userid;
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
-            if(!open) {
+            if(!copen) {
                 messages++;
                 $('#count').text(messages);
                 $('.chat-message-counter').show();
@@ -511,16 +511,16 @@
 
 <!-- General Site Scripts -->
 <script>
-    var open = false;
+    var copen = false;
     $('#live-chat header').on('click', function() {
 
         $('.chat').slideToggle(300, 'swing');
         $('.chat-message-counter').fadeOut(300);
         messages = 0;
-        if(open) {
-            open = false;
+        if(copen) {
+            copen = false;
         } else {
-            open = true;
+            copen = true;
         }
     });
 
