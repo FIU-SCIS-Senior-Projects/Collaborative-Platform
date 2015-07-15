@@ -23,7 +23,9 @@
 //                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
 //                    "at:\n" + chrome_ext);
                     if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
-                        window.open("https://google.com", '_blank')
+                        var newwindow=window.open(chrome_ext,'name','toolbar=1,scrollbars=1,location=1,statusbar=0,menubar=1,resizable=1,width=800,height=600');
+                        if (window.focus) {newwindow.focus()}
+                        //window.open("https://google.com", '_blank')
                     }
                 }
                 else if (navigator.userAgent.indexOf("Firefox") != -1) {
