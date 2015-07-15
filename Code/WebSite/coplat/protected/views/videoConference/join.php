@@ -11,7 +11,35 @@
 
 ?>
 
-
+<script>
+    $(document).ready(function() {
+        var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
+        rmc.DetectRTC.screen.getChromeExtensionStatus(extensionid, function (status) {
+            if (status == 'not-installed') {
+                var chrome_ext = "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk";
+                var firefox_ext = "https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi";
+                //window.open = false;
+                if (navigator.userAgent.indexOf("Chrome") != -1) {
+                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
+                    "at:\n" + chrome_ext);
+//                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
+//                        window.open(chrome_ext, '_blank')
+//                    }
+                }
+                else if (navigator.userAgent.indexOf("Firefox") != -1) {
+                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
+                    "at:\n" + firefox_ext);
+//                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
+//                        window.open(firefox_ext, '_blank')
+//                    }
+                }
+                else {
+                    alert("The browser you are using is unsupported. Please use Google Chrome");
+                }
+            }
+        });
+    });
+</script>
 
 <script>
     //https://gist.github.com/mathiasbynens/298591
@@ -426,7 +454,7 @@
             var username = event.userid;
             username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
             appendMsg(username, event.data.content);
-            if(!copen) {
+            if(!open) {
                 messages++;
                 $('#count').text(messages);
                 $('.chat-message-counter').show();
@@ -511,16 +539,16 @@
 
 <!-- General Site Scripts -->
 <script>
-    var copen = false;
+    var open = false;
     $('#live-chat header').on('click', function() {
 
         $('.chat').slideToggle(300, 'swing');
         $('.chat-message-counter').fadeOut(300);
         messages = 0;
-        if(copen) {
-            copen = false;
+        if(open) {
+            open = false;
         } else {
-            copen = true;
+            open = true;
         }
     });
 
@@ -582,34 +610,5 @@
     }
 </script>
 
-<script>
-    $(document).ready(function() {
-        var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
-        rmc.DetectRTC.screen.getChromeExtensionStatus(extensionid, function (status) {
-            if (status == 'not-installed') {
-                var chrome_ext = $(this).attr("https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk");
-                var firefox_ext = $(this).attr("https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi");
-                window.open = false;
-                if (navigator.userAgent.indexOf("Chrome") != -1) {
-//                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
-//                    "at:\n" + chrome_ext);
-                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
-                        window.open(chrome_ext, '_blank')
-                    }
-                }
-                else if (navigator.userAgent.indexOf("Firefox") != -1) {
-//                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
-//                    "at:\n" + firefox_ext);
-                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
-                        window.open(firefox_ext, '_blank')
-                    }
-                }
-                else {
-                    alert("The browser you are using is unsupported. Please use Google Chrome");
-                }
-            }
-        });
-    });
-</script>
 
 
