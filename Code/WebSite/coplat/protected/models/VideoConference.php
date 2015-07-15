@@ -256,4 +256,9 @@ class VideoConference extends CActiveRecord
 
         return $this->save();
     }
+
+    public  function delete(){
+        $this->status = "deleted";
+        return $this->save();
+    }
 }
