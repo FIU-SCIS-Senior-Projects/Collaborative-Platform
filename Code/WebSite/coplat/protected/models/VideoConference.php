@@ -234,19 +234,25 @@ class VideoConference extends CActiveRecord
     public function getDateToString()
     {
         $date = new DateTime($this->scheduled_for);
-        $now = new DateTime("now");
-        if ($date->format('Y-m-d') == date('Y-m-d'))
+        $nowc = VideoConference::model()->findBySql("Select NOW() as id");
+        $now = new DateTime($nowc->id);
+        if ($date->format('Y-m-d') == $now->format('Y-m-d'))
         {
-           // if($now > $date) {
-            //    return "Today, " . date(" g:i A", strtotime($this->scheduled_for)) . " LATE";
-           // }
-           // else {
-                return "Today, " . date(" g:i A", strtotime($this->scheduled_for));
-           // }
+            $diff = date_diff($now, $date);
+            $total = ($diff->h * 60) + $diff->i;
+            $striDate =  "Today, " . date(" g:i A", strtotime($this->scheduled_for));
+
         }
         else {
-            return date("M d, g:i A", strtotime($this->scheduled_for));
+            $striDate =  date("M d, g:i A", strtotime($this->scheduled_for));
         }
+        if($now->format('Y-m-d-H-i') > $date->format('Y-m-d-H-i'))
+        {
+            $diff = date_diff($now, $date);
+            $total = ($diff->h * 60) + $diff->i;
+            $striDate = $striDate ." ". $total . " minutes Late " ;
+        }
+        return $striDate;
 
     }
     public  function cancel(){

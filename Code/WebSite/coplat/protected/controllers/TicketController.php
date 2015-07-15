@@ -32,7 +32,7 @@ class TicketController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'download','reassign', 'reject', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
+                'actions' => array('create','viewOld', 'update', 'download','reassign', 'reject', 'change', 'adminHome', 'userHome', 'escalate', 'AutomaticReassignBySystem'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -767,6 +767,17 @@ class TicketController extends Controller
         $this->render('index', array('Tickets' => $Tickets,
             //'results' => $results,
             // 'user' => $user
+        ));
+    }
+    public function actionViewOld()
+    {
+        $model=new Ticket('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['Ticket']))
+            $model->attributes=$_GET['Ticket'];
+
+        $this->render('viewOld',array(
+            'model'=>$model,
         ));
     }
 
