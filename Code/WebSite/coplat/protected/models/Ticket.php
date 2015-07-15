@@ -288,7 +288,51 @@ class Ticket extends CActiveRecord
         ));
 
     }
+    public function searchOld()
+    {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
 
+        $criteria=new CDbCriteria;
+
+        $criteria->with = array( 'creatorUser', 'assignUser', 'domain', 'subdomain' );
+
+        $criteria->compare('domain.name', $this->domainName, true);
+
+        $criteria->compare('subdomain.name', $this->subDomainName, true);
+        $criteria->compare('status','close',true);
+        $criteria->compare('subject',$this->subject,true);
+        $criteria->compare('t.domain_id',$this->domain_id,true);
+        $criteria->compare('t.subdomain_id',$this->subdomain_id,true);
+        //$criteria->compare('Mentor1',$this->Mentor1);
+        //$criteria->compare('Mentor2',$this->Mentor2);
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+            'sort'=>array(
+                'attributes'=>array(
+                    'creatorName'=>array(
+                        'asc'=>'creatorUser.lname',
+                        'desc'=>'creatorUser.lname DESC',
+                    ),
+                    'assignedName'=>array(
+                        'asc'=>'assignUser.lname',
+                        'desc'=>'assignUser.lname DESC',
+                    ),
+                    'domainName'=>array(
+                        'asc'=>'domain.name',
+                        'desc'=>'domain.name DESC',
+                    ),
+                    'subDomainName'=>array(
+                        'asc'=>'subdomain.name',
+                        'desc'=>'subdomain.name DESC',
+                    ),
+                    '*',
+
+                ),
+            ),
+        ));
+    }
     public function searchMyQuestions($id)
     {
         // Warning: Please modify the following code to remove attributes that
