@@ -127,14 +127,19 @@ class VideoConference extends CActiveRecord
 */
     }
 
-    public function searchDeleted()
+    public function searchDeleted($id)
     {
-        // Warning: Please modify the following code to remove attributes that
-        // should not be searched.
-
         return new CActiveDataProvider($this, array(
-            'criteria'=>array('condition'=>'status like "deleted"')
+            'criteria'=>array(
+                'condition'=>'(moderator_id ='.$id.' or x.invitee_id = '.$id.') and status LIKE "deleted"',
+                'join'=> 'left join (select * from vc_invitation where invitee_id = '.$id.')x on t.id = x.videoconference_id'
+            ),
+            'sort'=>array(
+                'defaultOrder'=>'scheduled_for ASC',
+
+            ),
         ));
+
     }
 
     public function searchUpcoming($id)
@@ -151,6 +156,7 @@ class VideoConference extends CActiveRecord
         ));
 
     }
+
     public function findParticipantsAsString(){
         $moderator = User::model()->findByAttributes(array("id" => $this->moderator_id));
         $str = $moderator->fname . " " .$moderator->lname;
