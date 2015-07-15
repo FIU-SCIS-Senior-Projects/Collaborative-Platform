@@ -43,7 +43,7 @@ $this->breadcrumbs=array(
 //array('label'=>'Manage VideoConference', 'url'=>array('admin')),
 $this->menu=array(
 	array('label'=>'Create VideoConference', 'url'=>array('create')),
-
+    array('label'=>'View Deleted Video Conferences', 'url'=>array('viewDeleted'))
 );
 
 ?>
@@ -123,17 +123,17 @@ $this->menu=array(
 
     $today = new DateTime();
     foreach($vcs as $vc){
-        $dt = new DateTime($vc->scheduled_for);
+        if($vc->status != 'deleted') {
+            $dt = new DateTime($vc->scheduled_for);
 
 
-       if($dt->format('Y-m-d') == $today->format('Y-m-d')){
-           array_push($todays, $vc);
-       }
-       else if($dt > $today){
-           array_push($futures, $vc);
-       }
-       else{
-           array_push($past, $vc);
+            if ($dt->format('Y-m-d') == $today->format('Y-m-d')) {
+                array_push($todays, $vc);
+            } else if ($dt > $today) {
+                array_push($futures, $vc);
+            } else {
+                array_push($past, $vc);
+            }
         }
     }
 

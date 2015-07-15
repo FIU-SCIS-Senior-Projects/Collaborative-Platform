@@ -16,7 +16,6 @@
  */
 class VideoConference extends CActiveRecord
 {
-    public $dateToString;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -64,7 +63,6 @@ class VideoConference extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'moderator' => array(self::BELONGS_TO, 'User', 'moderator_id'),
-            'invitations'=>array(self::HAS_MANY, 'VCInvitation', 'videoconference_id'),
 		);
 	}
 
@@ -106,6 +104,16 @@ class VideoConference extends CActiveRecord
 		));
 	}
 
+    public function searchDeleted()
+    {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>array('condition'=>'status like "deleted"')
+        ));
+    }
+
     public function currentUserDataProvider()
     {
             // create your second data provider here
@@ -127,20 +135,7 @@ class VideoConference extends CActiveRecord
 */
     }
 
-    public function searchUpcoming($id)
-    {
-        return new CActiveDataProvider($this, array(
-            'criteria'=>array(
-                'condition'=>'(moderator_id ='.$id.' or x.invitee_id = '.$id.') and scheduled_for >= DATE_ADD(NOW() , INTERVAL -1 HOUR )',
-                'join'=> 'left join (select * from vc_invitation where invitee_id = '.$id.')x on t.id = x.videoconference_id'
-            ),
-                'sort'=>array(
-                'defaultOrder'=>'scheduled_for ASC',
 
-            ),
-        ));
-
-    }
     public function findParticipantsAsString(){
         $moderator = User::model()->findByAttributes(array("id" => $this->moderator_id));
         $str = $moderator->fname . " " .$moderator->lname;
@@ -215,24 +210,7 @@ class VideoConference extends CActiveRecord
         return $str;
     }
 
-    public function getDateToString()
-    {
-        $date = new DateTime($this->scheduled_for);
-        $now = new DateTime("now");
-        if ($date->format('Y-m-d') == date('Y-m-d'))
-        {
-           // if($now > $date) {
-            //    return "Today, " . date(" g:i A", strtotime($this->scheduled_for)) . " LATE";
-           // }
-           // else {
-                return "Today, " . date(" g:i A", strtotime($this->scheduled_for));
-           // }
-        }
-        else {
-            return date("M d, g:i A", strtotime($this->scheduled_for));
-        }
 
-    }
     public  function cancel(){
         $this->status = "cancelled";
 
@@ -244,6 +222,11 @@ class VideoConference extends CActiveRecord
         }
 
 
+        return $this->save();
+    }
+
+    public  function delete(){
+        $this->status = "deleted";
         return $this->save();
     }
 }

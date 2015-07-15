@@ -33,7 +33,7 @@ class VideoConferenceController extends Controller
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject', 'createfrommodal', 'cancel'),
+                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject', 'createfrommodal', 'cancel', 'viewDeleted'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -535,6 +535,11 @@ class VideoConferenceController extends Controller
         $this->render('admin', array(
             'model' => $model,
         ));
+    }
+
+    public function actionViewDeleted() {
+        $model = new VideoConference();
+        $this->render('viewDeleted', array('model' => $model));
     }
 
     /**
