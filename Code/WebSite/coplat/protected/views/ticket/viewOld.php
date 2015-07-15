@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Tickets', 'url'=>array('index')),
+	
 	//array('label'=>'Create Priority', 'url'=>array('create')),
 );
 
