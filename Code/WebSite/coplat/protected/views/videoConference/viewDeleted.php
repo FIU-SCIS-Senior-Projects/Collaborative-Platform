@@ -53,7 +53,7 @@ $('.search-form form').submit(function(){
 $model = VideoConference::model();
 $this->widget('zii.widgets.grid.CGridView', array(
     'id'=>'video-conference-grid',
-    'dataProvider'=>$model->searchDeleted(user::getCurrentUserId()),
+    'dataProvider'=>$model->searchDeleted(User::getCurrentUserId()),
     'filter'=>$model,
     'columns'=>array(
         'id',

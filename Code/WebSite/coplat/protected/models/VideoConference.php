@@ -131,7 +131,7 @@ class VideoConference extends CActiveRecord
     {
         return new CActiveDataProvider($this, array(
             'criteria'=>array(
-                'condition'=>'(moderator_id ='.$id.' or x.invitee_id = '.$id.') and status LIKE "deleted"',
+                'condition'=>'(moderator_id ='.$id.' or x.invitee_id = '.$id.') and t.status LIKE "deleted"',
                 'join'=> 'left join (select * from vc_invitation where invitee_id = '.$id.')x on t.id = x.videoconference_id'
             ),
             'sort'=>array(
