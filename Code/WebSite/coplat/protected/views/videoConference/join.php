@@ -16,8 +16,8 @@
         var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
         rmc.DetectRTC.screen.getChromeExtensionStatus(extensionid, function (status) {
             if (status == 'not-installed') {
-                var chrome_ext = "https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk";
-                var firefox_ext = "https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi";
+                var chrome_ext = $(this).attr("https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk");
+                var firefox_ext = $(this).attr("https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi");
                 if (navigator.userAgent.indexOf("Chrome") != -1) {
 //                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
 //                    "at:\n" + chrome_ext);
