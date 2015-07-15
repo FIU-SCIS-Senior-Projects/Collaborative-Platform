@@ -56,7 +56,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$model->searchDeleted(User::getCurrentUserId()),
     'filter'=>$model,
     'columns'=>array(
-        'id',
+        'id::Video Conference Id',
         'moderator_id',
         'scheduled_on',
         'scheduled_for',
