@@ -43,7 +43,7 @@ $this->breadcrumbs=array(
 //array('label'=>'Manage VideoConference', 'url'=>array('admin')),
 $this->menu=array(
 	array('label'=>'Create VideoConference', 'url'=>array('create')),
-    array('label'=>'View Deleted Video Conferences', 'url'=>array('viewDeleted'))
+    array('label'=>'View Past/Deleted Video Conferences', 'url'=>array('viewDeleted'))
 );
 
 ?>
