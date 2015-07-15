@@ -242,35 +242,6 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/style.css">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
 
-<script>
-    $(document).ready(function() {
-        var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
-        rmc.DetectRTC.screen.getChromeExtensionStatus(extensionid, function (status) {
-            if (status == 'not-installed') {
-                var chrome_ext = $(this).attr("https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk");
-                var firefox_ext = $(this).attr("https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi");
-                window.open = false;
-                if (navigator.userAgent.indexOf("Chrome") != -1) {
-//                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
-//                    "at:\n" + chrome_ext);
-                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
-                        window.open(chrome_ext, '_blank')
-                    }
-                }
-                else if (navigator.userAgent.indexOf("Firefox") != -1) {
-//                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
-//                    "at:\n" + firefox_ext);
-                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
-                        window.open(firefox_ext, '_blank')
-                    }
-                }
-                else {
-                    alert("The browser you are using is unsupported. Please use Google Chrome");
-                }
-            }
-        });
-    });
-</script>
 
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
@@ -611,5 +582,34 @@
     }
 </script>
 
+<script>
+    $(document).ready(function() {
+        var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
+        rmc.DetectRTC.screen.getChromeExtensionStatus(extensionid, function (status) {
+            if (status == 'not-installed') {
+                var chrome_ext = $(this).attr("https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk");
+                var firefox_ext = $(this).attr("https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi");
+                window.open = false;
+                if (navigator.userAgent.indexOf("Chrome") != -1) {
+//                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
+//                    "at:\n" + chrome_ext);
+                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
+                        window.open(chrome_ext, '_blank')
+                    }
+                }
+                else if (navigator.userAgent.indexOf("Firefox") != -1) {
+//                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
+//                    "at:\n" + firefox_ext);
+                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
+                        window.open(firefox_ext, '_blank')
+                    }
+                }
+                else {
+                    alert("The browser you are using is unsupported. Please use Google Chrome");
+                }
+            }
+        });
+    });
+</script>
 
 
