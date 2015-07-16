@@ -120,7 +120,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                     ),
                 ),
                 array('label' => 'Mentor Apply', 'url' => array('application/portal'), 'visible' => !$currentUserIsGuest), //Mentor Apply
-                array('label' => 'Answered Questions', 'url' => array('/ticket/viewOld'), 'visible' => !$currentUserIsGuest),
+                array('label' => 'Search Questions', 'url' => array('/ticket/viewOld'), 'visible' => !$currentUserIsGuest),
                 array('label' => 'Ask Question', 'url' => array('/ticket/create'), 'visible' => !$currentUserIsGuest),  //Create Ticket
                 array('label' => $userinfo, 'url' => '#', 'items' => array(                                             //User Info root menu
                     array('label' => 'My Profile', 'url' => array('profile/userProfile'), 'visible' => !$currentUserIsGuest),  //View Profile
