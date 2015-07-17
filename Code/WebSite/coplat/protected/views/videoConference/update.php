@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'List VideoConference', 'url'=>array('index')),
 	array('label'=>'Create VideoConference', 'url'=>array('create')),
 	array('label'=>'View VideoConference', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage VideoConference', 'url'=>array('admin')),
+	//array('label'=>'Manage VideoConference', 'url'=>array('admin')),
 );
 ?>
 
