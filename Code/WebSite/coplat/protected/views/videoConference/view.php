@@ -53,7 +53,6 @@ $this->menu = array(
     array('label'=>'View Past/Canceled Video Conferences', 'url'=>array('viewDeleted'))
 );
 ?>
-
     <style>
         .error-message {
             background-color: #f2dede;
@@ -104,6 +103,9 @@ $this->menu = array(
         }
         .cancelled{
             background-color: #f4ffbc;
+        }
+        .scheduled{
+            background-color: #d9edf7;
         }
 
     </style>
