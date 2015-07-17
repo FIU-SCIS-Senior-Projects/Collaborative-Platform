@@ -221,7 +221,8 @@ Yii::app()->clientScript->registerScript('register', "
                 'template'=>'{view}',
                 'buttons'=>array(
                     'view'=>array(
-                        'url'=>'Yii::app()->createUrl("videoConference/join", array("id"=>$data->id))',)
+                        'url'=>'Yii::app()->createAbsoluteUrl("videoConference/join/".$data->id, array(), "https")',)
+                    //CHtml::link('Join Now', $this->createAbsoluteUrl('videoConference/join/' . $vc->id ,array(),'https'), array('role' => "button", "class" => "btn btn-primary"));
                 ),
             ),
         ),
