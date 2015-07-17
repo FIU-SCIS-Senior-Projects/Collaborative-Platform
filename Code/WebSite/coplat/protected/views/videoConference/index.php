@@ -123,7 +123,7 @@ $this->menu=array(
 
     $today = new DateTime();
     foreach($vcs as $vc){
-        if($vc->status != 'deleted') {
+        if($vc->status != 'cancelled') {
             $dt = new DateTime($vc->scheduled_for);
 
 
