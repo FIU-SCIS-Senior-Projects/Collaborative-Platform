@@ -49,7 +49,7 @@ $this->breadcrumbs = array(
 $this->menu = array(
     array('label' => 'List VideoConference', 'url' => array('index')),
     array('label' => 'Create VideoConference', 'url' => array('create')),
-    array('label' => 'Delete VideoConference', 'url' => '#', 'visible' => $ismoderator, 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')),
+    //array('label' => 'Delete VideoConference', 'url' => '#', 'visible' => $ismoderator, 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')),
     array('label'=>'View Past/Canceled Video Conferences', 'url'=>array('viewDeleted'))
 );
 ?>
@@ -135,19 +135,19 @@ $this->menu = array(
     if ($ismoderator) {
         $html .=   CHtml::button('Edit', array('submit' => array('videoConference/update/'.$model->id), "visible" =>  $ismoderator, 'role' => "button", "class" => "btn btn-info"));
 
-        $html .= CHtml::ajaxLink('Delete',
-            Yii::app()->createAbsoluteUrl('videoConference/delete/' . $model->id),
-            array(
-                'type' => 'post',
-                'data' => array('id' => $model->id, 'type' => 'delete'),
-                'update' => 'message',
-                'success' => 'function(response) {
-            $(".message").html(response);
-            $("#mbox-' . $model->id . '").remove();
-            }',
-            ),
-            array('confirm' => 'Are you sure you want to delete this conference?', "visible" => $ismoderator, 'role' => "button", "class" => "btn btn-danger")
-        );
+//        $html .= CHtml::ajaxLink('Delete',
+//            Yii::app()->createAbsoluteUrl('videoConference/delete/' . $model->id),
+//            array(
+//                'type' => 'post',
+//                'data' => array('id' => $model->id, 'type' => 'delete'),
+//                'update' => 'message',
+//                'success' => 'function(response) {
+//            $(".message").html(response);
+//            $("#mbox-' . $model->id . '").remove();
+//            }',
+//            ),
+//            array('confirm' => 'Are you sure you want to delete this conference?', "visible" => $ismoderator, 'role' => "button", "class" => "btn btn-danger")
+//        );
         if($model->status != "cancelled")
             $html .=   CHtml::ajaxLink('Cancel',
                 Yii::app()->createAbsoluteUrl('videoConference/cancel/'.$model->id),
