@@ -13,7 +13,7 @@
 
 $this->breadcrumbs=array(
     'Video Conferences'=>array('index'),
-    'View Deleted',
+   // 'View Deleted',
 );
 
 $this->menu=array(
@@ -37,14 +37,7 @@ $('.search-form form').submit(function(){
 
 <h2>Deleted Video Conferences</h2>
 
-<div class="search-form" style="display:none">
-    <?php $this->renderPartial('_search',array(
-        'model'=>$model,
-    )); ?>
-</div><!-- search-form -->
-
 <?php
-$model = VideoConference::model();
 $this->widget('zii.widgets.grid.CGridView', array(
     'id'=>'video-conference-grid',
     'dataProvider'=>$model->searchDeleted(User::getCurrentUserId()),
@@ -52,7 +45,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'columns'=>array(
 //        'id::Video Conference Id',
         'subject',
-        array('name'=>'moderator','value'=>'$data->getVCModerator()'),
+        array(
+            'name'  => 'moderatorName',
+            'value' => '($data->getVCModerator())',
+            'header'=> 'Moderator',
+            'filter'=> CHtml::activeTextField($model, 'moderatorName'),
+        ),
+      /// array('name'=>'moderatorName','value'=>'$data->getVCModerator()'),
         //'user.fname',
         //'moderator_id',
         'scheduled_on',

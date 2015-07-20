@@ -539,20 +539,15 @@ class VideoConferenceController extends Controller
 
     public function actionViewDeleted() {
 
-        $model = new VideoConference();
-        $user = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
 
-        $meetingsId = new CList();
-        $invitations = VCInvitation::model()->findAllByAttributes(array("invitee_id" => $user->id));
-        foreach ($invitations as $inv) {
-            $meetingsId->add($inv->videoconference_id);
-        }
-        $meetings = VideoConference::model()->findAllByAttributes(array("moderator_id" => $user->id));
-        foreach ($meetings as $meeting) {
-            $meetingsId->add($meeting->id);
-        }
+        $model = new VideoConference('search');
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['VideoConference']))
+            $model->attributes = $_GET['VideoConference'];
 
-        $this->render('viewDeleted', array('model' => $model, 'meetingsId' => $meetingsId->toArray()));
+        $this->render('viewDeleted', array(
+            'model' => $model,
+        ));
     }
 
     /**

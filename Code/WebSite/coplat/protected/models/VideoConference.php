@@ -17,7 +17,7 @@
 class VideoConference extends CActiveRecord
 {
     public $dateToString;
-    public $orgName;
+    public $moderatorName;
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -134,15 +134,24 @@ class VideoConference extends CActiveRecord
         $criteria=new CDbCriteria;
 
 //        $criteria->compare('id',$this->id,true);
+        $criteria->with = array('moderator');
+        $criteria->condition = '(moderator_id ='.$id.' or x.invitee_id = '.$id.') and (t.status LIKE "deleted" or scheduled_for < NOW())';
         $criteria->compare('subject',$this->subject,true);
+        $criteria->compare('notes', $this->notes, true);
+        $criteria->compare('scheduled_for', $this->scheduled_for, true);
+        $criteria->compare('scheduled_on', $this->scheduled_on, true);
+        $criteria->addCondition('(moderator.fname like "%'.$this->moderatorName.'%" or moderator.lname like "%'.$this->moderatorName.'%")', "AND");
 //        $criteria->compare('moderator_id',$this->moderator_id,true);
 //        $criteria->compare('scheduled_on',$this->scheduled_on,true);
 //        $criteria->compare('scheduled_for',$this->scheduled_for,true);
 //        $criteria->compare('notes',$this->notes,true);
+          //  $criteria->compare('moderator_id', $id, true, "OR");
+        //    $criteria->compare('x.invitee_id', $id, true, "OR");
 
-        $criteria->condition = '(moderator_id ='.$id.' or x.invitee_id = '.$id.') and (t.status LIKE "deleted" or scheduled_for < NOW())';
+
+
         $criteria->join = 'left join (select * from vc_invitation where invitee_id = '.$id.')x on t.id = x.videoconference_id';
-        $criteria->with = array('moderator');
+
 
 
         return new CActiveDataProvider($this, array(
@@ -152,12 +161,12 @@ class VideoConference extends CActiveRecord
 
                 'attributes'=>array(
                     '*',
-                    'moderator'=>array(
+                    'moderatorName'=>array(
                         'asc'=>'moderator.lname',
                         'desc'=>'moderator.lname DESC',
                     ),
                 ),
-            )
+            ),
 
         ));
 
