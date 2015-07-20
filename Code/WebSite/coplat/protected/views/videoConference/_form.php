@@ -84,7 +84,15 @@
         })
     });
 </script>
-
+<script>
+    $(document).ready(function() {
+        $('#date').datepicker({
+            showAnim: 'fadeIn',
+            minDate: 0,
+            showButtonPanel: true
+        });
+    });
+</script>
 
 <div class="form">
 
