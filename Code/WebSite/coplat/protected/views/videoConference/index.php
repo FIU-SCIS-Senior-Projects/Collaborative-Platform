@@ -44,10 +44,14 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create VideoConference', 'url'=>array('create')),
     array('label'=>'View Past/Canceled Video Conferences', 'url'=>array('viewDeleted'))
-);
-?>
+);?>
 
-    <a target="_blank" id="select-screen-plugin" href="#">Screen Capturing Plugin</a>
+<script>
+    $(document).ready(function() {
+        $("#yw1").append ('<li><a target="_blank" id="select-screen-plugin" href="#">Screen Capturing Plugin</a></li>'
+        );
+    });
+</script>
 <script>
     $(document).ready(function () {
         var link = $("#select-screen-plugin");
