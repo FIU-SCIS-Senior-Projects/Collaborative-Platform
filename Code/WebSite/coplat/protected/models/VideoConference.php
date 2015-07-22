@@ -52,7 +52,7 @@ class VideoConference extends CActiveRecord
             array('scheduled_on, scheduled_for', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, subject, moderator_id, scheduled_on, scheduled_for, notes, orgName', 'safe', 'on'=>'search'),
+            array('id, subject, moderator_id, scheduled_on, scheduled_for, notes, status, orgName', 'safe', 'on'=>'search'),
         );
     }
 
@@ -81,6 +81,7 @@ class VideoConference extends CActiveRecord
             'scheduled_on' => 'Scheduled On',
             'scheduled_for' => 'Date',
             'notes' => 'Notes',
+            'status' => 'Status'
         );
     }
 
@@ -133,22 +134,14 @@ class VideoConference extends CActiveRecord
     {
         $criteria=new CDbCriteria;
 
-//        $criteria->compare('id',$this->id,true);
         $criteria->with = array('moderator');
-        $criteria->condition = '(moderator_id ='.$id.' or x.invitee_id = '.$id.') and (t.status LIKE "deleted" or scheduled_for < NOW())';
+        $criteria->condition = '(moderator_id ='.$id.' or x.invitee_id = '.$id.') and (t.status LIKE "cancelled" or scheduled_for < NOW())';
         $criteria->compare('subject',$this->subject,true);
         $criteria->compare('notes', $this->notes, true);
         $criteria->compare('scheduled_for', $this->scheduled_for, true);
         $criteria->compare('scheduled_on', $this->scheduled_on, true);
+        $criteria->compare('status', $this->status, true);
         $criteria->addCondition('(moderator.fname like "%'.$this->moderatorName.'%" or moderator.lname like "%'.$this->moderatorName.'%")', "AND");
-//        $criteria->compare('moderator_id',$this->moderator_id,true);
-//        $criteria->compare('scheduled_on',$this->scheduled_on,true);
-//        $criteria->compare('scheduled_for',$this->scheduled_for,true);
-//        $criteria->compare('notes',$this->notes,true);
-          //  $criteria->compare('moderator_id', $id, true, "OR");
-        //    $criteria->compare('x.invitee_id', $id, true, "OR");
-
-
 
         $criteria->join = 'left join (select * from vc_invitation where invitee_id = '.$id.')x on t.id = x.videoconference_id';
 
@@ -303,8 +296,4 @@ class VideoConference extends CActiveRecord
         return $this->save();
     }
 
-    public  function delete(){
-        $this->status = "deleted";
-        return $this->save();
-    }
 }

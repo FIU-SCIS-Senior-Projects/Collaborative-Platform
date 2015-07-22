@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List VideoConference', 'url'=>array('index')),
-	array('label'=>'Manage VideoConference', 'url'=>array('admin')),
+//	array('label'=>'Manage VideoConference', 'url'=>array('admin')),
 );
 ?>
 

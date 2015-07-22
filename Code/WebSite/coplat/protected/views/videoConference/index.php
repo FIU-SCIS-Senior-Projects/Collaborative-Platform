@@ -44,10 +44,29 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create VideoConference', 'url'=>array('create')),
     array('label'=>'View Past/Canceled Video Conferences', 'url'=>array('viewDeleted'))
-);
+);?>
 
-?>
+<script>
+    $(document).ready(function() {
+        $("#yw1").append ('<li><a target="_blank" id="select-screen-plugin" href="#">Screen Capturing Plugin</a></li>'
+        );
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var link = $("#select-screen-plugin");
+        if (navigator.userAgent.indexOf("Chrome") != -1) {
+            link.attr("href", "https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk");
+        }
+        else if (navigator.userAgent.indexOf("Firefox") != -1) {
+            link.attr("href", "https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi");
+        }
+        else {
+            alert("The browser you are using is unsupported. Please use Google Chrome");
+        }
 
+    });
+</script>
 
 <style>
 

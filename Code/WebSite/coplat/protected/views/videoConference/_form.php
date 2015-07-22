@@ -84,7 +84,15 @@
         })
     });
 </script>
-
+<script>
+    $(document).ready(function() {
+        $('#date').datepicker({
+            showAnim: 'fadeIn',
+            minDate: 0,
+            showButtonPanel: true
+        });
+    });
+</script>
 
 <div class="form">
 
@@ -115,7 +123,7 @@
 
     <div class="meeting-date-input row" id="date-in">
 
-        <label for="date">Date</label>
+        <label for="date">Date <span class="required">*</span></label>
         <input placeholder="mm/dd/yyyy" id="date" type="text" name="date">
 
 
@@ -128,7 +136,7 @@
     </div>
 
     <div class="meeting-date-input row" id="time-in">
-        <label for="time">Time</label>
+        <label for="time">Time <span class="required">*</span></label>
         <input placeholder="09:00 am" id="time" type="text" name="time">
     </div>
 
