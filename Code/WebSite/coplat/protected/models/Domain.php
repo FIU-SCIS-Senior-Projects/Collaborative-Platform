@@ -81,7 +81,7 @@ class Domain extends CActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description',
-            'validator' => 'Profficiency Cutoff',
+            'validator' => 'Proficiency Cutoff',
             'need' => 'Need',
             'need_amount' => 'Need Amount',
         );

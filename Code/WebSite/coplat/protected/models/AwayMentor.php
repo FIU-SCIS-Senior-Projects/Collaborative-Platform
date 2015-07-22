@@ -55,7 +55,7 @@ class AwayMentor extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array('User' => array(self::BELONGS_TO, 'User',    'userID'),
+        return array('user' => array(self::BELONGS_TO, 'User',    'userID'),
         );
     }
 
@@ -100,8 +100,8 @@ class AwayMentor extends CActiveRecord
                         'desc'=>'user.username DESC',
                     ),
                     'name_search'=>array(
-                        'asc'=>'user.fullName',
-                        'desc'=>'user.fullName DESC',
+                        'asc'=>'user.lname',
+                        'desc'=>'user.lname DESC',
                     ),
                     '*',
                 ),
