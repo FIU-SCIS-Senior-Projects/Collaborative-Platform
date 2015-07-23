@@ -1,0 +1,2 @@
+MAILTO=fiucoplat@cp-dev.cs.fiu.edu
+*/30 * * * * php /var/www/html/CoplatVe5/Code/WebSite/coplat/AutoBackend.php >/dev/null

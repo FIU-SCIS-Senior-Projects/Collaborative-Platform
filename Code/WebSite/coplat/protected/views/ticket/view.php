@@ -140,8 +140,8 @@
         <?php
         if ( (User::isCurrentUserAdmin() && $model->status == 'Pending') || 
               (User::isCurrentUserDomMentor() && $model->status == 'Pending' && 
-               $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId()== $model->assign_user_id  && 
-               User::getCurrentUserId() != $model->creator_user_id ))
+               $tier !== null && $tier->tier_team == 1 && User::getCurrentUserId()== $model->assign_user_id ) ||
+               User::getCurrentUserId() == $model->creator_user_id )
         {
             $this->widget('bootstrap.widgets.TbButton', array(
                 'label' => 'Re Assign',
@@ -241,7 +241,7 @@
                 <tbody>
                     <tr>
                         <td><?php echo $event->id; ?></td>
-                        <td><?php echo date("M d, Y h:m A", strtotime($event->event_recorded_date)) ?></td>
+                        <td><?php echo date("M d, Y g:i A", strtotime($event->event_recorded_date)) ?></td>
                         <td><?php echo $event->getEventDescription() ?></td>                    
                         <td><?php echo $event->eventPerformedByUser->getFullName() ?></td>
                     </tr>
@@ -331,12 +331,17 @@
                 <input style ="display:none" type = "text" id = "file" value='<?php /*echo $model->file;*/ ?>'</input> -->
         <?php
         //Logic to identified is a subdomain is being specified
-        $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE activated =:activated and (isAdmin =:isAdmin or isDomMentor=:isDomMentor and id!=:userid)", 
-                                                 array(':activated' => 1, ':isAdmin' => 1, ':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
+        if(User::isCurrentUserAdmin()) {
+            $userDomain = User::model()->findAllBySql("SELECT * FROM user WHERE activated =:activated and (isAdmin =:isAdmin or isDomMentor=:isDomMentor and id!=:userid)",
+                array(':activated' => 1, ':isAdmin' => 1, ':isDomMentor' => 1, ':userid' => User::getCurrentUserId()));
+        }
+        else{
+            $userDomain = User::model()->findAllBySql("Select * from user where id = 22");
+        }
         $data = array();
         //tito
         foreach ($userDomain as $mod) {
-            $data[$mod->id] = $mod->fname . ' ' . $mod->lname;
+                  $data[$mod->id] = $mod->fname . ' ' . $mod->lname;
         }
         ?>
         <?php echo $form->labelEx($mod, 'Domain Mentor'); ?>
@@ -585,6 +590,8 @@
             setTimeout(closeModal, 5000);     //wait 5 seconds
             event.preventDefault(); // Prevent the form from submitting via the browser.
         });
+
+
     });
 
     function closeModal(){

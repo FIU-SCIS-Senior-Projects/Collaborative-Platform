@@ -376,7 +376,7 @@ class User extends CActiveRecord
     	$users = array();
     	foreach($dataProvider->getData() as $user){
     		$temp = array();
-    		
+
     		$temp["id"] = $user->id;
     		$temp["name"] = $user->getFullName();
     		if (isset($user->university_id) && $user->university_id > 0)
@@ -441,7 +441,9 @@ class User extends CActiveRecord
     {
         return $this->isProMentor;
     }
-
+    public function getLastCommaFirst() {
+        return $this->lname.', ' . $this->fname;
+    }
     public function isPerMentor()
     {
         return $this->isPerMentor;
@@ -480,7 +482,35 @@ class User extends CActiveRecord
             return false;
         return $user->isAdmin;
     }
+    public static function isCurrentUserAway()
+    {
+        $username = Yii::app()->user->name;
+        $user = User::model()->find("username=:username", array(':username' => $username));
+        if ($user == null)
+            return false;
+        $away = AwayMentor::model()->findByPk($user->id);
+        if (is_null($away))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
 
+    }
+    public static function isThisUserAway($id)
+    {
+        $away = AwayMentor::model()->findByPk($id);
+        if (is_null($away))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     public static function isCurrentUserMentee()
     {
         $username = Yii::app()->user->name;
@@ -550,10 +580,13 @@ class User extends CActiveRecord
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
         $message = $userfullName . ", has closed the ticket #".$ticket_id;
+
         $html = User::replaceMessage($mentorfullName, $message);
 
         $email->to = $mentor_email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'Ticket #'.$ticket_id.' has been closed.';
         $email->message = $html;
         $email->send();
@@ -565,12 +598,13 @@ class User extends CActiveRecord
     {
         /*Query to the User_Domain model */
 
+
         if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id", array(":id" => $domain_id));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE subdomain_id =:id and user_id not in (select userID as user_id from away_mentor) order by assigned_date asc", array(":id" => $domain_id));
             $subdomain = Subdomain::model()->findByPk($domain_id);
             $validator = $subdomain->validator;
         } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id", array(":id" => $domain_id));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id =:id and user_id not in (select userID as user_id from away_mentor) order by assigned_date asc ", array(":id" => $domain_id));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
@@ -602,16 +636,18 @@ class User extends CActiveRecord
         return self::$admin; /* Assign the ticket to the admin for reassign */
     }
 
+
     //tito   /*Assign Domain Mentor to a Ticket */
-    public static function reassignTicket($domain_id, $sub, $oldMentorId, $tier)
+    public static function reassignTicket($domain_id, $sub, $oldMentorId, $tier, $ticket_id)
     {
         /*Query to the User_Domain model */
+        $awayMentors = AwayMentor::model()->findAllBySql("SELECT * FROM away_mentor");
         if ($sub) {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE subdomain_id =:id and user_id !=:id2", array(":id" => $domain_id, ":id2" => $oldMentorId));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE subdomain_id =:id and user_id !=:id2 and user_id not in (select userID as user_id from away_mentor) and user_id not in (select old_value as user_id from ticket_events where ticket_id =:tid and event_type_id = 3) order by assigned_date ASC  ", array(":id" => $domain_id, ":id2" => $oldMentorId, ":tid" => $ticket_id));
             $subdomain = Subdomain::model()->findByPk($domain_id);
             $validator = $subdomain->validator;
         } else {
-            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain WHERE domain_id =:id and user_id !=:id2", array(":id" => $domain_id, ":id2" => $oldMentorId));
+            $userDomain = UserDomain::model()->findAllBySql("SELECT * FROM user_domain left join (select assign_user_id, assigned_date from (select * from ticket order by assigned_date desc)x  group by assign_user_id)x on assign_user_id = user_id WHERE domain_id =:id and user_id !=:id2 and user_id not in (select userID as user_id from away_mentor) and user_id not in (select old_value as user_id from ticket_events where ticket_id =:tid and event_type_id = 3) order by assigned_date ASC ", array(":id" => $domain_id, ":id2" => $oldMentorId, ":tid" => $ticket_id));
             $domain = Domain::model()->findByPk($domain_id);
             $validator = $domain->validator;
         }
@@ -657,7 +693,7 @@ class User extends CActiveRecord
         $html = User::replaceMessage($adminfullName, $message);
 
         $email->to = $admin_email;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
         $email->subject = 'We have a New Member!!!!';
         $email->message = $html;
         $email->send();
@@ -671,7 +707,9 @@ class User extends CActiveRecord
         $html = User::replaceMessage($userfullName, $message);
 
         $email->to = $user_email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
         $email->subject = 'Congratulations!';
         $email->message = $html;
         $email->send();
@@ -688,8 +726,10 @@ class User extends CActiveRecord
     	$html = User::replaceMessage(($model->fname . ' ' . $model->lname), $message);
     	 
     	$email->to = $model->email;
-    	$email->from = 'Collaborative Platform';
-    	$email->subject = 'Your application has been reviewed!';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+    	$email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
+        $email->subject = 'Your application has been reviewed!';
     	$email->message = $html;
     	$email->send();
     }
@@ -703,7 +743,9 @@ class User extends CActiveRecord
         $html = User::replaceMessage($adminfullName, $message);
 
         $email->to = $admin_email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'Ticket #'.$ticket_id.' has been rejected.';
         $email->message = $html;
         $email->send();
@@ -719,7 +761,9 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $user->email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
         $email->subject = 'Password Change';
         $email->message = $html;
         $email->send();
@@ -735,7 +779,9 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $user->email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'Your New Password';
         $email->message = $html;
         $email->send();
@@ -745,7 +791,9 @@ class User extends CActiveRecord
     {
         $email = Yii::app()->email;
         $email->to = $address;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->message = $message;
         $email->subject = 'Collaborative Platform';
         $email->send();
@@ -763,7 +811,9 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $receive->email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'New Message';
         $email->message = $html;
         $email->send();
@@ -779,28 +829,36 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $receiver_email;
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
         $email->subject = 'Welcome';
-        $email->from = 'Collaborative Platform';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
         $email->message = $html;
 
         $email->send();
     }
 
-    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain)
+    public static function sendTicketAssignedEmailNotification($creator_id, $assign_id, $ticket_domain, $ticket_id)
     {
+        $ticket = Ticket::model()->findByPk($ticket_id);
+        $subject = $ticket->subject;
+        $description = $ticket->description;
+        $priority = Priority::model()->findByPk($ticket->priority_id);
         $creator = User::model()->find("id=:id", array(':id' => $creator_id));
         $domMentor = User::model()->find("id=:id", array(':id' => $assign_id));
         $domain = Domain::model()->find("id=:id", array(':id' => $ticket_domain));
 
-        $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
-
-        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/>".$link." for more information.";
+        $link = CHtml::link("Click Here", 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/view/'.$ticket_id);
+        $linkReject = CHtml::link("REJECT TICKET", 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php/ticket/reject/'.$ticket_id);
+        $message = "The user, " . $creator->fname . " " . $creator->lname . ", has created a ticket that has being assigned to you. </h2><br/><b>Subject:</b> ".$subject.".<br/><b>Description:</b><br>" .$description. "<br/><br/>The ticket creator stated that this ticket is of ". $priority->description . " priority if no comments or scheduled meetings are made within ". $priority->reassignHours ." hours the ticket will be reassigned <br/><br/> Please make a comment on the ticket before the ticket is reassigned.\n".$link." To view the ticket\n Thank You<br/><br/>If you are unable to work on this ticket click here:<br/>".$linkReject;
         $name = $domMentor->fname . ' ' . $domMentor->lname;
         $html = User::replaceMessage($name, $message);
 
         $email = Yii::app()->email;
         $email->to = $domMentor->email;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'New Ticket related to ' . $domain->name;
         $email->message = $html;
         $email->send();
@@ -823,7 +881,9 @@ class User extends CActiveRecord
 
             $email = Yii::app()->email;
             $email->to = $ticket_mentor->email;
-            $email->from = 'Collaborative Platform';
+            $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+            $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+            $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -834,7 +894,9 @@ class User extends CActiveRecord
 
             $email = Yii::app()->email;
             $email->to = $ticket_creator->email;
-            $email->from = 'Collaborative Platform';
+            $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+            $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+            $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -846,7 +908,9 @@ class User extends CActiveRecord
 
             $email = Yii::app()->email;
             $email->to = $ticket_mentor->email . "," . $ticket_creator->email;
-            $email->from = 'Collaborative Platform';
+            $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+            $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+            $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
             $email->subject = 'Comment added to Ticket #' . $ticket->id;
             $email->message = $html;
             $email->send();
@@ -876,10 +940,13 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $invitation->email;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'We need you.';
         $email->message = $html;
         $email->send();
+
 
     }
     
@@ -889,8 +956,10 @@ class User extends CActiveRecord
     	$html = User::replaceMessage($to, $message);
     	$email = Yii::app()->email;
     	$email->to = $invitation->email;
-    	$email->from = 'Collaborative Platform';
-    	$email->subject = 'We need you.';
+    	$email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
+        $email->subject = 'We need you.';
     	$email->message = $html;
     	$email->send();
     	
@@ -971,7 +1040,7 @@ class User extends CActiveRecord
         $user= User::model()->findByPk($done_by);
         $link = CHtml::link('Click here', 'http://' . Yii::app()->request->getServerName() . '/coplat/index.php');
 
-        $email_from = 'Collaborative Platform';
+        $email_from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
         if($ticket->status == 'Pending')
             $status = 'Reassign';
         else
@@ -990,6 +1059,8 @@ class User extends CActiveRecord
             $email->from = $email_from;
             $email->subject = $email_subject;
             $email->to = $mentor->email;
+            $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+            $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
             $email->message = $html;
             $email->send();
 
@@ -1001,8 +1072,10 @@ class User extends CActiveRecord
             $html = User::replaceMessage($to, $message);
             $email = Yii::app()->email;
             $email->from = $email_from;
+            $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
             $email->subject = $email_subject;
             $email->to = $mentor->email;
+            $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
             $email->message = $html;
             $email->send();
 
@@ -1033,7 +1106,9 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $old_mentor->email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
         $email->message = $html;
         $email->send();
@@ -1055,7 +1130,9 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $old_mentor->email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'Ticket # ' . $ticket_id . ' has been reassigned.';
         $email->message = $html;
         $email->send();
@@ -1074,7 +1151,9 @@ class User extends CActiveRecord
         $html = User::replaceMessage($to, $message);
         $email = Yii::app()->email;
         $email->to = $mentee->email;
-        $email->from = 'Collaborative Platform';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'Project Meeting';
         $email->message = $html;
         $email->send();
@@ -1093,7 +1172,9 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $user->email;
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
         $email->from = 'Collaborative Platform.';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'Your Account has being verified.';
         $email->message = $html;
         $email->send();
@@ -1107,8 +1188,10 @@ class User extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $admin_email;
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
         $email->from = 'Collaborative Platform.';
-        $email->subject = 'Profile Changed';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
+       $email->subject = 'Profile Changed';
         $email->message = $html;
         $email->send();
     }
@@ -1121,7 +1204,9 @@ class User extends CActiveRecord
         $html = User::replaceMessage($adminfullName, $message);
 
         $email->to = $admin_email;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = $subject;
         $email->message = $html;
         $email->send();
@@ -1290,7 +1375,7 @@ class User extends CActiveRecord
     	$html = User::replaceMessage(($model->fname . ' ' . $model->lname), $message);
     	 
    	$email->to = $model->email;
-   	$email->from = 'Collaborative Platform';
+   	$email->from = 'Collaborative Platform <fiucoplat@gmail.com>';
     	$email->subject = 'Your application has been reviewed!';
     	$email->message = $html;
    	$email->send();

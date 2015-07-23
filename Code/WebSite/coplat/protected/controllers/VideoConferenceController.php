@@ -1,4 +1,4 @@
-<?php
+<?php ob_start();
 
 class VideoConferenceController extends Controller
 {
@@ -33,7 +33,7 @@ class VideoConferenceController extends Controller
                 'users' => array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject', 'createfrommodal', 'cancel'),
+                'actions' => array('create', 'update', 'join', 'delete', 'invite', 'accept', 'reject', 'createfrommodal', 'cancel', 'viewDeleted'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -116,7 +116,7 @@ class VideoConferenceController extends Controller
                     $format = "m/d/Y H:i a";
                     $date = DateTime::createFromFormat($format, $_POST['date'] . "  " . strtolower($_POST['time']));
                     if (!$date) {
-                        $model->addError('date', "Wrong format for the date ");
+                        $model->addError('date', "Wrong format for the date and/or time ");
                         $this->render('create', array(
                             'model' => $model,
                         ));
@@ -134,30 +134,46 @@ class VideoConferenceController extends Controller
             }
 
             if ($model->save()) {                       //if we can save the date
-                $inviteeEmails = $_POST['invitees'];    //emails of all the invitees
-                foreach ($inviteeEmails as $email) {
-                    $invitee = User::model()->findByAttributes(array('email' => $email));
-                    if ($invitee == null) {             //if invitee does not exist, record the error and continue
-                        $invitationError .= $email . " does not appear in our records <br>";
-                        continue;
-                    }                                  //moderator cannot invite him/herself
-                    if ($invitee->id == $moderator->id) {
-                        continue;
+                $inviteeList = $_POST['invitees'];    //emails of all the invitees
+                foreach($inviteeList as $username) {
+                    if ($username != null) {
+                        $lname = substr($username, 0, stripos($username, ","));
+                        $fname = substr($username, stripos($username, ",") + 2);
+
+                        $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam" => $fname, ":lnam" => $lname));
+                        if($user == null) {
+                            $invitationError .= $username . " does not appear in our records. <br>";
+                        }
+                        
+                        foreach ($user as $invitee) {
+                            $email = $invitee->email;
+
+                            if ($email == null) {             //if invitee does not exist, record the error and continue
+                                $invitationError .= $username . " does not appear in our records. <br>";
+                                continue;
+                            }                                  //moderator cannot invite him/herself
+                            if ($invitee->id == $moderator->id) {
+                                continue;
+                            }
+
+                            $invitation = new VCInvitation();
+                            $invitation->invitee_id = $invitee->id;
+                            $invitation->videoconference_id = $model->id;
+                            $invitation->status = "Unknown";
+
+                            if (!$invitation->save()) {        //an error occurred
+                                $invitationError .= "An error occurred upon sending the invitation to " . $username . ".";
+                            } else {
+                                $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                                VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
+                            }
+
+                        }
+
+                        if ($invitationError != "") {          //if there was an error
+                            Yii::app()->user->setFlash('invitation-error', $invitationError);
+                        }
                     }
-                                                       //else invitee
-                    $invitation = new VCInvitation();
-                    $invitation->invitee_id = $invitee->id;
-                    $invitation->videoconference_id = $model->id;
-                    $invitation->status = "Unknown";
-                    if (!$invitation->save()) {        //an error occurred
-                        $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
-                    } else {
-                        $inviteefullName = $invitee->fname . " " . $invitee->lname;
-                        VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
-                    }
-                }
-                if ($invitationError != "") {          //if there was an error
-                    Yii::app()->user->setFlash('invitation-error', $invitationError);
                 }
                 $this->redirect(array('view', 'id' => $model->id));
             }
@@ -209,7 +225,7 @@ class VideoConferenceController extends Controller
                 foreach ($inviteeEmails as $email) {
                     $invitee = User::model()->findByAttributes(array('email' => $email));
                     if ($invitee == null) {
-                        $invitationError .= $email . " does not appear in our records <br>";
+                        $invitationError .= $email . " does not appear in our records. <br>";
                         continue;
                     }
                     if ($invitee->id == $moderator->id) {
@@ -221,7 +237,7 @@ class VideoConferenceController extends Controller
                     $invitation->videoconference_id = $model->id;
                     $invitation->status = "Unknown";
                     if (!$invitation->save()) {                                         //an error occurred
-                        $invitationError .= "An error occurred upon saving the invitation to " . $email . "error";
+                        $invitationError .= "An error occurred upon sending the invitation to " . $email . ".";
                     } else {
                         $inviteefullName = $invitee->fname . " " . $invitee->lname;
                         VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);;
@@ -328,24 +344,102 @@ class VideoConferenceController extends Controller
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id)
-
     {
-        /*
         $model = $this->loadModel($id);
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
+        $invitationError = "";
+        $moderator = User::model()->findByAttributes(array("username" => Yii::app()->user->getId()));
+//
+//        // Uncomment the following line if AJAX validation is needed
+//        $this->performAjaxValidation($model);
+//
         if (isset($_POST['VideoConference'])) {
             $model->attributes = $_POST['VideoConference'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
-        }
+            $model->scheduled_on = date("Y-m-d H:i:s");                 //now date
 
+            $dateopt = $_POST['dateopt'];
+            if ($dateopt == "now") {                                    //if scheduled for now, use now datetime
+                $model->scheduled_for = date("Y-m-d H:i:s");
+            } else if ($dateopt == "later") {                           //else get the date and validate it
+                if (isset($_POST["date"]) && isset($_POST["time"])) {
+                    $format = "m/d/Y H:i a";
+                    $date = DateTime::createFromFormat($format, $_POST['date'] . "  " . strtolower($_POST['time']));
+                    if (!$date) {
+                        $model->addError('date', "Wrong format for the date and/or time ");
+                        $this->render('create', array(
+                            'model' => $model,
+                        ));
+                        exit;
+                    } else {
+                        $model->scheduled_for = $date->format("Y-m-d H:i:s");
+                    }
+                } else {
+                    $model->addError('date', "Empty date or time");
+                    $this->render('create', array(
+                        'model' => $model,
+                    ));
+                    exit;
+                }
+            }
+
+            if ($model->update()) {
+                /* Send email update */
+                $inviteeEmails = $_POST['invitees'];    //emails of all the invitees
+                foreach ($inviteeEmails as $username) {
+                    if ($username != null) {
+                        $lname = substr($username, 0, stripos($username, ","));
+                        $fname = substr($username, stripos($username, ",") + 2);
+                        
+                        $user = User::model()->findAllBySql("Select * from user where fname =:fnam AND lname =:lnam", array(":fnam" => $fname, ":lnam" => $lname));
+                        if($user == null) {
+                            $invitationError .= $username . " does not appear in our records. <br>";
+                        }
+                        
+                        foreach ($user as $invitee) {
+                            $email = $invitee->email;
+                            
+                            if ($email == null) {             //if invitee does not exist, record the error and continue
+                                $invitationError .= $username . " does not appear in our records. <br>";
+                                continue;
+                            }                                  //moderator cannot invite him/herself
+                            if ($invitee->id == $moderator->id) {
+                                continue;
+                            }
+                            //else invitee
+                            $invitation = new VCInvitation();
+                            $invitation->invitee_id = $invitee->id;
+                            $invitation->videoconference_id = $model->id;
+                            $invitation->status = "Unknown";
+    
+                            //finds out if record already exists on the database
+                            $invitedUser = VCInvitation::model()->exists('invitee_id = :invitee_id AND videoconference_id = :videoconference_id',
+                                    array(":invitee_id"=>$invitation->invitee_id, ":videoconference_id"=>$invitation->videoconference_id));
+        
+                            //if user not on DB add it and send email. Else just send email.
+                            if(!$invitedUser) {
+                                if(!$invitation->save()) {
+                                    $invitationError .= "An error occurred upon sending the invitation to " . $username .".";
+                                } else {
+                                    $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                                    VCInvitation::sendInvitationEmail($model, $inviteefullName, $email);
+                                }
+                            } else {
+                                $inviteefullName = $invitee->fname . " " . $invitee->lname;
+                                VCInvitation::sendUpdateNotification($model, $inviteefullName, $email);
+                            }
+                        }
+                        if ($invitationError != "") {          //if there was an error
+                            Yii::app()->user->setFlash('invitation-error', $invitationError);
+                        }
+                    }
+                
+                }
+                $this->redirect(array('view', 'id' => $model->id));
+            }
+        }
         $this->render('update', array(
             'model' => $model,
         ));
-        */
+
     }
 
     /**
@@ -439,6 +533,19 @@ class VideoConferenceController extends Controller
             $model->attributes = $_GET['VideoConference'];
 
         $this->render('admin', array(
+            'model' => $model,
+        ));
+    }
+
+    public function actionViewDeleted() {
+
+
+        $model = new VideoConference('search');
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['VideoConference']))
+            $model->attributes = $_GET['VideoConference'];
+
+        $this->render('viewDeleted', array(
             'model' => $model,
         ));
     }

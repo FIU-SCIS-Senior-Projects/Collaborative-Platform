@@ -111,7 +111,7 @@ class VCInvitation extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $invitee_email;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
         $email->subject = 'New Video Conference Invitation';
         $email->message = $html;
         $email->send();
@@ -162,7 +162,9 @@ class VCInvitation extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $invitee_email;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'New Video Conference Invitation';
         $email->message = $html;
         $email->send();
@@ -207,12 +209,66 @@ class VCInvitation extends CActiveRecord
 
         $email = Yii::app()->email;
         $email->to = $invitee_email;
-        $email->from = 'Collaborative Platform';
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
         $email->subject = 'Canceled Video Conference';
         $email->message = $html;
         $email->send();
 
 
+    }
+
+    public static function sendUpdateNotification($vc, $invitee_name, $invitee_email)
+    {
+
+        $moderator = User::model()->findByPk($vc->moderator_id);
+        $moderator_name = $moderator->fname . " " . $moderator->lname;
+
+        $btnstyle = "padding:4px 6px;font-size:small;margin-right: 4px;color: #ffffff;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);border-radius: 1px;";
+
+
+        $accept = CHtml::link('Accept', Yii::app()->createAbsoluteUrl('videoConference/accept/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#5bb75b;"), 'http');
+        $reject = CHtml::link('Reject', Yii::app()->createAbsoluteUrl('videoConference/reject/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#da4f49;"), 'http');
+        $join =   CHtml::link('Join Now', Yii::app()->createAbsoluteUrl('videoConference/join/' . $vc->id), array('role' => "button", "class" => "",'style' => $btnstyle . "background-color:#006dcc;"), 'https');
+        $subject = CHtml::link($vc->subject, Yii::app()->createAbsoluteUrl('videoConference/' . $vc->id), array('style' => "color: #31708f;"), 'http');
+
+
+        $html = "Dear " . $invitee_name . ",<br><br>The following meeting has been modified by " . $moderator_name . ":  <br> ";
+
+        $dt = new DateTime($vc->scheduled_for);
+        $user_friendly_date = $dt->format("m/d/Y h:i A");
+
+
+        $html .= "<div style='background-color:#d9edf7;margin-top:20px;padding:10px;width:400px;border-radius: 2px;'>
+                    %SUBJECT%
+                    <p style='margin:0;'>%DATE%</p>
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
+                    %PARTICIPANTS%
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;'>
+                    <p style='margin:0;'><span style='font-weight: bold;margin-right: 6px;'>Notes:</span>%NOTE%</p>
+                    <hr style='border-top: 1px solid #19536c;border-bottom: 0px;margin: 5px 0px;margin-bottom: 7px;'>
+                    %JOIN%%ACCEPT%%REJECT%
+                </div>";
+
+        $html = str_replace("%SUBJECT%", $subject, $html);
+        $html = str_replace("%DATE%", $user_friendly_date, $html);
+        $html = str_replace("%NOTE%", $vc->notes, $html);
+        $html = str_replace("%PARTICIPANTS%", $vc->findParticipantsSimpleHTMLList(), $html);
+        $html = str_replace("%JOIN%", $join, $html);
+        $html = str_replace("%ACCEPT%", $accept, $html);
+        $html = str_replace("%REJECT%", $reject, $html);
+
+
+
+        $email = Yii::app()->email;
+        $email->to = $invitee_email;
+        $email->from = 'Collaborative Platform <fiucoplat@cp-dev.cs.fiu.edu>';
+        $email->returnPath = "fiucoplat@cp-dev.cs.fiu.edu";
+        $email->replyTo ='fiucoplat@cp-dev.cs.fiu.edu';
+        $email->subject = 'Video Conference Invitation Update';
+        $email->message = $html;
+        $email->send();
     }
 
 }

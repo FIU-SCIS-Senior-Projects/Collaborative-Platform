@@ -245,7 +245,23 @@ class ApplicationController extends Controller
 	
 // PERSONAL PICKS ACCEPT
 				$mypicks = $_POST['personal_picks_accept'];
-				
+                // add entry to personal_mentor
+                if ($mypicks != '') {
+                    $personalEntry = $this->isNewEntry($user_id, 'personal_mentor');
+
+                    // if it already exists do NOTHING . change here with else statement to perform update
+                    if ($personalEntry < 1) {
+                        // add entry to personal_mentor
+                        $pementor = new PersonalMentor('add_new');
+                        $pementor->user_id = $user_id;
+                        $pementor->max_hours = $persApp->max_hours;
+                        $pementor->max_mentees = $persApp->max_amount;
+                        $pementor->save();
+                    } // else UPDATE
+
+                    $personalFlag = true;
+                }
+                //$loaduser->isPerMentor = 1;
 				if ($mypicks != ''){
 					$mypicks = explode(',', $mypicks);
 					
@@ -259,24 +275,20 @@ class ApplicationController extends Controller
 						$mentee->user_id = $actualPick->user_id; // mentee id
 						$mentee->personal_mentor_id = $user_id; // mentor id
 						$mentee->save();
+                        $trans = Yii::app()->db->beginTransaction();
+                        $menter = Mentee::model()->findByPk($actualPick->user_id);
+                        if (is_null($menter))
+                        {
+                            $menter = new Mentee('add_new');
+                            $menter->user_id = $actualPick->user_id;
+                        }
+                        $menter->personal_mentor_user_id = $user_id;
+                        $menter->save();
+                        $trans->commit();
 						
 					}
 					
-					// add entry to personal_mentor
-					$personalEntry = $this->isNewEntry($user_id, 'personal_mentor');
-						
-					// if it already exists do NOTHING . change here with else statement to perform update
-					if ($personalEntry < 1){
-						// add entry to personal_mentor
-						$pementor = new PersonalMentor('add_new');
-						$pementor->user_id = $user_id;
-						$pementor->max_hours = $persApp->max_hours;
-						$pementor->max_mentees = $persApp->max_amount;
-						$pementor->save();
-					} // else UPDATE
-					
-					$personalFlag = true;
-					//$loaduser->isPerMentor = 1;
+
 					
 				}
 				
@@ -939,8 +951,25 @@ class ApplicationController extends Controller
 		
 				// PERSONAL PICKS ACCEPT
 				$mypicks = $_POST['personal_picks_accept'];
-		
-				if ($mypicks != ''){
+
+               // add entry to personal_mentor
+                $personalEntry = $this->isNewEntry($user->id, 'personal_mentor');
+
+                // if it already exists do NOTHING . change here with else statement to perform update
+                if ($personalEntry < 1){
+                 // add entry to personal_mentor
+                 $pementor = new PersonalMentor('add_new');
+                 $pementor->user_id = $user->id;
+                 $pementor->max_hours = $persApp->max_hours;
+                  $pementor->max_mentees = $persApp->max_amount;
+                    $pementor->save();
+               } // else UPDATE
+
+            $personalFlag = true;
+            //$loaduser->isPerMentor = 1;
+
+        }
+                if ($mypicks != ''){
 					$mypicks = explode(',', $mypicks);
 						
 					// cycle through each and add permanetly to appropriate table
@@ -953,26 +982,20 @@ class ApplicationController extends Controller
 						$mentee->user_id = $actualPick->user_id; // mentee id
 						$mentee->personal_mentor_id = $user->id; // mentor id
 						$mentee->save();
+                        $trans = Yii::app()->db->beginTransaction();
+                        $menter = Mentee::model()->findByPk($actualPick->user_id);
+                        if (is_null($menter))
+                        {
+                            $menter = new Mentee('add_new');
+                            $menter->user_id = $actualPick->user_id;
+                        }
+                        $menter->personal_mentor_user_id = $user->id;
+                        $menter->save();
+                        $trans->commit();
 		
 					}
 						
-					// add entry to personal_mentor
-					$personalEntry = $this->isNewEntry($user->id, 'personal_mentor');
-		
-					// if it already exists do NOTHING . change here with else statement to perform update
-					if ($personalEntry < 1){
-						// add entry to personal_mentor
-						$pementor = new PersonalMentor('add_new');
-						$pementor->user_id = $user->id;
-						$pementor->max_hours = $persApp->max_hours;
-						$pementor->max_mentees = $persApp->max_amount;
-						$pementor->save();
-					} // else UPDATE
-						
-					$personalFlag = true;
-					//$loaduser->isPerMentor = 1;
-						
-				}
+
 		
 				// PERSONAL PICKS REJECT
 				$mypicks = $_POST['personal_picks_reject'];

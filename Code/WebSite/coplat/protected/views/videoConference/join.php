@@ -10,6 +10,37 @@
 /* @var $model VideoConference */
 
 ?>
+
+<script>
+    $(document).ready(function() {
+        var extensionid = 'ajhifddimkapgcifgcodmmfdlknahffk';
+        rmc.DetectRTC.screen.getChromeExtensionStatus(extensionid, function (status) {
+            if (status == 'not-installed') {
+                var chrome_ext = "https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk";
+                var firefox_ext = "https://www.webrtc-experiment.com/store/firefox-extension/enable-screen-capturing.xpi";
+                //window.open = false;
+                if (navigator.userAgent.indexOf("Chrome") != -1) {
+                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
+                    "at:\n" + chrome_ext);
+//                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
+//                        window.open(chrome_ext, '_blank')
+//                    }
+                }
+                else if (navigator.userAgent.indexOf("Firefox") != -1) {
+                    alert("In order to share your screen, please install the 'Screen Capturing' extension available " +
+                    "at:\n" + firefox_ext);
+//                    if(confirm("In order to share your screen, the 'Screen Capturing' extension is required. Would you like to install it now?")) {
+//                        window.open(firefox_ext, '_blank')
+//                    }
+                }
+                else {
+                    alert("The browser you are using is unsupported. Please use Google Chrome");
+                }
+            }
+        });
+    });
+</script>
+
 <script>
     //https://gist.github.com/mathiasbynens/298591
     $.fn.toggleAttr = function (attr, attr1, attr2) {
@@ -71,22 +102,12 @@
 </script>
 
 
-
-
-<div class="container">
-    <ol class="breadcrumb">
-        <li><a href="/coplat/index.php">Home</a></li>
-        <li><a href="/coplat/index.php/videoConference/index">Video Conferences</a></li>
-        <li><a href="/coplat/index.php/videoConference/<?php echo $model->id; ?>"><?php echo $model->id; ?></a></li>
-        <li class="active">Join</li>
-    </ol>
-</div>
-
-
 <!-- Bootstrap -->
 <link href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/theme.css">
+<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/style.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -110,17 +131,20 @@
         ";
     }
     ?>
-
+<!--    fa-share-->
 
     <!-- Single button -->
+    <div class="btn-group">
+        <button type="button" title="toggleSW" class="btn btn-primary">
+            <a style="text-decoration: none; color: white" id='toggleSW' title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Show Screen</a>
+        </button>
+    </div>
     <div class="btn-group">
         <button type="button" title="Whiteboard actions" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                 aria-expanded="false">
             <i class="fa fa-paint-brush"></i>&nbsp;&nbsp;Whiteboard <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li><a id='show-whiteboard' title="Show the whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show</a>
-            </li>
             <li><a id='reset-whiteboard' title="Clear the whiteboard" href="#"><i class="fa fa-recycle"></i>&nbsp;&nbsp;Clear</a>
             </li>
         </ul>
@@ -133,21 +157,17 @@
         <ul class="dropdown-menu" role="menu">
             <li><a id='select-screen-plugin' target="_blank" href="#"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Plugin</a>
             </li>
-            <li><a id='show-screens' href="#"><i class="fa fa-slideshare"></i>&nbsp;&nbsp;Show Screens</a></li>
             <li><a id='share-screen' href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Share Screen</a></li>
             <li><a id='stop-share-screen' href="#"><i class="fa fa-stop"></i>&nbsp;&nbsp;Stop Sharing</a></li>
         </ul>
     </div>
-    <div class="btn-group">
-        <button type="button" title="Application settings" class="btn btn-primary dropdown-toggle"
-                data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-sliders"></i>&nbsp;&nbsp;Settings <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a id='invite-user' rel="leanModal" name="invite" title="Invite people to the meeting" href="#invite" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;Invite
-                    People</a></li>
-        </ul>
-    </div>
+
+    <button type='button' class='btn btn-primary'>
+        <a style="text-decoration: none; color: white" id='invite-user' rel="leanModal" name="invite" title="Invite people to the meeting" href="#invite" href="#">
+            <i class="fa fa-plus"></i>&nbsp;&nbsp;Invite People</a>
+    </button>
+
+    <!--    <button type='button' title="Present" class='btn btn-primary' id='present'><i class="fa fa-share"></i>&nbsp;&nbsp;Present</button>-->
     <button type='button' title="Leave the room" class='btn btn-danger' id='disconnect'><i class="fa fa-close"></i>&nbsp;&nbsp;Leave
     </button>
 
@@ -160,40 +180,48 @@
 
 
     <div class="row">
-
-        <div id="video-container" style="" class="col-md-2 col-lg-3">
-
-        </div>
-        <div id="cotools-container" class="col-md-8 col-lg-6">
+        <div id="cotools-container" class="col-md-6 col-lg-6">
             <div id="cotools-panel">
 
             </div>
 
         </div>
 
+        <div id="cotools-container-2" class="col-md-6 col-lg-6">
+            <div id="cotools-panel-2">
 
-        <div class="col-md-2 col-lg-3">
-
-            <div>
-                <img id="trello-logo" src="http://a1461.phobos.apple.com/us/r30/Purple/v4/ec/df/0c/ecdf0c81-1ab3-978b-b9af-866d232636bc/mzl.wzojsfri.png">
-                <div class="text-center">
-                    <a href="https://trello.com/" target="_blank"><input id="trello-signin" type="button" value="Login to Trello" /></a>
-                </div>
             </div>
 
-            <div id="chat-container">
-                <div id="chat-feed">
-                    <p class="msg">Welcome to the chat room!</p>
-                </div>
-                <textarea id="input-text-chat" placeholder="Send a message" disabled></textarea>
-                <button id="chat-btn" type="button" class="btn btn-primary">Chat</button>
+        </div>
+
+    </div>
+    <div class="row row-fluid">
+        <div id="video-container" style="" class="col-md-2 col-lg-2">
+
+            <div style="margin-left: 80px" >
+                <?php echo '<i onclick="pauseResumeVideo()" class="fa fa-video-camera" style="color: #FFF" id="on-off-video"></i>'?>
             </div>
 
         </div>
 
 
+        <div id="live-chat">
+            <header class="clearfix">
+                <h4><?php echo $user->fname . ' ' .$user->lname .' ('. $user->username .')'?></h4>
+                <span class="chat-message-counter" id="count"></span>
+            </header>
+
+            <div class="chat">
+                <div class="chat-history" id="chat-h">
+                    <p>Welcome to the chat room!</p>
+                </div> <!-- end chat-history -->
+                <textarea id="input-text-area" type="text" placeholder="Type your message..." disabled></textarea>
+                <input type="hidden">
+            </div> <!-- end chat -->
+        </div> <!-- end live-chat -->
+
     </div>
-    </section>
+    <!--    </section>-->
     <!-- end of row -->
 </div>
 
@@ -208,14 +236,14 @@
 
         </div>
         <form id="invitation-form" class="form-horizontal" method="get" action="../invite">
-            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>">
+            <input name="meeting-id" type="hidden" value="<?php echo $model->id ?>" id="meetingID">
             <div class="invitee_emails">
                 <div class="form-group">
-                        <label class="control-label col-md-2" for="invitee-1">Email 1</label>
-                        <div class="col-md-8">
-                            <input placeholder="Invitee email" class="form-control" id="invitee-1" type="email" name="invitees[]">
-                            <a href="#" class="add_field_button">&nbsp;&nbsp;<i class="fa fa-plus"></i></a>
-                        </div>
+                    <label class="control-label col-md-2" for="invitee-1">Email 1</label>
+                    <div class="col-md-8">
+                        <input placeholder="Invitee email" class="form-control" id="invitee-1" type="email" name="invitees[]">
+                        <a href="#" class="add_field_button">&nbsp;&nbsp;<i class="fa fa-plus"></i></a>
+                    </div>
 
                 </div>
             </div>
@@ -224,30 +252,30 @@
     </div>
 </div>
 
-<!--<div id="video-container"></div>-->
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/bootstrap.min.js"></script>
-<!-- Remote
+
 <script type='text/javascript' src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
 <script type='text/javascript' src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>
--->
+
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/RTCMultiConnection.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/firebase.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/canvas/canvas-designer-widget.js"></script>
 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/js/jquery.leanModal.min.js"></script>
+<script type='text/javascript' src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
 
-
+<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/cotools/css/style.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
 
 
 <script>
     // https://github.com/muaz-khan/RTCMultiConnection
 
     var rmc = new RTCMultiConnection();
-
+    var Ri;
     rmc.userid = "<?php echo $user->fname . ' ' . $user->lname . ' (' . $user->username . ')' ; ?>";
     rmc.session = {
         video: true,
@@ -258,13 +286,50 @@
 
     $('#open-room').click(function () {
         // http://www.rtcmulticonnection.org/docs/open/
+        //var presenter = 0;
+        Ri = "";
         rmc.open();
-    });
-    $('#join-room').click(function () {
-        // http://www.rtcmulticonnection.org/docs/connect/
-        rmc.connect();
+        $('#open-room').fadeOut(600);
+        rmc.onCustomMessage = function(message) {
+            Ri = message;
+        };
     });
 
+    $('#join-room').click(function () {
+        document.getElementById("join-room").disabled = true;
+        document.getElementById("join-room").innerHTML = 'Waiting for organizer...'
+
+        // http://www.rtcmulticonnection.org/docs/connect/
+        //var presenter = 0;
+        Ri = "";
+        rmc.join();
+        rmc.onCustomMessage = function(message) {
+            Ri = message;
+        };
+    });
+
+
+    var video_status = 0;
+    function pauseResumeVideo() {
+        if(video_status == 0) {
+            document.getElementById("on-off-video").style.color= 'gray';
+            rmc.streams.selectFirst({local : true}).mute({video : true});
+            video_status = 1;
+        }
+        else if(video_status == 1) {
+            document.getElementById("on-off-video").style.color= "red";
+            rmc.streams.selectFirst({local : true}).unmute({video : true});
+            video_status = 0;
+        }
+    }
+
+    rmc.onmute = function(e) {
+        e.mediaElement.setAttribute('poster', '/coplat/images/black.png');
+    };
+
+    rmc.onunmute = function(e) {
+        e.mediaElement.removeAttribute('poster');
+    };
 
     // display a notification box
     window.addEventListener('beforeunload', function () {
@@ -274,7 +339,7 @@
     // leave here
     window.addEventListener('unload', function () {
         rmc.leave();
-    }, false);
+    }, true);
 
     rmc.onMediaCaptured = function () {
         $('#share-screen').removeAttr('disabled');
@@ -284,28 +349,30 @@
 
     //screen sharing
     $('#share-screen').click(function () {
+        rmc.streams.stop('screen');
+        $('#cotools-panel video').remove();
+        rmc.keepStreamsOpened = true;
+
         // http://www.rtcmulticonnection.org/docs/addStream/
-        rmc.removeStream('screen');
         rmc.addStream({
             screen: true,
             oneway: true
         });
     });
 
+
     //when the user clicks the stop-share-screen button it removes all the screen
     $('#stop-share-screen').click(function () {
-        rmc.removeStream('screen');
-        $('#cotools-panel iframe').show();
         $('#cotools-panel video').remove();
+        $('#cotools-panel iframe').show();
     });
 
     //chat
     rmc.onopen = function (event) {
-        //alert('Text chat has been opened between you and ' + event.userid);
-        document.getElementById('input-text-chat').disabled = false;
+        document.getElementById('input-text-area').disabled = false;
     };
 
-    document.getElementById('input-text-chat').onkeyup = function (e) {
+    document.getElementById('input-text-area').onkeyup = function (e) {
         if (e.keyCode != 13) return; // if it is not Enter-key
         var value = this.value.replace(/^\s+|\s+$/g, '');
         if (!value.length) return; // if empty-spaces
@@ -317,23 +384,9 @@
         this.value = '';
     };
 
-    $("#chat-btn").click(function () {
-        var input = document.getElementById('input-text-chat');
-        var value = input.value.replace(/^\s+|\s+$/g, '');
-        if (!value.length) return; // if empty-spaces
-        appendMsg("You", value);
-        rmc.send({
-            type: 'chat',
-            content: value
-        });
-        input.value = '';
-    });
-
-
-    //end of chat
     $('#disconnect').click(function () {
         rmc.leave();
-        setTimeout("location.href = '../';",2000);
+        setTimeout("location.href = '../';",1500);
     });
 
     //to know the stream type
@@ -344,31 +397,68 @@
         if (e.type == 'remote') {
             // alert("the stream is remote");
         }
-        if (e.isVideo) {
+        if (e.isVideo || e.stream.isVideo) {
             var uibox = document.createElement("div");
             uibox.appendChild(document.createTextNode(e.userid));
+            uibox.appendChild(e.mediaElement);
             uibox.className = "userid";
             uibox.id = "uibox-" + e.userid.replace(/ |\(|\)/g, '');
-            document.getElementById('video-container').appendChild(e.mediaElement);
+            uibox.style.cssText = 'float: left';
+            e.mediaElement.style.cssText = 'display: block';
             document.getElementById('video-container').appendChild(uibox);
+            document.getElementById("on-off-video").style.color= 'red';
+            $('#join-room').fadeOut(600);
         }
         else if (e.isAudio) {
             document.getElementById('video-container').appendChild(e.mediaElement);
         }
-        else if (e.isScreen) {
+        else if (e.isScreen || e.stream.isScreen) {
+            rmc.waitUntilRemoteStreamStartsFlowing = true;
+            handleStreams(e);
+        }
+    };
+
+    function handleStreams(e) {
+        if(!document.getElementById('cotools-panel-2').getAttribute('has-screen')) {
+            if (Ri == "") {
+                document.getElementById('cotools-panel-2').setAttribute('has-screen', true);
+                document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                rmc.sendCustomMessage(e.streamid);
+            }
+            else {
+                if(e.streamid == Ri) {
+                    document.getElementById('cotools-panel-2').appendChild(e.mediaElement);
+                }
+                else {
+                    $('#cotools-panel iframe').hide();
+                    $('#cotools-panel video').remove();
+                    document.getElementById('cotools-panel').appendChild(e.mediaElement);
+                    screenWhiteboard = 1;
+                    document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show Whiteboard</a>';
+                }
+            }
+        }
+        else {
             $('#cotools-panel iframe').hide();
             $('#cotools-panel video').remove();
             document.getElementById('cotools-panel').appendChild(e.mediaElement);
+            screenWhiteboard = 1;
+            document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show Whiteboard</a>';
         }
-
-    };
+    }
 
     //receiving a message from
+    var messages = 0;
     rmc.onmessage = function (event) {
         if (event.data.type == "chat") {
-            //alert('Target user (' + event.userid + ') said: ' + event.data.content);
-            //$("#chat-feed").append("<p>Hello</p>");
-            appendMsg(event.userid, event.data.content);
+            var username = event.userid;
+            username = username.substring(username.indexOf('(')+1, username.indexOf(')'));
+            appendMsg(username, event.data.content);
+            if(!open) {
+                messages++;
+                $('#count').text(messages);
+                $('.chat-message-counter').show();
+            }
         }
         else {
 
@@ -377,21 +467,25 @@
     };
 
     function appendMsg(user, msg) {
-
-        var $cont = $("#chat-feed");
+        var $cont = $("#chat-h");
         $cont[0].scrollTop = $cont[0].scrollHeight;
-        $cont.append("<p class='msg'><span>" + user + ":  </span> " + msg + " </p>");
+        $cont.append("<p class='msg' id='chat-p'><span>" + user + ":  </span> " + msg + " </p>");
     }
 
 
     //removes the div containing the userid of the user who is leaving
     rmc.onleave = function (e) {
         $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
+        Ri = "";
+        //setTimeout("location.href = '../';",1000);
     };
 
+    rmc.ondisconnected = function(event) {
+        $('#' + "uibox-" + event.userid.replace(/ |\(|\)/g, '')).remove();
+        Ri = "";
+    };
 
     //Whiteboard Section
-
     function canvasInit() {
 
         CanvasDesigner.addSyncListener(function (data) {
@@ -414,24 +508,52 @@
         canvasInit();
     });
 
-    $("#show-whiteboard").click(function () {
-        $('#cotools-panel video').hide();
-        $('#cotools-panel iframe').show();
+    var screenWhiteboard = 0;
+    $('#toggleSW').click(function() {
+        if(screenWhiteboard == 0) {
+            $('#cotools-panel video').show();
+            $('#cotools-panel iframe').hide();
+            screenWhiteboard = 1;
+            document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Show Whiteboard</a>';
+        }
+        else {
+            $('#cotools-panel video').hide();
+            $('#cotools-panel iframe').show();
+            screenWhiteboard = 0;
+            document.getElementById('toggleSW').innerHTML = '<a style="text-decoration: none; color: white" id="toggleSW" title="Toggle Screen and Whiteboard" href="#"><i class="fa fa-share"></i>&nbsp;&nbsp;Show Screen</a>';
+        }
     });
 
-    $("#show-screens").click(function () {
-        $('#cotools-panel video').show();
-        $('#cotools-panel iframe').hide();
-    });
-
+//    $("#show-whiteboard").click(function () {
+//        $('#cotools-panel video').hide();
+//        $('#cotools-panel iframe').show();
+//    });
+//
+//    $("#show-screens").click(function () {
+//        $('#cotools-panel video').show();
+//        $('#cotools-panel iframe').hide();
+//    });
 
 </script>
 
 
 <!-- General Site Scripts -->
 <script>
+    var open = false;
+    $('#live-chat header').on('click', function() {
+
+        $('.chat').slideToggle(300, 'swing');
+        $('.chat-message-counter').fadeOut(300);
+        messages = 0;
+        if(open) {
+            open = false;
+        } else {
+            open = true;
+        }
+    });
+
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="uitooltip"]').tooltip()
     });
 
     $('.dropdown-toggle').dropdown();
@@ -454,11 +576,11 @@
                 $(wrapper).append(
                     '<div class="form-group">' +
 
-                            '<label class="control-label col-md-2" for="invitee-'+x+'">Email ' + x + '</label>' +
-                            ' <div class="col-md-8">'+
-                            '<input placeholder="" type="email" class="form-control" id="invitee-' + x + '" name="invitees[]"/>' +
-                            '<a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a>' +
-                            '</div>' +
+                    '<label class="control-label col-md-2" for="invitee-'+x+'">Email ' + x + '</label>' +
+                    ' <div class="col-md-8">'+
+                    '<input placeholder="" type="email" class="form-control" id="invitee-' + x + '" name="invitees[]"/>' +
+                    '<a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a>' +
+                    '</div>' +
                     '</div>'); //add input box
             }
         });
@@ -471,6 +593,7 @@
 
 <script>
     $(document).ready(function() {
+        $('.chat').slideToggle(1, 'swing');
         $('#invitation-form').submit(function(event) {
             var form = $(this);
             var method = form.attr('method');
@@ -485,9 +608,7 @@
         $('#lean_overlay').css('display', 'none');
         $('#invite').css('display', 'none');
     }
-
 </script>
-
 
 
 

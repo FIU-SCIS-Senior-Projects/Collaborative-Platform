@@ -62,12 +62,20 @@
         var wrapper         = $(".invitee_emails"); //Fields wrapper
         var add_button      = $(".add_field_button"); //Add button ID
 
+        $("#invitee-1").autocomplete({
+            source: './../../../../../coplat/index.php/AwayMentor/FindUserName'
+        });
+
         var x = 1; //initlal text box count
         $(add_button).click(function(e){ //on add input button click
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div class="row"><label for="invitee-'+x+'">Invitee '+x+' Email</label><input placeholder="" type="email" id="invitee-' + x + '" name="invitees[]"/><a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a></div>'); //add input box
+                $(wrapper).append('<div class="row"><label for="invitee-'+x+'">Invitee '+x+' </label><input placeholder="" type="text" id="invitee-' + x + '" name="invitees[]"/><a href="#" class="remove_field">&nbsp;&nbsp;<i class="fa fa-times"></i></a></div>'); //add input box
+
+                $("#invitee-"+x).autocomplete({
+                    source: './../../../../../coplat/index.php/AwayMentor/FindUserName'
+                });
             }
         });
 
@@ -76,7 +84,15 @@
         })
     });
 </script>
-
+<script>
+    $(document).ready(function() {
+        $('#date').datepicker({
+            showAnim: 'fadeIn',
+            minDate: 0,
+            showButtonPanel: true
+        });
+    });
+</script>
 
 <div class="form">
 
@@ -107,7 +123,7 @@
 
     <div class="meeting-date-input row" id="date-in">
 
-        <label for="date">Date</label>
+        <label for="date">Date <span class="required">*</span></label>
         <input placeholder="mm/dd/yyyy" id="date" type="text" name="date">
 
 
@@ -120,7 +136,7 @@
     </div>
 
     <div class="meeting-date-input row" id="time-in">
-        <label for="time">Time</label>
+        <label for="time">Time <span class="required">*</span></label>
         <input placeholder="09:00 am" id="time" type="text" name="time">
     </div>
 
@@ -133,8 +149,8 @@
 
     <div class="invitee_emails">
         <div class="row">
-            <label for="invitee-1">Invitee Email</label>
-            <input placeholder="" id="invitee-1" type="email" name="invitees[]">
+            <label for="invitee-1">Invitee</label>
+            <input placeholder="" id="invitee-1" type="text" name="invitees[]">
             <button type="button" class="btn btn-info add_field_button"><i class="fa fa-plus"></i></button>
         </div>
     </div>
@@ -142,6 +158,7 @@
 
     <div class="row buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
+        <a href="../../../../coplat/index.php/videoConference/index"><button type="button" class="btn btn-warning">Cancel</button>
     </div>
 
     <?php $this->endWidget(); ?>

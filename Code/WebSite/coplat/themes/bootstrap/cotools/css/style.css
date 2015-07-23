@@ -1,0 +1,132 @@
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+h4, h5 {
+	line-height: 1.5em;
+	margin: 0;
+}
+
+.chat textarea {
+	border: 0;
+	color: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: normal;
+    /*margin: 0;*/
+    margin-left: 2em;
+}
+
+#live-chat > p { margin: 0; }
+
+.clearfix { *zoom: 1; } /* For IE 6/7 */
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after { clear: both; }
+
+/* ---------- LIVE-CHAT ---------- */
+
+#live-chat {
+	/*font: 100%/1.5em "Droid Sans", sans-serif;*/
+	bottom: 5%;
+	font-size: 12px;
+	right: 24px;
+	position: fixed;
+	width: 300px;
+}
+
+#live-chat header {
+	background: #1A4280;
+	border-radius: 5px 5px 0 0;
+	color: #fff;
+	cursor: pointer;
+	padding: 16px 24px;
+	height: 45px;
+}
+
+#live-chat h4:before {
+	background: #1a8a34;
+	border-radius: 50%;
+	content: "";
+	display: inline-block;
+	height: 8px;
+	margin: 0 8px 0 0;
+	width: 8px;
+}
+
+#live-chat h4 {
+	font-size: 12px;
+}
+
+#live-chat h5 {
+	font-size: 10px;
+}
+
+#input-text-area[type="text"] {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 8px;
+	outline: none;
+	width: 234px;
+	height: 15px;
+	margin-left: 2.5em;
+	margin-bottom: 1em;
+	height: 40px;
+}
+
+.chat-message-counter {
+	background: #e62727;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	display: none;
+	font-size: 12px;
+	font-weight: bold;
+	height: 28px;
+	left: 0;
+	line-height: 28px;
+	margin: -15px 0 0 -15px;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 28px;
+}
+
+.chat {
+	background: #B4D3FF;	
+}
+
+.chat-history {
+	height: 240px;
+	padding: 8px 24px 20px 24px;
+	width: 234px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	font: 100%/1.5em "Droid Sans", sans-serif;
+	word-wrap: break-word;
+	text-overflow: string;
+}
+
+#chat-h {
+	margin-left: 7px;
+	width: 249px;
+}
+
+#chat-p {
+	width:220px;
+	word-wrap: break-word;
+}
+
+.chat-message {
+	margin: 16px 0;
+}
+
+
+.chat-time {
+	float: right;
+	font-size: 10px;
+}

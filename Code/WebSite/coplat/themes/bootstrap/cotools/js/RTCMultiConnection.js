@@ -272,19 +272,19 @@ connection.rtcConfiguration
                 }, joinAs);
             }
 
-            if (!session || !session.userid || !session.sessionid) {
-                error('missing arguments', arguments);
-
-                var error = 'Invalid data passed over "connection.join" method.';
-                connection.onstatechange({
-                    userid: 'browser',
-                    extra: {},
-                    name: 'Unexpected data detected.',
-                    reason: error
-                });
-
-                throw error;
-            }
+            //if (!session || !session.userid || !session.sessionid) {
+            //    error('missing arguments', arguments);
+            //
+            //    var error = 'Invalid data passed over "connection.join" method.';
+            //    connection.onstatechange({
+            //        userid: 'browser',
+            //        extra: {},
+            //        name: 'Unexpected data detected.',
+            //        reason: error
+            //    });
+            //
+            //    throw error;
+            //}
 
             if (!connection.dontOverrideSession) {
                 connection.session = session.session;
@@ -5047,11 +5047,11 @@ connection.rtcConfiguration
 
         // www.RTCMultiConnection.org/docs/onclose/
         connection.onclose = function(e) {
-            warn('onclose', toStr(e));
-
+            //warn('onclose', toStr(e));
+            $('#' + "uibox-" + e.userid.replace(/ |\(|\)/g, '')).remove();
             // todo: should we use "stop" or "remove"?
             // BTW, it is remote user!
-            connection.streams.remove({
+            connection.streams.stop({
                 userid: e.userid
             });
         };

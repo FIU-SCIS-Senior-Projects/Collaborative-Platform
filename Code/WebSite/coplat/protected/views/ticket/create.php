@@ -8,6 +8,6 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h1>Create Ticket</h1>
+<h1>New Question</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

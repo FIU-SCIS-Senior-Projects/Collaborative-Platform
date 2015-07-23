@@ -61,7 +61,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'htmlOptions' => array('class' => 'pull-right'),
             'items' => array('-',
                 array('label' => 'Home', 'url' => array('/'), 'visible' => !$currentUserIsGuest),           //Home menu
-                array('label' => 'Mail', 'url' => array('/message'), 'visible' => !$currentUserIsGuest),    //Message menu
+              //  array('label' => 'Mail', 'url' => array('/message'), 'visible' => !$currentUserIsGuest),    //Message menu
               
                 array('label' => 'Reports', 'visible' => $currentUserIsAdmin,                                //Reports Root Menu
                     'class' => 'bootstrap.widgets.TbMenu',
@@ -120,7 +120,8 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                     ),
                 ),
                 array('label' => 'Mentor Apply', 'url' => array('application/portal'), 'visible' => !$currentUserIsGuest), //Mentor Apply
-                array('label' => 'Create Ticket', 'url' => array('/ticket/create'), 'visible' => !$currentUserIsGuest),  //Create Ticket
+                array('label' => 'Search Questions', 'url' => array('/ticket/viewOld'), 'visible' => !$currentUserIsGuest),
+                array('label' => 'Ask Question', 'url' => array('/ticket/create'), 'visible' => !$currentUserIsGuest),  //Create Ticket
                 array('label' => $userinfo, 'url' => '#', 'items' => array(                                             //User Info root menu
                     array('label' => 'My Profile', 'url' => array('profile/userProfile'), 'visible' => !$currentUserIsGuest),  //View Profile
                     array('label' => 'Change Password', 'visible' => $cp, 'url' => '/coplat/index.php/user/ChangePassword'),  //Change password

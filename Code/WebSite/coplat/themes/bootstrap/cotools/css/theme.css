@@ -119,8 +119,6 @@ http://leanmodal.finelysliced.com.au/#
 }
 
 
-
-
 /*
 
 Tool box
@@ -150,123 +148,73 @@ Tool box
 
 #cotools-panel {
     margin-bottom: 20px;
-    height: 600px;
+    margin-left: 20px;
+    height: 64vh;
+    min-height: 20em;
+    max-height: 36em;
+    max-width: 56em;
     width: 100%;
     border: 2px solid #18536b;
+    float: left;
 }
 
 #cotools-container {
 
 }
 
-/*
-    Trello Container
-*/
-#trello-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 10em;
-    width: 10em;
-    border-radius: 20px;
-    margin-bottom: 10px;
+#cotools-panel-2 {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    height: 64vh;
+    min-height: 20em;
+    max-height: 36em;
+    max-width: 56em;
+    width: 100%;
+    border: 2px solid #18536b;
+    float: left;
 }
 
-#trello-signin > a {
-    text-decoration: none;
-}
+#cotools-container-2 {
 
-#trello-signin {
-    box-shadow: rgb(59, 94, 1) 0px 2px 0px 0px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    height: 51px;
-    position: relative;
-    text-align: center;
-    white-space: pre;
-    width: 160px;
-    word-wrap: break-word;
-    background: rgba(0, 0, 0, 0) linear-gradient(rgb(112, 181, 0) 0px, rgb(100, 162, 0) 100%) repeat scroll 0% 0% / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    border-radius: 6px 6px 6px 6px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: jaf-facitweb, 'Helvetica Neue', Arial, sans-serif;
-    margin: 0px 0px 16px;
-    outline: rgb(255, 255, 255) none 0px;
-    padding: 9px 3px;
 }
 
 /*
     Chat Room
 */
 
-#chat-container {
-    border-radius: 4px;
-}
-
-#chat-feed {
-    border: solid slategray 1px;
-    padding: 10px 15px;
-    background-color: #f2f2f2;
-    height: 250px;
-    overflow-y: auto;
-}
-
-p.msg {
-    font-size: 0.94em;
-    color: #000000;
-}
-
 .msg span {
     font-weight: bold;
     color: blue;
 }
 
-#chat-container > div {
-    width: 100%;
-    margin: 20px 0px 10px 0px;
-}
-
-#chat-container > textarea {
-    height: 40px;
-    width: 80%;
-}
-
-#chat-container textarea:hover {
-    border: solid #00438a 1px;
-}
-
-#chat-btn {
-    height: 40px;
-    width: 18%;
-}
-
 /*
     video container
 */
+.row-fluid {
+    height: 13em;
+    width: 80%;
+    overflow: auto;
+    /*white-space: nowrap;*/
+}
 
 #video-container {
-
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    overflow: auto;
+    white-space: nowrap;
+    /*vertical-align: top;*/
 }
 
 #video-container video, #video-container-md video {
-    /*position: absolute; */
-    width: 95%;
+    width: 150px;
     margin-bottom: 7px;
-    height: auto;
-    float: right;
-
+    height: 150px;
 }
 
 .userid {
-    display: block;
     text-align: center;
-    border-bottom: 1px solid #000020;
-    padding: 0px 10px 10px 10px;
-    width: 90%;
-    float: right;
-
+    margin-top: 5px;
 }
 
 @media only screen
@@ -314,16 +262,12 @@ and (orientation: portrait) {
 @media only screen
 and (min-width: 1224px) {
     #video-container video, #video-container-md video {
-        /*position: absolute; */
-        width: 80%;
-        margin: 0 0 7px 10px;
+        margin: 0 20px 20px 20px;
         height: auto;
-
     }
 
     .userid {
-        width: 80%;
-        margin-left: 10px;
+        margin: 0 auto;
     }
 }
 
@@ -331,16 +275,14 @@ and (min-width: 1224px) {
 @media only screen
 and (min-width: 1824px) {
     #video-container video, #video-container-md video {
-        /*position: absolute; */
         width: 65%;
         height: auto;
-        margin: 0 0 7px 90px;
-
+        margin: 0 auto 20px auto;
+        display: inline-block;
     }
 
     .userid {
-        width: 65%;
-        margin-left: 90px;
+        margin: 0 auto;
     }
 }
 
@@ -370,6 +312,15 @@ and (orientation: portrait) {
 #cotools-panel video {
     width: 100%;
     height: auto;
+    max-height: 100%;
+    position: relative;
+}
+
+#cotools-panel-2 video {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    position: relative;
 }
 
 .volume_bar {
