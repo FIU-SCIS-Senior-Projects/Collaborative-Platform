@@ -57,7 +57,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
         'scheduled_on',
         'scheduled_for',
         'notes',
-        'status',
         array(
             'class'=>'CButtonColumn',
         ),
