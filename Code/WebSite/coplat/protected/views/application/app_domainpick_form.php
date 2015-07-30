@@ -32,7 +32,8 @@ $listdata = CHtml::listData($rows,'id', 'name');
         <?php echo $form->error($model,'proficiency'); ?>
     </div> 
 
-    <div class="row buttons"> 
+    <div class="row buttons">
+        <?php echo CHtml::button('Propose New Domain', array("href"=>"../awayMentor/admin","button type"=>"button", "class"=>"btn btn-primary"));?>
    		 <?php echo CHtml::submitButton('Propose New Domain', array("class"=>"btn btn-medium btn-primary",'id'=>'submit')/*$model->isNewRecord ? 'Create' : 'Save'*/); ?>
         <?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
     </div> 

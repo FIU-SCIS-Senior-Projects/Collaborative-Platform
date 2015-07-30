@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 ?>
 
 <h2>Domains</h2>
-
+<a href="../domainSuggestion/admin"><button type="button" class="btn btn-primary">Manage Domain Suggestions</button><br>
 <a href=../domain/create>
 <?php $this->widget('bootstrap.widgets.TbButton', array(
 		'buttonType'=>'button',

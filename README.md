@@ -1,8 +1,8 @@
-#Collaborative-Platform-Ver-5.0
+#Collaborative-Platform-Ver-6.0
 
 ##Directory Structure
 * **Code**:                    Contains Source Code and DBSchema Script
-* **Documents**:               Contains all documentation: RD, DD, FSPP and more.
+* **Documents**:               Contains all the documentation
 * **FinalPresentationSlides**  Contains presentations of the participants.
 * **Posters**                  Contains all presentation posters on the project.
 * **Videos**                   Contains installation videos, module presentation, etc.

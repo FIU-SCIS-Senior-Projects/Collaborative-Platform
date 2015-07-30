@@ -318,10 +318,11 @@ Yii::app()->clientScript->registerScript('register', "
 <br/>
 <p>Don't see your area of expertise?</p>
 	<?php $this->widget('bootstrap.widgets.TbButton', array(
-                'buttonType'=>'button',
+                'buttonType'=>'link',
                 'type'=>'success',
 				'size'=>'medium',
                 'label'=>'Recommend a new Domain +',
+                'url'=>'../DomainSuggestion/create',
             )); ?>
 <br/> <br/>
 <?php echo $form->labelEx($application,'max_amount'); ?>
