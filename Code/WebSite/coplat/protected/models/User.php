@@ -482,6 +482,16 @@ class User extends CActiveRecord
             return false;
         return $user->isAdmin;
     }
+
+    public static function isCurrentUserAnAdmin()
+    {
+        $row=User::model()->find("id=".User::getCurrentUserId()." AND isadmin=1");
+        if(!($row==null))
+        {
+            return true;
+        }
+        else return false;
+    }
     public static function isCurrentUserAway()
     {
         $username = Yii::app()->user->name;
