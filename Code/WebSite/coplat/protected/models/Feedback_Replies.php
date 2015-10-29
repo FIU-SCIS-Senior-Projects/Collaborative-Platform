@@ -1,25 +1,20 @@
 <?php
-//require_once(__DIR__ . '/../phpunit.phar');
-require_once(__DIR__.'/../../framework/yii.php');
 
 /**
- * This is the model class for table "feedback".
+ * This is the model class for table "feedback_replies".
  *
- * The followings are the available columns in table 'feedback':
+ * The followings are the available columns in table 'feedback_replies':
  * @property string $id
+ * @property string $feed_id
+ * @property string $reply
  * @property integer $user_id
- * @property string $subject
- * @property string $description
- *
- * The following are available model relations
- * @property Feedback_Replies[] $replies
  */
-class Feedback extends CActiveRecord
+class Feedback_Replies extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Feedback the static model class
+	 * @return Feedback_Replies the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -31,7 +26,7 @@ class Feedback extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'feedback';
+		return 'feedback_replies';
 	}
 
 	/**
@@ -42,14 +37,13 @@ class Feedback extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			//array('user_id', 'required'),
+			//array('feed_id', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('subject', 'length', 'max'=>255),
-			array('description', 'length', 'max'=>5000),
-
+			array('feed_id', 'length', 'max'=>11),
+			array('reply', 'length', 'max'=>5000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, subject, description', 'safe', 'on'=>'search'),
+			array('id, feed_id, reply, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,27 +55,8 @@ class Feedback extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'creatorUser' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'replies' => array(self::HAS_MANY, 'Feedback_Replies', 'feed_id'),
+			'feed_id' => array(self::BELONGS_TO, 'Feedback', 'id'),
 		);
-	}
-
-	public function gitData(){
-		/*$data = Yii::app()->db
-			->createCommand($sql)
-			->queryAll();*/
-		//if(!User::isCurrentUserAnAdmin()) {
-			//$data = Feedback::findAll('user_id=' . User::getCurrentUserId());
-		//}
-		//else{
-			$data = Feedback::findAll();
-		//}
-		return $data;
-	}
-
-	public function gitReplies()
-	{
-		return $data = Feedback_Replies::model()->findAllbySQL("Select * from feedback_replies where feed_id = ". $this->id);
 	}
 
 
@@ -93,9 +68,9 @@ class Feedback extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'creatorUser',
-			'subject' => 'Subject',
-			'description' => 'Description',
+			'feed_id' => 'Feed',
+			'reply' => 'Reply',
+			'user_id' => 'User',
 		);
 	}
 
@@ -111,21 +86,12 @@ class Feedback extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
+		$criteria->compare('feed_id',$this->feed_id,true);
+		$criteria->compare('reply',$this->reply,true);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('subject',$this->subject,true);
-		$criteria->compare('description',$this->description,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-			'sort'=>array(
-				'attributes'=>array(
-					'name_search'=>array(
-						'asc'=>'creatorUser.lname',
-						'desc'=>'creatorUser.lname DESC',
-					),
-					'*',
-				),
-			),
 		));
 	}
 }

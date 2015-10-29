@@ -121,7 +121,10 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                 ),
                 array('label' => 'Mentor Apply', 'url' => array('application/portal'), 'visible' => !$currentUserIsGuest), //Mentor Apply
                 array('label' => 'Search Questions', 'url' => array('/ticket/viewOld'), 'visible' => !$currentUserIsGuest),
-                array('label' => 'Ask Question', 'url' => array('/ticket/create'), 'visible' => !$currentUserIsGuest),  //Create Ticket
+                array('label' => 'Questions', 'url' => '#', 'items'=> array(
+                    array('label'=>'Ask Questions', 'url'=>array('/ticket/create'), 'visible' => !$currentUserIsGuest),
+                    array('label'=>'Give Feedback', 'url'=>array('/Feedback/create'), 'visible' => !$currentUserIsGuest),
+                    array('label'=>'View Feedback', 'url'=>array('/Feedback/index'), 'visible' => !$currentUserIsGuest)),),  //Create Ticket
                 array('label' => $userinfo, 'url' => '#', 'items' => array(                                             //User Info root menu
                     array('label' => 'My Profile', 'url' => array('profile/userProfile'), 'visible' => !$currentUserIsGuest),  //View Profile
                     array('label' => 'Change Password', 'visible' => $cp, 'url' => '/coplat/index.php/user/ChangePassword'),  //Change password

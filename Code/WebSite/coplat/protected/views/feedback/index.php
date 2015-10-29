@@ -35,11 +35,18 @@ if(User::isCurrentUserAnAdmin())
 		//'filter'=>$model,
 		'columns'=>array(
 			//'id',
-
-			'id',
-			'user_id',
-			'subject',
-			'description',
+			array(
+				'name'=>'Name',
+				'value'=>'User::model()->getUser($data->user_id)'
+			),
+			array(
+				'name'=>'Subject',
+				'value'=>'$data->subject'
+			),
+			array(
+				'name'=>'Description',
+				'value'=>'$data->description'
+			),
 			array(
 				'header'=>'Options',
 				'class'=>'bootstrap.widgets.TbButtonColumn',
@@ -64,9 +71,10 @@ else
 		//'filter'=>$model,
 		'columns'=>array(
 			//'id',
-
-			'id',
-			'user_id',
+			array(
+				'name'=>'Name',
+				'value'=>'User::model()->getUser($data->user_id)'
+			),
 			'subject',
 			'description',
 			array(

@@ -15,7 +15,7 @@ if(User::isCurrentUserAnAdmin())
 		//array('label'=>'Update Feedback', 'url'=>array('update', 'id'=>$model->id)),
 		array('label'=>'Delete This Feedback', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 		array('label'=>'Manage Feedback', 'url'=>array('admin')),
-		array('label'=>'Reply to Feedback','url'=>'#', 'linkOptions'=>array('submit'=>array('/feedbackReplies/create','id'=>$model->id))),);
+		array('label'=>'Reply to Feedback','url'=>'#', 'linkOptions'=>array('submit'=>array('/Feedback_Replies/create','id'=>$model->id))),);
 }
 
 else{
@@ -25,7 +25,7 @@ else{
 		//array('label'=>'Update Feedback', 'url'=>array('update', 'id'=>$model->id)),
 		array('label'=>'Delete this Feedback', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 		//array('label'=>'Manage Feedback', 'url'=>array('admin')),
-		array('label'=>'Add to this Feedback','url'=>'#', 'linkOptions'=>array('submit'=>array('/feedbackReplies/create','id'=>$model->id))),);
+		array('label'=>'Add to this Feedback','url'=>'#', 'linkOptions'=>array('submit'=>array('/Feedback_Replies/create','id'=>$model->id))),);
 }
 
 ?>
@@ -70,7 +70,7 @@ else{
            width="100%">
         <thead class="header">
         <tr style="background-color: #EEE">
-            <th width="1%"> No</th>
+            <th width="10%"> User</th>
             <th width="65%">Description</th>
 
         </tr>
@@ -80,7 +80,7 @@ else{
             ?>
             <tbody>
             <tr>
-                <td><?php echo $comment->id; ?></td>
+                <td><?php echo User::model()->getUser($comment->user_id); ?></td>
                 <td><?php echo $comment->reply ?></td>
 
             </tr>
