@@ -7,25 +7,38 @@ $this->breadcrumbs=array(
 	$model->id,
 );
 
-if(User::isCurrentUserAnAdmin())
+if(User::getCurrentUserId() == $model->user_id)
 {
 	$this->menu=array(
-		//array('label'=>'List Feedback', 'url'=>array('index')),
-		array('label'=>'Create New Feedback', 'url'=>array('create')),
-		//array('label'=>'Update Feedback', 'url'=>array('update', 'id'=>$model->id)),
-		array('label'=>'Delete This Feedback', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-		array('label'=>'Manage Feedback', 'url'=>array('admin')),
-		array('label'=>'Reply to Feedback','url'=>'#', 'linkOptions'=>array('submit'=>array('/Feedback_Replies/create','id'=>$model->id))),);
+
+        //array('label'=>'List Feedback', 'url'=>array('index')),
+        array('label'=>'Create new Feedback', 'url'=>array('create')),
+        //array('label'=>'Update Feedback', 'url'=>array('update', 'id'=>$model->id)),
+        array('label'=>'Delete this Feedback', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+        //array('label'=>'Manage Feedback', 'url'=>array('admin')),
+        array('label'=>'Add to this Feedback','url'=>'#', 'linkOptions'=>array('submit'=>array('/Feedback_Replies/create','id'=>$model->id))),);
 }
 
 else{
-	$this->menu=array(
-		//array('label'=>'List Feedback', 'url'=>array('index')),
-		array('label'=>'Create new Feedback', 'url'=>array('create')),
-		//array('label'=>'Update Feedback', 'url'=>array('update', 'id'=>$model->id)),
-		array('label'=>'Delete this Feedback', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-		//array('label'=>'Manage Feedback', 'url'=>array('admin')),
-		array('label'=>'Add to this Feedback','url'=>'#', 'linkOptions'=>array('submit'=>array('/Feedback_Replies/create','id'=>$model->id))),);
+    if(User::isCurrentUserAnAdmin())
+    {
+        $this->menu=array(
+            //array('label'=>'List Feedback', 'url'=>array('index')),
+            array('label'=>'Create New Feedback', 'url'=>array('create')),
+            //array('label'=>'Update Feedback', 'url'=>array('update', 'id'=>$model->id)),
+            array('label'=>'Delete This Feedback', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+            array('label'=>'Manage Feedback', 'url'=>array('admin')),
+            array('label'=>'Reply to Feedback','url'=>'#', 'linkOptions'=>array('submit'=>array('/Feedback_Replies/create','id'=>$model->id))),);
+
+    }
+    else{
+
+        $this->menu=array(
+            //array('label'=>'List Feedback', 'url'=>array('index')),
+            array('label'=>'Create new Feedback', 'url'=>array('create')),);
+
+    }
+
 }
 
 ?>
@@ -48,7 +61,7 @@ else{
 
             <tbody>
             <tr>
-                <td><?php echo User::getCurrentUser();?></td>
+                <td><?php echo User::getUser($model->user_id);?></td>
                 <td><?php echo $model->subject; ?></td>
                 <td><?php echo $model->description;?></td>
 
