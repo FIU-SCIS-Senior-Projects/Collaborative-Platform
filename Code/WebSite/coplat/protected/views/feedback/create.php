@@ -7,10 +7,11 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
+/*
 $this->menu=array(
 	array('label'=>'List Feedback', 'url'=>array('index')),
 	array('label'=>'Manage Feedback', 'url'=>array('admin')),
-);
+);*/
 ?>
 
 <h1>Create Feedback</h1>

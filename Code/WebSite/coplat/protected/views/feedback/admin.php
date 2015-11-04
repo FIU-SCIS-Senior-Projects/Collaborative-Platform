@@ -7,10 +7,7 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Feedback', 'url'=>array('index')),
-	array('label'=>'Create Feedback', 'url'=>array('create')),
-);
+$this->menu=array();
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -58,8 +55,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 				'view'=>
 					array(
 						'url'=>'Yii::app()->createUrl("feedback/view", array("id"=>$data->id))',
-
-					),
+				),
 			),
 		)
 	,)

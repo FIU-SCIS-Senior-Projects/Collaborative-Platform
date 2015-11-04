@@ -7,20 +7,20 @@ $this->breadcrumbs=array(
 	'Feedbacks',
 );
 
+/* Feel free to uncomment this code if you want to add menu items to admin and user views for index
 if(User::isCurrentUserAnAdmin())
 {
 	$this->menu=array(
-	array('label'=>'Create Feedback', 'url'=>array('create')),
-	array('label'=>'Manage Feedback', 'url'=>array('admin')),
 	);
 }
 else {
 
 	$this->menu = array(
-		array('label' => 'Create Feedback', 'url' => array('create')),
+
 		//array('label'=>'Manage Feedback', 'url'=>array('admin')),
 	);
 }
+*/
 ?>
 
 

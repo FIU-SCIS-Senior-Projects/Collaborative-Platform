@@ -32,7 +32,7 @@ class FeedbackController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','adminindex','delete','adminview'),
+				'actions'=>array('admin','delete'),
 				'users'=>array('admin','rdomi005'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -51,6 +51,7 @@ class FeedbackController extends Controller
 	 */
 	public function actionView($id)
 	{
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
