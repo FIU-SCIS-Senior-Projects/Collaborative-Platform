@@ -143,7 +143,7 @@ class SiteController extends Controller
 		$model->password = $pass;
 		$user = User::model()->findAllBySql("Select * from user where username ="."'".$user."'");
 		foreach($user as $u) {
-			if (hash_equals($u->password, $pass)) {
+			if (strncmp('$2a$08$',$pass, 7 ) == 0) {
 				$model->hashLogin();
 			}
 		}
