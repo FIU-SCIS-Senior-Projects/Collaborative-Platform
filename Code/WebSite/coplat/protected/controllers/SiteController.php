@@ -134,6 +134,29 @@ class SiteController extends Controller
 		$this->render('login',array('model'=>$model));
 	}
 
+	//WARNING: THIS WILL NOT WORK IF MORE THAN ONE USER HAS THE SAME USERNAME
+	//It will instead login the last user in the foreach statement... which i guess works out for everyone.
+	public function actionPortalLogin($user, $pass)
+	{
+		$model=new LoginForm;
+		$model->username = $user;
+		$model->password = $pass;
+		$user = User::model()->findAllBySql("Select * from user where username ="."'".$user."'");
+		foreach($user as $u) {
+			if (hash_equals($u->password, $pass)) {
+				$model->hashLogin();
+			}
+		}
+		if (Yii::app()->user->returnUrl == "/coplat/index.php") {
+
+				$this->redirect("/coplat/index.php/home/userHome");
+			}
+
+		else {
+			$this->redirect(Yii::app()->user->returnUrl);
+		}
+	}
+
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
@@ -198,7 +221,12 @@ class SiteController extends Controller
             $error = '';
 	    $this->render('landing', array('error'=>$error, 'invId'=> $id ));
 	}
-	
+
+
+	public function actionRedirect()
+	{
+		$this->redirect('http://vjf-dev.cis.fiu.edu/JobFair/index.php/combinedLogin/login');
+	}
 	/*
 	 * 
 	 */
