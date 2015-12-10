@@ -7,41 +7,6 @@ $this->breadcrumbs=array(
 	'Feedbacks',
 );
 
-<<<<<<< HEAD
-$this->menu=array(
-	array('label'=>'Create Feedback', 'url'=>array('create')),
-	array('label'=>'Manage Feedback', 'url'=>array('admin')),
-);
-?>
-
-<h1>Feedbacks</h1>
-
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
-	'id'=>'domain-grid',
-	'dataProvider'=>new CArrayDataProvider($data),
-	//'filter'=>$model,
-	'columns'=>array(
-		//'id',
-
-		'id',
-		'user_id',
-		'subject',
-		'description',
-		array(
-			'header'=>'Options',
-			'class'=>'bootstrap.widgets.TbButtonColumn',
-			'template'=> '{view} {delete}',
-			'buttons'=>array(
-				'view'=>
-					array(
-						'url'=>'Yii::app()->createUrl("feedback/view", array("id"=>$data->id))',
-
-					),
-			),
-		)
-	,)
-)); ?>
-=======
 /* Feel free to uncomment this code if you want to add menu items to admin and user views for index
 if(User::isCurrentUserAnAdmin())
 {
@@ -56,30 +21,50 @@ else {
 	);
 }
 */
+$this->menu=array();
+
+Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+	$('.search-form').toggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$('#feedback-grid').yiiGridView('update', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+");
 ?>
 
 
 <h1>Feedbacks</h1>
-
+<div class="search-form" style="display:none">
+	<?php $this->renderPartial('_search',array('model'=>$model,'data1'=>$data1,)); ?>
+</div>
 <?php
+
 if(User::isCurrentUserAnAdmin())
 {
 	$this->widget('bootstrap.widgets.TbGridView', array(
 		'id'=>'domain-grid',
-		'dataProvider'=>new CArrayDataProvider($data),
+		'dataProvider'=> $model->search(),
+		'filter'=>$model,
 		//'filter'=>$model,
 		'columns'=>array(
 			//'id',
 			array(
-				'name'=>'Name',
-				'value'=>'User::model()->getUser($data->user_id)'
-			),
+				'name'  => 'creatorName',
+				'value' => '($data->getCompiledCreatorID())',
+				'header'=> 'Name',
+				'filter'=> CHtml::activeTextField($model, 'creatorName'))
+			,
 			array(
-				'name'=>'Subject',
+				'name'=>'subject',
 				'value'=>'$data->subject'
 			),
 			array(
-				'name'=>'Description',
+				'name'=>'description',
 				'value'=>'$data->description'
 			),
 			array(
@@ -102,16 +87,25 @@ else
 {
 	$this->widget('bootstrap.widgets.TbGridView', array(
 		'id'=>'domain-grid',
-		'dataProvider'=>new CArrayDataProvider($data),
+		'dataProvider'=> $model->search(),
+		'filter'=>$model,
 		//'filter'=>$model,
 		'columns'=>array(
 			//'id',
 			array(
-				'name'=>'Name',
-				'value'=>'User::model()->getUser($data->user_id)'
+				'name'  => 'creatorName',
+				'value' => '($data->getCompiledCreatorID())',
+				'header'=> 'Name',
+				'filter'=> CHtml::activeTextField($model, 'creatorName'))
+		,
+			array(
+				'name'=>'subject',
+				'value'=>'$data->subject'
 			),
-			'subject',
-			'description',
+			array(
+				'name'=>'description',
+				'value'=>'$data->description'
+			),
 			array(
 				'header'=>'Options',
 				'class'=>'bootstrap.widgets.TbButtonColumn',
@@ -128,4 +122,3 @@ else
 	));
 }
 ?>
->>>>>>> develop
