@@ -32,7 +32,7 @@ class ImportController extends Controller
 
 
             //  $projectURL = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getProjects/123FIUspw/";
-            $projectURL = "http://spws-dev.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getProjects/123FIUspw/";
+            $projectURL = "http://spws.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getProjects/123FIUspw/";
 
             $jsonProjects = file_get_contents($projectURL);
             $projects = json_decode($jsonProjects, true);
@@ -46,7 +46,7 @@ class ImportController extends Controller
 
 
             //$studentsURL = "http://localhost:8083/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
-            $studentsURL = "http://spws-dev.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
+            $studentsURL = "http://spws.cis.fiu.edu:8080/SPW2-RegisterAPI/rest/SPWRegister/getAll/123FIUspw/";
             $jsonStudents = file_get_contents($studentsURL);
             $students = json_decode($jsonStudents, true);
 
@@ -56,6 +56,7 @@ class ImportController extends Controller
                 $this->importMentee($student['email'],$student['id'],$student['firstName'],$student['lastName'],$student['middle'],$student['valid']);
 
                 $this->assignProjectforUser($student['email'],$student['projectID']);
+
             }
 
             echo "<script> window.alert('Data has been imported from SPW');window.location = 'adminHome'</script>";

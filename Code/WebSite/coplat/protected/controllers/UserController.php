@@ -1,7 +1,7 @@
 <?php ob_start();?>
 <?php
 
-require ('PasswordHash.php');
+require (__DIR__.'/../../PasswordHash.php');
 
 class UserController extends Controller
 {
@@ -1327,6 +1327,7 @@ public function actionUpdateUser()
             Yii::app()->end();
         }
     }*/
+
 
 }
 

@@ -32,19 +32,11 @@ class FeedbackController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-<<<<<<< HEAD
-				'actions'=>array('admin','adminindex','delete','adminview'),
-				'users'=>array('admin','rdomi005'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('adminindex','create','update','view'),
-=======
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin','rdomi005'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('index','create','update','view'),
->>>>>>> develop
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -59,10 +51,7 @@ class FeedbackController extends Controller
 	 */
 	public function actionView($id)
 	{
-<<<<<<< HEAD
-=======
 
->>>>>>> develop
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -135,23 +124,21 @@ class FeedbackController extends Controller
 	 */
 	public function actionIndex()
 	{
-		/*$dataProvider=new CActiveDataProvider('Feedback');
+		$model=new Feedback('search');
+		$cUser = User::model()->findAllBySql("select id, fname, lname from user where activated = 1 and disable = 0 order by lname");
+		$data1 = array();
+
+		foreach($cUser as $u){
+			$data1[$u->id] = $u->fname.' '.$u->lname;
+		}
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Feedback']))
+			$model->attributes=$_GET['Feedback'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));*/
-		$data = Feedback::model()->gitData();
-		$this->render('index',array(
-			'data'=>$data,
+			'model'=>$model, 'data1'=>$data1
 		));
 
-	}
-
-	public function actionAdminIndex()
-	{
-		$data = Feedback::model()->gitAllData();
-		$this->render('index', array(
-			'data'=>$data,
-		));
 	}
 
 	/**

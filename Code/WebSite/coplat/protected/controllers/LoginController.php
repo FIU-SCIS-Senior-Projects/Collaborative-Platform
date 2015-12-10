@@ -59,7 +59,7 @@ class LoginController extends Controller
     private function GetGoogleAuthCallbacK()
     {
         
-        $client;
+        $client = '';
         switch ($this->devenv)
         {            
             case Enviroments::cpDev:

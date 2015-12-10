@@ -56,6 +56,7 @@ class ApplicationPersonalMentorController extends Controller
 		//$model2=new ApplicationPersonalMentorPick('search');
 		//$model2->unsetAttributes();
 		//$model2->app_id = $model->id;
+
 		$model2 = new CSqlDataProvider('SELECT t.id, t.app_id, t.user_id, t.approval_status, u.fname, u.lname 
 							FROM application_personal_mentor_pick t, user u 
 							WHERE t.user_id = u.id AND t.approval_status != "Proposed by Mentor" AND t.app_id = '.$model->id.'');
