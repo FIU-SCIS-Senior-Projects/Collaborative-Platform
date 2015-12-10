@@ -12,7 +12,11 @@ require_once(__DIR__.'/../../framework/yii.php');
  * @property string $description
  *
  * The following are available model relations
+<<<<<<< HEAD
  * @property feedbackReplies[] $replies
+=======
+ * @property Feedback_Replies[] $replies
+>>>>>>> develop
  */
 class Feedback extends CActiveRecord
 {
@@ -62,7 +66,11 @@ class Feedback extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'creatorUser' => array(self::BELONGS_TO, 'User', 'user_id'),
+<<<<<<< HEAD
 			'replies' => array(self::HAS_MANY, 'feedbackreplies', 'feed_id'),
+=======
+			'replies' => array(self::HAS_MANY, 'Feedback_Replies', 'feed_id'),
+>>>>>>> develop
 		);
 	}
 
@@ -70,18 +78,31 @@ class Feedback extends CActiveRecord
 		/*$data = Yii::app()->db
 			->createCommand($sql)
 			->queryAll();*/
+<<<<<<< HEAD
 		if(!User::isCurrentUserAnAdmin()) {
 			$data = Feedback::findAll('user_id=' . User::getCurrentUserId());
 		}
 		else{
 			$data = Feedback::findAll();
 		}
+=======
+		//if(!User::isCurrentUserAnAdmin()) {
+			//$data = Feedback::findAll('user_id=' . User::getCurrentUserId());
+		//}
+		//else{
+			$data = Feedback::findAll();
+		//}
+>>>>>>> develop
 		return $data;
 	}
 
 	public function gitReplies()
 	{
+<<<<<<< HEAD
 		return $data = FeedbackReplies::model()->findAllbySQL("Select * from feedback_replies where feed_id = ". $this->id);
+=======
+		return $data = Feedback_Replies::model()->findAllbySQL("Select * from feedback_replies where feed_id = ". $this->id);
+>>>>>>> develop
 	}
 
 

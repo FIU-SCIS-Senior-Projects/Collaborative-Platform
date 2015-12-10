@@ -1,4 +1,5 @@
 <?php
+/* commented out because file paths need to be updated in future iteration for OauthD
 require_once("protected/extensions/Oauth2/Token.php");
 require_once("protected/extensions/Oauth2/Client.php");
 require_once("protected/extensions/Oauth2/DataStore.php");
@@ -7,6 +8,7 @@ require_once("protected/extensions/Oauth2/Exception.php");
 require_once("protected/extensions/Oauth2/Service/Configuration.php");
 require_once("protected/extensions/Oauth2/DataStore/Session.php");
 require_once("protected/extensions/Oauth2/Service.php");
+*/
 /**
  * LoginForm class.
  * LoginForm is the data structure for keeping
@@ -88,5 +90,17 @@ class LoginForm extends CFormModel
 		}
 		else
 			return false;
+	}
+
+	public function hashLogin()
+	{
+		if($this->_identity===null)
+		{
+			$this->_identity=new UserIdentity($this->username,$this->password);
+
+		}
+			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
+			Yii::app()->user->login($this->_identity,$duration);
+			return true;
 	}
 }
