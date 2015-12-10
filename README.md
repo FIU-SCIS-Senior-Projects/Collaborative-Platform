@@ -1,4 +1,4 @@
-#Collaborative-Platform-Ver-6.0
+#Collaborative-Platform-Ver-7.0
 
 ##Directory Structure
 * **Code**:                    Contains Source Code and DBSchema Script
