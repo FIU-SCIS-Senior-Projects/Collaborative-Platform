@@ -44,9 +44,10 @@ class Comment extends CActiveRecord
 			//array('comment, added_date, ticket_id', 'required'),
 			array('description', 'required'),
 				
-			array('decription', 'length', 'max'=>500),
+			array('description', 'length', 'max'=>500),
 			array('ticket_id', 'length', 'max'=>10),
             array('user_added', 'length', 'max'=>45),
+			array('added_date', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, description, added_date, ticket_id, user_added', 'safe', 'on'=>'search'),

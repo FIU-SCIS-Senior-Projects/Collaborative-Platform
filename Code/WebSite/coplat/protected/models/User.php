@@ -125,6 +125,8 @@ class User extends CActiveRecord
         return $hasher->CheckPassword($password, $this->password);
     }
 
+
+
     /**
      * @return array relational rules.
      */
@@ -1318,7 +1320,24 @@ class User extends CActiveRecord
     {
         return User::model()->findAll("isPerMentor = 1");
     }
-    
+
+    public static function findMenteeTicketsUnderSpecifiedProject($projectid)
+    {
+        return User::model()->findAllBySql("SELECT d.*
+                                            FROM ((Select * from(
+                                                    Select id, title, project_mentor_user_id
+                                                    FROM project) a
+                                                  JOIN
+                                                    (Select user_id, project_id
+                                                    from mentee
+                                                    where project_id = $projectid) b
+                                                  ON a.id = b.project_id) c
+                                                JOIN
+                                                  (Select *
+                                                  from ticket
+                                                  ) d
+                                                ON c.user_id = d.creator_user_id and c.id = d.assigned_project_id)");
+    }
     public static function findAllDomainMentorsByDomainID($domainID, $exclusive)
     {
         if ($exclusive)

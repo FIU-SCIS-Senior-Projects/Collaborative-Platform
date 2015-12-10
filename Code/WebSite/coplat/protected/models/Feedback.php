@@ -10,16 +10,14 @@ require_once(__DIR__.'/../../framework/yii.php');
  * @property integer $user_id
  * @property string $subject
  * @property string $description
+ * @property User $creatorUser
  *
  * The following are available model relations
-<<<<<<< HEAD
- * @property feedbackReplies[] $replies
-=======
  * @property Feedback_Replies[] $replies
->>>>>>> develop
  */
 class Feedback extends CActiveRecord
 {
+	public $creatorName;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -43,8 +41,6 @@ class Feedback extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			//array('user_id', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
@@ -53,7 +49,7 @@ class Feedback extends CActiveRecord
 
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, subject, description', 'safe', 'on'=>'search'),
+			array('id, user_id, subject, description, creatorName', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,43 +62,27 @@ class Feedback extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'creatorUser' => array(self::BELONGS_TO, 'User', 'user_id'),
-<<<<<<< HEAD
-			'replies' => array(self::HAS_MANY, 'feedbackreplies', 'feed_id'),
-=======
+
 			'replies' => array(self::HAS_MANY, 'Feedback_Replies', 'feed_id'),
->>>>>>> develop
 		);
 	}
 
 	public function gitData(){
-		/*$data = Yii::app()->db
-			->createCommand($sql)
-			->queryAll();*/
-<<<<<<< HEAD
-		if(!User::isCurrentUserAnAdmin()) {
-			$data = Feedback::findAll('user_id=' . User::getCurrentUserId());
-		}
-		else{
-			$data = Feedback::findAll();
-		}
-=======
-		//if(!User::isCurrentUserAnAdmin()) {
-			//$data = Feedback::findAll('user_id=' . User::getCurrentUserId());
-		//}
-		//else{
-			$data = Feedback::findAll();
-		//}
->>>>>>> develop
+		$data = Feedback::findAll();
 		return $data;
 	}
 
 	public function gitReplies()
 	{
-<<<<<<< HEAD
-		return $data = FeedbackReplies::model()->findAllbySQL("Select * from feedback_replies where feed_id = ". $this->id);
-=======
 		return $data = Feedback_Replies::model()->findAllbySQL("Select * from feedback_replies where feed_id = ". $this->id);
->>>>>>> develop
+	}
+
+	public function getCompiledCreatorID()
+	{
+		$user = User::getUser($this->user_id);
+		return (/*$this->creator_user_id . ' ' .*/
+			$user->fname .' ' .
+			$user->lname);
 	}
 
 
@@ -130,17 +110,21 @@ class Feedback extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+		$criteria->with = array('creatorUser');
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('subject',$this->subject,true);
 		$criteria->compare('description',$this->description,true);
+		$criteria->compare('creatorUser.fname', $this->creatorName, true, 'OR');
+		$criteria->compare('creatorUser.lname', $this->creatorName, true, 'OR');
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 			'sort'=>array(
 				'attributes'=>array(
-					'name_search'=>array(
+					'creatorName'=>array(
 						'asc'=>'creatorUser.lname',
 						'desc'=>'creatorUser.lname DESC',
 					),
